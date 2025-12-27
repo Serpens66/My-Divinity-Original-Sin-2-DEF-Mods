@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<header version="2" time="0" />
+	<version major="54" minor="1" revision="0" build="0" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" value="eb2b635f-6ba1-409c-8d55-1b0f59377a5f" type="22" />
+					<attribute id="Localized" value="False" type="19" />
+					<attribute id="EffectName" value="Helaene_Blood_Beam" type="22" />
+					<attribute id="Name" value="Helaene_Blood_Beam" type="23" />
+					<attribute id="SourceFile" value="Public/Helaene_Buff_Any_Summons_8ad5eff2-14ad-d8d7-5e3b-0e8a5e1e29d9/Assets/Effects/Effects_Banks/Helaene_Blood_Beam.lsfx" type="30" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" value="1052ed42-2ee4-454d-a0a1-31ba24176c3e" type="22" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>
