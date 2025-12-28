@@ -41,3 +41,6 @@ SharedFns.RegisterProtectedOsirisListener("CharacterLeftParty", 1, "after", func
     SharedFns.OnCharacterLeftParty(objectGUID)
   end
 end)
+
+
+

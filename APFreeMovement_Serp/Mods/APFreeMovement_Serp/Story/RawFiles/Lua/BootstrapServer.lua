@@ -11,11 +11,21 @@ local function RegisterProtectedOsirisListener(event, arity, state, callback)
 	end)
 end
 
+-- returns the first key from table with value x
+local function table_contains_value(tbl, x)
+  for k,v in pairs(tbl) do
+    if v == x then 
+      return k -- also 0 is considered true in lua. and false/nil wont be used as key for sure. so its fine to return k here
+    end
+  end
+  return false
+end
+
 local function AddTalent(charGUID,Talent,compensateTalentPoint,Tag,char)
   if Talent and Talent~="None" then
     char = char or Ext.Entity.GetCharacter(charGUID)
-    Ext.Print("Trying add Talent "..tostring(Talent).." to "..tostring(charGUID),char)
     if char and char.PlayerCustomData then -- most NPC do not have it and therefore can not add Talent here
+      Ext.Print("Trying add Talent "..tostring(Talent).." to "..tostring(charGUID),char)
       if not Tag or Osi.IsTagged(charGUID,Tag)==0 then
         if (char and not char.Stats["TALENT_"..Talent]) or (not char and Osi.CharacterHasTalent(charGUID, Talent) == 0) then
           Osi.CharacterAddTalent(charGUID, Talent)
@@ -41,6 +51,10 @@ local function GetAllPlayerChars()
   end
   return players
 end
+local function IsPlayerMainChar(charGUID)
+  local players = GetAllPlayerChars()
+  return table_contains_value(players,charGUID)
+end
 
 
 RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, minor, patch, build)
@@ -53,5 +67,15 @@ end)
 RegisterProtectedOsirisListener("CharacterJoinedParty", 1, "after", function(objectGUID)
   if Osi.ObjectIsCharacter(objectGUID)==1 then -- [in](GUIDSTRING)_Object, [out](INTEGER)_Bool 
     AddTalent(objectGUID,"QuickStep",true,"QuickStepForFree_Serp")
+  end
+end)
+
+-- (GUIDSTRING)_Object, (INTEGER)_CombatID 
+RegisterProtectedOsirisListener("ObjectEnteredCombat", 2, "after", function(objectGUID, combatID)
+  -- Ext.Print("ObjectEnteredCombat: ",objectGUID)
+  if Osi.ObjectIsCharacter(objectGUID)==1 then -- [in](GUIDSTRING)_Object, [out](INTEGER)_Bool 
+    if not IsPlayerMainChar(charGUID) then
+      AddTalent(charGUID,"QuickStep") -- give eg summones quickstep, for them it works here, they have PlayerCustomData
+    end
   end
 end)
