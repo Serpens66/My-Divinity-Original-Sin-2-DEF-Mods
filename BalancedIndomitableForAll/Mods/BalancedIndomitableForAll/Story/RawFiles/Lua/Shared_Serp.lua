@@ -25,10 +25,9 @@ end
 
 -- ##################################################
 
-
+-- Sync is not needed (and may cause bugs) within StatsLoaded
 SharedFns.OnStatsLoaded = function(e)
   Ext.Stats.GetRaw("MADNESS")["ImmuneFlag"] = "MadnessImmunity" -- to allow immunity against Madness 
-  Ext.Stats.Sync("MADNESS",false) -- sync to all clients
 end
 
 

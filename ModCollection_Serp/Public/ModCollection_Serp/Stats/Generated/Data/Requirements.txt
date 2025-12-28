@@ -1,0 +1,5 @@
+requirement "Indomitable",""
+requirement "Raistlin","!TALENT_LoneWolf"
+requirement "Executioner","WarriorLore 1"
+requirement "QuickStep","RogueLore 1"
+

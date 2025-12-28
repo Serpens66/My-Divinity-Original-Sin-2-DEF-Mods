@@ -81,10 +81,9 @@ end
 -- Client only
 -- Stats changes. Most compatible this way, since only this specific stat is overwritten, instead of all of this object
 -- note that StatsLoaded is not thrown every time you load into a session, iirc it only triggers when loading mods or going from title screen -> session
--- Random CRASH (extender v60): Do NOT call Ext.Stats.Sync while looping over Ext.Stats.GetStats("SkillData") (or most likely an other Ext.Stats.GetStats(...)). Instead save the names of the entries you changed while looping and then do a seperate loop after the GetStats loop to call Sync for these
+-- Calling Sync is not needed and may cause bugs in StatsLoaded!
 SharedFns.OnStatsLoaded = function(e) 
 
-  local need_sync = {}
   
   local Target_insert = "|Tagged:SUMMON|Tagged:DRAGON" -- Add Target_insert after Target_putAfter of every SkillData Target
   local Target_putAfter = "|Tagged:INCARNATE_G"
@@ -96,7 +95,6 @@ SharedFns.OnStatsLoaded = function(e)
       new = new:gsub("MySummon&", "") -- remove restriction to own summons -- ist "MySummon&" obwohl in Skill_Target "MySummon;" steht: MySummon&(Tagged:INCARNATE_S|Tagged:INCARNATE_G|Tagged:SUMMON|Tagged:DRAGON)&!Spirit
       Ext.Print("Change TargetConditions ",name," to ",new,". old was: ",TargetConditions)
       MyStat["TargetConditions"] = new
-      table.insert(need_sync,name)
     end
 
     if MyStat then
@@ -133,14 +131,9 @@ SharedFns.OnStatsLoaded = function(e)
           table.insert(SkillProperties,summonentry)
           Ext.Print("Change SkillProperties ",name,dragonentry.Action)
           MyStat["SkillProperties"] = SkillProperties
-          table.insert(need_sync,name)
         end
       end
     end
-  end
-  
-  for _,name in ipairs(need_sync) do
-    Ext.Stats.Sync(name,false)-- sync to all clients
   end
   
 end
