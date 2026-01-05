@@ -1,0 +1,3256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" />
+    <version major="3" minor="6" revision="6" build="0" />
+    <region id="IconUVList">
+        <node id="root">
+            <children>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Backbreaker" type="22" />
+                    <attribute id="U1" value="0.296997" type="6" />
+                    <attribute id="U2" value="0.312378" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Bellows" type="22" />
+                    <attribute id="U1" value="0.312622" type="6" />
+                    <attribute id="U2" value="0.328003" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_BrokenWrist" type="22" />
+                    <attribute id="U1" value="0.328247" type="6" />
+                    <attribute id="U2" value="0.343628" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Cauterize" type="22" />
+                    <attribute id="U1" value="0.343872" type="6" />
+                    <attribute id="U2" value="0.359253" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Chain" type="22" />
+                    <attribute id="U1" value="0.359497" type="6" />
+                    <attribute id="U2" value="0.374878" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Elemental" type="22" />
+                    <attribute id="U1" value="0.734497" type="6" />
+                    <attribute id="U2" value="0.749878" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Elemental2" type="22" />
+                    <attribute id="U1" value="0.750122" type="6" />
+                    <attribute id="U2" value="0.765503" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Elemental3" type="22" />
+                    <attribute id="U1" value="0.765747" type="6" />
+                    <attribute id="U2" value="0.781128" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Fire" type="22" />
+                    <attribute id="U1" value="0.375122" type="6" />
+                    <attribute id="U2" value="0.390503" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_HammerLightning" type="22" />
+                    <attribute id="U1" value="0.437622" type="6" />
+                    <attribute id="U2" value="0.453003" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Hammer_01" type="22" />
+                    <attribute id="U1" value="0.390747" type="6" />
+                    <attribute id="U2" value="0.406128" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Hammer_02" type="22" />
+                    <attribute id="U1" value="0.406372" type="6" />
+                    <attribute id="U2" value="0.421753" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Hammer_03" type="22" />
+                    <attribute id="U1" value="0.421997" type="6" />
+                    <attribute id="U2" value="0.437378" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Hand" type="22" />
+                    <attribute id="U1" value="0.453247" type="6" />
+                    <attribute id="U2" value="0.468628" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Headshot" type="22" />
+                    <attribute id="U1" value="0.468872" type="6" />
+                    <attribute id="U2" value="0.484253" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Jump" type="22" />
+                    <attribute id="U1" value="0.484497" type="6" />
+                    <attribute id="U2" value="0.499878" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Mask" type="22" />
+                    <attribute id="U1" value="0.500122" type="6" />
+                    <attribute id="U2" value="0.515503" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Medic" type="22" />
+                    <attribute id="U1" value="0.515747" type="6" />
+                    <attribute id="U2" value="0.531128" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Medic2" type="22" />
+                    <attribute id="U1" value="0.531372" type="6" />
+                    <attribute id="U2" value="0.546753" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Repair" type="22" />
+                    <attribute id="U1" value="0.546997" type="6" />
+                    <attribute id="U2" value="0.562378" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Shrapnel" type="22" />
+                    <attribute id="U1" value="0.562622" type="6" />
+                    <attribute id="U2" value="0.578003" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Stance" type="22" />
+                    <attribute id="U1" value="0.578247" type="6" />
+                    <attribute id="U2" value="0.593628" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Stance2" type="22" />
+                    <attribute id="U1" value="0.593872" type="6" />
+                    <attribute id="U2" value="0.609253" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Stance3" type="22" />
+                    <attribute id="U1" value="0.609497" type="6" />
+                    <attribute id="U2" value="0.624878" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Stance4" type="22" />
+                    <attribute id="U1" value="0.625122" type="6" />
+                    <attribute id="U2" value="0.640503" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Stance5" type="22" />
+                    <attribute id="U1" value="0.640747" type="6" />
+                    <attribute id="U2" value="0.656128" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Turret" type="22" />
+                    <attribute id="U1" value="0.656372" type="6" />
+                    <attribute id="U2" value="0.671753" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Vulcan" type="22" />
+                    <attribute id="U1" value="0.875122" type="6" />
+                    <attribute id="U2" value="0.890503" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Vulcan2" type="22" />
+                    <attribute id="U1" value="0.890747" type="6" />
+                    <attribute id="U2" value="0.906128" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Vulcan3" type="22" />
+                    <attribute id="U1" value="0.906372" type="6" />
+                    <attribute id="U2" value="0.921753" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Blacksmith_Skills_Whirl" type="22" />
+                    <attribute id="U1" value="0.671997" type="6" />
+                    <attribute id="U2" value="0.687378" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_Beloved" type="22" />
+                    <attribute id="U1" value="0.812622" type="6" />
+                    <attribute id="U2" value="0.828003" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_Beloved2" type="22" />
+                    <attribute id="U1" value="0.828247" type="6" />
+                    <attribute id="U2" value="0.843628" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_Blizzard" type="22" />
+                    <attribute id="U1" value="0.843872" type="6" />
+                    <attribute id="U2" value="0.859253" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_Blizzard2" type="22" />
+                    <attribute id="U1" value="0.859497" type="6" />
+                    <attribute id="U2" value="0.874878" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_Frostbite" type="22" />
+                    <attribute id="U1" value="0.875122" type="6" />
+                    <attribute id="U2" value="0.890503" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_Frostbite2" type="22" />
+                    <attribute id="U1" value="0.890747" type="6" />
+                    <attribute id="U2" value="0.906128" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_Hands" type="22" />
+                    <attribute id="U1" value="0.906372" type="6" />
+                    <attribute id="U2" value="0.921753" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceBullet" type="22" />
+                    <attribute id="U1" value="0.921997" type="6" />
+                    <attribute id="U2" value="0.937378" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceDome" type="22" />
+                    <attribute id="U1" value="0.937622" type="6" />
+                    <attribute id="U2" value="0.953003" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceDragon" type="22" />
+                    <attribute id="U1" value="0.953247" type="6" />
+                    <attribute id="U2" value="0.968628" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceDragon2" type="22" />
+                    <attribute id="U1" value="0.968872" type="6" />
+                    <attribute id="U2" value="0.984253" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceDragon3" type="22" />
+                    <attribute id="U1" value="0.984497" type="6" />
+                    <attribute id="U2" value="0.999878" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceRain" type="22" />
+                    <attribute id="U1" value="0.00012207" type="6" />
+                    <attribute id="U2" value="0.0155029" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceShield" type="22" />
+                    <attribute id="U1" value="0.0157471" type="6" />
+                    <attribute id="U2" value="0.0311279" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceSigil" type="22" />
+                    <attribute id="U1" value="0.0313721" type="6" />
+                    <attribute id="U2" value="0.0467529" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceSkate" type="22" />
+                    <attribute id="U1" value="0.0469971" type="6" />
+                    <attribute id="U2" value="0.0623779" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceSkate2" type="22" />
+                    <attribute id="U1" value="0.0626221" type="6" />
+                    <attribute id="U2" value="0.0780029" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceSpear" type="22" />
+                    <attribute id="U1" value="0.0782471" type="6" />
+                    <attribute id="U2" value="0.0936279" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceSpikes" type="22" />
+                    <attribute id="U1" value="0.0938721" type="6" />
+                    <attribute id="U2" value="0.109253" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceSpikes2" type="22" />
+                    <attribute id="U1" value="0.109497" type="6" />
+                    <attribute id="U2" value="0.124878" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceSpray" type="22" />
+                    <attribute id="U1" value="0.125122" type="6" />
+                    <attribute id="U2" value="0.140503" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_IceWall" type="22" />
+                    <attribute id="U1" value="0.140747" type="6" />
+                    <attribute id="U2" value="0.156128" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_Petrify" type="22" />
+                    <attribute id="U1" value="0.156372" type="6" />
+                    <attribute id="U2" value="0.171753" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_ShatterArmor" type="22" />
+                    <attribute id="U1" value="0.171997" type="6" />
+                    <attribute id="U2" value="0.187378" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_Slow" type="22" />
+                    <attribute id="U1" value="0.187622" type="6" />
+                    <attribute id="U2" value="0.203003" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_Snowball" type="22" />
+                    <attribute id="U1" value="0.203247" type="6" />
+                    <attribute id="U2" value="0.218628" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_Troll" type="22" />
+                    <attribute id="U1" value="0.218872" type="6" />
+                    <attribute id="U2" value="0.234253" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_Volley" type="22" />
+                    <attribute id="U1" value="0.234497" type="6" />
+                    <attribute id="U2" value="0.249878" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_WinterBreath" type="22" />
+                    <attribute id="U1" value="0.250122" type="6" />
+                    <attribute id="U2" value="0.265503" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_WinterKnight" type="22" />
+                    <attribute id="U1" value="0.265747" type="6" />
+                    <attribute id="U2" value="0.281128" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Cryomancer_Skills_WinterKnight2" type="22" />
+                    <attribute id="U1" value="0.281372" type="6" />
+                    <attribute id="U2" value="0.296753" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Elemental_Infusion_Blood" type="22" />
+                    <attribute id="U1" value="0.781372" type="6" />
+                    <attribute id="U2" value="0.796753" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Elemental_Infusion_Electric" type="22" />
+                    <attribute id="U1" value="0.796997" type="6" />
+                    <attribute id="U2" value="0.812378" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Elemental_Infusion_Fire" type="22" />
+                    <attribute id="U1" value="0.812622" type="6" />
+                    <attribute id="U2" value="0.828003" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Elemental_Infusion_Oil" type="22" />
+                    <attribute id="U1" value="0.828247" type="6" />
+                    <attribute id="U2" value="0.843628" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Elemental_Infusion_Poison" type="22" />
+                    <attribute id="U1" value="0.843872" type="6" />
+                    <attribute id="U2" value="0.859253" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Elemental_Infusion_Water" type="22" />
+                    <attribute id="U1" value="0.859497" type="6" />
+                    <attribute id="U2" value="0.874878" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Angel" type="22" />
+                    <attribute id="U1" value="0.156372" type="6" />
+                    <attribute id="U2" value="0.171753" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_AngelGuitar" type="22" />
+                    <attribute id="U1" value="0.171997" type="6" />
+                    <attribute id="U2" value="0.187378" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_AngelHorn" type="22" />
+                    <attribute id="U1" value="0.187622" type="6" />
+                    <attribute id="U2" value="0.203003" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_AngelOfDeath" type="22" />
+                    <attribute id="U1" value="0.203247" type="6" />
+                    <attribute id="U2" value="0.218628" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_AngelOfMercy" type="22" />
+                    <attribute id="U1" value="0.218872" type="6" />
+                    <attribute id="U2" value="0.234253" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Anvil" type="22" />
+                    <attribute id="U1" value="0.234497" type="6" />
+                    <attribute id="U2" value="0.249878" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Baptism" type="22" />
+                    <attribute id="U1" value="0.250122" type="6" />
+                    <attribute id="U2" value="0.265503" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Book_Icon" type="22" />
+                    <attribute id="U1" value="0.265747" type="6" />
+                    <attribute id="U2" value="0.281128" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Book_Icon2" type="22" />
+                    <attribute id="U1" value="0.296997" type="6" />
+                    <attribute id="U2" value="0.312378" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Book_Icon_Flat" type="22" />
+                    <attribute id="U1" value="0.281372" type="6" />
+                    <attribute id="U2" value="0.296753" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Communion" type="22" />
+                    <attribute id="U1" value="0.312622" type="6" />
+                    <attribute id="U2" value="0.328003" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Communion2" type="22" />
+                    <attribute id="U1" value="0.328247" type="6" />
+                    <attribute id="U2" value="0.343628" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Cross" type="22" />
+                    <attribute id="U1" value="0.343872" type="6" />
+                    <attribute id="U2" value="0.359253" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Crusader" type="22" />
+                    <attribute id="U1" value="0.359497" type="6" />
+                    <attribute id="U2" value="0.374878" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Dove" type="22" />
+                    <attribute id="U1" value="0.375122" type="6" />
+                    <attribute id="U2" value="0.390503" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Exorcism" type="22" />
+                    <attribute id="U1" value="0.390747" type="6" />
+                    <attribute id="U2" value="0.406128" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Eye" type="22" />
+                    <attribute id="U1" value="0.406372" type="6" />
+                    <attribute id="U2" value="0.421753" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Flood" type="22" />
+                    <attribute id="U1" value="0.421997" type="6" />
+                    <attribute id="U2" value="0.437378" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Grenade" type="22" />
+                    <attribute id="U1" value="0.437622" type="6" />
+                    <attribute id="U2" value="0.453003" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Hammer" type="22" />
+                    <attribute id="U1" value="0.453247" type="6" />
+                    <attribute id="U2" value="0.468628" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Lamb" type="22" />
+                    <attribute id="U1" value="0.468872" type="6" />
+                    <attribute id="U2" value="0.484253" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_LastRites" type="22" />
+                    <attribute id="U1" value="0.484497" type="6" />
+                    <attribute id="U2" value="0.499878" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_LeapOfFaith" type="22" />
+                    <attribute id="U1" value="0.500122" type="6" />
+                    <attribute id="U2" value="0.515503" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Pray" type="22" />
+                    <attribute id="U1" value="0.515747" type="6" />
+                    <attribute id="U2" value="0.531128" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Pray2" type="22" />
+                    <attribute id="U1" value="0.531372" type="6" />
+                    <attribute id="U2" value="0.546753" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Priest" type="22" />
+                    <attribute id="U1" value="0.546997" type="6" />
+                    <attribute id="U2" value="0.562378" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Purge" type="22" />
+                    <attribute id="U1" value="0.562622" type="6" />
+                    <attribute id="U2" value="0.578003" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Rebuke" type="22" />
+                    <attribute id="U1" value="0.578247" type="6" />
+                    <attribute id="U2" value="0.593628" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Resurrection" type="22" />
+                    <attribute id="U1" value="0.593872" type="6" />
+                    <attribute id="U2" value="0.609253" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Retribution" type="22" />
+                    <attribute id="U1" value="0.609497" type="6" />
+                    <attribute id="U2" value="0.624878" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Sanctuary" type="22" />
+                    <attribute id="U1" value="0.625122" type="6" />
+                    <attribute id="U2" value="0.640503" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_SelfSacrifice" type="22" />
+                    <attribute id="U1" value="0.640747" type="6" />
+                    <attribute id="U2" value="0.656128" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Smite" type="22" />
+                    <attribute id="U1" value="0.656372" type="6" />
+                    <attribute id="U2" value="0.671753" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Wrath" type="22" />
+                    <attribute id="U1" value="0.671997" type="6" />
+                    <attribute id="U2" value="0.687378" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Zeal" type="22" />
+                    <attribute id="U1" value="0.687622" type="6" />
+                    <attribute id="U2" value="0.703003" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_001" type="22" />
+                    <attribute id="U1" value="0.359497" type="6" />
+                    <attribute id="U2" value="0.374878" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_002" type="22" />
+                    <attribute id="U1" value="0.421997" type="6" />
+                    <attribute id="U2" value="0.437378" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_003" type="22" />
+                    <attribute id="U1" value="0.437622" type="6" />
+                    <attribute id="U2" value="0.453003" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_004" type="22" />
+                    <attribute id="U1" value="0.453247" type="6" />
+                    <attribute id="U2" value="0.468628" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_005" type="22" />
+                    <attribute id="U1" value="0.468872" type="6" />
+                    <attribute id="U2" value="0.484253" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_006" type="22" />
+                    <attribute id="U1" value="0.484497" type="6" />
+                    <attribute id="U2" value="0.499878" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_007" type="22" />
+                    <attribute id="U1" value="0.500122" type="6" />
+                    <attribute id="U2" value="0.515503" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_Concussion" type="22" />
+                    <attribute id="U1" value="0.281372" type="6" />
+                    <attribute id="U2" value="0.296753" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_DoubleTrouble" type="22" />
+                    <attribute id="U1" value="0.375122" type="6" />
+                    <attribute id="U2" value="0.390503" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_EvasiveShot" type="22" />
+                    <attribute id="U1" value="0.296997" type="6" />
+                    <attribute id="U2" value="0.312378" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_EvasiveShot2" type="22" />
+                    <attribute id="U1" value="0.390747" type="6" />
+                    <attribute id="U2" value="0.406128" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_GrapplingHook" type="22" />
+                    <attribute id="U1" value="0.312622" type="6" />
+                    <attribute id="U2" value="0.328003" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_GrapplingHook2" type="22" />
+                    <attribute id="U1" value="0.328247" type="6" />
+                    <attribute id="U2" value="0.343628" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_ShieldBreaker" type="22" />
+                    <attribute id="U1" value="0.343872" type="6" />
+                    <attribute id="U2" value="0.359253" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Ranger_Skill_Vampiric" type="22" />
+                    <attribute id="U1" value="0.406372" type="6" />
+                    <attribute id="U2" value="0.421753" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_Attract" type="22" />
+                    <attribute id="U1" value="0.00012207" type="6" />
+                    <attribute id="U2" value="0.0155029" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_BlowKiss" type="22" />
+                    <attribute id="U1" value="0.0157471" type="6" />
+                    <attribute id="U2" value="0.0311279" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_Cupid" type="22" />
+                    <attribute id="U1" value="0.0313721" type="6" />
+                    <attribute id="U2" value="0.0467529" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_DemonicFeast" type="22" />
+                    <attribute id="U1" value="0.0469971" type="6" />
+                    <attribute id="U2" value="0.0623779" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_DemonicReveal" type="22" />
+                    <attribute id="U1" value="0.0626221" type="6" />
+                    <attribute id="U2" value="0.0780029" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_Dominatrix" type="22" />
+                    <attribute id="U1" value="0.0782471" type="6" />
+                    <attribute id="U2" value="0.0936279" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_Drain" type="22" />
+                    <attribute id="U1" value="0.0938721" type="6" />
+                    <attribute id="U2" value="0.109253" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_GetLucky" type="22" />
+                    <attribute id="U1" value="0.109497" type="6" />
+                    <attribute id="U2" value="0.124878" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_Glamour" type="22" />
+                    <attribute id="U1" value="0.125122" type="6" />
+                    <attribute id="U2" value="0.140503" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_Jealousy" type="22" />
+                    <attribute id="U1" value="0.140747" type="6" />
+                    <attribute id="U2" value="0.156128" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_LoveDrunk" type="22" />
+                    <attribute id="U1" value="0.156372" type="6" />
+                    <attribute id="U2" value="0.171753" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_LoveSong" type="22" />
+                    <attribute id="U1" value="0.187622" type="6" />
+                    <attribute id="U2" value="0.203003" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_LoversEmbrace" type="22" />
+                    <attribute id="U1" value="0.171997" type="6" />
+                    <attribute id="U2" value="0.187378" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_Melancholy" type="22" />
+                    <attribute id="U1" value="0.203247" type="6" />
+                    <attribute id="U2" value="0.218628" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_MutualSatisfaction" type="22" />
+                    <attribute id="U1" value="0.218872" type="6" />
+                    <attribute id="U2" value="0.234253" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_Perfume" type="22" />
+                    <attribute id="U1" value="0.234497" type="6" />
+                    <attribute id="U2" value="0.249878" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_Seduce" type="22" />
+                    <attribute id="U1" value="0.250122" type="6" />
+                    <attribute id="U2" value="0.265503" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_ShareLove" type="22" />
+                    <attribute id="U1" value="0.265747" type="6" />
+                    <attribute id="U2" value="0.281128" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_Siren" type="22" />
+                    <attribute id="U1" value="0.281372" type="6" />
+                    <attribute id="U2" value="0.296753" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_Stunner" type="22" />
+                    <attribute id="U1" value="0.296997" type="6" />
+                    <attribute id="U2" value="0.312378" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_TooHot" type="22" />
+                    <attribute id="U1" value="0.312622" type="6" />
+                    <attribute id="U2" value="0.328003" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Succubus_Widowmaker" type="22" />
+                    <attribute id="U1" value="0.328247" type="6" />
+                    <attribute id="U2" value="0.343628" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_Anansi" type="22" />
+                    <attribute id="U1" value="0.656372" type="6" />
+                    <attribute id="U2" value="0.671753" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_Banana" type="22" />
+                    <attribute id="U1" value="0.671997" type="6" />
+                    <attribute id="U2" value="0.687378" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_BirdPoop" type="22" />
+                    <attribute id="U1" value="0.687622" type="6" />
+                    <attribute id="U2" value="0.703003" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_Bushwhacked" type="22" />
+                    <attribute id="U1" value="0.703247" type="6" />
+                    <attribute id="U2" value="0.718628" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_ChickenLittle" type="22" />
+                    <attribute id="U1" value="0.718872" type="6" />
+                    <attribute id="U2" value="0.734253" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_CockBlock" type="22" />
+                    <attribute id="U1" value="0.734497" type="6" />
+                    <attribute id="U2" value="0.749878" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_Cocoon" type="22" />
+                    <attribute id="U1" value="0.750122" type="6" />
+                    <attribute id="U2" value="0.765503" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_Cow" type="22" />
+                    <attribute id="U1" value="0.765747" type="6" />
+                    <attribute id="U2" value="0.781128" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_CowPatty" type="22" />
+                    <attribute id="U1" value="0.781372" type="6" />
+                    <attribute id="U2" value="0.796753" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_CoyoteChomp" type="22" />
+                    <attribute id="U1" value="0.796997" type="6" />
+                    <attribute id="U2" value="0.812378" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_CoyoteFace" type="22" />
+                    <attribute id="U1" value="0.812622" type="6" />
+                    <attribute id="U2" value="0.828003" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_CoyoteHowl" type="22" />
+                    <attribute id="U1" value="0.828247" type="6" />
+                    <attribute id="U2" value="0.843628" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_Coyotl" type="22" />
+                    <attribute id="U1" value="0.843872" type="6" />
+                    <attribute id="U2" value="0.859253" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_HatTrick" type="22" />
+                    <attribute id="U1" value="0.859497" type="6" />
+                    <attribute id="U2" value="0.874878" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_Herd" type="22" />
+                    <attribute id="U1" value="0.875122" type="6" />
+                    <attribute id="U2" value="0.890503" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_JoyBuzzer" type="22" />
+                    <attribute id="U1" value="0.890747" type="6" />
+                    <attribute id="U2" value="0.906128" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_Milk" type="22" />
+                    <attribute id="U1" value="0.906372" type="6" />
+                    <attribute id="U2" value="0.921753" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_MineField" type="22" />
+                    <attribute id="U1" value="0.921997" type="6" />
+                    <attribute id="U2" value="0.937378" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_Mooove" type="22" />
+                    <attribute id="U1" value="0.937622" type="6" />
+                    <attribute id="U2" value="0.953003" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_Pandemonium" type="22" />
+                    <attribute id="U1" value="0.953247" type="6" />
+                    <attribute id="U2" value="0.968628" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_PantyRaid" type="22" />
+                    <attribute id="U1" value="0.968872" type="6" />
+                    <attribute id="U2" value="0.984253" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_PlayingPossum" type="22" />
+                    <attribute id="U1" value="0.984497" type="6" />
+                    <attribute id="U2" value="0.999878" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_PoppetArmy" type="22" />
+                    <attribute id="U1" value="0.00012207" type="6" />
+                    <attribute id="U2" value="0.0155029" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_Rooster" type="22" />
+                    <attribute id="U1" value="0.0157471" type="6" />
+                    <attribute id="U2" value="0.0311279" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_SmokeBomb" type="22" />
+                    <attribute id="U1" value="0.0313721" type="6" />
+                    <attribute id="U2" value="0.0467529" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_SpiderEyes" type="22" />
+                    <attribute id="U1" value="0.0469971" type="6" />
+                    <attribute id="U2" value="0.0623779" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_SpiderSurprise" type="22" />
+                    <attribute id="U1" value="0.0626221" type="6" />
+                    <attribute id="U2" value="0.0780029" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_StinkBomb" type="22" />
+                    <attribute id="U1" value="0.0782471" type="6" />
+                    <attribute id="U2" value="0.0936279" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_Thumbtack" type="22" />
+                    <attribute id="U1" value="0.0938721" type="6" />
+                    <attribute id="U2" value="0.109253" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_TongueTwister" type="22" />
+                    <attribute id="U1" value="0.109497" type="6" />
+                    <attribute id="U2" value="0.124878" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_TrickOrTreat" type="22" />
+                    <attribute id="U1" value="0.125122" type="6" />
+                    <attribute id="U2" value="0.140503" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Trickster_TurningTricks" type="22" />
+                    <attribute id="U1" value="0.140747" type="6" />
+                    <attribute id="U2" value="0.156128" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_BattleCry" type="22" />
+                    <attribute id="U1" value="0.343872" type="6" />
+                    <attribute id="U2" value="0.359253" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_Charge" type="22" />
+                    <attribute id="U1" value="0.359497" type="6" />
+                    <attribute id="U2" value="0.374878" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_Cupbearer" type="22" />
+                    <attribute id="U1" value="0.375122" type="6" />
+                    <attribute id="U2" value="0.390503" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_Einherjar" type="22" />
+                    <attribute id="U1" value="0.390747" type="6" />
+                    <attribute id="U2" value="0.406128" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_FreyjasFavor" type="22" />
+                    <attribute id="U1" value="0.406372" type="6" />
+                    <attribute id="U2" value="0.421753" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_HarbingerOfDoom" type="22" />
+                    <attribute id="U1" value="0.421997" type="6" />
+                    <attribute id="U2" value="0.437378" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_HelsDominion" type="22" />
+                    <attribute id="U1" value="0.437622" type="6" />
+                    <attribute id="U2" value="0.453003" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_JotunnStance" type="22" />
+                    <attribute id="U1" value="0.453247" type="6" />
+                    <attribute id="U2" value="0.468628" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_Mjollnir" type="22" />
+                    <attribute id="U1" value="0.468872" type="6" />
+                    <attribute id="U2" value="0.484253" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_OdinsEnvoy" type="22" />
+                    <attribute id="U1" value="0.484497" type="6" />
+                    <attribute id="U2" value="0.499878" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_Protector" type="22" />
+                    <attribute id="U1" value="0.500122" type="6" />
+                    <attribute id="U2" value="0.515503" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_Ragnarok" type="22" />
+                    <attribute id="U1" value="0.515747" type="6" />
+                    <attribute id="U2" value="0.531128" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_Shieldwall" type="22" />
+                    <attribute id="U1" value="0.531372" type="6" />
+                    <attribute id="U2" value="0.546753" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_ShiningSpear" type="22" />
+                    <attribute id="U1" value="0.546997" type="6" />
+                    <attribute id="U2" value="0.562378" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_Skyfall" type="22" />
+                    <attribute id="U1" value="0.562622" type="6" />
+                    <attribute id="U2" value="0.578003" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_VikingFury" type="22" />
+                    <attribute id="U1" value="0.578247" type="6" />
+                    <attribute id="U2" value="0.593628" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_VisionsOfValhalla" type="22" />
+                    <attribute id="U1" value="0.593872" type="6" />
+                    <attribute id="U2" value="0.609253" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_WingedGlory" type="22" />
+                    <attribute id="U1" value="0.609497" type="6" />
+                    <attribute id="U2" value="0.624878" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_WrathOfAsgard" type="22" />
+                    <attribute id="U1" value="0.625122" type="6" />
+                    <attribute id="U2" value="0.640503" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Valkyrie_Yggdrasil" type="22" />
+                    <attribute id="U1" value="0.640747" type="6" />
+                    <attribute id="U2" value="0.656128" type="6" />
+                    <attribute id="V1" value="0.00012207" type="6" />
+                    <attribute id="V2" value="0.0155029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Coffin" type="22" />
+                    <attribute id="U1" value="0.703247" type="6" />
+                    <attribute id="U2" value="0.718628" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Apple" type="22" />
+                    <attribute id="U1" value="0.718872" type="6" />
+                    <attribute id="U2" value="0.734253" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Armor" type="22" />
+                    <attribute id="U1" value="0.734497" type="6" />
+                    <attribute id="U2" value="0.749878" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Attack" type="22" />
+                    <attribute id="U1" value="0.750122" type="6" />
+                    <attribute id="U2" value="0.765503" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Attack2" type="22" />
+                    <attribute id="U1" value="0.765747" type="6" />
+                    <attribute id="U2" value="0.781128" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Bat" type="22" />
+                    <attribute id="U1" value="0.781372" type="6" />
+                    <attribute id="U2" value="0.796753" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Bat2" type="22" />
+                    <attribute id="U1" value="0.796997" type="6" />
+                    <attribute id="U2" value="0.812378" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Bat3" type="22" />
+                    <attribute id="U1" value="0.812622" type="6" />
+                    <attribute id="U2" value="0.828003" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_BatForm" type="22" />
+                    <attribute id="U1" value="0.828247" type="6" />
+                    <attribute id="U2" value="0.843628" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_BloodMist" type="22" />
+                    <attribute id="U1" value="0.859497" type="6" />
+                    <attribute id="U2" value="0.874878" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_BloodMist2" type="22" />
+                    <attribute id="U1" value="0.875122" type="6" />
+                    <attribute id="U2" value="0.890503" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_BloodOrb" type="22" />
+                    <attribute id="U1" value="0.890747" type="6" />
+                    <attribute id="U2" value="0.906128" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_BloodOrb2" type="22" />
+                    <attribute id="U1" value="0.906372" type="6" />
+                    <attribute id="U2" value="0.921753" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_BloodOrb3" type="22" />
+                    <attribute id="U1" value="0.921997" type="6" />
+                    <attribute id="U2" value="0.937378" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Bloodbath" type="22" />
+                    <attribute id="U1" value="0.843872" type="6" />
+                    <attribute id="U2" value="0.859253" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Bloodthirsty" type="22" />
+                    <attribute id="U1" value="0.937622" type="6" />
+                    <attribute id="U2" value="0.953003" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_BloodyHand" type="22" />
+                    <attribute id="U1" value="0.953247" type="6" />
+                    <attribute id="U2" value="0.968628" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_BloodyMouth" type="22" />
+                    <attribute id="U1" value="0.968872" type="6" />
+                    <attribute id="U2" value="0.984253" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_BloodyMouth2" type="22" />
+                    <attribute id="U1" value="0.984497" type="6" />
+                    <attribute id="U2" value="0.999878" type="6" />
+                    <attribute id="V1" value="0.0157471" type="6" />
+                    <attribute id="V2" value="0.0311279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_BloodyMouth3" type="22" />
+                    <attribute id="U1" value="0.00012207" type="6" />
+                    <attribute id="U2" value="0.0155029" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Claw" type="22" />
+                    <attribute id="U1" value="0.0157471" type="6" />
+                    <attribute id="U2" value="0.0311279" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Cuts" type="22" />
+                    <attribute id="U1" value="0.0313721" type="6" />
+                    <attribute id="U2" value="0.0467529" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Eye" type="22" />
+                    <attribute id="U1" value="0.0469971" type="6" />
+                    <attribute id="U2" value="0.0623779" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Fainted" type="22" />
+                    <attribute id="U1" value="0.0626221" type="6" />
+                    <attribute id="U2" value="0.0780029" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Fainted2" type="22" />
+                    <attribute id="U1" value="0.0782471" type="6" />
+                    <attribute id="U2" value="0.0936279" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Flight" type="22" />
+                    <attribute id="U1" value="0.0938721" type="6" />
+                    <attribute id="U2" value="0.109253" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Glamour" type="22" />
+                    <attribute id="U1" value="0.109497" type="6" />
+                    <attribute id="U2" value="0.124878" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Glow" type="22" />
+                    <attribute id="U1" value="0.125122" type="6" />
+                    <attribute id="U2" value="0.140503" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Glow2" type="22" />
+                    <attribute id="U1" value="0.140747" type="6" />
+                    <attribute id="U2" value="0.156128" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Handsome" type="22" />
+                    <attribute id="U1" value="0.156372" type="6" />
+                    <attribute id="U2" value="0.171753" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Heart" type="22" />
+                    <attribute id="U1" value="0.171997" type="6" />
+                    <attribute id="U2" value="0.187378" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Hood" type="22" />
+                    <attribute id="U1" value="0.187622" type="6" />
+                    <attribute id="U2" value="0.203003" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_HotBlooded" type="22" />
+                    <attribute id="U1" value="0.203247" type="6" />
+                    <attribute id="U2" value="0.218628" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Hunger" type="22" />
+                    <attribute id="U1" value="0.218872" type="6" />
+                    <attribute id="U2" value="0.234253" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_LevelUp" type="22" />
+                    <attribute id="U1" value="0.234497" type="6" />
+                    <attribute id="U2" value="0.249878" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Lillith" type="22" />
+                    <attribute id="U1" value="0.250122" type="6" />
+                    <attribute id="U2" value="0.265503" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Mind" type="22" />
+                    <attribute id="U1" value="0.265747" type="6" />
+                    <attribute id="U2" value="0.281128" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Pile" type="22" />
+                    <attribute id="U1" value="0.281372" type="6" />
+                    <attribute id="U2" value="0.296753" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_PlayDead" type="22" />
+                    <attribute id="U1" value="0.296997" type="6" />
+                    <attribute id="U2" value="0.312378" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Pounce" type="22" />
+                    <attribute id="U1" value="0.312622" type="6" />
+                    <attribute id="U2" value="0.328003" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Psychokinesis" type="22" />
+                    <attribute id="U1" value="0.328247" type="6" />
+                    <attribute id="U2" value="0.343628" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Queen" type="22" />
+                    <attribute id="U1" value="0.343872" type="6" />
+                    <attribute id="U2" value="0.359253" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Rush" type="22" />
+                    <attribute id="U1" value="0.359497" type="6" />
+                    <attribute id="U2" value="0.374878" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Sakura" type="22" />
+                    <attribute id="U1" value="0.375122" type="6" />
+                    <attribute id="U2" value="0.390503" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Sigil" type="22" />
+                    <attribute id="U1" value="0.390747" type="6" />
+                    <attribute id="U2" value="0.406128" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Sip" type="22" />
+                    <attribute id="U1" value="0.406372" type="6" />
+                    <attribute id="U2" value="0.421753" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Skulls" type="22" />
+                    <attribute id="U1" value="0.421997" type="6" />
+                    <attribute id="U2" value="0.437378" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Skulls2" type="22" />
+                    <attribute id="U1" value="0.437622" type="6" />
+                    <attribute id="U2" value="0.453003" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Slice" type="22" />
+                    <attribute id="U1" value="0.453247" type="6" />
+                    <attribute id="U2" value="0.468628" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_SlitThroat" type="22" />
+                    <attribute id="U1" value="0.468872" type="6" />
+                    <attribute id="U2" value="0.484253" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_SoulArmor" type="22" />
+                    <attribute id="U1" value="0.484497" type="6" />
+                    <attribute id="U2" value="0.499878" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_SoulArmor2" type="22" />
+                    <attribute id="U1" value="0.500122" type="6" />
+                    <attribute id="U2" value="0.515503" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Stab" type="22" />
+                    <attribute id="U1" value="0.515747" type="6" />
+                    <attribute id="U2" value="0.531128" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Stalk" type="22" />
+                    <attribute id="U1" value="0.531372" type="6" />
+                    <attribute id="U2" value="0.546753" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Stalk2" type="22" />
+                    <attribute id="U1" value="0.546997" type="6" />
+                    <attribute id="U2" value="0.562378" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Throw" type="22" />
+                    <attribute id="U1" value="0.562622" type="6" />
+                    <attribute id="U2" value="0.578003" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Turn" type="22" />
+                    <attribute id="U1" value="0.578247" type="6" />
+                    <attribute id="U2" value="0.593628" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Union" type="22" />
+                    <attribute id="U1" value="0.593872" type="6" />
+                    <attribute id="U2" value="0.609253" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Unlock" type="22" />
+                    <attribute id="U1" value="0.609497" type="6" />
+                    <attribute id="U2" value="0.624878" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_VampireAngel" type="22" />
+                    <attribute id="U1" value="0.625122" type="6" />
+                    <attribute id="U2" value="0.640503" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_VampireShoulder" type="22" />
+                    <attribute id="U1" value="0.640747" type="6" />
+                    <attribute id="U2" value="0.656128" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_VoidBat" type="22" />
+                    <attribute id="U1" value="0.656372" type="6" />
+                    <attribute id="U2" value="0.671753" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Vomit" type="22" />
+                    <attribute id="U1" value="0.671997" type="6" />
+                    <attribute id="U2" value="0.687378" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Skill_Witchfire" type="22" />
+                    <attribute id="U1" value="0.687622" type="6" />
+                    <attribute id="U2" value="0.703003" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Vampire_Status_AllHeal" type="22" />
+                    <attribute id="U1" value="0.703247" type="6" />
+                    <attribute id="U2" value="0.718628" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Mirage_Book_Icon" type="22" />
+                    <attribute id="U1" value="0.296997" type="6" />
+                    <attribute id="U2" value="0.312378" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_001" type="22" />
+                    <attribute id="U1" value="0.921997" type="6" />
+                    <attribute id="U2" value="0.937378" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_002" type="22" />
+                    <attribute id="U1" value="0.937622" type="6" />
+                    <attribute id="U2" value="0.953003" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_003" type="22" />
+                    <attribute id="U1" value="0.953247" type="6" />
+                    <attribute id="U2" value="0.968628" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_004" type="22" />
+                    <attribute id="U1" value="0.968872" type="6" />
+                    <attribute id="U2" value="0.984253" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_005" type="22" />
+                    <attribute id="U1" value="0.984497" type="6" />
+                    <attribute id="U2" value="0.999878" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_006" type="22" />
+                    <attribute id="U1" value="0.00012207" type="6" />
+                    <attribute id="U2" value="0.0155029" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_007" type="22" />
+                    <attribute id="U1" value="0.0157471" type="6" />
+                    <attribute id="U2" value="0.0311279" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_008" type="22" />
+                    <attribute id="U1" value="0.0313721" type="6" />
+                    <attribute id="U2" value="0.0467529" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_009" type="22" />
+                    <attribute id="U1" value="0.0469971" type="6" />
+                    <attribute id="U2" value="0.0623779" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_010" type="22" />
+                    <attribute id="U1" value="0.0626221" type="6" />
+                    <attribute id="U2" value="0.0780029" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_011" type="22" />
+                    <attribute id="U1" value="0.0782471" type="6" />
+                    <attribute id="U2" value="0.0936279" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_012" type="22" />
+                    <attribute id="U1" value="0.0938721" type="6" />
+                    <attribute id="U2" value="0.109253" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_013" type="22" />
+                    <attribute id="U1" value="0.109497" type="6" />
+                    <attribute id="U2" value="0.124878" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_014" type="22" />
+                    <attribute id="U1" value="0.125122" type="6" />
+                    <attribute id="U2" value="0.140503" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_Amnesia_01" type="22" />
+                    <attribute id="U1" value="0.140747" type="6" />
+                    <attribute id="U2" value="0.156128" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_Amnesia_02" type="22" />
+                    <attribute id="U1" value="0.156372" type="6" />
+                    <attribute id="U2" value="0.171753" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_Force_01" type="22" />
+                    <attribute id="U1" value="0.171997" type="6" />
+                    <attribute id="U2" value="0.187378" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_Force_02" type="22" />
+                    <attribute id="U1" value="0.187622" type="6" />
+                    <attribute id="U2" value="0.203003" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_Force_03" type="22" />
+                    <attribute id="U1" value="0.203247" type="6" />
+                    <attribute id="U2" value="0.218628" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_Scream_01" type="22" />
+                    <attribute id="U1" value="0.218872" type="6" />
+                    <attribute id="U2" value="0.234253" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_Vicarious_01" type="22" />
+                    <attribute id="U1" value="0.234497" type="6" />
+                    <attribute id="U2" value="0.249878" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_Vicarious_02" type="22" />
+                    <attribute id="U1" value="0.250122" type="6" />
+                    <attribute id="U2" value="0.265503" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Psylock_Skill_Vicarious_03" type="22" />
+                    <attribute id="U1" value="0.265747" type="6" />
+                    <attribute id="U2" value="0.281128" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ring_Agility" type="22" />
+                    <attribute id="U1" value="0.718872" type="6" />
+                    <attribute id="U2" value="0.734253" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ring_Power" type="22" />
+                    <attribute id="U1" value="0.734497" type="6" />
+                    <attribute id="U2" value="0.749878" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ring_Willpower" type="22" />
+                    <attribute id="U1" value="0.750122" type="6" />
+                    <attribute id="U2" value="0.765503" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_001" type="22" />
+                    <attribute id="U1" value="0.843872" type="6" />
+                    <attribute id="U2" value="0.859253" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_002" type="22" />
+                    <attribute id="U1" value="0.859497" type="6" />
+                    <attribute id="U2" value="0.874878" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_003" type="22" />
+                    <attribute id="U1" value="0.875122" type="6" />
+                    <attribute id="U2" value="0.890503" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_004" type="22" />
+                    <attribute id="U1" value="0.890747" type="6" />
+                    <attribute id="U2" value="0.906128" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_005" type="22" />
+                    <attribute id="U1" value="0.906372" type="6" />
+                    <attribute id="U2" value="0.921753" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_006" type="22" />
+                    <attribute id="U1" value="0.921997" type="6" />
+                    <attribute id="U2" value="0.937378" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_007" type="22" />
+                    <attribute id="U1" value="0.937622" type="6" />
+                    <attribute id="U2" value="0.953003" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_008" type="22" />
+                    <attribute id="U1" value="0.953247" type="6" />
+                    <attribute id="U2" value="0.968628" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_009" type="22" />
+                    <attribute id="U1" value="0.968872" type="6" />
+                    <attribute id="U2" value="0.984253" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_010" type="22" />
+                    <attribute id="U1" value="0.984497" type="6" />
+                    <attribute id="U2" value="0.999878" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_011" type="22" />
+                    <attribute id="U1" value="0.00012207" type="6" />
+                    <attribute id="U2" value="0.0155029" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_012" type="22" />
+                    <attribute id="U1" value="0.0157471" type="6" />
+                    <attribute id="U2" value="0.0311279" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_013" type="22" />
+                    <attribute id="U1" value="0.0313721" type="6" />
+                    <attribute id="U2" value="0.0467529" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_014" type="22" />
+                    <attribute id="U1" value="0.0469971" type="6" />
+                    <attribute id="U2" value="0.0623779" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_015" type="22" />
+                    <attribute id="U1" value="0.0626221" type="6" />
+                    <attribute id="U2" value="0.0780029" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_016" type="22" />
+                    <attribute id="U1" value="0.0782471" type="6" />
+                    <attribute id="U2" value="0.0936279" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_017" type="22" />
+                    <attribute id="U1" value="0.0938721" type="6" />
+                    <attribute id="U2" value="0.109253" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_018" type="22" />
+                    <attribute id="U1" value="0.109497" type="6" />
+                    <attribute id="U2" value="0.124878" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_019" type="22" />
+                    <attribute id="U1" value="0.125122" type="6" />
+                    <attribute id="U2" value="0.140503" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_020" type="22" />
+                    <attribute id="U1" value="0.140747" type="6" />
+                    <attribute id="U2" value="0.156128" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_021" type="22" />
+                    <attribute id="U1" value="0.156372" type="6" />
+                    <attribute id="U2" value="0.171753" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_022" type="22" />
+                    <attribute id="U1" value="0.171997" type="6" />
+                    <attribute id="U2" value="0.187378" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Ritualist_023" type="22" />
+                    <attribute id="U1" value="0.187622" type="6" />
+                    <attribute id="U2" value="0.203003" type="6" />
+                    <attribute id="V1" value="0.109497" type="6" />
+                    <attribute id="V2" value="0.124878" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Succubus_Book_Icon" type="22" />
+                    <attribute id="U1" value="0.687622" type="6" />
+                    <attribute id="U2" value="0.703003" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Trickster_Book_Icon" type="22" />
+                    <attribute id="U1" value="0.718872" type="6" />
+                    <attribute id="U2" value="0.734253" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Valkyrie_Book_Icon" type="22" />
+                    <attribute id="U1" value="0.703247" type="6" />
+                    <attribute id="U2" value="0.718628" type="6" />
+                    <attribute id="V1" value="0.0782471" type="6" />
+                    <attribute id="V2" value="0.0936279" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Vampire_Book_Icon" type="22" />
+                    <attribute id="U1" value="0.765747" type="6" />
+                    <attribute id="U2" value="0.781128" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_AcidRain" type="22" />
+                    <attribute id="U1" value="0.515747" type="6" />
+                    <attribute id="U2" value="0.531128" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_AvatarOfPoison" type="22" />
+                    <attribute id="U1" value="0.531372" type="6" />
+                    <attribute id="U2" value="0.546753" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_Bugs" type="22" />
+                    <attribute id="U1" value="0.546997" type="6" />
+                    <attribute id="U2" value="0.562378" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_CorrosiveCloud" type="22" />
+                    <attribute id="U1" value="0.562622" type="6" />
+                    <attribute id="U2" value="0.578003" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_Curse" type="22" />
+                    <attribute id="U1" value="0.578247" type="6" />
+                    <attribute id="U2" value="0.593628" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_DrippingSkull" type="22" />
+                    <attribute id="U1" value="0.593872" type="6" />
+                    <attribute id="U2" value="0.609253" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_Exhale" type="22" />
+                    <attribute id="U1" value="0.609497" type="6" />
+                    <attribute id="U2" value="0.624878" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_Feast" type="22" />
+                    <attribute id="U1" value="0.625122" type="6" />
+                    <attribute id="U2" value="0.640503" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_Glow" type="22" />
+                    <attribute id="U1" value="0.640747" type="6" />
+                    <attribute id="U2" value="0.656128" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_Grasp" type="22" />
+                    <attribute id="U1" value="0.656372" type="6" />
+                    <attribute id="U2" value="0.671753" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_Medusa" type="22" />
+                    <attribute id="U1" value="0.671997" type="6" />
+                    <attribute id="U2" value="0.687378" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_PathOfPestilence" type="22" />
+                    <attribute id="U1" value="0.687622" type="6" />
+                    <attribute id="U2" value="0.703003" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_Plague" type="22" />
+                    <attribute id="U1" value="0.703247" type="6" />
+                    <attribute id="U2" value="0.718628" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_PoisonSpray" type="22" />
+                    <attribute id="U1" value="0.734497" type="6" />
+                    <attribute id="U2" value="0.749878" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_PoisonTouch" type="22" />
+                    <attribute id="U1" value="0.750122" type="6" />
+                    <attribute id="U2" value="0.765503" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_Poisonball" type="22" />
+                    <attribute id="U1" value="0.718872" type="6" />
+                    <attribute id="U2" value="0.734253" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_Salamander" type="22" />
+                    <attribute id="U1" value="0.765747" type="6" />
+                    <attribute id="U2" value="0.781128" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_SigilOfCorruption" type="22" />
+                    <attribute id="U1" value="0.781372" type="6" />
+                    <attribute id="U2" value="0.796753" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_Skulls" type="22" />
+                    <attribute id="U1" value="0.796997" type="6" />
+                    <attribute id="U2" value="0.812378" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_Swarm" type="22" />
+                    <attribute id="U1" value="0.812622" type="6" />
+                    <attribute id="U2" value="0.828003" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Venomancer_Skills_VenomousClaw" type="22" />
+                    <attribute id="U1" value="0.828247" type="6" />
+                    <attribute id="U2" value="0.843628" type="6" />
+                    <attribute id="V1" value="0.0938721" type="6" />
+                    <attribute id="V2" value="0.109253" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Wyldfae_Book_Icon" type="22" />
+                    <attribute id="U1" value="0.281372" type="6" />
+                    <attribute id="U2" value="0.296753" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_01" type="22" />
+                    <attribute id="U1" value="0.781372" type="6" />
+                    <attribute id="U2" value="0.796753" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_02" type="22" />
+                    <attribute id="U1" value="0.796997" type="6" />
+                    <attribute id="U2" value="0.812378" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_03" type="22" />
+                    <attribute id="U1" value="0.812622" type="6" />
+                    <attribute id="U2" value="0.828003" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_barkskin" type="22" />
+                    <attribute id="U1" value="0.828247" type="6" />
+                    <attribute id="U2" value="0.843628" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_bear" type="22" />
+                    <attribute id="U1" value="0.843872" type="6" />
+                    <attribute id="U2" value="0.859253" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_beehive" type="22" />
+                    <attribute id="U1" value="0.859497" type="6" />
+                    <attribute id="U2" value="0.874878" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_belladonna" type="22" />
+                    <attribute id="U1" value="0.875122" type="6" />
+                    <attribute id="U2" value="0.890503" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_boar" type="22" />
+                    <attribute id="U1" value="0.890747" type="6" />
+                    <attribute id="U2" value="0.906128" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_boulder" type="22" />
+                    <attribute id="U1" value="0.906372" type="6" />
+                    <attribute id="U2" value="0.921753" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_camo" type="22" />
+                    <attribute id="U1" value="0.921997" type="6" />
+                    <attribute id="U2" value="0.937378" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_claw" type="22" />
+                    <attribute id="U1" value="0.937622" type="6" />
+                    <attribute id="U2" value="0.953003" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_earthtrap" type="22" />
+                    <attribute id="U1" value="0.953247" type="6" />
+                    <attribute id="U2" value="0.968628" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_faefyre" type="22" />
+                    <attribute id="U1" value="0.968872" type="6" />
+                    <attribute id="U2" value="0.984253" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_ghostdeer" type="22" />
+                    <attribute id="U1" value="0.984497" type="6" />
+                    <attribute id="U2" value="0.999878" type="6" />
+                    <attribute id="V1" value="0.0313721" type="6" />
+                    <attribute id="V2" value="0.0467529" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_herbal" type="22" />
+                    <attribute id="U1" value="0.00012207" type="6" />
+                    <attribute id="U2" value="0.0155029" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_hunt" type="22" />
+                    <attribute id="U1" value="0.0157471" type="6" />
+                    <attribute id="U2" value="0.0311279" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_owl" type="22" />
+                    <attribute id="U1" value="0.0313721" type="6" />
+                    <attribute id="U2" value="0.0467529" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_ritual" type="22" />
+                    <attribute id="U1" value="0.0469971" type="6" />
+                    <attribute id="U2" value="0.0623779" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_rockfist" type="22" />
+                    <attribute id="U1" value="0.0626221" type="6" />
+                    <attribute id="U2" value="0.0780029" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_rockwall" type="22" />
+                    <attribute id="U1" value="0.0782471" type="6" />
+                    <attribute id="U2" value="0.0936279" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_rose" type="22" />
+                    <attribute id="U1" value="0.0938721" type="6" />
+                    <attribute id="U2" value="0.109253" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_shard" type="22" />
+                    <attribute id="U1" value="0.109497" type="6" />
+                    <attribute id="U2" value="0.124878" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_snake" type="22" />
+                    <attribute id="U1" value="0.125122" type="6" />
+                    <attribute id="U2" value="0.140503" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_spirit" type="22" />
+                    <attribute id="U1" value="0.140747" type="6" />
+                    <attribute id="U2" value="0.156128" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_spray" type="22" />
+                    <attribute id="U1" value="0.156372" type="6" />
+                    <attribute id="U2" value="0.171753" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_spring" type="22" />
+                    <attribute id="U1" value="0.171997" type="6" />
+                    <attribute id="U2" value="0.187378" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_stonehenge" type="22" />
+                    <attribute id="U1" value="0.187622" type="6" />
+                    <attribute id="U2" value="0.203003" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_survival" type="22" />
+                    <attribute id="U1" value="0.203247" type="6" />
+                    <attribute id="U2" value="0.218628" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_tangle" type="22" />
+                    <attribute id="U1" value="0.218872" type="6" />
+                    <attribute id="U2" value="0.234253" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_vinewraith" type="22" />
+                    <attribute id="U1" value="0.234497" type="6" />
+                    <attribute id="U2" value="0.249878" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_wildmagic" type="22" />
+                    <attribute id="U1" value="0.250122" type="6" />
+                    <attribute id="U2" value="0.265503" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="helaene_wyldfae_skill_willowisp" type="22" />
+                    <attribute id="U1" value="0.265747" type="6" />
+                    <attribute id="U2" value="0.281128" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-icon-vulnerable" type="22" />
+                    <attribute id="U1" value="0.421997" type="6" />
+                    <attribute id="U2" value="0.437378" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-001" type="22" />
+                    <attribute id="U1" value="0.437622" type="6" />
+                    <attribute id="U2" value="0.453003" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-002" type="22" />
+                    <attribute id="U1" value="0.453247" type="6" />
+                    <attribute id="U2" value="0.468628" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-003" type="22" />
+                    <attribute id="U1" value="0.468872" type="6" />
+                    <attribute id="U2" value="0.484253" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-004" type="22" />
+                    <attribute id="U1" value="0.484497" type="6" />
+                    <attribute id="U2" value="0.499878" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-005" type="22" />
+                    <attribute id="U1" value="0.500122" type="6" />
+                    <attribute id="U2" value="0.515503" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-006" type="22" />
+                    <attribute id="U1" value="0.515747" type="6" />
+                    <attribute id="U2" value="0.531128" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-007" type="22" />
+                    <attribute id="U1" value="0.531372" type="6" />
+                    <attribute id="U2" value="0.546753" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-008" type="22" />
+                    <attribute id="U1" value="0.546997" type="6" />
+                    <attribute id="U2" value="0.562378" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-009" type="22" />
+                    <attribute id="U1" value="0.562622" type="6" />
+                    <attribute id="U2" value="0.578003" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-010" type="22" />
+                    <attribute id="U1" value="0.578247" type="6" />
+                    <attribute id="U2" value="0.593628" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-011" type="22" />
+                    <attribute id="U1" value="0.593872" type="6" />
+                    <attribute id="U2" value="0.609253" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-012" type="22" />
+                    <attribute id="U1" value="0.609497" type="6" />
+                    <attribute id="U2" value="0.624878" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-013" type="22" />
+                    <attribute id="U1" value="0.625122" type="6" />
+                    <attribute id="U2" value="0.640503" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-014" type="22" />
+                    <attribute id="U1" value="0.640747" type="6" />
+                    <attribute id="U2" value="0.656128" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-015" type="22" />
+                    <attribute id="U1" value="0.656372" type="6" />
+                    <attribute id="U2" value="0.671753" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-016" type="22" />
+                    <attribute id="U1" value="0.671997" type="6" />
+                    <attribute id="U2" value="0.687378" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-017" type="22" />
+                    <attribute id="U1" value="0.687622" type="6" />
+                    <attribute id="U2" value="0.703003" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-018" type="22" />
+                    <attribute id="U1" value="0.703247" type="6" />
+                    <attribute id="U2" value="0.718628" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-019" type="22" />
+                    <attribute id="U1" value="0.718872" type="6" />
+                    <attribute id="U2" value="0.734253" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-020" type="22" />
+                    <attribute id="U1" value="0.734497" type="6" />
+                    <attribute id="U2" value="0.749878" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-021" type="22" />
+                    <attribute id="U1" value="0.750122" type="6" />
+                    <attribute id="U2" value="0.765503" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-022" type="22" />
+                    <attribute id="U1" value="0.765747" type="6" />
+                    <attribute id="U2" value="0.781128" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-023" type="22" />
+                    <attribute id="U1" value="0.781372" type="6" />
+                    <attribute id="U2" value="0.796753" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-024" type="22" />
+                    <attribute id="U1" value="0.796997" type="6" />
+                    <attribute id="U2" value="0.812378" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-025" type="22" />
+                    <attribute id="U1" value="0.812622" type="6" />
+                    <attribute id="U2" value="0.828003" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-026" type="22" />
+                    <attribute id="U1" value="0.828247" type="6" />
+                    <attribute id="U2" value="0.843628" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-027" type="22" />
+                    <attribute id="U1" value="0.843872" type="6" />
+                    <attribute id="U2" value="0.859253" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-028" type="22" />
+                    <attribute id="U1" value="0.859497" type="6" />
+                    <attribute id="U2" value="0.874878" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-029" type="22" />
+                    <attribute id="U1" value="0.875122" type="6" />
+                    <attribute id="U2" value="0.890503" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-030" type="22" />
+                    <attribute id="U1" value="0.890747" type="6" />
+                    <attribute id="U2" value="0.906128" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-archer" type="22" />
+                    <attribute id="U1" value="0.906372" type="6" />
+                    <attribute id="U2" value="0.921753" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-archer2" type="22" />
+                    <attribute id="U1" value="0.921997" type="6" />
+                    <attribute id="U2" value="0.937378" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-archer3" type="22" />
+                    <attribute id="U1" value="0.937622" type="6" />
+                    <attribute id="U2" value="0.953003" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-archer4" type="22" />
+                    <attribute id="U1" value="0.953247" type="6" />
+                    <attribute id="U2" value="0.968628" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-archer5" type="22" />
+                    <attribute id="U1" value="0.968872" type="6" />
+                    <attribute id="U2" value="0.984253" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-blade" type="22" />
+                    <attribute id="U1" value="0.984497" type="6" />
+                    <attribute id="U2" value="0.999878" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-bow" type="22" />
+                    <attribute id="U1" value="0.00012207" type="6" />
+                    <attribute id="U2" value="0.0155029" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-butterfly" type="22" />
+                    <attribute id="U1" value="0.0157471" type="6" />
+                    <attribute id="U2" value="0.0311279" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-cave" type="22" />
+                    <attribute id="U1" value="0.0313721" type="6" />
+                    <attribute id="U2" value="0.0467529" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-chaosarmor" type="22" />
+                    <attribute id="U1" value="0.0469971" type="6" />
+                    <attribute id="U2" value="0.0623779" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-chaosarmor2" type="22" />
+                    <attribute id="U1" value="0.0626221" type="6" />
+                    <attribute id="U2" value="0.0780029" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-chaosbarrage" type="22" />
+                    <attribute id="U1" value="0.0782471" type="6" />
+                    <attribute id="U2" value="0.0936279" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-chaosbarrage2" type="22" />
+                    <attribute id="U1" value="0.0938721" type="6" />
+                    <attribute id="U2" value="0.109253" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-chaosorb" type="22" />
+                    <attribute id="U1" value="0.109497" type="6" />
+                    <attribute id="U2" value="0.124878" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-chaosorb2" type="22" />
+                    <attribute id="U1" value="0.125122" type="6" />
+                    <attribute id="U2" value="0.140503" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-chaosorb3" type="22" />
+                    <attribute id="U1" value="0.140747" type="6" />
+                    <attribute id="U2" value="0.156128" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-cripple" type="22" />
+                    <attribute id="U1" value="0.156372" type="6" />
+                    <attribute id="U2" value="0.171753" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-desert" type="22" />
+                    <attribute id="U1" value="0.171997" type="6" />
+                    <attribute id="U2" value="0.187378" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-genie" type="22" />
+                    <attribute id="U1" value="0.187622" type="6" />
+                    <attribute id="U2" value="0.203003" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-genie2" type="22" />
+                    <attribute id="U1" value="0.203247" type="6" />
+                    <attribute id="U2" value="0.218628" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-genielamp" type="22" />
+                    <attribute id="U1" value="0.218872" type="6" />
+                    <attribute id="U2" value="0.234253" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-glass" type="22" />
+                    <attribute id="U1" value="0.234497" type="6" />
+                    <attribute id="U2" value="0.249878" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-glass2" type="22" />
+                    <attribute id="U1" value="0.250122" type="6" />
+                    <attribute id="U2" value="0.265503" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-glass3" type="22" />
+                    <attribute id="U1" value="0.265747" type="6" />
+                    <attribute id="U2" value="0.281128" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-group" type="22" />
+                    <attribute id="U1" value="0.281372" type="6" />
+                    <attribute id="U2" value="0.296753" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-hand" type="22" />
+                    <attribute id="U1" value="0.296997" type="6" />
+                    <attribute id="U2" value="0.312378" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-headshot" type="22" />
+                    <attribute id="U1" value="0.312622" type="6" />
+                    <attribute id="U2" value="0.328003" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-jump" type="22" />
+                    <attribute id="U1" value="0.328247" type="6" />
+                    <attribute id="U2" value="0.343628" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-jump2" type="22" />
+                    <attribute id="U1" value="0.343872" type="6" />
+                    <attribute id="U2" value="0.359253" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mantra" type="22" />
+                    <attribute id="U1" value="0.359497" type="6" />
+                    <attribute id="U2" value="0.374878" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mantra10" type="22" />
+                    <attribute id="U1" value="0.500122" type="6" />
+                    <attribute id="U2" value="0.515503" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mantra11" type="22" />
+                    <attribute id="U1" value="0.515747" type="6" />
+                    <attribute id="U2" value="0.531128" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mantra2" type="22" />
+                    <attribute id="U1" value="0.375122" type="6" />
+                    <attribute id="U2" value="0.390503" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mantra3" type="22" />
+                    <attribute id="U1" value="0.390747" type="6" />
+                    <attribute id="U2" value="0.406128" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mantra4" type="22" />
+                    <attribute id="U1" value="0.406372" type="6" />
+                    <attribute id="U2" value="0.421753" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mantra5" type="22" />
+                    <attribute id="U1" value="0.421997" type="6" />
+                    <attribute id="U2" value="0.437378" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mantra6" type="22" />
+                    <attribute id="U1" value="0.437622" type="6" />
+                    <attribute id="U2" value="0.453003" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mantra7" type="22" />
+                    <attribute id="U1" value="0.453247" type="6" />
+                    <attribute id="U2" value="0.468628" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mantra8" type="22" />
+                    <attribute id="U1" value="0.468872" type="6" />
+                    <attribute id="U2" value="0.484253" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mantra9" type="22" />
+                    <attribute id="U1" value="0.484497" type="6" />
+                    <attribute id="U2" value="0.499878" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mask" type="22" />
+                    <attribute id="U1" value="0.531372" type="6" />
+                    <attribute id="U2" value="0.546753" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-mirror" type="22" />
+                    <attribute id="U1" value="0.546997" type="6" />
+                    <attribute id="U2" value="0.562378" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-phantasm" type="22" />
+                    <attribute id="U1" value="0.562622" type="6" />
+                    <attribute id="U2" value="0.578003" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-phantasm2" type="22" />
+                    <attribute id="U1" value="0.578247" type="6" />
+                    <attribute id="U2" value="0.593628" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-phantasm3" type="22" />
+                    <attribute id="U1" value="0.593872" type="6" />
+                    <attribute id="U2" value="0.609253" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-prism" type="22" />
+                    <attribute id="U1" value="0.609497" type="6" />
+                    <attribute id="U2" value="0.624878" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-remorse" type="22" />
+                    <attribute id="U1" value="0.625122" type="6" />
+                    <attribute id="U2" value="0.640503" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-rush" type="22" />
+                    <attribute id="U1" value="0.640747" type="6" />
+                    <attribute id="U2" value="0.656128" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-splintered" type="22" />
+                    <attribute id="U1" value="0.656372" type="6" />
+                    <attribute id="U2" value="0.671753" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-sultan" type="22" />
+                    <attribute id="U1" value="0.671997" type="6" />
+                    <attribute id="U2" value="0.687378" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-sword" type="22" />
+                    <attribute id="U1" value="0.687622" type="6" />
+                    <attribute id="U2" value="0.703003" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-sword2" type="22" />
+                    <attribute id="U1" value="0.703247" type="6" />
+                    <attribute id="U2" value="0.718628" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-sword3" type="22" />
+                    <attribute id="U1" value="0.718872" type="6" />
+                    <attribute id="U2" value="0.734253" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-thievery" type="22" />
+                    <attribute id="U1" value="0.734497" type="6" />
+                    <attribute id="U2" value="0.749878" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-twin" type="22" />
+                    <attribute id="U1" value="0.750122" type="6" />
+                    <attribute id="U2" value="0.765503" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-vampiric" type="22" />
+                    <attribute id="U1" value="0.765747" type="6" />
+                    <attribute id="U2" value="0.781128" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-skill-whirl" type="22" />
+                    <attribute id="U1" value="0.781372" type="6" />
+                    <attribute id="U2" value="0.796753" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage-weapon-sword2h" type="22" />
+                    <attribute id="U1" value="0.796997" type="6" />
+                    <attribute id="U2" value="0.812378" type="6" />
+                    <attribute id="V1" value="0.0626221" type="6" />
+                    <attribute id="V2" value="0.0780029" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage_boost_blue" type="22" />
+                    <attribute id="U1" value="0.312622" type="6" />
+                    <attribute id="U2" value="0.328003" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage_boost_darkblue" type="22" />
+                    <attribute id="U1" value="0.328247" type="6" />
+                    <attribute id="U2" value="0.343628" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage_boost_green" type="22" />
+                    <attribute id="U1" value="0.343872" type="6" />
+                    <attribute id="U2" value="0.359253" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage_boost_pink" type="22" />
+                    <attribute id="U1" value="0.359497" type="6" />
+                    <attribute id="U2" value="0.374878" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage_boost_turquoise" type="22" />
+                    <attribute id="U1" value="0.375122" type="6" />
+                    <attribute id="U2" value="0.390503" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage_boost_white" type="22" />
+                    <attribute id="U1" value="0.390747" type="6" />
+                    <attribute id="U2" value="0.406128" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="mirage_boost_yellow" type="22" />
+                    <attribute id="U1" value="0.406372" type="6" />
+                    <attribute id="U2" value="0.421753" type="6" />
+                    <attribute id="V1" value="0.0469971" type="6" />
+                    <attribute id="V2" value="0.0623779" type="6" />
+                </node>
+            </children>
+        </node>
+    </region>
+    <region id="TextureAtlasInfo">
+        <node id="root">
+            <children>
+                <node id="TextureAtlasIconSize">
+                    <attribute id="Height" value="64" type="4" />
+                    <attribute id="Width" value="64" type="4" />
+                </node>
+                <node id="TextureAtlasPath">
+                    <attribute id="Path" value="Assets/Textures/Icons/Helaene_Shared_Atlas_Icons.dds" type="20" />
+                    <attribute id="UUID" value="cae11434-5544-4866-bb1e-db8f2d2373b4" type="22" />
+                </node>
+                <node id="TextureAtlasTextureSize">
+                    <attribute id="Height" value="4096" type="4" />
+                    <attribute id="Width" value="4096" type="4" />
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

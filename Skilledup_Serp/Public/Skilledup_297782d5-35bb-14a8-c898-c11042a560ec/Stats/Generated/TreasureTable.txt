@@ -1,0 +1,12 @@
+treasure itemtypes "Common","Uncommon","Rare","Epic","Legendary","Divine","Unique"
+new treasuretable "CheatBooksEarth"
+CanMerge 1
+new subtable "-1"
+object category "I_SKILLBOOK_Earth_Fortify",1,0,0,0,0,0,0,0
+
+new treasuretable "CheatBooksSkillcrafting"
+CanMerge 1
+new subtable "-1"
+object category "I_SKILLBOOK_Water_CleanseWounds",1,0,0,0,0,0,0,0
+new subtable "-1"
+object category "I_SKILLBOOK_Water_MassCleanseWounds",1,0,0,0,0,0,0,0

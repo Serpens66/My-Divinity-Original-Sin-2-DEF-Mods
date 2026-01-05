@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="1" revision="8" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="9351f162-9a3c-4db2-a19b-b75b034da9a0" />
+					<attribute id="Name" type="23" value="Silent Trader_000" />
+					<attribute id="LevelName" type="22" value="ARX_Main" />
+					<attribute id="Type" type="22" value="character" />
+					<attribute id="TemplateName" type="22" value="e35b700a-3d16-455f-9e98-b7adb251f792" />
+					<children>
+						<node id="Transform">
+							<attribute id="Scale" type="6" value="1" />
+							<attribute id="Position" type="12" value="604.4038 6.9103546 19.19895" />
+							<attribute id="RotationQuat" type="13" value="0 -0.18889304 0 0.98199767" />
+						</node>
+						<node id="LayerList">
+							<children>
+								<node id="Layers">
+									<children>
+										<node id="Object">
+											<attribute id="MapKey" type="22" value="ARX_Main" />
+											<children>
+												<node id="MapValue" />
+											</children>
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="OnDeathActions" />
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

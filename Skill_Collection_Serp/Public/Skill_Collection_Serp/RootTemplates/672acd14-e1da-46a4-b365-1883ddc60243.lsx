@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="4" build="1" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="672acd14-e1da-46a4-b365-1883ddc60243" />
+					<attribute id="Name" type="23" value="Summons_Wolf" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="Type" type="22" value="character" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="VisualTemplate" type="22" value="ebcf1ade-cfa1-4d48-9f10-e5e409830dcc" />
+					<attribute id="PhysicsTemplate" type="22" value="b092be9b-5592-4d8e-9ff8-39482d8fde61" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="HasGameplayValue" type="19" value="False" />
+					<attribute id="CameraOffset" type="12" value="0 0 0" />
+					<attribute id="DisplayName" type="28" handle="h4edb1beagcb98g4346gb7aeg4faa6393edb2" value="Wolf" />
+					<attribute id="Icon" type="22" value="Portrait_Animals_Wolf_A_Black" />
+					<attribute id="Stats" type="22" value="Animals_Wolf_A_Black_mod" />
+					<attribute id="SkillSet" type="22" value="Summon_SoulWolf" />
+					<attribute id="Equipment" type="22" value="Animals_Wolf_A_Black" />
+					<attribute id="WalkSpeed" type="6" value="3.2" />
+					<attribute id="ClimbAttachSpeed" type="6" value="4" />
+					<attribute id="ClimbLoopSpeed" type="6" value="4" />
+					<attribute id="ClimbDetachSpeed" type="6" value="2.44" />
+					<attribute id="RunSpeed" type="6" value="6" />
+					<attribute id="CanClimbLadders" type="19" value="False" />
+					<attribute id="HitFX" type="22" value="RS3_FX_GP_Combat_Hit_Blood_01_Medium" />
+					<attribute id="SpotSneakers" type="19" value="False" />
+					<attribute id="BloodSurfaceType" type="22" value="SurfaceBlood" />
+					<attribute id="ExplodedResourceID" type="22" value="32b8cfe3-fed1-4774-8ec5-233406e0aa66" />
+					<attribute id="ExplosionFX" type="22" value="RS3_FX_GP_Combat_CorpseExplosion_Blood_01_Medium" />
+					<attribute id="CanOpenDoors" type="19" value="False" />
+					<attribute id="SpeakerGroup" type="23" value="f27c125a-da67-4e80-9456-214c63672c84" />
+					<attribute id="Random" type="24" value="9223372036854775808" />
+					<attribute id="RagdollTemplate" type="22" value="9b00e6c8-34bf-4a60-a14a-5657e2245e76" />
+					<attribute id="Alignment" type="22" value="Good NPC" />
+					<children>
+						<node id="Tags">
+							<children>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="ANIMAL" />
+								</node>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="WOLF" />
+								</node>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="SUMMON" />
+								</node>
+							</children>
+						</node>
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="AIBounds">
+							<attribute id="AIType" type="1" value="2" />
+							<attribute id="Min" type="12" value="-0.203448 0.00166461 -0.802356" />
+							<attribute id="Max" type="12" value="0.203448 1.13023 0.795597" />
+							<attribute id="Radius" type="6" value="0.74" />
+							<attribute id="Height" type="6" value="1.5" />
+						</node>
+						<node id="GameMaster">
+							<attribute id="GameMasterSpawnSection" type="4" value="-1" />
+							<attribute id="GameMasterSpawnSubSection" type="28" handle="hd7b5625fgac24g454fgbdbbgc04b07d020a1" value="hd7b5625fgac24g454fgbdbbgc04b07d020a1;0" />
+						</node>
+						<node id="OnDeathActions" />
+						<node id="SkillList" />
+						<node id="ItemList" />
+						<node id="Scripts">
+							<children>
+								<node id="Script">
+									<attribute id="UUID" type="22" value="5bc80992-a7f6-4da6-83e2-3d276384d8f7" />
+									<children>
+										<node id="Parameters">
+											<children>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="AiHint" />
+													<attribute id="Type" type="4" value="4" />
+													<attribute id="Value" type="23" value="0xbaadf00d" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="Archetype" />
+													<attribute id="Type" type="4" value="30" />
+													<attribute id="Value" type="23" value="base" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="FleeFromDangerousSurface" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="HardcoreOnly" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="StayInAiHints" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_CanChickenFlee" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_CanCower" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_CanFleeWhileCowering" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_CombatFallbackAD" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+											</children>
+										</node>
+									</children>
+								</node>
+								<node id="Script">
+									<attribute id="UUID" type="22" value="134d34c7-2265-4b2b-bd09-bc3e1c1a9b7e" />
+									<children>
+										<node id="Parameters">
+											<children>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="HardcoreOnly" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_EatsBodyParts" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_EatsBones" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_EatsFish" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_EatsMeat" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_EatsVeggies" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+											</children>
+										</node>
+									</children>
+								</node>
+								<node id="Script">
+									<attribute id="UUID" type="22" value="98a26d78-1ed8-473c-8b01-e98cecade8b1" />
+									<children>
+										<node id="Parameters">
+											<children>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="HardcoreOnly" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+											</children>
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="Treasures">
+							<attribute id="TreasureItem" type="22" value="Empty" />
+						</node>
+						<node id="TradeTreasures">
+							<attribute id="TreasureItem" type="22" value="Empty" />
+						</node>
+						<node id="PickingPhysicsTemplates">
+							<attribute id="MapKey" type="22" value="CharacterLyingPicking" />
+							<attribute id="MapValue" type="22" value="" />
+						</node>
+						<node id="PickingPhysicsTemplates">
+							<attribute id="MapKey" type="22" value="CharacterSittingPicking" />
+							<attribute id="MapValue" type="22" value="" />
+						</node>
+						<node id="PickingPhysicsTemplates">
+							<attribute id="MapKey" type="22" value="CharacterDeadPicking" />
+							<attribute id="MapValue" type="22" value="" />
+						</node>
+						<node id="FootStepInfos">
+							<children>
+								<node id="FootStepInfo">
+									<attribute id="Name" type="23" value="Footstep_Front_Left" />
+									<attribute id="FootPrintEffectName" type="23" value="RS3_FX_GP_Footsteps_Medium_L" />
+									<attribute id="FootSmearEffectName" type="23" value="RS3_FX_GP_Footsmear_Medium_L" />
+									<attribute id="FootSlideEffectName" type="23" value="" />
+									<attribute id="FootHearingEffectName" type="23" value="" />
+									<attribute id="FootBoneName" type="22" value="Dummy_L_Foot_01" />
+									<attribute id="FootSoundEventName" type="22" value="Movement" />
+								</node>
+								<node id="FootStepInfo">
+									<attribute id="Name" type="23" value="Footstep_Front_Right" />
+									<attribute id="FootPrintEffectName" type="23" value="RS3_FX_GP_Footsteps_Medium_R" />
+									<attribute id="FootSmearEffectName" type="23" value="RS3_FX_GP_Footsmear_Medium_R" />
+									<attribute id="FootSlideEffectName" type="23" value="" />
+									<attribute id="FootHearingEffectName" type="23" value="" />
+									<attribute id="FootBoneName" type="22" value="Dummy_R_Foot_01" />
+									<attribute id="FootSoundEventName" type="22" value="Movement" />
+								</node>
+								<node id="FootStepInfo">
+									<attribute id="Name" type="23" value="Footstep_Back_Left" />
+									<attribute id="FootPrintEffectName" type="23" value="RS3_FX_GP_Footsteps_Medium_L" />
+									<attribute id="FootSmearEffectName" type="23" value="RS3_FX_GP_Footsmear_Medium_L" />
+									<attribute id="FootSlideEffectName" type="23" value="" />
+									<attribute id="FootHearingEffectName" type="23" value="" />
+									<attribute id="FootBoneName" type="22" value="Dummy_L_Foot_02" />
+									<attribute id="FootSoundEventName" type="22" value="Movement" />
+								</node>
+								<node id="FootStepInfo">
+									<attribute id="Name" type="23" value="Footstep_Back_Right" />
+									<attribute id="FootPrintEffectName" type="23" value="RS3_FX_GP_Footsteps_Medium_R" />
+									<attribute id="FootSmearEffectName" type="23" value="RS3_FX_GP_Footsmear_Medium_R" />
+									<attribute id="FootSlideEffectName" type="23" value="" />
+									<attribute id="FootHearingEffectName" type="23" value="" />
+									<attribute id="FootBoneName" type="22" value="Dummy_R_Foot_02" />
+									<attribute id="FootSoundEventName" type="22" value="Movement" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

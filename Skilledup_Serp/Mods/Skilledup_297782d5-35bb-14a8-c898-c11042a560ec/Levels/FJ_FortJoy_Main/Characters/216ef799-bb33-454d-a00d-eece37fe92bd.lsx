@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="1" revision="8" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="216ef799-bb33-454d-a00d-eece37fe92bd" />
+					<attribute id="Name" type="23" value="Silent Trader_000" />
+					<attribute id="LevelName" type="22" value="FJ_FortJoy_Main" />
+					<attribute id="Type" type="22" value="character" />
+					<attribute id="TemplateName" type="22" value="e35b700a-3d16-455f-9e98-b7adb251f792" />
+					<children>
+						<node id="Transform">
+							<attribute id="Scale" type="6" value="1" />
+							<attribute id="Position" type="12" value="81.83317 -17.49749 394.9799" />
+							<attribute id="RotationQuat" type="13" value="0 0 0 1" />
+						</node>
+						<node id="LayerList">
+							<children>
+								<node id="Layers">
+									<children>
+										<node id="Object">
+											<attribute id="MapKey" type="22" value="FJ_FortJoy_Main" />
+											<children>
+												<node id="MapValue" />
+											</children>
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="OnDeathActions" />
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

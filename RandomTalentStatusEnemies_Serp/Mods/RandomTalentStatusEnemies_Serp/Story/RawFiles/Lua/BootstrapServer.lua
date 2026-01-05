@@ -9,3 +9,15 @@ SharedFns.RegisterProtectedOsirisListener("ObjectEnteredCombat", 2, "after", fun
 end)
 
 
+-- new Osiris function to provide talents
+SharedFns.OsirisAddTalent = function(charGuid)
+  Ext.Print("OsirisAddTalent",charGuid)
+  if SharedFns.HowToAddRandomTalents == "Live" and not SharedFns.IsPlayerAlly(charGUID) then
+    local char = Ext.Entity.GetCharacter(charGUID)
+    chosen = SharedFns.GetRandomTalents(charGUID,char,SharedFns.num_talents)
+    for i,Talent in ipairs(chosen) do
+      SharedFns.AddTalent(charGUID,Talent,false,"NPCRandomTalent_"..tostring(i),char) -- only added once per NPC by using the Tag. that way no need to remove it on leave combat
+    end
+  end
+end
+Ext.Osiris.NewCall(SharedFns.OsirisAddTalent, "SERP_EXT_OsirisAddTalent", "(GUIDSTRING)_Char");

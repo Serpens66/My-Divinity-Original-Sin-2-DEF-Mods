@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" time="1535916816" />
+    <version major="3" minor="6" revision="0" build="4" />
+    <region id="Config">
+        <node id="root">
+            <children>
+                <node id="Dependencies">
+                </node>
+                <node id="ModuleInfo">
+                    <attribute id="Author" value="Serp" type="30" />
+                    <attribute id="CharacterCreationLevelName" value="" type="22" />
+                    <attribute id="Description" value="Everyone gets a small cat-jump ability with 7m range, 1AP cost and 3 turns cooldown to improve mobility. The range does not scale with height-difference like other skills (thanks to script extender), you only get up to 50% more range based on your height. Requires Script Extender v60." type="30" />
+                    <attribute id="Folder" value="SmallJump_Serp" type="30" />
+                    <attribute id="GMTemplate" value="" type="22" />
+                    <attribute id="LobbyLevelName" value="" type="22" />
+                    <attribute id="MD5" value="" type="23" />
+                    <attribute id="MenuLevelName" value="" type="22" />
+                    <attribute id="Name" value="Small Jump" type="22" />
+                    <attribute id="NumPlayers" value="2" type="1" />
+                    <attribute id="PhotoBooth" value="" type="22" />
+                    <attribute id="StartupLevelName" value="" type="22" />
+                    <attribute id="Tags" value="" type="30" />
+                    <attribute id="Type" value="Add-on" type="22" />
+                    <attribute id="UUID" value="2b4d3c7b-72ab-405a-9d6d-1e8a7e621ad1" type="22" />
+                    <attribute id="Version" value="268435456" type="4" />
+                    <children>
+                        <node id="PublishVersion">
+                            <attribute id="Version" value="907814608" type="4" />
+                        </node>
+                        <node id="Scripts" />
+                        <node id="TargetModes">
+                            <children>
+                                <node id="Target">
+                                    <attribute id="Object" value="Story" type="22" />
+                                </node>
+                                <node id="Target">
+                                    <attribute id="Object" value="Arena" type="22" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

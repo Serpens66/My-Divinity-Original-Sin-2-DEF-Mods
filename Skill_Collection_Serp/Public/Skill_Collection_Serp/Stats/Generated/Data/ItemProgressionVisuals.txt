@@ -1,0 +1,5 @@
+new itemgroup "WPN_DeathKnight_Sword_2H_01"
+
+add levelgroup 0,0,"All"
+add rootgroup "6bf2e3d3-c5ab-4442-91f2-7bdc0af32f95","Tenebrium"
+

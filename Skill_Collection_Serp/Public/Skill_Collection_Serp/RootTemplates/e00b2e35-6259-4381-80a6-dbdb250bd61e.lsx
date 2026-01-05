@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="1" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="e00b2e35-6259-4381-80a6-dbdb250bd61e" />
+					<attribute id="Name" type="23" value="TOOL_Ink_Pot_A_Quill_Source_A" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="Type" type="22" value="item" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="VisualTemplate" type="22" value="b196fcf5-f060-4546-a062-918596385842" />
+					<attribute id="PhysicsTemplate" type="22" value="5ff15989-749f-4c03-899e-87fb30de163b" />
+					<attribute id="CastShadow" type="19" value="False" />
+					<attribute id="RecieveDecal" type="19" value="False" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="HasGameplayValue" type="19" value="False" />
+					<attribute id="CameraOffset" type="12" value="0 0 0" />
+					<attribute id="DisplayName" type="28" handle="ResStr_2a17339b" value="Source Infused Ink Pot and Quill" />
+					<attribute id="Icon" type="22" value="CustIco_InkPotQuill" />
+					<attribute id="Stats" type="22" value="TOOL_Ink_Pot_A_Quill_Source_A" />
+					<attribute id="CanBePickedUp" type="19" value="True" />
+					<attribute id="CanBeMoved" type="19" value="True" />
+					<attribute id="CoverAmount" type="1" value="0" />
+					<attribute id="CanShootThrough" type="19" value="True" />
+					<attribute id="WalkThrough" type="19" value="True" />
+					<attribute id="Tooltip" type="1" value="2" />
+					<attribute id="maxStackAmount" type="4" value="100" />
+					<attribute id="BloodSurfaceType" type="22" value="SurfaceNone" />
+					<attribute id="Description" type="28" handle="ResStr_d667b020" value="A quill dipped into an ink pot full of source. This writing apparatus can be used to re-write certain skillbooks into new variants." />
+					<attribute id="MeshProxy" type="22" value="" />
+					<children>
+						<node id="Tags">
+							<children>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="INGREDIENT" />
+								</node>
+							</children>
+						</node>
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="AIBounds">
+							<attribute id="AIType" type="1" value="1" />
+							<attribute id="Min" type="12" value="-0.0666895 0 -0.0666895" />
+							<attribute id="Max" type="12" value="0.0666895 0.489144 0.13091" />
+							<attribute id="Radius" type="6" value="0.136037" />
+							<attribute id="Height" type="6" value="0.489144" />
+						</node>
+						<node id="GameMaster">
+							<attribute id="GameMasterSpawnSection" type="4" value="13" />
+							<attribute id="GameMasterSpawnSubSection" type="28" handle="heeab44b8gd20dg4105g8f43g74b455b03739" value="Ingredients" />
+						</node>
+						<node id="OnUsePeaceActions" />
+						<node id="OnDestroyActions" />
+						<node id="Equipment" />
+						<node id="InventoryList">
+							<children>
+								<node id="Inventorys">
+									<attribute id="InventoryItem" type="22" value="Empty" />
+								</node>
+							</children>
+						</node>
+						<node id="Scripts" />
+						<node id="ItemList" />
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

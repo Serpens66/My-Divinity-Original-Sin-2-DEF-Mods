@@ -3,7 +3,7 @@
 -- Version in meta.lsx:
 -- Major +268.435.456
 -- Minor +16.777.216
--- Revision +65.536
+-- Revision +65536
 -- Build +1
 -- 1.0.0.0 -> 268.435.456
 -- 1.1.0.0 -> 285.212.672
@@ -12,136 +12,30 @@
 -- 1.0.1.0 -> 268500992
 -- 1.0.3.0 -> 268632064
 
+-- TODO:
+-- evlt. nochmal giftbag CMP_SummoningImproved_Kamil durchgucken ob ein paar skills davon zufügen zu anysummon mod
+
+-- evtl. SkilledUp Trader via lua sichergehen, dass er alle Skillbooks hat Stats.TreasureTable.Update
 
 SharedFns = {}
 
-Ext.Print("Shared Script Started Serp66 Mod Collection")
+-- Immortal_Segeant_Redux and Gwydian
+SharedFns.MakeImmortalcharGUIDs = {"S_GLO_LV_HenchmenRecruiter_ed64ea06-9060-4b29-88dd-623ab008fae6",
+  "S_GLO_LV_HenchmenRecruiter_ed64ea06-9060-4b29-88dd-623ab008fae6",
+  "CHARACTERGUID_S_RC_OIL_InnerField_Sourcerer_632e47f2-22c3-4342-b3f7-152dd3534f3b",
+  "CHARACTERGUID_S_RC_OIL_InnerField_Sourcerer_632e47f2-22c3-4342-b3f7-152dd3534f3b",
+}
 
+-- Ext.Print("Shared Script Started Serp66 Mod Collection")
 
--- Status INVULNERABLE gibts auch
-
--- Evtl. in ExtraData (Data.txt) den Wert MaximumSummonsInCombat erhöhen (ist 4)? -> ist schon in Summoning Tweaks mod
-
--- TODO:
--- Savegame mit Martin nochmal mit selben Mods wie bei save erstellung laden und via Console
- -- die Tags für alle Charactere setzen: QuickStepForFree_Serp
 
 
 
 -- TODO:
 -- gucken ob der hier antwortet wie man eingige der ungenutzten Talente ins UI bekommt um sie selbst wählen zu können:
 -- https://discord.com/channels/98922182746329088/991371940201766932/1441427242852024534
--- Dann zumindest BeastMaster dort wählbar machen (anstatt automatisch zu geben)
 -- TODO: obwohl Divine Talents code auto-aktiviert wird, sind die Talente nicht in Talentliste sichtbar... also diese dann auch sichtbar machen
 
-
--- https://docs.larian.game/Talent_list
--- coutcommended most Weapon requirements, since 1) in stats we see no weapon and 2) slimes or so also dont use weapons (but they also dont have any ability..)
-local num_talents = 2
-local RandomTalents = {
-  Ambidextrous={weight=2,reqWeaponTypes={"None"}}, -- Offhand must be free
-  AttackOfOpportunity={weight=5,reqAbilities={"WarriorLore"} },--,reqWeaponTypes={"None","Knife","Sword","Axe","Club","Spear","Staff"}}, -- any melee
-  ViolentMagic={weight=4,reqAbilities={"EarthSpecialist","AirSpecialist","WaterSpecialist","FireSpecialist","Necromancy","Summoning"}},
-  ResistDead={weight=1},
-  QuickStep={weight=1},
-  Demon={weight=2},
-  IceKing={weight=2},
-  NoAttackOfOpportunity={weight=3},
-  ElementalAffinity={weight=3,reqAbilities={"EarthSpecialist","AirSpecialist","WaterSpecialist","FireSpecialist"}},
-  WhatARush={weight=3},
-  WalkItOff={weight=2},
-  ElementalRanger={weight=3,reqAbilities={"RangerLore"} },--,reqWeaponTypes={"Bow","Crossbow"}},
-  Executioner={weight=4},
-  FaroutDude={weight=4},
-  Raistlin={weight=1}, -- glass canon
-  Leech={weight=2},
-  Torturer={weight=2},
-  LivingArmor={weight=2},
-  Perfectionist={weight=4},
-  Human_Inventive={weight=2},
-  Dwarf_Sturdy={weight=2},
-  Lizard_Resistance={weight=2},
-  -- gift bag, TODO: evtl. check obs Talent gibt? Geht das? nicht nur ob giftbag aktiv, kann ja auch via mod geaddet sein
-  Sadist={weight=2,reqAbilities={"WarriorLore"} },--,reqWeaponTypes={"None","Knife","Sword","Axe","Club","Spear","Staff"}}, -- any melee
-  MagicCycles={weight=3,reqAbilities={"EarthSpecialist","AirSpecialist","WaterSpecialist","FireSpecialist"}},
-  Haymaker={weight=1},
-  Gladiator={weight=1},
-  Soulcatcher={weight=1},
-  Indomitable={weight=5},
-  -- Story Talents
-  Vitality ={weight= 2}, -- +20%HP
-  BeastMaster ={weight=4,reqAbilities={"Summoning"}},
-  Criticals={weight=2},
-  IncreasedArmor={weight=2},
-  Damage={weight=2},
-  ResistStun={weight=2},
-  ResistKnockdown={weight=2},
-  ResistFear={weight=2},
-  ActionPoints={weight=3},
-  ActionPoints2={weight=2},
-  ChanceToHitMelee={weight=2,reqAbilities={"WarriorLore"} },--,reqWeaponTypes={"None","Knife","Sword","Axe","Club","Spear","Staff"}}, -- any melee
-  ChanceToHitRanged={weight=2,reqAbilities={"RangerLore"} },--,reqWeaponTypes={"Bow","Crossbow","Wand"}}, -- ranged
-  Backstab={weight=2,reqAbilities={"WarriorLore"} },--,reqWeaponTypes={"None","Sword","Axe","Club","Spear","Staff"}}, -- any melee except Knife, since this allows Backstab with other weapons than knife
-  RogueLoreGrenadePrecision={weight=2,reqAbilities={"RogueLore"}},
-  RogueLoreMovementBonus={weight=2,reqAbilities={"RogueLore"}},
-  RogueLoreHoldResistance={weight=1,reqAbilities={"RogueLore"}},
-  RogueLoreDaggerBackStab={weight=2,reqAbilities={"RogueLore"} },--,reqWeaponTypes={"Knife"}},
-  RogueLoreDaggerAPBonus={weight=2,reqAbilities={"RogueLore"} },--,reqWeaponTypes={"Knife"}},
-  Sight={weight=2,reqAbilities={"RangerLore"} },--,reqWeaponTypes={"Bow","Crossbow","Wand"}}, -- ranged
-  RangerLoreRangedAPBonus={weight=2,reqAbilities={"RangerLore"} },--,reqWeaponTypes={"Bow","Crossbow","Wand"}}, -- ranged
-  RangerLoreEvasionBonus={weight=2,reqAbilities={"RangerLore"}},
-  WarriorLoreNaturalResistance={weight=2,reqAbilities={"WarriorLore"}},
-  WarriorLoreNaturalArmor={weight=2,reqAbilities={"WarriorLore"}},
-  WarriorLoreNaturalHealth={weight=2,reqAbilities={"WarriorLore"}},
-  GoldenMage={weight=2,reqAbilities={"EarthSpecialist","AirSpecialist","WaterSpecialist","FireSpecialist","Necromancy","Summoning"}},
-  Courageous={weight=1},
-  StandYourGround={weight=2},
-  Bully={weight=2},
-  WarriorLoreGrenadeRange={weight=2,reqAbilities={"WarriorLore"}},
-  Unstable={weight=1},
-  EarthSpells={weight=3,reqAbilities={"EarthSpecialist"}},
-  AirSpells={weight=3,reqAbilities={"AirSpecialist"}},
-  WaterSpells={weight=3,reqAbilities={"WaterSpecialist"}},
-  FireSpells={weight=3,reqAbilities={"FireSpecialist"}},
-  None={weight=50},
-}
-
-local num_status = 1
-local RandomStatus = {
-  BLESSED={weight=2,maxrounds=5},
-  HASTED={weight=2,maxrounds=5},
-  CLEAR_MINDED={weight=2,maxrounds=5},
-  ETHEREAL_SOLES={weight=2,maxrounds=5},
-  RESTED={weight=2,maxrounds=5},
-  IMMUNE_TO_FREEZING={weight=2,maxrounds=5},
-  IMMUNE_TO_BURNING={weight=2,maxrounds=5},
-  IMMUNE_TO_ELECTRIFYING={weight=2,maxrounds=5},
-  IMMUNE_TO_POISONING={weight=2,maxrounds=5},
-  MAGIC_SHELL={weight=2,maxrounds=5},
-  FORTIFIED={weight=2,maxrounds=5},
-  BLINDING_RADIANCE={weight=2,maxrounds=5},
-  FIREBLOOD={weight=2,maxrounds=5},
-  BlockSummon={weight=2,maxrounds=5}, -- summons can not attack this unit
-  ETERNITY_DOOR={weight=2,maxrounds=2},
-  EVADING={weight=2,maxrounds=2},
-  DEFLECTING={weight=2,maxrounds=3},
-  PHYSICAL_IMMUNITY={weight=2,maxrounds=2},
-  FARSIGHT={weight=2,maxrounds=5},
-  BREATHING_BUBBLE={weight=2,maxrounds=5},
-  VAMPIRISM={weight=2,maxrounds=2},
-  GROUNDED={weight=2,maxrounds=5},
-  DOUBLE_DAMAGE={weight=2,maxrounds=2},
-  ENRAGED={weight=2,maxrounds=2},
-  REGENERATION={weight=2,maxrounds=5},
-  FROST_AURA={weight=2,maxrounds=5},
-  STEEL_SKIN={weight=2,maxrounds=5},
-  PROTECTION_CIRCLE={weight=2,maxrounds=2},
-  EXTRA_TURN={weight=2,maxrounds=1},
-  INVISIBLE={weight=2,maxrounds=1},
-  BLESSED={weight=2,maxrounds=5},
-  BLESSED={weight=2,maxrounds=5},
-  None={weight=15},
-}
 
 
 -- ##########################################################
@@ -209,33 +103,38 @@ SharedFns.table_removetablevalue = function(t, lookup_value, removeall)
   end
 end
 
--- if MyStat then we dont have a charGUID/char, but changing Stats in StatsLoaded instead
-SharedFns.GetRandomTalents = function(charGUID,char,num,MyStat)
-  local chosen = {}
-  notstop = 0
-  local StatTalents = MyStat and MyStat["Talents"] or ""
-  while #chosen < num do
-    notstop = notstop + 1
-    Talent = SharedFns.weighted_random_choices(RandomTalents, 1)[1]
-    if Talent~="None" and (not MyStat and not char.Stats["TALENT_"..Talent] or MyStat and not string.find(StatTalents,Talent)) then
-      reqAbilities = RandomTalents[Talent].reqAbilities -- WarriorLore,RangerLore,FireSpecialist,WaterSpecialist,AirSpecialist,EarthSpecialist,Necromancy,Summoning
-      reqWeaponTypes = RandomTalents[Talent].reqWeaponTypes -- None,Wand,Knife,Sword,Axe,Club,Spear,Staff,Bow,Crossbow, Sentinel (Schild)
-      if (not reqAbilities or SharedFns.HasAnyAbility(char,reqAbilities,MyStat) and 
-          (not reqWeaponTypes or (char and (SharedFns.table_contains_value(reqWeaponTypes,char.Stats.MainWeapon.WeaponType) or 
-          (char.Stats:GetItemBySlot("Shield")==nil and SharedFns.table_contains_value(reqWeaponTypes,"None")) or
-          (char.Stats:GetItemBySlot("Shield") and SharedFns.table_contains_value(reqWeaponTypes,char.Stats:GetItemBySlot("Shield").WeaponType)))))) then
-        table.insert(chosen,Talent)
+local function dump(o)
+    if type(o) == 'table' then
+        local s = '{ '
+        for k,v in pairs(o) do
+            if type(k) ~= 'number' then k = '"'..k..'"' end
+            s = s .. '['..k..'] = ' .. dump(v) .. ','
+        end
+        return s .. '} '
+    else
+        return tostring(o)
+    end
+end
+
+local function deepcopy(orig, copies)
+  copies = copies or {}
+  local orig_type = type(orig)
+  local copy
+  if orig_type == 'table' then
+      if copies[orig] then
+          copy = copies[orig]
+      else
+          copy = {}
+          copies[orig] = copy
+          for orig_key, orig_value in next, orig, nil do
+              copy[deepcopy(orig_key, copies)] = deepcopy(orig_value, copies)
+          end
+          setmetatable(copy, deepcopy(getmetatable(orig), copies))
       end
-    elseif Talent=="None" then
-      table.insert(chosen,Talent)
-    end
-    if notstop > 100 then
-      Ext.Print("notstop Talent für "..tostring(charGUID))
-      break
-    end
+  else -- number, string, boolean, etc
+      copy = orig
   end
-  SharedFns.table_removearrayvalue(chosen,"None",true)
-  return chosen
+  return copy
 end
 
 function SharedFns.RegisterProtectedOsirisListener(event, arity, state, callback)
@@ -248,6 +147,41 @@ function SharedFns.RegisterProtectedOsirisListener(event, arity, state, callback
 		end
 	end)
 end
+
+---@param identifier GUID|PrefixedGUID|NetId|EntityHandle
+---@param isFlashHandle boolean? If true, the identifier will be passed through DoubleToHandle() first.
+---@return Character
+local function Character_Get(identifier, isFlashHandle)
+  if isFlashHandle then
+    identifier = Ext.UI.DoubleToHandle(identifier)
+  end
+  return Ext.Entity.GetCharacter(identifier)
+end
+---Returns the currently-controlled character on the client.  
+---@param playerIndex integer? Defaults to 1.
+---@return EclCharacter
+local function Client_GetCharacter(playerIndex)
+  playerIndex = playerIndex or 1
+  local playerManager = Ext.Entity.GetPlayerManager()
+  local char = Character_Get(playerManager.ClientPlayerData[playerIndex].CharacterNetId) ---@type EclCharacter
+  return char
+end
+
+local SkillbookTemplates = Mods and Mods.EpipEncounters and Mods.EpipEncounters.Epip and Mods.EpipEncounters.Epip.GetFeature("SkillbookTemplates")
+SharedFns.GetSkillbooksForSkill = function(skill)
+  local skillbooks = {} -- most of the time 1 but could be more than 1
+  if SkillbookTemplates then -- requires Epip installed
+    local skillbook_templates = SkillbookTemplates and SkillbookTemplates.GetForSkill(skill) or nil
+    for _,template in ipairs(skillbook_templates) do
+      local root = Ext.Template.GetTemplate(template)
+      if root and root.Stats then
+        table.insert(skillbooks,root.Stats)
+      end
+    end
+  end
+  return skillbooks
+end
+
 
 -- ##################################################################
 -- ##################################################################
@@ -272,32 +206,27 @@ end
 -- ClearTag 	(GUIDSTRING)_Source, (STRING)_Tag
 -- TODO sicherstellen, dass Talentpoint nicht mehrfach geaddet wird
 SharedFns.AddTalent = function(charGUID,Talent,compensateTalentPoint,Tag,char)
+  local BuggedTalents = {"Throwing", "WandCharge","BeastMaster","PainDrinker","DeathfogResistant","Sourcerer","Rag"} -- talents which dont work properly with CharacterAddTalent (noticeable that they have no effect, not displayed and also not removeable). But as Boost they seem to work (at least tested with BeastMaster): only the first 3 are added at all, while most likely only BeastMaster works.
   if Talent and Talent~="None" then
     char = char or Ext.Entity.GetCharacter(charGUID)
-    -- NRD_CharacterSetPermanentBoostTalent fügt Talent zwar zu, aber es wird nicht in UI angezeigt
-    -- UND man sieht auch nicht die Auswirkungen! also zb bei Zombie sieht man die Giftresistenz nicht beim examine!
-    -- Also lieber doch nicht nutzen..
-    -- if char.PlayerCustomData==nil then
-      -- Osi.NRD_CharacterSetPermanentBoostTalent(charGUID,Talent,1)--(CHARACTERGUID)_Character, (STRING)_Talent, (INTEGER)_HasTalent (_HasTalent=0 heißt entfernen und =1 heißt zufügen)
-      -- Osi.CharacterSetForceSynch(charGUID,1)
-      -- Ext.Print("Talent "..tostring(Talent).." was added (invisible..) to NPC "..tostring(charGUID))
-    -- end
-    if char.PlayerCustomData then
-      Ext.Print("Trying add Talent "..tostring(Talent).." to "..tostring(charGUID))
-      if not Tag or Osi.IsTagged(charGUID,Tag)==0 then
-        if (char and not char.Stats["TALENT_"..Talent]) or (not char and Osi.CharacterHasTalent(charGUID, Talent) == 0) then
+    Ext.Print("Trying add Talent "..tostring(Talent).." to "..tostring(charGUID))
+    if not Tag or Osi.IsTagged(charGUID,Tag)==0 then
+      if (char and not char.Stats["TALENT_"..Talent]) or (not char and Osi.CharacterHasTalent(charGUID, Talent) == 0) then
+        if char.PlayerCustomData==nil or SharedFns.table_contains_value(BuggedTalents,Talent) then -- NPC
+          Osi.NRD_CharacterSetPermanentBoostTalent(charGUID,Talent,1)--(CHARACTERGUID)_Character, (STRING)_Talent, (INTEGER)_HasTalent (_HasTalent=0 heißt entfernen und =1 heißt zufügen) -- der char TALENT_ check kann dies auch finden, der CharacterHasTalent nicht
+          Osi.CharacterAddAttribute(charGUID, "Dummy", 0) -- to sync to clients
+        elseif char.PlayerCustomData then
           Osi.CharacterAddTalent(charGUID, Talent)
-          Ext.Print("Talent "..tostring(Talent).." was added to "..tostring(charGUID))
-        elseif compensateTalentPoint then
-          Osi.CharacterAddTalentPoint(charGUID, 1)
-          Ext.Print(tostring(charGUID).." already had Talent "..tostring(Talent)..". Got Talentpoints instead")
         end
-        if Tag then
-          Osi.SetTag(charGUID,Tag)
-        end
+        Ext.Print("Talent "..tostring(Talent).." was added to "..tostring(charGUID))
+      elseif compensateTalentPoint then
+        Osi.CharacterAddTalentPoint(charGUID, 1)
+        Ext.Print(tostring(charGUID).." already had Talent "..tostring(Talent)..". Got Talentpoints instead")
+      end
+      if Tag then
+        Osi.SetTag(charGUID,Tag)
       end
     end
-    
   end
 end
 
@@ -319,7 +248,7 @@ SharedFns.HasAnyAbility = function(char,abilities,MyStat)
   return false
 end
 
--- only character main chars (not sure yet if controllable has any effect or if currently in party)
+-- only character main chars (current Party) (not sure yet if controllable has any effect or if currently in party)
 -- returned nicht dasselbe wie Osi.CharacterIsPlayer (denn das nimmt zb auch incarnation mit auf)
 SharedFns.GetAllPlayerChars = function()
   local _players = Osi.DB_IsPlayer:Get(nil) -- Will return a list of tuples of all player characters
@@ -392,21 +321,38 @@ SharedFns.IsNPCChar = function(charGUID,char)
   return not char.PlayerCustomData and not char.IsPlayer
 end
 
+SharedFns.IsAnySummonSkill = function(skill,MyStat)
+  if MyStat.SkillType=="Summon" then
+    return true
+  end
+  if MyStat.SpawnObject~="" and MyStat.SpawnLifetime>0 and MyStat.ProjectileType~="Grenade" then
+    return true
+  end
+  local SkillProperties = MyStat.SkillProperties
+  if SkillProperties and type(SkillProperties)=="table" then
+    for _,entry in pairs(SkillProperties) do
+      if entry.Type=="Summon" then
+        return true
+      end
+    end
+  end
+  return false
+end
+-- for _,entry in pairs(Ext.Stats.Get("Target_BloatedCorpse").SkillProperties) do for k,v in pairs(entry) do print(k,v) end end
+
+
+SharedFns.GetExtType = function(obj)
+  local objType
+  if type(obj) == "userdata" then
+    objType = getmetatable(obj)
+  end
+  return objType
+end
+
 -- ##################################################################
 -- ###################   Events   ###################################
 -- ##################################################################
 
--- Ext.Stats.SetAttribute(stat, attribute, value)
--- Updates the specified attribute of the stat entry. 
--- This essentially allows on-the-fly patching of stat .txt files from script without having to override the whole stat entry. 
--- If the function is called while the module is loading (i.e. from a ModuleLoading/StatsLoaded listener) no additional calls are needed. 
--- If the function is called after module load, the stats entry must be synchronized with the client via the Ext.Stats.Sync(stat,false) call.
--- Alternativ zb: Ext.Stats.GetRaw("Summon_Incarnate")["ActionPoints"] = 1
-
--- Client only
--- Stats changes. Most compatible this way, since only this specific stat is overwritten, instead of all of this object
--- note that StatsLoaded is not thrown every time you load into a session, iirc it only triggers when loading mods or going from title screen -> session
--- Does not help to edit _Base and _Hero here, because the inheritance from these is only done once and BEFORE StatsLoaded
 
 -- Random CRASH (extender v60) and may break sills: Do NOT call Ext.Stats.Sync while looping over Ext.Stats.GetStats("SkillData") (or most likely an other Ext.Stats.GetStats(...)). Instead save the names of the entries you changed while looping and then do a seperate loop after the GetStats loop to call Sync for these
 -- Solution: Sync is not needed within StatsLoaded
@@ -416,38 +362,9 @@ SharedFns.OnStatsLoaded = function(e)
   -- (changing _Hero directly does not work, because it is used for inheritance, which is already done on statsloaded)
   -- Half movement for Player characters (affects all player controlled units, so also summons)
   -- Movement Wert für StoryPlayer usw kommt anscheinend on top auf _Base, ist also ein Bonus für die Schwierigkeit. also einfach alle werte halbieren (vanilla sind die Player werte 0)
+
   
-  
-  
-  -- Start APFreeMovement_Serp
-  Ext.ExtraData["TalentQuickStepPartialApBonus"] = 4 -- make Pawn provide 10 meter (with halfed Movement in mind, since this also affects The Pawn)
-  -- MovementSpeedBoost halbiert auch die Laufgeschwindigkeit, also die Animation noch verdoppeln
-  -- und die chars gehen nur noch hinterher und laufen nicht?!
-  -- Mit Movement = Movement/2 ist animation gut und hinterher laufen auch
-  -- aber KI läuft dennoch deutlich kürzer als ich...
-  -- wobei einer der KIs vernünftig läuft, aber die andern nicht, obwohl alle das Talent haben..
-  -- So not using MovementSpeedBoost and leave NPC Movement unchanged (but still give them QuickStep to not have too much advantage over them)
-  -- (achging it for "Hero" containing Chracters only, does not change it for Story character)
-  local basemovement = Ext.Stats.GetRaw("_Hero")["Movement"]
-  for _,name in ipairs({"StoryPlayer","CasualPlayer","NormalPlayer","HardcorePlayer"}) do
-    summe = basemovement + Ext.Stats.GetRaw(name)["Movement"]
-    Ext.Stats.GetRaw(name)["Movement"] = summe/2 - basemovement
-  end
-  -- give talent QuickStep to all NPCs (to players is done elsewhere, so we can give free talent point if he already has)
-  local npc_difficulties = {"StoryNPC_Character","CasualNPC","NormalNPC","HardcoreNPC"}
-  for i,name in ipairs(npc_difficulties) do
-    talents = Ext.Stats.GetRaw(name)["Talents"] or ""
-    newtalents = {"QuickStep"}
-    for _,newtalent in ipairs(newtalents) do
-      if not string.find(talents,newtalent) then
-        talents = tostring(talents)..";"..tostring(newtalent)
-      end
-    end
-    Ext.Stats.GetRaw(name)["Talents"] = talents
-  end
-  -- End APFreeMovement_Serp
-  
-  -- DivineTalentsGiftpackMod
+  -- DivineTalentsGiftpackMod (do a bit more than in BalancedIndomitableForAll Mod)
   Stats_Indomitable_Flags = Ext.Stats.GetRaw("Stats_Indomitable")["Flags"]
   for _,flag in ipairs({"ChickenImmunity","CrippledImmunity","FearImmunity","FreezeImmunity","KnockdownImmunity","PetrifiedImmunity","StunImmunity","MadnessImmunity","CharmImmunity"}) do
     if not SharedFns.table_contains_value(Stats_Indomitable_Flags,flag) then
@@ -456,6 +373,7 @@ SharedFns.OnStatsLoaded = function(e)
   end
   Ext.Stats.GetRaw("Stats_Indomitable")["Flags"] = Stats_Indomitable_Flags
   Ext.Stats.GetRaw("MADNESS")["ImmuneFlag"] = "MadnessImmunity" 
+  
   
   -- ImprovedDoorOfEternity
   Ext.Stats.GetRaw("Shout_CloseTheDoor")["ActionPoints"] = 2
@@ -484,33 +402,211 @@ SharedFns.OnStatsLoaded = function(e)
     Ext.Stats.Get("Shout_SpiritVision")["SkillProperties"] = SkillProperties
   end
   
+  -- ViableGateway
+  Ext.Stats.GetRaw("UNI_PlanarGateway")["UseAPCost"] = 1
+  local MyStat = Ext.Stats.GetRaw("Summon_PlanarGateway")
+  MyStat["ActionPoints"] = 3
+  MyStat["Cooldown"] = 4
+  MyStat["Lifetime"] = 3
+  MyStat["Memory Cost"] = 1
+  MyStat["Magic Cost"] = 0
+  MyStat["TeleportsUseCount"] = 20
+  MyStat["Tier"] = "Novice"
+  
+  -- infinite InnateBlessBalanced
+  local MyStat = Ext.Stats.GetRaw("Target_Bless")
+  MyStat["ActionPoints"] = 2
+  MyStat["Cooldown"] = 5
+  MyStat["Memory Cost"] = 0
+  MyStat["Magic Cost"] = 0
+  local MyStat = Ext.Stats.GetRaw("Target_Curse")
+  MyStat["ActionPoints"] = 2
+  MyStat["Cooldown"] = 5
+  MyStat["Memory Cost"] = 0
+  MyStat["Magic Cost"] = 0
+  
+  -- Sneak 2AP
+  Ext.ExtraData["SneakDefaultAPCost"] = 2
+  
+  -- from 4 to 10
+  Ext.ExtraData["MaximumSummonsInCombat"] = 10
+  
+  -- MiniMemoryBuff from 3 to 5
+  Ext.ExtraData["CharacterBaseMemoryCapacity"] = 5
+  
+  -- less powerful lifesteal through necromacy from 10 to 7
+  Ext.ExtraData["SkillAbilityLifeStealPerPoint"] = 7
+  
+  -- from 8. 
+  Ext.ExtraData["LeadershipRange"] = 12
+  -- TODO: evlt noch gucken ob wir demjenigen mit leadership den boost auch geben.. geht nur mit externen buff den wir selbst managen..
+  -- gibt leider 0: Osi.ApplyStatus("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","LEADERSHIP",-1,1,"Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd")
+
+
+  -- Taunt_Range_Increased
+  Ext.Stats.GetRaw("Shout_Taunt")["AreaRadius"] = 8
   
   
-  -- RandomTalentStatusEnemies_Serp
-  local exclude = {"_Hero","StoryPlayer","CasualPlayer","NormalPlayer","HardcorePlayer","StoryNPC_Character","CasualNPC","NormalNPC","HardcoreNPC"}
-  for i,name in pairs(Ext.Stats.GetStats("Character")) do
-    local MyStat = Ext.Stats.GetRaw(name)
-    if not SharedFns.table_contains_value(exclude,name) and not name:find("Hero") and not name:find("Player") then
-      talents = MyStat["Talents"]
-      newtalents = SharedFns.GetRandomTalents(nil,nil,num_talents,MyStat)
-      if #newtalents>0 then
-        newtalents = table.concat(newtalents, ";")
-        if not string.find(talents,newtalents) then
-          if talents and talents~="" then
-            newtalents = tostring(talents)..";"..tostring(newtalents)
+  
+  
+  -- Controls are Back! StunnableMobs: reduce armor, but higher HP to not punish too much for doing differnent damage types
+  local MyStat = Ext.Stats.GetRaw("CasualNPC")
+  MyStat["ArmorBoost"] = -50
+  MyStat["MagicArmorBoost"] = -50
+  MyStat["Vitality"] = -15
+  MyStat["MovementSpeedBoost"] = 25
+  local MyStat = Ext.Stats.GetRaw("NormalNPC")
+  MyStat["ArmorBoost"] = -25
+  MyStat["MagicArmorBoost"] = -25
+  MyStat["Vitality"] = 33
+  MyStat["MovementSpeedBoost"] = 25
+  local MyStat = Ext.Stats.GetRaw("HardcoreNPC")
+  MyStat["ArmorBoost"] = 0
+  MyStat["MagicArmorBoost"] = 0
+  MyStat["Vitality"] = 100
+  MyStat["MovementSpeedBoost"] = 25
+  
+  -- based on idea: Make Grenades Great again GrenadesImproved, nur die grenade buffs, nicht die 2 neuen grenades
+  -- not 1:1 the same changes, but on rough rules to automate it
+  -- local grenades = {"Projectile_Grenade_Nailbomb","Projectile_Grenade_Molotov","Projectile_Grenade_CursedMolotov","Projectile_Grenade_ChemicalWarfare","Projectile_Grenade_Ice","Projectile_Grenade_BlessedIce","Projectile_Grenade_Holy","Projectile_Grenade_Taser","Projectile_Grenade_Tremor","Projectile_Grenade_SmokeBomb","Projectile_Grenade_WaterBlessedBalloon","Projectile_Grenade_PoisonFlask","Projectile_Grenade_CursedPoisonFlask","Projectile_Grenade_Love","Projectile_Grenade_ArmorPiercing","ProjectileStrike_Grenade_ClusterBomb","ProjectileStrike_Grenade_CursedClusterBomb"}
+  -- for _,grenade in ipairs(grenades) do
+  for i,skill in pairs(Ext.Stats.GetStats("SkillData")) do
+    local MyRawStat = Ext.Stats.GetRaw(skill)
+    local MyStat = Ext.Stats.Get(skill)
+    if MyRawStat.ProjectileType=="Grenade" then
+      MyRawStat.Ability = "Ranger" -- make it scale with finesse
+      local DamageMultiplier = MyStat["Damage Multiplier"]
+      local DamageRange = MyStat["Damage Range"]
+      if DamageMultiplier and DamageMultiplier>0 then
+        MyRawStat.ActionPoints = 2 -- 1 more expensive, since they are stronger now
+        MyRawStat["Damage Multiplier"] = DamageMultiplier and DamageMultiplier * 0.8 or 0
+        MyRawStat["Damage Range"] = DamageRange and DamageRange * 3 or 0
+      end
+    -- make every summoning skill require at least Summoning 1
+    elseif SharedFns.IsAnySummonSkill(skill,MyStat) and not skill:find("Enemy") then
+      local Requirements = MyStat.MemorizationRequirements
+      local summonreq = false
+      local anyreq = nil
+      for i,Requirement in ipairs(Requirements) do
+        anyreq = Requirement
+        if Requirement.Requirement=="Summoning" then
+          summonreq = true
+        end
+      end
+      if not summonreq and anyreq then
+        local newreq = deepcopy(anyreq)
+        newreq.Requirement = "Summoning"
+        newreq.Param = 1
+        table.insert(Requirements,newreq)
+      end
+      MyStat.MemorizationRequirements = Requirements
+      local skillbooks = SharedFns.GetSkillbooksForSkill(skill)
+      for _,skillbook in ipairs(skillbooks) do
+        local skillbookstat = Ext.Stats.Get(skillbook) -- not using Raw, so it is a table we can easily add stuff to
+        if skillbookstat then
+          local reqabilitiesbook = skillbookstat.Requirements
+          local anyreq = nil
+          local summonreq = false
+          for i,Requirement in ipairs(reqabilitiesbook) do
+            anyreq = Requirement
+            if Requirement.Requirement=="Summoning" then
+              summonreq = true
+            end
           end
-          Ext.Stats.GetRaw(name)["Talents"] = newtalents--"Zombie;WalkItOff"
-          Ext.Print("Added Talents to",name,newtalents)
+          if not summonreq and anyreq then
+            local newreq = deepcopy(anyreq)
+            newreq.Requirement = "Summoning"
+            newreq.Param = 1
+            table.insert(reqabilitiesbook,newreq)
+          end
+          skillbookstat.Requirements = reqabilitiesbook
         end
       end
     end
   end
-    
+  for i,obj in pairs(Ext.Stats.GetStats("Object")) do
+    if obj:find("Grenade") then
+      local MyStat = Ext.Stats.GetRaw(obj)
+      MyStat.Weight = MyStat.Weight / 2 -- half weight
+    end
+  end
+  
+  -- SkillsScaleWithWeaponStat -- also means with a lvl 1 weapon you also do at lvl 20 nearly no damage with spells..
+   -- and with strong weapon spells do much more damage than without weapon scaling..
+  -- for i,skill in pairs(Ext.Stats.GetStats("SkillData")) do
+    -- Ext.Stats.GetRaw(skill).UseWeaponDamage = "Yes"
+    -- Ext.Stats.GetRaw(skill).UseCharacterStats = "Yes"
+    ------------ Ext.Stats.GetRaw(skill).UseWeaponProperties = "Yes"
+  -- end
+  
+  -- NoPsychicEnemies (reduce Loremaster for enemies)
+  for i,char in pairs(Ext.Stats.GetStats("Character")) do
+    local MyStat = Ext.Stats.GetRaw(char)
+    local Loremaster = MyStat.Loremaster
+    if Loremaster and Loremaster>0 then
+      local Repair = MyStat.Repair
+      if not Repair or Repair==0 then -- the ones who can Repair are usually merchants which should be able to identify your items, so not change Loremaster for them
+        MyStat.Loremaster = math.max(Loremaster-2,0)
+      end
+    end
+  end
+  
+  -- Make Spears scale with Strength instead Finesse
+  for i,obj in pairs(Ext.Stats.GetStats("Weapon")) do
+    local MyStat = Ext.Stats.Get(obj)
+    if MyStat.ItemGroup:find("Spear") then
+      local Requirements = MyStat.Requirements
+      for i,Requirement in ipairs(Requirements) do
+        if Requirement.Requirement=="Finesse" then
+          Requirement.Requirement = "Strength"
+        end
+      end
+      MyStat.Requirements = Requirements
+    end
+  end
+  
+-- for i,obj in pairs(Ext.Stats.GetStats("Weapon")) do local MyStat = Ext.Stats.Get(obj);Ext.Print("Weapon",obj,MyStat.ItemGroup);end
+  
+  -- make giftbag containers dropable
+  -- coutcommented, because they really loose their function this way ?!
+   -- workaround: Epip multi select: this way can be moved to other char and also marked as Ware. and Ware can be sold
+  -- local giftbagtemplates = {"7fee91ba-fa82-4928-8bab-886a0d84ad0e","f5874b2d-ee95-45af-bd87-f37fc6803ef8","39715850-1093-423c-b116-91d5df2df8e5","b5fa4223-7951-4800-a943-4f9f40147615","099c3bb5-c32a-4b83-9d45-dae44387ce5f","b17d8d2a-14cc-48b0-b477-5e53d7abd2eb","2060995e-255e-48cb-b292-095eb871e2fc","47838f1d-479b-4c5d-84f2-fee6eff4dc38","d23d4797-6d6c-4793-b5c3-e6ed000a64b7","5675f53c-b2d7-4ce7-b6b4-967f62573937","612bc443-f654-4116-9419-d298ae2f9bcf","cdef1bc4-df4e-4d51-af18-f0094cab6e43","7a200322-3802-4f62-b3ff-48cd426be43a","40553018-7036-4bb6-9905-7058dcaf0a41","30a59c9f-873f-4137-a2ea-6154e12645aa","93b6ae3d-5733-4a38-bb48-80e913f2f21c","001c7951-f98b-4739-adae-1a66ca9bf838","1278faf7-5a91-499b-a2c6-6c1922243690","490e500a-ba71-45b2-a602-cf46e71e42ac","e676d5f0-8aa2-4a1e-934b-48626bfb9773","c7804224-080e-46d0-bab4-03fbfd0f9e8e","69d2ec50-1e00-44d6-8dad-8c360c122060","d9da5d77-6833-4338-ad70-a2a2e28e550e"}
+  -- for _,templateid in ipairs(giftbagtemplates) do
+    -- local template = Ext.Template.GetTemplate(templateid)
+    -- if template then
+      -- template.IsPinnedContainer = false
+    -- end
+  -- end
+  
+  -- make food last longer (vanilla 3 turns)
+  for i,obj in pairs(Ext.Stats.GetStats("Potion")) do
+    local MyStat = Ext.Stats.Get(obj)
+    if MyStat then
+      if MyStat.ObjectCategory=="Food" then
+        MyStat.Duration = MyStat.Duration * 3
+      end
+    end
+  end
+  
   
   Ext.Print("OnStatsLoadedSerpCollection Ende")
   
 end
 
+
+
+-- Give BeastMaster talent to ever player with Summoning>=3
+SharedFns.ChangeBeastMaster = function(charGUID,summoninglevel)
+  summoninglevel = summoninglevel or Osi.CharacterGetAbility(charGUID,"Summoning")
+  if summoninglevel>=3 then
+    SharedFns.AddTalent(charGUID,"BeastMaster",false,"BeastMaster_Serp") -- 1 extra summon
+  else
+    if Osi.CharacterHasTalent(charGUID,"BeastMaster")==1 then
+      Osi.CharacterRemoveTalent(charGUID,"BeastMaster")
+      Osi.ClearTag(charGUID,"BeastMaster_Serp")
+    end
+  end
+end
 
 -- #############
 -- Server
@@ -518,29 +614,35 @@ end
 SharedFns.OnSaveLoaded = function(major, minor, patch, build)
   local players = SharedFns.GetAllPlayerChars()
   for _,charGUID in ipairs(players) do
-    SharedFns.AddTalent(charGUID,"QuickStep",true,"QuickStepForFree_Serp") -- APFreeMovement_Serp
-    SharedFns.AddTalent(charGUID,"InventoryAccess",false) -- cheaper changing equipment during fight
-    -- SharedFns.AddTalent(charGUID,"BeastMaster",false) -- 1 extra summon
+    Ext.Print("OnSaveLoaded",charGUID)
+    SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
     Osi.RemoveStatus(charGUID,"MOVEMENTSPEED_REDUCE_SERP") -- remove it, no longer needed
-    if Osi.IsTagged(charGUID,"PETPAL")==0 then
-      Osi.SetTag(charGUID,"PETPAL") -- allows speaking with animals, even without the talent
+    if Osi.CharacterHasSkill(charGUID,"Target_LLDUMMY_TrainingDummy")==0 then
+      Osi.CharacterAddSkill(charGUID,"Target_LLDUMMY_TrainingDummy")
     end
+    SharedFns.ChangeBeastMaster(charGUID)
+    Osi.NRD_CharacterDisableTalent(charGUID,"Indomitable", 1) -- disable vanilla Indomitable, we will use our balanced mod
+    
+    if Osi.CharacterHasSkill(charGUID,"Target_Bless")==1 then
+      if Osi.CharacterHasSkill(charGUID,"Target_Curse")==0 then
+        Osi.CharacterAddSkill(charGUID,"Target_Curse")
+      end
+    elseif Osi.CharacterHasSkill(charGUID,"Target_Curse")==1 then
+      if Osi.CharacterHasSkill(charGUID,"Target_Bless")==0 then
+        Osi.CharacterAddSkill(charGUID,"Target_Bless")
+      end
+    end
+    
   end
+  
+  -- Immortal_Segeant_Redux and Gwydian
+  for _,charGUID in ipairs(SharedFns.MakeImmortalcharGUIDs) do
+    Osi.CharacterSetImmortal(charGUID,1)
+  end
+  
 end
-
-
-
--- TODO: checken welche fähigkeiten, also Pyrokinetic usw char hat bzw. Summonist und pb Talent dazu passt
--- Auch statuseffekte wie vampirism bei kampfbeginn zufügen, aber nur eher schwächere, vampirism ist schon zu stark
-
-
-
-
--- CharacterGetEquippedWeapon [in](CHARACTERGUID)_Character, [out](GUIDSTRING)_ItemGUID
--- bzw besser:
--- char.Stats.TALENT_...
--- char.Stats.
-
+-- Osi.CharacterHasSkill("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","Target_LLDUMMY_TrainingDummy")
+-- Osi.CharacterAddSkill("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","Target_LLDUMMY_TrainingDummy")
 
 
 
@@ -552,38 +654,13 @@ SharedFns.OnUnitCombatEntered = function(charGUID,combatID)
   -- Full Heal of NPCS
   SharedFns.DoHeal(charGUID,false,true,55,100,char)
   
-  if not SharedFns.IsPlayerMainChar(charGUID) then
-    SharedFns.AddTalent(charGUID,"QuickStep") -- give eg summones quickstep, for them it works here, they have PlayerCustomData
-  end
-  
-  -- Random Talents/Status for not-ally  RandomTalentStatusEnemies_Serp
-  if char and not SharedFns.IsPlayerAlly(charGUID) then -- neutral NPC and Enemies
-    -- chosen = SharedFns.GetRandomTalents(charGUID,char,num_talents)
-    -- for i,Talent in ipairs(chosen) do -- outcommented because NPCs can not properly get Talents midgame, using OnStatsLoaded instead
-      -- SharedFns.AddTalent(charGUID,Talent,false,"NPCRandomTalent_"..tostring(i),char) -- only added once per NPC by using the Tag. that way no need to remove it on leave combat
-    -- end
-    -- Random Status
-    local chosen = 0
-    notstop = 0
-    while chosen < num_status do
-      notstop = notstop + 1
-      status = SharedFns.weighted_random_choices(RandomStatus, 1)[1]
-      if status~="None" then
-        if Osi.HasActiveStatus(charGUID,status)==0 then
-          maxdur = RandomStatus[status].maxrounds or 2
-          duration = Ext.Random(1,maxdur) * 6 -- it is in seconds and one combat round is 6 seconds
-          Ext.Print("Apply Status "..tostring(status).." for "..tostring(duration/6).." rounds to "..tostring(charGUID))
-          Osi.ApplyStatus(charGUID,status,duration,1) -- (GUIDSTRING)_Object, (STRING)_Status, (REAL)_Duration (-1.0 infinite), (INTEGER)_Force 
-        end
-        chosen = chosen+1
-      elseif status=="None" then
-        chosen = chosen+1
-      end
-      if notstop > 100 then
-        Ext.Print("notstop Status für "..tostring(charGUID))
-        break
-      end
-    end    
+  -- Immortal_Segeant_Redux and Gwydian
+  if SharedFns.table_contains_value(SharedFns.MakeImmortalcharGUIDs,charGUID) then
+    if SharedFns.IsPlayerEnemy(charGUID) then
+      Osi.CharacterSetImmortal(charGUID,0)
+    elseif SharedFns.IsPlayerAlly(charGUID) then
+      Osi.CharacterSetImmortal(charGUID,1)
+    end
   end
   
 end
@@ -595,28 +672,50 @@ end
 SharedFns.OnCharacterJoinedParty = function(charGUID)
   Ext.Print("CharacterJoinedParty",charGUID)
   if SharedFns.IsPlayerMainChar(charGUID) then
-    SharedFns.AddTalent(charGUID,"QuickStep",true,"QuickStepForFree_Serp") -- APFreeMovement_Serp
-    SharedFns.AddTalent(charGUID,"InventoryAccess",false) -- cheaper changing equipment during fight
-    -- SharedFns.AddTalent(charGUID,"BeastMaster",false) -- 1 extra summon
-    if Osi.IsTagged(charGUID,"PETPAL")==0 then
-      Osi.SetTag(charGUID,"PETPAL") -- allows speaking with animals, even without the talent
-    end
+    SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
     
   end
 end
+-- Ext.Stats.EnumLabelToIndex("AbilityType","RangerLore")
+-- Ext.Stats.EnumIndexToLabel("AbilityType",2)
+-- (CHARACTERGUID)_Character, (STRING)_Ability, (INTEGER)_OldBaseValue, (INTEGER)_NewBaseValue)
+-- Is not called for changes by equipment
+SharedFns.OnCharacterBaseAbilityChanged = function(charGUID,ability,old,new)
+  Ext.Print("OnCharacterBaseAbilityChanged",charGUID,ability,old,new)
+  -- local ability = Ext.Stats.EnumIndexToLabel("AbilityType",ability) # ist schon string
+  if ability=="Summoning" then
+    SharedFns.ChangeBeastMaster(charGUID,new)
+  end
+end
+
 SharedFns.OnCharacterLeftParty = function(charGUID)
   
 end
+
+SharedFns.OnCharacterLeveledUp = function(charGUID)
+
+end
+
+-- Learn Bless and Curse
+SharedFns.OnCharacterLearnedSkill = function(charGUID,skill)
+  if skill=="Target_Bless" then
+    if Osi.CharacterHasSkill(charGUID,"Target_Curse")==0 then
+      Osi.CharacterAddSkill(charGUID,"Target_Curse")
+    end
+  elseif skill=="Target_Curse" then
+    if Osi.CharacterHasSkill(charGUID,"Target_Bless")==0 then
+      Osi.CharacterAddSkill(charGUID,"Target_Bless")
+    end
+  end
+end
+
+
 -- ################################
- -- DivineTalentsGiftpackMod
+ -- DivineTalentsGiftpackMod (do a bit more than in BalancedIndomitableForAll Mod)
 -- Give everyone a nerfed (better balanced) version Indomitable status:
 -- Give the Status AFTER the CC-status wered off for 3 turns and then you are immune to CC for these 3 turns.
 -- Revert overrides in Skill_Projectile of Projectile_DimensionalBolt (were no changes compared to vanilla, so unneeded overwrite) 
 -- CMP_Talents_override is mostly the same, but added CHARM and MADNESS and increased the CD from 2 to 3 rounds (the time where you are vulnerable to CC)
-
--- TODO:
- -- add to Indomitable Tooltip (or at least for my status) that Charmend and Madness are also added
-
 
 local giftBagTextFiles = {
     ["Mods/CMP_DivineTalents_Kamil/Story/RawFiles/Goals/CMP_Talents.txt"] = "Mods/ModCollection_Serp/Story/RawFiles/Goals/CMP_Talents_override.txt",
@@ -627,32 +726,79 @@ for file,override in pairs(giftBagTextFiles) do
     Ext.IO.AddPathOverride(file, override)
 end
 
--- der IndomitableForAll Mod looped durch alle Stati die die entsprechenden ImmuneFlagg hat um alle Stati zu finden,vorallem auch welche von Mods.
--- Allerdings warum sollte ein Mod einen Status zufügen, der die ImmuneFlag KnockedDown hat? Mods die neue CC Stati zufügen, werden so doch auch nicht erkannt.
--- Sehe ich nicht, also hardcode ich die Stati stattdessen (offenbar kann man auch weder aus status noch aus dazugehörigem potion rauslesen, welche Stati die Runde skippen lassen?! sonst hätte er das ja genommen und ich find auch nichts)
-SharedFns.Indomitable_Block_Stati = {"CHICKEN","FROZEN","PETRIFIED","STUNNED","KNOCKED_DOWN","CRIPPLED","CHARMED","MADNESS"}
-SharedFns.Indomitable_Duration = 3
-SharedFns.OnCharacterStatusRemoved = function(target, status, nilSource)
-  -- if SharedFns.table_contains_value(SharedFns.Indomitable_Block_Stati,status) and Osi.HasActiveStatus(target,"INDOMITABLE")==0 then
-    -- if Osi.CharacterIsDead(target)==0 and Osi.ObjectIsOnStage(target)==1 then
-      -- local char =Ext.Entity.GetCharacter(target) -- using the TALENT check instead of Osi.CharacterHasTalent, because the Osi one fails for Giftbag talent while the giftbag is not enabled...
-      -- if char.Stats["TALENT_Indomitable"] then
-        -- Osi.ApplyStatus(target,"INDOMITABLE",SharedFns.Indomitable_Duration*6,1)
-        -- Ext.Print("OnCharacterStatusRemoved added INDOMITABLE",target)
-      -- end
-    -- end
-  -- end
-  
-  if SharedFns.table_contains_value(SharedFns.Indomitable_Block_Stati,status) and Osi.HasActiveStatus(target,"INDOMITABLE_SERP")==0 then
-    if Osi.CharacterIsDead(target)==0 and Osi.ObjectIsOnStage(target)==1 then
-      Osi.ApplyStatus(target,"INDOMITABLE_SERP",SharedFns.Indomitable_Duration*6,1)
-      Ext.Print("OnCharacterStatusRemoved added INDOMITABLE",target)
+
+-- SurfaceBasedStati
+-- gucken wie WaterFrozenBlessed Surfaces stati geben, vllt auch einfach so machen? hm scheint hardcoded iwo
+SharedFns.ApplyStatusWithChance = function(charGUID,status,chance,duration,force)
+  duration = duration or 6 -- 6==1 turn
+  force = force or 0
+  if chance>0 and Osi.HasActiveStatus(charGUID,status)==0 and (chance>=1 or Ext.Random()<=chance) then
+    Osi.ApplyStatus(charGUID,status,duration,force)
+  end
+end
+SharedFns.SurfaceBasedStati = {
+  SurfaceWater={s="WET",c=0.30,d=6,f=0,chancex2if="BURNING",forceif="BURNING"},SurfaceBlood={s="WET",c=0.20,d=6,f=0,chancex2if="BURNING",forceif="BURNING"},
+  SurfaceWaterFrozen={s="CHILLED",c=0.20,d=6,f=0,chancex2if="WET",forceif="WET"},SurfaceBloodFrozen={s="CHILLED",c=0.20,d=6,f=0,chancex2if="WET",forceif="WET"},
+  AnyCloud={s="FOGBLIND_SERP",c=1.0,d=6,f=1},
+}
+-- used to apply status either in turn start when standing in surface or the moment you start to stand in surface
+SharedFns.HandleSurfaceBasedStatus = function(charGUID)
+  local surfaces = {
+    Ground = Osi.GetSurfaceGroundAt(charGUID), -- [in](GUIDSTRING)_Target, [out](STRING)_Surface -- SurfaceWater SurfaceWaterFrozen
+    Cloud = Osi.GetSurfaceCloudAt(charGUID), -- [in](GUIDSTRING)_Target, [out](STRING)_Surface -- SurfaceWaterCloud
+  }
+  -- Ext.Print("HandleSurfaceBasedStatus",charGUID,surfaces.Ground,surfaces.Cloud) -- SurfaceNone 
+  for kind,surface in pairs(surfaces) do
+    local data = SharedFns.SurfaceBasedStati[surface]
+    if data then
+      local chance = data.c 
+      local force = data.f
+      if data.chancex2if and Osi.HasActiveStatus(charGUID,data.chancex2if)==1 then
+        chance = chance * 2
+      end
+      if data.forceif and Osi.HasActiveStatus(charGUID,data.forceif)==1 then
+        force = 1
+      end
+      SharedFns.ApplyStatusWithChance(charGUID,data.s,chance,data.d,force) -- status, chance, duration, force
     end
+  end
+  if surfaces.Cloud~="SurfaceNone" and SharedFns.SurfaceBasedStati["AnyCloud"] then
+    local data = SharedFns.SurfaceBasedStati["AnyCloud"]
+    SharedFns.ApplyStatusWithChance(charGUID,data.s,data.c,data.d,data.f)
+  elseif surfaces.Cloud=="SurfaceNone" and Osi.HasActiveStatus(charGUID,"FOGBLIND_SERP")==1 then
+    Osi.RemoveStatus(charGUID,"FOGBLIND_SERP")
   end
 end
 
 
 
+SharedFns.OnObjectTurnStarted = function(charGUID)
+  SharedFns.HandleSurfaceBasedStatus(charGUID) -- SurfaceBasedStati
+end
+-- Also called for standing in surface, cause ist verursacher charGUID und bei surface der dem das surface gehört, bzw. der es erzeugt hat. 
+-- In surface hin und her gehen triggert es nicht erneut (wie der surface schaden), triggert auch nur einmal pro sekunde oderso, dh. wenn surface schnell gewechselt wird, triggert es für eins davon garnicht, aber wir nehmen auch OnObjectTurnStarted dazu, dann passt das
+SharedFns.OnCharacterStatusApplied = function(charGUID, status, cause)
+  -- Ext.Print("OnCharacterStatusApplied charGUID:",charGUID,"status:",status,"cause:",cause)
+  if status=="INSURFACE" then -- Apply Wet with a chance when on water/blood
+    SharedFns.HandleSurfaceBasedStatus(charGUID) -- SurfaceBasedStati
+  end
+end
+SharedFns.OnCharacterStatusRemoved = function(charGUID, status, nilSource)
+  if status=="INSURFACE" then -- Apply Wet with a chance when on water/blood
+    local surfaces = {
+      Ground = Osi.GetSurfaceGroundAt(charGUID), -- [in](GUIDSTRING)_Target, [out](STRING)_Surface -- SurfaceWater SurfaceWaterFrozen
+      Cloud = Osi.GetSurfaceCloudAt(charGUID), -- [in](GUIDSTRING)_Target, [out](STRING)_Surface -- SurfaceWaterCloud
+    }
+    if surfaces.Cloud=="SurfaceNone" and Osi.HasActiveStatus(charGUID,"FOGBLIND_SERP")==1 then
+      Osi.RemoveStatus(charGUID,"FOGBLIND_SERP") -- SurfaceBasedStati
+    end
+  elseif status=="CHARMED" or status=="CHICKEN" then -- trigger Perseverance for more stati
+    Osi.ApplyStatus(charGUID,"POST_MAGIC_CONTROL",0,1)
+  elseif status=="SLEEPING" or status=="CRIPPLED" then
+    Osi.ApplyStatus(charGUID,"POST_PHYS_CONTROL",0,1)
+  end
+  
+end
 
 -- ################################################
 
@@ -688,9 +834,11 @@ Ext.RegisterConsoleCommand("test", test)
 -- Osi.ApplyStatus("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","VAMPIRISM",4,1)
 
 
--- Osi.CharacterAddTalent("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","Vitality")
+-- Osi.CharacterAddTalent("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","SurpriseAttack")
 -- Osi.CharacterAddTalent("Summons_Incarnate_f54a7611-b46b-4bf5-837c-31d1815ae90a","Vitality")
 -- Osi.CharacterAddTalent("S_FTJ_Brute_001_94131f94-2152-49f2-8ee2-9832263eec05","Vitality")
+-- Osi.CharacterAddTalent("S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f","Gladiator")
+-- Osi.CharacterAddTalent("Humans_Hero_Female_7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe","Gladiator")
 
 
 -- Osi.CharacterAddTalent("S_FTJ_CourtRoomGuard_002_bb9fd6c4-4231-44ac-a24d-5955dc300147","QuickStep")
@@ -703,9 +851,10 @@ Ext.RegisterConsoleCommand("test", test)
 
 -- Ext.Print(Osi.NRD_CharacterSetPermanentBoostTalent)
 -- Osi.NRD_CharacterSetPermanentBoostTalent("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","Zombie",0)
--- Osi.NRD_CharacterSetPermanentBoostTalent("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","Zombie",1)
--- Osi.NRD_CharacterSetPermanentBoostTalent("S_FTJ_BeachVw_001_08348b3a-bded-4811-92ce-f127aa4310e0","Zombie",1)
+-- Osi.NRD_CharacterSetPermanentBoostTalent("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","Zombie",1);Osi.NRD_CharacterSetPermanentBoostTalent("S_FTJ_BeachVw_001_08348b3a-bded-4811-92ce-f127aa4310e0","Zombie",1)
 -- Osi.CharacterSetForceSynch("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",0)
+-- Osi.CharacterSetForceSynch("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",1)
+-- Osi.CharacterSetForceUpdate("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",1)
 
 -- Ext.Print(Ext.Entity.GetCharacter("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd").PlayerCustomData.OwnerProfileID)
 -- Ext.Print(Ext.Entity.GetCharacter("Summons_Incarnate_c9eac4b1-9391-4f12-b871-49db5c50239f").PlayerCustomData.OwnerProfileID)
@@ -716,9 +865,54 @@ Ext.RegisterConsoleCommand("test", test)
 -- Ext.Print(Ext.Entity.GetCharacter("Summons_Incarnate_c9eac4b1-9391-4f12-b871-49db5c50239f").PlayerCustomData.Name)
 -- Ext.Print(Ext.Entity.GetCharacter("S_FTJ_BeachVw_002_1832a661-0e21-421f-acaa-a7e66e813b14").PlayerCustomData.Name)
 
+-- print(Osi.GetSurfaceGroundAt("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd"))
+-- print(Osi.GetSurfaceCloudAt("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd"))
 
-
-
+-- Osi.NRD_PlayerSetBaseTalent("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd", "AttackOfOpportunity", 1) funzt auf player charactere, aber da sieht man Talent erst bei reload der UI/des savegames. und obwohl es "Base" heißt, kann man es dennoch in resepc entfernen
+-- Osi.NRD_CharacterSetPermanentBoostTalent("S_FTJ_BeachVw_001_08348b3a-bded-4811-92ce-f127aa4310e0", "Zombie", 1)
+-- Osi.NRD_CharacterSetPermanentBoostTalent("S_FTJ_BeachVw_002_1832a661-0e21-421f-acaa-a7e66e813b14", "Zombie", 1)
+-- Osi.NRD_CharacterDisableTalent("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd", "QuickStep", 1) disabled (nach save+load,bzw client) und ist dann auch nicht mehr wählbar und nicht aktiv
 -- local _players = Osi.DB_IsPlayer:Get(nil);for _,tupl in ipairs(_players) do local charGUID = tupl[1];Osi.SetTag(charGUID,"QuickStepForFree_Serp");end
 -- local _players = Osi.DB_IsPlayer:Get(nil);for _,tupl in ipairs(_players) do local charGUID = tupl[1];Ext.Print(Osi.IsTagged(charGUID,"QuickStepForFree_Serp"));end
 
+-- CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295
+-- S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb
+-- CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f
+-- CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c
+
+-- Osi.CharacterLevelUpTo("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",20)
+-- Osi.CharacterLevelUpTo("S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f",20)
+-- Osi.CharacterAddAbilityPoint("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",100)
+-- Osi.CharacterAddAbilityPoint("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb",100)
+
+-- Osi.CharacterAddSkill("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","Target_Custom_MaddeningSongSpell")
+-- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Summon_Summon_BoneTroll")
+
+-- print(Osi.CharacterHasTalent("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","BeastMaster"))
+-- print(Osi.CharacterHasTalent("Humans_Hero_Female_7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe","BeastMaster"))
+-- print(Osi.CharacterHasTalent("S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f","BeastMaster"))
+-- Osi.CharacterRemoveTalent("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","BeastMaster")
+
+-- Osi.CharacterAddTalent("S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f", "BeastMaster")
+ -- print(Osi.CharacterHasTalent("S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f","BeastMaster"))
+-- Osi.CharacterRemoveTalent("S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f","BeastMaster")
+
+-- Osi.NRD_CharacterSetPermanentBoostTalent("S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f","BeastMaster",1)
+-- Osi.NRD_CharacterSetPermanentBoostTalent("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","BeastMaster",1)
+
+-- Ext.Print(Ext.Entity.GetCharacter("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd").Stats.TALENT_BeastMaster)
+
+-- print(Osi.NRD_CharacterGetPermanentBoostInt("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","BeastMaster")) --[in](CHARACTERGUID)_Character, [in](STRING)_Stat, [out](INTEGER)_Value) 
+
+-- Osi.CharacterStatusText("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","test")
+
+-- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Teleportation_ResurrectSkillCast")
+
+
+-- local SkillbookTemplates = Mods.EpipEncounters.Epip.GetFeature("SkillbookTemplates"); Osi.ItemTemplateAddTo(SkillbookTemplates.GetForSkill("Target_MutePlayer")[1],"Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",1,1)
+-- Osi.ItemTemplateAddTo("45c5bf29-71bc-482f-b371-113717fd223e","Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",1,1)
+
+
+-- for k,v in pairs(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").SkillManager) do print(k,v) end
+
+-- print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").Stats.CurrentArmor)

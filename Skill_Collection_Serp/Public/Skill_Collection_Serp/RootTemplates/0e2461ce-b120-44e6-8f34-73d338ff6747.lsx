@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="1" revision="4" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="0e2461ce-b120-44e6-8f34-73d338ff6747" />
+					<attribute id="Name" type="23" value="RS3_Spear_A" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="Type" type="22" value="projectile" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="VisualTemplate" type="22" value="e6b19273-052c-40cf-95f0-4dfba4019018" />
+					<attribute id="PhysicsTemplate" type="22" value="a465845b-908e-4c19-9ee9-643c5f2fbfa1" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="LifeTime" type="6" value="100" />
+					<attribute id="Speed" type="6" value="25" />
+					<attribute id="Acceleration" type="6" value="1" />
+					<attribute id="CastBone" type="22" value="Dummy_CastFX" />
+					<attribute id="ImpactFX" type="22" value="RS3_FX_GP_Impacts_Arrow_Bleeding_01" />
+					<attribute id="TrailFX" type="22" value="" />
+					<attribute id="BeamFX" type="22" value="" />
+					<attribute id="DestroyTrailFXOnImpact" type="19" value="False" />
+					<attribute id="PreviewPathMaterial" type="22" value="c0938c15-6b41-46ec-972e-9eb37c0e9f28" />
+					<attribute id="PreviewPathImpactFX" type="22" value="RS3_FX_UI_Target_Projectile_Default_01" />
+					<attribute id="PreviewPathRadius" type="6" value="0.05" />
+					<attribute id="RotateImpact" type="19" value="True" />
+					<attribute id="IgnoreRoof" type="19" value="False" />
+					<attribute id="DetachBeam" type="19" value="False" />
+					<attribute id="ImpactFXSize" type="6" value="0" />
+					<attribute id="ProjectilePath" type="1" value="3" />
+					<attribute id="PathRadius" type="6" value="3" />
+					<attribute id="PathShift" type="6" value="0.5" />
+					<attribute id="PathRepeat" type="5" value="1" />
+					<attribute id="PathMinArcDist" type="6" value="8" />
+					<attribute id="PathMaxArcDist" type="6" value="-1" />
+					<children>
+						<node id="Tags" />
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="AIBounds" />
+						<node id="GameMaster">
+							<attribute id="GameMasterSpawnSection" type="4" value="-1" />
+							<attribute id="GameMasterSpawnSubSection" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="ls::TranslatedStringRepository::s_HandleUnknown;0" />
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

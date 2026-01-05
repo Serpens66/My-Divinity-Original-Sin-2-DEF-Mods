@@ -9,3 +9,7 @@ SharedFns.RegisterProtectedOsirisListener("CharacterJoinedParty", 1, "after", fu
     SharedFns.OnCharacterJoinedParty(objectGUID)
   end
 end)
+-- (CHARACTERGUID)_Character, (STRING)_Ability, (INTEGER)_OldBaseValue, (INTEGER)_NewBaseValue)
+SharedFns.RegisterProtectedOsirisListener("CharacterBaseAbilityChanged", 4, "after", function(charGUID,ability,old,new)
+  SharedFns.OnCharacterBaseAbilityChanged(charGUID,ability,old,new)
+end)

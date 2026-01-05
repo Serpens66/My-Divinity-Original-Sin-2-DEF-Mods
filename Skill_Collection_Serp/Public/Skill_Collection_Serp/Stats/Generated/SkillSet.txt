@@ -1,0 +1,7 @@
+new skillset "SkeletonWarrior"
+add skill "Target_EnemyCripplingBlow"
+
+new skillset "Summon_NecroSummon_Undead_Bonepile_Troll_A"
+add skill "Cone_GroundSmash"
+add skill "Target_BonePileConsumeCorpse"
+

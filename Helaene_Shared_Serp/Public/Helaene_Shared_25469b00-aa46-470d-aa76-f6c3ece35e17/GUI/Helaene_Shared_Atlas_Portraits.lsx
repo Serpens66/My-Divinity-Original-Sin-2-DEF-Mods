@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" />
+    <version major="3" minor="6" revision="1" build="0" />
+    <region id="IconUVList">
+        <node id="root">
+            <children>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Portrait_AngelDeath" type="22" />
+                    <attribute id="U1" value="0.234863" type="6" />
+                    <attribute id="U2" value="0.312012" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.097168" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Portrait_AngelMercy" type="22" />
+                    <attribute id="U1" value="0.312988" type="6" />
+                    <attribute id="U2" value="0.390137" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.097168" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Helaene_Priest_Trader" type="22" />
+                    <attribute id="U1" value="0.391113" type="6" />
+                    <attribute id="U2" value="0.468262" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.097168" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Trader_Succubus_001" type="22" />
+                    <attribute id="U1" value="0.000488281" type="6" />
+                    <attribute id="U2" value="0.0776367" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.097168" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="Vampire_Trader_Portrait" type="22" />
+                    <attribute id="U1" value="0.156738" type="6" />
+                    <attribute id="U2" value="0.233887" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.097168" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="cryomancer-trader-portrait" type="22" />
+                    <attribute id="U1" value="0.469238" type="6" />
+                    <attribute id="U2" value="0.546387" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.097168" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="trickster_trader" type="22" />
+                    <attribute id="U1" value="0.0786133" type="6" />
+                    <attribute id="U2" value="0.155762" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.097168" type="6" />
+                </node>
+            </children>
+        </node>
+    </region>
+    <region id="TextureAtlasInfo">
+        <node id="root">
+            <children>
+                <node id="TextureAtlasIconSize">
+                    <attribute id="Height" value="100" type="4" />
+                    <attribute id="Width" value="80" type="4" />
+                </node>
+                <node id="TextureAtlasPath">
+                    <attribute id="Path" value="Assets/Textures/Icons/Helaene_Shared_Atlas_Portraits.dds" type="20" />
+                    <attribute id="UUID" value="3fb91fee-e06d-43ed-b403-b76a7ebef248" type="22" />
+                </node>
+                <node id="TextureAtlasTextureSize">
+                    <attribute id="Height" value="1024" type="4" />
+                    <attribute id="Width" value="1024" type="4" />
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

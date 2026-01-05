@@ -1,0 +1,387 @@
+treasure itemtypes "Common","Uncommon","Rare","Epic","Legendary","Divine","Unique"
+
+
+
+new treasuretable "SCS_Skillbook_Summoning"
+new subtable "1,1"
+object category "I_SKILLBOOK_Summoning_WarpStrike",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Summoning_MultiChaos",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Summoning_DimensionalTravel",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Summoning_TimeWarp",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Summoning_DemonicStare",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Summoning_WarpSword",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_SeaSlug",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Earth_PoisonSlug",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Fire_Slugma",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_SummonSkeleton",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_SummonSkeletonArcher",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_SummonSkeletonMage",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_SummonBoneTroll",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_SkillbookSummoning"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Summoning",1,0,0,0,0,0,0,0
+new treasuretable "ST_Skillbook_SummoningTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Summoning",1,0,0,0,0,0,0,0
+new treasuretable "CheatBooksSummoning"
+CanMerge 1
+new subtable "-1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Summoning",1,0,0,0,0,0,0,0
+
+
+new treasuretable "SCS_Skillbook_Water"
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_PiercingIce",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_Resurrection",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_FreezingTouch",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_IceShard",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_SeaSlug",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_HolyElecWater",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_TorrentStrike",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Source_Water_IceballCursed",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_DomeOfProtection",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_IceBringer",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_SkillbookWater"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Water",1,0,0,0,0,0,0,0
+new treasuretable "ST_Skillbook_WaterTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Water",1,0,0,0,0,0,0,0
+new treasuretable "CheatBooksWater"
+CanMerge 1
+new subtable "-1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Water",1,0,0,0,0,0,0,0
+
+
+new treasuretable "SCS_Skillbook_Air"
+new subtable "1,1"
+object category "I_SKILLBOOK_Air_ElectricRay",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Air_DeafeningRapture",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Air_Translocate",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Air_Netherglide",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Air_ElectricBeam",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Air_HolySmoke",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Air_ConcussiveBlast",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Air_BlindingSquall",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_HolyElecWater",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_StormBringer",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_SkillbookAir"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Air",1,0,0,0,0,0,0,0
+new treasuretable "ST_Skillbook_AirTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Air",1,0,0,0,0,0,0,0
+new treasuretable "CheatBooksAir"
+CanMerge 1
+new subtable "-1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Air",1,0,0,0,0,0,0,0
+
+
+new treasuretable "SCS_Skillbook_Fire"
+new subtable "1,1"
+object category "I_SKILLBOOK_Fire_BurnAlive",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Fire_BurningTouch",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Fire_MeltGround",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Fire_Immolate",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Source_Fire_Cursed_Fireball",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Fire_Slugma",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Fire_Flamebreath_Skill",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Fire_MassHaste",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_FireBringer",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_I_SKILLBOOK_Necromancy_Mute",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_SkillbookFire"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Fire",1,0,0,0,0,0,0,0
+new treasuretable "ST_Skillbook_FireTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Fire",1,0,0,0,0,0,0,0
+new treasuretable "CheatBooksFire"
+CanMerge 1
+new subtable "-1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Fire",1,0,0,0,0,0,0,0
+
+
+new treasuretable "SCS_Skillbook_Earth"
+new subtable "1,1"
+new subtable "1,1"
+object category "I_SKILLBOOK_Earth_PetrifyingTouch",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Earth_MidnightOil",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Earth_EarthShard",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Source_Earth_Acidball",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Earth_PoisonSlug",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Earth_Envenom",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_PoisonBringer",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_EarthBringer",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_CorruptMind",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_SkillbookEarth"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Earth",1,0,0,0,0,0,0,0
+new treasuretable "ST_Skillbook_EarthTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Earth",1,0,0,0,0,0,0,0
+new treasuretable "CheatBooksEarth"
+CanMerge 1
+new subtable "-1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Earth",1,0,0,0,0,0,0,0
+
+
+new treasuretable "SCS_Skillbook_Necromancy"
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_BoneBreak",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_CorruptMind",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_Mute",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_SummonSkeleton",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_SummonSkeletonArcher",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_SummonSkeletonMage",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_SummonBoneTroll",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_SummonDeathKnight",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_DeathPunch",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_Resurrect",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_FleshSacrificeSpell",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_MaddeningSong",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_DarkMetamorphosis",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_SkillbookNecromancy"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Necromancy",1,0,0,0,0,0,0,0
+new treasuretable "ST_Skillbook_NecromancyTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Necromancy",1,0,0,0,0,0,0,0
+new treasuretable "CheatBooksNecromancy"
+CanMerge 1
+new subtable "-1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Necromancy",1,0,0,0,0,0,0,0
+
+
+new treasuretable "SCS_Skillbook_Polymorph"
+new subtable "1,1"
+object category "I_SKILLBOOK_Polymorph_RubberSkin",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Polymorph_TabulaRasa",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Polymorph_MagicUnlock",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Source_MultiPurge",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Source_MassBless",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SCROLL_Bless",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Source_MassCurse",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Source_ChannelSource",1,0,0,0,0,0,0,0
+new subtable "3,1"
+object category "I_TOOL_Ink_Pot_A_Quill_Source_A",1,0,0,0,0,0,0,0
+new subtable "2,1"
+object category "I_BOOK_Skill_Sourcery_Blank_A",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_SkillbookPolymorph"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Polymorph",1,0,0,0,0,0,0,0
+new treasuretable "ST_Skillbook_PolymorphTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Polymorph",1,0,0,0,0,0,0,0
+new treasuretable "CheatBooksPolymorph"
+CanMerge 1
+new subtable "-1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Polymorph",1,0,0,0,0,0,0,0
+
+
+new treasuretable "SCS_Skillbook_Warrior"
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_Javelin",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_StormBringer",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_FireBringer",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_IceBringer",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_PoisonBringer",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_EarthBringer",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_EncourageSkill",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_BreakChains",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_DarkMetamorphosis",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Summoning_WarpSword",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_SkillbookWarrior"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Warrior",1,0,0,0,0,0,0,0
+new treasuretable "ST_Skillbook_WarriorTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Warrior",1,0,0,0,0,0,0,0
+new treasuretable "CheatBooksWarrior"
+CanMerge 1
+new subtable "-1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Warrior",1,0,0,0,0,0,0,0
+
+
+new treasuretable "SCS_Skillbook_Ranger"
+new subtable "1,1"
+object category "I_SKILLBOOK_Helaene_Ranger_EvasiveShot",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Helaene_Ranger_GrapplingHook",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Helaene_Ranger_ShieldBreaker",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Helaene_Ranger_VampiricArrow",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Helaene_Ranger_DoubleTrouble",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Helaene_Ranger_Concussion",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Ranger_WarpArrow",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Ranger_WebBottle",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Ranger_SummonWolf",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_SkillbookRanger"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Ranger",1,0,0,0,0,0,0,0
+new treasuretable "ST_Skillbook_RangerTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Ranger",1,0,0,0,0,0,0,0
+new treasuretable "CheatBooksRanger"
+CanMerge 1
+new subtable "-1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Ranger",1,0,0,0,0,0,0,0
+
+
+new treasuretable "SCS_Skillbook_Rogue"
+new subtable "1,1"
+object category "I_SKILLBOOK_Scoundrel_Float",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Scoundrel_ChokingPowder",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Scoundrel_PlayDeadSkill",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_SkillbookRogue"
+CanMerge 1
+new subtable "-1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Rogue",1,0,0,0,0,0,0,0
+new treasuretable "ST_Skillbook_RogueTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Rogue",1,0,0,0,0,0,0,0
+new treasuretable "CheatBooksRogue"
+CanMerge 1
+new subtable "-1"
+StartLevel "1"
+object category "T_SCS_Skillbook_Rogue",1,0,0,0,0,0,0,0

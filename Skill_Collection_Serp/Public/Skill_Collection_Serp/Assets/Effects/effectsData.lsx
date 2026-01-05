@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="1" revision="4" build="0" lslib_meta="v1,bswap_guids" />
+	<region id="Effect">
+		<node id="root">
+			<children>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="8" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Custom_Blizzard_A" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="0.1" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Custom_Blizzard_B" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="2.010792" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Custom_Sandstorm_A" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="2.007195" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Custom_Snow_A" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="8" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Custom_Wind_A" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="1.3" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_GP_Projectile_Arrow_Custom_A" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="3.076764" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_GP_Skills_SpiritArrow_Custom_1" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="3" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_GP_Status_Ghost_Custom_A" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="3.076764" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Skills_Air_Prepare_Air_Dummy_01_SpiritArrow" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="1.000709" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Skills_D00medDome" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="8" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Skills_FireTornado" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="3.4" />
+					<attribute id="Looping" type="19" value="False" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Skills_SandmanShift" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="3.076764" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Skills_SpiritArrow" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="3.1" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Status_Liquified" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

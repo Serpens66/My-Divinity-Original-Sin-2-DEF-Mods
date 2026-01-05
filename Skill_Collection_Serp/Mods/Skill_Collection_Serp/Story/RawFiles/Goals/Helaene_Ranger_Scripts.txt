@@ -1,0 +1,18 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+//REGION RANGER_SHIELDBREAKER
+
+IF
+CharacterUsedSkillOnTarget(_Char, _Target, "Projectile_Helaene_Ranger_ShieldBreaker", _Type, _Element)
+AND
+CharacterGetEquippedShield((CHARACTERGUID)_Target, _ItemGUID)
+THEN
+CharacterUnequipItem(_Target, (ITEMGUID)_ItemGUID);
+
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION

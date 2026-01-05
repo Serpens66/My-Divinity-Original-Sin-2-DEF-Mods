@@ -9,7 +9,7 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" value="Helaene,Serpens66" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
-                    <attribute id="Description" value="Helaene - Buff All Summons (DE) rewritten in lua by Serp to be higly more compatible to other mods. Instead of Skillbooks you get the 2 new infusion skills automatically when having at least Summoning Lvl 1. Requires Script Extender v60." type="30" />
+                    <attribute id="Description" value="Helaene - Buff All Summons (DE) rewritten in lua by Serp to be higly more compatible to other mods. Instead of Skillbooks you get the 2 new infusion skills automatically when having at least Summoning Lvl 1. Also adds IceInfusion on casting incarnation on ice from Spencer Peterson. Requires Script Extender v60." type="30" />
                     <attribute id="DescriptionName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="DisplayName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="Folder" value="BuffAnySummon_Serp" type="30" />
@@ -17,7 +17,7 @@
                     <attribute id="LobbyLevelName" value="" type="22" />
                     <attribute id="MD5" value="" type="23" />
                     <attribute id="MenuLevelName" value="" type="22" />
-                    <attribute id="Name" value="Buff All Summons (DE)" type="22" />
+                    <attribute id="Name" value="Buff All Summons and IceInfusion (DE)" type="22" />
                     <attribute id="NumPlayers" value="2" type="1" />
                     <attribute id="PhotoBooth" value="" type="22" />
                     <attribute id="StartupLevelName" value="" type="22" />

@@ -1,0 +1,9 @@
+new entry "Stats_Infusion_Ice"
+type "Potion"
+data "Act" "1"
+data "Act part" "0"
+data "WaterSpecialist" "3"
+data "FireResistance" "-20"
+data "WaterResistance" "100"
+data "Flags" "FreezeImmunity;SlippingImmunity"
+

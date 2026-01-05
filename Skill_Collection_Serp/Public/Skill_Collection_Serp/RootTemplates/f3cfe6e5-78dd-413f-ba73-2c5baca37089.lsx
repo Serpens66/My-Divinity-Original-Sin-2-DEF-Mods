@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="1" revision="3" build="1" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="f3cfe6e5-78dd-413f-ba73-2c5baca37089" />
+					<attribute id="Name" type="23" value="CharacterCreationPREFAB" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="Type" type="22" value="prefab" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="VisualTemplate" type="22" value="" />
+					<attribute id="PhysicsTemplate" type="22" value="" />
+					<attribute id="Scale" type="6" value="1" />
+					<children>
+						<node id="Tags" />
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="PrefabChildren">
+							<attribute id="Object" type="22" value="01c7379d-fdd7-404b-a2a6-f40d5c0638bb" />
+						</node>
+						<node id="PrefabChildren">
+							<attribute id="Object" type="22" value="e25b1e24-6ee7-4101-a6d8-f7bd1e120523" />
+						</node>
+						<node id="PrefabChildren">
+							<attribute id="Object" type="22" value="01c7379d-fdd7-404b-a2a6-f40d5c0638bb" />
+						</node>
+						<node id="PrefabChildren">
+							<attribute id="Object" type="22" value="34499326-2fbb-4d47-b269-23682a86c2b2" />
+						</node>
+						<node id="PrefabChildrenTransforms">
+							<attribute id="Scale" type="6" value="1" />
+							<attribute id="Position" type="12" value="18.15033 0.4350109 -34.257294" />
+							<attribute id="RotationQuat" type="13" value="0 -0.7372853 0 0.6755816" />
+						</node>
+						<node id="PrefabChildrenTransforms">
+							<attribute id="Scale" type="6" value="1" />
+							<attribute id="Position" type="12" value="15.573059 0.49626923 -31.007751" />
+							<attribute id="RotationQuat" type="13" value="0 0.6164588 0 0.7873872" />
+						</node>
+						<node id="PrefabChildrenTransforms">
+							<attribute id="Scale" type="6" value="1" />
+							<attribute id="Position" type="12" value="17.346619 0.31552887 -36.309357" />
+							<attribute id="RotationQuat" type="13" value="0 -0.537315 0 0.84338164" />
+						</node>
+						<node id="PrefabChildrenTransforms">
+							<attribute id="Scale" type="6" value="1" />
+							<attribute id="Position" type="12" value="-51.07019 79.00154 101.57446" />
+							<attribute id="RotationQuat" type="13" value="0 0.7071068 0 0.70710677" />
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

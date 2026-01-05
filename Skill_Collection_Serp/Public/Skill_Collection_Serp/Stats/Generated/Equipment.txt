@@ -1,0 +1,10 @@
+new equipment "DeathKnight_A_Melee_Sword_2H"
+add equipmentgroup
+add equipment entry "_DeathKnight_A_Sword_2H"
+
+new equipment "Animals_Slug_Ice"
+add equipmentgroup
+add equipment entry "_Animals_Slug_Ice"
+add equipmentgroup
+add equipment entry "NoShield"
+

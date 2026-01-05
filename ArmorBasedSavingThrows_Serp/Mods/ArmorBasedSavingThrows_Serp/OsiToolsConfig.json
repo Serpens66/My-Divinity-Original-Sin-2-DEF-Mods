@@ -1,0 +1,8 @@
+{
+    "RequiredExtensionVersion": 60,
+    "ModTable": "ArmorBasedSavingThrows_Serp",
+    "FeatureFlags": [
+        "OsirisExtensions",
+        "Lua"
+    ]
+}

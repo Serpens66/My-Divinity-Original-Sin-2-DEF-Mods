@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="1" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="078fa222-ec8f-43c2-af1d-3144e5a00045" />
+					<attribute id="Name" type="23" value="BOOK_Skill_Helaene_Ranger_EvasiveShot" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="Type" type="22" value="item" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="VisualTemplate" type="22" value="f1349d23-301d-435e-a32a-747c6e8e5692" />
+					<attribute id="PhysicsTemplate" type="22" value="9273f547-686c-4e78-949c-aa0d6190d7f4" />
+					<attribute id="CastShadow" type="19" value="False" />
+					<attribute id="RecieveDecal" type="19" value="False" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="HasGameplayValue" type="19" value="False" />
+					<attribute id="CameraOffset" type="12" value="0 0 0" />
+					<attribute id="Opacity" type="6" value="0.225" />
+					<attribute id="DisplayName" type="28" handle="ResStr_2c2635a" value="Evasive Shot Skillbook" />
+					<attribute id="Icon" type="22" value="Item_BOOK_Spellbook_Ranger_A" />
+					<attribute id="Stats" type="22" value="SKILLBOOK_Helaene_Ranger_EvasiveShot" />
+					<attribute id="CanBePickedUp" type="19" value="True" />
+					<attribute id="CanBeMoved" type="19" value="True" />
+					<attribute id="CoverAmount" type="1" value="0" />
+					<attribute id="CanShootThrough" type="19" value="True" />
+					<attribute id="WalkThrough" type="19" value="True" />
+					<attribute id="Tooltip" type="1" value="2" />
+					<attribute id="maxStackAmount" type="4" value="50" />
+					<attribute id="UseSound" type="22" value="77cb79f2-1790-4958-8b4c-3a83a7ae75ff" />
+					<attribute id="BloodSurfaceType" type="22" value="SurfaceNone" />
+					<attribute id="Description" type="28" handle="h9a4b810cg2aa9g4e33gb8d6gcb8741d412f4" value="Hunting skills advance archers and rangers. A high level of Finesse improves these skills. Read this book to learn this skill." />
+					<attribute id="MeshProxy" type="22" value="" />
+					<children>
+						<node id="Tags">
+							<children>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="BOOK" />
+								</node>
+							</children>
+						</node>
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="AIBounds">
+							<attribute id="AIType" type="1" value="1" />
+							<attribute id="Min" type="12" value="-0.260443 -0.00289764 -0.425505" />
+							<attribute id="Max" type="12" value="0.264329 0.134658 0.325944" />
+							<attribute id="Radius" type="6" value="0.216147" />
+							<attribute id="Height" type="6" value="0.178634" />
+						</node>
+						<node id="GameMaster">
+							<attribute id="GameMasterSpawnSection" type="4" value="6" />
+							<attribute id="GameMasterSpawnSubSection" type="28" handle="hcf97a6e7ga0ebg4fe3ga4dcg393c9c87423f" value="Skillbooks" />
+						</node>
+						<node id="OnUsePeaceActions">
+							<children>
+								<node id="Action">
+									<attribute id="ActionType" type="4" value="13" />
+									<children>
+										<node id="Attributes">
+											<attribute id="SkillID" type="22" value="Projectile_Helaene_Ranger_EvasiveShot" />
+											<attribute id="Consume" type="19" value="True" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="OnDestroyActions" />
+						<node id="Equipment" />
+						<node id="InventoryList">
+							<children>
+								<node id="Inventorys">
+									<attribute id="InventoryItem" type="22" value="Empty" />
+								</node>
+							</children>
+						</node>
+						<node id="Scripts" />
+						<node id="ItemList" />
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

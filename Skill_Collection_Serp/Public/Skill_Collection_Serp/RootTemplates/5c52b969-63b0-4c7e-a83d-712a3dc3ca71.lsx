@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="1" revision="3" build="1" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="5c52b969-63b0-4c7e-a83d-712a3dc3ca71" />
+					<attribute id="Name" type="23" value="CC_MIRROR_TEMPLATE" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="Type" type="22" value="item" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="VisualTemplate" type="22" value="59da047c-2f08-483f-9cde-bbf1bedbed47" />
+					<attribute id="PhysicsTemplate" type="22" value="e04c2523-161f-4bc2-95eb-655307eb4ca3" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="DisplayName" type="28" handle="hcbe686f4gade1g46f5gb626g26cdd18d2ad8" value="Mirror" />
+					<attribute id="Icon" type="22" value="Portrait_Puz_AstarteMirror_A" />
+					<attribute id="CoverAmount" type="1" value="0" />
+					<attribute id="LoopSound" type="22" value="ed72058c-9d5c-4f24-bb20-15273691fe09" />
+					<attribute id="SoundAttenuation" type="2" value="50" />
+					<attribute id="BloodSurfaceType" type="22" value="SurfaceNone" />
+					<attribute id="MeshProxy" type="22" value="" />
+					<children>
+						<node id="Tags" />
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="AIBounds">
+							<attribute id="AIType" type="1" value="1" />
+							<attribute id="Min" type="12" value="-1.94629 -0.00497269 -0.641147" />
+							<attribute id="Max" type="12" value="1.94629 3.351 0.641147" />
+							<attribute id="Radius" type="6" value="1.32427" />
+							<attribute id="Height" type="6" value="3.35598" />
+						</node>
+						<node id="GameMaster">
+							<attribute id="GameMasterSpawnSection" type="4" value="-1" />
+							<attribute id="GameMasterSpawnSubSection" type="28" handle="he5fd17f0gc2beg4f70g965bg8e55116431bf" value="he5fd17f0gc2beg4f70g965bg8e55116431bf;0" />
+						</node>
+						<node id="OnUsePeaceActions">
+							<children>
+								<node id="Action">
+									<attribute id="ActionType" type="4" value="8" />
+									<children>
+										<node id="Attributes" />
+									</children>
+								</node>
+								<node id="Action">
+									<attribute id="ActionType" type="4" value="26" />
+									<children>
+										<node id="Attributes">
+											<attribute id="ActivateSoundEvent" type="22" value="54f3b3e6-5a00-432a-93a8-3055e922105d" />
+											<attribute id="PlayOnHUD" type="19" value="False" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="OnDestroyActions" />
+						<node id="Equipment" />
+						<node id="InventoryList">
+							<children>
+								<node id="Inventorys">
+									<attribute id="InventoryItem" type="22" value="Empty" />
+								</node>
+							</children>
+						</node>
+						<node id="Scripts">
+							<children>
+								<node id="Script">
+									<attribute id="UUID" type="22" value="1c90b06a-d293-476e-81b8-0e3a87aa1a12" />
+									<children>
+										<node id="Parameters">
+											<children>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="HardcoreOnly" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="MirrorUseEvent" />
+													<attribute id="Type" type="4" value="3" />
+													<attribute id="Value" type="23" value="GEN_Homestead_CharCreationMirror" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="PlayerPositionAfterCreation" />
+													<attribute id="Type" type="4" value="7" />
+													<attribute id="Value" type="23" value="S_LV_CreationMirror_TeleportBack_4e9e2d67-d3ce-4976-b8e6-4e1ee590c683" />
+												</node>
+											</children>
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="ItemList" />
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

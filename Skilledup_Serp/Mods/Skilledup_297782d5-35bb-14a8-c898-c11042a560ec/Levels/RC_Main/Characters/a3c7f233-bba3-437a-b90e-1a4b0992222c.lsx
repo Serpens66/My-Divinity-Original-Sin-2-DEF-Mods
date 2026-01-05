@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="1" revision="8" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="a3c7f233-bba3-437a-b90e-1a4b0992222c" />
+					<attribute id="Name" type="23" value="Madam Historia_002" />
+					<attribute id="LevelName" type="22" value="RC_Main" />
+					<attribute id="Type" type="22" value="character" />
+					<attribute id="TemplateName" type="22" value="10e31517-2610-46c8-b683-e7aef838d7e0" />
+					<children>
+						<node id="Transform">
+							<attribute id="Scale" type="6" value="1" />
+							<attribute id="Position" type="12" value="276.85303 7.7937937 -27.354088" />
+							<attribute id="RotationQuat" type="13" value="0 0.4077823 0 0.91307926" />
+						</node>
+						<node id="LayerList">
+							<children>
+								<node id="Layers">
+									<children>
+										<node id="Object">
+											<attribute id="MapKey" type="22" value="RC_Main" />
+											<children>
+												<node id="MapValue" />
+											</children>
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

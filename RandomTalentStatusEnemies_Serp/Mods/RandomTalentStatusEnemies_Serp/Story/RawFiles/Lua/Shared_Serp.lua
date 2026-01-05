@@ -3,10 +3,15 @@
 
 SharedFns = {}
 
+SharedFns.HowToAddRandomTalents = "Live" 
+-- OnStats: on game load and all units sharing the same stats will have the same talents,
+-- Live: on savegame load, but every unit get their own random talents TODO how to loop over everyone?!
+-- OnCombat: when entering combat with the units they get their own random talents
+
 
 -- https://docs.larian.game/Talent_list
 -- coutcommended most Weapon requirements, since 1) in stats we see no weapon and 2) slimes or so also dont use weapons (but they also dont have any ability..)
-local num_talents = 2
+SharedFns.num_talents = 2
 local RandomTalents = {
   Ambidextrous={weight=2,reqWeaponTypes={"None"}}, -- Offhand must be free
   AttackOfOpportunity={weight=5,reqAbilities={"WarriorLore"} },--,reqWeaponTypes={"None","Knife","Sword","Axe","Club","Spear","Staff"}}, -- any melee
@@ -41,7 +46,7 @@ local RandomTalents = {
   Vitality ={weight= 2}, -- +20%HP
   BeastMaster ={weight=4,reqAbilities={"Summoning"}},
   Criticals={weight=2},
-  IncreasedArmor={weight=2},
+  IncreasedArmor={weight=3},
   Damage={weight=2},
   ResistStun={weight=2},
   ResistKnockdown={weight=2},
@@ -275,32 +280,27 @@ end
 -- ClearTag 	(GUIDSTRING)_Source, (STRING)_Tag
 -- TODO sicherstellen, dass Talentpoint nicht mehrfach geaddet wird
 SharedFns.AddTalent = function(charGUID,Talent,compensateTalentPoint,Tag,char)
+  local BuggedTalents = {"Throwing", "WandCharge","BeastMaster","PainDrinker","DeathfogResistant","Sourcerer","Rag"} -- talents which dont work properly with CharacterAddTalent (noticeable that they have no effect, not displayed and also not removeable). But as Boost they seem to work (at least tested with BeastMaster): only the first 3 are added at all, while most likely only BeastMaster works.
   if Talent and Talent~="None" then
     char = char or Ext.Entity.GetCharacter(charGUID)
-    -- NRD_CharacterSetPermanentBoostTalent fügt Talent zwar zu, aber es wird nicht in UI angezeigt
-    -- UND man sieht auch nicht die Auswirkungen! also zb bei Zombie sieht man die Giftresistenz nicht beim examine!
-    -- Also lieber doch nicht nutzen..
-    -- if char.PlayerCustomData==nil then
-      -- Osi.NRD_CharacterSetPermanentBoostTalent(charGUID,Talent,1)--(CHARACTERGUID)_Character, (STRING)_Talent, (INTEGER)_HasTalent (_HasTalent=0 heißt entfernen und =1 heißt zufügen)
-      -- Osi.CharacterSetForceSynch(charGUID,1)
-      -- Ext.Print("Talent "..tostring(Talent).." was added (invisible..) to NPC "..tostring(charGUID))
-    -- end
-    if char.PlayerCustomData then
-      Ext.Print("Trying add Talent "..tostring(Talent).." to "..tostring(charGUID))
-      if not Tag or Osi.IsTagged(charGUID,Tag)==0 then
-        if (char and not char.Stats["TALENT_"..Talent]) or (not char and Osi.CharacterHasTalent(charGUID, Talent) == 0) then
+    Ext.Print("Trying add Talent "..tostring(Talent).." to "..tostring(charGUID))
+    if not Tag or Osi.IsTagged(charGUID,Tag)==0 then
+      if (char and not char.Stats["TALENT_"..Talent]) or (not char and Osi.CharacterHasTalent(charGUID, Talent) == 0) then
+        if char.PlayerCustomData==nil or SharedFns.table_contains_value(BuggedTalents,Talent) then -- NPC
+          Osi.NRD_CharacterSetPermanentBoostTalent(charGUID,Talent,1)--(CHARACTERGUID)_Character, (STRING)_Talent, (INTEGER)_HasTalent (_HasTalent=0 heißt entfernen und =1 heißt zufügen) -- der char TALENT_ check kann dies auch finden, der CharacterHasTalent nicht
+          Osi.CharacterAddAttribute(charGUID, "Dummy", 0) -- to sync to clients
+        elseif char.PlayerCustomData then
           Osi.CharacterAddTalent(charGUID, Talent)
-          Ext.Print("Talent "..tostring(Talent).." was added to "..tostring(charGUID))
-        elseif compensateTalentPoint then
-          Osi.CharacterAddTalentPoint(charGUID, 1)
-          Ext.Print(tostring(charGUID).." already had Talent "..tostring(Talent)..". Got Talentpoints instead")
         end
-        if Tag then
-          Osi.SetTag(charGUID,Tag)
-        end
+        Ext.Print("Talent "..tostring(Talent).." was added to "..tostring(charGUID))
+      elseif compensateTalentPoint then
+        Osi.CharacterAddTalentPoint(charGUID, 1)
+        Ext.Print(tostring(charGUID).." already had Talent "..tostring(Talent)..". Got Talentpoints instead")
+      end
+      if Tag then
+        Osi.SetTag(charGUID,Tag)
       end
     end
-    
   end
 end
 
@@ -317,25 +317,41 @@ end
 SharedFns.OnStatsLoaded = function(e)-- Client only
   
   -- RandomTalentStatusEnemies_Serp
-  local exclude = {"_Hero","StoryPlayer","CasualPlayer","NormalPlayer","HardcorePlayer","StoryNPC_Character","CasualNPC","NormalNPC","HardcoreNPC"}
-  for i,name in pairs(Ext.Stats.GetStats("Character")) do
+  -- Every NPC gets AttackOfOpportunity and ViolentMagic
+  local npc_difficulties = {"StoryNPC_Character","CasualNPC","NormalNPC","HardcoreNPC"}
+  for i,name in ipairs(npc_difficulties) do
     local MyStat = Ext.Stats.GetRaw(name)
-    if not SharedFns.table_contains_value(exclude,name) and not name:find("Hero") and not name:find("Player") then
-      talents = MyStat["Talents"]
-      newtalents = SharedFns.GetRandomTalents(nil,nil,num_talents,MyStat)
-      if #newtalents>0 then
-        newtalents = table.concat(newtalents, ";")
-        if not string.find(talents,newtalents) then
-          if talents and talents~="" then
-            newtalents = tostring(talents)..";"..tostring(newtalents)
+    talents = MyStat["Talents"] or ""
+    newtalents = {"AttackOfOpportunity"}
+    if SharedFns.HasAnyAbility(nil,{"EarthSpecialist","AirSpecialist","WaterSpecialist","FireSpecialist","Necromancy","Summoning"},MyStat) then
+      table.insert(newtalents,"ViolentMagic")
+    end
+    for _,newtalent in ipairs(newtalents) do
+      if not string.find(talents,newtalent) then
+        talents = tostring(talents)..";"..tostring(newtalent)
+      end
+    end
+    Ext.Stats.GetRaw(name)["Talents"] = talents
+  end
+  if SharedFns.HowToAddRandomTalents == "OnStats" then
+    local exclude = {"_Hero","StoryPlayer","CasualPlayer","NormalPlayer","HardcorePlayer","StoryNPC_Character","CasualNPC","NormalNPC","HardcoreNPC"}
+    for i,name in pairs(Ext.Stats.GetStats("Character")) do
+      local MyStat = Ext.Stats.GetRaw(name)
+      if not SharedFns.table_contains_value(exclude,name) and not name:find("Hero") and not name:find("Player") then
+        talents = MyStat["Talents"]
+        newtalents = SharedFns.GetRandomTalents(nil,nil,SharedFns.num_talents,MyStat)
+        if #newtalents>0 then
+          newtalents = table.concat(newtalents, ";")
+          if not string.find(talents,newtalents) then
+            if talents and talents~="" then
+              newtalents = tostring(talents)..";"..tostring(newtalents)
+            end
+            Ext.Stats.GetRaw(name)["Talents"] = newtalents--"Zombie;WalkItOff"
           end
-          Ext.Stats.GetRaw(name)["Talents"] = newtalents--"Zombie;WalkItOff"
-          Ext.Print("Added Talents to",name,newtalents)
         end
       end
     end
   end
-
 end
 
 
@@ -348,10 +364,12 @@ SharedFns.OnUnitCombatEntered = function(charGUID,combatID)
   local char = Ext.Entity.GetCharacter(charGUID)
   -- Random Talents/Status for not-ally
   if char and not SharedFns.IsPlayerAlly(charGUID) then -- neutral NPC and Enemies
-    -- chosen = SharedFns.GetRandomTalents(charGUID,char,num_talents)
-    -- for i,Talent in ipairs(chosen) do -- outcommented because NPCs can not properly get Talents midgame, using OnStatsLoaded instead
-      -- SharedFns.AddTalent(charGUID,Talent,false,"NPCRandomTalent_"..tostring(i),char) -- only added once per NPC by using the Tag. that way no need to remove it on leave combat
-    -- end
+    if SharedFns.HowToAddRandomTalents == "OnCombat" then
+      chosen = SharedFns.GetRandomTalents(charGUID,char,SharedFns.num_talents)
+      for i,Talent in ipairs(chosen) do
+        SharedFns.AddTalent(charGUID,Talent,false,"NPCRandomTalent_"..tostring(i),char) -- only added once per NPC by using the Tag. that way no need to remove it on leave combat
+      end
+    end
     -- Random Status
     local chosen = 0
     notstop = 0

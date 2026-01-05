@@ -1,0 +1,5 @@
+Enabled eine Reihe von Mods und Giftbags (siehe meta.lsx).
+Diese müssen auch im Modordner sein.
+
+Aber damit alles korrekt funktioniert sollten neben der ModCollection auch mind. aktiv sein:
+LeaderLib, z_Epip und die Giftbags Animal Empathy und Divine Talents (weil die Talent changes sonst nicht im charactersheet angezeigt werden)

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="1" revision="8" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="c9129f00-1abb-4498-a948-361163037f72" />
+					<attribute id="Name" type="23" value="Silent Trader_000" />
+					<attribute id="LevelName" type="22" value="RC_Main" />
+					<attribute id="Type" type="22" value="character" />
+					<attribute id="TemplateName" type="22" value="e35b700a-3d16-455f-9e98-b7adb251f792" />
+					<children>
+						<node id="Transform">
+							<attribute id="Scale" type="6" value="1" />
+							<attribute id="Position" type="12" value="500.92596 9.106888 -155.95706" />
+							<attribute id="RotationQuat" type="13" value="0 0.69279253 0 0.72113705" />
+						</node>
+						<node id="LayerList">
+							<children>
+								<node id="Layers">
+									<children>
+										<node id="Object">
+											<attribute id="MapKey" type="22" value="RC_Main" />
+											<children>
+												<node id="MapValue" />
+											</children>
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

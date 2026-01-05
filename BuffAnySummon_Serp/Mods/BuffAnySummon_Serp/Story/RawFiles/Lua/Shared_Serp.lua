@@ -2,10 +2,6 @@
 
 SharedFns = {}
 
--- TODO:
--- evtl. Tooltip Hack der einfach am Ende des Toltips zufügt: "Target any Summon" oderso
-
-
 
 -- #######################################################
 
@@ -93,7 +89,7 @@ SharedFns.OnStatsLoaded = function(e)
     if TargetConditions and type(TargetConditions)=="string" and string.find(TargetConditions,Target_putAfter) then
       local new = TargetConditions:gsub(Target_putAfter,"%0"..Target_insert) -- %0 refers to the entire match found by gsub
       new = new:gsub("MySummon&", "") -- remove restriction to own summons -- ist "MySummon&" obwohl in Skill_Target "MySummon;" steht: MySummon&(Tagged:INCARNATE_S|Tagged:INCARNATE_G|Tagged:SUMMON|Tagged:DRAGON)&!Spirit
-      Ext.Print("Change TargetConditions ",name," to ",new,". old was: ",TargetConditions)
+      -- Ext.Print("Change TargetConditions ",name," to ",new,". old was: ",TargetConditions)
       MyStat["TargetConditions"] = new
     end
 
@@ -129,12 +125,221 @@ SharedFns.OnStatsLoaded = function(e)
           summonentry.Condition = "Tagged:SUMMON"
           summonentry.Action = "BUFFALL_"..INCARNATE_S_entry.Action
           table.insert(SkillProperties,summonentry)
-          Ext.Print("Change SkillProperties ",name,dragonentry.Action)
+          -- Ext.Print("Change SkillProperties ",name,dragonentry.Action)
           MyStat["SkillProperties"] = SkillProperties
         end
       end
     end
   end
+  
+  -- IceInfusion
+  local MyStat = Ext.Stats.Get("INF_BLESSED_ICE")
+  MyStat.DisplayNameRef = "|Blessed Water Infusion|"
+  MyStat.StatusEffect = "RS3_FX_Char_ElementalDevil_Water_A_01:Dummy_BodyFX"
+  MyStat.Material = "bb9f1adc-f4c9-426b-ac6b-f550c02b4ad6"
+  local MyStat = Ext.Stats.Get("INF_BLESSED_ICE_G")
+  MyStat.StatusEffect = "RS3_FX_Char_ElementalDevil_Giant_Water_A_01:Dummy_BodyFX;RS3_FX_Char_ElementalDevil_Giant_Water_A_01_Head:Dummy_StatusFX;RS3_FX_Char_ElementalDevil_Water_A_02:Dummy_R_HandFX,Dummy_L_HandFX"
+  MyStat.Material = "d14d655e-3d4b-42a4-953a-0e270e352865"
+  local MyStat = Ext.Stats.Get("Target_IceInfusion")
+  MyStat.Icon = "Skill_Water_WaterInfusion"
+  MyStat.DisplayNameRef = "|Blessed Water Infusion|"
+  MyStat.DescriptionRef = "Change Incarnate's element to blessed water, unlocking Restoration and Steam Lance."
+  
+  local MyStat = Ext.Stats.Get("Summon_Incarnate")
+  local SkillProperties = MyStat["SkillProperties"] -- in MyStat ists eine table, daher einfacher strukturiert, als die userdata in GetRaw
+  if SkillProperties and type(SkillProperties)=="table" then
+    local INCARNATE_S_entry = nil
+    for _,entry in pairs(SkillProperties) do
+      if entry.Condition=="InSurface:SurfaceBlood&Tagged:INCARNATE_S" then
+        INCARNATE_S_entry = entry -- just to have a sample
+        break
+      end
+    end
+    if INCARNATE_S_entry then
+      local newentry = deepcopy(INCARNATE_S_entry)
+      newentry.Condition = "InSurface:SurfaceWaterFrozen&Tagged:INCARNATE_S"
+      newentry.Action = "INF_ICE"
+      table.insert(SkillProperties,newentry)
+      newentry = deepcopy(INCARNATE_S_entry)
+      newentry.Condition = "InSurface:SurfaceWaterFrozen&Tagged:INCARNATE_G"
+      newentry.Action = "INF_ICE_G"
+      table.insert(SkillProperties,newentry)
+      MyStat["SkillProperties"] = SkillProperties
+    end
+  end
+  
+  
+-- for _,entry in pairs(Ext.Stats.Get("Summon_Incarnate").SkillProperties) do print("erste",_,entry); for k,v in pairs(entry) do print("zweite",k,v) end end
+  
+-- erste   1       table: 00007FF3FAE24DC8
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_ICE
+-- zweite  SurfaceBoosts   table: 00007FF3FAE24E00
+-- zweite  Duration        -6.0
+-- zweite  Condition       InSurface:SurfaceWaterFrozen&Tagged:INCARNATE_S
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   2       table: 00007FF3FAE24F18
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_BLOOD_G
+-- zweite  SurfaceBoosts   table: 00007FF3FAE24F50
+-- zweite  Duration        -6.0
+-- zweite  Condition       InSurface:SurfaceBlood&Tagged:INCARNATE_G
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   3       table: 00007FF3FAE24F88
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_FIRE_G
+-- zweite  SurfaceBoosts   table: 00007FF3FAE24FC0
+-- zweite  Duration        -6.0
+-- zweite  Condition       Tagged:INCARNATE_G&(InSurface:SurfaceFire|InSurface:SurfaceLava)
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   4       table: 00007FF3FAE24FF8
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_POISON
+-- zweite  SurfaceBoosts   table: 00007FF3FAE25030
+-- zweite  Duration        -6.0
+-- zweite  Condition       InSurface:SurfacePoison&Tagged:INCARNATE_S
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   5       table: 00007FF3FAE25068
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_WATER
+-- zweite  SurfaceBoosts   table: 00007FF3FAE250A0
+-- zweite  Duration        -6.0
+-- zweite  Condition       (InSurface:SurfaceWater|InSurface:SurfaceDeepwater)&Tagged:INCARNATE_S
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   6       table: 00007FF3FAE250D8
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_BLOOD
+-- zweite  SurfaceBoosts   table: 00007FF3FAE25110
+-- zweite  Duration        -6.0
+-- zweite  Condition       InSurface:SurfaceBlood&Tagged:INCARNATE_S
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   7       table: 00007FF3FAE25148
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_FIRE
+-- zweite  SurfaceBoosts   table: 00007FF3FAE25180
+-- zweite  Duration        -6.0
+-- zweite  Condition       Tagged:INCARNATE_S&(InSurface:SurfaceFire|InSurface:SurfaceLava)
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   8       table: 00007FF3FAE251B8
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_WATER_G
+-- zweite  SurfaceBoosts   table: 00007FF3FAE251F0
+-- zweite  Duration        -6.0
+-- zweite  Condition       InSurface:SurfaceWater&Tagged:INCARNATE_G
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   9       table: 00007FF3FAE25228
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_ELECTRIC_G
+-- zweite  SurfaceBoosts   table: 00007FF3FAE25260
+-- zweite  Duration        -6.0
+-- zweite  Condition       Tagged:INCARNATE_G&(InSurface:SurfaceWaterElectrified|InSurface:SurfaceBloodElectrified)
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   10      table: 00007FF3FAE25298
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_ICE_G
+-- zweite  SurfaceBoosts   table: 00007FF3FAE252D0
+-- zweite  Duration        -6.0
+-- zweite  Condition       InSurface:SurfaceWaterFrozen&Tagged:INCARNATE_G
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   11      table: 00007FF3FAE25308
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_ELECTRIC
+-- zweite  SurfaceBoosts   table: 00007FF3FAE25340
+-- zweite  Duration        -6.0
+-- zweite  Condition       Tagged:INCARNATE_S&(InSurface:SurfaceWaterElectrified|InSurface:SurfaceBloodElectrified)
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   12      table: 00007FF3FAE25378
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_OIL_G
+-- zweite  SurfaceBoosts   table: 00007FF3FAE253B0
+-- zweite  Duration        -6.0
+-- zweite  Condition       InSurface:SurfaceOil&Tagged:INCARNATE_G
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   13      table: 00007FF3FAE253E8
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_POISON_G
+-- zweite  SurfaceBoosts   table: 00007FF3FAE25420
+-- zweite  Duration        -6.0
+-- zweite  Condition       InSurface:SurfacePoison&Tagged:INCARNATE_G
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+-- erste   14      table: 00007FF3FAE25458
+-- zweite  StatusChance    1.0
+-- zweite  Type    Status
+-- zweite  StatsId
+-- zweite  Arg4    -1
+-- zweite  Arg5    -1
+-- zweite  Action  INF_OIL
+-- zweite  SurfaceBoosts   table: 00007FF3FAE25490
+-- zweite  Duration        -6.0
+-- zweite  Condition       InSurface:SurfaceOil&Tagged:INCARNATE_S
+-- zweite  SurfaceBoost    false
+-- zweite  Context stats::PropertyContext(Target)
+  
   
 end
 
@@ -176,11 +381,18 @@ end
     
 
 -- add the 2 new infusion skills to every summoner player character
--- chars can have the ability from equipment, but I think its not worth to remove the skills if they loose summoning, since they can not cast it anyways then
-SharedFns.AddSummonSkills = function(charGUID)
+-- chars can have the ability from equipment
+SharedFns.ChangeSummonSkills = function(charGUID,summoninglevel)
+  summoninglevel = summoninglevel or Osi.CharacterGetAbility(charGUID,"Summoning")
   for _,skill in ipairs({"Target_BloodInfusion","Target_OilInfusion"}) do
-    if Osi.CharacterGetAbility(charGUID,"Summoning")>=1 and Osi.CharacterHasSkill(charGUID,skill)==0 then
-      Osi.CharacterAddSkill(charGUID,skill)
+    if summoninglevel>=1 then
+      if Osi.CharacterHasSkill(charGUID,skill)==0 then
+        Osi.CharacterAddSkill(charGUID,skill)
+      end
+    else
+      if Osi.CharacterHasSkill(charGUID,skill)==1 then
+        Osi.CharacterRemoveSkill(charGUID,skill)
+      end
     end
   end
 end
@@ -188,14 +400,25 @@ end
 SharedFns.OnSaveLoaded = function(major, minor, patch, build)
   local players = SharedFns.GetAllPlayerChars()
   for _,charGUID in ipairs(players) do
-    SharedFns.AddSummonSkills(charGUID)
+    SharedFns.ChangeSummonSkills(charGUID)
   end
 end
 -- event also called for summons!
 SharedFns.OnCharacterJoinedParty = function(charGUID)
   if SharedFns.IsPlayerMainChar(charGUID) then
-    SharedFns.AddSummonSkills(charGUID)
+    SharedFns.ChangeSummonSkills(charGUID)
   end
 end
 
+-- Ext.Stats.EnumLabelToIndex("AbilityType","RangerLore")
+-- Ext.Stats.EnumIndexToLabel("AbilityType",2)
+-- (CHARACTERGUID)_Character, (STRING)_Ability, (INTEGER)_OldBaseValue, (INTEGER)_NewBaseValue)
+-- Is not called for changes by equipment
+SharedFns.OnCharacterBaseAbilityChanged = function(charGUID,ability,old,new)
+  -- Ext.Print("OnCharacterBaseAbilityChanged",charGUID,ability,old,new)
+  -- local ability = Ext.Stats.EnumIndexToLabel("AbilityType",ability) -- is already string
+  if ability=="Summoning" then
+    SharedFns.ChangeSummonSkills(charGUID,new)
+  end
+end
 

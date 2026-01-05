@@ -1,0 +1,6 @@
+new entry "Stats_FogBlind_Serp"
+type "Potion"
+data "Act" "1"
+data "Act part" "0"
+data "AccuracyBoost" "-10"
+data "StatusIcon" "statIcons_Blind"

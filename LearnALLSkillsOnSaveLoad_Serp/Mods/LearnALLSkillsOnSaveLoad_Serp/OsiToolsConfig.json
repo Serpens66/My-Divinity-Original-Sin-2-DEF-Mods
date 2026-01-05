@@ -1,0 +1,8 @@
+{
+    "RequiredExtensionVersion": 56,
+    "ModTable": "LearnALLSkillsOnSaveLoad_Serp",
+    "FeatureFlags": [
+        "OsirisExtensions",
+        "Lua"
+    ]
+}

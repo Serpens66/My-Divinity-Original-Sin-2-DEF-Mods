@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="1" revision="8" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="10e31517-2610-46c8-b683-e7aef838d7e0" />
+					<attribute id="Name" type="23" value="Madam Historia" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="Type" type="22" value="character" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="VisualTemplate" type="22" value="466d39b0-519d-4e00-809b-2da4ee3dbfc4" />
+					<attribute id="PhysicsTemplate" type="22" value="9ac6e6fb-ee2a-4df4-8ce8-8be70565a85a" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="Icon" type="22" value="859f6b8d-c5da-4ace-97a4-2c9ee9ef5939_9223380833451114500-FemaleHero_(Icon_Elf_Female)" />
+					<attribute id="Stats" type="22" value="ElfFemaleHero" />
+					<attribute id="SkillSet" type="22" value="Class_Witch_Act2" />
+					<attribute id="Equipment" type="22" value="CivilianClothes" />
+					<attribute id="WalkSpeed" type="6" value="2" />
+					<attribute id="ClimbAttachSpeed" type="6" value="4" />
+					<attribute id="ClimbLoopSpeed" type="6" value="4" />
+					<attribute id="ClimbDetachSpeed" type="6" value="2.44" />
+					<attribute id="RunSpeed" type="6" value="3.75" />
+					<attribute id="HitFX" type="22" value="RS3_FX_GP_Combat_Hit_Blood_01_Medium" />
+					<attribute id="EquipmentClass" type="1" value="5" />
+					<attribute id="DefaultDialog" type="22" value="Madam Historia" />
+					<attribute id="BloodSurfaceType" type="22" value="SurfaceBlood" />
+					<attribute id="ExplodedResourceID" type="22" value="36bb4f77-4ea4-4741-a64c-3e9565b1438b" />
+					<attribute id="ExplosionFX" type="22" value="RS3_FX_GP_Combat_CorpseExplosion_Blood_01_Small" />
+					<attribute id="InfluenceTreasureLevel" type="19" value="False" />
+					<attribute id="LevelOverride" type="4" value="20" />
+					<attribute id="LightID" type="22" value="3faa1c66-5d35-4e87-868e-d124168b660f" />
+					<attribute id="SpeakerGroup" type="23" value="3d751bf0-8a47-4855-9392-cab6aad7e89e" />
+					<attribute id="GeneratePortrait" type="23" value="Icon_Elf_Female" />
+					<attribute id="VisualSetResourceID" type="22" value="859f6b8d-c5da-4ace-97a4-2c9ee9ef5939" />
+					<attribute id="Random" type="24" value="9223380833451114500" />
+					<attribute id="SoftBodyCollisionTemplate" type="22" value="aed517e5-4215-4d90-85aa-7c99579e0133" />
+					<attribute id="RagdollTemplate" type="22" value="73dc11c7-de80-4266-9f35-5d24d4ce81d6" />
+					<attribute id="Alignment" type="22" value="Neutral NPC" />
+					<children>
+						<node id="Tags">
+							<children>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="FEMALE" />
+								</node>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="ELF" />
+								</node>
+							</children>
+						</node>
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="AIBounds">
+							<attribute id="AIType" type="1" value="2" />
+							<attribute id="Radius" type="6" value="0.26" />
+							<attribute id="Height" type="6" value="1.8" />
+						</node>
+						<node id="GameMaster">
+							<attribute id="GameMasterSpawnSection" type="4" value="-1" />
+							<attribute id="GameMasterSpawnSubSection" type="28" handle="he5fd17f0gc2beg4f70g965bg8e55116431bf" value="he5fd17f0gc2beg4f70g965bg8e55116431bf;0" />
+						</node>
+						<node id="OnDeathActions">
+							<children>
+								<node id="Action">
+									<attribute id="ActionType" type="4" value="10" />
+									<children>
+										<node id="Attributes">
+											<attribute id="SurfaceType" type="22" value="SurfaceBlood" />
+											<attribute id="LifeTime" type="6" value="0" />
+											<attribute id="Timeout" type="6" value="0" />
+											<attribute id="TotalCells" type="4" value="13" />
+											<attribute id="CellAtGrow" type="4" value="4" />
+											<attribute id="GrowTimer" type="6" value="0.1" />
+											<attribute id="ExternalCauseAsSurfaceOwner" type="19" value="True" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="SkillList" />
+						<node id="ItemList" />
+						<node id="Scripts">
+							<children>
+								<node id="Script">
+									<attribute id="UUID" type="22" value="5bc80992-a7f6-4da6-83e2-3d276384d8f7" />
+									<children>
+										<node id="Parameters" />
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="Treasures">
+							<attribute id="TreasureItem" type="22" value="CheatBooks" />
+						</node>
+						<node id="TradeTreasures">
+							<attribute id="TreasureItem" type="22" value="CheatBooks" />
+						</node>
+						<node id="PickingPhysicsTemplates">
+							<attribute id="MapKey" type="22" value="CharacterLyingPicking" />
+							<attribute id="MapValue" type="22" value="4e5ab985-d9c7-40d5-8e49-a01f344def27" />
+						</node>
+						<node id="PickingPhysicsTemplates">
+							<attribute id="MapKey" type="22" value="CharacterSittingPicking" />
+							<attribute id="MapValue" type="22" value="c456449b-de8f-412a-b1ee-1b2cb632d6a8" />
+						</node>
+						<node id="PickingPhysicsTemplates">
+							<attribute id="MapKey" type="22" value="CharacterDeadPicking" />
+							<attribute id="MapValue" type="22" value="521862d1-620a-44e3-9cac-c55cb89ec0bb" />
+						</node>
+						<node id="FootStepInfos">
+							<children>
+								<node id="FootStepInfo">
+									<attribute id="Name" type="23" value="Footstep_Left" />
+									<attribute id="FootPrintEffectName" type="23" value="RS3_FX_GP_Footsteps_Human_L" />
+									<attribute id="FootSmearEffectName" type="23" value="RS3_FX_GP_Footsmear_Human_L" />
+									<attribute id="FootSlideEffectName" type="23" value="" />
+									<attribute id="FootHearingEffectName" type="23" value="" />
+									<attribute id="FootBoneName" type="22" value="Dummy_L_Foot_01" />
+									<attribute id="FootSoundEventName" type="22" value="Movement" />
+								</node>
+								<node id="FootStepInfo">
+									<attribute id="Name" type="23" value="Footstep_Right" />
+									<attribute id="FootPrintEffectName" type="23" value="RS3_FX_GP_Footsteps_Human_R" />
+									<attribute id="FootSmearEffectName" type="23" value="RS3_FX_GP_Footsmear_Human_R" />
+									<attribute id="FootSlideEffectName" type="23" value="" />
+									<attribute id="FootHearingEffectName" type="23" value="" />
+									<attribute id="FootBoneName" type="22" value="Dummy_R_Foot_01" />
+									<attribute id="FootSoundEventName" type="22" value="Movement" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>
