@@ -4,6 +4,8 @@
 -- So it does not work this way... alternative is to either use my old code below or alter the templates the old way
  -- by overwriting the templates completely
 
+--[[
+
 -- SurfaceWater={s="WET",c=0.30,d=6,f=0,chancex2if="BURNING",forceif="BURNING"},SurfaceBlood={s="WET",c=0.20,d=6,f=0,chancex2if="BURNING",forceif="BURNING"},
   -- SurfaceWaterFrozen={s="CHILLED",c=0.20,d=6,f=0,chancex2if="WET",forceif="WET"},SurfaceBloodFrozen={s="CHILLED",c=0.20,d=6,f=0,chancex2if="WET",forceif="WET"},
   -- AnyCloud={s="FOGBLIND_SERP",c=1.0,d=6,f=1},
@@ -124,7 +126,7 @@ Ext.Events.SessionLoaded:Subscribe(function (e)
     
 end)
 
-
+--]]--
 
 
 -- Surface Template:
@@ -319,6 +321,18 @@ end)
 -- ##########################################################
 
 -- old code which applies stati via lua. But I think its better to use the vanilla mechnics
+-- if used, would need to check if the INSURFACE also applies while the character is hovering and should not be affected by surfaces
+
+-- function SharedFns.RegisterProtectedOsirisListener(event, arity, state, callback)
+	-- Ext.Osiris.RegisterListener(event, arity, state, function(...)
+		-- if Ext.Server.GetGameState() == "Running" then
+			-- local b,err = xpcall(callback, debug.traceback, ...)
+			-- if not b then
+				-- Ext.PrintError("ERROR: ",err)
+			-- end
+		-- end
+	-- end)
+-- end
 
 --[[
 -- SurfaceBasedStati
@@ -376,7 +390,7 @@ SharedFns.OnCharacterStatusApplied = function(charGUID, status, cause)
   end
 end
 SharedFns.OnCharacterStatusRemoved = function(charGUID, status, nilSource)
-  if status=="INSURFACE" then -- Apply Wet with a chance when on water/blood
+  if status=="INSURFACE" then
     local surfaces = {
       Ground = Osi.GetSurfaceGroundAt(charGUID), -- [in](GUIDSTRING)_Target, [out](STRING)_Surface -- SurfaceWater SurfaceWaterFrozen
       Cloud = Osi.GetSurfaceCloudAt(charGUID), -- [in](GUIDSTRING)_Target, [out](STRING)_Surface -- SurfaceWaterCloud
@@ -388,4 +402,26 @@ SharedFns.OnCharacterStatusRemoved = function(charGUID, status, nilSource)
   
 end
 --]]--
+
+
+local function RegisterProtectedOsirisListener(event, arity, state, callback)
+	Ext.Osiris.RegisterListener(event, arity, state, function(...)
+		if Ext.Server.GetGameState() == "Running" then
+			local b,err = xpcall(callback, debug.traceback, ...)
+			if not b then
+				Ext.PrintError("ERROR: ",err)
+			end
+		end
+	end)
+end
+-- remove FOGBLIND_SERP on surface left (does not trigger when leaving fog and entering water..., only on no-surface it fires)
+-- so we will add to every surface in template that it removes FOGBLIND_SERP
+RegisterProtectedOsirisListener("CharacterStatusRemoved", 3, "after", function(charGUID, status, nilSource)
+  if status=="INSURFACE" then
+    local Cloud = Osi.GetSurfaceCloudAt(charGUID)
+    if Cloud=="SurfaceNone" and Osi.HasActiveStatus(charGUID,"FOGBLIND_SERP")==1 then
+      Osi.RemoveStatus(charGUID,"FOGBLIND_SERP")
+    end
+  end
+end)
 
