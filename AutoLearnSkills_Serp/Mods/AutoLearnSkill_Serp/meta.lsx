@@ -19,7 +19,7 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" value="Serp" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
-                    <attribute id="Description" value="Automatically learn all skills which have a skillbook when reaching the level required for the skillbook. Also works for skills added by mods. Requires Epip and Script Extender v60." type="30" />
+                    <attribute id="Description" value="Automatically learn all skills (for which a craftable/buyable skillbook exists) when reaching the level required and having the abilities for the skill/skillbook. Also works for skills added by mods. Supports the 'unlearn' feature from Epip, so the mod wont teach you again the skills you unlearned on purpose, unless you did a respec (entered magic mirror). Since skillbooks have no use with this mod, their price is reduced to 0. Requires Epip and Script Extender v60." type="30" />
                     <attribute id="Folder" value="AutoLearnSkill_Serp" type="30" />
                     <attribute id="GMTemplate" value="" type="22" />
                     <attribute id="LobbyLevelName" value="" type="22" />
@@ -32,7 +32,7 @@
                     <attribute id="Tags" value="" type="30" />
                     <attribute id="Type" value="Add-on" type="22" />
                     <attribute id="UUID" value="76aa0579-128f-4bed-beb3-04f57c83f589" type="22" />
-                    <attribute id="Version" value="268435456" type="4" />
+                    <attribute id="Version" value="268435457" type="4" />
                     <children>
                         <node id="PublishVersion">
                             <attribute id="Version" value="907814608" type="4" />

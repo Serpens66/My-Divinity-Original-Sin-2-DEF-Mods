@@ -56,6 +56,7 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
   local status = ev.Status ---@type EsvStatus
   local statusname = status.StatusId
   if statusname~="INSURFACE" and statusname~="HIT" and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
+    Ext.Print("ArmorBasedSavingThrows_Serp: BeforeStatusApply",statusname)
     local source = Ext.Entity.GetCharacter(status.StatusSourceHandle) ---@type EsvCharacter
     local target = Ext.Entity.GetCharacter(status.OwnerHandle) ---@type EsvCharacter .. can throw warning in log. see no way to prevent this, but target is just nil in this case: dse::EntityWorldBase<enum dse::esv::EntityComponentIndex>::GetBaseComponent(): Type mismatch! Factory supports 55, got 56
     local sourceTorturer = source and source.Stats.TALENT_Torturer or false -- effects from him are not blocked. talent does not work for SurfaceStatus

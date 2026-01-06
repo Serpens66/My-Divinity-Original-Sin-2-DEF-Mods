@@ -25,12 +25,10 @@ if Unlearn then
   
   local old_UnlearnSkill = Unlearn.UnlearnSkill
    Unlearn.UnlearnSkill = function(char, skill,...)
-    if old_UnlearnSkill and type(old_UnlearnSkill=="function") then
-      old_UnlearnSkill(char, skill,...)
-    end
-    
     Unlearn.GiveSkillbook(char,skill)
-    
+    if old_UnlearnSkill and type(old_UnlearnSkill=="function") then
+      return old_UnlearnSkill(char, skill,...)
+    end
   end
 else
   Ext.Print("SkillRefundBook did not find Epip Unlearn")  

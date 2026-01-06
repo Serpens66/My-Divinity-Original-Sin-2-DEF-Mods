@@ -12,10 +12,32 @@
 -- 1.0.1.0 -> 268500992
 -- 1.0.3.0 -> 268632064
 
+-- dump a table: _D(table)
+
 -- TODO:
 -- evlt. nochmal giftbag CMP_SummoningImproved_Kamil durchgucken ob ein paar skills davon zufügen zu anysummon mod
 
--- evtl. SkilledUp Trader via lua sichergehen, dass er alle Skillbooks hat Stats.TreasureTable.Update
+-- wie macht BlessedSmoke unsichtbar? Kann man darüber evtl. zufügen, dass jeder smoke auch Blond (geblendet) macht usw?
+
+-- alle skill collection skills durchgehen und balancen. zb. teleport skills an vanilla orientieren (1AP, aber 4 Cooldown)
+-- und statt Shout_Encourage_Skill kann man eigentlich auch das vanilla Ermutigen verteilen, macht ja dasselbe?
+ -- oder zumindest den vanilla text nehmen
+
+-- und mal in lokaler version epip und leaderlib fixen:
+-- Error while dispatching event RawInput: 	[string "LeaderLib/Client/InputManager.lua"]:548: attempt to index a nil value (local 'invokeResult')
+
+-- Error during tooltip callback: 	[string "LeaderLib/Shared/Helpers/TooltipHelpers.lua"]:580: attempt to perform arithmetic on a nil value (local 'periodCharacterStart')
+
+-- Error during Library SessionLoaded:	[string "EpipEncounters/UI/Hotbar/Main.lua"]:368: attempt to index a nil value (local 'char')
+
+
+-- Ext.Events.SessionLoaded:Subscribe(function (e)
+  -- Ext.Print("ModCollection test: SessionLoaded")
+  -- Ext.Print(Mods.ModCollection_Serp)
+  -- Ext.Print(Mods.AutoLearnSkill_Serp)
+  -- Ext.Print(Mods.AutoLearnSkill_Serp and Mods.AutoLearnSkill_Serp.NoSkillAutoLearn_Serp)
+-- end)
+
 
 SharedFns = {}
 
@@ -27,7 +49,6 @@ SharedFns.MakeImmortalcharGUIDs = {"S_GLO_LV_HenchmenRecruiter_ed64ea06-9060-4b2
 }
 
 -- Ext.Print("Shared Script Started Serp66 Mod Collection")
-
 
 
 
@@ -103,18 +124,6 @@ SharedFns.table_removetablevalue = function(t, lookup_value, removeall)
   end
 end
 
-local function dump(o)
-    if type(o) == 'table' then
-        local s = '{ '
-        for k,v in pairs(o) do
-            if type(k) ~= 'number' then k = '"'..k..'"' end
-            s = s .. '['..k..'] = ' .. dump(v) .. ','
-        end
-        return s .. '} '
-    else
-        return tostring(o)
-    end
-end
 
 local function deepcopy(orig, copies)
   copies = copies or {}
@@ -148,22 +157,19 @@ function SharedFns.RegisterProtectedOsirisListener(event, arity, state, callback
 	end)
 end
 
----@param identifier GUID|PrefixedGUID|NetId|EntityHandle
----@param isFlashHandle boolean? If true, the identifier will be passed through DoubleToHandle() first.
----@return Character
-local function Character_Get(identifier, isFlashHandle)
-  if isFlashHandle then
-    identifier = Ext.UI.DoubleToHandle(identifier)
-  end
-  return Ext.Entity.GetCharacter(identifier)
+-- important when comparing charGUID or using as key. all game/extender functions can handel both
+local function UnifycharGuid(charGUID)
+  local char = Ext.Entity.GetCharacter(charGUID)
+  return char and char.MyGuid or charGUID -- looks slightly different..: Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd vs c451954c-73bf-46ce-a1d1-caa9bbdc3cfd
 end
+
 ---Returns the currently-controlled character on the client.  
 ---@param playerIndex integer? Defaults to 1.
 ---@return EclCharacter
 local function Client_GetCharacter(playerIndex)
   playerIndex = playerIndex or 1
   local playerManager = Ext.Entity.GetPlayerManager()
-  local char = Character_Get(playerManager.ClientPlayerData[playerIndex].CharacterNetId) ---@type EclCharacter
+  local char = Ext.Entity.GetCharacter(playerManager.ClientPlayerData[playerIndex].CharacterNetId) ---@type EclCharacter
   return char
 end
 
@@ -255,6 +261,7 @@ SharedFns.GetAllPlayerChars = function()
   local players = {}
   for _,tupl in ipairs(_players) do
     local charGUID = tupl[1]
+    charGUID = UnifycharGuid(charGUID)
     table.insert(players,charGUID)
   end
   return players
@@ -587,7 +594,7 @@ SharedFns.OnStatsLoaded = function(e)
       end
     end
   end
-  
+ 
   
   Ext.Print("OnStatsLoadedSerpCollection Ende")
   
@@ -614,6 +621,7 @@ end
 SharedFns.OnSaveLoaded = function(major, minor, patch, build)
   local players = SharedFns.GetAllPlayerChars()
   for _,charGUID in ipairs(players) do
+    charGUID = UnifycharGuid(charGUID)
     Ext.Print("OnSaveLoaded",charGUID)
     SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
     Osi.RemoveStatus(charGUID,"MOVEMENTSPEED_REDUCE_SERP") -- remove it, no longer needed
@@ -648,6 +656,7 @@ end
 
 -- already made sure it only forwards units, not items
 SharedFns.OnUnitCombatEntered = function(charGUID,combatID)
+  charGUID = UnifycharGuid(charGUID)
   Ext.Print("OnUnitCombatEntered "..tostring(charGUID))
   local char = Ext.Entity.GetCharacter(charGUID)
   
@@ -666,10 +675,11 @@ SharedFns.OnUnitCombatEntered = function(charGUID,combatID)
 end
 
 SharedFns.OnCharacterResurrected = function(charGUID)
-  
+  -- charGUID = UnifycharGuid(charGUID)
 end
 -- also called for summons!
 SharedFns.OnCharacterJoinedParty = function(charGUID)
+  charGUID = UnifycharGuid(charGUID)
   Ext.Print("CharacterJoinedParty",charGUID)
   if SharedFns.IsPlayerMainChar(charGUID) then
     SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
@@ -681,6 +691,7 @@ end
 -- (CHARACTERGUID)_Character, (STRING)_Ability, (INTEGER)_OldBaseValue, (INTEGER)_NewBaseValue)
 -- Is not called for changes by equipment
 SharedFns.OnCharacterBaseAbilityChanged = function(charGUID,ability,old,new)
+  charGUID = UnifycharGuid(charGUID)
   Ext.Print("OnCharacterBaseAbilityChanged",charGUID,ability,old,new)
   -- local ability = Ext.Stats.EnumIndexToLabel("AbilityType",ability) # ist schon string
   if ability=="Summoning" then
@@ -689,15 +700,16 @@ SharedFns.OnCharacterBaseAbilityChanged = function(charGUID,ability,old,new)
 end
 
 SharedFns.OnCharacterLeftParty = function(charGUID)
-  
+  -- charGUID = UnifycharGuid(charGUID)
 end
 
 SharedFns.OnCharacterLeveledUp = function(charGUID)
-
+  -- charGUID = UnifycharGuid(charGUID)
 end
 
 -- Learn Bless and Curse
 SharedFns.OnCharacterLearnedSkill = function(charGUID,skill)
+  charGUID = UnifycharGuid(charGUID)
   if skill=="Target_Bless" then
     if Osi.CharacterHasSkill(charGUID,"Target_Curse")==0 then
       Osi.CharacterAddSkill(charGUID,"Target_Curse")
@@ -727,77 +739,22 @@ for file,override in pairs(giftBagTextFiles) do
 end
 
 
--- SurfaceBasedStati
--- gucken wie WaterFrozenBlessed Surfaces stati geben, vllt auch einfach so machen? hm scheint hardcoded iwo
-SharedFns.ApplyStatusWithChance = function(charGUID,status,chance,duration,force)
-  duration = duration or 6 -- 6==1 turn
-  force = force or 0
-  if chance>0 and Osi.HasActiveStatus(charGUID,status)==0 and (chance>=1 or Ext.Random()<=chance) then
-    Osi.ApplyStatus(charGUID,status,duration,force)
-  end
-end
-SharedFns.SurfaceBasedStati = {
-  SurfaceWater={s="WET",c=0.30,d=6,f=0,chancex2if="BURNING",forceif="BURNING"},SurfaceBlood={s="WET",c=0.20,d=6,f=0,chancex2if="BURNING",forceif="BURNING"},
-  SurfaceWaterFrozen={s="CHILLED",c=0.20,d=6,f=0,chancex2if="WET",forceif="WET"},SurfaceBloodFrozen={s="CHILLED",c=0.20,d=6,f=0,chancex2if="WET",forceif="WET"},
-  AnyCloud={s="FOGBLIND_SERP",c=1.0,d=6,f=1},
-}
--- used to apply status either in turn start when standing in surface or the moment you start to stand in surface
-SharedFns.HandleSurfaceBasedStatus = function(charGUID)
-  local surfaces = {
-    Ground = Osi.GetSurfaceGroundAt(charGUID), -- [in](GUIDSTRING)_Target, [out](STRING)_Surface -- SurfaceWater SurfaceWaterFrozen
-    Cloud = Osi.GetSurfaceCloudAt(charGUID), -- [in](GUIDSTRING)_Target, [out](STRING)_Surface -- SurfaceWaterCloud
-  }
-  -- Ext.Print("HandleSurfaceBasedStatus",charGUID,surfaces.Ground,surfaces.Cloud) -- SurfaceNone 
-  for kind,surface in pairs(surfaces) do
-    local data = SharedFns.SurfaceBasedStati[surface]
-    if data then
-      local chance = data.c 
-      local force = data.f
-      if data.chancex2if and Osi.HasActiveStatus(charGUID,data.chancex2if)==1 then
-        chance = chance * 2
-      end
-      if data.forceif and Osi.HasActiveStatus(charGUID,data.forceif)==1 then
-        force = 1
-      end
-      SharedFns.ApplyStatusWithChance(charGUID,data.s,chance,data.d,force) -- status, chance, duration, force
-    end
-  end
-  if surfaces.Cloud~="SurfaceNone" and SharedFns.SurfaceBasedStati["AnyCloud"] then
-    local data = SharedFns.SurfaceBasedStati["AnyCloud"]
-    SharedFns.ApplyStatusWithChance(charGUID,data.s,data.c,data.d,data.f)
-  elseif surfaces.Cloud=="SurfaceNone" and Osi.HasActiveStatus(charGUID,"FOGBLIND_SERP")==1 then
-    Osi.RemoveStatus(charGUID,"FOGBLIND_SERP")
-  end
-end
-
-
 
 SharedFns.OnObjectTurnStarted = function(charGUID)
-  SharedFns.HandleSurfaceBasedStatus(charGUID) -- SurfaceBasedStati
+  -- charGUID = UnifycharGuid(charGUID)
 end
 -- Also called for standing in surface, cause ist verursacher charGUID und bei surface der dem das surface gehört, bzw. der es erzeugt hat. 
 -- In surface hin und her gehen triggert es nicht erneut (wie der surface schaden), triggert auch nur einmal pro sekunde oderso, dh. wenn surface schnell gewechselt wird, triggert es für eins davon garnicht, aber wir nehmen auch OnObjectTurnStarted dazu, dann passt das
 SharedFns.OnCharacterStatusApplied = function(charGUID, status, cause)
-  -- Ext.Print("OnCharacterStatusApplied charGUID:",charGUID,"status:",status,"cause:",cause)
-  if status=="INSURFACE" then -- Apply Wet with a chance when on water/blood
-    SharedFns.HandleSurfaceBasedStatus(charGUID) -- SurfaceBasedStati
-  end
+  -- charGUID = UnifycharGuid(charGUID)
 end
 SharedFns.OnCharacterStatusRemoved = function(charGUID, status, nilSource)
-  if status=="INSURFACE" then -- Apply Wet with a chance when on water/blood
-    local surfaces = {
-      Ground = Osi.GetSurfaceGroundAt(charGUID), -- [in](GUIDSTRING)_Target, [out](STRING)_Surface -- SurfaceWater SurfaceWaterFrozen
-      Cloud = Osi.GetSurfaceCloudAt(charGUID), -- [in](GUIDSTRING)_Target, [out](STRING)_Surface -- SurfaceWaterCloud
-    }
-    if surfaces.Cloud=="SurfaceNone" and Osi.HasActiveStatus(charGUID,"FOGBLIND_SERP")==1 then
-      Osi.RemoveStatus(charGUID,"FOGBLIND_SERP") -- SurfaceBasedStati
-    end
-  elseif status=="CHARMED" or status=="CHICKEN" then -- trigger Perseverance for more stati
+  charGUID = UnifycharGuid(charGUID)
+  if status=="CHARMED" or status=="CHICKEN" then -- trigger Perseverance for more stati
     Osi.ApplyStatus(charGUID,"POST_MAGIC_CONTROL",0,1)
   elseif status=="SLEEPING" or status=="CRIPPLED" then
     Osi.ApplyStatus(charGUID,"POST_PHYS_CONTROL",0,1)
   end
-  
 end
 
 -- ################################################
@@ -820,6 +777,11 @@ local function test()
   end
 end
 Ext.RegisterConsoleCommand("test", test)
+
+
+
+
+
 
 -- Ext.Print(Ext.Entity.GetCharacter("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd").Stats.OffHandWeapon)
 -- Ext.Print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").Stats:GetItemBySlot("Shield").WeaponType)
@@ -907,6 +869,7 @@ Ext.RegisterConsoleCommand("test", test)
 -- Osi.CharacterStatusText("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","test")
 
 -- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Teleportation_ResurrectSkillCast")
+-- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Shout_HolySmoke")
 
 
 -- local SkillbookTemplates = Mods.EpipEncounters.Epip.GetFeature("SkillbookTemplates"); Osi.ItemTemplateAddTo(SkillbookTemplates.GetForSkill("Target_MutePlayer")[1],"Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",1,1)

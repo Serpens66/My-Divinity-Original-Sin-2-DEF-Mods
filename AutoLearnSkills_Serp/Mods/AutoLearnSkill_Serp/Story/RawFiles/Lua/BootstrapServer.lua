@@ -1,23 +1,30 @@
 -- eg quest skills or skill you only should learn by progress 
-NoSkillAutoLearn_Serp = {}--{"Target_VoidwokenCharm","Shout_InnerDemon","Summon_Cat","Summon_BlackCat"}
--- Set UseAPCost for your skillbook to >0 (eg. 1) to prevent autolearn or add your skill via lua to this table (dont know how to access variables from other mods)
+NoSkillAutoLearn_Serp = {"Target_VoidwokenCharm","Shout_InnerDemon","Summon_Cat","Summon_BlackCat"}
+-- Set UseAPCost for your skillbook to >0 (eg. 1) to prevent autolearn 
+-- or add your skill via lua to this table (eg. within SessionLoaded): table.insert(Mods.AutoLearnSkill_Serp.NoSkillAutoLearn_Serp, "...")
 
 -- Target_VoidwokenCharm SKILLBOOK_Source_VoidwokenCharm ARX_Windego_Reward
 
+
+
+-- https://github.com/Norbyte/ositools/blob/master/Docs/ReleaseNotesv59.md#mod-variables
+ModuleUUID = "76aa0579-128f-4bed-beb3-04f57c83f589"
+Ext.Vars.RegisterModVariable(ModuleUUID, "UnlearnedSkills", {Server = true, Client = false, SyncToClient = false})
+
+
+
+
 -- #############
 
-local function dump(o)
-    if type(o) == 'table' then
-        local s = '{ '
-        for k,v in pairs(o) do
-            if type(k) ~= 'number' then k = '"'..k..'"' end
-            s = s .. '['..k..'] = ' .. dump(v) .. ','
-        end
-        return s .. '} '
-    else
-        return tostring(o)
-    end
-end
+Ext.Events.SessionLoaded:Subscribe(function (e)
+  Ext.Print("AutoLearnSkill_Serp: SessionLoaded")
+  Ext.Print(Mods.ModCollection_Serp)
+  Ext.Print(Mods.AutoLearnSkill_Serp)
+  Ext.Print(Mods.AutoLearnSkill_Serp and Mods.AutoLearnSkill_Serp.NoSkillAutoLearn_Serp)
+  local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
+  ModVars.UnlearnedSkills = ModVars.UnlearnedSkills or {}
+end)
+
 
 
 local CacheSkillsAutoLearn = {} -- will be filled in StatsLoaded: {{skill=minlevel},}
@@ -26,12 +33,38 @@ local CacheCraftableSkillbooks = {}
 
 -- ###########################################################################
 
+-- important when comparing charGUID or using as key. all game/extender functions can handel both
+local function UnifycharGuid(charGUID)
+  local char = Ext.Entity.GetCharacter(charGUID)
+  return char and char.MyGuid or charGUID -- looks slightly different..: Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd vs c451954c-73bf-46ce-a1d1-caa9bbdc3cfd
+end
+
+-- support for the Unlearn Feature from Epip. Dont autolearn skill, which were unlearned (resetted on respec)
+local Unlearn = Mods and Mods.EpipEncounters and Mods.EpipEncounters.Epip and Mods.EpipEncounters.Epip.GetFeature("Features.UnlearnSkills")
+if Unlearn then
+  local old_UnlearnSkill = Unlearn.UnlearnSkill
+  Unlearn.UnlearnSkill = function(char, skill,...)
+    local charGUID = char and char.MyGuid
+    Ext.Print("AutoLearnSkill_Serp: UnlearnSkill",char,charGUID)
+    if charGUID and skill then
+      local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
+      if ModVars.UnlearnedSkills[charGUID] then
+        table.insert(ModVars.UnlearnedSkills[charGUID],skill)
+        ModVars.UnlearnedSkills = ModVars.UnlearnedSkills
+      end
+    end
+    if old_UnlearnSkill and type(old_UnlearnSkill=="function") then
+      return old_UnlearnSkill(char, skill,...)
+    end
+  end
+end
+
 local function RegisterProtectedOsirisListener(event, arity, state, callback)
 	Ext.Osiris.RegisterListener(event, arity, state, function(...)
 		if Ext.Server.GetGameState() == "Running" then
 			local b,err = xpcall(callback, debug.traceback, ...)
 			if not b then
-				Ext.PrintError("ERROR: ",err)
+				Ext.PrintError("AutoLearnSkill_Serp: ERROR: ",err)
 			end
 		end
 	end)
@@ -79,18 +112,14 @@ local function GetSkillbooksForSkill(skill)
   return skillbooks
 end
 
--- TODO: also learn and unlearn on ability change
--- und iwie merken, wenn ein spieler ein skill unlearned hat?
--- bzw. allgemein jeden skill nur einmal geben? dazu müssten wir eigene DB erstellen zum speichern
--- und resetten nur bei respec?
--- andererseits kann auch durch ausrüstung die ability ändern... hmm
--- also nur alle die man mit Epip unlearned merken, bis zum respec
 
 -- limit the amount of skill learned at a time, to not crash the game
 local skills_pertime = {amount=50,intervall=500}
 local SkillsToLearn = {} -- will be filled below
 local currentindex = {}
 local function LearnNextXSkills(charGUID)
+  charGUID = UnifycharGuid(charGUID)
+  -- Ext.Print("AutoLearnSkill_Serp: LearnNextXSkills called for ",charGUID)
   local allskillslearned = false
   for i,skill in ipairs(SkillsToLearn[charGUID]) do
     if i >= currentindex[charGUID] and i<=currentindex[charGUID]+skills_pertime.amount then
@@ -101,14 +130,14 @@ local function LearnNextXSkills(charGUID)
       currentindex[charGUID] = i
       break
     end
-    if currentindex[charGUID]>=#SkillsToLearn[charGUID] then
+    if i>=#SkillsToLearn[charGUID] then
       allskillslearned = true
     end
   end
   if not allskillslearned then
     Osi.ProcObjectTimer(charGUID, "LearnNextXSkills", skills_pertime.intervall)
   else
-    Ext.Print("Done learning all skills for ",charGUID)
+    Ext.Print("AutoLearnSkill_Serp: Done learning all skills for ",charGUID)
   end
 end
 Ext.Osiris.RegisterListener("ProcObjectTimerFinished", 2, "after", function(charGUID, event)
@@ -120,27 +149,38 @@ end)
 
 -- checks charlevel vs skillbooklevel, ability requirements and sourcepoint requirements
 local function LearnAllFittingSkills(charGUID)
+  charGUID = UnifycharGuid(charGUID)
+  Ext.Print("AutoLearnSkill_Serp: LearnAllFittingSkills for",charGUID)
   SkillsToLearn[charGUID] = {}
   currentindex[charGUID] = 1
   local charlevel = Osi.CharacterGetLevel(charGUID)
-  -- Ext.Print("OnSaveLoaded charlevel",charGUID,charlevel)
+  local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
   for skill,reqs in pairs(CacheSkillsAutoLearn) do
-    if charlevel >= reqs.minlevel then
-      local canlearn = true
-      for i,reqabilitiesbook in ipairs(reqs.reqabilitiesbook) do
-        if Osi.CharacterGetAbility(charGUID,reqabilitiesbook.Requirement) < reqabilitiesbook.Param then
+    if not table_contains_value(ModVars.UnlearnedSkills[charGUID],skill) and charlevel >= reqs.minlevel then
+      local canlearn = Osi.CharacterHasSkill(charGUID,skill)==0
+      if canlearn then
+        for i,reqabilitiesbook in ipairs(reqs.reqabilitiesbook) do
+          if Osi.CharacterGetAbility(charGUID,reqabilitiesbook.Requirement) < reqabilitiesbook.Param then
+            canlearn = false
+          end
+        end
+      end
+      if canlearn then
+        for i,reqabilitiesmem in ipairs(reqs.reqabilitiesmem) do
+          if Osi.CharacterGetAbility(charGUID,reqabilitiesmem.Requirement) < reqabilitiesmem.Param then
+            canlearn = false
+          end
+        end
+      end
+      if canlearn then
+        local maxsourcepoints = Osi.HasActiveStatus(charGUID,"SOURCE_MUTED")==1 and 0 or Osi.CharacterGetMaxSourcePoints(charGUID)
+        local skillstat = Ext.Stats.Get(skill)
+        local sourcecategory = skillstat and skillstat.Ability=="Source" -- eg source vampirms
+        if not (maxsourcepoints>=reqs.reqsourcepoints and (maxsourcepoints>0 or not sourcecategory)) then
           canlearn = false
         end
       end
-      for i,reqabilitiesmem in ipairs(reqs.reqabilitiesmem) do
-        if Osi.CharacterGetAbility(charGUID,reqabilitiesmem.Requirement) < reqabilitiesmem.Param then
-          canlearn = false
-        end
-      end
-      local maxsourcepoints = Osi.HasActiveStatus(charGUID,"SOURCE_MUTED")==1 and 0 or Osi.CharacterGetMaxSourcePoints(charGUID)
-      local skillstat = Ext.Stats.Get(skill)
-      local sourcecategory = skillstat and skillstat.Ability=="Source" -- eg source vampirms
-      if canlearn and maxsourcepoints>=reqs.reqsourcepoints and (maxsourcepoints>0 or not sourcecategory) and Osi.CharacterHasSkill(charGUID,skill)==0 then
+      if canlearn then
         table.insert(SkillsToLearn[charGUID],skill)
         -- Osi.CharacterAddSkill(charGUID,skill) -- learning to many skill at once can crash the game
       end
@@ -153,6 +193,10 @@ end
 
 RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, minor, patch, build)
   
+  local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
+  ModVars.UnlearnedSkills = ModVars.UnlearnedSkills or {}
+  
+  Ext.Print("AutoLearnSkill_Serp: SavegameLoaded",next(CacheSkillsAutoLearn))
   if next(CacheSkillsAutoLearn)==nil then -- only needed once per saveload
     
     for i,combo in pairs(Ext.Stats.GetStats("ItemCombination")) do
@@ -222,26 +266,32 @@ RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, mi
                   minlevel = tonumber(minlevel)
                   if minlevel>0 then -- without MinLevel are often Quest or Cheat skillbooks
                     local reqabilitiesbook = skillbookstat.Requirements
-                    skillbookstat["Value"] = 0 -- TODO Sync
+                    skillbookstat["Value"] = 0 -- reduce value of all skillbooks to 0, to avoid any exploits
+                    Ext.Stats.Sync(skillbook)
                     CacheSkillsAutoLearn[skill] = {minlevel=skillbookstat.MinLevel,reqabilitiesmem=reqabilitiesmem,reqabilitiesbook=reqabilitiesbook,reqsourcepoints=reqsourcepoints}
                     -- Ext.Print("CacheSkillsAutoLearn",skill,skillbookstat.MinLevel,reqsourcepoints)
                   end
                 elseif not (CacheSkillBookIsInTreasure[skillbook] or CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory]) then
-                  Ext.Print("Not allow auto learn skill, because skillbook is in no TreasureTable (~=Reward) and not craftable:",skill,skillbook,UseAPCost)
+                  Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, because skillbook is in no TreasureTable (~=Reward) and not craftable:",skill,skillbook,UseAPCost)
                 end
               end
             end
           end
         else
-          Ext.Print("Not allow auto learn skill, it has not skillbook: ",skill)
+          Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, it has not skillbook: ",skill)
         end
       else
-        Ext.Print("Not allow auto learn skill, because it is in NoSkillAutoLearn_Serp: ",skill)
+        Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, because it is in NoSkillAutoLearn_Serp: ",skill)
       end
     end
   end
   local players = GetAllPlayerChars()
   for _,charGUID in ipairs(players) do
+    charGUID = UnifycharGuid(charGUID)
+    if ModVars.UnlearnedSkills[charGUID]==nil then
+      ModVars.UnlearnedSkills[charGUID] = {}
+      ModVars.UnlearnedSkills = ModVars.UnlearnedSkills
+    end
     LearnAllFittingSkills(charGUID)
   end
   
@@ -254,13 +304,27 @@ RegisterProtectedOsirisListener("CharacterLeveledUp", 1, "after", function(charG
     LearnAllFittingSkills(charGUID)
   end
 end)
-RegisterProtectedOsirisListener("CharacterCreationFinished", 1, "after", function(charGUID)
+RegisterProtectedOsirisListener("CharacterJoinedParty", 1, "after", function(charGUID)
   if IsPlayerMainChar(charGUID) then
     LearnAllFittingSkills(charGUID)
   end
 end)
-RegisterProtectedOsirisListener("CharacterJoinedParty", 1, "after", function(charGUID)
+-- (CHARACTERGUID)_Character, (STRING)_Ability, (INTEGER)_OldBaseValue, (INTEGER)_NewBaseValue)
+-- Dont unlearn skills that dont fit anymore, since you can not memorize them anyways
+RegisterProtectedOsirisListener("CharacterBaseAbilityChanged", 4, "after", function(charGUID,ability,old,new)
   if IsPlayerMainChar(charGUID) then
+    LearnAllFittingSkills(charGUID)
+  end
+end)
+-- if this is also called from respec mirror: Yes it is
+RegisterProtectedOsirisListener("CharacterCreationFinished", 1, "after", function(charGUID)
+  if IsPlayerMainChar(charGUID) then
+    charGUID = UnifycharGuid(charGUID)
+    local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
+    ModVars.UnlearnedSkills = ModVars.UnlearnedSkills or {}
+    Ext.Print("AutoLearnSkill_Serp: CharacterCreationFinished",charGUID,"reset UnlearnedSkills (to allow learning them again after respec")
+    ModVars.UnlearnedSkills[charGUID] = {} -- reset the unlearned skills, to allow auto learning them again
+    ModVars.UnlearnedSkills = ModVars.UnlearnedSkills
     LearnAllFittingSkills(charGUID)
   end
 end)

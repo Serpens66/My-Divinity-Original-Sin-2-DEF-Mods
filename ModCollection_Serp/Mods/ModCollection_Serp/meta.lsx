@@ -133,6 +133,13 @@
                             <attribute id="UUID" value="5191fd22-c4c2-483b-9d2a-607627d36642" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="MoreSurfaceEffects_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="More Surface Effects" type="22" />
+                            <attribute id="UUID" value="865b2110-9460-4255-ad3e-aa7ba6ff8edc" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
                         <!-- <node id="ModuleShortDesc"> -->
                             <!-- <attribute id="Folder" value="AutoLearnSkill_Serp" type="30" /> -->
                             <!-- <attribute id="MD5" value="" type="23" /> -->
@@ -406,13 +413,13 @@
                             <attribute id="UUID" value="cdc0b63c-e9f1-4301-ae31-1b71f2cc57e0" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
-                        <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="MagicMirror_InfinitePointsFix_76669ca7-17fb-4186-98d0-7219a0135a28" type="30" />
-                            <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="Malchezzar&apos;s Magic Mirror Fixes" type="22" />
-                            <attribute id="UUID" value="76669ca7-17fb-4186-98d0-7219a0135a28" type="22" />
-                            <attribute id="Version" value="805306390" type="4" />
-                        </node>
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="MagicMirror_InfinitePointsFix_76669ca7-17fb-4186-98d0-7219a0135a28" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="Malchezzar&apos;s Magic Mirror Fixes" type="22" /> -->
+                            <!-- <attribute id="UUID" value="76669ca7-17fb-4186-98d0-7219a0135a28" type="22" /> -->
+                            <!-- <attribute id="Version" value="805306390" type="4" /> -->
+                        <!-- </node> -->
                         <node id="ModuleShortDesc">
                             <attribute id="Folder" value="LeaderLib_543d653f-446c-43d8-8916-54670ce24dd9" type="30" />
                             <attribute id="MD5" value="" type="23" />
