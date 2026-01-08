@@ -56,69 +56,82 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
   local status = ev.Status ---@type EsvStatus
   local statusname = status.StatusId
   if statusname~="INSURFACE" and statusname~="HIT" and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
-    Ext.Print("ArmorBasedSavingThrows_Serp: BeforeStatusApply",statusname)
+    -- Ext.Print("ArmorBasedSavingThrows_Serp: BeforeStatusApply",statusname,_D(status))
     local source = Ext.Entity.GetCharacter(status.StatusSourceHandle) ---@type EsvCharacter
     local target = Ext.Entity.GetCharacter(status.OwnerHandle) ---@type EsvCharacter .. can throw warning in log. see no way to prevent this, but target is just nil in this case: dse::EntityWorldBase<enum dse::esv::EntityComponentIndex>::GetBaseComponent(): Type mismatch! Factory supports 55, got 56
     local sourceTorturer = source and source.Stats.TALENT_Torturer or false -- effects from him are not blocked. talent does not work for SurfaceStatus
     local targetGuid = target and target.MyGuid
-    -- Ext.Print("BeforeStatusApply",statusname,targetGuid,status.DamageSourceType,status.IsOnSourceSurface,status.InitiateCombat,status.IsHostileAct,status.CanEnterChance)
     if not (status.DamageSourceType~="SurfaceStatus" and sourceTorturer and table_contains_value(TorturerStati,statusname)) and status.ForceStatus==false and target then
       local StatusStat = Ext.Stats.Get(statusname)
       local Raistlin = target and target.Stats.TALENT_Raistlin -- targets with this talent are not safe by armor
       if StatusStat and not Raistlin then
-        local SavingThrow = StatusStat.SavingThrow
-        if SavingThrow=="PhysicalArmor" or SavingThrow=="MagicArmor" then
-          local resisted = false
-          local savingchance = 0.01
-          if status.CanEnterChance < 100 and (status.CanEnterChance/100) <= math.random() then
-            resisted = "vanillachancefail"
-          end
-          if resisted~="vanillachancefail" then
-            local sourceWits = source and math.max(0,source.Stats.Wits-10) or 0 -- wits over 10
-            local Perseverance = target.Stats.Perseverance
-            savingchance = savingchance + Perseverance*0.01 - sourceWits*0.005 -- extra chance of 1% to resist also without armor
-            if SavingThrow=="PhysicalArmor" and target.Stats.MaxArmor>0 then
-              savingchance = savingchance + target.Stats.CurrentArmor / target.Stats.MaxArmor
-            elseif SavingThrow=="MagicArmor" and target.Stats.MaxMagicArmor>0 then
-              savingchance = savingchance + target.Stats.CurrentMagicArmor / target.Stats.MaxMagicArmor
+        local ImmuneFlag = StatusStat.ImmuneFlag -- dont apply this status, if the character has this ImmuneFlag eg. "KnockdownImmunity"
+        if not target.Stats[ImmuneFlag] then
+          local SavingThrow = StatusStat.SavingThrow
+          if SavingThrow=="PhysicalArmor" or SavingThrow=="MagicArmor" then
+            local resisted = false
+            local savingchance = 0.01
+            if status.CanEnterChance < 100 and (status.CanEnterChance/100) <= math.random() then
+              resisted = "vanillachancefail"
             end
-            if savingchance > 0 then
-              local Blessed = Osi.HasActiveStatus(targetGuid,"BLESSED")==1 and true or false
-              local Cursed = Osi.HasActiveStatus(targetGuid,"CURSED")==1 and true or false
-              local sourceBlessed = source and Osi.HasActiveStatus(source.MyGuid,"BLESSED")==1 and true or false
-              local sourceCursed = source and Osi.HasActiveStatus(source.MyGuid,"CURSED")==1 and true or false
-              local random = math.random()
-              if (Blessed and not Cursed and not sourceBlessed) or (sourceCursed and not sourceBlessed and not Cursed) then
-                savingchance = savingchance + 0.05
-                random = math.min(random,math.random())
-              elseif (Cursed and not Blessed and not sourceCursed) or (sourceBlessed and not sourceCursed and not Blessed) then
-                savingchance = savingchance - 0.05
-                random = math.max(random,math.random())
+            if resisted~="vanillachancefail" then
+              local sourceWits = source and math.max(0,source.Stats.Wits-10) or 0 -- wits over 10
+              local Perseverance = target.Stats.Perseverance
+              savingchance = savingchance + Perseverance*0.01 - sourceWits*0.005 -- extra chance of 1% to resist also without armor
+              if SavingThrow=="PhysicalArmor" and target.Stats.MaxArmor>0 then
+                savingchance = savingchance + target.Stats.CurrentArmor / target.Stats.MaxArmor
+              elseif SavingThrow=="MagicArmor" and target.Stats.MaxMagicArmor>0 then
+                savingchance = savingchance + target.Stats.CurrentMagicArmor / target.Stats.MaxMagicArmor
               end
-              if savingchance >= random then -- safe
-                resisted = true
+              if savingchance > 0 then
+                local Blessed = Osi.HasActiveStatus(targetGuid,"BLESSED")==1 and true or false
+                local Cursed = Osi.HasActiveStatus(targetGuid,"CURSED")==1 and true or false
+                local sourceBlessed = source and Osi.HasActiveStatus(source.MyGuid,"BLESSED")==1 and true or false
+                local sourceCursed = source and Osi.HasActiveStatus(source.MyGuid,"CURSED")==1 and true or false
+                local random = math.random()
+                if (Blessed and not Cursed and not sourceBlessed) or (sourceCursed and not sourceBlessed and not Cursed) then
+                  savingchance = savingchance + 0.05
+                  random = math.min(random,math.random())
+                elseif (Cursed and not Blessed and not sourceCursed) or (sourceBlessed and not sourceCursed and not Blessed) then
+                  savingchance = savingchance - 0.05
+                  random = math.max(random,math.random())
+                end
+                if savingchance >= random then -- safe
+                  resisted = true
+                end
               end
             end
-          end
-          local colour = "#40b606" -- green
-          local statusname_loc = Ext.L10N.GetTranslatedStringFromKey(Ext.Stats.Get(statusname).DisplayName,statusname)
-          if resisted==true then
-            if IsPlayerEnemy(targetGuid) then
-              colour = "#c80030" -- red
-            end
-            Osi.CharacterStatusText(target.MyGuid,"<font color='"..colour.."'>Resisted</font> "..statusname_loc..": "..tostring(math.max(0,round(savingchance*100,2))).."%")
-            ev.PreventStatusApply = true
-          elseif resisted==false then
-            status.ForceStatus = true -- force it to go through armor
-            -- if SavingThrow=="PhysicalArmor" and target.Stats.CurrentArmor > 0 or SavingThrow=="MagicArmor" and target.Stats.CurrentMagicArmor > 0 then -- if 0 armor, no need to mention that resist failed
-              if not IsPlayerEnemy(targetGuid) then
+            local colour = "#40b606" -- green
+            local statusname_loc = Ext.L10N.GetTranslatedStringFromKey(Ext.Stats.Get(statusname).DisplayName,statusname)
+            if resisted==true then
+              if IsPlayerEnemy(targetGuid) then
                 colour = "#c80030" -- red
               end
-              Osi.CharacterStatusText(target.MyGuid,"<font color='"..colour.."'>Resist Failed</font> "..statusname_loc..": "..tostring(math.max(0,round(savingchance*100,2))).."%")
-            -- end
-          elseif resisted=="vanillachancefail" then -- a status that is only applied by chance. We do the chance check here, because not really possible differently
-            ev.PreventStatusApply = true
+              Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>Resisted</font> "..statusname_loc..": "..tostring(math.max(0,round(savingchance*100,2))).."%")
+              ev.PreventStatusApply = true
+            elseif resisted==false then
+              
+              -- PROBLEM: ForceStatus also ignore immunity!!
+              
+              -- ImmuneFlag
+              
+              status.ForceStatus = true -- force it to go through armor
+              -- if SavingThrow=="PhysicalArmor" and target.Stats.CurrentArmor > 0 or SavingThrow=="MagicArmor" and target.Stats.CurrentMagicArmor > 0 then -- if 0 armor, no need to mention that resist failed
+                if not IsPlayerEnemy(targetGuid) then
+                  colour = "#c80030" -- red
+                end
+                Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>Resist Failed</font> "..statusname_loc..": "..tostring(math.max(0,round(savingchance*100,2))).."%")
+              -- end
+            elseif resisted=="vanillachancefail" then -- a status that is only applied by chance. We do the chance check here, because not really possible differently
+              ev.PreventStatusApply = true
+            end
           end
+        else
+          local colour = "#40b606" -- green
+          if IsPlayerEnemy(targetGuid) then
+            colour = "#c80030" -- red
+          end
+          Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>"..ImmuneFlag.."</font> ")
         end
       end
     end

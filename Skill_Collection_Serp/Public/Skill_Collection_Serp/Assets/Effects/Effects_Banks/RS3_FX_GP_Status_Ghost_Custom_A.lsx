@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="1" minor="0" revision="0" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Dependencies">
+		<node id="Dependencies">
+			<children>
+				<node id="DependentResource">
+					<attribute id="Object" type="22" value="649f3fee-f31a-49c9-a8f1-e6d670933863" />
+				</node>
+				<node id="DependentResource">
+					<attribute id="Object" type="22" value="f70e9916-de65-43cb-8952-972bfd28daad" />
+				</node>
+			</children>
+		</node>
+	</region>
+	<region id="Effect">
+		<node id="Effect">
+			<attribute id="Duration" type="6" value="3" />
+			<children>
+				<node id="EffectComponents">
+					<children>
+						<node id="EffectComponent">
+							<attribute id="EndTime" type="6" value="3" />
+							<attribute id="ID" type="31" value="d815b6c5-0777-468c-8edd-9e633a15170c" />
+							<attribute id="Name" type="23" value="BoundingSphere" />
+							<attribute id="StartTime" type="6" value="0" />
+							<attribute id="Track" type="5" value="0" />
+							<attribute id="Type" type="23" value="BoundingSphere" />
+							<children>
+								<node id="Properties">
+									<children>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Name" />
+											<attribute id="FullName" type="22" value="Name" />
+											<attribute id="Type" type="1" value="7" />
+											<attribute id="Value" type="23" value="BoundingSphere" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Position" />
+											<attribute id="FullName" type="22" value="Center" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 0 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Radius" />
+											<attribute id="FullName" type="22" value="Radius" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="1" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="EffectComponent">
+							<attribute id="EndTime" type="6" value="3" />
+							<attribute id="ID" type="31" value="056a23f4-2843-4950-9e25-d23e77f26633" />
+							<attribute id="Name" type="23" value="OverlayMaterial" />
+							<attribute id="StartTime" type="6" value="0" />
+							<attribute id="Track" type="5" value="2" />
+							<attribute id="Type" type="23" value="OverlayMaterial" />
+							<children>
+								<node id="Properties">
+									<children>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Name" />
+											<attribute id="FullName" type="22" value="Name" />
+											<attribute id="Type" type="1" value="7" />
+											<attribute id="Value" type="23" value="OverlayMaterial" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Material GUID" />
+											<attribute id="FullName" type="22" value="Material GUID" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="649f3fee-f31a-49c9-a8f1-e6d670933863" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Apply to Body" />
+											<attribute id="FullName" type="22" value="Apply to Body" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="True" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Apply to Weapon" />
+											<attribute id="FullName" type="22" value="Apply to Weapon" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Apply to Armour" />
+											<attribute id="FullName" type="22" value="Apply to Armour" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="True" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Overlay Type" />
+											<attribute id="FullName" type="22" value="Overlay Type" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Target Visual" />
+											<attribute id="FullName" type="22" value="Target Visual" />
+											<attribute id="Input" type="22" value="Target Visual" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 0 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Color" />
+											<attribute id="FullName" type="22" value="Dynamic Parameters.Color" />
+											<attribute id="Type" type="1" value="3" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="1 1 1 0" />
+															<attribute id="Time" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="1 1 1 1" />
+															<attribute id="Time" type="6" value="0.4807407" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="1 1 1 1" />
+															<attribute id="Time" type="6" value="0.5377778" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="1 1 1 0" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Brightness" />
+											<attribute id="FullName" type="22" value="Dynamic Parameters.Brightness" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Mesh GUID" />
+											<attribute id="FullName" type="22" value="Debug Mesh.Mesh GUID" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="f70e9916-de65-43cb-8952-972bfd28daad" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Mesh Animation" />
+											<attribute id="FullName" type="22" value="Debug Mesh.Animation" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Mesh Animation Speed" />
+											<attribute id="FullName" type="22" value="Debug Mesh.Animation Speed" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Apply Normal Map" />
+											<attribute id="FullName" type="22" value="Apply Normal Map" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="True" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Overlay Priority" />
+											<attribute id="FullName" type="22" value="Overlay Priority" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Render Channel" />
+											<attribute id="FullName" type="22" value="Debug Mesh.Render Channel" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Fade Time (in seconds)" />
+											<attribute id="FullName" type="22" value="Fade Time (in seconds)" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Apply to Wings" />
+											<attribute id="FullName" type="22" value="Apply to Wings" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="True" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Apply to Horns" />
+											<attribute id="FullName" type="22" value="Apply to Horns" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="True" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Apply to Overhead" />
+											<attribute id="FullName" type="22" value="Apply to Overhead" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+				<node id="Inputs">
+					<children>
+						<node id="Input">
+							<attribute id="Name" type="22" value="Target Visual" />
+							<attribute id="Type" type="1" value="1" />
+						</node>
+					</children>
+				</node>
+				<node id="Phases">
+					<children>
+						<node id="Phase">
+							<attribute id="Duration" type="6" value="1.5" />
+							<attribute id="PlayCount" type="4" value="1" />
+						</node>
+						<node id="Phase">
+							<attribute id="Duration" type="6" value="0.1" />
+							<attribute id="PlayCount" type="4" value="-1" />
+						</node>
+						<node id="Phase">
+							<attribute id="Duration" type="6" value="1.4" />
+							<attribute id="PlayCount" type="4" value="1" />
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

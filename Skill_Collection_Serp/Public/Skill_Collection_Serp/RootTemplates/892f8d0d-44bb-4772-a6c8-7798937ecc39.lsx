@@ -45,6 +45,15 @@
 								<node id="Tag">
 									<attribute id="Object" type="22" value="UNDEAD_BEAST" />
 								</node>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="SUMMON" />
+								</node>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="SUMMON" />
+								</node>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="NO_GHOST" />
+								</node>
 							</children>
 						</node>
 						<node id="LayerList">
@@ -64,8 +73,7 @@
 							<attribute id="GameMasterSpawnSubSection" type="28" handle="hfeccb8bbgf99fg4028gb187g607c18c2cbaa" value="hfeccb8bbgf99fg4028gb187g607c18c2cbaa;0" />
 						</node>
 						<node id="OnDeathActions" />
-						<node id="SkillList">
-						</node>
+						<node id="SkillList" />
 						<node id="ItemList" />
 						<node id="Scripts">
 							<children>

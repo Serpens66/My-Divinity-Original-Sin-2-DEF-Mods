@@ -17,16 +17,14 @@
 -- TODO:
 -- evlt. nochmal giftbag CMP_SummoningImproved_Kamil durchgucken ob ein paar skills davon zufügen zu anysummon mod
 
--- wie macht BlessedSmoke unsichtbar? Kann man darüber evtl. zufügen, dass jeder smoke auch Blond (geblendet) macht usw?
-
 -- alle skill collection skills durchgehen und balancen. zb. teleport skills an vanilla orientieren (1AP, aber 4 Cooldown)
 -- und statt Shout_Encourage_Skill kann man eigentlich auch das vanilla Ermutigen verteilen, macht ja dasselbe?
  -- oder zumindest den vanilla text nehmen
 
 -- und mal in lokaler version epip und leaderlib fixen:
 -- Error while dispatching event RawInput: 	[string "LeaderLib/Client/InputManager.lua"]:548: attempt to index a nil value (local 'invokeResult')
-
 -- Error during tooltip callback: 	[string "LeaderLib/Shared/Helpers/TooltipHelpers.lua"]:580: attempt to perform arithmetic on a nil value (local 'periodCharacterStart')
+-- Done in LeaderLib_Serp
 
 -- Error during Library SessionLoaded:	[string "EpipEncounters/UI/Hotbar/Main.lua"]:368: attempt to index a nil value (local 'char')
 
@@ -160,7 +158,7 @@ end
 -- important when comparing charGUID or using as key. all game/extender functions can handel both
 local function UnifycharGuid(charGUID)
   local char = Ext.Entity.GetCharacter(charGUID)
-  return char and char.MyGuid or charGUID -- looks slightly different..: Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd vs c451954c-73bf-46ce-a1d1-caa9bbdc3cfd
+  return char and char.MyGuid or charGUID,char -- looks slightly different..: Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd vs c451954c-73bf-46ce-a1d1-caa9bbdc3cfd
 end
 
 ---Returns the currently-controlled character on the client.  
@@ -260,8 +258,8 @@ SharedFns.GetAllPlayerChars = function()
   local _players = Osi.DB_IsPlayer:Get(nil) -- Will return a list of tuples of all player characters
   local players = {}
   for _,tupl in ipairs(_players) do
-    local charGUID = tupl[1]
-    charGUID = UnifycharGuid(charGUID)
+    local _charGUID = tupl[1]
+    local charGUID,char = UnifycharGuid(_charGUID)
     table.insert(players,charGUID)
   end
   return players
@@ -452,6 +450,9 @@ SharedFns.OnStatsLoaded = function(e)
 
   -- Taunt_Range_Increased
   Ext.Stats.GetRaw("Shout_Taunt")["AreaRadius"] = 8
+  Ext.Stats.GetRaw("Shout_WolfTaunt")["AreaRadius"] = 8
+  Ext.Stats.GetRaw("Shout_EnemyTaunt")["AreaRadius"] = 8
+  Ext.Stats.GetRaw("Shout_IncarnateTaunt")["AreaRadius"] = 8
   
   
   
@@ -621,7 +622,7 @@ end
 SharedFns.OnSaveLoaded = function(major, minor, patch, build)
   local players = SharedFns.GetAllPlayerChars()
   for _,charGUID in ipairs(players) do
-    charGUID = UnifycharGuid(charGUID)
+    
     Ext.Print("OnSaveLoaded",charGUID)
     SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
     Osi.RemoveStatus(charGUID,"MOVEMENTSPEED_REDUCE_SERP") -- remove it, no longer needed
@@ -655,10 +656,9 @@ end
 
 
 -- already made sure it only forwards units, not items
-SharedFns.OnUnitCombatEntered = function(charGUID,combatID)
-  charGUID = UnifycharGuid(charGUID)
-  Ext.Print("OnUnitCombatEntered "..tostring(charGUID))
-  local char = Ext.Entity.GetCharacter(charGUID)
+SharedFns.OnUnitCombatEntered = function(_charGUID,combatID)
+  local charGUID,char = UnifycharGuid(_charGUID)
+  Ext.Print("ModCollection: OnUnitCombatEntered ",charGUID,_charGUID)
   
   -- Full Heal of NPCS
   SharedFns.DoHeal(charGUID,false,true,55,100,char)
@@ -674,12 +674,12 @@ SharedFns.OnUnitCombatEntered = function(charGUID,combatID)
   
 end
 
-SharedFns.OnCharacterResurrected = function(charGUID)
-  -- charGUID = UnifycharGuid(charGUID)
+SharedFns.OnCharacterResurrected = function(_charGUID)
+  -- local charGUID,char = UnifycharGuid(_charGUID)
 end
 -- also called for summons!
-SharedFns.OnCharacterJoinedParty = function(charGUID)
-  charGUID = UnifycharGuid(charGUID)
+SharedFns.OnCharacterJoinedParty = function(_charGUID)
+  local charGUID,char = UnifycharGuid(_charGUID)
   Ext.Print("CharacterJoinedParty",charGUID)
   if SharedFns.IsPlayerMainChar(charGUID) then
     SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
@@ -690,8 +690,8 @@ end
 -- Ext.Stats.EnumIndexToLabel("AbilityType",2)
 -- (CHARACTERGUID)_Character, (STRING)_Ability, (INTEGER)_OldBaseValue, (INTEGER)_NewBaseValue)
 -- Is not called for changes by equipment
-SharedFns.OnCharacterBaseAbilityChanged = function(charGUID,ability,old,new)
-  charGUID = UnifycharGuid(charGUID)
+SharedFns.OnCharacterBaseAbilityChanged = function(_charGUID,ability,old,new)
+  local charGUID,char = UnifycharGuid(_charGUID)
   Ext.Print("OnCharacterBaseAbilityChanged",charGUID,ability,old,new)
   -- local ability = Ext.Stats.EnumIndexToLabel("AbilityType",ability) # ist schon string
   if ability=="Summoning" then
@@ -699,17 +699,17 @@ SharedFns.OnCharacterBaseAbilityChanged = function(charGUID,ability,old,new)
   end
 end
 
-SharedFns.OnCharacterLeftParty = function(charGUID)
-  -- charGUID = UnifycharGuid(charGUID)
+SharedFns.OnCharacterLeftParty = function(_charGUID)
+  -- local charGUID,char = UnifycharGuid(_charGUID)
 end
 
-SharedFns.OnCharacterLeveledUp = function(charGUID)
-  -- charGUID = UnifycharGuid(charGUID)
+SharedFns.OnCharacterLeveledUp = function(_charGUID)
+  -- local charGUID,char = UnifycharGuid(_charGUID)
 end
 
 -- Learn Bless and Curse
-SharedFns.OnCharacterLearnedSkill = function(charGUID,skill)
-  charGUID = UnifycharGuid(charGUID)
+SharedFns.OnCharacterLearnedSkill = function(_charGUID,skill)
+  local charGUID,char = UnifycharGuid(_charGUID)
   if skill=="Target_Bless" then
     if Osi.CharacterHasSkill(charGUID,"Target_Curse")==0 then
       Osi.CharacterAddSkill(charGUID,"Target_Curse")
@@ -740,16 +740,16 @@ end
 
 
 
-SharedFns.OnObjectTurnStarted = function(charGUID)
-  -- charGUID = UnifycharGuid(charGUID)
+SharedFns.OnObjectTurnStarted = function(_charGUID)
+  -- local charGUID,char = UnifycharGuid(_charGUID)
 end
 -- Also called for standing in surface, cause ist verursacher charGUID und bei surface der dem das surface gehört, bzw. der es erzeugt hat. 
 -- In surface hin und her gehen triggert es nicht erneut (wie der surface schaden), triggert auch nur einmal pro sekunde oderso, dh. wenn surface schnell gewechselt wird, triggert es für eins davon garnicht, aber wir nehmen auch OnObjectTurnStarted dazu, dann passt das
-SharedFns.OnCharacterStatusApplied = function(charGUID, status, cause)
-  -- charGUID = UnifycharGuid(charGUID)
+SharedFns.OnCharacterStatusApplied = function(_charGUID, status, cause)
+  -- local charGUID,char = UnifycharGuid(_charGUID)
 end
-SharedFns.OnCharacterStatusRemoved = function(charGUID, status, nilSource)
-  charGUID = UnifycharGuid(charGUID)
+SharedFns.OnCharacterStatusRemoved = function(_charGUID, status, nilSource)
+  local charGUID,char = UnifycharGuid(_charGUID)
   if status=="CHARMED" or status=="CHICKEN" then -- trigger Perseverance for more stati
     Osi.ApplyStatus(charGUID,"POST_MAGIC_CONTROL",0,1)
   elseif status=="SLEEPING" or status=="CRIPPLED" then
@@ -848,7 +848,7 @@ Ext.RegisterConsoleCommand("test", test)
 -- Osi.CharacterAddAbilityPoint("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb",100)
 
 -- Osi.CharacterAddSkill("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","Target_Custom_MaddeningSongSpell")
--- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Summon_Summon_BoneTroll")
+-- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Target_MidnightOilPlayer")
 
 -- print(Osi.CharacterHasTalent("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","BeastMaster"))
 -- print(Osi.CharacterHasTalent("Humans_Hero_Female_7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe","BeastMaster"))
@@ -869,7 +869,7 @@ Ext.RegisterConsoleCommand("test", test)
 -- Osi.CharacterStatusText("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","test")
 
 -- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Teleportation_ResurrectSkillCast")
--- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Shout_HolySmoke")
+-- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Target_NullifyResistance_")
 
 
 -- local SkillbookTemplates = Mods.EpipEncounters.Epip.GetFeature("SkillbookTemplates"); Osi.ItemTemplateAddTo(SkillbookTemplates.GetForSkill("Target_MutePlayer")[1],"Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",1,1)

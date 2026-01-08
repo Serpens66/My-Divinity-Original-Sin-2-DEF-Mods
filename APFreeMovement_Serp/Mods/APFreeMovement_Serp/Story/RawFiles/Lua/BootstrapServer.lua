@@ -64,16 +64,16 @@ RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, mi
   end
 end)
 
-RegisterProtectedOsirisListener("CharacterJoinedParty", 1, "after", function(objectGUID)
-  if Osi.ObjectIsCharacter(objectGUID)==1 then -- [in](GUIDSTRING)_Object, [out](INTEGER)_Bool 
-    AddTalent(objectGUID,"QuickStep",true,"QuickStepForFree_Serp")
+RegisterProtectedOsirisListener("CharacterJoinedParty", 1, "after", function(charGUID)
+  if Osi.ObjectIsCharacter(charGUID)==1 then -- [in](GUIDSTRING)_Object, [out](INTEGER)_Bool 
+    AddTalent(charGUID,"QuickStep",true,"QuickStepForFree_Serp")
   end
 end)
 
 -- (GUIDSTRING)_Object, (INTEGER)_CombatID 
-RegisterProtectedOsirisListener("ObjectEnteredCombat", 2, "after", function(objectGUID, combatID)
-  -- Ext.Print("ObjectEnteredCombat: ",objectGUID)
-  if Osi.ObjectIsCharacter(objectGUID)==1 then -- [in](GUIDSTRING)_Object, [out](INTEGER)_Bool 
+RegisterProtectedOsirisListener("ObjectEnteredCombat", 2, "after", function(charGUID, combatID)
+  -- Ext.Print("ObjectEnteredCombat: ",charGUID)
+  if Osi.ObjectIsCharacter(charGUID)==1 then -- [in](GUIDSTRING)_Object, [out](INTEGER)_Bool 
     if not IsPlayerMainChar(charGUID) then
       AddTalent(charGUID,"QuickStep") -- give eg summones quickstep, for them it works here, they have PlayerCustomData
     end

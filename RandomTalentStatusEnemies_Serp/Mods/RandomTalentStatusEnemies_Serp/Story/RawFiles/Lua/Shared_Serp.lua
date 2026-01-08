@@ -3,7 +3,7 @@
 
 SharedFns = {}
 
-SharedFns.HowToAddRandomTalents = "Live" 
+SharedFns.HowToAddRandomTalents = "OnCombat" 
 -- OnStats: on game load and all units sharing the same stats will have the same talents,
 -- Live: on savegame load, but every unit get their own random talents TODO how to loop over everyone?!
 -- OnCombat: when entering combat with the units they get their own random talents
@@ -360,7 +360,7 @@ end
 
 -- already made sure it only forwards units, not items
 SharedFns.OnUnitCombatEntered = function(charGUID,combatID)
-  -- Ext.Print("OnUnitCombatEntered "..tostring(charGUID))
+  -- Ext.Print("RT: OnUnitCombatEntered "..tostring(charGUID))
   local char = Ext.Entity.GetCharacter(charGUID)
   -- Random Talents/Status for not-ally
   if char and not SharedFns.IsPlayerAlly(charGUID) then -- neutral NPC and Enemies

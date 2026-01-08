@@ -306,7 +306,8 @@
 				</node>
         
         <node id="GameObjects">
-					<attribute id="DamageCharacters" type="19" value="True" />
+					<attribute id="DefaultLifeTime" type="6" value="18" />
+          <attribute id="DamageCharacters" type="19" value="True" />
 					<attribute id="DamageWeapon" type="22" value="DamageSurface_CloudPoison" />
 					<attribute id="DecalMaterial" type="22" value="b279a93b-4833-40e6-85ac-75766f22dffc" />
 					<attribute id="Description" type="28" handle="h15df31bdg4e50g4e9fga315gdea07ee5dee3" value="Applies Poisoned." />
@@ -2412,6 +2413,7 @@
 				</node>
         
         <node id="GameObjects">
+					<attribute id="DefaultLifeTime" type="6" value="60" />
 					<attribute id="DecalMaterial" type="22" value="4dbf3e9b-7e58-4ec0-b4b7-22c4e47939f6" />
 					<attribute id="Description" type="28" handle="ha65dce1dga08fg450bgbdb6gc902dc545102" value="Can be electrified or frozen." />
 					<attribute id="DisplayName" type="28" handle="had97d00cg1642g417fg815fg09903e8210c3" value="Blood" />
@@ -2771,6 +2773,7 @@
 				</node>
         
         <node id="GameObjects">
+					<attribute id="DefaultLifeTime" type="6" value="60" />
 					<attribute id="DecalMaterial" type="22" value="a6651260-6b11-44f3-942c-11b4b322c26a" />
 					<attribute id="Description" type="28" handle="ha4eaeccbg928eg47aega9d2ga2a43ce37324" value="|Chance to Enweb. Ignores Armour.|" />
 					<attribute id="DisplayName" type="28" handle="h758c25fcgc899g4016g8967g1812cf70e353" value="Web" />
@@ -3870,6 +3873,7 @@
 				</node>
         
         <node id="GameObjects">
+					<attribute id="DefaultLifeTime" type="6" value="60" />
 					<attribute id="DecalMaterial" type="22" value="bf831b51-65d7-4340-b6f9-85fb19d07f60" />
 					<attribute id="Description" type="28" handle="h7c768edbgea39g47f7g8b0cg61fde6b89c28" value="|Applies Slowed ignoring Magic Armor.|" />
 					<attribute id="DisplayName" type="28" handle="h863a4340g93d8g4a37g83a4ge3bef90a1042" value="Oil" />
@@ -3941,6 +3945,7 @@
 				</node>
         
         <node id="GameObjects">
+					<attribute id="DefaultLifeTime" type="6" value="60" />
 					<attribute id="DecalMaterial" type="22" value="b279a93b-4833-40e6-85ac-75766f22dffc" />
 					<attribute id="Description" type="28" handle="ha65dce1dga08fg450bgbdb6gc902dc545102" value="Can be electrified or frozen." />
 					<attribute id="DisplayName" type="28" handle="hc314707cg9b2dg4cb0ga922gf7010e3472ad" value="Blood Cloud" />
@@ -4362,6 +4367,7 @@
 				</node>
         
         <node id="GameObjects">
+					<attribute id="DefaultLifeTime" type="6" value="60" />
 					<attribute id="DecalMaterial" type="22" value="b279a93b-4833-40e6-85ac-75766f22dffc" />
 					<attribute id="Description" type="28" handle="h6c07e5c0g5c12g49ddgad79g8ff34fe91273" value="Applies Wet." />
 					<attribute id="DisplayName" type="28" handle="hb9d59adeg447cg46ccga1e0g4bfbfaba0b73" value="Steam Cloud" />
@@ -6077,6 +6083,7 @@
 				</node>
         
         <node id="GameObjects">
+					<attribute id="DefaultLifeTime" type="6" value="60" />
 					<attribute id="DecalMaterial" type="22" value="787060c9-f8d1-44b5-8a37-5155026f3236" />
 					<attribute id="Description" type="28" handle="ha65dce1dga08fg450bgbdb6gc902dc545102" value="Can be electrified or frozen." />
 					<attribute id="DisplayName" type="28" handle="h2802f36dga180g4e96gbf08g2e4cde9c8e22" value="Water" />
@@ -6325,6 +6332,7 @@
 				</node>
         
         <node id="GameObjects">
+					<attribute id="DefaultLifeTime" type="6" value="18" />
 					<attribute id="DamageCharacters" type="19" value="True" />
 					<attribute id="DamageWeapon" type="22" value="DamageSurface_Ooze" />
 					<attribute id="DecalMaterial" type="22" value="00b6cbd6-bfad-4762-9e15-7670a9e5d108" />
@@ -6381,18 +6389,6 @@
 						</node>
 						<node id="StatusData">
 							<children>
-								<node id="StatusData">
-									<attribute id="ApplyToCharacters" type="19" value="True" />
-									<attribute id="ApplyToItems" type="19" value="False" />
-									<attribute id="Chance" type="6" value="1" />
-									<attribute id="Duration" type="6" value="12" />
-									<attribute id="Force" type="19" value="False" />
-									<attribute id="KeepAlive" type="19" value="True" />
-									<attribute id="OnlyWhileMoving" type="19" value="False" />
-									<attribute id="Remove" type="19" value="False" />
-									<attribute id="StatusId" type="22" value="POISONED" />
-									<attribute id="VanishOnApply" type="19" value="False" />
-								</node>
                 <node id="StatusData">
 									<attribute id="ApplyToCharacters" type="19" value="True" />
 									<attribute id="ApplyToItems" type="19" value="False" />
@@ -6403,6 +6399,18 @@
 									<attribute id="OnlyWhileMoving" type="19" value="False" />
 									<attribute id="Remove" type="19" value="True" />
 									<attribute id="StatusId" type="22" value="FOGBLIND_SERP" />
+									<attribute id="VanishOnApply" type="19" value="False" />
+								</node>
+								<node id="StatusData">
+									<attribute id="ApplyToCharacters" type="19" value="True" />
+									<attribute id="ApplyToItems" type="19" value="False" />
+									<attribute id="Chance" type="6" value="1" />
+									<attribute id="Duration" type="6" value="12" />
+									<attribute id="Force" type="19" value="False" />
+									<attribute id="KeepAlive" type="19" value="True" />
+									<attribute id="OnlyWhileMoving" type="19" value="False" />
+									<attribute id="Remove" type="19" value="False" />
+									<attribute id="StatusId" type="22" value="POISONED" />
 									<attribute id="VanishOnApply" type="19" value="False" />
 								</node>
 							</children>

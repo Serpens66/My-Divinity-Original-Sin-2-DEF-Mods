@@ -8,24 +8,26 @@ local currentindex = {}
 
 local function LearnNextXSkills(charGUID)
   Ext.Print("LearnNextXSkills called for ",charGUID)
-  local allskillslearned = false
-  for i,skill in ipairs(SkillsToLearn) do
-    if i >= currentindex[charGUID] and i<=currentindex[charGUID]+skillamount_pertick then
-      if Osi.CharacterHasSkill(charGUID,skill)==0 then
-        Osi.CharacterAddSkill(charGUID,skill)
+  if #SkillsToLearn>0 then
+    local allskillslearned = false
+    for i,skill in ipairs(SkillsToLearn) do
+      if i >= currentindex[charGUID] and i<=currentindex[charGUID]+skillamount_pertick then
+        if Osi.CharacterHasSkill(charGUID,skill)==0 then
+          Osi.CharacterAddSkill(charGUID,skill)
+        end
+      elseif i>currentindex[charGUID]+skillamount_pertick then
+        currentindex[charGUID] = i
+        break
       end
-    elseif i>currentindex[charGUID]+skillamount_pertick then
-      currentindex[charGUID] = i
-      break
+      if i>=#SkillsToLearn then
+        allskillslearned = true
+      end
     end
-    if i>=#SkillsToLearn then
-      allskillslearned = true
+    if not allskillslearned then
+      Osi.ProcObjectTimer(charGUID, "LearnNextXSkills", 500)
+    else
+      Ext.Print("Done learning all skills")
     end
-  end
-  if not allskillslearned then
-    Osi.ProcObjectTimer(charGUID, "LearnNextXSkills", 500)
-  else
-    Ext.Print("Done learning all skills")
   end
 end
 

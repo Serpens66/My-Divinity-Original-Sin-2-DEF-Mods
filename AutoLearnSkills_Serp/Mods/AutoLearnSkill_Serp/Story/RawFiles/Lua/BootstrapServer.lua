@@ -1,6 +1,6 @@
 -- eg quest skills or skill you only should learn by progress 
 NoSkillAutoLearn_Serp = {"Target_VoidwokenCharm","Shout_InnerDemon","Summon_Cat","Summon_BlackCat"}
--- Set UseAPCost for your skillbook to >0 (eg. 1) to prevent autolearn 
+-- Set UseAPCost for your skillbook to >4 (eg. 5) to prevent autolearn 
 -- or add your skill via lua to this table (eg. within SessionLoaded): table.insert(Mods.AutoLearnSkill_Serp.NoSkillAutoLearn_Serp, "...")
 
 -- Target_VoidwokenCharm SKILLBOOK_Source_VoidwokenCharm ARX_Windego_Reward
@@ -13,23 +13,13 @@ Ext.Vars.RegisterModVariable(ModuleUUID, "UnlearnedSkills", {Server = true, Clie
 
 
 
-
 -- #############
 
-Ext.Events.SessionLoaded:Subscribe(function (e)
-  Ext.Print("AutoLearnSkill_Serp: SessionLoaded")
-  Ext.Print(Mods.ModCollection_Serp)
-  Ext.Print(Mods.AutoLearnSkill_Serp)
-  Ext.Print(Mods.AutoLearnSkill_Serp and Mods.AutoLearnSkill_Serp.NoSkillAutoLearn_Serp)
-  local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
-  ModVars.UnlearnedSkills = ModVars.UnlearnedSkills or {}
-end)
 
 
-
-local CacheSkillsAutoLearn = {} -- will be filled in StatsLoaded: {{skill=minlevel},}
-local CacheSkillBookIsInTreasure = {}
-local CacheCraftableSkillbooks = {}
+CacheSkillsAutoLearn = {} -- will be filled in StatsLoaded: {{skill=minlevel},}
+CacheSkillBookIsInTreasure = {}
+CacheCraftableSkillbooks = {}
 
 -- ###########################################################################
 
@@ -97,8 +87,8 @@ local function IsPlayerMainChar(charGUID)
 end
 
 -- autolearnskills
-local SkillbookTemplates = Mods and Mods.EpipEncounters and Mods.EpipEncounters.Epip and Mods.EpipEncounters.Epip.GetFeature("SkillbookTemplates")
-local function GetSkillbooksForSkill(skill)
+SkillbookTemplates = Mods and Mods.EpipEncounters and Mods.EpipEncounters.Epip and Mods.EpipEncounters.Epip.GetFeature("SkillbookTemplates")
+function GetSkillbooksForSkill(skill)
   local skillbooks = {} -- most of the time 1 but could be more than 1
   if SkillbookTemplates then -- requires Epip installed
     local skillbook_templates = SkillbookTemplates and SkillbookTemplates.GetForSkill(skill) or nil
@@ -112,32 +102,34 @@ local function GetSkillbooksForSkill(skill)
   return skillbooks
 end
 
-
 -- limit the amount of skill learned at a time, to not crash the game
 local skills_pertime = {amount=50,intervall=500}
-local SkillsToLearn = {} -- will be filled below
+SkillsToLearn = {} -- will be filled below
 local currentindex = {}
 local function LearnNextXSkills(charGUID)
   charGUID = UnifycharGuid(charGUID)
-  -- Ext.Print("AutoLearnSkill_Serp: LearnNextXSkills called for ",charGUID)
-  local allskillslearned = false
-  for i,skill in ipairs(SkillsToLearn[charGUID]) do
-    if i >= currentindex[charGUID] and i<=currentindex[charGUID]+skills_pertime.amount then
-      if Osi.CharacterHasSkill(charGUID,skill)==0 then
-        Osi.CharacterAddSkill(charGUID,skill)
+  Ext.Print("AutoLearnSkill_Serp: LearnNextXSkills called for ",charGUID,SkillsToLearn and SkillsToLearn[charGUID] and #SkillsToLearn[charGUID],currentindex and currentindex[charGUID])
+  if SkillsToLearn[charGUID] and #SkillsToLearn[charGUID]>0 then -- for whatever reason this fn can be called before SavegameLoaded was called?!
+    local allskillslearned = false
+    for i,skill in ipairs(SkillsToLearn[charGUID]) do
+      if i >= currentindex[charGUID] and i<=currentindex[charGUID]+skills_pertime.amount then
+        if Osi.CharacterHasSkill(charGUID,skill)==0 then
+          Ext.Print("AutoLearnSkill_Serp: learn",skill,charGUID)
+          Osi.CharacterAddSkill(charGUID,skill)
+        end
+      elseif i>currentindex[charGUID]+skills_pertime.amount then
+        currentindex[charGUID] = i
+        break
       end
-    elseif i>currentindex[charGUID]+skills_pertime.amount then
-      currentindex[charGUID] = i
-      break
+      if i>=#SkillsToLearn[charGUID] then
+        allskillslearned = true
+      end
     end
-    if i>=#SkillsToLearn[charGUID] then
-      allskillslearned = true
+    if not allskillslearned then
+      Osi.ProcObjectTimer(charGUID, "LearnNextXSkills", skills_pertime.intervall)
+    else
+      Ext.Print("AutoLearnSkill_Serp: Done learning all skills for ",charGUID)
     end
-  end
-  if not allskillslearned then
-    Osi.ProcObjectTimer(charGUID, "LearnNextXSkills", skills_pertime.intervall)
-  else
-    Ext.Print("AutoLearnSkill_Serp: Done learning all skills for ",charGUID)
   end
 end
 Ext.Osiris.RegisterListener("ProcObjectTimerFinished", 2, "after", function(charGUID, event)
@@ -150,44 +142,45 @@ end)
 -- checks charlevel vs skillbooklevel, ability requirements and sourcepoint requirements
 local function LearnAllFittingSkills(charGUID)
   charGUID = UnifycharGuid(charGUID)
-  Ext.Print("AutoLearnSkill_Serp: LearnAllFittingSkills for",charGUID)
+  Ext.Print("AutoLearnSkill_Serp: LearnAllFittingSkills for",charGUID,#CacheSkillsAutoLearn)
   SkillsToLearn[charGUID] = {}
   currentindex[charGUID] = 1
-  local charlevel = Osi.CharacterGetLevel(charGUID)
-  local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
-  for skill,reqs in pairs(CacheSkillsAutoLearn) do
-    if not table_contains_value(ModVars.UnlearnedSkills[charGUID],skill) and charlevel >= reqs.minlevel then
-      local canlearn = Osi.CharacterHasSkill(charGUID,skill)==0
-      if canlearn then
-        for i,reqabilitiesbook in ipairs(reqs.reqabilitiesbook) do
-          if Osi.CharacterGetAbility(charGUID,reqabilitiesbook.Requirement) < reqabilitiesbook.Param then
+  if #CacheSkillsAutoLearn then
+    local charlevel = Osi.CharacterGetLevel(charGUID)
+    local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
+    for skill,reqs in pairs(CacheSkillsAutoLearn) do
+      if not table_contains_value(ModVars.UnlearnedSkills[charGUID],skill) and charlevel >= reqs.minlevel then
+        local canlearn = Osi.CharacterHasSkill(charGUID,skill)==0
+        if canlearn then
+          for i,reqabilitiesbook in ipairs(reqs.reqabilitiesbook) do
+            if Osi.CharacterGetAbility(charGUID,reqabilitiesbook.Requirement) < reqabilitiesbook.Param then
+              canlearn = false
+            end
+          end
+        end
+        if canlearn then
+          for i,reqabilitiesmem in ipairs(reqs.reqabilitiesmem) do
+            if Osi.CharacterGetAbility(charGUID,reqabilitiesmem.Requirement) < reqabilitiesmem.Param then
+              canlearn = false
+            end
+          end
+        end
+        if canlearn then
+          local maxsourcepoints = Osi.HasActiveStatus(charGUID,"SOURCE_MUTED")==1 and 0 or Osi.CharacterGetMaxSourcePoints(charGUID)
+          local skillstat = Ext.Stats.Get(skill)
+          local sourcecategory = skillstat and skillstat.Ability=="Source" -- eg source vampirms
+          if not (maxsourcepoints>=reqs.reqsourcepoints and (maxsourcepoints>0 or not sourcecategory)) then
             canlearn = false
           end
         end
-      end
-      if canlearn then
-        for i,reqabilitiesmem in ipairs(reqs.reqabilitiesmem) do
-          if Osi.CharacterGetAbility(charGUID,reqabilitiesmem.Requirement) < reqabilitiesmem.Param then
-            canlearn = false
-          end
+        if canlearn then
+          table.insert(SkillsToLearn[charGUID],skill)
+          -- Osi.CharacterAddSkill(charGUID,skill) -- learning to many skill at once can crash the game
         end
-      end
-      if canlearn then
-        local maxsourcepoints = Osi.HasActiveStatus(charGUID,"SOURCE_MUTED")==1 and 0 or Osi.CharacterGetMaxSourcePoints(charGUID)
-        local skillstat = Ext.Stats.Get(skill)
-        local sourcecategory = skillstat and skillstat.Ability=="Source" -- eg source vampirms
-        if not (maxsourcepoints>=reqs.reqsourcepoints and (maxsourcepoints>0 or not sourcecategory)) then
-          canlearn = false
-        end
-      end
-      if canlearn then
-        table.insert(SkillsToLearn[charGUID],skill)
-        -- Osi.CharacterAddSkill(charGUID,skill) -- learning to many skill at once can crash the game
       end
     end
+    LearnNextXSkills(charGUID)
   end
-  LearnNextXSkills(charGUID)
-  
 end
 
 
@@ -254,8 +247,8 @@ RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, mi
             for _,skillbook in ipairs(skillbooks) do
               local skillbookstat = Ext.Stats.GetRaw(skillbook)
               if skillbookstat then
-                local UseAPCost = skillbookstat.UseAPCost
-                if UseAPCost<=0 and (CacheSkillBookIsInTreasure[skillbook] or CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory] or CacheCraftableSkillbooks[skillbook]) then -- in any TreasureTable or craftable
+                local UseAPCost = skillbookstat.UseAPCost -- ignore books with higher APCost (all should have 0, but if a mod does not want autolearn, they can set it higher)
+                if UseAPCost<=4 and (CacheSkillBookIsInTreasure[skillbook] or CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory] or CacheCraftableSkillbooks[skillbook]) then -- in any TreasureTable or craftable
                   -- if skillbook=="SKILLBOOK_Source_VoidwokenCharm" or skill=="Target_VoidwokenCharm" then
                     -- Ext.Print(skillbook,skill,CacheSkillBookIsInTreasure[skillbook],CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory],CacheCraftableSkillbooks[skillbook])
                   -- end
@@ -269,16 +262,20 @@ RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, mi
                     skillbookstat["Value"] = 0 -- reduce value of all skillbooks to 0, to avoid any exploits
                     Ext.Stats.Sync(skillbook)
                     CacheSkillsAutoLearn[skill] = {minlevel=skillbookstat.MinLevel,reqabilitiesmem=reqabilitiesmem,reqabilitiesbook=reqabilitiesbook,reqsourcepoints=reqsourcepoints}
-                    -- Ext.Print("CacheSkillsAutoLearn",skill,skillbookstat.MinLevel,reqsourcepoints)
+                    Ext.Print("AutoLearnSkill_Serp: Allow to auto learn skill:",skill)
+                  else
+                    Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, skillbook has no MinLevel:",skill)
                   end
-                elseif not (CacheSkillBookIsInTreasure[skillbook] or CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory]) then
+                else
                   Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, because skillbook is in no TreasureTable (~=Reward) and not craftable:",skill,skillbook,UseAPCost)
                 end
+              else
+                Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, it has no skillbookstat:",skill)
               end
             end
           end
         else
-          Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, it has not skillbook: ",skill)
+          Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, it has no skillbook: ",skill)
         end
       else
         Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, because it is in NoSkillAutoLearn_Serp: ",skill)

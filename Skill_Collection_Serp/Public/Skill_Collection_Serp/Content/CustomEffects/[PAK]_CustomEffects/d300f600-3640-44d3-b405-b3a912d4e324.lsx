@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="1" revision="4" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="d300f600-3640-44d3-b405-b3a912d4e324" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="RS3_FX_Skills_FireTornado" />
+					<attribute id="Name" type="23" value="RS3_FX_Skills_FireTornado" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/RS3_FX_Skills_FireTornado.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="ae2fe021-28d4-4240-8397-c0eb5bf39a63" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="add42df3-32ae-4ceb-87c5-1d29b36aa8fa" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e7e0f8e2-8464-4ced-8f43-ba0c17882a34" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="1625c98c-b0e6-4778-95d2-0cbd9f8fa20d" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="5045a71d-88cd-47ad-83b1-8047f917241e" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="261af31e-f2ee-45cb-a7c1-9ebeb625b768" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="70eb2eb2-1da6-4a3d-9017-26476be5123e" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="ac170314-b0b9-4959-bd70-3b25cdf2d976" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="29a46d0b-98f2-4ecc-a5f6-193766123186" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="68d87499-7e04-4531-b299-61522df70498" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="77361848-a02d-4b72-8eed-b637b4e3d6f9" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="61bb8fcd-d006-4b64-a74f-9540c7e7d101" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="26248de6-90a4-46df-bd7a-cc48dd993c8d" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

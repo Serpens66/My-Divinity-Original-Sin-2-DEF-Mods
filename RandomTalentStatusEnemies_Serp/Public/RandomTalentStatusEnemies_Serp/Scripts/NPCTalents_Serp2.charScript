@@ -1,0 +1,30 @@
+#INCLUDE Base
+INIT
+USING Base
+CHARACTER:__Me
+	
+EVENTS
+EVENT EVENT_GiveTalentsOnActivate
+ON
+	OnActivate()
+VARS
+	CHARACTER:_Player = null
+ACTIONS
+	NRD_DebugLog("NRD EVENT_GiveTalentsOnActivate")
+  DebugText(__Me,"EVENT_GiveTalentsOnActivate");
+  CharacterStatusText(__Me,"EVENT_GiveTalentsOnActivate");
+  IF "!c1"
+		IsTagged(__Me,NPCRandomTalent_1)
+	THEN
+		SERP_EXT_OsirisAddTalent(__Me)
+	ENDIF
+
+EVENT StartCombatFetchPos
+ON
+	OnEnteredCombat(__Me, _)
+ACTIONS
+  CharacterLevelUp(__Me);
+	NRD_DebugLog("NRD OnEnteredCombat");
+	DebugText(__Me,"OnEnteredCombat");
+  CharacterStatusText(__Me,"EVENT_GiveTalentsOnActivate");
+

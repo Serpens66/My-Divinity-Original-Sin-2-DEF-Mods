@@ -8,7 +8,7 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" value="Serp" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
-                    <attribute id="Description" value="Adds few more effects to surfaces: Water/Blood have a chance to apply wet/extinguish burning. Frozen Water/Blood applies chilled. All non-blessed clouds apply a lesser version of Blind while you are in the cloud. Unfortunately incompatible to any other mod changing the surfaces, since editing it via lua does not work (Statuses of surface template is not writeable, although it should be..)" type="30" />
+                    <attribute id="Description" value="Adds few more effects to surfaces: Water/Blood have a chance to apply wet/extinguish burning. Frozen Water/Blood applies chilled. All non-blessed clouds apply a lesser version of Blind while you are in the cloud. Poison/PoisonCloud get a DefaultLifeTime of 3 turns and water-/blood-cloud and oil of 10 turns, instead of infinite (I hope this has no bad consequences for story/riddle). Unfortunately incompatible to any other mod changing the surfaces, since editing it via lua does not work (Statuses of surface template is not writeable, although it should be..)" type="30" />
                     <attribute id="Folder" value="MoreSurfaceEffects_Serp" type="30" />
                     <attribute id="GMTemplate" value="" type="22" />
                     <attribute id="LobbyLevelName" value="" type="22" />

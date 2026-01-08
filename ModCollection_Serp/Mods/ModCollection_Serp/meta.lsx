@@ -63,20 +63,20 @@
                             <attribute id="UUID" value="68a99fef-d125-4ed0-893f-bb6751e52c5e" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
-                        <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="CMP_OrganizedContainers_Marek" type="30" />
-                            <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="Improved Organisation" type="22" />
-                            <attribute id="UUID" value="f243c84f-9322-43ac-96b7-7504f990a8f0" type="22" />
-                            <attribute id="Version" value="268435456" type="4" />
-                        </node>
-                        <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="_Backpack-Linker_2d972eb4-ecb0-4c06-a3ad-b53ab90311e6" type="30" />
-                            <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="Backpack-Linker" type="22" />
-                            <attribute id="UUID" value="2d972eb4-ecb0-4c06-a3ad-b53ab90311e6" type="22" />
-                            <attribute id="Version" value="285212673" type="4" />
-                        </node>
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="CMP_OrganizedContainers_Marek" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="Improved Organisation" type="22" /> -->
+                            <!-- <attribute id="UUID" value="f243c84f-9322-43ac-96b7-7504f990a8f0" type="22" /> -->
+                            <!-- <attribute id="Version" value="268435456" type="4" /> -->
+                        <!-- </node> -->
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="_Backpack-Linker_2d972eb4-ecb0-4c06-a3ad-b53ab90311e6" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="Backpack-Linker" type="22" /> -->
+                            <!-- <attribute id="UUID" value="2d972eb4-ecb0-4c06-a3ad-b53ab90311e6" type="22" /> -->
+                            <!-- <attribute id="Version" value="285212673" type="4" /> -->
+                        <!-- </node> -->
                         <node id="ModuleShortDesc">
                             <attribute id="Folder" value="APFreeMovement_Serp" type="30" />
                             <attribute id="MD5" value="" type="23" />
@@ -118,13 +118,6 @@
                             <attribute id="Name" value="Skill Refund Epip" type="22" />
                             <attribute id="UUID" value="a7bd5132-ae49-484b-9f33-4c4dd67f3e35" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
-                        </node>
-                        <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="Helaene_Shared_25469b00-aa46-470d-aa76-f6c3ece35e17" type="30" />
-                            <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="Helaene - Shared Library" type="22" />
-                            <attribute id="UUID" value="25469b00-aa46-470d-aa76-f6c3ece35e17" type="22" />
-                            <attribute id="Version" value="318767104" type="4" />
                         </node>
                         <node id="ModuleShortDesc">
                             <attribute id="Folder" value="Skill_Collection_Serp" type="30" />
@@ -243,13 +236,6 @@
                             <attribute id="MD5" value="" type="23" />
                             <attribute id="Name" value="Red Prince Dialogue Restoration" type="22" />
                             <attribute id="UUID" value="92a32fe7-605e-4062-9795-50a2f5209918" type="22" />
-                            <attribute id="Version" value="268435456" type="4" />
-                        </node>
-                        <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="NullifyResistances_a8fa9996-d27a-4e96-bd15-339409c40366" type="30" />
-                            <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="Nullify Resistances - DE" type="22" />
-                            <attribute id="UUID" value="a8fa9996-d27a-4e96-bd15-339409c40366" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
                         <node id="ModuleShortDesc">
@@ -433,6 +419,13 @@
                             <attribute id="Name" value="z_Epip" type="22" />
                             <attribute id="UUID" value="7d32cb52-1cfd-4526-9b84-db4867bf9356" type="22" />
                             <attribute id="Version" value="268894212" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="ImprovedTooltips_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Improved Tooltips Serp" type="22" />
+                            <attribute id="UUID" value="18de41cd-00bd-4968-8d13-b74bd22ce0c9" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
                         </node>
                     </children>
                 </node>

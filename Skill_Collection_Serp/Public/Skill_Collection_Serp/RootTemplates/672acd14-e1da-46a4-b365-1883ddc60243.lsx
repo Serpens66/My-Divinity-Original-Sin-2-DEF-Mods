@@ -49,6 +49,9 @@
 								<node id="Tag">
 									<attribute id="Object" type="22" value="SUMMON" />
 								</node>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="NO_GHOST" />
+								</node>
 							</children>
 						</node>
 						<node id="LayerList">

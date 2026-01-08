@@ -425,3 +425,5 @@ RegisterProtectedOsirisListener("CharacterStatusRemoved", 3, "after", function(c
   end
 end)
 
+-- remove surface (there is also Transform to Freeze and such, but it affects most connected surface and often ignores the radis)
+-- local x,y,z=table.unpack(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").WorldPos);Osi.CreateSurfaceAtPosition(x,y,z,"SurfaceNone",0.5,1)

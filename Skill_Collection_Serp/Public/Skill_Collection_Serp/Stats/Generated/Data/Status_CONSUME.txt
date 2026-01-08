@@ -162,3 +162,18 @@ data "FormatColor" "Healing"
 data "StatsId" "Channel-Source"
 data "StackId" "Channel-Source"
 
+
+
+new entry "NULLIFY_RESISTANCE"
+type "StatusData"
+data "StatusType" "CONSUME"
+data "ForGameMaster" "No"
+data "InitiateCombat" "Yes"
+data "DisplayName" "NULL_RESISTANCE_DisplayName"
+data "DisplayNameRef" "Nullified Resistance"
+data "Icon" "Skill_Source_NullifyResistance"
+data "FormatColor" "Red"
+data "StatusEffect" "RS3_FX_GP_Status_NullResistanc_01,KeepRot:Dummy_BodyFX"
+data "SavingThrow" "None"
+data "StatsId" "SKILLBOOST_NullResistance"
+data "StackId" "NullRes"

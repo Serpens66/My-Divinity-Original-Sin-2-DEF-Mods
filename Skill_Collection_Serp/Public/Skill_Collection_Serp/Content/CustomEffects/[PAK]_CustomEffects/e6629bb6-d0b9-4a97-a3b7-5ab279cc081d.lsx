@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="1" revision="4" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="VisualBank">
+		<node id="VisualBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="e6629bb6-d0b9-4a97-a3b7-5ab279cc081d" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="SourceFile" type="30" value="Public/Shared/Assets/Effects/Effects_Models/FX_Model_Arrow_A.GR2" />
+					<attribute id="Template" type="22" value="Public/Shared/Assets/Effects/Effects_Models/FX_Model_Arrow_A.Arrow001.0" />
+					<attribute id="Name" type="23" value="RS3_FX_Model_Arrow_A_Custom_001" />
+					<attribute id="BlueprintInstanceResourceID" type="22" value="" />
+					<children>
+						<node id="Objects">
+							<attribute id="ObjectID" type="22" value="FX_Model_Arrow_A.Arrow001.0" />
+							<attribute id="MaterialID" type="22" value="b6b6d8ca-4aa3-49cb-8426-50e2b71fdd51" />
+							<attribute id="LOD" type="1" value="0" />
+						</node>
+						<node id="LODDistances">
+							<attribute id="Object" type="6" value="3.4028235E+38" />
+						</node>
+						<node id="AnimationWaterfall">
+							<attribute id="Object" type="22" value="" />
+						</node>
+						<node id="AnimationSet">
+							<children>
+								<node id="AnimationBank">
+									<attribute id="Type" type="22" value="" />
+									<children>
+										<node id="AnimationSubSets" />
+									</children>
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

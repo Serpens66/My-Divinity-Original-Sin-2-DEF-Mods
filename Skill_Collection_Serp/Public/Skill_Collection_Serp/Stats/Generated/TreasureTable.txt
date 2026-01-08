@@ -67,6 +67,8 @@ object category "I_SKILLBOOK_Source_Water_IceballCursed",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Water_DomeOfProtection",1,0,0,0,0,0,0,0
 new subtable "1,1"
+object category "I_SKILLBOOK_Water_DomeOfProtection_Small",1,0,0,0,0,0,0,0
+new subtable "1,1"
 object category "I_SKILLBOOK_Warrior_IceBringer",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookWater"
@@ -87,8 +89,6 @@ object category "T_SCS_Skillbook_Water",1,0,0,0,0,0,0,0
 
 
 new treasuretable "SCS_Skillbook_Air"
-new subtable "1,1"
-object category "I_SKILLBOOK_Air_ElectricRay",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Air_DeafeningRapture",1,0,0,0,0,0,0,0
 new subtable "1,1"
@@ -248,6 +248,8 @@ object category "T_SCS_Skillbook_Necromancy",1,0,0,0,0,0,0,0
 
 
 new treasuretable "SCS_Skillbook_Polymorph"
+new subtable "1,1"
+object category "I_SKILLBOOK_Polymorph_NullifyResistance",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Polymorph_RubberSkin",1,0,0,0,0,0,0,0
 new subtable "1,1"
