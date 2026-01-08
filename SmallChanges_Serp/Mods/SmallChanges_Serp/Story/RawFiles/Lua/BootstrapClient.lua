@@ -23,7 +23,7 @@ Game.Tooltip.Register.Ability(function(char, ability, tooltip)
     for _, entry in ipairs(tooltip.Data) do
       if entry.Type=="AbilityDescription" then
         entry.Description = entry.Description.." Triggers also for: Charmed, Chicken Form, Crippled and Sleep."
-        entry.Description2 = entry.Description2.."Also increases the chance to resist a status via armor by +1% per point, even if you have no armor left."
+        -- entry.Description2 = entry.Description2.."Also increases the chance to resist a status via armor by +1% per point, even if you have no armor left."
         break
       end
     end

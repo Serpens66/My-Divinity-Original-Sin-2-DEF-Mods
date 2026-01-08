@@ -460,6 +460,7 @@ SharedFns.OnStatsLoaded = function(e)
   -- not 1:1 the same changes, but on rough rules to automate it
   -- local grenades = {"Projectile_Grenade_Nailbomb","Projectile_Grenade_Molotov","Projectile_Grenade_CursedMolotov","Projectile_Grenade_ChemicalWarfare","Projectile_Grenade_Ice","Projectile_Grenade_BlessedIce","Projectile_Grenade_Holy","Projectile_Grenade_Taser","Projectile_Grenade_Tremor","Projectile_Grenade_SmokeBomb","Projectile_Grenade_WaterBlessedBalloon","Projectile_Grenade_PoisonFlask","Projectile_Grenade_CursedPoisonFlask","Projectile_Grenade_Love","Projectile_Grenade_ArmorPiercing","ProjectileStrike_Grenade_ClusterBomb","ProjectileStrike_Grenade_CursedClusterBomb"}
   -- for _,grenade in ipairs(grenades) do
+  local reduceAPforGrenadeObjects = {}
   for i,skill in pairs(Ext.Stats.GetStats("SkillData")) do
     local MyRawStat = Ext.Stats.GetRaw(skill)
     local MyStat = Ext.Stats.Get(skill)
@@ -468,9 +469,10 @@ SharedFns.OnStatsLoaded = function(e)
       local DamageMultiplier = MyStat["Damage Multiplier"]
       local DamageRange = MyStat["Damage Range"]
       if DamageMultiplier and DamageMultiplier>0 then
-        MyRawStat.ActionPoints = 2 -- 1 more expensive, since they are stronger now
-        MyRawStat["Damage Multiplier"] = DamageMultiplier and DamageMultiplier * 0.8 or 0
+        MyRawStat["Damage Multiplier"] = DamageMultiplier and DamageMultiplier * 0.8 or 0 -- since scale with finesse
         MyRawStat["Damage Range"] = DamageRange and DamageRange * 3 or 0
+      else -- reduce AP costs for the ones which do no damage, must be done in the grenade object, not the skill...
+        table.insert(reduceAPforGrenadeObjects,MyStat.MovingObject)
       end
     -- make every summoning skill require at least Summoning 1
     elseif SharedFns.IsAnySummonSkill(skill,MyStat) and not skill:find("Enemy",1,true) then
@@ -519,6 +521,9 @@ SharedFns.OnStatsLoaded = function(e)
     if obj:find("Grenade",1,true) then
       local MyStat = Ext.Stats.GetRaw(obj)
       MyStat.Weight = MyStat.Weight / 2 -- half weight
+      if SharedFns.table_contains_value(reduceAPforGrenadeObjects,MyStat.RootTemplate) then
+        MyStat.UseAPCost = MyStat.UseAPCost-1
+      end
     end
   end
   

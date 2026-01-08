@@ -108,7 +108,7 @@ SkillsToLearn = {} -- will be filled below
 local currentindex = {}
 local function LearnNextXSkills(charGUID)
   charGUID = UnifycharGuid(charGUID)
-  Ext.Print("AutoLearnSkill_Serp: LearnNextXSkills called for ",charGUID,SkillsToLearn and SkillsToLearn[charGUID] and #SkillsToLearn[charGUID],currentindex and currentindex[charGUID])
+  -- Ext.Print("AutoLearnSkill_Serp: LearnNextXSkills called for ",charGUID,SkillsToLearn and SkillsToLearn[charGUID] and #SkillsToLearn[charGUID],currentindex and currentindex[charGUID])
   if SkillsToLearn[charGUID] and #SkillsToLearn[charGUID]>0 then -- for whatever reason this fn can be called before SavegameLoaded was called?!
     local allskillslearned = false
     for i,skill in ipairs(SkillsToLearn[charGUID]) do
@@ -142,7 +142,7 @@ end)
 -- checks charlevel vs skillbooklevel, ability requirements and sourcepoint requirements
 local function LearnAllFittingSkills(charGUID)
   charGUID = UnifycharGuid(charGUID)
-  Ext.Print("AutoLearnSkill_Serp: LearnAllFittingSkills for",charGUID,#CacheSkillsAutoLearn)
+  -- Ext.Print("AutoLearnSkill_Serp: LearnAllFittingSkills for",charGUID,#CacheSkillsAutoLearn)
   SkillsToLearn[charGUID] = {}
   currentindex[charGUID] = 1
   if #CacheSkillsAutoLearn then
@@ -319,7 +319,7 @@ RegisterProtectedOsirisListener("CharacterCreationFinished", 1, "after", functio
     charGUID = UnifycharGuid(charGUID)
     local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
     ModVars.UnlearnedSkills = ModVars.UnlearnedSkills or {}
-    Ext.Print("AutoLearnSkill_Serp: CharacterCreationFinished",charGUID,"reset UnlearnedSkills (to allow learning them again after respec")
+    -- Ext.Print("AutoLearnSkill_Serp: CharacterCreationFinished",charGUID,"reset UnlearnedSkills (to allow learning them again after respec")
     ModVars.UnlearnedSkills[charGUID] = {} -- reset the unlearned skills, to allow auto learning them again
     ModVars.UnlearnedSkills = ModVars.UnlearnedSkills
     LearnAllFittingSkills(charGUID)

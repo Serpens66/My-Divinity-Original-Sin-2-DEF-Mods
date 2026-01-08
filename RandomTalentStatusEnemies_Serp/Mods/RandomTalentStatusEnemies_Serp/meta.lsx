@@ -10,7 +10,7 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" value="Serpens66" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
-                    <attribute id="Description" value="Grants all NPC-Types on mod-load 1-2 random Talents and on combat entered 1-2 random Stati. Only using vanilla Talents/Stati and strong Stati only for a short duration (1-5 turns for all stati). So this mod should spice fights up, but never should make them impossible. Requires Script Extender v60." type="30" />
+                    <attribute id="Description" value="Grants all NPCs on combat start 1-2 random Talents 1-2 random Buff-Stati (only vanilla). Strong Stati only for a short duration (1-5 turns for all stati). Every NPC gets talent Opportunist and every Mage Savage Sortilege. So this mod should spice fights up, but never should make them impossible. Requires Script Extender v60." type="30" />
                     <attribute id="DescriptionName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="DisplayName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="Folder" value="RandomTalentStatusEnemies_Serp" type="30" />
