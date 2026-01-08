@@ -5,7 +5,6 @@ SharedFns = {}
 
 SharedFns.HowToAddRandomTalents = "OnCombat" 
 -- OnStats: on game load and all units sharing the same stats will have the same talents,
--- Live: on savegame load, but every unit get their own random talents TODO how to loop over everyone?!
 -- OnCombat: when entering combat with the units they get their own random talents
 
 
@@ -239,7 +238,7 @@ SharedFns.GetRandomTalents = function(charGUID,char,num,MyStat)
   while #chosen < num do
     notstop = notstop + 1
     Talent = SharedFns.weighted_random_choices(RandomTalents, 1)[1]
-    if Talent~="None" and (not MyStat and not char.Stats["TALENT_"..Talent] or MyStat and not string.find(StatTalents,Talent)) then
+    if Talent~="None" and (not MyStat and not char.Stats["TALENT_"..Talent] or MyStat and not string.find(StatTalents,Talent,1,true)) then
       reqAbilities = RandomTalents[Talent].reqAbilities -- WarriorLore,RangerLore,FireSpecialist,WaterSpecialist,AirSpecialist,EarthSpecialist,Necromancy,Summoning
       reqWeaponTypes = RandomTalents[Talent].reqWeaponTypes -- None,Wand,Knife,Sword,Axe,Club,Spear,Staff,Bow,Crossbow, Sentinel (Schild)
       if (not reqAbilities or SharedFns.HasAnyAbility(char,reqAbilities,MyStat) and 
@@ -327,7 +326,7 @@ SharedFns.OnStatsLoaded = function(e)-- Client only
       table.insert(newtalents,"ViolentMagic")
     end
     for _,newtalent in ipairs(newtalents) do
-      if not string.find(talents,newtalent) then
+      if not string.find(talents,newtalent,1,true) then
         talents = tostring(talents)..";"..tostring(newtalent)
       end
     end
@@ -337,12 +336,12 @@ SharedFns.OnStatsLoaded = function(e)-- Client only
     local exclude = {"_Hero","StoryPlayer","CasualPlayer","NormalPlayer","HardcorePlayer","StoryNPC_Character","CasualNPC","NormalNPC","HardcoreNPC"}
     for i,name in pairs(Ext.Stats.GetStats("Character")) do
       local MyStat = Ext.Stats.GetRaw(name)
-      if not SharedFns.table_contains_value(exclude,name) and not name:find("Hero") and not name:find("Player") then
+      if not SharedFns.table_contains_value(exclude,name) and not name:find("Hero",1,true) and not name:find("Player",1,true) then
         talents = MyStat["Talents"]
         newtalents = SharedFns.GetRandomTalents(nil,nil,SharedFns.num_talents,MyStat)
         if #newtalents>0 then
           newtalents = table.concat(newtalents, ";")
-          if not string.find(talents,newtalents) then
+          if not string.find(talents,newtalents,1,true) then
             if talents and talents~="" then
               newtalents = tostring(talents)..";"..tostring(newtalents)
             end

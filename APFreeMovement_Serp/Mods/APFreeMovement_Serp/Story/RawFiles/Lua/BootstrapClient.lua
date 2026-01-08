@@ -24,7 +24,7 @@ Ext.Events.StatsLoaded:Subscribe(function(e)
     talents = Ext.Stats.GetRaw(name)["Talents"] or ""
     newtalents = {"QuickStep"}
     for _,newtalent in ipairs(newtalents) do
-      if not string.find(talents,newtalent) then
+      if not string.find(talents,newtalent,1,true) then
         talents = tostring(talents)..";"..tostring(newtalent)
       end
     end

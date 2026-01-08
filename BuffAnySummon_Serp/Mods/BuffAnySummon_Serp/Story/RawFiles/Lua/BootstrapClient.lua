@@ -13,7 +13,7 @@ end)
 --Update tooltips
 Game.Tooltip.Register.Skill(function(char, skill, tooltip)
   -- Ext.Print("Tooltip Skill: ",char, skill, tooltip)
-  if skill:find("Infusion") then
+  if skill:find("Infusion",1,true) then
     for _, entry in ipairs(tooltip.Data) do
       if entry.Type=="SkillDescription" then
         entry.Label = entry.Label.."\n(Can target any Summon)\n"

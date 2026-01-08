@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" />
+    <version major="3" minor="6" revision="6" build="0" />
+    <region id="Config">
+        <node id="root">
+            <children>
+                <node id="Dependencies">
+                    <children>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="Character_Creation_Pack" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Character_Creation_Pack" type="22" />
+                            <attribute id="UUID" value="b40e443e-badd-4727-82b3-f88a170c4db7" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="Shared_DOS" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Shared_DOS" type="22" />
+                            <attribute id="UUID" value="eedf7638-36ff-4f26-a50a-076b87d53ba0" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="DivinityOrigins_1301db3d-1f54-4e98-9be5-5094030916e4" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Divinity: Original Sin 2" type="22" />
+                            <attribute id="UUID" value="1301db3d-1f54-4e98-9be5-5094030916e4" type="22" />
+                            <attribute id="Version" value="372251161" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="CMP_DivineTalents_Kamil" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Divine Talents" type="22" />
+                            <attribute id="UUID" value="ca32a698-d63e-4d20-92a7-dd83cba7bc56" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="CMP_FTJRespec_Kamil" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Fort Joy Magic Mirror" type="22" />
+                            <attribute id="UUID" value="2d42113c-681a-47b6-96a1-d90b3b1b07d3" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="CMP_Free_PetPalTag_Kamil" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Animal Empathy" type="22" />
+                            <attribute id="UUID" value="423fae51-61e3-469a-9c1f-8ad3fd349f02" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="AS_BlackCatPlus" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="AS_BlackCatPlus" type="22" />
+                            <attribute id="UUID" value="015de505-6e7f-460c-844c-395de6c2ce34" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="CMP_CraftingOverhaul" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Crafter&apos;s Kit" type="22" />
+                            <attribute id="UUID" value="68a99fef-d125-4ed0-893f-bb6751e52c5e" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="CMP_OrganizedContainers_Marek" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="Improved Organisation" type="22" /> -->
+                            <!-- <attribute id="UUID" value="f243c84f-9322-43ac-96b7-7504f990a8f0" type="22" /> -->
+                            <!-- <attribute id="Version" value="268435456" type="4" /> -->
+                        <!-- </node> -->
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="_Backpack-Linker_2d972eb4-ecb0-4c06-a3ad-b53ab90311e6" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="Backpack-Linker" type="22" /> -->
+                            <!-- <attribute id="UUID" value="2d972eb4-ecb0-4c06-a3ad-b53ab90311e6" type="22" /> -->
+                            <!-- <attribute id="Version" value="285212673" type="4" /> -->
+                        <!-- </node> -->
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="APFreeMovement_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="AP Free Movement" type="22" />
+                            <attribute id="UUID" value="ed437bee-0601-4b5f-ac85-6996055cde21" type="22" />
+                            <attribute id="Version" value="285212672" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="BalancedIndomitableForAll" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Balanced Indomitable For All" type="22" />
+                            <attribute id="UUID" value="e11e183e-71af-4752-823e-0ddd37f34f28" type="22" />
+                            <attribute id="Version" value="268632064" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="BuffAnySummon_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Buff All Summons and IceInfusion (DE)" type="22" />
+                            <attribute id="UUID" value="53956668-1e09-4d91-a0b9-cefe603ae0c8" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="RandomTalentStatusEnemies_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Random Talent Status Enemies" type="22" />
+                            <attribute id="UUID" value="f1f25d94-06b5-4698-b552-2bde4b31366c" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="SmallJump_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Small Jump" type="22" />
+                            <attribute id="UUID" value="2b4d3c7b-72ab-405a-9d6d-1e8a7e621ad1" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="Skill_Collection_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Skill Collection" type="22" />
+                            <attribute id="UUID" value="5191fd22-c4c2-483b-9d2a-607627d36642" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="MoreSurfaceEffects_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="More Surface Effects" type="22" />
+                            <attribute id="UUID" value="865b2110-9460-4255-ad3e-aa7ba6ff8edc" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="EssentialPets_9d7a31c0-20bb-48a1-978c-a5ec5f7e7a3e" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Essential Pets" type="22" />
+                            <attribute id="UUID" value="9d7a31c0-20bb-48a1-978c-a5ec5f7e7a3e" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="BarteringTweaks_27db95b3-6850-48c5-baec-3a1f2df9a825" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Bartering Tweaks" type="22" />
+                            <attribute id="UUID" value="27db95b3-6850-48c5-baec-3a1f2df9a825" type="22" />
+                            <attribute id="Version" value="319094784" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="LuckyCharm_Tweaks_A_d6bb2797-5d26-494d-92b5-42dc09911f8f" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="LuckyCharm_Tweaks_A" type="22" />
+                            <attribute id="UUID" value="d6bb2797-5d26-494d-92b5-42dc09911f8f" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="NoCooldownsOutsideCombat_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="No Cooldowns Outside Combat" type="22" />
+                            <attribute id="UUID" value="a3f20c55-9083-4d37-ab51-22ca77592999" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="PlayerChestFixer_947ff25c-956b-400b-88aa-379e0a72411d" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Lady Vengeance Storage Chest Fixer" type="22" />
+                            <attribute id="UUID" value="947ff25c-956b-400b-88aa-379e0a72411d" type="22" />
+                            <attribute id="Version" value="268763137" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="daeyenaPeeperFix_84d41312-fbe2-455c-ac0a-d4f277ff3e2d" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Stop Peeper from Making Daeyena Hostile" type="22" />
+                            <attribute id="UUID" value="84d41312-fbe2-455c-ac0a-d4f277ff3e2d" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="CRAFTUNLOCKEDALL_cd4e9e00-6207-ade6-59aa-361f9acee7c5" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="CRAFTUNLOCKEDALL_cd4e9e00-6207-ade6-59aa-361f9acee7c5" type="22" />
+                            <attribute id="UUID" value="cd4e9e00-6207-ade6-59aa-361f9acee7c5" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="Cleric_SkillbookTradersSellStaves_bcd4104e-fea1-411a-8ae4-78af51d95665" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Skillbook Vendors Sell Staves + Earth &amp; Physical Staves" type="22" />
+                            <attribute id="UUID" value="bcd4104e-fea1-411a-8ae4-78af51d95665" type="22" />
+                            <attribute id="Version" value="268435458" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="NoWeaponWarning_2f8d6338-5235-4237-9fa2-bc0411aec9c0" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="No Weapon Warning" type="22" />
+                            <attribute id="UUID" value="2f8d6338-5235-4237-9fa2-bc0411aec9c0" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="ToggleSprintDefinitiveEdition_4dbc489b-f5cb-40c2-bc9c-ac4f6fb20fad" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Toggle Sprint - Definitive Edition" type="22" />
+                            <attribute id="UUID" value="3cdec0ff-5d98-e859-87cd-c663b7b9fcfe" type="22" />
+                            <attribute id="Version" value="318832641" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="SorcerousSundriesFixed_bec8c59f-7ae9-478d-9a9e-f49d22aa520f" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Sourcerous Sundries Fixed" type="22" />
+                            <attribute id="UUID" value="bec8c59f-7ae9-478d-9a9e-f49d22aa520f" type="22" />
+                            <attribute id="Version" value="268435457" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="Public_Anvils_3bedec30-d8da-4f7f-a5e7-f84c30099f15" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Public Anvils" type="22" />
+                            <attribute id="UUID" value="3bedec30-d8da-4f7f-a5e7-f84c30099f15" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="ShapeshiftingOriginTags_4cd206b7-04c3-418d-93af-cb54140c5d4f" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Shapeshifting Origin Tags - Definitive Edition" type="22" />
+                            <attribute id="UUID" value="79881eda-5f57-3897-e749-7768e9e25654" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="RedPrinceDialogueRestoration_92a32fe7-605e-4062-9795-50a2f5209918" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Red Prince Dialogue Restoration" type="22" />
+                            <attribute id="UUID" value="92a32fe7-605e-4062-9795-50a2f5209918" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="Skilledup_297782d5-35bb-14a8-c898-c11042a560ec" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Skilled Up" type="22" />
+                            <attribute id="UUID" value="297782d5-35bb-14a8-c898-c11042a560ec" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="TalentFix_de70a9b1-9ed7-44d7-850a-d39f007e579c" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Talent Fixes" type="22" />
+                            <attribute id="UUID" value="de70a9b1-9ed7-44d7-850a-d39f007e579c" type="22" />
+                            <attribute id="Version" value="16777222" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="StaffTweaks_5503a0b6-3d9f-43bf-81e4-20a870fa36e7" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="StaffTweaks (incompatible to other staff changing mods)" type="22" />
+                            <attribute id="UUID" value="5503a0b6-3d9f-43bf-81e4-20a870fa36e7" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="TarquinUndeadBugFix_32b62936-1955-460c-9a26-d16f12f4bfc8" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Tarquin Undead Bug Fix" type="22" />
+                            <attribute id="UUID" value="32b62936-1955-460c-9a26-d16f12f4bfc8" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="TrainingDummy_40efe511-7489-455e-a9c8-ad7495b8c9f2" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Training Dummy" type="22" />
+                            <attribute id="UUID" value="40efe511-7489-455e-a9c8-ad7495b8c9f2" type="22" />
+                            <attribute id="Version" value="268500994" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="WaitYourTurn_BetterReflections_321cb1e6-bbc9-4283-9ecf-2fd56365195d" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Wait Your Turn - Better Reflections" type="22" />
+                            <attribute id="UUID" value="321cb1e6-bbc9-4283-9ecf-2fd56365195d" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="ShutupAboutSummons_868b0397-e61f-43e2-b0e5-4dbe859d40dd" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Shutup About Summons" type="22" />
+                            <attribute id="UUID" value="868b0397-e61f-43e2-b0e5-4dbe859d40dd" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="ScaleExperienceByPlayerLevel_d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Scale Experience By Player Level" type="22" />
+                            <attribute id="UUID" value="d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418" type="22" />
+                            <attribute id="Version" value="268959745" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="ATestRedo_25b61429-1f31-4a5d-83c3-e6e21d5fc155" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Sadha Expansion Mod Main File" type="22" />
+                            <attribute id="UUID" value="25b61429-1f31-4a5d-83c3-e6e21d5fc155" type="22" />
+                            <attribute id="Version" value="268435502" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="SadhaExtras_c86e5d66-644b-4fbf-be9e-54cb8b6a08c6" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Sadha Expansion Mod Z Extras File" type="22" />
+                            <attribute id="UUID" value="c86e5d66-644b-4fbf-be9e-54cb8b6a08c6" type="22" />
+                            <attribute id="Version" value="268435462" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="ACBS_c0c71235-bf41-45e4-b71c-c364dd31b5b7" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Anyone Can Be Sworn" type="22" />
+                            <attribute id="UUID" value="c0c71235-bf41-45e4-b71c-c364dd31b5b7" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="annoying_npc_dialogue_removed_5d0464ac-3230-42b2-b0e9-d66d56c2c59a" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Annoying NPC dialogue removed" type="22" />
+                            <attribute id="UUID" value="5d0464ac-3230-42b2-b0e9-d66d56c2c59a" type="22" />
+                            <attribute id="Version" value="536870912" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="AllTheSourceFountains_87aa37ae-8f9f-4db4-962e-93bb7fed936a" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="All The Source - Source Fountains At All Waypoints" type="22" />
+                            <attribute id="UUID" value="87aa37ae-8f9f-4db4-962e-93bb7fed936a" type="22" />
+                            <attribute id="Version" value="302186496" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="FaneDialogueRestoration_16ec73d8-2d9b-4748-bfac-fe90ef5c02b8" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Fane Dialogue Restoration" type="22" />
+                            <attribute id="UUID" value="16ec73d8-2d9b-4748-bfac-fe90ef5c02b8" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="IncreaseCompanionDialogueTimer_ab2aacb3-4908-4555-933e-c2ba7e864e7e" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="IncreaseCompanionDialogueTimer" type="22" />
+                            <attribute id="UUID" value="ab2aacb3-4908-4555-933e-c2ba7e864e7e" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="JLMBY_PLUSPLUS_a958d3bf-43c1-45b2-a469-1cb3a10bb8a4" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Just Let Me Build You! ++" type="22" />
+                            <attribute id="UUID" value="a958d3bf-43c1-45b2-a469-1cb3a10bb8a4" type="22" />
+                            <attribute id="Version" value="637534208" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="LadyC_MoreCharacterColors_dcdfeaf4-8f2d-4aca-80ab-5aa70747d2b2" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="LadyC - More Character Colors [DE]" type="22" />
+                            <attribute id="UUID" value="db07c22c-8935-3848-2366-7827b70c6030" type="22" />
+                            <attribute id="Version" value="285278208" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="test01_00f1eef2-81ae-4bbe-965a-3e379e806448" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Lohse Dialogue Fix" type="22" />
+                            <attribute id="UUID" value="00f1eef2-81ae-4bbe-965a-3e379e806448" type="22" />
+                            <attribute id="Version" value="285212672" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="ArmorBasedSavingThrows_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Armor-Based Saving Throws (DE) LUA" type="22" />
+                            <attribute id="UUID" value="c1abc08d-bab5-47d2-aad1-ce9936149118" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="Malchezzar_CombinedAtlases_464d3ba3-3745-4371-9aed-e46bc010eadb" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Malchezzar - Combined Atlases" type="22" />
+                            <attribute id="UUID" value="464d3ba3-3745-4371-9aed-e46bc010eadb" type="22" />
+                            <attribute id="Version" value="486539268" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="BonusUniques_173e1939-2e97-1467-c7db-02a7b33aa786" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="BonusUniques" type="22" />
+                            <attribute id="UUID" value="173e1939-2e97-1467-c7db-02a7b33aa786" type="22" />
+                            <attribute id="Version" value="1778384905" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="BonusUniquesFoodFix_cdc0b63c-e9f1-4301-ae31-1b71f2cc57e0" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Food, Drinks, &amp; Potions fix" type="22" />
+                            <attribute id="UUID" value="cdc0b63c-e9f1-4301-ae31-1b71f2cc57e0" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="MagicMirror_InfinitePointsFix_76669ca7-17fb-4186-98d0-7219a0135a28" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="Malchezzar&apos;s Magic Mirror Fixes" type="22" /> -->
+                            <!-- <attribute id="UUID" value="76669ca7-17fb-4186-98d0-7219a0135a28" type="22" /> -->
+                            <!-- <attribute id="Version" value="805306390" type="4" /> -->
+                        <!-- </node> -->
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="LeaderLib_543d653f-446c-43d8-8916-54670ce24dd9" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="LeaderLib - Definitive Edition" type="22" />
+                            <attribute id="UUID" value="7e737d2f-31d2-4751-963f-be6ccc59cd0c" type="22" />
+                            <attribute id="Version" value="387907601" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="MZ_CoopFollow_1f1c9d52-4972-4d12-a709-7cd3ed46fa11" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Co-op Controls [DE]" type="22" />
+                            <attribute id="UUID" value="1f1c9d52-4972-4d12-a709-7cd3ed46fa11" type="22" />
+                            <attribute id="Version" value="268435463" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="EpipEncounters_7d32cb52-1cfd-4526-9b84-db4867bf9356" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="z_Epip" type="22" />
+                            <attribute id="UUID" value="7d32cb52-1cfd-4526-9b84-db4867bf9356" type="22" />
+                            <attribute id="Version" value="268894212" type="4" />
+                        </node>
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="AutoLearnSkill_Serp" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="Auto Learn Skill" type="22" /> -->
+                            <!-- <attribute id="UUID" value="76aa0579-128f-4bed-beb3-04f57c83f589" type="22" /> -->
+                            <!-- <attribute id="Version" value="268435456" type="4" /> -->
+                        <!-- </node> -->
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="SkillRefundEpip_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Skill Refund Epip" type="22" />
+                            <attribute id="UUID" value="a7bd5132-ae49-484b-9f33-4c4dd67f3e35" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="SmallChanges_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Small Changes Serp" type="22" />
+                            <attribute id="UUID" value="463fefc0-8d69-492e-b55a-d141c2eb9dd2" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="ImprovedTooltips_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Improved Tooltips Serp" type="22" />
+                            <attribute id="UUID" value="18de41cd-00bd-4968-8d13-b74bd22ce0c9" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                    </children>
+                </node>
+                <node id="ModuleInfo">
+                    <attribute id="Author" value="Serpens66" type="30" />
+                    <attribute id="CharacterCreationLevelName" value="" type="22" />
+                    <attribute id="Description" value="Enables several mods for easier enable (lists several mods as Dependencies so they load automatically without enabling them, but they need to be in folder). Also enables giftbag code automatically from: CMP_DivineTalents_Kamil, CMP_FTJRespec_Kamil (use the mod Sourcerous Sundries - Fixed to also enable that bag properly). ATTENTION: Enable manually: giftbags Divine Talents and Animal Empathy, because the talents are not displayed in charactersheet otherwise." type="30" />
+                    <attribute id="DescriptionName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
+                    <attribute id="DisplayName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
+                    <attribute id="Folder" value="ModsEnabler_Serp" type="30" />
+                    <attribute id="GMTemplate" value="" type="22" />
+                    <attribute id="LobbyLevelName" value="" type="22" />
+                    <attribute id="MD5" value="" type="23" />
+                    <attribute id="MenuLevelName" value="" type="22" />
+                    <attribute id="Name" value="z Mods Enabler Serp" type="22" />
+                    <attribute id="NumPlayers" value="2" type="1" />
+                    <attribute id="PhotoBooth" value="" type="22" />
+                    <attribute id="StartupLevelName" value="" type="22" />
+                    <attribute id="Tags" value="" type="30" />
+                    <attribute id="Type" value="Add-on" type="22" />
+                    <attribute id="UUID" value="de6c4b4e-4bc6-4de1-8f95-74f9eeb55692" type="22" />
+                    <attribute id="Version" value="268435456" type="4" />
+                    <children>
+                        <node id="PublishVersion">
+                            <attribute id="Version" value="909321303" type="4" />
+                        </node>
+                        <node id="Scripts" />
+                        <node id="TargetModes">
+                            <children>
+                                <node id="Target">
+                                    <attribute id="Object" value="Story" type="22" />
+                                </node>
+                                <node id="Target">
+                                    <attribute id="Object" value="Arena" type="22" />
+                                </node>
+                                <node id="Target">
+                                    <attribute id="Object" value="GM" type="22" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

@@ -86,7 +86,7 @@ SharedFns.OnStatsLoaded = function(e)
   for i,name in pairs(Ext.Stats.GetStats("SkillData")) do
     local MyStat = Ext.Stats.Get(name) -- GetRaw is for TargetConditions and SkillProperties not good useable (setting a new value of TargetConditions causes an error and SkillProperties is much more complicated)
     local TargetConditions = MyStat["TargetConditions"] -- eg: MySummon&(Tagged:INCARNATE_S|Tagged:INCARNATE_G)&!Spirit
-    if TargetConditions and type(TargetConditions)=="string" and string.find(TargetConditions,Target_putAfter) then
+    if TargetConditions and type(TargetConditions)=="string" and string.find(TargetConditions,Target_putAfter,1,true) then
       local new = TargetConditions:gsub(Target_putAfter,"%0"..Target_insert) -- %0 refers to the entire match found by gsub
       new = new:gsub("MySummon&", "") -- remove restriction to own summons -- ist "MySummon&" obwohl in Skill_Target "MySummon;" steht: MySummon&(Tagged:INCARNATE_S|Tagged:INCARNATE_G|Tagged:SUMMON|Tagged:DRAGON)&!Spirit
       -- Ext.Print("Change TargetConditions ",name," to ",new,". old was: ",TargetConditions)

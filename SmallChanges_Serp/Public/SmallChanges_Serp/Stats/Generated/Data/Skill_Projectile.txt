@@ -1,0 +1,5 @@
+new entry "Projectile_WildMage"
+type "SkillData"
+data "SkillType" "Projectile"
+using "Projectile_DimensionalBolt"
+data "Damage Multiplier" "33"

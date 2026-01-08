@@ -1,0 +1,8 @@
+{
+    "RequiredExtensionVersion": 60,
+    "ModTable": "NoCooldownsOutsideCombat_Serp",
+    "FeatureFlags": [
+        "OsirisExtensions",
+        "Lua"
+    ]
+}

@@ -10,6 +10,7 @@ end)
 
 
 -- new Osiris function to provide talents
+-- idea was to call this in a charscript for every NPC in OnActivate(), but no clue how to add a charscript to every npc..
 SharedFns.OsirisAddTalent = function(charGuid)
   Ext.Print("OsirisAddTalent",charGuid)
   if SharedFns.HowToAddRandomTalents == "Live" and not SharedFns.IsPlayerAlly(charGUID) then

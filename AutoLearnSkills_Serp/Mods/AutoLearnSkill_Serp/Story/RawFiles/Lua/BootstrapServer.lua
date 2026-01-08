@@ -199,7 +199,7 @@ RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, mi
             for _,result in pairs(results) do
               if _=="Results" then
                 for _,finalresult in pairs(result) do
-                  if finalresult.Result and finalresult.Result:find("SKILLBOOK_") then
+                  if finalresult.Result and finalresult.Result:find("SKILLBOOK_",1,true) then
                     CacheCraftableSkillbooks[finalresult.Result] = true
                   end
                 end
@@ -212,16 +212,16 @@ RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, mi
     
     -- TreasureTable
     for i,Trstable in pairs(Ext.Stats.GetStats("TreasureTable")) do
-      if not Trstable:find("Reward") then -- assuming that these are Quest Rewards
+      if not Trstable:find("Reward",1,true) then -- assuming that these are Quest Rewards
         local Stat = Ext.Stats.TreasureTable.GetLegacy(Trstable)
         if Stat then
           for _,subtable in ipairs(Stat.SubTables) do
             for __,category in ipairs(subtable.Categories) do
               local TreasureCategory = category.TreasureCategory
               if TreasureCategory and category.Unique==0 and category.Divine==0 and category.Frequency~=0 then -- skip these ?
-                if TreasureCategory:find("Skillbook") then
+                if TreasureCategory:find("Skillbook",1,true) then
                   CacheSkillBookIsInTreasure[TreasureCategory] = true -- a ObjectCategory
-                elseif TreasureCategory:find("SKILLBOOK") then -- a skillbook I_SKILLBOOK_Air_ShockingTouch
+                elseif TreasureCategory:find("SKILLBOOK",1,true) then -- a skillbook I_SKILLBOOK_Air_ShockingTouch
                   local skillbook = TreasureCategory:gsub("I_","") -- remove the I_ in front
                   -- if skillbook=="SKILLBOOK_Source_VoidwokenCharm" then
                     -- Ext.Print("SKILLBOOK_Source_VoidwokenCharm",Trstable)
@@ -359,7 +359,7 @@ end)
 
     -- for i,Object in pairs(Ext.Stats.GetStats("Object")) do
       -- for k,v in pairs(Ext.Stats.GetRaw(Object)) do
-        -- if Object:find("SKILLBOOK") then
+        -- if Object:find("SKILLBOOK",1,true) then
           -- Ext.Print("Raw Object",Object,k,v)
         -- end
         -- Object	SKILLBOOK_Necromancy_BonePile	PropertyLists	Map<FixedString, stats::PropertyList> (00007FF4533128F0)
@@ -379,7 +379,7 @@ end)
         -- Object	SKILLBOOK_Necromancy_BonePile	ModId	2bd9bdbe-22ae-4aa2-9c93-205880fc6564
       -- end
       -- for k,v in pairs(Ext.Stats.Get(Object)) do
-        -- if Object:find("SKILLBOOK") then
+        -- if Object:find("SKILLBOOK",1,true) then
           -- Ext.Print("Object",Object,k,v)
           -- Object	SKILLBOOK_Warrior_GroundSmash	ModifierType	Item
           -- Object	SKILLBOOK_Warrior_GroundSmash	Act	1
