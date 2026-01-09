@@ -40,7 +40,7 @@ local RandomTalents = {
   Haymaker={weight=1},
   Gladiator={weight=1},
   Soulcatcher={weight=1},
-  Indomitable={weight=5},
+  -- Indomitable={weight=5},
   -- Story Talents
   Vitality ={weight= 2}, -- +20%HP
   BeastMaster ={weight=4,reqAbilities={"Summoning"}},

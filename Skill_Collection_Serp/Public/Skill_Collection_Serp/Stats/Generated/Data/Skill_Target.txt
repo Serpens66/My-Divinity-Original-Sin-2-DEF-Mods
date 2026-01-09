@@ -1815,5 +1815,3 @@ data "CastEffect" "RS3_FX_Skills_Voodoo_Cast_Curse_Hand_02:Dummy_L_HandFX"
 data "TargetEffect" "RS3_FX_Skills_Voodoo_StripResistances_Impact_01:Dummy_BodyFX"
 data "TargetGroundEffect" "RS3_FX_Skills_Voodoo_StripResistances_Impact_01:Dummy_BodyFX"
 data "CycleConditions" "Enemy;!Dead"
-
-

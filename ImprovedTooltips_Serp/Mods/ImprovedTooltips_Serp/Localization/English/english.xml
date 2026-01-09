@@ -1,0 +1,8 @@
+<contentList>
+	<content contentuid="h5e26d4e3g63d5g4415gbe5ag4bc3e42bb995">Throw an explosive trap at target location. Trap takes 1 turn to activate. When active, the trap will explode when a character approaches it, dealing [1].</content>
+	<content contentuid="hcf74a6efg1ab6g45ecgaa12g147f528975ee">Throw [1] explosive traps at target locations. Each trap takes a turn to activate. When active, trap will explode when a character approaches it, dealing [2].</content>
+	<content contentuid="h0fe63523g3caeg4e46g8152geabd390080af">Receive Sparkstriker status. This causes your melee attacks to create a Spark projectile that bounces off the initial target to hit the closest enemy, dealing [1].</content>
+	<content contentuid="hbd5f39f8g78e1g42c8g95b6g1917a8c65816">Target character and surrounding allies receive Sparkmaster status that make melee attacks firing sparks that can fork twice at nearby enemies. Each spark hit deals [1].</content>
+	<content contentuid="h3240460dgd250g435bg9ebegc1682089c5ed">Explode target corpse, dealing [1] in the area.</content>
+	<content contentuid="h1a6bf0edg47eeg4ee8gaa86g5a608e5dda7b">Explode all corpses around you, dealing [1] in the area.</content>
+</contentList>

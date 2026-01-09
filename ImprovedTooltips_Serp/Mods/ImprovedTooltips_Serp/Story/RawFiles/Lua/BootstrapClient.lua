@@ -685,13 +685,6 @@ end
 
 
 
-
-
-
-
-
-
-
 -- Game.Tooltip.RegisterListener(function(request, tooltip)
   -- print("TOOLTIP",request.Type)
   -- _D(request)
@@ -699,4 +692,25 @@ end
 -- end)
 
 
-
+Ext.Events.StatsLoaded:Subscribe(function(e)
+  -- from Vanilla Plus mod by Luxem, lua code updated to newest extender version, also updated ImprovedTooltips_Serp\Mods\ImprovedTooltips_Serp\Localization german and english for this
+  local skillList = {
+		Shout_SparkingSwings = "Skill:Projectile_Status_Spark:Damage",
+		Target_MasterOfSparks = "Skill:Projectile_Status_GreaterSpark:Damage",
+		Target_CorpseExplosion = "Skill:Projectile_CorpseExplosion_Explosion:Damage",
+		Shout_MassCorpseExplosion = "Skill:Projectile_CorpseExplosion_Explosion:Damage",
+		Projectile_LaunchExplosiveTrap = "Skill:Projectile_TrapLaunched:Damage",
+		Projectile_DeployMassTraps = "Skill:Projectile_TrapLaunched:Damage",
+	}
+	for skill,description in pairs(skillList) do
+		local stat = Ext.Stats.Get(skill)
+    if stat then
+      local statDesc = stat["StatsDescriptionParams"]
+      if statDesc ~= "" and statDesc ~= nil then
+        stat["StatsDescriptionParams"] = statDesc..";"..description
+      else
+        stat["StatsDescriptionParams"] = description
+      end
+    end
+	end
+end)

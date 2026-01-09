@@ -1,0 +1,2 @@
+1.0.0.1:
+- disabled Indomiteable Talent as random talent for NPC, because this vanilla talent is too OP. (use my balanced indomiteable for all mod instead)
