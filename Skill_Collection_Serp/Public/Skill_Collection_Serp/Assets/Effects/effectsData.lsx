@@ -74,6 +74,21 @@
 					<attribute id="Looping" type="19" value="True" />
 					<attribute id="MapKey" type="22" value="RS3_FX_Status_Liquified" />
 				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="4.00433" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_GP_Status_MarkofDeath_01" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="1" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Skills_Divine_Protective_Dome_03" />
+				</node>
+				<node id="EffectData">
+					<attribute id="Duration" type="6" value="16.8" />
+					<attribute id="Looping" type="19" value="True" />
+					<attribute id="MapKey" type="22" value="RS3_FX_Skills_Fire_Impact_FireStorm_01" />
+				</node>
 			</children>
 		</node>
 	</region>

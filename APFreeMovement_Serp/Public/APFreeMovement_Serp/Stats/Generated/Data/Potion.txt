@@ -1,0 +1,5 @@
+new entry "MovementSpeedReduceStats_Serp"
+type "Potion"
+data "Act" "1"
+data "Movement" "-1"
+

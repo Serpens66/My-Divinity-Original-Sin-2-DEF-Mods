@@ -347,6 +347,174 @@
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="Target_WarpSword_Description" />
 				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Reflexively shoot at enemies moving towards your target." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_CoverFire_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Perform an attack dealing [1]. When performed from stealth, this attack does 500% more damage." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_SneakAttack_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Inebriates target area." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_Intoxicate_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Causes inebriated target to fall asleep." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_Slumber_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Deals [1] to target afflicted by sleep. " />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_Nightmare_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Puts the target to sleep. Sets regeneration and rested for 3 turns." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_SleepingTouch_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Knock down target standing in oil. Deals [1] to the surrounding area." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_Slip_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Target character absorbs element the beneath them to gain temporary resistance." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_ElementalAbsoption_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Provokes a single target for 2 turns. Sets Enrage for 1 turn." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_Trigger_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Change Incarnate's element to blood, unlocking Mosquito Swarm." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_BloodInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Infuse Incarnate with cursed blood, unlocking Mosquito Swarm and Blood Storm." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_CursedBloodinfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Change Incarnate's element to Oil, unlocking Fossil Strike." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_EarthInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Change Incarnate's element to Metal, unlocking Fossil Strike and Earthquake." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_MetalInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="|Ice Infusion description|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_IceInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="|Necrofire Infusion description|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_NecrofireInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="|Acid Infusion description|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_AcidInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="|Cursed Electric Infusion description|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_CursedElectricInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Deals [1]. Grants the skill Second Impact." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_FirstAttack_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Deals [1]. Grants the skill Third Strike" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_SecondImpact_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Deals [1]. Increase Damage by 15% for 1 turn." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_ThirdStrike_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Mark a target for death. If the target dies while under the effect, gain 2 Action Points." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_MarkOfDeath_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Character is resistant to death for 1 turn. Target gains Invulnerability and heals 50% of its max health during the next turn." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_ReversalofFortune_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Empowers Incarnate with Range, Power, Shadow and Warp Infusion in a small area." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_AstralInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Empowers Incarnate with 2 AP recovery while sacraficing 1 AP recovery on self." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_AdrenalineInfusion_Description" />
+				</node>
 			</children>
 		</node>
 	</region>

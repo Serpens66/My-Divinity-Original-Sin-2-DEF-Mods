@@ -273,13 +273,13 @@
                             <attribute id="UUID" value="868b0397-e61f-43e2-b0e5-4dbe859d40dd" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
-                        <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="ScaleExperienceByPlayerLevel_d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418" type="30" />
-                            <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="Scale Experience By Player Level" type="22" />
-                            <attribute id="UUID" value="d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418" type="22" />
-                            <attribute id="Version" value="268959745" type="4" />
-                        </node>
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="ScaleExperienceByPlayerLevel_d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="Scale Experience By Player Level" type="22" /> -->
+                            <!-- <attribute id="UUID" value="d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418" type="22" /> -->
+                            <!-- <attribute id="Version" value="268959745" type="4" /> -->
+                        <!-- </node> -->
                         <node id="ModuleShortDesc">
                             <attribute id="Folder" value="ATestRedo_25b61429-1f31-4a5d-83c3-e6e21d5fc155" type="30" />
                             <attribute id="MD5" value="" type="23" />

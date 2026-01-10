@@ -15,3 +15,26 @@ data "SavingThrow" "MagicArmor"
 data "ImmuneFlag" "KnockdownImmunity"
 data "StatsId" "Stats_KnockedDown"
 data "Instant" "No"
+
+
+
+
+
+
+
+new entry "KNOCKED_DOWN_PIERCE"
+type "StatusData"
+data "StatusType" "KNOCKED_DOWN"
+data "ForGameMaster" "Yes"
+data "InitiateCombat" "Yes"
+data "DisplayName" "KNOCKED_DOWN_PIERCE_DisplayName"
+data "DisplayNameRef" "Knocked Down"
+data "Description" "KNOCKED_DOWN_PIERCE_Description"
+data "DescriptionRef" "|Character is knocked down and cannot move. Cured by Rested.|"
+data "Icon" "statIcons_KnockedDown"
+data "FormatColor" "White"
+data "StatusEffect" "RS3_FX_GP_Status_KnockedDown_01:Dummy_StatusFX"
+data "SavingThrow" "None"
+data "ImmuneFlag" "KnockdownImmunity"
+data "StatsId" "Stats_KnockedDown"
+data "Instant" "No"

@@ -29,6 +29,16 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Necromancy_SummonSkeletonMage",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Necromancy_SummonBoneTroll",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_FrostDragon",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Summon_CursedBloodInfusion",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Summon_MetalInfusion",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Summon_DoubleSummon",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Summon_AstralRefresh",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookSummoning"
 CanMerge 1
@@ -70,6 +80,10 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Water_DomeOfProtection_Small",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Warrior_IceBringer",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_FrostDragon",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_ReversalOfFortune",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookWater"
 CanMerge 1
@@ -107,6 +121,10 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Water_HolyElecWater",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Warrior_StormBringer",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Air_Intoxicate",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Air_RideTheLightning",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookAir"
 CanMerge 1
@@ -146,6 +164,10 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Warrior_FireBringer",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_I_SKILLBOOK_Necromancy_Mute",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Fire_ChainReaction",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Fire_ChannelFlame",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookFire"
 CanMerge 1
@@ -184,6 +206,12 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Warrior_EarthBringer",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Necromancy_CorruptMind",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Earth_Slip",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Earth_InfectiousSpore",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Summon_MetalInfusion",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookEarth"
 CanMerge 1
@@ -229,6 +257,12 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Necromancy_MaddeningSong",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Warrior_DarkMetamorphosis",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_BloodBurst",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_Nightmare",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Summon_CursedBloodInfusion",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookNecromancy"
 CanMerge 1
@@ -270,6 +304,10 @@ new subtable "3,1"
 object category "I_TOOL_Ink_Pot_A_Quill_Source_A",1,0,0,0,0,0,0,0
 new subtable "2,1"
 object category "I_BOOK_Skill_Sourcery_Blank_A",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Polymorph_ElementalAbsorption",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Polymorph_GreaterPolymorphism",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookPolymorph"
 CanMerge 1
@@ -309,6 +347,10 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Warrior_DarkMetamorphosis",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Summoning_WarpSword",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_ShieldReflect",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Warrior_FirstAttack",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookWarrior"
 CanMerge 1
@@ -346,6 +388,10 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Ranger_WebBottle",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Ranger_SummonWolf",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Ranger_CoverFire",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Ranger_TrickShot",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookRanger"
 CanMerge 1
@@ -371,6 +417,10 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Scoundrel_ChokingPowder",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Scoundrel_PlayDeadSkill",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Rogue_SneakAttack",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Rogue_MarkOfDeath",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookRogue"
 CanMerge 1

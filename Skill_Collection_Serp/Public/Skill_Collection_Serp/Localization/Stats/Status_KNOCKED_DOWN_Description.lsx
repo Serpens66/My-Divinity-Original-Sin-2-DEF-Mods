@@ -11,6 +11,13 @@
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="MAGICKNOCKDOWN_Description" />
 				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="|Character is knocked down and cannot move. Cured by Rested.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="KNOCKED_DOWN_PIERCE_Description" />
+				</node>
 			</children>
 		</node>
 	</region>

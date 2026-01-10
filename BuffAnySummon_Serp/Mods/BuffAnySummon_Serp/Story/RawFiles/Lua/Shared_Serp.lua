@@ -86,6 +86,12 @@ SharedFns.OnStatsLoaded = function(e)
   for i,name in pairs(Ext.Stats.GetStats("SkillData")) do
     local MyStat = Ext.Stats.Get(name) -- GetRaw is for TargetConditions and SkillProperties not good useable (setting a new value of TargetConditions causes an error and SkillProperties is much more complicated)
     local TargetConditions = MyStat["TargetConditions"] -- eg: MySummon&(Tagged:INCARNATE_S|Tagged:INCARNATE_G)&!Spirit
+    
+    -- TODO:
+     -- Support für &HasStatus:INF_FIRE zufügen, auch SkillProperties, siehe MetalInfusion von Sivs skills
+     -- data "TargetConditions" "MySummon;(Tagged:INCARNATE_S&HasStatus:INF_FIRE|Tagged:INCARNATE_G&HasStatus:INF_FIRE_G)"
+    -- data "SkillProperties" "TARGET:IF(Tagged:INCARNATE_S&HasStatus:INF_FIRE):INF_NECROFIRE,100,-1;TARGET:IF(Tagged:INCARNATE_G&HasStatus:INF_FIRE_G):INF_NECROFIRE_G,100,-1;"
+    
     if TargetConditions and type(TargetConditions)=="string" and string.find(TargetConditions,Target_putAfter,1,true) then
       local new = TargetConditions:gsub(Target_putAfter,"%0"..Target_insert) -- %0 refers to the entire match found by gsub
       new = new:gsub("MySummon&", "") -- remove restriction to own summons -- ist "MySummon&" obwohl in Skill_Target "MySummon;" steht: MySummon&(Tagged:INCARNATE_S|Tagged:INCARNATE_G|Tagged:SUMMON|Tagged:DRAGON)&!Spirit
@@ -132,7 +138,7 @@ SharedFns.OnStatsLoaded = function(e)
     end
   end
   
-  -- IceInfusion
+  -- IceInfusion, change vanilla iceinfusion to blessed water
   local MyStat = Ext.Stats.Get("INF_BLESSED_ICE")
   MyStat.DisplayNameRef = "|Blessed Water Infusion|"
   MyStat.StatusEffect = "RS3_FX_Char_ElementalDevil_Water_A_01:Dummy_BodyFX"
@@ -384,7 +390,7 @@ end
 -- chars can have the ability from equipment
 SharedFns.ChangeSummonSkills = function(charGUID,summoninglevel)
   summoninglevel = summoninglevel or Osi.CharacterGetAbility(charGUID,"Summoning")
-  for _,skill in ipairs({"Target_BloodInfusion","Target_OilInfusion"}) do
+  for _,skill in ipairs({"Target_BloodInfusion","Target_OilInfusion","Target_WaterInfusion","Target_IceInfusion_Normal"}) do
     if summoninglevel>=1 then
       if Osi.CharacterHasSkill(charGUID,skill)==0 then
         Osi.CharacterAddSkill(charGUID,skill)

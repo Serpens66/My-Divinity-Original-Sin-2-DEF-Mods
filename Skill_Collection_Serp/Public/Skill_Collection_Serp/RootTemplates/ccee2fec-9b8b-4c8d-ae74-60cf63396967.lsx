@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="1" revision="3" build="5" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="ccee2fec-9b8b-4c8d-ae74-60cf63396967" />
+					<attribute id="Name" type="23" value="BOOK_Skill_Air_RideTheLightning" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="Type" type="22" value="item" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="VisualTemplate" type="22" value="d9e49a21-8bfe-44a9-89ec-a5ae2ed12bfa" />
+					<attribute id="PhysicsTemplate" type="22" value="9273f547-686c-4e78-949c-aa0d6190d7f4" />
+					<attribute id="CastShadow" type="19" value="False" />
+					<attribute id="RecieveDecal" type="19" value="False" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="Opacity" type="6" value="0.225" />
+					<attribute id="Icon" type="22" value="Item_BOOK_Spellbook_Air_A" />
+					<attribute id="Stats" type="22" value="SKILLBOOK_Air_RideTheLightning" />
+					<attribute id="CanBePickedUp" type="19" value="True" />
+					<attribute id="CanBeMoved" type="19" value="True" />
+					<attribute id="CoverAmount" type="1" value="0" />
+					<attribute id="CanShootThrough" type="19" value="True" />
+					<attribute id="WalkThrough" type="19" value="True" />
+					<attribute id="Tooltip" type="1" value="2" />
+					<attribute id="maxStackAmount" type="4" value="50" />
+					<attribute id="UseSound" type="22" value="77cb79f2-1790-4958-8b4c-3a83a7ae75ff" />
+					<attribute id="BloodSurfaceType" type="22" value="SurfaceNone" />
+					<attribute id="Description" type="28" handle="hd9bfb323g2f59g48c2gbd9dg906a8374a223" value="Aerotheurge skills are Air-based magic spells. High intelligence improves these skills. Read this book to learn this skill." />
+					<attribute id="MeshProxy" type="22" value="" />
+					<children>
+						<node id="Tags">
+							<children>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="BOOK" />
+								</node>
+							</children>
+						</node>
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="AIBounds">
+							<attribute id="AIType" type="1" value="1" />
+							<attribute id="Min" type="12" value="-0.270443 -0.00151443 -0.392645" />
+							<attribute id="Max" type="12" value="0.255247 0.177119 0.270117" />
+							<attribute id="Radius" type="6" value="0.216147" />
+							<attribute id="Height" type="6" value="0.178634" />
+						</node>
+						<node id="GameMaster">
+							<attribute id="GameMasterSpawnSection" type="4" value="6" />
+							<attribute id="GameMasterSpawnSubSection" type="28" handle="hcf97a6e7ga0ebg4fe3ga4dcg393c9c87423f" value="Skillbooks" />
+						</node>
+						<node id="OnUsePeaceActions">
+							<children>
+								<node id="Action">
+									<attribute id="ActionType" type="4" value="13" />
+									<children>
+										<node id="Attributes">
+											<attribute id="SkillID" type="22" value="Rush_RideTheLightning" />
+											<attribute id="Consume" type="19" value="True" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="OnDestroyActions" />
+						<node id="Equipment">
+							<attribute id="VisualSetSlot" type="5" value="0" />
+							<attribute id="EquipmentSlots" type="5" value="0" />
+							<children>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="CustomBodyMaterials">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+							</children>
+						</node>
+						<node id="InventoryList">
+							<children>
+								<node id="Inventorys">
+									<attribute id="InventoryItem" type="22" value="Empty" />
+								</node>
+							</children>
+						</node>
+						<node id="Scripts" />
+						<node id="ItemList" />
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

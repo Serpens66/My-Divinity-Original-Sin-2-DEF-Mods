@@ -1,0 +1,6 @@
+new entry "MOVEMENTSPEED_HALF_SERP"
+type "StatusData"
+data "StatusType" "CONSUME"
+data "StatsId" "MovementSpeedReduceStats_Serp"
+data "StackId" "APFreeMovement_Serp"
+

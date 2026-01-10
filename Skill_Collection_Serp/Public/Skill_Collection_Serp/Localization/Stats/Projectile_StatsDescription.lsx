@@ -130,6 +130,13 @@
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="Projectile_Ranger_WebBottle_StatsDescription" />
 				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Range: [2]&lt;br&gt;Chilled makes target less resistant to water spells, but a bit more resistant to fire spells. Chilled has a negative impact on movement. Chilled targets that get chilled again, turn frozen.&lt;br&gt;Can target terrain to create ice surface or freeze water." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_IceShardStart_StatsDescription" />
+				</node>
 			</children>
 		</node>
 	</region>

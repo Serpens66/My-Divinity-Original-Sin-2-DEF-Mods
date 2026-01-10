@@ -610,9 +610,8 @@ SharedFns.OnSaveLoaded = function(major, minor, patch, build)
   local players = SharedFns.GetAllPlayerChars()
   for _,charGUID in ipairs(players) do
     
-    Ext.Print("OnSaveLoaded",charGUID)
+    -- Ext.Print("SmallChanges_Serp: OnSaveLoaded",charGUID)
     SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
-    Osi.RemoveStatus(charGUID,"MOVEMENTSPEED_REDUCE_SERP") -- remove it, no longer needed
     if Osi.CharacterHasSkill(charGUID,"Target_LLDUMMY_TrainingDummy")==0 then
       Osi.CharacterAddSkill(charGUID,"Target_LLDUMMY_TrainingDummy")
     end
@@ -851,3 +850,7 @@ end
 -- for k,v in pairs(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").SkillManager) do print(k,v) end
 
 -- print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").Stats.CurrentArmor)
+
+-- Ext.Stats.Get("Player_Fane").Movement=750;Ext.Stats.Sync("Player_Fane",false)
+-- print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").RunSpeedOverride)
+-- Ext.Print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").Stats.DynamicStats[1].Movement)

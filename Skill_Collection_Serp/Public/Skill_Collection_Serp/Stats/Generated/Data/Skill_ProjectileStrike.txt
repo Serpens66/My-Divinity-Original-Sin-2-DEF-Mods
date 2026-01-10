@@ -112,3 +112,39 @@ data "PreviewStrikeHits" "Yes"
 data "CycleConditions" "Enemy;!Dead"
 data "IgnoreVisionBlock" "Yes"
 
+
+
+
+
+
+
+new entry "ProjectileStrike_Incarnate_Stormbolt_Blood"
+type "SkillData"
+using "ProjectileStrike_Stormbolt_Lightning"
+data "SkillType" "ProjectileStrike"
+data "ForGameMaster" "No"
+data "Ability" "Death"
+data "AIFlags" "CanNotUse"
+data "DamageType" "Physical"
+data "SkillProperties" "CreateSurface,1,,Blood;Douse;"
+data "DeathType" "DoT"
+data "TargetConditions" "Enemy"
+data "Template" "71f2352f-bd73-4494-a6f9-58b14b794f8a"
+data "Damage Multiplier" "65"
+data "Damage Range" "10"
+
+new entry "ProjectileStrike_Stormbolt_Meteor"
+type "SkillData"
+using "ProjectileStrike_Stormbolt_Lightning"
+data "SkillType" "ProjectileStrike"
+data "ForGameMaster" "No"
+data "Ability" "Fire"
+data "AIFlags" "CanNotUse"
+data "DamageType" "Fire"
+data "SkillProperties" "CreateSurface,1,,Fire"
+data "DeathType" "Incinerate"
+data "TargetConditions" "Enemy"
+data "Template" "37027365-9fcf-492a-9018-777739c33e7f"
+data "Damage Multiplier" "200"
+
+

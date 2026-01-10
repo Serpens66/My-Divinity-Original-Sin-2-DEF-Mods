@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="0" build="4" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="49bae68d-4a09-44d2-a88b-f2d280d1c3db" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="RS3_FX_Skills_Fire_Impact_FireStorm_01" />
+					<attribute id="Name" type="23" value="RS3_FX_Skills_Fire_Impact_FireStorm_01" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/RS3_FX_Skills_Fire_Impact_FireStorm_01.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="316edbdc-8973-4cad-ab33-6bd267d9c27f" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="4979c68a-0c5f-49f4-a40b-6f0c5fcba47a" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="f4e9f828-d86e-432e-a185-c145ac3712cf" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="3d513c76-0e50-472e-beda-cef554ac809e" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="6f12c609-6a19-4c62-b1f9-be1347fcaa27" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="0aebdf2c-467f-43d9-b59f-5249a8f20b90" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="ed4e5a8a-5f59-4400-80c5-a942445850f0" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

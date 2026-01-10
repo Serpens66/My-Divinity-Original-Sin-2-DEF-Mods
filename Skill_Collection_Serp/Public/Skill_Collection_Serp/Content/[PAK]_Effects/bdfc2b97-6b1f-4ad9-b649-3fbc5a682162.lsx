@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="0" build="4" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="bdfc2b97-6b1f-4ad9-b649-3fbc5a682162" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="RS3_FX_Skills_Divine_Protective_Dome_03" />
+					<attribute id="Name" type="23" value="RS3_FX_Skills_Divine_Protective_Dome_03" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/RS3_FX_Skills_Divine_Protective_Dome_03.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="a8d975b1-1a3b-4831-949a-23a8de885656" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

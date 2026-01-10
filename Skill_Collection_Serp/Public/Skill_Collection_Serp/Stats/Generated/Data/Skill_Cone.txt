@@ -309,3 +309,34 @@ data "BackStart" "12"
 data "OverrideMinAP" "Yes"
 data "CycleConditions" "Enemy"
 
+
+
+
+
+
+new entry "Cone_Dragon_IceBreath"
+type "SkillData"
+using "Cone_EnemyDragonBreath"
+data "SkillType" "Cone"
+data "ForGameMaster" "No"
+data "DamageType" "Water"
+data "SkillProperties" "Freeze;FROZEN,100,1"
+data "DeathType" "FrozenShatter"
+data "SurfaceType" "WaterFrozen"
+data "DisplayName" "Cone_Dragon_IceBreath_DisplayName"
+data "DisplayNameRef" "Frost Breath"
+data "Description" "Cone_Dragon_IceBreath_Description"
+data "DescriptionRef" "Unleash an icy wind, freezing enemies in place and dealing [1]."
+data "PrepareEffect" "RS3_FX_Char_Creature_Dragon_Prepare_Fire_01_Dummy_Ice:Dummy_CastFX"
+data "CastTextEvent" "castsurface"
+data "CastEffect" "RS3_FX_Char_Creature_Dragon_Cast_DragonBreath_Root_01:Dummy_Root;RS3_FX_Char_Creature_Dragon_Cast_DragonBreath_01_Dummy:Dummy_CastFX:cast;RS3_FX_Char_Creature_Dragon_Cast_DragonBreath_01:Dummy_Root:cast;RS3_FX_Char_Creature_Dragon_Cast_DragonBreath_Root_01_End:Dummy_Root:castend"
+data "ActionPoints" "3"
+data "Cooldown" "4"
+data "Damage Multiplier" "75"
+data "Damage Range" "10"
+data "Range" "12"
+data "Angle" "15"
+data "Icon" "Skill_Water_Frost_Breath"
+
+
+

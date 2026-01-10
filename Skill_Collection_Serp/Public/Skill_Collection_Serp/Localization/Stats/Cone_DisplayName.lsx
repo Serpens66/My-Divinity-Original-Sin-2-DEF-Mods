@@ -67,6 +67,13 @@
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="Cone_SkeletonWarrior_GroundSmash_DisplayName" />
 				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Frost Breath" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Cone_Dragon_IceBreath_DisplayName" />
+				</node>
 			</children>
 		</node>
 	</region>

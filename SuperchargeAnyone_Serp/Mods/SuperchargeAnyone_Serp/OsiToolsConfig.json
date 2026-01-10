@@ -1,0 +1,8 @@
+{
+    "RequiredExtensionVersion": 56,
+    "ModTable": "SuperchargeAnyone_Serp",
+    "FeatureFlags": [
+        "OsirisExtensions",
+        "Lua"
+    ]
+}

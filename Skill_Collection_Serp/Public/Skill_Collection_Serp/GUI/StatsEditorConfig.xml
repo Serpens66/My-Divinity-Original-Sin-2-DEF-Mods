@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <subwindows_location>
+    <LayoutRoot>
+      <RootPanel Orientation="Horizontal">
+        <LayoutAnchorablePaneGroup Orientation="Horizontal" DockWidth="243" FloatingWidth="200" FloatingHeight="587" FloatingLeft="29" FloatingTop="558">
+          <LayoutAnchorablePane Id="43e78c14-3345-4241-9e40-86a649e1c2a1" FloatingWidth="200" FloatingHeight="587" FloatingLeft="29" FloatingTop="558">
+            <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Stats Browser" IsSelected="True" ContentId="Stats Browser" FloatingLeft="29" FloatingTop="558" FloatingWidth="200" FloatingHeight="587" LastActivationTimeStamp="02/08/2018 10:20:44" />
+          </LayoutAnchorablePane>
+        </LayoutAnchorablePaneGroup>
+        <LayoutPanel Orientation="Vertical">
+          <LayoutPanel Orientation="Horizontal">
+            <LayoutPanel Orientation="Horizontal">
+              <LayoutDocumentPaneGroup Orientation="Horizontal">
+                <LayoutDocumentPane />
+              </LayoutDocumentPaneGroup>
+            </LayoutPanel>
+          </LayoutPanel>
+          <LayoutAnchorablePaneGroup Orientation="Horizontal" DockHeight="193" FloatingWidth="200" FloatingHeight="786" FloatingLeft="1046" FloatingTop="910">
+            <LayoutAnchorablePane Id="946e1b04-46be-4f30-9e48-7c9f5ad40460" DockHeight="193" FloatingWidth="200" FloatingHeight="786" FloatingLeft="1046" FloatingTop="910" />
+          </LayoutAnchorablePaneGroup>
+        </LayoutPanel>
+        <LayoutAnchorablePane Id="96049daf-10be-4202-a666-5003780060d1" DockWidth="501" FloatingWidth="200" FloatingHeight="587" FloatingLeft="1400" FloatingTop="552" />
+      </RootPanel>
+      <TopSide />
+      <RightSide>
+        <LayoutAnchorGroup PreviousContainerId="96049daf-10be-4202-a666-5003780060d1">
+          <LayoutAnchorable AutoHideWidth="457" AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Filter" ContentId="Filter" FloatingLeft="1400" FloatingTop="552" FloatingWidth="200" FloatingHeight="587" LastActivationTimeStamp="12/18/2017 11:15:55" PreviousContainerId="43e78c14-3345-4241-9e40-86a649e1c2a1" PreviousContainerIndex="0" />
+        </LayoutAnchorGroup>
+      </RightSide>
+      <LeftSide />
+      <BottomSide>
+        <LayoutAnchorGroup PreviousContainerId="946e1b04-46be-4f30-9e48-7c9f5ad40460">
+          <LayoutAnchorable AutoHideHeight="167" AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Find Results" ContentId="Find Results" FloatingLeft="1046" FloatingTop="910" FloatingWidth="200" FloatingHeight="786" LastActivationTimeStamp="12/18/2017 10:53:17" />
+        </LayoutAnchorGroup>
+      </BottomSide>
+      <FloatingWindows />
+      <Hidden />
+    </LayoutRoot>
+  </subwindows_location>
+</root>

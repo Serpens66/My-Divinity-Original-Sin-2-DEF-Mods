@@ -8,9 +8,9 @@
                 <node id="Dependencies">
                 </node>
                 <node id="ModuleInfo">
-                    <attribute id="Author" value="lautasantenni,Helaene,Serp and others" type="30" />
+                    <attribute id="Author" value="lautasantenni,Helaene,Fivs,Serp and others" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
-                    <attribute id="Description" value="Collection of new skills from various other mods: Additional Skill,SkillBookRecipesExpanded,Helaene-Extra Ranger Skills," type="30" />
+                    <attribute id="Description" value="Collection of new skills from various other mods: Additional Skill,SkillBookRecipesExpanded,Helaene-Extra Ranger Skills,Fivs Skill Addons" type="30" />
                     <attribute id="Folder" value="Skill_Collection_Serp" type="30" />
                     <attribute id="GMTemplate" value="" type="22" />
                     <attribute id="LobbyLevelName" value="" type="22" />

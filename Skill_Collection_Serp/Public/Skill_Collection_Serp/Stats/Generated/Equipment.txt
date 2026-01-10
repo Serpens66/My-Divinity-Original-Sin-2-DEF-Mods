@@ -8,3 +8,12 @@ add equipment entry "_Animals_Slug_Ice"
 add equipmentgroup
 add equipment entry "NoShield"
 
+
+
+
+new equipment "Summon_FrostDragon_Equip"
+add equipmentgroup
+add equipment entry "_Summon_FrostDragon"
+add equipmentgroup
+add equipment entry "NoShield"
+

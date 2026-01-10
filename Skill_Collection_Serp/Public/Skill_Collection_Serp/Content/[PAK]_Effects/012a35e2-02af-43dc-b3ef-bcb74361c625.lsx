@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="0" build="4" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="012a35e2-02af-43dc-b3ef-bcb74361c625" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="RS3_FX_GP_Status_MarkofDeath_01" />
+					<attribute id="Name" type="23" value="RS3_FX_GP_Status_MarkofDeath_01" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/RS3_FX_GP_Status_MarkofDeath_01.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="5b934b22-cb86-4b83-a007-0c8b98ad0176" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="244f09c2-7e6f-43b8-a704-7e582556b895" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e7e0f8e2-8464-4ced-8f43-ba0c17882a34" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="7235352d-603b-4d7d-8de9-4434600d9454" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="28ce282a-548d-4c9a-b013-da049515f7ab" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="8274aae3-6653-4764-8d93-44488c46ca0f" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="2f750306-8c57-4fef-92ee-3aa1269df701" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="f4e9f828-d86e-432e-a185-c145ac3712cf" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

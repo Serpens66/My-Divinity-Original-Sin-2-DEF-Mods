@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="0" build="4" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="863e2b7e-d940-48eb-8a77-c44a54cd800d" />
+					<attribute id="Name" type="23" value="Test" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="Type" type="22" value="character" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="VisualTemplate" type="22" value="" />
+					<attribute id="PhysicsTemplate" type="22" value="" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="HasGameplayValue" type="19" value="False" />
+					<attribute id="CameraOffset" type="12" value="0 0 0" />
+					<attribute id="WalkSpeed" type="6" value="4" />
+					<attribute id="ClimbAttachSpeed" type="6" value="4" />
+					<attribute id="ClimbLoopSpeed" type="6" value="4" />
+					<attribute id="ClimbDetachSpeed" type="6" value="2.44" />
+					<attribute id="RunSpeed" type="6" value="6" />
+					<attribute id="HitFX" type="22" value="" />
+					<attribute id="BloodSurfaceType" type="22" value="SurfaceBlood" />
+					<attribute id="Random" type="24" value="18446744073709551615" />
+					<children>
+						<node id="Tags" />
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="AIBounds" />
+						<node id="GameMaster">
+							<attribute id="GameMasterSpawnSection" type="4" value="-1" />
+							<attribute id="GameMasterSpawnSubSection" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="ls::TranslatedStringRepository::s_HandleUnknown;0" />
+						</node>
+						<node id="OnDeathActions" />
+						<node id="SkillList" />
+						<node id="ItemList" />
+						<node id="Scripts" />
+						<node id="FootStepInfos" />
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

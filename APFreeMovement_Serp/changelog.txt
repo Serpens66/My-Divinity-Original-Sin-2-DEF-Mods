@@ -1,0 +1,3 @@
+1.0.0.1:
+- the "doubled movement cost" was in fact a reduction of 250 movementpoints, which could result in 0 movement for units with 250 movement...
+- this is now fixed by wrting new code, thanks Pip for a workaround: Base movement of all player controlled units should now be properly halved and also all boni from items/skills/abilities should be halved now (does not update in non-variable tooltips).
