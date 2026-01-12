@@ -1,0 +1,11 @@
+new entry "Tornado_Summon_Air"
+type "SkillData"
+data "SkillType" "Tornado"
+using "Tornado_Air"
+data "ForGameMaster" "No"
+data "IsEnemySkill" "Yes"
+data "PrepareAnimationInit" "skill_prepare_air_01_start"
+data "PrepareAnimationLoop" "skill_prepare_air_01_loop"
+data "CastAnimation" "skill_cast_aoe_water_01_cast"
+data "Memory Cost" "0"
+

@@ -1,0 +1,6 @@
+new equipment "Summon_Toy"
+add equipmentgroup
+add equipment entry "_Animals_Pig_A"
+add equipmentgroup
+add equipment entry "NoShield"
+

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="a07f9043-0ccd-43a7-a61e-785f6fd11153" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_Rivulet_FlyEffect" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_Rivulet_FlyEffect" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_Rivulet_FlyEffect.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e32e2a98-67b1-46a3-8b49-644865159763" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="9147f080-f9e2-4174-b7a1-8bc1ad70d138" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="b7f5097a-2bdd-40ba-af69-5e6c3053c326" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e3deecd5-ce7d-4bd5-ac7b-096930a4f99f" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="fadbdd7b-1207-4aef-a6ea-de22bf1d8455" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

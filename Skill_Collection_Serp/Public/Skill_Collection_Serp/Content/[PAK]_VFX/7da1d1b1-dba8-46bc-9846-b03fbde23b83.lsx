@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="VisualBank">
+		<node id="VisualBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="7da1d1b1-dba8-46bc-9846-b03fbde23b83" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="SourceFile" type="30" value="Public/Shared/Assets/Characters/Animals/Animals_Spider_C.GR2" />
+					<attribute id="Template" type="22" value="Public/Shared/Assets/Characters/Animals/Animals_Spider_C.Dummy_Root.0" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_Models_SpiderC_002" />
+					<attribute id="BlueprintInstanceResourceID" type="22" value="" />
+					<children>
+						<node id="Objects">
+							<attribute id="ObjectID" type="22" value="Animals_Spider_C.Animals_Spider_C_MeshShape.0" />
+							<attribute id="MaterialID" type="22" value="fac87946-31bb-4acc-aace-99e54fdd3c0a" />
+							<attribute id="LOD" type="1" value="0" />
+						</node>
+						<node id="LODDistances">
+							<attribute id="Object" type="6" value="3.4028235E+38" />
+						</node>
+						<node id="KnownAnimationSetOverrides">
+							<attribute id="MapKey" type="22" value="Spawn_03" />
+							<children>
+								<node id="MapValue">
+									<attribute id="Resource" type="22" value="1a8d780a-dfee-4f2e-9546-28ec344bd33b" />
+								</node>
+							</children>
+						</node>
+						<node id="KnownAnimationSetOverrides">
+							<attribute id="MapKey" type="22" value="Spawn_02" />
+							<children>
+								<node id="MapValue">
+									<attribute id="Resource" type="22" value="cf7db362-0244-49cb-be83-ca57b6288964" />
+								</node>
+							</children>
+						</node>
+						<node id="AnimationWaterfall">
+							<attribute id="Object" type="22" value="90a95b2c-ecf5-4de9-af2f-ccaea96bf5c8" />
+						</node>
+						<node id="AnimationWaterfall">
+							<attribute id="Object" type="22" value="" />
+						</node>
+						<node id="AnimationSet">
+							<children>
+								<node id="AnimationBank">
+									<attribute id="Type" type="22" value="" />
+									<children>
+										<node id="AnimationSubSets" />
+									</children>
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

@@ -1,0 +1,29 @@
+A collection of small gameplay changes written in lua, so fully compatible to other mods.
+
+[list]
+[*]Immortal Segeant and Gwydian
+[*]add MadnessImmunity and CharmImmunity to the Indomitable status
+[*]Improved DoorOfEternity: targets all allied summons, lasting 5 rounds
+[*]ViableGateway: using the Planar Gateway only costs 1 AP, can be used 10 times and lasts 4 turns. The skill to cast it costs 3 AP, no SourcePoints, 10 turns cooldown.
+[*]Infinite SpiritVision
+[*]InnateBless: Bless and Curse do not cost a memory slot, you get both spells at the same time and they cost 2 AP but no Source Point and 5 turns cooldown.
+[*]sneaking costs 2AP (SneakDefaultAPCost)
+[*]you start with 5 instead of 3 free memory slots (CharacterBaseMemoryCapacity)
+[*]necromancy nerfed from 10% to 7% (SkillAbilityLifeStealPerPoint)
+[*]Leadership range increased from 8 to 12m (LeadershipRange) also adjsuted tooltip (at least in languages I tested)
+[*]All 4 vanilla Taunt abilities increased range from 4 to 8.
+[*]Changed Difficutly NPC Armor/Hitpoints scaling: Less Armor, but more HP (tactican have +-0 Armor, but +100% HP) and all difficulties get a MovementSpeedBoost for NPCs of 25%.
+[*]Improved grenades: Scaling with Finesse now. Halfed weight, reduces AP costs by 1 for non-damage grenades, trippled DamageRange, so damage is more random but could be higher. (based on idea of mod "Make Grenades great again")
+[*]make every summoning skill require at least in Summoning ability 1
+[*]When having at least level 3 of Summoning, you get the BeastMaster talent which gives +1 to active summons.
+[*]reducing LoreMaster from most NPCs by 2 (except traders with Repair value), so its less likely they know your stats.
+[*]make Spears scale with Strength instead of Finesse
+[*]make Food Stati last 3 times longer.
+[*]give every player character the InventoryAccess talent, so swapping equipment during a fight is cheaper.
+[*]disable the Indomitable Talent, use my Balanced Indomitable for All mod instead.
+[*]trigger Perseverance for more stati: added CHARMED,CHICKEN,SLEEPING and CRIPPLED (also add english text to description)
+[/list]
+Requires Script Extender v60.
+
+Source Code:
+https://github.com/Serpens66/My-Divinity-Original-Sin-2-DEF-Mods/tree/main/SmallChanges_Serp

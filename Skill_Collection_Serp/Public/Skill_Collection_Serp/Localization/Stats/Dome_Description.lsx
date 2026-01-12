@@ -26,7 +26,7 @@
 					<attribute id="UUID" type="22" value="Dome_SnowGlobe_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Conjures a pillar of fire. As long as the character is still within the pillar, gain the skill Meteor Storm at the end of you next turn." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Makes you a preferred target by enemies, but you gain the very powerful skill Meteor Storm at the end of your next turn if you dont loose the status Channeled Flame until then. You will loose the status Channeled Flame with a 50% chance everytime you get HP damage." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />

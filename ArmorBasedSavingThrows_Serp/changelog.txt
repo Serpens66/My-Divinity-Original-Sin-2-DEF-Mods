@@ -1,0 +1,4 @@
+1.0.0.1:
+- added check in code to prevent alot of spam in the logfile
+1.0.0.2:
+- fixed more error in log, which should have no impact ingame

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="451d8679-c67b-42af-bf96-c2c8f9094d96" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_CreepingTendrils_Cast_Root" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_CreepingTendrils_Cast_Root" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_CreepingTendrils_Cast_Root.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="aef12fc9-42d9-4426-9553-c7945b7e6bce" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="f4e9f828-d86e-432e-a185-c145ac3712cf" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e0492a5f-4c87-4f4c-be54-83cc963e71cb" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="6f12c609-6a19-4c62-b1f9-be1347fcaa27" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="75000c3e-eaca-4ccc-8000-cb293526dbd2" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="b5cf8d0b-937c-47ab-b8c7-2e25c5172338" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="5e1579b3-2b5d-407b-b97a-6dd48762127f" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e115bc18-8dba-4edf-8808-90ce9825814d" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="4765220f-b8ca-45e5-bfe2-dd7c55f48b35" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

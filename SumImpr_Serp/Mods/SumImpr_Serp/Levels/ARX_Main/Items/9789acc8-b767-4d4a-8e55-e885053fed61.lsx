@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="4" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="9789acc8-b767-4d4a-8e55-e885053fed61" />
+					<attribute id="Name" type="23" value="CMP_SI_Book_InfusionStudies_B_003" />
+					<attribute id="LevelName" type="22" value="ARX_Main" />
+					<attribute id="Type" type="22" value="item" />
+					<attribute id="TemplateName" type="22" value="0f159e89-f565-4885-987d-98247ae042cb" />
+					<attribute id="BloodSurfaceType" type="22" value="SurfaceNone" />
+					<children>
+						<node id="Transform">
+							<attribute id="Scale" type="6" value="1" />
+							<attribute id="Position" type="12" value="127.185745 37.08837 -5.311378" />
+							<attribute id="RotationQuat" type="13" value="0 -0.42110246 0 0.9070132" />
+						</node>
+						<node id="LayerList">
+							<children>
+								<node id="Layers">
+									<children>
+										<node id="Object">
+											<attribute id="MapKey" type="22" value="ARX_Main" />
+											<children>
+												<node id="MapValue" />
+											</children>
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

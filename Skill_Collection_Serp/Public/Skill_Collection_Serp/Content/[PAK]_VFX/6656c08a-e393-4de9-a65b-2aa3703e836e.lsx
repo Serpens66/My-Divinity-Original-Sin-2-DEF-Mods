@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="6656c08a-e393-4de9-a65b-2aa3703e836e" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_Exsanguinate_Subeffect_01" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_Exsanguinate_Subeffect_01" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_Exsanguinate_Subeffect_01.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="fbc213b9-7c79-4f25-89e5-c6c9266b64b1" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="af16bd99-b428-4bd8-84c2-7e7a0e4bb1a9" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

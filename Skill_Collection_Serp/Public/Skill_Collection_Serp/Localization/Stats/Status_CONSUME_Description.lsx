@@ -264,14 +264,14 @@
 					<attribute id="UUID" type="22" value="TRICKSHOT_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Prerequisite for the skill Meteor Storm." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Prerequisite for the skill Meteor Storm. Makes you preferred target by enemies and you loose this status with a 50% chance on getting HP damage." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="METEORBOOST_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Gain the skill Meteor Storm when status ends." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Gain the skill Meteor Storm when status ends and you still have the Status Channeled Flame (which is lost with 50% chance on getting HP damage)" />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />

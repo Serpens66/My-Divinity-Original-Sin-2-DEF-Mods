@@ -1,0 +1,142 @@
+#INCLUDE DefaultCharacter
+
+INIT
+	USING SHARED DefaultCharacter
+	CHARACTER:__Me
+	EXTERN INT:%bool_ShouldIgnoreOil=0
+	EXTERN SURFACE:%Surface=SurfacePoison
+	EXTERN STATUS:%BlockingStatus=BURNING
+	EXTERN STATUS:%BlockingStatus2=NECROFIRE
+	EXTERN FLOAT:%PuddleSize=0.5
+
+EVENTS
+EVENT OnShutdown_EndTimer
+ON
+	OnShutdown()
+	OnDie(__Me,_,_,_)
+ACTIONS
+	StopTimer("CMB_ElementalSlug_CreateSurface_Timer")
+
+EVENT OnInit_StartTimer
+VARS
+	CHARACTERTEMPLATE:_Temp
+ON
+	OnInit()
+	OnCharacterStatusApplied(__Me, RESURRECT)
+ACTIONS
+	IF "!c1"
+		CharacterIsDead(__Me)
+	THEN
+		StartTimer("CMB_ElementalSlug_CreateSurface_Timer",0.38,-1)
+		CharacterEvent(__Me, "CMP_ResetBloodSurface")
+	ENDIF
+EVENT OnTimer_CreateSurface
+ON
+	OnTimer("CMB_ElementalSlug_CreateSurface_Timer")
+ACTIONS
+	IF "(c1&c2)|!(c3|c4)&(c5|!c6)"
+		IsEqual(%BlockingStatus,null)					//c1
+		IsEqual(%BlockingStatus2,null)					//c2
+		CharacterHasStatus(__Me,%BlockingStatus)		//c3
+		CharacterHasStatus(__Me,%BlockingStatus2)		//c4
+		IsInActiveTurn(__Me)							//c5
+		IsInCombat(__Me)								//c6
+	THEN	
+		CreateSurfaceAt(__Me,%Surface,%PuddleSize,5)
+	ENDIF
+//Change surfaces spawned on infusion
+EVENT FireInfusion
+ON
+	OnCharacterStatusApplied(__Me, FireInfusion)
+ACTIONS
+	Set(%Surface, SurfaceFire)
+	Set(%BlockingStatus, POISONED)
+	Set(%BlockingStatus2, NECROFIRE)
+EVENT NecroFireInfusion
+ON
+	OnCharacterStatusApplied(__Me, NecrofireInfusion)
+ACTIONS
+	Set(%Surface, SurfaceFireCursed)
+	Set(%BlockingStatus, POISONED)
+	Set(%BlockingStatus2, POISONED)
+	
+EVENT BlessedIceInfusion
+ON
+	OnCharacterStatusApplied(__Me, IceInfusion)
+ACTIONS
+	Set(%Surface, SurfaceWaterFrozenBlessed)
+	Set(%BlockingStatus, NECROFIRE)
+	Set(%BlockingStatus2, NECROFIRE)
+
+EVENT ElectricInfusion
+ON
+	OnCharacterStatusApplied(__Me, ElectricInfusion)
+ACTIONS
+	Set(%Surface, SurfaceWaterElectrified)
+	Set(%BlockingStatus, WET)
+	Set(%BlockingStatus2, FROZEN)
+	
+EVENT PoisonInfusion
+ON
+	OnCharacterStatusApplied(__Me, PoisonInfusion)
+ACTIONS
+	Set(%Surface, SurfacePoison)
+	Set(%BlockingStatus, BURNING)
+	Set(%BlockingStatus2, NECROFIRE)
+
+EVENT WaterInfusion
+ON
+	OnCharacterStatusApplied(__Me, WaterInfusion)
+ACTIONS
+	Set(%Surface, SurfaceWater)
+	Set(%BlockingStatus, SHOCKED)
+	Set(%BlockingStatus2, NECROFIRE)
+	
+EVENT AcidInfusion
+ON
+	OnCharacterStatusApplied(__Me, AcidInfusion)
+ACTIONS
+	Set(%Surface, SurfacePoisonCursed)
+	Set(%BlockingStatus, BURNING)
+	Set(%BlockingStatus2, NECROFIRE)
+	
+EVENT BloodInfusion
+ON
+	OnCharacterStatusApplied(__Me, BloodInfusion)
+ACTIONS
+	Set(%Surface, SurfaceBlood)
+	Set(%BlockingStatus, BURNING)
+	Set(%BlockingStatus2, NECROFIRE)
+
+EVENT CursedBloodInfusion
+ON
+	OnCharacterStatusApplied(__Me, CursedBloodInfusion)
+ACTIONS
+	Set(%Surface, SurfaceBloodCursed)
+	Set(%BlockingStatus, BURNING)
+	Set(%BlockingStatus2, NECROFIRE)
+
+EVENT OilInfusion
+ON
+	OnCharacterStatusApplied(__Me, OilInfusion)
+ACTIONS
+	Set(%Surface, SurfaceOil)
+	Set(%BlockingStatus, BURNING)
+	Set(%BlockingStatus2, NECROFIRE)
+	
+EVENT CursedOilInfusion
+ON
+	OnCharacterStatusApplied(__Me, CursedOilInfusion)
+ACTIONS
+	Set(%Surface, SurfaceOilCursed)
+	Set(%BlockingStatus, BURNING)
+	Set(%BlockingStatus2, NECROFIRE)
+	
+EVENT CursedElectricInfusion
+ON
+	OnCharacterStatusApplied(__Me, CursedElectricInfusion)
+ACTIONS
+	Set(%Surface, SurfaceWaterElectrifiedCursed)
+	Set(%BlockingStatus, WET)
+	Set(%BlockingStatus2, FROZEN)
+	

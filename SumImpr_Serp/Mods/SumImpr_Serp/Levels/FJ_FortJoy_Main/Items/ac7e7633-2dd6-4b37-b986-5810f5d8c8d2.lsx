@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="4" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="MapKey" type="22" value="ac7e7633-2dd6-4b37-b986-5810f5d8c8d2" />
+					<attribute id="Name" type="23" value="CMP_SI_Book_InfusionStudies_A_001" />
+					<attribute id="LevelName" type="22" value="FJ_FortJoy_Main" />
+					<attribute id="Type" type="22" value="item" />
+					<attribute id="TemplateName" type="22" value="e4891d95-4e9d-4d6f-855b-6d57d23cf5a8" />
+					<attribute id="BloodSurfaceType" type="22" value="SurfaceNone" />
+					<children>
+						<node id="Transform">
+							<attribute id="Scale" type="6" value="1" />
+							<attribute id="Position" type="12" value="449.66177 -4.936183 41.76808" />
+							<attribute id="RotationQuat" type="13" value="0 0 0 1" />
+						</node>
+						<node id="LayerList">
+							<children>
+								<node id="Layers">
+									<children>
+										<node id="Object">
+											<attribute id="MapKey" type="22" value="FJ_FortJoy_Main" />
+											<children>
+												<node id="MapValue" />
+											</children>
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

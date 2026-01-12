@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="3c41e92d-a3f4-4404-afea-2e54fdf06ab5" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_Ionize_Prepare_Hand" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_Ionize_Prepare_Hand" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_Ionize_Prepare_Hand.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e7e0f8e2-8464-4ced-8f43-ba0c17882a34" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="28ce282a-548d-4c9a-b013-da049515f7ab" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="9d13d7d5-82b9-4c23-97e5-8fa3052100b4" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="6f12c609-6a19-4c62-b1f9-be1347fcaa27" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="f0d9b2a5-8fe3-4c66-a58c-f392f1a9f62a" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

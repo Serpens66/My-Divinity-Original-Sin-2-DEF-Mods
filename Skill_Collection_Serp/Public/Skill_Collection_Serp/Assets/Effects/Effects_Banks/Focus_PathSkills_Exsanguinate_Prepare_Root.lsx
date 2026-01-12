@@ -1,0 +1,3436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="1" minor="0" revision="0" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Dependencies">
+		<node id="Dependencies">
+			<children>
+				<node id="DependentResource">
+					<attribute id="Object" type="22" value="dc80ff07-7965-4411-88ec-3c7f06e140d2" />
+				</node>
+				<node id="DependentResource">
+					<attribute id="Object" type="22" value="b4bda5c7-f2bb-478b-be77-e435a983dd8f" />
+				</node>
+				<node id="DependentResource">
+					<attribute id="Object" type="22" value="68d87499-7e04-4531-b299-61522df70498" />
+				</node>
+				<node id="DependentResource">
+					<attribute id="Object" type="22" value="27cbe314-c53e-485b-96cf-2cd75c0aa6a3" />
+				</node>
+				<node id="DependentResource">
+					<attribute id="Object" type="22" value="8afb95e4-bccc-40da-9685-4290d8c74592" />
+				</node>
+			</children>
+		</node>
+	</region>
+	<region id="Effect">
+		<node id="Effect">
+			<attribute id="Duration" type="6" value="3.959065" />
+			<children>
+				<node id="EffectComponents">
+					<children>
+						<node id="EffectComponent">
+							<attribute id="EndTime" type="6" value="2.33" />
+							<attribute id="ID" type="31" value="0d03f11a-94cd-4c13-83b6-a05d66069335" />
+							<attribute id="Name" type="23" value="BoundingSphere" />
+							<attribute id="StartTime" type="6" value="0" />
+							<attribute id="Track" type="5" value="0" />
+							<attribute id="Type" type="23" value="BoundingSphere" />
+							<children>
+								<node id="Properties">
+									<children>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Name" />
+											<attribute id="FullName" type="22" value="Name" />
+											<attribute id="Type" type="1" value="7" />
+											<attribute id="Value" type="23" value="BoundingSphere" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Position" />
+											<attribute id="FullName" type="22" value="Center" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Radius" />
+											<attribute id="FullName" type="22" value="Radius" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="1.5" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="EffectComponent">
+							<attribute id="EndTime" type="6" value="2.143634" />
+							<attribute id="ID" type="31" value="fef4b690-9fd3-4b6b-a374-6dd172425470" />
+							<attribute id="Name" type="23" value="Sound" />
+							<attribute id="StartTime" type="6" value="0" />
+							<attribute id="Track" type="5" value="0" />
+							<attribute id="Type" type="23" value="Sound" />
+							<children>
+								<node id="Properties">
+									<children>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Name" />
+											<attribute id="FullName" type="22" value="Name" />
+											<attribute id="Type" type="1" value="7" />
+											<attribute id="Value" type="23" value="Sound" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Enter Event" />
+											<attribute id="FullName" type="22" value="Enter Event" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="dc80ff07-7965-4411-88ec-3c7f06e140d2" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Leave Event" />
+											<attribute id="FullName" type="22" value="Leave Event" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="b4bda5c7-f2bb-478b-be77-e435a983dd8f" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Play On" />
+											<attribute id="FullName" type="22" value="Play On" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Activation Range" />
+											<attribute id="FullName" type="22" value="Activation Range" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="-1" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="EffectComponent">
+							<attribute id="EndTime" type="6" value="2.914725" />
+							<attribute id="ID" type="31" value="0e747aa4-0b93-464f-9819-366a6f3d3ec3" />
+							<attribute id="Name" type="23" value="Decal" />
+							<attribute id="StartTime" type="6" value="0" />
+							<attribute id="Track" type="5" value="1" />
+							<attribute id="Type" type="23" value="Decal" />
+							<children>
+								<node id="Properties">
+									<children>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Name" />
+											<attribute id="FullName" type="22" value="Name" />
+											<attribute id="Type" type="1" value="7" />
+											<attribute id="Value" type="23" value="DecalBlack" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Material" />
+											<attribute id="FullName" type="22" value="Appearance.Material GUID" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="68d87499-7e04-4531-b299-61522df70498" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Dimensions" />
+											<attribute id="FullName" type="22" value="Appearance.Dimensions" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="8" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="8" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="7.99" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="8" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Distance" />
+											<attribute id="FullName" type="22" value="Appearance.Distance" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="10" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Tiling Y" />
+											<attribute id="FullName" type="22" value="Appearance.Tiling Y" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Projected Offset" />
+											<attribute id="FullName" type="22" value="Appearance.Projected Offset" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Axis" />
+											<attribute id="FullName" type="22" value="Appearance.Axis" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 -1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Keyframed Position" />
+											<attribute id="FullName" type="22" value="Behaviour.Offset" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Show Bounds" />
+											<attribute id="FullName" type="22" value="Appearance.Show Bounds" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="True" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Position" />
+											<attribute id="FullName" type="22" value="Offset" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 5 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Rotation" />
+											<attribute id="FullName" type="22" value="Appearance.Rotation" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Tiling X" />
+											<attribute id="FullName" type="22" value="Appearance.Tiling X" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Uniform Scale" />
+											<attribute id="FullName" type="22" value="Appearance.Uniform Scale" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Color" />
+											<attribute id="FullName" type="22" value="Appearance.Color" />
+											<attribute id="Type" type="1" value="3" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0 0 0 0" />
+															<attribute id="Time" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0 0 0 1" />
+															<attribute id="Time" type="6" value="0.25" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0 0 0 1" />
+															<attribute id="Time" type="6" value="0.7480705" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0 0 0 0" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Brightness" />
+											<attribute id="FullName" type="22" value="Appearance.Brightness" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Ignore Parent Rotation" />
+											<attribute id="FullName" type="22" value="Ignore Parent Rotation" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Coordinate Space" />
+											<attribute id="FullName" type="22" value="Coordinate Space" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="1" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="EffectComponent">
+							<attribute id="EndTime" type="6" value="2.914725" />
+							<attribute id="ID" type="31" value="25f8845e-5533-4b5d-adcf-7e074780c691" />
+							<attribute id="Name" type="23" value="Decal" />
+							<attribute id="StartTime" type="6" value="0" />
+							<attribute id="Track" type="5" value="1" />
+							<attribute id="Type" type="23" value="Decal" />
+							<children>
+								<node id="Properties">
+									<children>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Name" />
+											<attribute id="FullName" type="22" value="Name" />
+											<attribute id="Type" type="1" value="7" />
+											<attribute id="Value" type="23" value="DecalBlack" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Material" />
+											<attribute id="FullName" type="22" value="Appearance.Material GUID" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="68d87499-7e04-4531-b299-61522df70498" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Dimensions" />
+											<attribute id="FullName" type="22" value="Appearance.Dimensions" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="4" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="4" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="4" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="4" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Distance" />
+											<attribute id="FullName" type="22" value="Appearance.Distance" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="10" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Tiling Y" />
+											<attribute id="FullName" type="22" value="Appearance.Tiling Y" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Projected Offset" />
+											<attribute id="FullName" type="22" value="Appearance.Projected Offset" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Axis" />
+											<attribute id="FullName" type="22" value="Appearance.Axis" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 -1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Keyframed Position" />
+											<attribute id="FullName" type="22" value="Behaviour.Offset" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Show Bounds" />
+											<attribute id="FullName" type="22" value="Appearance.Show Bounds" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="True" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Position" />
+											<attribute id="FullName" type="22" value="Offset" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 5 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Rotation" />
+											<attribute id="FullName" type="22" value="Appearance.Rotation" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Tiling X" />
+											<attribute id="FullName" type="22" value="Appearance.Tiling X" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Uniform Scale" />
+											<attribute id="FullName" type="22" value="Appearance.Uniform Scale" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Color" />
+											<attribute id="FullName" type="22" value="Appearance.Color" />
+											<attribute id="Type" type="1" value="3" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0.2509804 0 0.011764707 0" />
+															<attribute id="Time" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0.2509804 0 0.011764707 1" />
+															<attribute id="Time" type="6" value="0.25" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0.2509804 0 0.011764707 1" />
+															<attribute id="Time" type="6" value="0.7480705" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0.2509804 0 0.011764707 0" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Brightness" />
+											<attribute id="FullName" type="22" value="Appearance.Brightness" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0.2" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0.2" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Ignore Parent Rotation" />
+											<attribute id="FullName" type="22" value="Ignore Parent Rotation" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Coordinate Space" />
+											<attribute id="FullName" type="22" value="Coordinate Space" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="1" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="EffectComponent">
+							<attribute id="EndTime" type="6" value="0.6785604" />
+							<attribute id="ID" type="31" value="da87fb8d-5ba8-4b3d-b163-dbd3c802193b" />
+							<attribute id="Name" type="23" value="ParticleSystem" />
+							<attribute id="StartTime" type="6" value="0.3701238" />
+							<attribute id="Track" type="5" value="4" />
+							<attribute id="Type" type="23" value="ParticleSystem" />
+							<children>
+								<node id="Properties">
+									<children>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Name" />
+											<attribute id="FullName" type="22" value="Name" />
+											<attribute id="Type" type="1" value="7" />
+											<attribute id="Value" type="23" value="BurstTwist" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Brightness" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Brightness" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Lifetime" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Lifespan" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Uniform Scale" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Uniform Scale" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1.7" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1.7" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Rotation Rate/Life" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Rotation Speed" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Emit Position Count" />
+											<attribute id="FullName" type="22" value="Emitter.Fixed Line.Emit Position Count" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="10" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Maximum Particle Count" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Maximum Particle Count" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="50" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Emit Rate" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Emit Rate" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Emit On Surface" />
+											<attribute id="FullName" type="22" value="Emitter.Emit On Surface" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Position" />
+											<attribute id="FullName" type="22" value="Offset" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 0 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Height" />
+											<attribute id="FullName" type="22" value="Emitter.Cylinder.Height" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Radius" />
+											<attribute id="FullName" type="22" value="Emitter.Cylinder.Radius" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Radius" />
+											<attribute id="FullName" type="22" value="Emitter.Sphere.Radius" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Initial Particle Count" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Initial Particle Count" />
+											<attribute id="Max" type="4" value="2" />
+											<attribute id="Min" type="4" value="2" />
+											<attribute id="Type" type="1" value="2" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Initial Velocity" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Initial Velocity" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Render Style" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Style" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Align To Camera" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Axis Aligned.Align To Camera" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="True" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Align To Velocity" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Axis Aligned.Align To Velocity" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="True" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Spawn Chance" />
+											<attribute id="FullName" type="22" value="Particle.Behavior.Particle Death.Spawn Chance" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="10" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Spawn Fx" />
+											<attribute id="FullName" type="22" value="Particle.Behavior.Particle Death.Spawn Fx" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="&lt;click to select effect&gt;" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Dimensions" />
+											<attribute id="FullName" type="22" value="Emitter.Box.Box Dimensions" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="1" />
+													<children>
+														<node id="Frame">
+															<attribute id="A" type="6" value="0" />
+															<attribute id="B" type="6" value="0" />
+															<attribute id="C" type="6" value="0" />
+															<attribute id="D" type="6" value="2" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="1" />
+													<children>
+														<node id="Frame">
+															<attribute id="A" type="6" value="0" />
+															<attribute id="B" type="6" value="0" />
+															<attribute id="C" type="6" value="0" />
+															<attribute id="D" type="6" value="2" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="1" />
+													<children>
+														<node id="Frame">
+															<attribute id="A" type="6" value="0" />
+															<attribute id="B" type="6" value="0" />
+															<attribute id="C" type="6" value="0" />
+															<attribute id="D" type="6" value="2" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Rotation" />
+											<attribute id="FullName" type="22" value="Scale And Rotation.Rotation" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="1" />
+													<children>
+														<node id="Frame">
+															<attribute id="A" type="6" value="0" />
+															<attribute id="B" type="6" value="0" />
+															<attribute id="C" type="6" value="0" />
+															<attribute id="D" type="6" value="0" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="1" />
+													<children>
+														<node id="Frame">
+															<attribute id="A" type="6" value="0" />
+															<attribute id="B" type="6" value="0" />
+															<attribute id="C" type="6" value="0" />
+															<attribute id="D" type="6" value="0" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="1" />
+													<children>
+														<node id="Frame">
+															<attribute id="A" type="6" value="0" />
+															<attribute id="B" type="6" value="0" />
+															<attribute id="C" type="6" value="0" />
+															<attribute id="D" type="6" value="0" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Mesh GUID" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Mesh GUID" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Attached Fx" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Attached Fx" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="&lt;click to select effect&gt;" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Emit Stutter" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Emit Stutter" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="5" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="5" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Init. Velocity Angle" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Emit Velocity Angles" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="180" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="180" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Init. Velocity Axis" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Emit Velocity Axis" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Keyframed Position" />
+											<attribute id="FullName" type="22" value="Keyframed Offset" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Axis" />
+											<attribute id="FullName" type="22" value="Emitter.Fixed Line.Axis" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Length" />
+											<attribute id="FullName" type="22" value="Emitter.Random Line.Length" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Up Axis" />
+											<attribute id="FullName" type="22" value="Emitter.Fixed Circle.Up Axis" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Radius" />
+											<attribute id="FullName" type="22" value="Emitter.Fixed Circle.Radius" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="5" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="5" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Emit Position Count" />
+											<attribute id="FullName" type="22" value="Emitter.Fixed Circle.Emit Position Count" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="10" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Length Offset" />
+											<attribute id="FullName" type="22" value="Emitter.Random Line.Length Offset" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Horizontal Image Count" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Horizontal Image Count" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Vertical Image Count" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Vertical Image Count" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Image Controller" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Image Controller" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Use Random Start Frame" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Use Random Start Frame" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Use Image Controller" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Use Image Controller" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Frame Rate" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Frame Rate" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="24" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Render Order" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Render Order" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Local Origin" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Local Origin" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Use Random Yaw" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Axis Aligned.Use Random Yaw" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Use Random Orientation" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Axis Aligned.Use Random Orientation" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Axis Scale" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Axis Scale" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0.7" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0.4" />
+															<attribute id="Value" type="6" value="1.5" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="3" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0.7" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0.3" />
+															<attribute id="Value" type="6" value="1.5" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="3" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Rotation/Life" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Rotation" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Initial Rotation Angle" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Initial Rotation" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="-180" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="-180" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="180" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="180" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Use Random Color" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Use Random Color" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Initial Orientation/Axis Lock" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Axis Aligned.Orientation" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Velocity/Life" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Velocity Offset" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Coordinate Space" />
+											<attribute id="FullName" type="22" value="Coordinate Space" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Inherit Velocity" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Inherit Velocity" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Attached Fx Align To Velocity" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Attached Fx.Align To Velocity" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Initial Frame" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Initial Frame" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Warm Up Time" />
+											<attribute id="FullName" type="22" value="Warm Up Time" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Apply Lighting" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Mesh.Apply Lighting" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Render Channel" />
+											<attribute id="FullName" type="22" value="Render Channel" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Init. Velocity Axis Rotation" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Emit Velocity Axis Rotation" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Material GUID" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Material GUID" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="27cbe314-c53e-485b-96cf-2cd75c0aa6a3" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Attached Effect Only" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Attached FX only" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Color" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Color" />
+											<attribute id="Type" type="1" value="3" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0.2509804 0 0.011764707 0" />
+															<attribute id="Time" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0.2509804 0 0.011764707 0.41176474" />
+															<attribute id="Time" type="6" value="0.1281241" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0.2509804 0 0.011764707 0" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Axis" />
+											<attribute id="FullName" type="22" value="Emitter.Random Line.Axis" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 0 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Show Emitter" />
+											<attribute id="FullName" type="22" value="Emitter.Show Emitter" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Type" />
+											<attribute id="FullName" type="22" value="Emitter.Type" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="3" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Keyframed Point Position" />
+											<attribute id="FullName" type="22" value="Emitter.Point.Keyframed Point Position" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Keyframed Sphere Position" />
+											<attribute id="FullName" type="22" value="Emitter.Sphere.Keyframed Sphere Position" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Recycle Particles" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Recycle Particles" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Recycle Radius" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Recycle Radius" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="20" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Show Recycle Radius" />
+											<attribute id="FullName" type="22" value="Emitter.Show Recycle Radius" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Attached Effect Inherits Scale" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Attached Fx Inherits Scale" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Length" />
+											<attribute id="FullName" type="22" value="Emitter.Fixed Line.Length" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="5" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="5" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Infinite Lifetime" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Infinite Lifespan" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Up Axis" />
+											<attribute id="FullName" type="22" value="Emitter.Cylinder.Up Axis" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Random Initial Rotation" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Random Initial Rotation" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Initial Rotation Rate" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Initial Rotation Speed" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Frame Range" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Frame Range" />
+											<attribute id="Max" type="4" value="-1" />
+											<attribute id="Min" type="4" value="-1" />
+											<attribute id="Type" type="1" value="2" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Color" />
+											<attribute id="FullName" type="22" value="System.Appearance.Color" />
+											<attribute id="Type" type="1" value="3" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="1 1 1 1" />
+															<attribute id="Time" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="1 1 1 1" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Brightness" />
+											<attribute id="FullName" type="22" value="System.Appearance.Brightness" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Uniform Scale" />
+											<attribute id="FullName" type="22" value="System.Appearance.Uniform Scale" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Axis Scale" />
+											<attribute id="FullName" type="22" value="System.Appearance.Axis Scale" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Mesh Proxy GUID" />
+											<attribute id="FullName" type="22" value="Emitter.Mesh.Mesh Proxy GUID" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Scale" />
+											<attribute id="FullName" type="22" value="Emitter.Mesh.Scale" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Orientation" />
+											<attribute id="FullName" type="22" value="Emitter.Mesh.Orientation" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Use Normals" />
+											<attribute id="FullName" type="22" value="Emitter.Mesh.Use Normals" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Spawn Location" />
+											<attribute id="FullName" type="22" value="Emitter.Mesh.Spawn Location" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Snap To Ground" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Snap To Ground" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Death Fx Inherits Alpha" />
+											<attribute id="FullName" type="22" value="Particle.Behavior.Particle Death.Attach Death Fx To Parent" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="EffectComponent">
+							<attribute id="EndTime" type="6" value="2.28243" />
+							<attribute id="ID" type="31" value="2e3464f1-f465-421f-a48e-07872af477b0" />
+							<attribute id="Name" type="23" value="ParticleSystem" />
+							<attribute id="StartTime" type="6" value="0.3855456" />
+							<attribute id="Track" type="5" value="4" />
+							<attribute id="Type" type="23" value="ParticleSystem" />
+							<children>
+								<node id="Properties">
+									<children>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Name" />
+											<attribute id="FullName" type="22" value="Name" />
+											<attribute id="Type" type="1" value="7" />
+											<attribute id="Value" type="23" value="Fume" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Color" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Color" />
+											<attribute id="Type" type="1" value="3" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0.2509804 0 0.011764707 0" />
+															<attribute id="Time" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0.2509804 0 0.011764707 1" />
+															<attribute id="Time" type="6" value="0.2306085" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0.37254903 0 0.015686275 0.62352943" />
+															<attribute id="Time" type="6" value="0.4951076" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0.6117647 0.039215688 0.13725491 0.2392157" />
+															<attribute id="Time" type="6" value="0.7729941" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="0.2509804 0 0.011764707 0" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Infinite Lifetime" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Infinite Lifespan" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Axis Scale" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Axis Scale" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0.25" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0.2644418" />
+															<attribute id="Value" type="6" value="0.7999986" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Rotation Rate/Life" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Rotation Speed" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Emit On Surface" />
+											<attribute id="FullName" type="22" value="Emitter.Emit On Surface" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="True" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Maximum Particle Count" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Maximum Particle Count" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="100" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Emit Rate" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Emit Rate" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="20" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="20" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Type" />
+											<attribute id="FullName" type="22" value="Emitter.Type" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="1" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Position" />
+											<attribute id="FullName" type="22" value="Offset" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 0 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Height" />
+											<attribute id="FullName" type="22" value="Emitter.Cylinder.Height" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Radius" />
+											<attribute id="FullName" type="22" value="Emitter.Cylinder.Radius" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Radius" />
+											<attribute id="FullName" type="22" value="Emitter.Sphere.Radius" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0.33" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0.33" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Initial Particle Count" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Initial Particle Count" />
+											<attribute id="Max" type="4" value="50" />
+											<attribute id="Min" type="4" value="50" />
+											<attribute id="Type" type="1" value="2" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Initial Velocity" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Initial Velocity" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0.5" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0.5" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Render Style" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Style" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Use Random Orientation" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Axis Aligned.Use Random Orientation" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Initial Orientation/Axis Lock" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Axis Aligned.Orientation" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Spawn Chance" />
+											<attribute id="FullName" type="22" value="Particle.Behavior.Particle Death.Spawn Chance" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="10" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Spawn Fx" />
+											<attribute id="FullName" type="22" value="Particle.Behavior.Particle Death.Spawn Fx" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="&lt;click to select effect&gt;" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Dimensions" />
+											<attribute id="FullName" type="22" value="Emitter.Box.Box Dimensions" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="1" />
+													<children>
+														<node id="Frame">
+															<attribute id="A" type="6" value="0" />
+															<attribute id="B" type="6" value="0" />
+															<attribute id="C" type="6" value="0" />
+															<attribute id="D" type="6" value="2" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="1" />
+													<children>
+														<node id="Frame">
+															<attribute id="A" type="6" value="0" />
+															<attribute id="B" type="6" value="0" />
+															<attribute id="C" type="6" value="0" />
+															<attribute id="D" type="6" value="2" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="1" />
+													<children>
+														<node id="Frame">
+															<attribute id="A" type="6" value="0" />
+															<attribute id="B" type="6" value="0" />
+															<attribute id="C" type="6" value="0" />
+															<attribute id="D" type="6" value="2" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Show Emitter" />
+											<attribute id="FullName" type="22" value="Emitter.Show Emitter" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Mesh GUID" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Mesh GUID" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Attached Fx" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Attached Fx" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="&lt;click to select effect&gt;" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Emit Stutter" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Emit Stutter" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Init. Velocity Angle" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Emit Velocity Angles" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="45.29032" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="45.29032" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Init. Velocity Axis" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Emit Velocity Axis" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Keyframed Position" />
+											<attribute id="FullName" type="22" value="Keyframed Offset" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Axis" />
+											<attribute id="FullName" type="22" value="Emitter.Fixed Line.Axis" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Length" />
+											<attribute id="FullName" type="22" value="Emitter.Fixed Line.Length" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="5" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="5" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Up Axis" />
+											<attribute id="FullName" type="22" value="Emitter.Fixed Circle.Up Axis" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Radius" />
+											<attribute id="FullName" type="22" value="Emitter.Fixed Circle.Radius" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="5" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="5" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Emit Position Count" />
+											<attribute id="FullName" type="22" value="Emitter.Fixed Circle.Emit Position Count" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="10" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Emit Position Count" />
+											<attribute id="FullName" type="22" value="Emitter.Fixed Line.Emit Position Count" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="10" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Horizontal Image Count" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Horizontal Image Count" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="8" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Vertical Image Count" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Vertical Image Count" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="8" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Image Controller" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Image Controller" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0.5677419" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0.8193548" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Use Random Start Frame" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Use Random Start Frame" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Use Image Controller" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Use Image Controller" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="True" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Frame Rate" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Frame Rate" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Render Order" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Render Order" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Local Origin" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Local Origin" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Use Random Yaw" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Axis Aligned.Use Random Yaw" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Align To Camera" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Axis Aligned.Align To Camera" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="True" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Uniform Scale" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Uniform Scale" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0.8" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="3" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="5" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Rotation/Life" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Rotation" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Random Initial Rotation" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Random Initial Rotation" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Use Random Color" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Use Random Color" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Align To Velocity" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Axis Aligned.Align To Velocity" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Velocity/Life" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Velocity Offset" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Coordinate Space" />
+											<attribute id="FullName" type="22" value="Coordinate Space" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="2" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Inherit Velocity" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Inherit Velocity" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Attached Fx Align To Velocity" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Attached Fx.Align To Velocity" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Initial Frame" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Initial Frame" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Warm Up Time" />
+											<attribute id="FullName" type="22" value="Warm Up Time" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Apply Lighting" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Mesh.Apply Lighting" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Render Channel" />
+											<attribute id="FullName" type="22" value="Render Channel" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Init. Velocity Axis Rotation" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Emit Velocity Axis Rotation" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Material GUID" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Material GUID" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="8afb95e4-bccc-40da-9685-4290d8c74592" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Attached Effect Only" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Attached FX only" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Brightness" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Brightness" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0.2427789" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="2" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Axis" />
+											<attribute id="FullName" type="22" value="Emitter.Random Line.Axis" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 0 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Length" />
+											<attribute id="FullName" type="22" value="Emitter.Random Line.Length" />
+											<attribute id="Type" type="1" value="4" />
+											<attribute id="Value" type="6" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Length Offset" />
+											<attribute id="FullName" type="22" value="Emitter.Random Line.Length Offset" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Keyframed Point Position" />
+											<attribute id="FullName" type="22" value="Emitter.Point.Keyframed Point Position" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Keyframed Sphere Position" />
+											<attribute id="FullName" type="22" value="Emitter.Sphere.Keyframed Sphere Position" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Recycle Particles" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Recycle Particles" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Recycle Radius" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Recycle Radius" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="20" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Show Recycle Radius" />
+											<attribute id="FullName" type="22" value="Emitter.Show Recycle Radius" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Attached Effect Inherits Scale" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Attached Fx Inherits Scale" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Rotation" />
+											<attribute id="FullName" type="22" value="Scale And Rotation.Rotation" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="1" />
+													<children>
+														<node id="Frame">
+															<attribute id="A" type="6" value="0" />
+															<attribute id="B" type="6" value="0" />
+															<attribute id="C" type="6" value="0" />
+															<attribute id="D" type="6" value="0" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="1" />
+													<children>
+														<node id="Frame">
+															<attribute id="A" type="6" value="0" />
+															<attribute id="B" type="6" value="0" />
+															<attribute id="C" type="6" value="0" />
+															<attribute id="D" type="6" value="0" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="1" />
+													<children>
+														<node id="Frame">
+															<attribute id="A" type="6" value="0" />
+															<attribute id="B" type="6" value="0" />
+															<attribute id="C" type="6" value="0" />
+															<attribute id="D" type="6" value="0" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Lifetime" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Lifespan" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1.5" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1.5" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Up Axis" />
+											<attribute id="FullName" type="22" value="Emitter.Cylinder.Up Axis" />
+											<attribute id="Type" type="1" value="8" />
+											<attribute id="Value" type="12" value="0 1 0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Initial Rotation Angle" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Initial Rotation" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="-180" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="-180" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="180" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="180" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Initial Rotation Rate" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Initial Rotation Speed" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Frame Range" />
+											<attribute id="FullName" type="22" value="Particle.Appearance.Render Options - Flipbook.Frame Range" />
+											<attribute id="Max" type="4" value="64" />
+											<attribute id="Min" type="4" value="0" />
+											<attribute id="Type" type="1" value="2" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Color" />
+											<attribute id="FullName" type="22" value="System.Appearance.Color" />
+											<attribute id="Type" type="1" value="3" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="1 1 1 1" />
+															<attribute id="Time" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="1 1 1 1" />
+															<attribute id="Time" type="6" value="0.8407821" />
+														</node>
+														<node id="Frame">
+															<attribute id="Color" type="13" value="1 1 1 0" />
+															<attribute id="Time" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Brightness" />
+											<attribute id="FullName" type="22" value="System.Appearance.Brightness" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Uniform Scale" />
+											<attribute id="FullName" type="22" value="System.Appearance.Uniform Scale" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Axis Scale" />
+											<attribute id="FullName" type="22" value="System.Appearance.Axis Scale" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Mesh Proxy GUID" />
+											<attribute id="FullName" type="22" value="Emitter.Mesh.Mesh Proxy GUID" />
+											<attribute id="Type" type="1" value="10" />
+											<attribute id="Value" type="22" value="" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Scale" />
+											<attribute id="FullName" type="22" value="Emitter.Mesh.Scale" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="1" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Orientation" />
+											<attribute id="FullName" type="22" value="Emitter.Mesh.Orientation" />
+											<attribute id="Type" type="1" value="6" />
+											<children>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+												<node id="Frames">
+													<attribute id="FrameType" type="1" value="0" />
+													<children>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="0" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+														<node id="Frame">
+															<attribute id="Time" type="6" value="1" />
+															<attribute id="Value" type="6" value="0" />
+														</node>
+													</children>
+												</node>
+											</children>
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Use Normals" />
+											<attribute id="FullName" type="22" value="Emitter.Mesh.Use Normals" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Spawn Location" />
+											<attribute id="FullName" type="22" value="Emitter.Mesh.Spawn Location" />
+											<attribute id="Type" type="1" value="1" />
+											<attribute id="Value" type="4" value="0" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Snap To Ground" />
+											<attribute id="FullName" type="22" value="Emitter.Behavior.Snap To Ground" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+										<node id="Property">
+											<attribute id="AttributeName" type="22" value="Death Fx Inherits Alpha" />
+											<attribute id="FullName" type="22" value="Particle.Behavior.Particle Death.Attach Death Fx To Parent" />
+											<attribute id="Type" type="1" value="0" />
+											<attribute id="Value" type="19" value="False" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+				<node id="Inputs">
+					<children>
+						<node id="Input">
+							<attribute id="Name" type="22" value="Target Visual" />
+							<attribute id="Type" type="1" value="1" />
+						</node>
+					</children>
+				</node>
+				<node id="Phases">
+					<children>
+						<node id="Phase">
+							<attribute id="Duration" type="6" value="1.56" />
+							<attribute id="PlayCount" type="4" value="1" />
+						</node>
+						<node id="Phase">
+							<attribute id="Duration" type="6" value="0.48" />
+							<attribute id="PlayCount" type="4" value="-1" />
+						</node>
+						<node id="Phase">
+							<attribute id="Duration" type="6" value="1" />
+							<attribute id="PlayCount" type="4" value="1" />
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

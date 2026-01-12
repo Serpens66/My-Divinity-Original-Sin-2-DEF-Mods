@@ -125,6 +125,8 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Air_Intoxicate",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Air_RideTheLightning",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_PathSkills_ShadowMeld_Air",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookAir"
 CanMerge 1
@@ -168,6 +170,8 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Fire_ChainReaction",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Fire_ChannelFlame",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_PathSkills_ShadowMeld_Fire",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookFire"
 CanMerge 1
@@ -212,6 +216,8 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Earth_InfectiousSpore",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Summon_MetalInfusion",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_PathSkills_ShadowMeld_Earth",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookEarth"
 CanMerge 1
@@ -308,6 +314,8 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Polymorph_ElementalAbsorption",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Polymorph_GreaterPolymorphism",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_PathSkills_ShadowMeld_Polymorph",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookPolymorph"
 CanMerge 1
@@ -421,6 +429,8 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Rogue_SneakAttack",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Rogue_MarkOfDeath",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_PathSkills_ShadowMeld_Rogue",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookRogue"
 CanMerge 1

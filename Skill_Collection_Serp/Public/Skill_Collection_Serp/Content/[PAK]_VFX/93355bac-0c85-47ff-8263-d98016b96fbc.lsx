@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="MaterialBank">
+		<node id="MaterialBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="93355bac-0c85-47ff-8263-d98016b96fbc" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Materials/Base_PBR/Base_PBR.lsb" />
+					<attribute id="Name" type="23" value="UNI_Dragon_Egg_A_PBR" />
+					<attribute id="MaterialName" type="22" value="Focus_PathSkills_Materials_EggShell_Broken" />
+					<attribute id="MaterialType" type="1" value="18" />
+					<children>
+						<node id="ScalarParameters">
+							<attribute id="Enabled" type="19" value="False" />
+							<attribute id="ParameterName" type="22" value="SeeThroughEnabled" />
+							<attribute id="UniformName" type="22" value="FloatParameter_SeeThroughEnabled" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="511" />
+							<attribute id="Value" type="6" value="0" />
+						</node>
+						<node id="ScalarParameters">
+							<attribute id="Enabled" type="19" value="False" />
+							<attribute id="ParameterName" type="22" value="_OpacityFade" />
+							<attribute id="UniformName" type="22" value="_OpacityFade" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="511" />
+							<attribute id="Value" type="6" value="1" />
+						</node>
+						<node id="ScalarParameters">
+							<attribute id="Enabled" type="19" value="False" />
+							<attribute id="ParameterName" type="22" value="Reflectance" />
+							<attribute id="UniformName" type="22" value="FloatParameter_Reflectance" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="511" />
+							<attribute id="Value" type="6" value="0.5" />
+						</node>
+						<node id="Texture2DParameters">
+							<attribute id="Enabled" type="19" value="False" />
+							<attribute id="ParameterName" type="22" value="" />
+							<attribute id="UniformName" type="22" value="Texture2DParameter_9dc5807b36974b8fab0fb9c5c1bd7010_DefaultWrapSampler" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="511" />
+							<attribute id="ID" type="22" value="9dc5807b-3697-4b8f-ab0f-b9c5c1bd7010" />
+							<attribute id="IgnoreTexelDensity" type="19" value="True" />
+						</node>
+						<node id="Texture2DParameters">
+							<attribute id="Enabled" type="19" value="True" />
+							<attribute id="ParameterName" type="22" value="normalmap" />
+							<attribute id="UniformName" type="22" value="Texture2DParameter_normalmap_DefaultWrapSampler" />
+							<attribute id="GroupName" type="22" value="Texture Map" />
+							<attribute id="ShaderFlags" type="2" value="511" />
+							<attribute id="ID" type="22" value="7e8d319b-82dd-4973-8264-280f9d1b3b39" />
+						</node>
+						<node id="Texture2DParameters">
+							<attribute id="Enabled" type="19" value="True" />
+							<attribute id="ParameterName" type="22" value="basecolor" />
+							<attribute id="UniformName" type="22" value="Texture2DParameter_basecolor_DefaultWrapSampler" />
+							<attribute id="GroupName" type="22" value="Texture Map" />
+							<attribute id="ShaderFlags" type="2" value="511" />
+							<attribute id="ID" type="22" value="f9a3574b-0029-47cd-93d2-0b4b0515a81f" />
+						</node>
+						<node id="Texture2DParameters">
+							<attribute id="Enabled" type="19" value="True" />
+							<attribute id="ParameterName" type="22" value="physicalmap" />
+							<attribute id="UniformName" type="22" value="Texture2DParameter_physicalmap_DefaultWrapSampler" />
+							<attribute id="GroupName" type="22" value="Texture Map" />
+							<attribute id="ShaderFlags" type="2" value="511" />
+							<attribute id="ID" type="22" value="4651721d-bded-4cfd-9bed-624573a02496" />
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

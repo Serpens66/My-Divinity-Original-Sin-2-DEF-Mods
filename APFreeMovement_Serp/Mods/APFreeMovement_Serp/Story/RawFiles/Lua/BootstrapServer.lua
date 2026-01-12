@@ -56,6 +56,8 @@ local function IsPlayerMainChar(charGUID)
   return table_contains_value(players,charGUID)
 end
 
+-- print(Osi.CharacterIsPlayer("S_FTJ_InjuredMagister_8a0cd6fb-18f2-46ca-8a04-88d3c4d3caf8"))
+-- print(Osi.HasActiveStatus("S_FTJ_InjuredMagister_8a0cd6fb-18f2-46ca-8a04-88d3c4d3caf8","MOVEMENTSPEED_HALF_SERP"))
 -- print(Osi.HasActiveStatus("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","MOVEMENTSPEED_HALF_SERP"))
 -- print(Osi.HasActiveStatus("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","MOVEMENTSPEED_HALF_SERP"))
 -- print(Ext.Entity.GetCharacter("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd"):GetStatus("MOVEMENTSPEED_HALF_SERP"))
@@ -69,6 +71,7 @@ local function ApplyMovementStatus(charGUID,char)
       local status = char:GetStatus(statusname)
       if status then
         status.StatsMultiplier = char.Stats.DynamicStats[1].Movement / 2 -- reduce half of the base movement of this char (not really makeable to half also all boost effects all the time, since we would have to adjust it all the time on countless events)
+        status.RequestClientSync = true -- sync to clients
       else
         Ext.Print("APFreeMovement_Serp: Did not find status to change StatsMultiplier",charGUID,statusname)
         Osi.RemoveStatus(charGUID,statusname) -- try next time this is called..
@@ -102,7 +105,7 @@ end)
 RegisterProtectedOsirisListener("ObjectEnteredCombat", 2, "after", function(charGUID, combatID)
   -- Ext.Print("ObjectEnteredCombat: ",charGUID)
   if Osi.ObjectIsCharacter(charGUID)==1 then -- [in](GUIDSTRING)_Object, [out](INTEGER)_Bool 
-    if not IsPlayerMainChar(charGUID) and Osi.CharacterIsPlayer(charGUID) then -- CharacterIsPlayer is also true for summons
+    if not IsPlayerMainChar(charGUID) and Osi.CharacterIsPlayer(charGUID)==1 then -- CharacterIsPlayer is also true for summons
       ApplyMovementStatus(charGUID,char)
       AddTalent(charGUID,"QuickStep",false,"QuickStepForFree_Serp") -- give eg summones quickstep, for them it works here, they have PlayerCustomData
     end

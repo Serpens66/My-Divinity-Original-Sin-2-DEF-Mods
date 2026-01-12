@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="3" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="Alignment" type="22" value="Evil NPC" />
+					<attribute id="BloodSurfaceType" type="22" value="SurfacePoison" />
+					<attribute id="CameraOffset" type="12" value="0 0 0" />
+					<attribute id="ClimbAttachSpeed" type="6" value="4" />
+					<attribute id="ClimbDetachSpeed" type="6" value="2.44" />
+					<attribute id="ClimbLoopSpeed" type="6" value="4" />
+					<attribute id="DisplayName" type="28" handle="hac22d5a7g210eg4f1bg8ad3g8a9a49cbca8c" value="|Poisonous Ooze|" />
+					<attribute id="Equipment" type="22" value="Animals_Slug_Poison" />
+					<attribute id="ExplodedResourceID" type="22" value="d8c31b29-2738-4955-b080-4fbf093832de" />
+					<attribute id="ExplosionFX" type="22" value="RS3_FX_GP_Combat_CorpseExplosion_Ooze_01_Large" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="HasGameplayValue" type="19" value="False" />
+					<attribute id="HitFX" type="22" value="RS3_FX_GP_Combat_Hit_Poison_01_Large" />
+					<attribute id="Icon" type="22" value="Portrait_Summons_ElementalOoze_A" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="MapKey" type="22" value="d5c6601f-b460-4570-8bcc-cf8f9372037b" />
+					<attribute id="Name" type="23" value="Summons_CMP_PoisonOoze" />
+					<attribute id="PhysicsTemplate" type="22" value="e2dd250b-a2bb-4675-ae69-d1617a541692" />
+					<attribute id="Random" type="24" value="9223372036854775808" />
+					<attribute id="RunSpeed" type="6" value="2.5" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="SkillSet" type="22" value="Arena_PoisonSlug" />
+					<attribute id="SpeakerGroup" type="23" value="2b29e181-36a5-4fcd-a28f-5601637932fe" />
+					<attribute id="SpotSneakers" type="19" value="False" />
+					<attribute id="Stats" type="22" value="Animals_Slugs_Poison_Summon" />
+					<attribute id="Type" type="22" value="character" />
+					<attribute id="VisualTemplate" type="22" value="c35fe5c8-22cb-448b-9a75-644fd30c960a" />
+					<attribute id="WalkSpeed" type="6" value="1" />
+					<children>
+						<node id="AIBounds">
+							<attribute id="AIType" type="1" value="2" />
+							<attribute id="Height" type="6" value="1.83897" />
+							<attribute id="Max" type="12" value="1.45373 1.94491 0.474725" />
+							<attribute id="Min" type="12" value="-1.45373 0.105937 -0.720212" />
+							<attribute id="Radius" type="6" value="0.910462" />
+						</node>
+						<node id="FootStepInfos" />
+						<node id="GameMaster">
+							<attribute id="GameMasterSpawnSection" type="4" value="-1" />
+							<attribute id="GameMasterSpawnSubSection" type="28" handle="h5b58a9a9g7632g4958g88fagd579fcea5423" value="h5b58a9a9g7632g4958g88fagd579fcea5423;0" />
+						</node>
+						<node id="ItemList" />
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="OnDeathActions">
+							<children>
+								<node id="Action">
+									<attribute id="ActionType" type="4" value="10" />
+									<children>
+										<node id="Attributes">
+											<attribute id="CellAtGrow" type="4" value="4" />
+											<attribute id="ExternalCauseAsSurfaceOwner" type="19" value="True" />
+											<attribute id="GrowTimer" type="6" value="0.1" />
+											<attribute id="LifeTime" type="6" value="24" />
+											<attribute id="SurfaceType" type="22" value="SurfacePoison" />
+											<attribute id="Timeout" type="6" value="0" />
+											<attribute id="TotalCells" type="4" value="50" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="PickingPhysicsTemplates">
+							<attribute id="MapKey" type="22" value="CharacterDeadPicking" />
+							<attribute id="MapValue" type="22" value="" />
+						</node>
+						<node id="PickingPhysicsTemplates">
+							<attribute id="MapKey" type="22" value="CharacterLyingPicking" />
+							<attribute id="MapValue" type="22" value="" />
+						</node>
+						<node id="PickingPhysicsTemplates">
+							<attribute id="MapKey" type="22" value="CharacterSittingPicking" />
+							<attribute id="MapValue" type="22" value="" />
+						</node>
+						<node id="Scripts">
+							<children>
+								<node id="Script">
+									<attribute id="UUID" type="22" value="5bc80992-a7f6-4da6-83e2-3d276384d8f7" />
+									<children>
+										<node id="Parameters">
+											<children>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="AiHint" />
+													<attribute id="Type" type="4" value="4" />
+													<attribute id="Value" type="23" value="0xbaadf00d" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="Archetype" />
+													<attribute id="Type" type="4" value="30" />
+													<attribute id="Value" type="23" value="base" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="FleeFromDangerousSurface" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="HardcoreOnly" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="StayInAiHints" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_CanChickenFlee" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_CanCower" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_CanFleeWhileCowering" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_CombatFallbackAD" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+											</children>
+										</node>
+									</children>
+								</node>
+								<node id="Script">
+									<attribute id="UUID" type="22" value="d5815519-5cc7-4f02-b7a0-f82f764fab5c" />
+									<children>
+										<node id="Parameters">
+											<children>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="AiHint" />
+													<attribute id="Type" type="4" value="4" />
+													<attribute id="Value" type="23" value="0xbaadf00d" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="Archetype" />
+													<attribute id="Type" type="4" value="30" />
+													<attribute id="Value" type="23" value="base" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="BlockingStatus" />
+													<attribute id="Type" type="4" value="27" />
+													<attribute id="Value" type="23" value="BURNING" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="BlockingStatus2" />
+													<attribute id="Type" type="4" value="27" />
+													<attribute id="Value" type="23" value="NECROFIRE" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="FleeFromDangerousSurface" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="HardcoreOnly" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="PuddleSize" />
+													<attribute id="Type" type="4" value="2" />
+													<attribute id="Value" type="23" value="0.5" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="StayInAiHints" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="Surface" />
+													<attribute id="Type" type="4" value="10" />
+													<attribute id="Value" type="23" value="SurfacePoison" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_CanChickenFlee" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_CanCower" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_CanFleeWhileCowering" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_CombatFallbackAD" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="1" />
+												</node>
+												<node id="Parameter">
+													<attribute id="MapKey" type="22" value="bool_ShouldIgnoreOil" />
+													<attribute id="Type" type="4" value="1" />
+													<attribute id="Value" type="23" value="0" />
+												</node>
+											</children>
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="SkillList" />
+						<node id="Tags">
+							<children>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="Elemental" />
+								</node>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="NO_GHOST" />
+								</node>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="SUMMON" />
+								</node>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="OOZE" />
+								</node>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="INCARNATE_S" />
+								</node>
+							</children>
+						</node>
+						<node id="TradeTreasures">
+							<attribute id="TreasureItem" type="22" value="Empty" />
+						</node>
+						<node id="Treasures">
+							<attribute id="TreasureItem" type="22" value="Empty" />
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

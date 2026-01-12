@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="a1f79618-4bc5-4bc2-bbe0-06e0ff8f10eb" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_Exsanguinate_Prepare_Root" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_Exsanguinate_Prepare_Root" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_Exsanguinate_Prepare_Root.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="dc80ff07-7965-4411-88ec-3c7f06e140d2" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="b4bda5c7-f2bb-478b-be77-e435a983dd8f" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="68d87499-7e04-4531-b299-61522df70498" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="27cbe314-c53e-485b-96cf-2cd75c0aa6a3" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="8afb95e4-bccc-40da-9685-4290d8c74592" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

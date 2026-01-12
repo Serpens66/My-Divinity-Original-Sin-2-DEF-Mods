@@ -91,11 +91,18 @@
                             <attribute id="UUID" value="e11e183e-71af-4752-823e-0ddd37f34f28" type="22" />
                             <attribute id="Version" value="268632064" type="4" />
                         </node>
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="BuffAnySummon_Serp" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="Buff All Summons and IceInfusion (DE)" type="22" /> -->
+                            <!-- <attribute id="UUID" value="53956668-1e09-4d91-a0b9-cefe603ae0c8" type="22" /> -->
+                            <!-- <attribute id="Version" value="268435456" type="4" /> -->
+                        <!-- </node> -->
                         <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="BuffAnySummon_Serp" type="30" />
+                            <attribute id="Folder" value="CMP_SummoningImproved_Kamil_Serp" type="30" />
                             <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="Buff All Summons and IceInfusion (DE)" type="22" />
-                            <attribute id="UUID" value="53956668-1e09-4d91-a0b9-cefe603ae0c8" type="22" />
+                            <attribute id="Name" value="Pet Power (Serp)" type="22" />
+                            <attribute id="UUID" value="710cb7a3-c957-4b4c-9eee-cbf857ec2f3c" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
                         <node id="ModuleShortDesc">

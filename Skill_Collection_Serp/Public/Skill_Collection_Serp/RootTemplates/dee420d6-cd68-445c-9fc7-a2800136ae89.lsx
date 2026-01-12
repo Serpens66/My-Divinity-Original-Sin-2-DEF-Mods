@@ -66,24 +66,6 @@
 										</node>
 									</children>
 								</node>
-								<node id="Action">
-									<attribute id="ActionType" type="4" value="13" />
-									<children>
-										<node id="Attributes">
-											<attribute id="SkillID" type="22" value="Target_SecondImpact" />
-											<attribute id="Consume" type="19" value="True" />
-										</node>
-									</children>
-								</node>
-								<node id="Action">
-									<attribute id="ActionType" type="4" value="13" />
-									<children>
-										<node id="Attributes">
-											<attribute id="SkillID" type="22" value="Target_ThirdStrike" />
-											<attribute id="Consume" type="19" value="True" />
-										</node>
-									</children>
-								</node>
 							</children>
 						</node>
 						<node id="OnDestroyActions" />

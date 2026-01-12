@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="b8801799-c467-455e-a7da-506a1aefb2c6" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_Blowout_Prepare_Root" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_Blowout_Prepare_Root" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_Blowout_Prepare_Root.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="75000c3e-eaca-4ccc-8000-cb293526dbd2" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e0492a5f-4c87-4f4c-be54-83cc963e71cb" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="8ada3ad5-379d-4f16-9f7c-d61d4b2da12f" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="90477c26-80ab-4121-969a-7b61c27a66c7" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="194b0772-4095-40de-8482-a35131f21cb7" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

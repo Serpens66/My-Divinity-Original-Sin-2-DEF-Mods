@@ -299,7 +299,7 @@
 					<attribute id="UUID" type="22" value="Projectile_Helaene_Ranger_Concussion_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Deals [1]. Chains up to 8 targets, each dealing [1] at the end of their next turn." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Deals [1]. Chains up to 5 targets within 8 meters of the target, at the end of their next turn they will each get 10 times that damage per target linked." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />

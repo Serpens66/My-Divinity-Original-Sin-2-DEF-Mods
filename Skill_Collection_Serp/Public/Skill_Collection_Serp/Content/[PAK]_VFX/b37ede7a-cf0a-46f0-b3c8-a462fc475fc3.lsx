@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="b37ede7a-cf0a-46f0-b3c8-a462fc475fc3" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_CreepingTendrils_Prepare_Foot_02" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_CreepingTendrils_Prepare_Foot_02" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_CreepingTendrils_Prepare_Foot_02.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="7a4840ae-30ee-430d-8694-c59558a36a32" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="75000c3e-eaca-4ccc-8000-cb293526dbd2" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="64f4b844-d36f-4661-be2d-5d5165bd161d" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="a5751353-e75e-4a05-a95c-3d882e3a2e7b" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="61a83782-de04-4b94-9788-e14ff40a408d" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e0492a5f-4c87-4f4c-be54-83cc963e71cb" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="aef12fc9-42d9-4426-9553-c7945b7e6bce" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

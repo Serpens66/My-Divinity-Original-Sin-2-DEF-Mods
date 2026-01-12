@@ -204,12 +204,14 @@ end
 -- using color does not seem to work.. <font color='5ec2ffff'>
 Game.Tooltip.Register.Skill(function(char, skill, tooltip)
   if IsValidSkillTooltip(tooltip) then
+    -- print("SkillTooltip",char, skill, _D(tooltip.Data))
     local charGuid = char.MyGuid
     local MyStat = Ext.Stats.Get(skill)
     if MyStat then
       
       -- Info about surface a skill creates
       local surfaces = {}
+      local stati = {}
       local SkillProperties = MyStat["SkillProperties"] -- in Stat ists eine table, daher einfacher strukturiert, als die userdata in GetRaw
       if SkillProperties and type(SkillProperties)=="table" then
         -- Ext.Print("ImprovedTooltips Skill Tooltip SkillProperties",skill,_D(SkillProperties))
@@ -233,12 +235,87 @@ Game.Tooltip.Register.Skill(function(char, skill, tooltip)
         -- ["Self"],
         -- "StatusHealType" : "None",
         -- "Type" : "GameAction"}]
+        -- Encourage:
+          -- {"Action" : "ENCOURAGED2",
+          -- "Arg4" : -1,
+          -- "Arg5" : -1,
+          -- "Context" :["Target","AoE"],
+          -- "Duration" : 18.0,
+          -- "StatsId" : "",
+          -- "StatusChance" : 1.0,
+          -- "SurfaceBoost" : false,
+          -- "SurfaceBoosts" : [],
+          -- "Type" : "Status"}
         for _,entry in pairs(SkillProperties) do
-          if entry.Action=="CreateSurface" or entry.Action=="TargetCreateSurface" then
+          if entry.Type=="GameAction" and (entry.Action=="CreateSurface" or entry.Action=="TargetCreateSurface") then
             table.insert(surfaces,{SurfaceType=entry.Arg3,SurfaceLifetime=entry.Arg2~=0 and entry.Arg2/6,SurfaceRadius=entry.Arg1,SurfaceStatusChance=nil})
+          elseif entry.Type=="Status" then
+            local status = entry.Action
+            table.insert(stati,status)
           end
         end
       end
+      -- Status TOOLTIP
+      -- [{"Label" : "Ermutigung",
+                -- "Type" : "SkillName"},
+        -- {"Label" : "Skill_Warrior_Inspire",
+                -- "Type" : "SkillIcon"},
+        -- {"Icon" : 2.0,
+                -- "Label" : "<font color=\"#DA2512\">Kriegf\u00fchrung</font>",
+                -- "Type" : "SkillSchool"},
+        -- {"Label" : "Novize",
+                -- "Type" : "SkillTier"},
+        -- {"Label" : "Erfordert Kriegf\u00fchrung 1<br>",
+                -- "RequirementMet" : true,
+                -- "Type" : "SkillRequiredEquipment"},
+        -- {"Label" : "Benutzen",
+                -- "RequirementMet" : true,
+                -- "Type" : "SkillAPCost",
+                -- "Value" : 1.0,
+                -- "Warning" : ""},
+        -- {"Label" : "Abklingzeit",
+                -- "Type" : "SkillCooldown",
+                -- "Value" : 6.0,
+                -- "ValueText" : "6 Runde(n)",
+                -- "Warning" : ""},
+        -- {"Label" : "Ermutigt Verb\u00fcndete in deiner N\u00e4he.",
+                -- "Type" : "SkillDescription"},
+        -- {
+            -- "Properties" :
+            -- [
+                            -- {
+                                    -- "Label" : "Lege Combo Bonus II f\u00fcr 2 Runde(n) fest.",
+                                    -- "Warning" : ""
+                            -- },
+                            -- {
+                                    -- "Label" : "Lege Second Impact Chain f\u00fcr 2 Runde(n) fest.",
+                                    -- "Warning" : ""
+                            -- },
+                            -- {
+                                    -- "Label" : "Der Schaden basiert auf deinem Basisangriff plus Bonus durch Finesse.",
+                                    -- "Warning" : ""
+                            -- }
+                    -- ],
+                    -- "Resistances" : [],
+                    -- "Type" : "SkillProperties"
+            -- }]
+      -- Info zufügen welcher Status self und welcher Target trifft ist nicht wirklich möglich ,da Reihenfolge in SkillProperties random ist und beim tooltip keine Einordnung erkenntlich, was welcher Status ist
+      for i,status in ipairs(stati) do
+        for __,tentry in ipairs(tooltip.Data) do
+          if tentry.Type=="SkillProperties" and tentry.Properties and #tentry.Properties>=#stati then
+            local stat = Ext.Stats.Get(status)
+            if stat then
+              local StackId = stat.StackId
+              local StackPriority = stat.StackPriority
+              if StackId and StackId~="" then
+                tentry.Properties[i].Label = tentry.Properties[i].Label.." (StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
+              end
+            end
+            break
+          end
+        end
+      end
+      
       local StatSurfaceType = MyStat.SurfaceType
       if StatSurfaceType and StatSurfaceType~="None" then
         table.insert(surfaces,{SurfaceType=StatSurfaceType,SurfaceLifetime=MyStat.SurfaceLifetime,SurfaceRadius=MyStat.SurfaceRadius,SurfaceStatusChance=MyStat.SurfaceStatusChance})
@@ -323,13 +400,6 @@ Game.Tooltip.Register.Skill(function(char, skill, tooltip)
           end
         end
       end
-      -- for _, entry in ipairs(tooltip.Data) do
-        -- for k,v in pairs(entry) do
-          -- print(charGuid,skill,k,v)
-        -- end
-        -- print("...")
-      -- end
-      -- print("####")
     end
   end
 end)
@@ -713,4 +783,47 @@ Ext.Events.StatsLoaded:Subscribe(function(e)
       end
     end
 	end
+end)
+
+-- ecl::StatusConsumeBase (00007FF44AB8A900)
+Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
+  local status = StatusConsumeBase.StatusId
+  -- print("StatusTooltip",char,status,_D(tooltip.Data))
+  
+  -- [{            "Label" : "Ermutigt",
+                -- "Type" : "StatName"
+        -- },{
+                -- "Label" : "Prim\u00e4re Attribute des Charakter sind erh\u00f6ht.",
+                -- "Type" : "StatusDescription"
+        -- },{
+                -- "Label" : "St\u00e4rke: +3",
+                -- "Type" : "StatusBonus"
+        -- },{
+                -- "Label" : "Finesse: +3",
+                -- "Type" : "StatusBonus"
+        -- },{
+                -- "Label" : "Intelligenz: +3",
+                -- "Type" : "StatusBonus"
+        -- },{
+                -- "Label" : "Konstitution: +5",
+                -- "Type" : "StatusBonus"
+        -- },{
+                -- "Label" : "Dauer: 3 Runden<br><font face='Averia Serif' color='DBDBDB'>Applied by Lohse</font>",
+                -- "Type" : "StatusDescription"}]
+  
+  if status then
+    local stat = Ext.Stats.Get(status)
+    if stat then
+      local StackId = stat.StackId
+      local StackPriority = stat.StackPriority
+      if StackId and StackId~="" then
+        for _,entry in ipairs(tooltip.Data) do
+          if entry.Type=="StatusDescription" then
+            entry.Label = entry.Label.."\n(StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
+            break
+          end
+        end
+      end
+    end
+  end
 end)

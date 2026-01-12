@@ -1,0 +1,108 @@
+INIT
+	CHARACTER:__Me
+	EXTERN SKILL:%DieOnCast=Shout_SuicideBomberExplosion
+	EXTERN SKILL:%SkillOnDeath=Projectile_EnemySuicideBomberExplosion
+	INT:%CastSkillOnDeath=1
+	
+EVENTS
+EVENT DieOnCast
+ON
+	OnSkillCast(__Me, %DieOnCast)
+ACTIONS
+	Set(%CastSkillOnDeath, 0)
+	CharacterDie(__Me)
+	
+EVENT ExplodeOnDeath
+ON
+	OnDie(__Me,_,_,_)
+ACTIONS
+	IF "c1"
+		IsEqual(%CastSkillOnDeath,1)
+	THEN
+		ExplodeAt(__Me, %SkillOnDeath)
+	ENDIF
+
+EVENT FireInfusion
+ON
+	OnCharacterStatusApplied(__Me, FireInfusion)
+ACTIONS
+	Set(%DieOnCast, Shout_SuicideBomberExplosion)
+	Set(%SkillOnDeath, Projectile_EnemySuicideBomberExplosion)
+	
+EVENT NecroFireInfusion
+ON
+	OnCharacterUsedSkillOnMe(_, Target_NecrofireInfusion)
+ACTIONS
+	Set(%DieOnCast, Shout_Summon_SuicideBomberNecrofire)
+	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_Necrofire)
+	
+EVENT BlessedIceInfusion
+ON
+	OnCharacterUsedSkillOnMe(_, Target_IceInfusion)
+ACTIONS
+	Set(%DieOnCast, Shout_Summon_SuicideBomberBlessedIce)
+	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_Ice)
+
+EVENT ElectricInfusion
+ON
+	OnCharacterUsedSkillOnMe(_, Target_ElectricInfusion)
+ACTIONS
+	Set(%DieOnCast, Shout_Summon_SuicideBomberElectric)
+	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_Electric)
+	
+EVENT PoisonInfusion
+ON
+	OnCharacterUsedSkillOnMe(_, Target_PoisonInfusion)
+ACTIONS
+	Set(%DieOnCast, Shout_Summon_SuicideBomberPoison)
+	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_Poison)
+
+EVENT WaterInfusion
+ON
+	OnCharacterUsedSkillOnMe(_, Target_WaterInfusion)
+ACTIONS
+	Set(%DieOnCast, Shout_Summon_SuicideBomberWater)
+	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_Water)
+	
+EVENT AcidInfusion
+ON
+	OnCharacterUsedSkillOnMe(_, Target_AcidInfusion)
+ACTIONS
+	Set(%DieOnCast, Shout_Summon_SuicideBomberAcid)
+	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_Acid)
+	
+EVENT BloodInfusion
+ON
+	OnCharacterUsedSkillOnMe(_, Target_BloodInfusion)
+ACTIONS
+	Set(%DieOnCast, Shout_Summon_SuicideBomberBlood)
+	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_Blood)
+
+EVENT CursedBloodInfusion
+ON
+	OnCharacterUsedSkillOnMe(_, Target_CursedBloodInfusion)
+ACTIONS
+	Set(%DieOnCast, Shout_Summon_SuicideBomberCursedBlood)
+	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_CursedBlood)
+
+EVENT OilInfusion
+ON
+	OnCharacterUsedSkillOnMe(_, Target_OilInfusion)
+ACTIONS
+	Set(%DieOnCast, Shout_Summon_SuicideBomberOil)
+	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_Oil)
+	
+EVENT CursedOilInfusion
+ON
+	OnCharacterUsedSkillOnMe(_, Target_CursedOilInfusion)
+ACTIONS
+	Set(%DieOnCast, Shout_Summon_SuicideBomberCursedOil)
+	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_CursedOil)
+	
+EVENT CursedElectricInfusion
+ON
+	OnCharacterUsedSkillOnMe(_, Target_CursedElectricInfusion)
+ACTIONS
+	Set(%DieOnCast, Shout_Summon_SuicideBomberCursedElectric)
+	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_CursedElectric)
+	

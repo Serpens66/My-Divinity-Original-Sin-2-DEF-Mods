@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="3" build="1" lslib_meta="v1,bswap_guids" />
+	<region id="TranslatedStringKeys">
+		<node id="root">
+			<children>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h87fd1feeg00e3g441dg82afge73f0a38ffeb" value="|Foreword&lt;br&gt;&lt;br&gt;This tome introduces the reader to life and studies of a summoning genius Ch. Y. Meera. She was gone from us too early, but the legacy she left behind is to be eternal. Her work gave a foundation for defining methods of modern elemental infusing.&lt;br&gt;&lt;br&gt;The early years&lt;br&gt;&lt;br&gt;Meera was a troubled and weak child. She left her family home early to become a summoner. In her early years of work, Meera was focused on developing and stabilising ways of applying primary elemental infusions to the summons. Unsuccessful at first, she managed to make her point to the wide gremium of scientists summoners and gain their respect.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="CMP_SI_Book_InfusionStudies_A" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h2379875cgfdf2g4c01gb599g4a823971bd0b" value="|Foreword&lt;br&gt;&lt;br&gt;This tome takes the reader through later years of the life of Ch. Y. Meera, from the time she introduced her second successful thesis to the moment of her premature death.&lt;br&gt;&lt;br&gt;The final years&lt;br&gt;&lt;br&gt;Meera continued to deepen her knowledge on elemental infusions, adding a layer of factors to the equation. Dedicating every moment of her life to science, she established a method to infuse cursed and blessed elements. In contrary to popular opinion, it was not the increasing danger of her field of work that brought the doom upon her. Meera slipped on an oily trail left by one of the summons and fell down the well in her own yard.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="CMP_SI_Book_InfusionStudies_B" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

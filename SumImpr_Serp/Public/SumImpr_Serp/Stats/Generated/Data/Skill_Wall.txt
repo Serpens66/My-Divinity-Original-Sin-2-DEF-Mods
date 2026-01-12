@@ -1,0 +1,8 @@
+new entry "Wall_Summon_LivingWall"
+type "SkillData"
+data "SkillType" "Wall"
+using "Wall_LivingWall"
+data "ForGameMaster" "No"
+data "IsEnemySkill" "Yes"
+data "Memory Cost" "0"
+

@@ -145,6 +145,6 @@ data "SkillProperties" "CreateSurface,1,,Fire"
 data "DeathType" "Incinerate"
 data "TargetConditions" "Enemy"
 data "Template" "37027365-9fcf-492a-9018-777739c33e7f"
-data "Damage Multiplier" "200"
+data "Damage Multiplier" "150"
 
 

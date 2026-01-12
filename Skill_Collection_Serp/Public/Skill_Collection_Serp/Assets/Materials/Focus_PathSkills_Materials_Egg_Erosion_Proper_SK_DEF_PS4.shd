@@ -1,0 +1,366 @@
+[Vertex shader]
+
+
+#include "Shaders/PS4/srt_struct.h"
+#include "Shaders/PS4/CommonHelpers.shdh"
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : S_Position;
+	float2 TexCoords0 : TEXCOORD0;
+	float4 WorldPosition : TEXCOORD1;
+	float3 WorldNormal : TEXCOORD2;
+	float3 WorldBinormal : TEXCOORD3;
+	float3 WorldTangent : TEXCOORD4;
+	float3 LocalPosition : TEXCOORD5;
+};
+
+@uniform row_major float4x4 WorldMatrix;
+VertexOutput main(uint id : S_VERTEX_ID,
+	SrtVsData srtData : S_SRT_DATA)
+{
+	// Retrieve SRT data:
+	@uniform(global_View);
+	@uniform(global_ViewProjection);
+	@uniform(WorldMatrix);
+
+	VertexOutput Out;
+
+	row_major float3x4 boneMatrix1 = SRT_VS_BONES_BONE(SRT_VS_BONES_INDICIES(id).x);
+	row_major float3x4 boneMatrix2 = SRT_VS_BONES_BONE(SRT_VS_BONES_INDICIES(id).y);
+	row_major float3x4 boneMatrix3 = SRT_VS_BONES_BONE(SRT_VS_BONES_INDICIES(id).z);
+	row_major float3x4 boneMatrix4 = SRT_VS_BONES_BONE(SRT_VS_BONES_INDICIES(id).w);
+	//World space position
+	float4 worldPosition = float4(0.0f, 0.0f, 0.0f, 1.0f);
+	float4 tempPosSkinned = float4(SRT_VS_BUFFER_POSITION(id).xyz, 1.0f);
+	worldPosition.xyz = (worldPosition.xyz + (SRT_VS_BONES_WEIGHTS(id).x * mul(boneMatrix1, tempPosSkinned)));
+	worldPosition.xyz = (worldPosition.xyz + (SRT_VS_BONES_WEIGHTS(id).y * mul(boneMatrix2, tempPosSkinned)));
+	worldPosition.xyz = (worldPosition.xyz + (SRT_VS_BONES_WEIGHTS(id).z * mul(boneMatrix3, tempPosSkinned)));
+	worldPosition.xyz = (worldPosition.xyz + (SRT_VS_BONES_WEIGHTS(id).w * mul(boneMatrix4, tempPosSkinned)));
+	worldPosition = mul(WorldMatrix, worldPosition);
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+	Out.TexCoords0 = SRT_VS_BUFFER_TEXCOORD0(id);
+	//Pass world position to pixel shader
+	Out.WorldPosition = worldPosition;
+
+	//Compute local tangent frame
+	row_major float3x3 LocalTangentFrame = GetTangentFrame(SRT_VS_BUFFER_QTANGENT(id));
+
+	float3 LocalNormal = LocalTangentFrame[2];
+
+	//Normalize Local Normal
+	float3 localNormalNormalized = normalize(LocalNormal);
+
+	//World space Normal
+	float3 worldNormal = float3(0.0f, 0.0f, 0.0f);
+	worldNormal = (worldNormal + (SRT_VS_BONES_WEIGHTS(id).x * mul(boneMatrix1, float4(localNormalNormalized, 0.0f))));
+	worldNormal = (worldNormal + (SRT_VS_BONES_WEIGHTS(id).y * mul(boneMatrix2, float4(localNormalNormalized, 0.0f))));
+	worldNormal = (worldNormal + (SRT_VS_BONES_WEIGHTS(id).z * mul(boneMatrix3, float4(localNormalNormalized, 0.0f))));
+	worldNormal = (worldNormal + (SRT_VS_BONES_WEIGHTS(id).w * mul(boneMatrix4, float4(localNormalNormalized, 0.0f))));
+	worldNormal = mul(WorldMatrix, float4(worldNormal, 0.0f)).xyz;
+
+	//Normalize World Normal
+	float3 worldNormalNormalized = normalize(worldNormal);
+
+	Out.WorldNormal = worldNormalNormalized;
+
+	float3 LocalBinormal = LocalTangentFrame[1];
+
+	//Normalize Local Binormal
+	float3 localBinormalNormalized = normalize(LocalBinormal);
+
+	//World space Binormal
+	float3 worldBinormal = float3(0.0f, 0.0f, 0.0f);
+	worldBinormal = (worldBinormal + (SRT_VS_BONES_WEIGHTS(id).x * mul(boneMatrix1, float4(localBinormalNormalized, 0.0f))));
+	worldBinormal = (worldBinormal + (SRT_VS_BONES_WEIGHTS(id).y * mul(boneMatrix2, float4(localBinormalNormalized, 0.0f))));
+	worldBinormal = (worldBinormal + (SRT_VS_BONES_WEIGHTS(id).z * mul(boneMatrix3, float4(localBinormalNormalized, 0.0f))));
+	worldBinormal = (worldBinormal + (SRT_VS_BONES_WEIGHTS(id).w * mul(boneMatrix4, float4(localBinormalNormalized, 0.0f))));
+	worldBinormal = mul(WorldMatrix, float4(worldBinormal, 0.0f)).xyz;
+
+	//Normalize World Binormal
+	float3 worldBinormalNormalized = normalize(worldBinormal);
+
+	Out.WorldBinormal = worldBinormalNormalized;
+
+	float3 LocalTangent = LocalTangentFrame[0];
+
+	//Normalize Local Tangent
+	float3 localTangentNormalized = normalize(LocalTangent);
+
+	//World space Tangent
+	float3 worldTangent = float3(0.0f, 0.0f, 0.0f);
+	worldTangent = (worldTangent + (SRT_VS_BONES_WEIGHTS(id).x * mul(boneMatrix1, float4(localTangentNormalized, 0.0f))));
+	worldTangent = (worldTangent + (SRT_VS_BONES_WEIGHTS(id).y * mul(boneMatrix2, float4(localTangentNormalized, 0.0f))));
+	worldTangent = (worldTangent + (SRT_VS_BONES_WEIGHTS(id).z * mul(boneMatrix3, float4(localTangentNormalized, 0.0f))));
+	worldTangent = (worldTangent + (SRT_VS_BONES_WEIGHTS(id).w * mul(boneMatrix4, float4(localTangentNormalized, 0.0f))));
+	worldTangent = mul(WorldMatrix, float4(worldTangent, 0.0f)).xyz;
+
+	//Normalize World Tangent
+	float3 worldTangentNormalized = normalize(worldTangent);
+
+	Out.WorldTangent = worldTangentNormalized;
+
+	//Pass local position to pixel shader
+	Out.LocalPosition = SRT_VS_BUFFER_POSITION(id).xyz;
+
+
+	return Out;
+}
+
+
+[Fragment shader]
+
+
+#include "Shaders/PS4/srt_struct.h"
+#include "Shaders/PS4/CommonHelpers.shdh"
+#include "Shaders/PS4/PBR.shdh"
+
+struct PixelInput
+{
+	float4 ProjectedPosition : S_Position;
+	float2 TexCoords0 : TEXCOORD0;
+	float4 WorldPosition : TEXCOORD1;
+	float3 WorldNormal : TEXCOORD2;
+	float3 WorldBinormal : TEXCOORD3;
+	float3 WorldTangent : TEXCOORD4;
+	float3 LocalPosition : TEXCOORD5;
+};
+
+struct PixelOutput
+{
+	float4 Color0 : S_TARGET_OUTPUT0;
+	float4 Color1 : S_TARGET_OUTPUT1;
+	float4 Color2 : S_TARGET_OUTPUT2;
+	float4 Color3 : S_TARGET_OUTPUT3;
+};
+
+@uniform SamplerState _DefaultWrapSampler;
+@uniform Texture2D Texture2DParameter_basecolor_DefaultWrapSampler;
+@uniform float FloatParameter_SeeThroughEnabled;
+@uniform Texture2D Texture2DParameter_9dc5807b36974b8fab0fb9c5c1bd7010_DefaultWrapSampler;
+@uniform float4 _MeshVertexColor;
+@uniform float2 Vector2Parameter_ErosionCloudUV;
+@uniform Texture2D Texture2DParameter_ErosionCloud_DefaultWrapSampler;
+@uniform float FloatParameter_ErosionGlowSize;
+@uniform Texture2D Texture2DParameter_normalmap_DefaultWrapSampler;
+@uniform float FloatParameter_UseHeightGradient;
+@uniform Texture2D Texture2DParameter_physicalmap_DefaultWrapSampler;
+@uniform float FloatParameter_Reflectance;
+@uniform float _OpacityFade;
+void CalculateMatOpacity(SrtPsData srtData : S_SRT_DATA,
+	float2 in_0,
+	float3 in_1,
+	out float out_0)
+{
+	// Retrieve SRT data:
+	@uniform(global_SeeThroughPosition);
+	@uniform(global_SeeThroughRadius);
+	@uniform(global_GameCameraPosition);
+	@uniform(_DefaultWrapSampler);
+	@uniform(Texture2DParameter_basecolor_DefaultWrapSampler);
+	@uniform(FloatParameter_SeeThroughEnabled);
+	@uniform(Texture2DParameter_9dc5807b36974b8fab0fb9c5c1bd7010_DefaultWrapSampler);
+
+	float4 Local0 = Texture2DParameter_basecolor_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.w;
+	float4 Local2 = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	if((FloatParameter_SeeThroughEnabled > 1.0f))
+	{
+		Local2 = float4(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	else if((FloatParameter_SeeThroughEnabled == 1.0f))
+	{
+		float4 Local3 = Texture2DParameter_9dc5807b36974b8fab0fb9c5c1bd7010_DefaultWrapSampler.Sample(_DefaultWrapSampler, (in_0 * float2(2.0f, 2.0f)));
+		//[Local3] Get needed components
+		float Local4 = Local3.x;
+		float Local5 = (Local4 * 2.0f);
+		float Local6 = (Local5 - 1.0f);
+		float Local7 = (Local6 * 0.5f);
+		//Distance from point to line segment:
+		float3 Local8 = (global_SeeThroughPosition - global_GameCameraPosition);
+		float3 Local9 = (in_1 - global_GameCameraPosition);
+		float Local10 = dot(Local9, Local8);
+		float Local11 = dot(Local8, Local8);
+		float Local12 = 0.0f;
+		float Local13 = (Local10 / Local11);
+		float3 Local14 = (global_GameCameraPosition + (Local13 * Local8));
+		float3 Local15 = clamp(Local14, min(global_GameCameraPosition, global_SeeThroughPosition), max(global_GameCameraPosition, global_SeeThroughPosition));
+		Local12 = distance(in_1, Local15);
+		//~Distance from point to line segment
+		float Local16 = (Local7 + Local12);
+		float Local17 = (Local16 / global_SeeThroughRadius);
+		float Local18 = clamp(Local17, 0.0f, 1.0f);
+		Local2 = float4(Local18, Local18, Local18, Local18);
+	}
+	else
+	{
+		Local2 = float4(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	float Local19 = Local2.x;
+	float Local20 = (Local1 * Local19);
+	out_0 = Local20;
+}
+
+void CalculateMatEmissiveColor(SrtPsData srtData : S_SRT_DATA,
+	float2 in_0,
+	out float3 out_0)
+{
+	// Retrieve SRT data:
+	@uniform(_DefaultWrapSampler);
+	@uniform(_MeshVertexColor);
+	@uniform(Vector2Parameter_ErosionCloudUV);
+	@uniform(Texture2DParameter_ErosionCloud_DefaultWrapSampler);
+	@uniform(FloatParameter_ErosionGlowSize);
+
+	float2 Local0 = (in_0 * Vector2Parameter_ErosionCloudUV);
+	float4 Local1 = Texture2DParameter_ErosionCloud_DefaultWrapSampler.Sample(_DefaultWrapSampler, Local0);
+	//[Local1] Get needed components
+	float Local2 = Local1.x;
+	float Local3 = (1.0f + FloatParameter_ErosionGlowSize);
+	float Local4 = (_MeshVertexColor.w * Local3);
+	float Local5 = (Local4 - FloatParameter_ErosionGlowSize);
+	float Local6 = (1.0f - Local5);
+	float Local7 = (Local6 - FloatParameter_ErosionGlowSize);
+	float Local8 = smoothstep(Local7, Local6, Local2);
+	float Local9 = (1.0f - Local8);
+	float3 Local10 = (_MeshVertexColor.xyz * Local9);
+	out_0 = Local10;
+}
+
+void CalculateMatNormal(SrtPsData srtData : S_SRT_DATA,
+	float2 in_0,
+	out float3 out_0)
+{
+	// Retrieve SRT data:
+	@uniform(_DefaultWrapSampler);
+	@uniform(Texture2DParameter_normalmap_DefaultWrapSampler);
+
+	float4 Local0 = Texture2DParameter_normalmap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Convert normalmaps to tangent space vectors
+	Local0.xyzw = Local0.wzyx;
+	Local0.xyz = ((Local0.xyz * 2.0f) - 1.0f);
+	Local0.z = -(Local0.z);
+	Local0.xyz = normalize(Local0.xyz);
+	//[Local0] Get needed components
+	float3 Local1 = Local0.xyz;
+	out_0 = Local1;
+}
+
+void CalculateMatBaseColor(SrtPsData srtData : S_SRT_DATA,
+	float2 in_0,
+	float3 in_1,
+	out float3 out_0)
+{
+	// Retrieve SRT data:
+	@uniform(_DefaultWrapSampler);
+	@uniform(Texture2DParameter_basecolor_DefaultWrapSampler);
+	@uniform(FloatParameter_UseHeightGradient);
+
+	float4 Local0 = Texture2DParameter_basecolor_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float3 Local1 = Local0.xyz;
+	float Local2 = in_1.y;
+	float3 Local3 = (Local1 * Local2);
+	float3 Local4 = lerp(Local1, Local3, float3(FloatParameter_UseHeightGradient, FloatParameter_UseHeightGradient, FloatParameter_UseHeightGradient));
+	out_0 = Local4;
+}
+
+void CalculateMatMetalMask(SrtPsData srtData : S_SRT_DATA,
+	float2 in_0,
+	out float out_0)
+{
+	// Retrieve SRT data:
+	@uniform(_DefaultWrapSampler);
+	@uniform(Texture2DParameter_physicalmap_DefaultWrapSampler);
+
+	float4 Local0 = Texture2DParameter_physicalmap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	out_0 = Local1;
+}
+
+void CalculateMatReflectance(SrtPsData srtData : S_SRT_DATA,
+	out float out_0)
+{
+	// Retrieve SRT data:
+	@uniform(FloatParameter_Reflectance);
+
+	out_0 = FloatParameter_Reflectance;
+}
+
+void CalculateMatRoughness(SrtPsData srtData : S_SRT_DATA,
+	float2 in_0,
+	out float out_0)
+{
+	// Retrieve SRT data:
+	@uniform(_DefaultWrapSampler);
+	@uniform(Texture2DParameter_physicalmap_DefaultWrapSampler);
+
+	float4 Local0 = Texture2DParameter_physicalmap_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.x;
+	float Local2 = Local0.y;
+	out_0 = Local2;
+}
+
+PixelOutput main(PixelInput In,
+	SrtPsData srtData : S_SRT_DATA)
+{
+	// Retrieve SRT data:
+	@uniform(global_View);
+	@uniform(_OpacityFade);
+
+	PixelOutput Out;
+
+	float matOpacity;
+	CalculateMatOpacity(srtData, In.TexCoords0, In.WorldPosition.xyz, matOpacity);
+	clip((matOpacity - 0.5f));
+
+	float3 matEmissiveColor;
+	CalculateMatEmissiveColor(srtData, In.TexCoords0, matEmissiveColor);
+	float3 matNormal;
+	CalculateMatNormal(srtData, In.TexCoords0, matNormal);
+	//Normalize World Normal
+	float3 worldNormalNormalized = normalize(In.WorldNormal);
+
+	//Normalize World Binormal
+	float3 worldBinormalNormalized = normalize(In.WorldBinormal);
+
+	//Normalize World Tangent
+	float3 worldTangentNormalized = normalize(In.WorldTangent);
+
+	row_major float3x3 NBT = row_major float3x3(worldTangentNormalized, worldNormalNormalized, worldBinormalNormalized);
+
+	matNormal = mul(row_major float3x3(global_View), normalize(mul(matNormal, NBT)));
+
+	float3 matBaseColor;
+	CalculateMatBaseColor(srtData, In.TexCoords0, In.LocalPosition.xyz, matBaseColor);
+	float matMetalMask;
+	CalculateMatMetalMask(srtData, In.TexCoords0, matMetalMask);
+	float matReflectance;
+	CalculateMatReflectance(srtData, matReflectance);
+	float matRoughness;
+	CalculateMatRoughness(srtData, In.TexCoords0, matRoughness);
+	GBufferData gBufferData;
+	gBufferData.Emissive = matEmissiveColor;
+	gBufferData.ViewSpaceNormal = matNormal;
+	gBufferData.BaseColor = matBaseColor;
+	gBufferData.FadeOpacity = _OpacityFade;
+	gBufferData.Roughness = matRoughness;
+	gBufferData.Reflectance = matReflectance;
+	gBufferData.MetalMask = matMetalMask;
+	gBufferData.FXEmissive = true;
+	gBufferData.ShadingModel = 0;
+	gBufferData.Custom = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	EncodeGBufferData(gBufferData, Out.Color0, Out.Color1, Out.Color2, Out.Color3);
+
+	return Out;
+}

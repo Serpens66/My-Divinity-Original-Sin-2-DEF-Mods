@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="af1502aa-ef91-41a6-86ac-763999f258c3" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_Firefly_Prepare_Root" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_Firefly_Prepare_Root" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_Firefly_Prepare_Root.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e7e0f8e2-8464-4ced-8f43-ba0c17882a34" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="2f750306-8c57-4fef-92ee-3aa1269df701" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="28ce282a-548d-4c9a-b013-da049515f7ab" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="c8d813bc-5279-4275-a491-332179fa97f5" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="f819afe8-e3f8-405e-939d-f2a17c168a05" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="1a0b7e89-85e9-41be-9116-fd65fdfd946b" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="0363989c-f10b-49bb-a928-7040c5fc2fb7" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

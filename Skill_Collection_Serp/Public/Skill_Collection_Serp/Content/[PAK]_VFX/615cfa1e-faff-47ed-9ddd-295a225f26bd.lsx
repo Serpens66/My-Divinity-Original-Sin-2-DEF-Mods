@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="615cfa1e-faff-47ed-9ddd-295a225f26bd" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_Ionize_TargetEffect" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_Ionize_TargetEffect" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_Ionize_TargetEffect.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="68d87499-7e04-4531-b299-61522df70498" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="ebe87c97-56da-499f-80bd-09a604e8ffe9" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="32d28bc5-1dff-4618-98f6-2ef079211965" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e854963b-929c-41bc-abd4-047c7c64e895" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="fed335a7-3867-4a58-99ad-e10ee156c06f" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

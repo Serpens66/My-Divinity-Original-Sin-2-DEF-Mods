@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="218e6f23-bef4-4768-b5b7-7de0f2b845e5" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_ColdSnap_Cast_Root" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_ColdSnap_Cast_Root" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_ColdSnap_Cast_Root.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e0492a5f-4c87-4f4c-be54-83cc963e71cb" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="f0d9b2a5-8fe3-4c66-a58c-f392f1a9f62a" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="35da0604-1e83-4f93-a19f-fe492f50422e" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="accf0c55-fb45-42c5-8189-ee602671c85e" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="816ab617-e39a-4443-8d2a-e8e34d65413d" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

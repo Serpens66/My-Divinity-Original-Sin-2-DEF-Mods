@@ -1,0 +1,8 @@
+new entry "Teleportation_Summon_LastRites"
+type "SkillData"
+data "SkillType" "Teleportation"
+using "Teleportation_LastRites"
+data "ForGameMaster" "No"
+data "IsEnemySkill" "Yes"
+data "Memory Cost" "0"
+

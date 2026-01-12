@@ -1,0 +1,8 @@
+new entry "ProjectileStrike_Summon_HailStrike"
+type "SkillData"
+data "SkillType" "ProjectileStrike"
+using "ProjectileStrike_HailStrike"
+data "ForGameMaster" "No"
+data "IsEnemySkill" "Yes"
+data "Memory Cost" "0"
+

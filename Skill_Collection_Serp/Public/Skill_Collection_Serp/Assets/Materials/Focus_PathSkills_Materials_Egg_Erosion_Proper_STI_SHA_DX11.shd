@@ -1,0 +1,142 @@
+[Vertex shader]
+
+
+#include "Shaders/DX11/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_DX11.shdh"
+
+struct VertexInput
+{
+	float3 Position : POSITION0;
+	float4 InstanceMatrix1 : COLOR1;
+	float4 InstanceMatrix2 : COLOR2;
+	float4 InstanceMatrix3 : COLOR3;
+	float2 TexCoords0 : TEXCOORD0;
+};
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : SV_Position0;
+	float2 TexCoords0 : TEXCOORD0;
+	float4 WorldPosition : TEXCOORD1;
+	float ShadowDepth : TEXCOORD2;
+};
+
+VertexOutput main(VertexInput In)
+{
+	VertexOutput Out;
+
+	//Create Instance World Matrix
+	float4 row1 = float4(In.InstanceMatrix1.x, In.InstanceMatrix1.w, In.InstanceMatrix2.z, In.InstanceMatrix3.y);
+	float4 row2 = float4(In.InstanceMatrix1.y, In.InstanceMatrix2.x, In.InstanceMatrix2.w, In.InstanceMatrix3.z);
+	float4 row3 = float4(In.InstanceMatrix1.z, In.InstanceMatrix2.y, In.InstanceMatrix3.x, In.InstanceMatrix3.w);
+	float4 row4 = float4(0.0f, 0.0f, 0.0f, 1.0f);
+	row_major float4x4 WorldMatrix = float4x4(row1, row2, row3, row4);
+
+	//World space position
+	float4 worldPosition = mul(WorldMatrix, float4(In.Position, 1.0f));
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+	Out.TexCoords0 = In.TexCoords0;
+	//Pass world position to pixel shader
+	Out.WorldPosition = worldPosition;
+
+	float vertexDepth;
+	vertexDepth = distance(worldPosition.xyz, global_ViewPos.xyz);
+	//Pass depth to pixel shader
+	Out.ShadowDepth = vertexDepth;
+
+
+	return Out;
+}
+
+
+[Fragment shader]
+
+
+#include "Shaders/DX11/CommonHelpers.shdh"
+#include "Shaders/GlobalConstants_PS_DX11.shdh"
+
+struct PixelInput
+{
+	float4 ProjectedPosition : SV_Position0;
+	float2 TexCoords0 : TEXCOORD0;
+	float4 WorldPosition : TEXCOORD1;
+	float ShadowDepth : TEXCOORD2;
+};
+
+struct PixelOutput
+{
+	float4 Color0 : SV_Target0;
+};
+
+uniform SamplerState _DefaultWrapSampler;
+uniform Texture2D Texture2DParameter_basecolor_DefaultWrapSampler;
+uniform float FloatParameter_SeeThroughEnabled;
+uniform Texture2D Texture2DParameter_9dc5807b36974b8fab0fb9c5c1bd7010_DefaultWrapSampler;
+
+void CalculateMatOpacity(float2 in_0,
+	float3 in_1,
+	out float out_0)
+{
+	float4 Local0 = Texture2DParameter_basecolor_DefaultWrapSampler.Sample(_DefaultWrapSampler, in_0);
+	//[Local0] Get needed components
+	float Local1 = Local0.w;
+	float4 Local2 = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	if((FloatParameter_SeeThroughEnabled > 1.0f))
+	{
+		Local2 = float4(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	else if((FloatParameter_SeeThroughEnabled == 1.0f))
+	{
+		float4 Local3 = Texture2DParameter_9dc5807b36974b8fab0fb9c5c1bd7010_DefaultWrapSampler.Sample(_DefaultWrapSampler, (in_0 * float2(2.0f, 2.0f)));
+		//[Local3] Get needed components
+		float Local4 = Local3.x;
+		float Local5 = (Local4 * 2.0f);
+		float Local6 = (Local5 - 1.0f);
+		float Local7 = (Local6 * 0.5f);
+		//Distance from point to line segment:
+		float3 Local8 = (global_SeeThroughPosition - global_GameCameraPosition);
+		float3 Local9 = (in_1 - global_GameCameraPosition);
+		float Local10 = dot(Local9, Local8);
+		float Local11 = dot(Local8, Local8);
+		float Local12 = 0.0f;
+		float Local13 = (Local10 / Local11);
+		float3 Local14 = (global_GameCameraPosition + (Local13 * Local8));
+		float3 Local15 = clamp(Local14, min(global_GameCameraPosition, global_SeeThroughPosition), max(global_GameCameraPosition, global_SeeThroughPosition));
+		Local12 = distance(in_1, Local15);
+		//~Distance from point to line segment
+		float Local16 = (Local7 + Local12);
+		float Local17 = (Local16 / global_SeeThroughRadius);
+		float Local18 = clamp(Local17, 0.0f, 1.0f);
+		Local2 = float4(Local18, Local18, Local18, Local18);
+	}
+	else
+	{
+		Local2 = float4(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+	float Local19 = Local2.x;
+	float Local20 = (Local1 * Local19);
+	out_0 = Local20;
+}
+
+PixelOutput main(PixelInput In)
+{
+	PixelOutput Out;
+
+	float matOpacity;
+	CalculateMatOpacity(In.TexCoords0, In.WorldPosition.xyz, matOpacity);
+	clip((matOpacity - 0.5f));
+
+	float Local0 = ddx(In.ShadowDepth);
+	float Local1 = ddy(In.ShadowDepth);
+	Out.Color0 = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	Out.Color0.x = In.ShadowDepth;
+	Out.Color0.y = ((In.ShadowDepth * In.ShadowDepth) + (((Local0 * Local0) + (Local1 * Local1)) * 0.25f));
+
+	return Out;
+}

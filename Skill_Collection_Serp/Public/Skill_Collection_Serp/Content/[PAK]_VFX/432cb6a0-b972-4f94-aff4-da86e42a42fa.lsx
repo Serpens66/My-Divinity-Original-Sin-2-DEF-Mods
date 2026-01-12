@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="432cb6a0-b972-4f94-aff4-da86e42a42fa" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_ColdSnap_TargetEffect" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_ColdSnap_TargetEffect" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_ColdSnap_TargetEffect.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="68d87499-7e04-4531-b299-61522df70498" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="ebe87c97-56da-499f-80bd-09a604e8ffe9" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="32d28bc5-1dff-4618-98f6-2ef079211965" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="35da0604-1e83-4f93-a19f-fe492f50422e" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="e0492a5f-4c87-4f4c-be54-83cc963e71cb" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="SoundBank">
+		<node id="SoundBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="00321ef4-291c-4456-9861-daf86a11850b" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Sounds/Focus_PathSkills_FireFly_FlyEffect.wav" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_FireFly_FlyEffect" />
+					<attribute id="SoundEventID" type="5" value="0" />
+					<attribute id="SoundEvent" type="22" value="Focus_PathSkills_FireFly_FlyEffect" />
+					<attribute id="SoundBank" type="22" value="" />
+					<attribute id="SoundEventUUID" type="31" value="fed82269-46ea-b3e7-0c85-f46d6e9b89a7" />
+					<attribute id="MaxDistance" type="6" value="3.4028235E+38" />
+					<attribute id="Duration" type="6" value="3.4028235E+38" />
+					<attribute id="Preload" type="19" value="False" />
+					<attribute id="Internal" type="19" value="False" />
+					<attribute id="SoundCodec" type="27" value="7" />
+					<attribute id="GMSoundCategory" type="27" value="0" />
+					<attribute id="SoundCategory" type="27" value="0" />
+					<attribute id="DisplayName" type="30" value="" />
+					<attribute id="GMSubSection" type="30" value="" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

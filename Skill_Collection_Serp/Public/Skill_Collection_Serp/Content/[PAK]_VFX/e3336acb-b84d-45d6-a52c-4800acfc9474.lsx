@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="e3336acb-b84d-45d6-a52c-4800acfc9474" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_SilkStep_Prepare_Root" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_SilkStep_Prepare_Root" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_SilkStep_Prepare_Root.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="56790e78-9bfa-4973-8298-83cc501fa24b" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="8f6cda9f-a6b0-4fc9-b68d-d4f2cf92767c" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="308b9032-3c9c-4a4c-8ca8-d36b2af43cbf" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="657c94f1-7e8f-4dab-b9ff-6c80e1e3e6a5" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="7d434d09-ad20-4eda-938d-9f2944b4e045" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="b5134e41-4636-4dd3-a3bd-6ca014f555c8" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

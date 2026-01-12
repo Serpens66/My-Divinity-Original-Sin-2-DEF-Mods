@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="MaterialBank">
+		<node id="MaterialBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="13661a31-12f5-4b14-a339-0d8ce54ae06e" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="SourceFile" type="30" value="Public/Shared/Assets/Materials/Effects/FX_MAT_BasicAlphaBlendingParticles.lsb" />
+					<attribute id="Name" type="23" value="FX_MP_A_Bee_A" />
+					<attribute id="MaterialName" type="22" value="Focus_PathSkills_Materials_Beefly" />
+					<attribute id="MaterialType" type="1" value="0" />
+					<children>
+						<node id="ScalarParameters">
+							<attribute id="Enabled" type="19" value="False" />
+							<attribute id="ParameterName" type="22" value="_OpacityFade" />
+							<attribute id="UniformName" type="22" value="_OpacityFade" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="511" />
+							<attribute id="Value" type="6" value="1" />
+						</node>
+						<node id="ScalarParameters">
+							<attribute id="Enabled" type="19" value="False" />
+							<attribute id="ParameterName" type="22" value="Blend Distance" />
+							<attribute id="UniformName" type="22" value="FloatParameter_BlendDistance" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="511" />
+							<attribute id="Value" type="6" value="1" />
+						</node>
+						<node id="Texture2DParameters">
+							<attribute id="Enabled" type="19" value="True" />
+							<attribute id="ParameterName" type="22" value="DiffuseTexture" />
+							<attribute id="UniformName" type="22" value="Texture2DParameter_DiffuseTexture_DefaultWrapSampler" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="511" />
+							<attribute id="ID" type="22" value="26edf814-5e91-4e78-baff-2af66fc2e084" />
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

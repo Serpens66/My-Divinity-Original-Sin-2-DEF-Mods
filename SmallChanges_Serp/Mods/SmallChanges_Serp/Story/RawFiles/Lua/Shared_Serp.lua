@@ -582,7 +582,21 @@ SharedFns.OnStatsLoaded = function(e)
       end
     end
   end
- 
+  
+  -- reduce source costs for infusion skills
+  local SkillsToReduceMP = {"Target_NecrofireInfusion","Target_AcidInfusion","Target_CursedElectricInfusion","Target_CursedBloodInfusion",
+    "Target_CursedOilInfusion","Target_IceInfusion","Target_BlessedSmokeCloud"}
+  for i,name in pairs(Ext.Stats.GetStats("SkillData")) do
+    local stat = Ext.Stats.Get(name)
+    if stat then
+      if SharedFns.table_contains_value(SkillsToReduceMP,name) or SharedFns.table_contains_value(SkillsToReduceMP,stat.Using) then -- also hitting inheritance by checking Using (nil if not used)
+        if stat["Magic Cost"]>1 then
+          stat["Magic Cost"] = 1
+        end
+      end
+    end
+  end
+  
   
   Ext.Print("OnStatsLoadedSerpSmallChanges_Serp Ende")
   
@@ -636,8 +650,6 @@ SharedFns.OnSaveLoaded = function(major, minor, patch, build)
   end
   
 end
--- Osi.CharacterHasSkill("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","Target_LLDUMMY_TrainingDummy")
--- Osi.CharacterAddSkill("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","Target_LLDUMMY_TrainingDummy")
 
 
 
@@ -814,12 +826,15 @@ end
 -- CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c
 
 -- Osi.CharacterLevelUpTo("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",20)
+-- Osi.CharacterLevelUpTo("Humans_Hero_Female_7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe",10)
 -- Osi.CharacterLevelUpTo("S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f",20)
 -- Osi.CharacterAddAbilityPoint("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",100)
+-- Osi.CharacterAddAbilityPoint("Humans_Hero_Female_7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe",100)
 -- Osi.CharacterAddAbilityPoint("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb",100)
 
 -- Osi.CharacterAddSkill("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","Target_Custom_MaddeningSongSpell")
 -- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Target_MidnightOilPlayer")
+-- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Target_IceInfusion_Normal")
 
 -- print(Osi.CharacterHasTalent("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","BeastMaster"))
 -- print(Osi.CharacterHasTalent("Humans_Hero_Female_7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe","BeastMaster"))

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="EffectBank">
+		<node id="EffectBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="4a6c67cc-f17b-4e98-9c5e-92eb618d76b4" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="EffectName" type="22" value="Focus_PathSkills_Blowout_Cast_Hand" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_Blowout_Cast_Hand" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Effects/Effects_Banks/Focus_PathSkills_Blowout_Cast_Hand.lsfx" />
+					<children>
+						<node id="Dependencies">
+							<children>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="28ce282a-548d-4c9a-b013-da049515f7ab" />
+								</node>
+								<node id="DependentResource">
+									<attribute id="Object" type="22" value="8ada3ad5-379d-4f16-9f7c-d61d4b2da12f" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

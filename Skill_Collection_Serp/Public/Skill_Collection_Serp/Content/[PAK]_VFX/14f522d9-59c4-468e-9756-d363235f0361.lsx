@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="MaterialBank">
+		<node id="MaterialBank">
+			<children>
+				<node id="Resource">
+					<attribute id="ID" type="22" value="14f522d9-59c4-468e-9756-d363235f0361" />
+					<attribute id="Localized" type="19" value="False" />
+					<attribute id="SourceFile" type="30" value="Public/Skill_Collection_Serp/Assets/Materials/Focus_PathSkills_Spider_Erosion.lsb" />
+					<attribute id="Name" type="23" value="Focus_PathSkills_SpiderA_Erosion" />
+					<attribute id="MaterialName" type="22" value="Focus_PathSkills_Materials_SpiderB_Erosion" />
+					<attribute id="MaterialType" type="1" value="0" />
+					<children>
+						<node id="ScalarParameters">
+							<attribute id="Enabled" type="19" value="True" />
+							<attribute id="ParameterName" type="22" value="ErosionGlowSize" />
+							<attribute id="UniformName" type="22" value="FloatParameter_ErosionGlowSize" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="1023" />
+							<attribute id="Value" type="6" value="1" />
+						</node>
+						<node id="ScalarParameters">
+							<attribute id="Enabled" type="19" value="False" />
+							<attribute id="ParameterName" type="22" value="_OpacityFade" />
+							<attribute id="UniformName" type="22" value="_OpacityFade" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="975" />
+							<attribute id="Value" type="6" value="1" />
+						</node>
+						<node id="ScalarParameters">
+							<attribute id="Enabled" type="19" value="False" />
+							<attribute id="ParameterName" type="22" value="UseHeightGradient" />
+							<attribute id="UniformName" type="22" value="FloatParameter_UseHeightGradient" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="975" />
+							<attribute id="Value" type="6" value="0" />
+						</node>
+						<node id="ScalarParameters">
+							<attribute id="Enabled" type="19" value="True" />
+							<attribute id="ParameterName" type="22" value="Reflectance" />
+							<attribute id="UniformName" type="22" value="FloatParameter_Reflectance" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="975" />
+							<attribute id="Value" type="6" value="0.5" />
+						</node>
+						<node id="Vector2Parameters">
+							<attribute id="Enabled" type="19" value="False" />
+							<attribute id="ParameterName" type="22" value="ErosionCloudUV" />
+							<attribute id="UniformName" type="22" value="Vector2Parameter_ErosionCloudUV" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="1023" />
+							<attribute id="Value" type="11" value="1 1" />
+						</node>
+						<node id="VectorParameters">
+							<attribute id="Enabled" type="19" value="False" />
+							<attribute id="ParameterName" type="22" value="_MeshVertexColor" />
+							<attribute id="UniformName" type="22" value="_MeshVertexColor" />
+							<attribute id="GroupName" type="22" value="" />
+							<attribute id="ShaderFlags" type="2" value="1023" />
+							<attribute id="Value" type="13" value="1 1 1 1" />
+							<attribute id="IsColor" type="19" value="False" />
+						</node>
+						<node id="Texture2DParameters">
+							<attribute id="Enabled" type="19" value="False" />
+							<attribute id="ParameterName" type="22" value="ErosionCloud" />
+							<attribute id="UniformName" type="22" value="Texture2DParameter_ErosionCloud_DefaultWrapSampler" />
+							<attribute id="GroupName" type="22" value="Texture Map" />
+							<attribute id="ShaderFlags" type="2" value="1023" />
+							<attribute id="ID" type="22" value="9dc5807b-3697-4b8f-ab0f-b9c5c1bd7010" />
+						</node>
+						<node id="Texture2DParameters">
+							<attribute id="Enabled" type="19" value="True" />
+							<attribute id="ParameterName" type="22" value="normalmap" />
+							<attribute id="UniformName" type="22" value="Texture2DParameter_normalmap_DefaultWrapSampler" />
+							<attribute id="GroupName" type="22" value="Texture Map" />
+							<attribute id="ShaderFlags" type="2" value="975" />
+							<attribute id="ID" type="22" value="649bf7e8-47f7-453a-890a-3ef7be0a34df" />
+						</node>
+						<node id="Texture2DParameters">
+							<attribute id="Enabled" type="19" value="True" />
+							<attribute id="ParameterName" type="22" value="basecolor" />
+							<attribute id="UniformName" type="22" value="Texture2DParameter_basecolor_DefaultWrapSampler" />
+							<attribute id="GroupName" type="22" value="Texture Map" />
+							<attribute id="ShaderFlags" type="2" value="975" />
+							<attribute id="ID" type="22" value="fe8d0a33-68b1-4f0d-8188-a481bc2bfc21" />
+						</node>
+						<node id="Texture2DParameters">
+							<attribute id="Enabled" type="19" value="True" />
+							<attribute id="ParameterName" type="22" value="physicalmap" />
+							<attribute id="UniformName" type="22" value="Texture2DParameter_physicalmap_DefaultWrapSampler" />
+							<attribute id="GroupName" type="22" value="Texture Map" />
+							<attribute id="ShaderFlags" type="2" value="975" />
+							<attribute id="ID" type="22" value="671877d6-9bdf-487d-8622-8d8c76f307c2" />
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="6" build="0" lslib_meta="v1,bswap_guids" />
+	<region id="Material">
+		<node id="root">
+			<attribute id="BlendStateID" type="1" value="7" />
+			<attribute id="DepthStateID" type="1" value="2" />
+			<attribute id="ForwardLightingMode" type="1" value="0" />
+			<attribute id="IsDecalMaterial" type="19" value="False" />
+			<attribute id="IsDecalVolumeMaterial" type="19" value="False" />
+			<attribute id="IsDiscardingPixels" type="19" value="True" />
+			<attribute id="IsLuminanceEmissive" type="19" value="False" />
+			<attribute id="IsOpaqueCustom" type="19" value="False" />
+			<attribute id="IsRefracting" type="19" value="False" />
+			<attribute id="IsUsingWorldPositionOffset" type="19" value="False" />
+			<attribute id="MaterialPassHint" type="1" value="1" />
+			<attribute id="MaterialType" type="1" value="0" />
+			<attribute id="PostRefractionAlpha" type="19" value="False" />
+			<attribute id="PreAlphaRefraction" type="19" value="False" />
+			<attribute id="RasterizerStateID" type="1" value="1" />
+			<attribute id="ShadingModel" type="1" value="0" />
+			<attribute id="UVCount" type="5" value="1" />
+			<attribute id="VertexColorEnabled" type="19" value="False" />
+			<children>
+				<node id="SamplerStateParameters">
+					<attribute id="Enabled" type="19" value="False" />
+					<attribute id="GroupName" type="22" value="Texture Map" />
+					<attribute id="ParameterName" type="22" value="_DefaultWrapSampler" />
+					<attribute id="ShaderFlags" type="2" value="1023" />
+					<attribute id="UniformName" type="22" value="_DefaultWrapSampler" />
+				</node>
+				<node id="ScalarParameters">
+					<attribute id="Enabled" type="19" value="False" />
+					<attribute id="GroupName" type="22" value="" />
+					<attribute id="ParameterName" type="22" value="ErosionGlowSize" />
+					<attribute id="ShaderFlags" type="2" value="1023" />
+					<attribute id="UniformName" type="22" value="FloatParameter_ErosionGlowSize" />
+					<attribute id="Value" type="6" value="0.01" />
+				</node>
+				<node id="ScalarParameters">
+					<attribute id="Enabled" type="19" value="False" />
+					<attribute id="GroupName" type="22" value="" />
+					<attribute id="ParameterName" type="22" value="_OpacityFade" />
+					<attribute id="ShaderFlags" type="2" value="975" />
+					<attribute id="UniformName" type="22" value="_OpacityFade" />
+					<attribute id="Value" type="6" value="1" />
+				</node>
+				<node id="ScalarParameters">
+					<attribute id="Enabled" type="19" value="False" />
+					<attribute id="GroupName" type="22" value="" />
+					<attribute id="ParameterName" type="22" value="UseHeightGradient" />
+					<attribute id="ShaderFlags" type="2" value="975" />
+					<attribute id="UniformName" type="22" value="FloatParameter_UseHeightGradient" />
+					<attribute id="Value" type="6" value="0" />
+				</node>
+				<node id="ScalarParameters">
+					<attribute id="Enabled" type="19" value="False" />
+					<attribute id="GroupName" type="22" value="" />
+					<attribute id="ParameterName" type="22" value="Reflectance" />
+					<attribute id="ShaderFlags" type="2" value="975" />
+					<attribute id="UniformName" type="22" value="FloatParameter_Reflectance" />
+					<attribute id="Value" type="6" value="0.1" />
+				</node>
+				<node id="ShaderDescriptions">
+					<children>
+						<node id="ShaderDesc_SkinnedDeferred">
+							<children>
+								<node id="ShaderDesc">
+									<attribute id="EngineParamFlags" type="3" value="0" />
+									<attribute id="PSHash" type="22" value="6A02226379E8495AB955D5B4F460E038" />
+									<attribute id="VSHash" type="22" value="3B4093A20D1B0EBD3ACCF076678F4AA7" />
+								</node>
+							</children>
+						</node>
+						<node id="ShaderDesc_SkinnedDepth">
+							<children>
+								<node id="ShaderDesc">
+									<attribute id="EngineParamFlags" type="3" value="0" />
+									<attribute id="PSHash" type="22" value="E288748B2D8DA59803AD6802E8873F27" />
+									<attribute id="VSHash" type="22" value="6EF7B8A64C4F12AC8B70744B18A8D103" />
+								</node>
+							</children>
+						</node>
+						<node id="ShaderDesc_SkinnedForward">
+							<children>
+								<node id="ShaderDesc">
+									<attribute id="EngineParamFlags" type="3" value="57" />
+									<attribute id="PSHash" type="22" value="FEB0FDFEB985CF5897D266AE932C9A25" />
+									<attribute id="VSHash" type="22" value="98BE64E91893B2507478686A8D2361F7" />
+								</node>
+							</children>
+						</node>
+						<node id="ShaderDesc_SkinnedShadow">
+							<children>
+								<node id="ShaderDesc">
+									<attribute id="EngineParamFlags" type="3" value="0" />
+									<attribute id="PSHash" type="22" value="9752053D2B7E2F18F79F14A659DBD4F9" />
+									<attribute id="VSHash" type="22" value="5D0916F3F9FA3711A11C4490A91759C0" />
+								</node>
+							</children>
+						</node>
+						<node id="ShaderDesc_StaticDeferred">
+							<children>
+								<node id="ShaderDesc">
+									<attribute id="EngineParamFlags" type="3" value="0" />
+									<attribute id="PSHash" type="22" value="6A02226379E8495AB955D5B4F460E038" />
+									<attribute id="VSHash" type="22" value="9E9B1FF3E69516C7AAF5899AA75B6C21" />
+								</node>
+							</children>
+						</node>
+						<node id="ShaderDesc_StaticDepth">
+							<children>
+								<node id="ShaderDesc">
+									<attribute id="EngineParamFlags" type="3" value="0" />
+									<attribute id="PSHash" type="22" value="E288748B2D8DA59803AD6802E8873F27" />
+									<attribute id="VSHash" type="22" value="D346D29F22B27F0B838849D659DA565A" />
+								</node>
+							</children>
+						</node>
+						<node id="ShaderDesc_StaticForward">
+							<children>
+								<node id="ShaderDesc">
+									<attribute id="EngineParamFlags" type="3" value="57" />
+									<attribute id="PSHash" type="22" value="FEB0FDFEB985CF5897D266AE932C9A25" />
+									<attribute id="VSHash" type="22" value="BCB481BCE2BFDD48028EDA2B05F061C6" />
+								</node>
+							</children>
+						</node>
+						<node id="ShaderDesc_StaticInstancedDeferred">
+							<children>
+								<node id="ShaderDesc">
+									<attribute id="EngineParamFlags" type="3" value="0" />
+									<attribute id="PSHash" type="22" value="6A02226379E8495AB955D5B4F460E038" />
+									<attribute id="VSHash" type="22" value="2EA0A4AC3E91C475DCF871302B536802" />
+								</node>
+							</children>
+						</node>
+						<node id="ShaderDesc_StaticInstancedDepth">
+							<children>
+								<node id="ShaderDesc">
+									<attribute id="EngineParamFlags" type="3" value="0" />
+									<attribute id="PSHash" type="22" value="E288748B2D8DA59803AD6802E8873F27" />
+									<attribute id="VSHash" type="22" value="90439135EE96F880CB581CE949BAD54B" />
+								</node>
+							</children>
+						</node>
+						<node id="ShaderDesc_StaticInstancedForward">
+							<children>
+								<node id="ShaderDesc">
+									<attribute id="EngineParamFlags" type="3" value="57" />
+									<attribute id="PSHash" type="22" value="FEB0FDFEB985CF5897D266AE932C9A25" />
+									<attribute id="VSHash" type="22" value="74535C32540C8412E43BC49D44C178D6" />
+								</node>
+							</children>
+						</node>
+						<node id="ShaderDesc_StaticInstancedShadow">
+							<children>
+								<node id="ShaderDesc">
+									<attribute id="EngineParamFlags" type="3" value="0" />
+									<attribute id="PSHash" type="22" value="9752053D2B7E2F18F79F14A659DBD4F9" />
+									<attribute id="VSHash" type="22" value="0C94274DA37A838CE883310561589ACB" />
+								</node>
+							</children>
+						</node>
+						<node id="ShaderDesc_StaticShadow">
+							<children>
+								<node id="ShaderDesc">
+									<attribute id="EngineParamFlags" type="3" value="0" />
+									<attribute id="PSHash" type="22" value="9752053D2B7E2F18F79F14A659DBD4F9" />
+									<attribute id="VSHash" type="22" value="68BFAEB8E4D9400C53EF2C7131B3F1FD" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+				<node id="Texture2DParameters">
+					<attribute id="Enabled" type="19" value="False" />
+					<attribute id="GroupName" type="22" value="Texture Map" />
+					<attribute id="ID" type="22" value="9dc5807b-3697-4b8f-ab0f-b9c5c1bd7010" />
+					<attribute id="ParameterName" type="22" value="ErosionCloud" />
+					<attribute id="ShaderFlags" type="2" value="1023" />
+					<attribute id="UniformName" type="22" value="Texture2DParameter_ErosionCloud_DefaultWrapSampler" />
+				</node>
+				<node id="Texture2DParameters">
+					<attribute id="Enabled" type="19" value="False" />
+					<attribute id="GroupName" type="22" value="Texture Map" />
+					<attribute id="ID" type="22" value="b3ba5a11-6bff-4157-a06a-9eb67ed5af5c" />
+					<attribute id="ParameterName" type="22" value="normalmap" />
+					<attribute id="ShaderFlags" type="2" value="975" />
+					<attribute id="UniformName" type="22" value="Texture2DParameter_normalmap_DefaultWrapSampler" />
+				</node>
+				<node id="Texture2DParameters">
+					<attribute id="Enabled" type="19" value="False" />
+					<attribute id="GroupName" type="22" value="Texture Map" />
+					<attribute id="ID" type="22" value="50179e15-4bfb-4304-87a9-fd685ac9e853" />
+					<attribute id="ParameterName" type="22" value="basecolor" />
+					<attribute id="ShaderFlags" type="2" value="975" />
+					<attribute id="UniformName" type="22" value="Texture2DParameter_basecolor_DefaultWrapSampler" />
+				</node>
+				<node id="Texture2DParameters">
+					<attribute id="Enabled" type="19" value="False" />
+					<attribute id="GroupName" type="22" value="Texture Map" />
+					<attribute id="ID" type="22" value="3b93fd83-9e11-4f67-9a56-51736650ee27" />
+					<attribute id="ParameterName" type="22" value="physicalmap" />
+					<attribute id="ShaderFlags" type="2" value="975" />
+					<attribute id="UniformName" type="22" value="Texture2DParameter_physicalmap_DefaultWrapSampler" />
+				</node>
+				<node id="Vector2Parameters">
+					<attribute id="Enabled" type="19" value="False" />
+					<attribute id="GroupName" type="22" value="" />
+					<attribute id="ParameterName" type="22" value="ErosionCloudUV" />
+					<attribute id="ShaderFlags" type="2" value="1023" />
+					<attribute id="UniformName" type="22" value="Vector2Parameter_ErosionCloudUV" />
+					<attribute id="Value" type="11" value="1 1" />
+				</node>
+				<node id="VectorParameters">
+					<attribute id="Enabled" type="19" value="False" />
+					<attribute id="GroupName" type="22" value="" />
+					<attribute id="IsColor" type="19" value="False" />
+					<attribute id="ParameterName" type="22" value="_MeshVertexColor" />
+					<attribute id="ShaderFlags" type="2" value="1023" />
+					<attribute id="UniformName" type="22" value="_MeshVertexColor" />
+					<attribute id="Value" type="13" value="1 1 1 1" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>
