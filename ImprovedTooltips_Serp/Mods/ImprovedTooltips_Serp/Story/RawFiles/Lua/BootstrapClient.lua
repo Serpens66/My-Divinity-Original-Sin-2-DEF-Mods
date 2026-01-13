@@ -761,7 +761,7 @@ end
   -- _D(tooltip.Data)
 -- end)
 
-
+local AllStatusWithStats = {}
 Ext.Events.StatsLoaded:Subscribe(function(e)
   -- from Vanilla Plus mod by Luxem, lua code updated to newest extender version, also updated ImprovedTooltips_Serp\Mods\ImprovedTooltips_Serp\Localization german and english for this
   local skillList = {
@@ -783,6 +783,11 @@ Ext.Events.StatsLoaded:Subscribe(function(e)
       end
     end
 	end
+  
+  for i,name in pairs(Ext.Stats.GetStats("StatusData")) do
+    AllStatusWithStats[name]=true -- the ones not in this list will throw an error on Ext.Stats.Get(), many are hardcoded and therefore not in, like 'DRAIN' 'SPIRIT_VISION' 'EXPLODE'
+  end
+  
 end)
 
 -- ecl::StatusConsumeBase (00007FF44AB8A900)
@@ -811,7 +816,7 @@ Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
                 -- "Label" : "Dauer: 3 Runden<br><font face='Averia Serif' color='DBDBDB'>Applied by Lohse</font>",
                 -- "Type" : "StatusDescription"}]
   
-  if status then
+  if status and AllStatusWithStats and AllStatusWithStats[status] then
     local stat = Ext.Stats.Get(status)
     if stat then
       local StackId = stat.StackId

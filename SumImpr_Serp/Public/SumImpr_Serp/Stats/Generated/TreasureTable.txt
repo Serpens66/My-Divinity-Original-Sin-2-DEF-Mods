@@ -1,0 +1,30 @@
+treasure itemtypes "Common","Uncommon","Rare","Epic","Legendary","Divine","Unique"
+
+new treasuretable "SUIMS_Skillbook_Summoning"
+new subtable "1,1"
+object category "I_SKILLBOOK_Earth_OilInfusion",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Earth_CursedOilInfusion",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_BloodInfusion",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Necromancy_CursedBloodInfusion",1,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "I_SKILLBOOK_Water_IceInfusion_Normal",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_SkillbookSummoning"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SUIMS_Skillbook_Summoning",1,0,0,0,0,0,0,0
+new treasuretable "ST_Skillbook_SummoningTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_SUIMS_Skillbook_Summoning",1,0,0,0,0,0,0,0
+new treasuretable "CheatBooksSummoning"
+CanMerge 1
+new subtable "-1"
+StartLevel "1"
+object category "T_SUIMS_Skillbook_Summoning",1,0,0,0,0,0,0,0
+

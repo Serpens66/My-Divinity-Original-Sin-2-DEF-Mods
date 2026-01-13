@@ -469,3 +469,17 @@ data "CastEffect" "RS3_FX_Char_Creatures_BigFlower_Poison_Cast_01"
 data "Memory Cost" "0"
 data "Magic Cost" "0"
 
+
+
+
+new entry "Projectile_Summon_BomberProjectile_IceNormal"
+type "SkillData"
+data "SkillType" "Projectile"
+using "Projectile_EnemySuicideBomberExplosion"
+data "ForGameMaster" "No"
+data "Ability" "Water"
+data "Damage Multiplier" "200"
+data "Damage Range" "20"
+data "DamageType" "Water"
+data "SkillProperties" "CreateSurface,4,,WaterFrozen,100"
+data "DeathType" "Physical"

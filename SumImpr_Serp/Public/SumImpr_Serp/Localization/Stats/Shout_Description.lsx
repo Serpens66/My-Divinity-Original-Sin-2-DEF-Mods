@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="5" build="0" lslib_meta="v1,bswap_guids" />
+	<region id="TranslatedStringKeys">
+		<node id="root">
+			<children>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h282189bcgee32g4fb8gaf6eg5697ca6112fb" value="Adds poison damage to your attacks." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_VenomCoating_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h282189bcgee32g4fb8gaf6eg5697ca6112fb" value="Adds poison damage to your attacks." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_VenomCoating_Cat_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h68046b9cgc850g4744gbf41gcaf28b89b269" value="Explode, dealing [1] in a large area around you, creating a Cursed Fire surface." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SuicideBomberNecrofire_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h19378d75g912dg4b97gaf22g4d4cbb42e2cc" value="Explode, dealing [1] in a large area around you, creating a Water surface." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SuicideBomberWater_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h3a79c8c4g5c76g4e0dgabddg4ed37b29fb26" value="Explode, dealing [1] in a large area around you, creating a Blessed Ice surface." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SuicideBomberBlessedIce_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h449b80aage7e9g4c6ag8936gc4b44d1dee1f" value="Explode, dealing [1] in a large area around you, creating a Poison surface." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SuicideBomberPoison_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h326a5e24ga646g4455gb7aeg2c756784dcb2" value="Explode, dealing [1] in a large area around you, creating an Acid surface." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SuicideBomberAcid_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h9516f7c6g0b9eg4685ga8d3g632836b01422" value="Explode, dealing [1] in a large area around you, creating an Electrified cloud." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SuicideBomberElectric_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h61f83c21g7120g48e6gae75g0eacdf2184de" value="Explode, dealing [1] in a large area around you, creating a Cursed Electrified cloud.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SuicideBomberCursedElectric_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h425c4f52geb2eg4e8fga150gdd22dcad77b2" value="Explode, dealing [1] in a large area around you, creating a Blood surface." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SuicideBomberBlood_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hfe955896g079dg453ega095g88768a78d3b0" value="Explode, dealing [1] in a large area around you, creating a Cursed Blood surface." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SuicideBomberCursedBlood_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ha7374bf4ge911g4d98g87ccg8cce36282022" value="Explode, dealing [1] in a large area around you, creating an Oil surface." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SuicideBomberOil_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h0fcb4815g1438g45a2g8bd1gaa32b69fb4fa" value="Explode, dealing [1] in a large area around you, creating a Cursed Oil surface." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SuicideBomberCursedOil_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hdb3daf0ag1059g4d52gae42g14eb49b43efc" value="An aura that increases physical resistance by [1]% and grants nearby allies immunity to Slow effects." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SlowImmunityAura_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h97a53350g4518g4fe1gbbfdg60b58d502f4f" value="Swamp Golem protects you, immediately attacking approaching enemies." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_ToxicGuardian_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h3434ef83g57cbg4b4fga736g3f0b4f7a037f" value="|Bloated corpse explodes, dealing [1] damage to all characters around it.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_EnemyVileBurst_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h9900ff56g51a1g4fdbg9a00g2791eda6c78a" value="Swaps the locations of a summon and its master." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_IncarnateSwapPlaces_Description" />
+				</node>
+        
+        
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Explode, dealing [1] in a large area around you, creating a Ice surface." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_Summon_SuicideBomberNormalIce_Description" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

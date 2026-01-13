@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="4" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+				<node id="GameObjects">
+					<attribute id="BloodSurfaceType" type="22" value="" />
+					<attribute id="CameraOffset" type="12" value="0 0 0" />
+					<attribute id="CanBeMoved" type="19" value="True" />
+					<attribute id="CanBePickedUp" type="19" value="True" />
+					<attribute id="CanShootThrough" type="19" value="True" />
+					<attribute id="CastShadow" type="19" value="False" />
+					<attribute id="CoverAmount" type="1" value="0" />
+					<attribute id="Description" type="28" handle="hdadd9969g6bd6g41dcgb943g0b297855c48d" value="Hydrosophist Spells are Water-based magic spells. High intelligence improves these spells. Read this book to learn this spell." />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="HasGameplayValue" type="19" value="False" />
+					<attribute id="Icon" type="22" value="Item_BOOK_Spellbook_Water_A" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="MapKey" type="22" value="7c65930d-739b-4bbd-a66a-91a207b3ba14" />
+					<attribute id="MeshProxy" type="22" value="" />
+					<attribute id="Name" type="23" value="BOOK_Skill_Water_IceInfusion_Normal" />
+					<attribute id="PhysicsTemplate" type="22" value="9273f547-686c-4e78-949c-aa0d6190d7f4" />
+					<attribute id="RecieveDecal" type="19" value="False" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="Stats" type="22" value="SKILLBOOK_Water_IceInfusion_Normal" />
+					<attribute id="Tooltip" type="1" value="2" />
+					<attribute id="Type" type="22" value="item" />
+					<attribute id="UseSound" type="22" value="77cb79f2-1790-4958-8b4c-3a83a7ae75ff" />
+					<attribute id="VisualTemplate" type="22" value="5463cc4a-94fd-4e85-92f8-90bbcc0944f5" />
+					<attribute id="WalkThrough" type="19" value="True" />
+					<attribute id="_OriginalFileVersion_" type="4" value="906166272" />
+					<attribute id="maxStackAmount" type="4" value="20" />
+					<children>
+						<node id="AIBounds">
+							<attribute id="AIType" type="1" value="1" />
+							<attribute id="Height" type="6" value="0.185801" />
+							<attribute id="Max" type="12" value="0.26 0.14 0.29" />
+							<attribute id="Min" type="12" value="-0.26 0 -0.37" />
+							<attribute id="Radius" type="6" value="0.216378" />
+						</node>
+						<node id="Equipment">
+							<attribute id="EquipmentSlots" type="5" value="0" />
+							<attribute id="VisualSetSlot" type="5" value="0" />
+							<children>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="SyncAnimationWithParent">
+									<attribute id="Object" type="19" value="False" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+								<node id="VisualResources">
+									<attribute id="Object" type="22" value="" />
+								</node>
+							</children>
+						</node>
+						<node id="GameMaster">
+							<attribute id="GameMasterSpawnSection" type="4" value="6" />
+							<attribute id="GameMasterSpawnSubSection" type="28" handle="hcf97a6e7ga0ebg4fe3ga4dcg393c9c87423f" value="Skillbooks" />
+						</node>
+						<node id="InventoryList" />
+						<node id="ItemList" />
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="OnDestroyActions" />
+						<node id="OnUsePeaceActions">
+							<children>
+								<node id="Action">
+									<attribute id="ActionType" type="4" value="13" />
+									<children>
+										<node id="Attributes">
+											<attribute id="Consume" type="19" value="True" />
+											<attribute id="SkillID" type="22" value="Target_IceInfusion_Normal" />
+										</node>
+									</children>
+								</node>
+							</children>
+						</node>
+						<node id="Scripts" />
+						<node id="Tags">
+							<children>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="BOOK" />
+								</node>
+								<node id="Tag">
+									<attribute id="Object" type="22" value="ORGANIZE_SKILLBOOK" />
+								</node>
+							</children>
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

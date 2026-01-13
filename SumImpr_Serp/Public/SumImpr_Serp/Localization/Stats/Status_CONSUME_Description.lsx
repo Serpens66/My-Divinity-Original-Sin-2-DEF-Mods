@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="5" build="0" lslib_meta="v1,bswap_guids" />
+	<region id="TranslatedStringKeys">
+		<node id="root">
+			<children>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h6d8222abgb841g475fgb321g72b9129e0b97" value="|Character gains twisted power by sacrificing their own blood.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="AUGUMENTED_BLOOD_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h49abcaa5g961cg4ac9ga98fgc9e5d0e5ca09" value="|Nearby allies gain immunity to Slow effects and have increased physical resistance.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="SLOW_IMMUNITY_AURA_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h34de0d56g62ddg40bfgbc47gd5d8a6f00841" value="|Character is immune to Slow effects and has increased physical resistance.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="SLOW_IMMUNITY_Description" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

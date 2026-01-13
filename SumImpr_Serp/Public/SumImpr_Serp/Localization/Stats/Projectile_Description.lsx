@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="5" build="0" lslib_meta="v1,bswap_guids" />
+	<region id="TranslatedStringKeys">
+		<node id="root">
+			<children>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h23e9ff84g7521g4c5eg8e5bgd667d5daa709" value="Fire up to three projectiles, each dealing [1]." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_Summon_SeekingBones_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h8d312996g51e7g440bga313g5b20d65aa1e5" value="Fire up to two projectiles that deal [3] and then fork off to the next target up to [1] times within [2]." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_Summon_AcidSparks_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h4c7f8a9fgc3c6g4ce6g915ag2f8ef9bbb8f3" value="Spit up to three projectiles dealing [1] , each creating a blood surface under the target." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_Summon_BloodSpit_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h4288470bgc5bag401egab3eg67f313af139b" value="Leap to destination and apply Haste to yourself." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_Summon_Leap_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hdcd55d0eg9549g4400ga8a7g73ccc7b1df4a" value="|Throw an Oil Blob at target point, dealing [1] damage in the area. Oil Blob deals earth damage with melee attacks and leaves an oil puddle on death.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_LaunchOilBlob_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h767c3ad3gee38g4714g977ega230b5afeca1" value="|Summon a poisonous slug at the target point. The slug can barf poison at your enemies.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_LaunchPoisonSlug_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ha06f0411g3a56g4979gb804gde8e9cadc051" value="Fly to destination and apply Haste to yourself." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_Summon_Fly_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hfc430883g209dg489cga6fag2454aa15f444" value="|Throw a projectile that deals [1] damage.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_IncarnateRangedAttack_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h4d499b62gf12bg4339g86feg9cd03882a4f4" value="|Summon a mechanical bomber at  the target point. The bomber can explode, dealing fire damage and producing a fire surface.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_LaunchBomber_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h7834d256g841fg4432g8b78ga57ff032142f" value="|Shoot spore full of corrosive acid, dealing [1] damage in total.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_PlantAcidSpore_Description" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

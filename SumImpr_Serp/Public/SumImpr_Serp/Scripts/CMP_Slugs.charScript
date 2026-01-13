@@ -15,6 +15,7 @@ ON
 	OnShutdown()
 	OnDie(__Me,_,_,_)
 ACTIONS
+  CreateSurfaceAt(__Me,%Surface,2.5,5)
 	StopTimer("CMB_ElementalSlug_CreateSurface_Timer")
 
 EVENT OnInit_StartTimer
@@ -29,7 +30,9 @@ ACTIONS
 	THEN
 		StartTimer("CMB_ElementalSlug_CreateSurface_Timer",0.38,-1)
 		CharacterEvent(__Me, "CMP_ResetBloodSurface")
+    CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	ENDIF
+// we could add a IsInSurface check here to prevent chain reactions, but I think it is intended that poison infusion creates constant explosion in fire, so only remove the surface on infusion itself
 EVENT OnTimer_CreateSurface
 ON
 	OnTimer("CMB_ElementalSlug_CreateSurface_Timer")
@@ -49,6 +52,7 @@ EVENT FireInfusion
 ON
 	OnCharacterStatusApplied(__Me, FireInfusion)
 ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfaceFire)
 	Set(%BlockingStatus, POISONED)
 	Set(%BlockingStatus2, NECROFIRE)
@@ -56,6 +60,7 @@ EVENT NecroFireInfusion
 ON
 	OnCharacterStatusApplied(__Me, NecrofireInfusion)
 ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfaceFireCursed)
 	Set(%BlockingStatus, POISONED)
 	Set(%BlockingStatus2, POISONED)
@@ -64,6 +69,7 @@ EVENT BlessedIceInfusion
 ON
 	OnCharacterStatusApplied(__Me, IceInfusion)
 ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfaceWaterFrozenBlessed)
 	Set(%BlockingStatus, NECROFIRE)
 	Set(%BlockingStatus2, NECROFIRE)
@@ -72,6 +78,7 @@ EVENT ElectricInfusion
 ON
 	OnCharacterStatusApplied(__Me, ElectricInfusion)
 ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfaceWaterElectrified)
 	Set(%BlockingStatus, WET)
 	Set(%BlockingStatus2, FROZEN)
@@ -80,6 +87,7 @@ EVENT PoisonInfusion
 ON
 	OnCharacterStatusApplied(__Me, PoisonInfusion)
 ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfacePoison)
 	Set(%BlockingStatus, BURNING)
 	Set(%BlockingStatus2, NECROFIRE)
@@ -88,6 +96,7 @@ EVENT WaterInfusion
 ON
 	OnCharacterStatusApplied(__Me, WaterInfusion)
 ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfaceWater)
 	Set(%BlockingStatus, SHOCKED)
 	Set(%BlockingStatus2, NECROFIRE)
@@ -96,6 +105,7 @@ EVENT AcidInfusion
 ON
 	OnCharacterStatusApplied(__Me, AcidInfusion)
 ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfacePoisonCursed)
 	Set(%BlockingStatus, BURNING)
 	Set(%BlockingStatus2, NECROFIRE)
@@ -104,6 +114,7 @@ EVENT BloodInfusion
 ON
 	OnCharacterStatusApplied(__Me, BloodInfusion)
 ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfaceBlood)
 	Set(%BlockingStatus, BURNING)
 	Set(%BlockingStatus2, NECROFIRE)
@@ -112,6 +123,7 @@ EVENT CursedBloodInfusion
 ON
 	OnCharacterStatusApplied(__Me, CursedBloodInfusion)
 ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfaceBloodCursed)
 	Set(%BlockingStatus, BURNING)
 	Set(%BlockingStatus2, NECROFIRE)
@@ -120,6 +132,7 @@ EVENT OilInfusion
 ON
 	OnCharacterStatusApplied(__Me, OilInfusion)
 ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfaceOil)
 	Set(%BlockingStatus, BURNING)
 	Set(%BlockingStatus2, NECROFIRE)
@@ -128,6 +141,7 @@ EVENT CursedOilInfusion
 ON
 	OnCharacterStatusApplied(__Me, CursedOilInfusion)
 ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfaceOilCursed)
 	Set(%BlockingStatus, BURNING)
 	Set(%BlockingStatus2, NECROFIRE)
@@ -136,7 +150,19 @@ EVENT CursedElectricInfusion
 ON
 	OnCharacterStatusApplied(__Me, CursedElectricInfusion)
 ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfaceWaterElectrifiedCursed)
 	Set(%BlockingStatus, WET)
 	Set(%BlockingStatus2, FROZEN)
 	
+
+
+
+EVENT IceNormalInfusion
+ON
+	OnCharacterStatusApplied(__Me, INF_ICE)
+ACTIONS
+  CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
+	Set(%Surface, SurfaceWaterFrozen)
+	Set(%BlockingStatus, BURNING)
+	Set(%BlockingStatus2, NECROFIRE)

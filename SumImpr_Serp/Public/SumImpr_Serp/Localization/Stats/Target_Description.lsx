@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="5" build="0" lslib_meta="v1,bswap_guids" />
+	<region id="TranslatedStringKeys">
+		<node id="root">
+			<children>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hf82f6e1cgeaeeg413dg9dfdga2da030eba6b" value="Summon gains increased Physical Resistance and Armour and an additional Necromancer skill (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_BloodInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h444de812gd0cag4380g9659g363f0be79c95" value="Unlocks Ranged attack for your summon. Increases Magic Armour by [1] and damage by [2]%." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_RangedInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hbcddc0aeg96dfg47a4gaad0gcfedc91080be" value="Unlocks Battering Ram and an additional ability (depending on summon). Increases Physical Armour by [1] and damage by [2]%." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_PowerInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h85b99c2cg6411g4537g9b27g7efa50231f56" value="Unlocks Chameleon Skin and an additional ability (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_ShadowInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h4c4eafcegcf56g4ffdgbc77g5911b143fc7f" value="Grants additional mobility skills to a summon." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_WarpInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h026226cfgdc20g4ad1gab58ga0ed9b5617fe" value="Summon becomes immune to Fire damage and gains an additional Pyrokinetic skill (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_FireInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h0ff73d7eg47cdg4907gaf37g8e4ad8f3f44d" value="Summon becomes immune to Water damage. Also grants Steam Lance and an additional Hydrosophist skill (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_IceInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h36fa727eg3f10g46f2ga6cag9ec83512cfd1" value="Summon becomes immune to Air damage and gains an additional Aerotheurge skill (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_ElectricInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h0f34a29ag7ef7g47c4gb78cgec01c21e55cc" value="Summon becomes immune to Poison damage and gains an additional Geomancer skill (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_PoisonInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h622177a7ga7e0g452agbde0g1c7e002b3f55" value="Summon becomes immune to Fire damage. Also grants Epidemic of Fire and an additional Pyrokinetic skill (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_NecrofireInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hd8dcf12dg3eaag4093gb226gd937e8a63fe5" value="Summon becomes immune to Water damage and gains an additional Hydrosophist skill (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_WaterInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h3de8c56bg5b8cg4972gb5fegf35533e7183f" value="Summon becomes immune to Poison damage. Also grants Acid Spores and an additional Geomancer skill (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_AcidInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hec8484cbg486cg45fdgb909g9e976fd82365" value="Summon gains increased Physical Resistance and Armour. Also grants Grasp of the Starved and an additional Necromancer skill (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_CursedBloodInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hec8484cbg486cg45fdgb909g9e976fd82365" value="Summon gains increased Physical Resistance and Armour. Also grants Grasp of the Starved and an additional Necromancer skill (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_CursedOilInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hb05665b8g425eg453fg8739g5252aefd918c" value="Summon becomes immune to Earth damage and gains an additional Geomancer skill (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_OilInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hac880de3ga5b7g4456g8d36g393cfa5f8d1c" value="Summon becomes immune to Air damage. Also grants Closed Circuit and an additional Aerotheurge skill (depending on summon)." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_CursedElectricInfusion_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h31b4e9ebg94cfg41bdg966fg23f9a31ebe51" value="Deals [1] damage to target and applies Atrophy." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_Summon_RootLash_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h55c85c48gaefbg4b41g90b4gf890fb8f1b29" value="Single target attack that deals [1] damage, leaving the target Blind and Burning." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_Summon_FireWhip_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hd9f7a984g1cd4g45d8gaf74g006f5e11d0d7" value="|An attack that deals [1] damage and sets Bleeding and Fear on all enemies in a small radius.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_Summon_TerrifyingCruelty_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hf46f9b97g5f77g464cg894bg9147058b6e46" value="Target receives 1 AP and [2]% damage boost at the cost of [1] Constitution." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_Summon_BloodAugumentation_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h2da15bf3g40fag4c1agbfddg6fb4e6c2a8f7" value="|Target an intact corpse to raise a bloated cadaver that fight's for you. It can explode in a cloud of blood and Physical damage.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_BloatedCorpse_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Change Incarnate's element to ice, unlocking Winter Blast." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Target_IceInfusion_Normal_Description" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

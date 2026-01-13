@@ -70,7 +70,7 @@ end
 -- CharacterReceivedDamage does only trigger on HP change, not on armor change
 -- ((CHARACTERGUID)_Character, (INTEGER)_Percentage, (GUIDSTRING)_Source)
 RegisterProtectedOsirisListener("CharacterReceivedDamage", 3, "after", function(charGUID,percentage,source)
-  print("CharacterReceivedDamage",charGUID,percentage,source)
+  -- print("CharacterReceivedDamage",charGUID,percentage,source)
   for status,chance in pairs(StatiRemoveOnDamage) do
     LooseStatusWithChance(charGUID,status,chance)
   end

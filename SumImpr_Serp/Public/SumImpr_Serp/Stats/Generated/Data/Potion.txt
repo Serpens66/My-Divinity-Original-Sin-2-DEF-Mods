@@ -152,4 +152,143 @@ data "Act part" "0"
 data "WaterSpecialist" "5"
 data "FireResistance" "-20"
 data "WaterResistance" "100"
-data "Flags" "FreezeImmunity;SlippingImmunity"
+data "MagicArmorBoost" "10"
+data "Flags" "FreezeImmunity;SlippingImmunity;ChilledImmunity"
+
+
+
+
+
+
+new entry "Stats_Infusion_Fire_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Fire"
+data "DamageBoost" "5"
+
+new entry "Stats_Infusion_Necrofire_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Necrofire"
+data "DamageBoost" "10"
+
+new entry "Stats_Infusion_Water_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Water"
+data "DamageBoost" "5"
+
+new entry "Stats_Infusion_Blessed_Ice_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Blessed_Ice"
+data "DamageBoost" "10"
+
+new entry "Stats_Infusion_Poison_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Poison"
+data "DamageBoost" "5"
+
+new entry "Stats_Infusion_Acid_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Acid"
+data "DamageBoost" "10"
+
+new entry "Stats_Infusion_Electric_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Electric"
+data "DamageBoost" "5"
+
+new entry "Stats_Infusion_Cursed_Electric_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Cursed_Electric"
+data "DamageBoost" "10"
+
+new entry "Stats_Infusion_Blood_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Blood"
+data "DamageBoost" "20"
+
+new entry "Stats_Infusion_Cursed_Blood_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Cursed_Blood"
+data "DamageBoost" "30"
+
+new entry "Stats_Infusion_Oil_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Oil"
+data "DamageBoost" "5"
+
+new entry "Stats_Infusion_Cursed_Oil_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Cursed_Oil"
+data "DamageBoost" "10"
+
+new entry "Stats_Infusion_Ice_Incarnate_S"
+type "Potion"
+using "Stats_Infusion_Ice"
+data "DamageBoost" "5"
+
+
+new entry "Stats_Infusion_Fire_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Fire"
+data "DamageBoost" "10"
+
+new entry "Stats_Infusion_Necrofire_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Necrofire"
+data "DamageBoost" "15"
+
+new entry "Stats_Infusion_Water_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Water"
+data "DamageBoost" "10"
+
+new entry "Stats_Infusion_Blessed_Ice_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Blessed_Ice"
+data "DamageBoost" "15"
+
+new entry "Stats_Infusion_Poison_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Poison"
+data "DamageBoost" "10"
+
+new entry "Stats_Infusion_Acid_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Acid"
+data "DamageBoost" "15"
+
+new entry "Stats_Infusion_Electric_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Electric"
+data "DamageBoost" "10"
+
+new entry "Stats_Infusion_Cursed_Electric_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Cursed_Electric"
+data "DamageBoost" "15"
+
+new entry "Stats_Infusion_Blood_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Blood"
+data "DamageBoost" "20"
+
+new entry "Stats_Infusion_Cursed_Blood_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Cursed_Blood"
+data "DamageBoost" "25"
+
+new entry "Stats_Infusion_Oil_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Oil"
+data "DamageBoost" "10"
+
+new entry "Stats_Infusion_Cursed_Oil_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Cursed_Oil"
+data "DamageBoost" "15"
+
+new entry "Stats_Infusion_Ice_Incarnate_G"
+type "Potion"
+using "Stats_Infusion_Ice"
+data "DamageBoost" "10"
+
+

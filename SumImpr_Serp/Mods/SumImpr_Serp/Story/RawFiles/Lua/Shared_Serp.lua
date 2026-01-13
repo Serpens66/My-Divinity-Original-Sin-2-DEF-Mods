@@ -2,14 +2,20 @@
 
 SharedFns = {}
 
+if Ext.IsServer() then
+  Ext.Require("Server_ChangeDamageType.lua")
+end
 
-local FreeInfusions = {Target_IceInfusion_Normal={Summoning=1,WaterSpecialist=1}}
+
+FreeInfusions = {}
+-- FreeInfusions = {Target_IceInfusion_Normal={Summoning=1,WaterSpecialist=1}}
+
 -- the giftbag adds 3 magic points to every summon for whatever reason, so do this more compatible in lua here
 local AddMagicPoints = {"Summon_Poison_Slug","Summon_Oil_Slug","Summon_Plant","Summon_Fire_Slug","Summon_Incarnate_Character","Summon_Incarnate_Giant_Character",
   "Summon_BonePile_Character","Summon_BloatedCorpse_Character","Animals_Slugs_Poison_Summon","Summon_Condor_Character","ARX_HorrorSleep_Sunset_Newt",
   "Animals_Wolf_A_Black","Summon_Cat_Character"}
 
-local Infusionchanges = {
+InfusionSkillChanges = {
     Target_RangedInfusion={SPNewAction="RangedInfusion",SPDuration=0,Cooldown=1,DescriptionRef="Unlocks Ranged attack for your summon. Increases Magic Armour by [1] and damage by [2]%."},
     Target_PowerInfusion={SPNewAction="PowerInfusion",SPDuration=0,Cooldown=1,DescriptionRef="Unlocks Battering Ram and an additional ability (depending on summon). Increases Physical Armour by [1] and damage by [2]%."},
     Target_ShadowInfusion={SPNewAction="ShadowInfusion",SPDuration=0,Cooldown=1,DescriptionRef="Unlocks Chameleon Skin and an additional ability (depending on summon)."},
@@ -23,6 +29,17 @@ local Infusionchanges = {
     Target_AcidInfusion={SPNewAction="AcidInfusion",SPDuration=0,Cooldown=1,DescriptionRef="Summon becomes immune to Poison damage. Also grants Acid Spores and an additional Geomancer skill (depending on summon)."},
     Target_CursedElectricInfusion={SPNewAction="CursedElectricInfusion",SPDuration=0,Cooldown=1,DescriptionRef="Summon becomes immune to Air damage. Also grants Closed Circuit and an additional Aerotheurge skill (depending on summon)."},
   }
+-- for mod added infusion skills which use vanilla INF_, replace the INF_ action with the new one:
+SPInfStatusReplace = {INF_RANGED="RangedInfusion",INF_POWER="PowerInfusion",INF_SHADOW="ShadowInfusion",INF_WARP="WarpInfusion",
+  INF_FIRE="FireInfusion",INF_BLESSED_ICE="IceInfusion",INF_ELECTRIC="ElectricInfusion",INF_POISON="PoisonInfusion",INF_NECROFIRE="NecrofireInfusion",
+  INF_WATER="WaterInfusion",INF_ACID="AcidInfusion",INF_CURSED_ELECTRIC="CursedElectricInfusion",INF_BLOOD="BloodInfusion",
+  INF_OIL="OilInfusion",INF_CURSED_BLOOD="CursedBloodInfusion",INF_CURSED_OIL="CursedOilInfusion",
+  INF_FIRE_G="FireInfusion",INF_BLESSED_ICE_G="IceInfusion",INF_ELECTRIC_G="ElectricInfusion",INF_POISON_G="PoisonInfusion",
+  INF_NECROFIRE_G="NecrofireInfusion", INF_WATER_G="WaterInfusion",INF_ACID_G="AcidInfusion",INF_CURSED_ELECTRIC_G="CursedElectricInfusion",
+  INF_BLOOD_G="BloodInfusion",INF_OIL_G="OilInfusion",INF_CURSED_BLOOD_G="CursedBloodInfusion",INF_CURSED_OIL_G="CursedOilInfusion",
+  INF_ICE="IceNormalInfusion";INF_ICE_G="IceNormalInfusion",
+}
+-- newly INF stati from mods will simply apply the same to all summons
 
 -- #######################################################
 -- #######################################################
@@ -90,6 +107,30 @@ local function deepcopy(orig, copies)
       copy = orig
   end
   return copy
+end
+
+-- http://lua-users.org/wiki/OrderedTable
+local function OrderedTable()
+  local key2val, nextkey, firstkey = {}, {}, {}
+  nextkey[nextkey] = firstkey
+  local function onext(self, key)
+    while key ~= nil do
+      key = nextkey[key]
+      local val = self[key]
+      if val ~= nil then return key, val end
+    end
+  end
+  local selfmeta = firstkey
+  selfmeta.__nextkey = nextkey
+  function selfmeta:__newindex(key, val)
+    rawset(self, key, val)
+    if nextkey[key] == nil then -- adding a new key
+      nextkey[nextkey[nextkey]] = key
+      nextkey[nextkey] = key
+    end
+  end
+  function selfmeta:__pairs() return onext, self, firstkey end
+  return setmetatable(key2val, selfmeta)
 end
 
 -- ##################################################################
@@ -254,8 +295,8 @@ SharedFns.OnStatsLoaded = function(e)
                 -- "SurfaceBoosts" : [],
                 -- "Type" : "Status" }]
       -- TargetConditions for Infusions are changed below in another loop
-      elseif Infusionchanges[name] or (stat.Using and Infusionchanges[stat.Using]) then
-        local todo = Infusionchanges[name] or (stat.Using and Infusionchanges[stat.Using])
+      elseif InfusionSkillChanges[name] or (stat.Using and InfusionSkillChanges[stat.Using]) then
+        local todo = InfusionSkillChanges[name] or (stat.Using and InfusionSkillChanges[stat.Using])
         local SkillProperties = stat.SkillProperties
         if SkillProperties and type(SkillProperties)=="table" then
           SkillProperties = {{Action=todo.SPNewAction,
@@ -290,6 +331,29 @@ SharedFns.OnStatsLoaded = function(e)
         stat.DamageBoost = 60
       elseif name=="_Summon_Incarnate_CursedElectric_Infused_Giant" or stat.Using=="_Summon_Incarnate_CursedElectric_Infused_Giant" then
         stat.DamageBoost = 60
+        
+        -- give oil armorboost and ice magicarmorboost
+      elseif name=="Stats_Infusion_Oil" or stat.Using=="Stats_Infusion_Oil" then
+        stat.ArmorBoost = 20
+      elseif name=="Stats_Infusion_Cursed_Oil" or stat.Using=="Stats_Infusion_Cursed_Oil" then
+        stat.ArmorBoost = 40
+      elseif name=="Stats_Infusion_Ice" or stat.Using=="Stats_Infusion_Ice" then
+        stat.MagicArmorBoost = 20
+      elseif name=="Stats_Infusion_Blessed_Ice" or stat.Using=="Stats_Infusion_Blessed_Ice" then
+        stat.MagicArmorBoost = 40
+        table.insert(stat.Flags,"SlippingImmunity")
+        table.insert(stat.Flags,"ChilledImmunity")
+        
+        -- make incarnate stronger by giving it 5 of all abilities (vanilla only has WarriorLore 5, which means with element infusion it will in fact deal less damage)
+        -- (in fact these ability points of incarnate scale with level of the caster)
+        -- dont change other summons, because eg. for a FireSlug it is ok, if after poison infusion it does less damage, since its not their main damage type.
+         -- but incarnate should be allrounder
+      elseif name=="Summon_Incarnate_Character" or stat.Using=="Summon_Incarnate_Character" then
+        stat.FireSpecialist = 5
+        stat.WaterSpecialist = 5
+        stat.AirSpecialist = 5
+        stat.EarthSpecialist = 5
+      
       end
       
     end
@@ -311,6 +375,26 @@ SharedFns.OnStatsLoaded = function(e)
           end
           MyStat["TargetConditions"] = new
         end
+        -- update vanilla INF_ stati used by mods in skills (newly added INF stati should work fine, doing the same status on all summons, unless SkillProperties checks for specific Tags)
+        local SkillProperties = MyStat.SkillProperties
+        if SkillProperties and type(SkillProperties)=="table" then
+          local changed = false
+          for _,entry in ipairs(SkillProperties) do
+            if entry.Type=="Status" then
+              for inf,new in pairs(SPInfStatusReplace) do
+                if entry.Action==inf then
+                  entry.Action = new
+                  entry.Duration = 0
+                  changed = true
+                  break
+                end
+              end
+            end
+          end
+          if changed then
+            MyStat.SkillProperties = SkillProperties
+          end
+        end
       end
     end
   end
@@ -331,7 +415,9 @@ SharedFns.OnStatsLoaded = function(e)
   -- removed e63a712f-fc87-4469-8848-fd8941043afd Summons_Plant
 end
 -- Summons_WindUpToy 6f8db517-f1af-4b47-b095-f239fd2293d0 RootTemplate Script change
-Ext.IO.AddPathOverride("Public/Shared/Scripts/Bomber.charScript", "Public/CMP_SummoningImproved_Kamil/Scripts/CMP_Bomber.charScript")
+Ext.IO.AddPathOverride("Public/Shared/Scripts/Bomber.charScript", "Public/SumImpr_Serp/Scripts/CMP_Bomber.charScript")
+Ext.IO.AddPathOverride("Public/CMP_SummoningImproved_Kamil/Scripts/CMP_Bomber.charScript", "Public/SumImpr_Serp/Scripts/CMP_Bomber.charScript")
+Ext.IO.AddPathOverride("Public/CMP_SummoningImproved_Kamil/Scripts/CMP_Slugs.charScript", "Public/SumImpr_Serp/Scripts/CMP_Slugs.charScript")
 
 
 -- add free infusion skills, so we dont need a skillbook for them
@@ -384,43 +470,112 @@ local VanillaHandledSummons = {"118d7359-b7d5-41ea-8c55-86ce27afceba","13f9314d-
   "e61da3a2-6dfd-4f2e-8f62-6bfbddb5a7f9","163befcc-d8f6-4c3a-ba1d-536d1f7568bc","0441f88d-4a0a-40ec-ac69-3a4fe7906cdf",
   "1918aa0e-862e-4f53-8656-7f579658222a","7ecb0aa4-376f-4e9a-99d6-6eff900c3c77","53f49a2d-36a1-4c47-8cef-91c0f3ae0ef9",
   "6f8db517-f1af-4b47-b095-f239fd2293d0","4f7cdf30-0d44-44d2-bcf2-91850728107d",
-  -- some mod summons added in there already
-  "672acd14-e1da-46a4-b365-1883ddc60243","892f8d0d-44bb-4772-a6c8-7798937ecc39","bb08f08c-ffff-4743-8410-4a0dacacc9be",
-  "f1f51e01-cc07-4127-b3f2-424eeffe1323","1ea8cdd9-4275-400e-9b9f-ffce3bb7b503","d5028e0e-3787-4561-aec3-c0c3ddb10586","66fef67a-2a03-41d7-82f4-710933d553a7",
-  "7131368d-fec2-4773-a9fe-2dfb7e96d09f","91db43b6-f064-44b6-adc5-92077965bd95","f6a7a5e9-b333-4acc-a652-5b37420def87",
+  -- some mod summons added in there already, but outcommented, doing it on lua instead
+  -- "672acd14-e1da-46a4-b365-1883ddc60243","892f8d0d-44bb-4772-a6c8-7798937ecc39","bb08f08c-ffff-4743-8410-4a0dacacc9be",
+  -- "f1f51e01-cc07-4127-b3f2-424eeffe1323","1ea8cdd9-4275-400e-9b9f-ffce3bb7b503","d5028e0e-3787-4561-aec3-c0c3ddb10586","66fef67a-2a03-41d7-82f4-710933d553a7",
+  -- "7131368d-fec2-4773-a9fe-2dfb7e96d09f","91db43b6-f064-44b6-adc5-92077965bd95","f6a7a5e9-b333-4acc-a652-5b37420def87",
 }
--- in theory we could check the name of the charGUID eg for "newt" or "wolf" and so on and apply the fitting INF for it...
--- maybe add this later, Im fine with this for now
-local StatusReplace = {
-  WarpInfusion="INF_WARP_INCARNATE_S",
-  RangedInfusion="INF_RANGED",
-  PowerInfusion="INF_POWER_INCARNATE_S",
-  ShadowInfusion="INF_SHADOW_INCARNATE_S",
-  FireInfusion="INF_FIRE_INCARNATE_S",
-  IceInfusion="INF_BLESSED_ICE_INCARNATE_S",
-  ElectricInfusion="INF_ELECTRIC_INCARNATE_S",
-  PoisonInfusion="INF_POISON_INCARNATE_S",
-  NecrofireInfusion="INF_NECROFIRE_INCARNATE_S",
-  WaterInfusion="INF_WATER_INCARNATE_S",
-  AcidInfusion="INF_ACID_INCARNATE_S",
-  CursedElectricInfusion="INF_CURSED_ELECTRIC_INCARNATE_S",
-  OilInfusion="INF_OIL_INCARNATE_S",
-  CursedOilInfusion="INF_CURSED_OIL_INCARNATE_S",
-  BloodInfusion="INF_BLOOD_INCARNATE_S",
-  CursedBloodInfusion="INF_CURSED_BLOOD_INCARNATE_S",
+-- checking the Stats Name of summon for some specific texts to decide which inf we apply
+-- incarnate , incarnate_g , bone , plant, corpse, oil, fire, poison, condor, dragon, wolf , toy, cat
+-- order matters, the first found will we chosen, if non found a random one will be chosen
+StatsnameToInfusion = OrderedTable()
+  StatsnameToInfusion.giantincarnate="incarnate_g"; StatsnameToInfusion.incarnate_g="incarnate_g"; StatsnameToInfusion.incarnate="incarnate";
+  StatsnameToInfusion.mewt="dragon"; StatsnameToInfusion.dragon="dragon"; StatsnameToInfusion.bone="bone"; 
+  StatsnameToInfusion.zombie="corpse"; StatsnameToInfusion.corpse="corpse"; StatsnameToInfusion.skeleton={"bone","corpse"}; 
+  StatsnameToInfusion.plant="plant"; StatsnameToInfusion.condor="condor"; StatsnameToInfusion.vulture="condor"; 
+  StatsnameToInfusion.bird="condor"; StatsnameToInfusion.wolf="wolf"; StatsnameToInfusion.toy="toy"; StatsnameToInfusion.bomber="toy"; 
+  StatsnameToInfusion.cat="cat"; StatsnameToInfusion.dog="wolf"; StatsnameToInfusion.magma="fire"; 
+  StatsnameToInfusion.death={"bone","corpse"}; StatsnameToInfusion.oil="oil"; StatsnameToInfusion.earth="oil"; 
+  StatsnameToInfusion.stone="oil"; StatsnameToInfusion.poison="poison"; StatsnameToInfusion.fire="fire"; 
+  StatsnameToInfusion.slug={"fire","oil","poison"};
+InfusionToStatus = {
+  WarpInfusion={incarnate="INF_WARP_INCARNATE_S",incarnate_g="INF_WARP_INCARNATE_S",bone="INF_WARP_BONEPILE",plant="INF_WARP_PLANT",oil="INF_WARP_OILBLOB",fire="INF_WARP_FIRESLUG",condor="INF_WARP_CONDOR",dragon="INF_WARP_NEWT",poison="INF_WARP_POISONSLUG",wolf="INF_WARP_SOULWOLF",toy="INF_WARP_TOY",cat="INF_WARP_CAT",corpse="INF_WARP_CORPSE",},
+  RangedInfusion={incarnate="INF_RANGED",incarnate_g="INF_RANGED",bone="INF_RANGED_BONEPILE",plant="INF_POWER_PLANT",oil="INF_POWER_OILBLOB",fire="INF_POWER_FIRESLUG",condor="INF_RANGED_CONDOR",dragon="INF_RANGED_NEWT",poison="INF_RANGED_POISONSLUG",wolf="INF_RANGED_SOULWOLF",toy="INF_RANGED_TOY",cat="INF_RANGED_CAT",corpse="INF_POWER_CORPSE",},
+  PowerInfusion={incarnate="INF_POWER_INCARNATE_S",incarnate_g="INF_POWER_INCARNATE_S",bone="INF_POWER_BONEPILE",plant="INF_RANGED_PLANT",oil="INF_RANGED_OILBLOB",fire="INF_RANGED_FIRESLUG",condor="INF_POWER_CONDOR",dragon="INF_POWER_NEWT",poison="INF_POWER_POISONSLUG",wolf="INF_POWER_SOULWOLF",toy="INF_POWER_TOY",cat="INF_POWER_CAT",corpse="INF_RANGED_CORPSE",},
+  ShadowInfusion={incarnate="INF_SHADOW_INCARNATE_S",incarnate_g="INF_SHADOW_INCARNATE_S",bone="INF_SHADOW_BONEPILE",plant="INF_SHADOW_PLANT",oil="INF_SHADOW_OILBLOB",fire="INF_SHADOW_FIRESLUG",condor="INF_SHADOW_CONDOR",dragon="INF_SHADOW_NEWT",poison="INF_SHADOW_POISONSLUG",wolf="INF_SHADOW_SOULWOLF",toy="INF_SHADOW_TOY",cat="INF_SHADOW_CAT",corpse="INF_SHADOW_CORPSE",},
+  FireInfusion={incarnate="INF_FIRE_INCARNATE_S",incarnate_g="INF_FIRE_INCARNATE_G",bone="INF_FIRE_BONEPILE",plant="INF_FIRE_PLANT",oil="INF_FIRE_OILBLOB",fire="INF_FIRE_FIRESLUG",condor="INF_FIRE_CONDOR",dragon="INF_FIRE_NEWT",poison="INF_FIRE_POISONSLUG",wolf="INF_FIRE_SOULWOLF",toy="INF_FIRE_TOY",cat="INF_FIRE_CAT",corpse="INF_FIRE_CORPSE",},
+  IceInfusion={incarnate="INF_BLESSED_ICE_INCARNATE_S",incarnate_g="INF_BLESSED_ICE_INCARNATE_G",bone="INF_BLESSED_ICE_BONEPILE",plant="INF_BLESSED_ICE_PLANT",oil="INF_BLESSED_ICE_OILBLOB",fire="INF_BLESSED_ICE_FIRESLUG",condor="INF_BLESSED_ICE_CONDOR",dragon="INF_BLESSED_ICE_NEWT",poison="INF_BLESSED_ICE_POISONSLUG",wolf="INF_BLESSED_ICE_SOULWOLF",toy="INF_BLESSED_ICE_TOY",cat="INF_BLESSED_ICE_CAT",corpse="INF_BLESSED_ICE_CORPSE",},
+  ElectricInfusion={incarnate="INF_ELECTRIC_INCARNATE_S",incarnate_g="INF_ELECTRIC_INCARNATE_G",bone="INF_ELECTRIC_BONEPILE",plant="INF_ELECTRIC_PLANT",oil="INF_ELECTRIC_OILBLOB",fire="INF_ELECTRIC_FIRESLUG",condor="INF_ELECTRIC_CONDOR",dragon="INF_ELECTRIC_NEWT",poison="INF_ELECTRIC_POISONSLUG",wolf="INF_ELECTRIC_SOULWOLF",toy="INF_ELECTRIC_TOY",cat="INF_ELECTRIC_CAT",corpse="INF_ELECTRIC_CORPSE",},
+  PoisonInfusion={incarnate="INF_POISON_INCARNATE_S",incarnate_g="INF_POISON_INCARNATE_G",bone="INF_POISON_BONEPILE",plant="INF_POISON_PLANT",oil="INF_POISON_OILBLOB",fire="INF_POISON_FIRESLUG",condor="INF_POISON_CONDOR",dragon="INF_POISON_NEWT",poison="INF_POISON_POISONSLUG",wolf="INF_POISON_SOULWOLF",toy="INF_POISON_TOY",cat="INF_POISON_CAT",corpse="INF_POISON_CORPSE",},
+  NecrofireInfusion={incarnate="INF_NECROFIRE_INCARNATE_S",incarnate_g="INF_NECROFIRE_INCARNATE_G",bone="INF_NECROFIRE_BONEPILE",plant="INF_NECROFIRE_PLANT",oil="INF_NECROFIRE_OILBLOB",fire="INF_NECROFIRE_FIRESLUG",condor="INF_NECROFIRE_CONDOR",dragon="INF_NECROFIRE_NEWT",poison="INF_NECROFIRE_POISONSLUG",wolf="INF_NECROFIRE_SOULWOLF",toy="INF_NECROFIRE_TOY",cat="INF_NECROFIRE_CAT",corpse="INF_NECROFIRE_CORPSE",},
+  WaterInfusion={incarnate="INF_WATER_INCARNATE_S",incarnate_g="INF_WATER_INCARNATE_G",bone="INF_WATER_BONEPILE",plant="INF_WATER_PLANT",oil="INF_WATER_OILBLOB",fire="INF_WATER_FIRESLUG",condor="INF_WATER_CONDOR",dragon="INF_WATER_NEWT",poison="INF_WATER_POISONSLUG",wolf="INF_WATER_SOULWOLF",toy="INF_WATER_TOY",cat="INF_WATER_CAT",corpse="INF_WATER_CORPSE",},
+  AcidInfusion={incarnate="INF_ACID_INCARNATE_S",incarnate_g="INF_ACID_INCARNATE_G",bone="INF_ACID_BONEPILE",plant="INF_ACID_PLANT",oil="INF_ACID_OILBLOB",fire="INF_ACID_FIRESLUG",condor="INF_ACID_CONDOR",dragon="INF_ACID_NEWT",poison="INF_ACID_POISONSLUG",wolf="INF_ACID_SOULWOLF",toy="INF_ACID_TOY",cat="INF_ACID_CAT",corpse="INF_ACID_CORPSE",},
+  CursedElectricInfusion={incarnate="INF_CURSED_ELECTRIC_INCARNATE_S",incarnate_g="INF_CURSED_ELECTRIC_INCARNATE_G",bone="INF_CURSED_ELECTRIC_BONEPILE",plant="INF_CURSED_ELECTRIC_PLANT",oil="INF_CURSED_ELECTRIC_OILBLOB",fire="INF_CURSED_ELECTRIC_FIRESLUG",condor="INF_CURSED_ELECTRIC_CONDOR",dragon="INF_CURSED_ELECTRIC_NEWT",poison="INF_CURSED_ELECTRIC_POISONSLUG",wolf="INF_CURSED_ELECTRIC_SOULWOLF",toy="INF_CURSED_ELECTRIC_TOY",cat="INF_CURSED_ELECTRIC_CAT",corpse="INF_CURSED_ELECTRIC_CORPSE",},
+  OilInfusion={incarnate="INF_OIL_INCARNATE_S",incarnate_g="INF_OIL_INCARNATE_G",bone="INF_OIL_BONEPILE",plant="INF_OIL_PLANT",oil="INF_OIL_OILBLOB",fire="INF_OIL_FIRESLUG",condor="INF_OIL_CONDOR",dragon="INF_OIL_NEWT",poison="INF_OIL_POISONSLUG",wolf="INF_OIL_SOULWOLF",toy="INF_OIL_TOY",cat="INF_OIL_CAT",corpse="INF_OIL_CORPSE",},
+  CursedOilInfusion={incarnate="INF_CURSED_OIL_INCARNATE_S",incarnate_g="INF_CURSED_OIL_INCARNATE_G",bone="INF_CURSED_OIL_BONEPILE",plant="INF_CURSED_OIL_PLANT",oil="INF_CURSED_OIL_OILBLOB",fire="INF_CURSED_OIL_FIRESLUG",condor="INF_CURSED_OIL_CONDOR",dragon="INF_CURSED_OIL_NEWT",poison="INF_CURSED_OIL_POISONSLUG",wolf="INF_CURSED_OIL_SOULWOLF",toy="INF_CURSED_OIL_TOY",cat="INF_CURSED_OIL_CAT",corpse="INF_CURSED_OIL_CORPSE",},
+  BloodInfusion={incarnate="INF_BLOOD_INCARNATE_S",incarnate_g="INF_BLOOD_INCARNATE_G",bone="INF_BLOOD_BONEPILE",plant="INF_BLOOD_PLANT",oil="INF_BLOOD_OILBLOB",fire="INF_BLOOD_FIRESLUG",condor="INF_BLOOD_CONDOR",dragon="INF_BLOOD_NEWT",poison="INF_BLOOD_POISONSLUG",wolf="INF_BLOOD_SOULWOLF",toy="INF_BLOOD_TOY",cat="INF_BLOOD_CAT",corpse="INF_BLOOD_CORPSE",},
+  CursedBloodInfusion={incarnate="INF_CURSED_BLOOD_INCARNATE_S",incarnate_g="INF_CURSED_BLOOD_INCARNATE_G",bone="INF_CURSED_BLOOD_BONEPILE",plant="INF_CURSED_BLOOD_PLANT",oil="INF_CURSED_BLOOD_OILBLOB",fire="INF_CURSED_BLOOD_FIRESLUG",condor="INF_CURSED_BLOOD_CONDOR",dragon="INF_CURSED_BLOOD_NEWT",poison="INF_CURSED_BLOOD_POISONSLUG",wolf="INF_CURSED_BLOOD_SOULWOLF",toy="INF_CURSED_BLOOD_TOY",cat="INF_CURSED_BLOOD_CAT",corpse="INF_CURSED_BLOOD_CORPSE",},
+  IceNormalInfusion={incarnate="INF_ICE",incarnate_g="INF_ICE_G",bone="INF_ICE_ALL",plant="INF_ICE_ALL",oil="INF_ICE_ALL",fire="INF_ICE_ALL",condor="INF_ICE_ALL",dragon="INF_ICE_ALL",poison="INF_ICE_ALL",wolf="INF_ICE_ALL",toy="INF_ICE_TOY",cat="INF_ICE_ALL",corpse="INF_ICE_ALL",},
 }
+NonVanillaInfusions = {IceNormalInfusion=true} -- not handled in vanilla txt script file
+
+-- WeaponOverride was removed in status for more compatible. define here the new DamageType
+-- (DamageBoost is done in Stats from the Status instead of the weapon now)
+InfusionToWeaponDamageType = {
+  -- WarpInfusion="",
+  -- RangedInfusion="",
+  -- PowerInfusion="",
+  -- ShadowInfusion="",
+  FireInfusion="Fire",
+  IceInfusion="Water",
+  ElectricInfusion="Air",
+  PoisonInfusion="Poison",
+  NecrofireInfusion="Fire",
+  WaterInfusion="Water",
+  AcidInfusion="Poison",
+  CursedElectricInfusion="Air",
+  OilInfusion="Earth",
+  CursedOilInfusion="Earth",
+  BloodInfusion="Physical",
+  CursedBloodInfusion="Physical",
+  IceNormalInfusion="Water",
+}
+
+
 SharedFns.OnCharacterStatusApplied = function(charGUID,status,causee)
-  if StatusReplace[status] then
+  if InfusionToStatus[status] then
+    local status_lower = status:lower()
     local char = Ext.Entity.GetCharacter(charGUID)
     if char then
       local template = char.RootTemplate
       if template then
         local templateid = template.Id
         if templateid then
-          if not SharedFns.table_contains_value(VanillaHandledSummons,templateid) then
-            Osi.RemoveStatus(charGUID,status)
-            Osi.ApplyStatus(charGUID,StatusReplace[status],-1,1)
+          if NonVanillaInfusions[status] or not SharedFns.table_contains_value(VanillaHandledSummons,templateid) then
+            local StatsName = template.Stats:lower()
+            local usedstatskey = {"incarnate","incarnate_g","bone","plant","corpse","oil","fire","poison","condor","dragon","wolf","toy","cat"}
+            local charGUID_lower = charGUID:lower()
+            for txtsearch,statskey in pairs(StatsnameToInfusion) do
+              if StatsName:find(txtsearch,1,true) or charGUID_lower:find(txtsearch,1,true) then
+                usedstatskey = statskey
+                break -- first found is used
+              end
+            end
+            if type(usedstatskey)=="table" then
+              usedstatskey = usedstatskey[Ext.Random(#usedstatskey)] -- random choice (yes may be different per cast and even chance to get the stronger buff for incarnates)
+            end
+            local inf_status = InfusionToStatus[status][usedstatskey]
+            if inf_status then
+              Ext.Print("SumImpr_Serp: OnCharacterStatusApplied",charGUID,status,StatsName,inf_status)
+              Osi.RemoveStatus(charGUID,status)
+              Osi.ApplyStatus(charGUID,inf_status,-1,1)
+            end
           end
+          
+          -- Change DamageType for all of them, because we removed the WeaponOverride from the Status, to be compatible with any summon without replacing the weapon with another one (because if removes weapon skills and changes damage)
+          local newweapondamagetype = InfusionToWeaponDamageType[status]
+          if newweapondamagetype then
+            local weapondone = {}
+            for _,weapon in ipairs({char.Stats.MainWeapon,char.Stats.OffHandWeapon,char.Stats:GetItemBySlot("Weapon"),char.Stats:GetItemBySlot("Shield")}) do -- OffHandWeapon only gets weapon, not shield
+              weapon = weapon and weapon.GameObject
+              if weapon and not weapondone[weapon] then
+                weapondone[weapon]=true -- to not do the same twice
+                print("PetPowerSerp: Infusion Change DamageType",charGUID,weapon,newweapondamagetype)
+                EsvReforger:ChangeDamageType(weapon,newweapondamagetype,char,true)
+              end
+            end
+          end
+          
         end
       end
     end
@@ -428,7 +583,8 @@ SharedFns.OnCharacterStatusApplied = function(charGUID,status,causee)
 end
 
 
-
+-- make sure our script is always loaded, instead of vanilla
+Ext.IO.AddPathOverride("Mods/CMP_SummoningImproved_Kamil/Story/RawFiles/Goals/CMP_SummoningImproved_Statuses.txt", "Mods/SumImpr_Serp/Story/RawFiles/Goals/CMP_SummoningImproved_Statuses_Serp.txt")
 
 
 

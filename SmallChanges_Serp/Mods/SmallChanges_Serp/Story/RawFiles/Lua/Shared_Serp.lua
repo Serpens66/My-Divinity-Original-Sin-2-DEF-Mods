@@ -596,7 +596,10 @@ SharedFns.OnStatsLoaded = function(e)
       end
     end
   end
-  
+  stat = Ext.Stats.Get("Target_Fatality")
+  if stat then
+    stat["Magic Cost"] = 2
+  end
   
   Ext.Print("OnStatsLoadedSerpSmallChanges_Serp Ende")
   
@@ -768,6 +771,13 @@ end
 
 -- Ext.Print(Ext.Entity.GetCharacter("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd").Stats.OffHandWeapon)
 -- Ext.Print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").Stats:GetItemBySlot("Shield").WeaponType)
+-- Ext.Print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").WorldPos)
+-- local x,y,z=table.unpack(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").WorldPos)
+
+-- local x,y,z=table.unpack(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").WorldPos);CreateItemTemplateAtPosition("e6b01d1c-0358-444e-a8bc-2d00b0c30352",x,y,z)
+
+-- local wguid = Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").Stats.MainWeapon.GameObject.MyGuid;
+-- ItemAddDeltaModifier("a1dac5a6-2cce-41c3-b67d-1b19e5a04eb8","Boost_Weapon_Damage_Fire_Medium_Bow")
 
 -- Ext.Print(Osi.CharacterIsControlled("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd"))
 -- Ext.Print(Osi.CharacterIsControlled("Summons_Ward_Wood_fa993de4-1957-4bfd-812d-4e53ac00fb54"))
@@ -855,7 +865,7 @@ end
 -- Osi.CharacterStatusText("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","test")
 
 -- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Teleportation_ResurrectSkillCast")
--- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Target_NullifyResistance_")
+-- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Shout_Summon_SuicideBomberOil")
 
 
 -- local SkillbookTemplates = Mods.EpipEncounters.Epip.GetFeature("SkillbookTemplates"); Osi.ItemTemplateAddTo(SkillbookTemplates.GetForSkill("Target_MutePlayer")[1],"Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",1,1)

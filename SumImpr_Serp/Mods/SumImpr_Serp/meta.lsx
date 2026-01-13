@@ -20,7 +20,7 @@
                     <attribute id="Author" value="Serpens66,Kamil" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
                     <attribute id="DisplayName" type="28" value="Pet Power" handle="h21a77fe0gdc51g4436g8df4g84b2430bf84f" />
-                    <attribute id="DescriptionName" type="28" value="Pet Power enhances the summoning class and its infusion spells immensely. With this mod, you can cast infusion spells on all available summons, not just your own Incarnate! Each summon receives different skills depending on the base elemental infusion type." handle="h39160f26gd25bg402aga67ag9757f82c3a40" />
+                    <attribute id="DescriptionName" type="28" value="More compatible version of Pet Power giftbag! Also includes Ice Infusion and support for specific skills for mod summons, if their Stats-Name in template includes specific wordings, eg. wolf or dragon.... : Pet Power enhances the summoning class and its infusion spells immensely. With this mod, you can cast infusion spells on all available summons, not just your own Incarnate! Each summon receives different skills depending on the base elemental infusion type." handle="h39160f26gd25bg402aga67ag9757f82c3a40" />
                     <attribute id="Description" value="|Allows the player to cast infusion spells on all of available summons and each summon receives different skills depending on base elemental infusion type.  [Doesn&apos;t require new game, can be toggled on and off at will.]|" type="30" />
                     <attribute id="Folder" value="SumImpr_Serp" type="30" />
                     <attribute id="GMTemplate" value="" type="22" />

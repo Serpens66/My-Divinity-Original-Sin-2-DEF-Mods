@@ -32,10 +32,6 @@ object category "I_SKILLBOOK_Necromancy_SummonBoneTroll",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Water_FrostDragon",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_SKILLBOOK_Summon_CursedBloodInfusion",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_SKILLBOOK_Summon_MetalInfusion",1,0,0,0,0,0,0,0
-new subtable "1,1"
 object category "I_SKILLBOOK_Summon_DoubleSummon",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Summon_AstralRefresh",1,0,0,0,0,0,0,0
@@ -192,7 +188,6 @@ object category "T_SCS_Skillbook_Fire",1,0,0,0,0,0,0,0
 
 new treasuretable "SCS_Skillbook_Earth"
 new subtable "1,1"
-new subtable "1,1"
 object category "I_SKILLBOOK_Earth_PetrifyingTouch",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Earth_MidnightOil",1,0,0,0,0,0,0,0
@@ -214,8 +209,6 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Earth_Slip",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Earth_InfectiousSpore",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_SKILLBOOK_Summon_MetalInfusion",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_PathSkills_ShadowMeld_Earth",1,0,0,0,0,0,0,0
 
@@ -267,8 +260,6 @@ new subtable "1,1"
 object category "I_SKILLBOOK_Necromancy_BloodBurst",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Necromancy_Nightmare",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_SKILLBOOK_Summon_CursedBloodInfusion",1,0,0,0,0,0,0,0
 
 new treasuretable "ST_SkillbookNecromancy"
 CanMerge 1

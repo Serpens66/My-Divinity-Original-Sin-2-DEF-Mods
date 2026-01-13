@@ -41,3 +41,13 @@ data "MaxAmount" "1"
 data "Priority" "2"
 data "MinLevel" "1"
 
+
+
+
+new entry "SKILLBOOK_Water_IceInfusion_Normal"
+type "Object"
+using "_Skillbooks"
+data "RootTemplate" "7c65930d-739b-4bbd-a66a-91a207b3ba14"
+data "Act part" "3"
+data "Value" "190"
+data "Requirements" "WaterSpecialist 1; Summoning 1"

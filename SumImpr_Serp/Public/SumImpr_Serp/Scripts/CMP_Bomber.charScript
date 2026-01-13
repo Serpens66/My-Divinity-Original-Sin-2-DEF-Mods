@@ -105,4 +105,12 @@ ON
 ACTIONS
 	Set(%DieOnCast, Shout_Summon_SuicideBomberCursedElectric)
 	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_CursedElectric)
+  
+  
+EVENT IceNormalInfusion
+ON
+	OnCharacterUsedSkillOnMe(_, Target_IceInfusion_Normal)
+ACTIONS
+	Set(%DieOnCast, Shout_Summon_SuicideBomberNormalIce)
+	Set(%SkillOnDeath, Projectile_Summon_BomberProjectile_IceNormal)
 	

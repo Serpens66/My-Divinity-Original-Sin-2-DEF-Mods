@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="5" build="0" lslib_meta="v1,bswap_guids" />
+	<region id="TranslatedStringKeys">
+		<node id="root">
+			<children>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hf60480b9g97c2g4614g9b58g57dfd53f900c" value="A Black Ring alchemist, Margaret tripped and fell into a barrel of cursed wine intended for the Divine. She emerged marinated in toxic ooze - and highly suggestible. She's cursed to obey any who can bear her odious presence. Margaret leaves her mark (a poison trail) wherever she goes and dissolves into a quivering puddle of toxic ooze upon death." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_LaunchPoisonSlug_StatsDescription" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hdb36b193g447ag4a8cga18eg73809946e636" value="Can be cast while invisible or sneaking. Range: [1]" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Projectile_LaunchBomber_StatsDescription" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

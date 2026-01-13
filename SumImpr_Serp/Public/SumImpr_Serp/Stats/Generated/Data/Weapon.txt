@@ -1,3 +1,26 @@
+new entry "_Summon_Toy"
+type "Weapon"
+using "_NpcClubs"
+data "ItemGroup" "EMPTY"
+data "Act part" "0"
+data "IsTwoHanded" "No"
+data "AttackAPCost" "2"
+data "Damage Type" "Physical"
+data "DamageFromBase" "35"
+data "WeaponType" "None"
+data "Flags" "Unbreakable"
+data "InventoryTab" "Hidden"
+
+
+
+
+
+
+
+
+
+
+
 new entry "_Summon_Incarnate_Cursed_Blood_Infused"
 type "Weapon"
 using "_Summon_Incarnate"
@@ -630,18 +653,6 @@ new entry "_Summon_Cat_Cursed_Oil_Infused"
 type "Weapon"
 using "_Summon_Cat"
 data "Damage Type" "Earth"
-
-new entry "_Summon_Toy"
-type "Weapon"
-using "_NpcClubs"
-data "ItemGroup" "EMPTY"
-data "Act part" "0"
-data "IsTwoHanded" "No"
-data "AttackAPCost" "2"
-data "DamageFromBase" "35"
-data "WeaponType" "None"
-data "Flags" "Unbreakable"
-data "InventoryTab" "Hidden"
 
 new entry "_Summon_Toy_Fire_Infused"
 type "Weapon"

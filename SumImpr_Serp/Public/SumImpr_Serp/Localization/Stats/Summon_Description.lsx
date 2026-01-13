@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="4" build="0" lslib_meta="v1,bswap_guids" />
+	<region id="TranslatedStringKeys">
+		<node id="root">
+			<children>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h57adaffeg6e25g46abg9fe7g6ef4ea7068b2" value="|Fire slug can rush at enemies, leaving a fire trail and burn them with a powerful ray.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Summon_FireSlug_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hfa8e0f63g623eg4ef2ga9e2g43a429d942b7" value="|Plant can lob acidic spores and emit cursed poison clouds.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Summon_ArtilleryPlant_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h5128cf1bg53b2g4028ga7fdg7e858d1932ca" value="| Summons a condor that will aid you in combat |" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Summon_Condor_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h59eb86a7g4df4g4757g8b65gba70608f0c82" value="|Raise a walking pile of bones. It can consume corpses to restore Vitality and receive a stacking Damage buff.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Summon_BonePile_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="hc6dc3262g413fg43f2gbb0bg3cb176e7509c" value="| Ifan summons his trusty Soul Wolf, that can howl and bite enemies.|" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Summon_SoulWolf_Description" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="h7631ab07g2c34g48f7g9318g3d418845a418" value="|Summons a Newt that helps you in combat |" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Summon_Quest_SummonNewt_Description" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>
