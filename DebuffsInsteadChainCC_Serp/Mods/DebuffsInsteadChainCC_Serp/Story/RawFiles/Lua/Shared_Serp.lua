@@ -97,8 +97,8 @@ concernedTypes = {
 }
 
 local ReplacingStatus = {
-  LX_MOMENTUM={"LX_STAGGERED1","LX_STAGGERED2","LX_STAGGERED3"},
-  LX_LINGERING={"LX_CONFUSED1","LX_CONFUSED2","LX_CONFUSED3"},
+  LX_MOMENTUM_Serp={"LX_STAGGERED1_Serp","LX_STAGGERED2_Serp","LX_STAGGERED3_Serp"},
+  LX_LINGERING_Serp={"LX_CONFUSED1_Serp","LX_CONFUSED2_Serp","LX_CONFUSED3_Serp"},
 }
 
 local function OnCharacterStatusRemoved(charGUID, statusname, causee)
@@ -111,11 +111,11 @@ local function OnCharacterStatusRemoved(charGUID, statusname, causee)
       if Osi.CharacterHasTalent(charGUID, "WalkItOff") == 1 then
         duration = duration + 1
       end
-      local applyStatus = "LX_MOMENTUM" -- use LX_MOMENTUM if no SavingThrow
+      local applyStatus = "LX_MOMENTUM_Serp" -- use LX_MOMENTUM_Serp if no SavingThrow
       if SavingThrow == "PhysicalArmor" then
-        applyStatus = "LX_MOMENTUM"
+        applyStatus = "LX_MOMENTUM_Serp"
       elseif SavingThrow == "MagicArmor" then
-        applyStatus = "LX_LINGERING"
+        applyStatus = "LX_LINGERING_Serp"
       end
       Osi.ApplyStatus(charGUID,applyStatus,duration*6,1)
     end
@@ -172,8 +172,8 @@ if Ext.IsServer() then
               local ImmuneFlag = StatusStat.ImmuneFlag -- dont apply this status, if the charGUID has this ImmuneFlag eg. "KnockdownImmunity"
               if ImmuneFlag=="None" or not target.Stats[ImmuneFlag] then
                 -- print("DebuffInsteadChainCC_Serp BeforeStatusApply",targetGuid,statusname,StatusType,StatusStat.LoseControl)
-                local hasMomentum = Osi.HasActiveStatus(targetGuid,"LX_MOMENTUM")==1 and "LX_MOMENTUM" or nil
-                local hasLingering = Osi.HasActiveStatus(targetGuid,"LX_LINGERING")==1 and "LX_LINGERING" or nil
+                local hasMomentum = Osi.HasActiveStatus(targetGuid,"LX_MOMENTUM_Serp")==1 and "LX_MOMENTUM_Serp" or nil
+                local hasLingering = Osi.HasActiveStatus(targetGuid,"LX_LINGERING_Serp")==1 and "LX_LINGERING_Serp" or nil
                 if hasLingering or hasMomentum then
                   local source = Ext.Utils.GetHandleType(status.StatusSourceHandle)=="ServerCharacter" and Ext.Entity.GetCharacter(status.StatusSourceHandle) or nil ---@type EsvCharacter
                   local sourceIsTorturer = source and source.Stats.TALENT_Torturer or false -- effects from him are not blocked. talent does not work for SurfaceStatus
@@ -248,8 +248,8 @@ end
 
 if Ext.IsClient() then
 
-  local StatiBlocked = {LX_MOMENTUM={},LX_LINGERING={}}
-  local StatiBlockedLoc = {LX_MOMENTUM={},LX_LINGERING={}}
+  local StatiBlocked = {LX_MOMENTUM_Serp={},LX_LINGERING_Serp={}}
+  local StatiBlockedLoc = {LX_MOMENTUM_Serp={},LX_LINGERING_Serp={}}
   
   Ext.Events.StatsLoaded:Subscribe(function(e)
       
@@ -259,13 +259,13 @@ if Ext.IsClient() then
       if blockedStatuses[statusname] or (concernedTypes[StatusType] and (StatusType~="CONSUME" or StatusStat.LoseControl=="Yes")) then
         local SavingThrow = StatusStat.SavingThrow
         if SavingThrow=="MagicArmor" then
-          table.insert(StatiBlocked.LX_LINGERING,statusname)
+          table.insert(StatiBlocked.LX_LINGERING_Serp,statusname)
           local statusname_loc = Ext.L10N.GetTranslatedStringFromKey(StatusStat.DisplayName,statusname) 
-          table.insert(StatiBlockedLoc.LX_LINGERING,statusname_loc)
+          table.insert(StatiBlockedLoc.LX_LINGERING_Serp,statusname_loc)
         elseif SavingThrow=="None" or SavingThrow=="PhysicalArmor" then
-          table.insert(StatiBlocked.LX_MOMENTUM,statusname)
+          table.insert(StatiBlocked.LX_MOMENTUM_Serp,statusname)
           local statusname_loc = Ext.L10N.GetTranslatedStringFromKey(StatusStat.DisplayName,statusname) 
-          table.insert(StatiBlockedLoc.LX_MOMENTUM,statusname_loc)
+          table.insert(StatiBlockedLoc.LX_MOMENTUM_Serp,statusname_loc)
         end
       end
     end
@@ -277,7 +277,7 @@ if Ext.IsClient() then
   -- ecl::StatusConsumeBase (00007FF44AB8A900)
   Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
     local statusname = StatusConsumeBase.StatusId
-    if statusname=="LX_LINGERING" or statusname=="LX_MOMENTUM" then
+    if statusname=="LX_LINGERING_Serp" or statusname=="LX_MOMENTUM_Serp" then
       -- print("DebuffInsteadChainCC_Serp Tooltip",statusname)
       for _,entry in ipairs(tooltip.Data) do
         if entry.Type=="StatusDescription" then
