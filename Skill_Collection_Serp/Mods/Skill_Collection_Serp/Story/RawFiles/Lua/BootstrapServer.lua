@@ -2,7 +2,7 @@
 -- so do this by script for out status
 
 local StatiRemoveOnDamage = {METEORBOOST=0.5,BLOOD_AURA=0.5}
-local StatiRemoveOnAttacked = {SLEEPING_PIERCE=1}
+local StatiRemoveOnAttacked = {SLEEPING_PIERCE=1,SLEEPING_PHYSICAL=1}
 local StatiMakesPreferredAITarget = {"METEORBOOST"}
 local StatiMakesUnpreferredAITarget = {}
 

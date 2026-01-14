@@ -63,20 +63,6 @@
                             <attribute id="UUID" value="68a99fef-d125-4ed0-893f-bb6751e52c5e" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
-                        <!-- <node id="ModuleShortDesc"> -->
-                            <!-- <attribute id="Folder" value="CMP_OrganizedContainers_Marek" type="30" /> -->
-                            <!-- <attribute id="MD5" value="" type="23" /> -->
-                            <!-- <attribute id="Name" value="Improved Organisation" type="22" /> -->
-                            <!-- <attribute id="UUID" value="f243c84f-9322-43ac-96b7-7504f990a8f0" type="22" /> -->
-                            <!-- <attribute id="Version" value="268435456" type="4" /> -->
-                        <!-- </node> -->
-                        <!-- <node id="ModuleShortDesc"> -->
-                            <!-- <attribute id="Folder" value="_Backpack-Linker_2d972eb4-ecb0-4c06-a3ad-b53ab90311e6" type="30" /> -->
-                            <!-- <attribute id="MD5" value="" type="23" /> -->
-                            <!-- <attribute id="Name" value="Backpack-Linker" type="22" /> -->
-                            <!-- <attribute id="UUID" value="2d972eb4-ecb0-4c06-a3ad-b53ab90311e6" type="22" /> -->
-                            <!-- <attribute id="Version" value="285212673" type="4" /> -->
-                        <!-- </node> -->
                         <node id="ModuleShortDesc">
                             <attribute id="Folder" value="APFreeMovement_Serp" type="30" />
                             <attribute id="MD5" value="" type="23" />
@@ -85,19 +71,19 @@
                             <attribute id="Version" value="285212672" type="4" />
                         </node>
                         <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="BalancedIndomitableForAll" type="30" />
+                            <attribute id="Folder" value="DebuffsInsteadChainCC_Serp" type="30" />
                             <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="Balanced Indomitable For All" type="22" />
-                            <attribute id="UUID" value="e11e183e-71af-4752-823e-0ddd37f34f28" type="22" />
-                            <attribute id="Version" value="268632064" type="4" />
+                            <attribute id="Name" value="Debuffs Instead Chain-CC" type="22" />
+                            <attribute id="UUID" value="99f5118d-b6ee-492e-8c7c-51d63209ec3a" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
                         </node>
-                        <!-- <node id="ModuleShortDesc"> -->
-                            <!-- <attribute id="Folder" value="BuffAnySummon_Serp" type="30" /> -->
-                            <!-- <attribute id="MD5" value="" type="23" /> -->
-                            <!-- <attribute id="Name" value="Buff All Summons and IceInfusion (DE)" type="22" /> -->
-                            <!-- <attribute id="UUID" value="53956668-1e09-4d91-a0b9-cefe603ae0c8" type="22" /> -->
-                            <!-- <attribute id="Version" value="268435456" type="4" /> -->
-                        <!-- </node> -->
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="ArmorPiercing_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Armor Piercing 10%" type="22" />
+                            <attribute id="UUID" value="c240155c-2e4e-44f5-824e-017918e13037" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
                         <!-- <node id="ModuleShortDesc"> -->
                             <!-- <attribute id="Folder" value="SumImpr_Serp" type="30" /> -->
                             <!-- <attribute id="MD5" value="" type="23" /> -->
@@ -280,13 +266,6 @@
                             <attribute id="UUID" value="868b0397-e61f-43e2-b0e5-4dbe859d40dd" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
-                        <!-- <node id="ModuleShortDesc"> -->
-                            <!-- <attribute id="Folder" value="ScaleExperienceByPlayerLevel_d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418" type="30" /> -->
-                            <!-- <attribute id="MD5" value="" type="23" /> -->
-                            <!-- <attribute id="Name" value="Scale Experience By Player Level" type="22" /> -->
-                            <!-- <attribute id="UUID" value="d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418" type="22" /> -->
-                            <!-- <attribute id="Version" value="268959745" type="4" /> -->
-                        <!-- </node> -->
                         <node id="ModuleShortDesc">
                             <attribute id="Folder" value="ATestRedo_25b61429-1f31-4a5d-83c3-e6e21d5fc155" type="30" />
                             <attribute id="MD5" value="" type="23" />
@@ -413,13 +392,6 @@
                             <attribute id="UUID" value="7d32cb52-1cfd-4526-9b84-db4867bf9356" type="22" />
                             <attribute id="Version" value="268894212" type="4" />
                         </node>
-                        <!-- <node id="ModuleShortDesc"> -->
-                            <!-- <attribute id="Folder" value="AutoLearnSkill_Serp" type="30" /> -->
-                            <!-- <attribute id="MD5" value="" type="23" /> -->
-                            <!-- <attribute id="Name" value="Auto Learn Skill" type="22" /> -->
-                            <!-- <attribute id="UUID" value="76aa0579-128f-4bed-beb3-04f57c83f589" type="22" /> -->
-                            <!-- <attribute id="Version" value="268435456" type="4" /> -->
-                        <!-- </node> -->
                         <node id="ModuleShortDesc">
                             <attribute id="Folder" value="SkillRefundEpip_Serp" type="30" />
                             <attribute id="MD5" value="" type="23" />

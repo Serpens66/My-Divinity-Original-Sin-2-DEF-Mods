@@ -44,6 +44,67 @@ SharedFns.MakeImmortalcharGUIDs = {"S_GLO_LV_HenchmenRecruiter_ed64ea06-9060-4b2
 -- ##########################################################
 -- 
 
+-- statusses which have no stats
+local engineStatuses = {
+	CLEAN=true,
+  CLIMBING=true,
+  SOURCE_MUTED=true,
+  DRAIN=true,
+  POLYMORPHED=true,
+  CHARMED=true,
+  INFUSED=true,
+  HIT=true,
+  IDENTIFY=true,
+  DYING=true,
+  THROWN=true,
+  LYING=true,
+  SNEAKING=true,
+  CONSUME=true,
+  ROTATE=true,
+  SHACKLES_OF_PAIN=true,
+  UNSHEATHED=true,
+  WIND_WALKER=true,
+  DARK_AVENGER=true,
+  AOO=true,
+  SHACKLES_OF_PAIN_CASTER=true,
+  SITTING=true,
+  FLANKED=true,
+  LINGERING_WOUNDS=true,
+  CHANNELING=true,
+  DAMAGE=true,
+  EXPLODE=true,
+  SMELLY=true,
+  SPIRIT_VISION=true,
+  INCAPACITATED=true,
+  SPARK=true,
+  UNLOCK=true,
+  EFFECT=true,
+  STANCE=true,
+  FORCE_MOVE=true,
+  SPIRIT=true,
+  FLOATING=true,
+  CONSTRAINED=true,
+  SUMMONING=true,
+  MATERIAL=true,
+  LEADERSHIP=true,
+  COMBUSTION=true,
+  TUTORIAL_BED=true,
+  TELEPORT_FALLING=true,
+  INFECTIOUS_DISEASED=true,
+  OVERPOWER=true,
+  REMORSE=true,
+  REPAIR=true,
+  ENCUMBERED=true,
+  UNHEALABLE=true,
+  ACTIVE_DEFENSE=true,
+  DECAYING_TOUCH=true,
+  ADRENALINE=true,
+  INSURFACE=true,
+  BOOST=true,
+  COMBAT=true,
+  STORY_FROZEN=true,
+}
+
 -- choices = {choice1={weight=10},choice2={weight=20}} --> choice2 as double chance to be chosen.
 -- the same choice can be chosen multiple times
 SharedFns.weighted_random_choices = function(choices, num_choices)
@@ -247,7 +308,8 @@ SharedFns.GetAllPlayerChars = function()
   return players
 end
 SharedFns.GetAnyPlayerControlled = function()
-  return Osi.DB_IsPlayer:Get(nil)[1][1]
+  -- return Osi.DB_IsPlayer:Get(nil)[1][1]
+  return Osi.CharacterGetHostCharacter()
 end
 
 SharedFns.IsPlayerEnemy = function(charGUID,playercharGUID)

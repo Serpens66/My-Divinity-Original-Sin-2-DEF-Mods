@@ -1,2 +1,0 @@
-1.0.0.1:
-- reduces source point costs for cursed infusion from 2 to 1, also reduced for the skill the incarnation gets.

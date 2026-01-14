@@ -2,6 +2,67 @@
 -- https://steamcommunity.com/workshop/filedetails/discussion/1505329732/2590022385656340131/
 -- not using exact same rules like him. 100% rewritten inlua with script extender v60
 
+-- statusses which have no stats
+local engineStatuses = {
+	CLEAN=true,
+  CLIMBING=true,
+  SOURCE_MUTED=true,
+  DRAIN=true,
+  POLYMORPHED=true,
+  CHARMED=true,
+  INFUSED=true,
+  HIT=true,
+  IDENTIFY=true,
+  DYING=true,
+  THROWN=true,
+  LYING=true,
+  SNEAKING=true,
+  CONSUME=true,
+  ROTATE=true,
+  SHACKLES_OF_PAIN=true,
+  UNSHEATHED=true,
+  WIND_WALKER=true,
+  DARK_AVENGER=true,
+  AOO=true,
+  SHACKLES_OF_PAIN_CASTER=true,
+  SITTING=true,
+  FLANKED=true,
+  LINGERING_WOUNDS=true,
+  CHANNELING=true,
+  DAMAGE=true,
+  EXPLODE=true,
+  SMELLY=true,
+  SPIRIT_VISION=true,
+  INCAPACITATED=true,
+  SPARK=true,
+  UNLOCK=true,
+  EFFECT=true,
+  STANCE=true,
+  FORCE_MOVE=true,
+  SPIRIT=true,
+  FLOATING=true,
+  CONSTRAINED=true,
+  SUMMONING=true,
+  MATERIAL=true,
+  LEADERSHIP=true,
+  COMBUSTION=true,
+  TUTORIAL_BED=true,
+  TELEPORT_FALLING=true,
+  INFECTIOUS_DISEASED=true,
+  OVERPOWER=true,
+  REMORSE=true,
+  REPAIR=true,
+  ENCUMBERED=true,
+  UNHEALABLE=true,
+  ACTIVE_DEFENSE=true,
+  DECAYING_TOUCH=true,
+  ADRENALINE=true,
+  INSURFACE=true,
+  BOOST=true,
+  COMBAT=true,
+  STORY_FROZEN=true,
+}
+
 local function round(num, numDecimalPlaces)
   local mult = 10^(numDecimalPlaces or 0)
   return math.floor(num * mult + 0.5) / mult
@@ -46,37 +107,29 @@ end
 
 local TorturerStati = {"BURNING","POISONED","BLEEDING","NECROFIRE","ACID","SUFFOCATING","ENTANGLED","DEATH_WISH","DAMAGE_ON_MOVE"} -- stati which are not blocked by armor if Torturer apllies them
 
-
--- TODO:
--- Waffen die zb mit 10% chance den effekt machen, werden hier bei jedem Schlag durchgejagt!
- -- und dadurch eine 100% draus
--- das müssen wir erkennen und entwerder ignorieren oder selbst chance berechnen
 -- Osi.ObjectIsCharacter(statusOwnerGUID) == 1
 Ext.Events.BeforeStatusApply:Subscribe(function(ev)
   local status = ev.Status ---@type EsvStatus
   local statusname = status.StatusId
-  if statusname and statusname~="INSURFACE" and statusname~="None" and statusname~="HIT" and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
-    -- Ext.Print("ArmorBasedSavingThrows_Serp: BeforeStatusApply",statusname,_D(status))
-    
-    if Ext.Utils.GetHandleType(status.OwnerHandle)=="ServerCharacter" then -- only for characters, we do not care for items
-      local source = Ext.Utils.GetHandleType(status.StatusSourceHandle)=="ServerCharacter" and Ext.Entity.GetCharacter(status.StatusSourceHandle) or nil ---@type EsvCharacter
-      local target = Ext.Entity.GetCharacter(status.OwnerHandle) ---@type EsvCharacter .. 
-      local sourceTorturer = source and source.Stats.TALENT_Torturer or false -- effects from him are not blocked. talent does not work for SurfaceStatus
-      local targetGuid = target and target.MyGuid
-      if not (status.DamageSourceType~="SurfaceStatus" and sourceTorturer and table_contains_value(TorturerStati,statusname)) and status.ForceStatus==false and target then
-        local StatusStat = Ext.Stats.Get(statusname)
-        local Raistlin = target and target.Stats.TALENT_Raistlin -- targets with this talent are not safe by armor
-        if StatusStat and not Raistlin then
-          local ImmuneFlag = StatusStat.ImmuneFlag -- dont apply this status, if the character has this ImmuneFlag eg. "KnockdownImmunity"
-          if ImmuneFlag=="None" or not target.Stats[ImmuneFlag] then
-            local SavingThrow = StatusStat.SavingThrow
-            if SavingThrow=="PhysicalArmor" or SavingThrow=="MagicArmor" then
-              local resisted = false
-              local savingchance = 0.01
-              if status.CanEnterChance < 100 and (status.CanEnterChance/100) <= math.random() then
-                resisted = "vanillachancefail"
-              end
-              if resisted~="vanillachancefail" then
+  if not ev.PreventStatusApply then
+    if statusname and not engineStatuses[statusname] and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
+      -- Ext.Print("ArmorBasedSavingThrows_Serp: BeforeStatusApply",statusname,_D(status))
+      
+      if Ext.Utils.GetHandleType(status.OwnerHandle)=="ServerCharacter" then -- only for characters, we do not care for items
+        local source = Ext.Utils.GetHandleType(status.StatusSourceHandle)=="ServerCharacter" and Ext.Entity.GetCharacter(status.StatusSourceHandle) or nil ---@type EsvCharacter
+        local target = Ext.Entity.GetCharacter(status.OwnerHandle) ---@type EsvCharacter .. 
+        local sourceTorturer = source and source.Stats.TALENT_Torturer or false -- effects from him are not blocked. talent does not work for SurfaceStatus
+        local targetGuid = target and target.MyGuid
+        if not (status.DamageSourceType~="SurfaceStatus" and sourceTorturer and table_contains_value(TorturerStati,statusname)) and status.ForceStatus==false and target then
+          local StatusStat = Ext.Stats.Get(statusname)
+          local Raistlin = target and target.Stats.TALENT_Raistlin -- targets with this talent are not safe by armor
+          if StatusStat and not Raistlin then
+            local ImmuneFlag = StatusStat.ImmuneFlag -- dont apply this status, if the character has this ImmuneFlag eg. "KnockdownImmunity"
+            if ImmuneFlag=="None" or not target.Stats[ImmuneFlag] then
+              local SavingThrow = StatusStat.SavingThrow
+              if SavingThrow=="PhysicalArmor" or SavingThrow=="MagicArmor" then
+                local resisted = false
+                local savingchance = 0.01
                 local sourceWits = source and math.max(0,source.Stats.Wits-10) or 0 -- wits over 10
                 local Perseverance = target.Stats.Perseverance
                 savingchance = savingchance + Perseverance*0.01 - sourceWits*0.005 -- extra chance of 1% to resist also without armor
@@ -102,45 +155,57 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
                     resisted = true
                   end
                 end
-              end
-              local colour = "#40b606" -- green
-              local statusname_loc = Ext.L10N.GetTranslatedStringFromKey(StatusStat.DisplayName,statusname)
-              if resisted==true then
-                if IsPlayerEnemy(targetGuid) then
-                  colour = "#c80030" -- red
-                end
-                Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>Resisted</font> "..statusname_loc..": "..tostring(math.max(0,round(savingchance*100,2))).."%")
-                ev.PreventStatusApply = true
-              elseif resisted==false then
-                
-                -- PROBLEM: ForceStatus also ignore immunity!!
-                
-                -- ImmuneFlag
-                
-                status.ForceStatus = true -- force it to go through armor
-                -- if SavingThrow=="PhysicalArmor" and target.Stats.CurrentArmor > 0 or SavingThrow=="MagicArmor" and target.Stats.CurrentMagicArmor > 0 then -- if 0 armor, no need to mention that resist failed
-                  if not IsPlayerEnemy(targetGuid) then
+                local colour = "#40b606" -- green
+                local statusname_loc = Ext.L10N.GetTranslatedStringFromKey(StatusStat.DisplayName,statusname)
+                if resisted then
+                  if IsPlayerEnemy(targetGuid) then
                     colour = "#c80030" -- red
                   end
-                  Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>Resist Failed</font> "..statusname_loc..": "..tostring(math.max(0,round(savingchance*100,2))).."%")
-                -- end
-              elseif resisted=="vanillachancefail" then -- a status that is only applied by chance. We do the chance check here, because not really possible differently
-                ev.PreventStatusApply = true
+                  Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>Resisted</font> "..statusname_loc..": "..tostring(math.max(0,round(savingchance*100,2))).."%")
+                  ev.PreventStatusApply = true
+                elseif not resisted then
+                  status.ForceStatus = true -- force it to go through armor
+                  -- if SavingThrow=="PhysicalArmor" and target.Stats.CurrentArmor > 0 or SavingThrow=="MagicArmor" and target.Stats.CurrentMagicArmor > 0 then -- if 0 armor, no need to mention that resist failed
+                    if not IsPlayerEnemy(targetGuid) then
+                      colour = "#c80030" -- red
+                    end
+                    Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>Resist Failed</font> "..statusname_loc..": "..tostring(math.max(0,round(savingchance*100,2))).."%")
+                  -- end
+                end
               end
+            else
+              local colour = "#40b606" -- green
+              if IsPlayerEnemy(targetGuid) then
+                colour = "#c80030" -- red
+              end
+              Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>"..ImmuneFlag.."</font> ")
             end
-          else
-            local colour = "#40b606" -- green
-            if IsPlayerEnemy(targetGuid) then
-              colour = "#c80030" -- red
-            end
-            Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>"..ImmuneFlag.."</font> ")
           end
         end
       end
     end
   end
-end)
+end,{Priority = -200})
+-- must be lower than 200, because LeaderLib has currently a function that reverts changes made to PreventStatusApply ...
+-- The Priority setting determines the order in which subscribers are called; subscribers with HIGHER priority are called first. The default priority is 100. 
 
+-- Problem:
+-- If every mod does the CanEnterChance calulation on their own, it will multiply the chance 10%*10% and so on, which falsifies the result
+-- solution:
+-- Set the Chance to 100% if we did the CanEnter check, so mods doing it afterwards dont cause problems
+Ext.Events.BeforeStatusApply:Subscribe(function(ev)
+  if not ev.PreventStatusApply then
+    local status = ev.Status ---@type EsvStatus
+    local statusname = status and status.StatusId
+    if statusname and not engineStatuses[statusname] and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
+      if status.CanEnterChance<=0 or (status.CanEnterChance < 100 and (status.CanEnterChance/100) <= math.random()) then
+        ev.PreventStatusApply = true
+      elseif status.CanEnterChance < 100 then
+        status.CanEnterChance = 100 -- set it to 100 to signal other mods that we already did the calc, so mods executing later wont falsify the result
+      end
+    end
+  end
+end,{Priority = 10000})
 
 
 -- BeforeStatusApply

@@ -206,8 +206,6 @@ object category "I_SKILLBOOK_Warrior_EarthBringer",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Necromancy_CorruptMind",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_SKILLBOOK_Earth_Slip",1,0,0,0,0,0,0,0
-new subtable "1,1"
 object category "I_SKILLBOOK_Earth_InfectiousSpore",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_PathSkills_ShadowMeld_Earth",1,0,0,0,0,0,0,0

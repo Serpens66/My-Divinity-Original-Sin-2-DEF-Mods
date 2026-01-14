@@ -556,7 +556,7 @@ SharedFns.OnCharacterStatusApplied = function(charGUID,status,causee)
             end
             local inf_status = InfusionToStatus[status][usedstatskey]
             if inf_status then
-              Ext.Print("SumImpr_Serp: OnCharacterStatusApplied",charGUID,status,StatsName,inf_status)
+              -- Ext.Print("PetPowerSerp: OnCharacterStatusApplied",charGUID,status,StatsName,inf_status)
               Osi.RemoveStatus(charGUID,status)
               Osi.ApplyStatus(charGUID,inf_status,-1,1)
             end

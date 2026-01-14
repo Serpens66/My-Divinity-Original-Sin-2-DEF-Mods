@@ -19,5 +19,36 @@ Ext.Events.StatsLoaded:Subscribe(function(e)
   end
   
   
+  stat = Ext.Stats.Get("Quake_Earthquake")
+  if stat then
+    local SkillProperties = stat.SkillProperties -- in Stat ists eine table, daher einfacher strukturiert, als die userdata in GetRaw
+    if SkillProperties and type(SkillProperties)=="table" then
+      for _,entry in pairs(SkillProperties) do
+        if entry.Action=="KNOCKED_DOWN" then
+          entry.Action = "MAGICKNOCKDOWN"
+          break
+        end
+      end
+      stat.SkillProperties = SkillProperties
+    end
+  end
+  
+  stat = Ext.Stats.Get("Projectile_Chloroform")
+  if stat then
+    local SkillProperties = stat.SkillProperties -- in Stat ists eine table, daher einfacher strukturiert, als die userdata in GetRaw
+    if SkillProperties and type(SkillProperties)=="table" then
+      for _,entry in pairs(SkillProperties) do
+        if entry.Action=="SLEEPING" then
+          entry.Action = "SLEEPING_PHYSICAL"
+          break
+        end
+      end
+      stat.SkillProperties = SkillProperties
+    end
+  end
+  
+  
+  
+  
   
 end)
