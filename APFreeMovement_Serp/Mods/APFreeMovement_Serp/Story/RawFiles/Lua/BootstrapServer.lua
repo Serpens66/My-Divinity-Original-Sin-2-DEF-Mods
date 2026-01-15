@@ -116,6 +116,8 @@ end)
 
 -- ################################
 
+-- for _,tupl in ipairs(Osi.DB_IsPlayer:Get(nil)) do Osi.SetTag(tupl[1],"QuickStepForFree_Serp"); end
+
 -- old code which changes Anim Speed to compensate for MovementSpeedBoost. 
 -- But not using MovementSpeedBoost because it also makes all following characters always Walk instead of Run...
 

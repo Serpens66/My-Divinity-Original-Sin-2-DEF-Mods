@@ -35,6 +35,7 @@ Ext.Events.StatsLoaded:Subscribe(function(e)
   
   stat = Ext.Stats.Get("Projectile_Chloroform")
   if stat then
+    stat.DamageType = "Corrosive"
     local SkillProperties = stat.SkillProperties -- in Stat ists eine table, daher einfacher strukturiert, als die userdata in GetRaw
     if SkillProperties and type(SkillProperties)=="table" then
       for _,entry in pairs(SkillProperties) do

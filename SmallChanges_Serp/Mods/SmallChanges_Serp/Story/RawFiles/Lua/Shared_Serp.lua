@@ -248,7 +248,6 @@ end
 -- SetTag 	(GUIDSTRING)_Source, (STRING)_Tag
 -- IsTagged 	[in](GUIDSTRING)_Target, [in](STRING)_Tag, [out](INTEGER)_Bool
 -- ClearTag 	(GUIDSTRING)_Source, (STRING)_Tag
--- TODO sicherstellen, dass Talentpoint nicht mehrfach geaddet wird
 SharedFns.AddTalent = function(charGUID,Talent,compensateTalentPoint,Tag,char)
   local BuggedTalents = {"Throwing", "WandCharge","BeastMaster","PainDrinker","DeathfogResistant","Sourcerer","Rag"} -- talents which dont work properly with CharacterAddTalent (noticeable that they have no effect, not displayed and also not removeable). But as Boost they seem to work (at least tested with BeastMaster): only the first 3 are added at all, while most likely only BeastMaster works.
   if Talent and Talent~="None" then
