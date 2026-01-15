@@ -128,7 +128,7 @@ end
 
 
 -- using in charScript: CharacterEvent(__Me,"OnSlugShutdown_PetPowerSerp") to fire these StoryEvents
-SharedFns.RegisterProtectedOsirisListener("StoryEvent", 2, "before", function(charGUID, event)
+SharedFns.RegisterProtectedOsirisListener("StoryEvent", 2, "after", function(charGUID, event)
   -- print("OnObjectStoryEvent",charGUID, event)
   if Osi.ObjectIsCharacter(charGUID)==1 then
     if event=="OnSlugShutdown_PetPowerSerp" or event=="OnSlugDie_PetPowerSerp" then -- trigger both on die, not sure if shutdown can also happen when not dying? maybe out of screen?

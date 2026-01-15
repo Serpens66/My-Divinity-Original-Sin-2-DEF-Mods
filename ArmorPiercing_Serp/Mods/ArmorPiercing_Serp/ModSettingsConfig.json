@@ -1,0 +1,22 @@
+{
+	"TitleColor": "#11FF99",
+	"Data": {
+		"Variables": {
+			"Entries" : {
+				"AmorPiercing%" : {
+					"Max" : 100,
+					"Min" : 0,
+					"Value": 10,
+					"Increment": 0.1
+				}
+			}
+		}
+	},
+	"MenuOrder": [
+		{
+			"Entries" : [
+				"AmorPiercing%"
+			]
+		}
+	]
+}

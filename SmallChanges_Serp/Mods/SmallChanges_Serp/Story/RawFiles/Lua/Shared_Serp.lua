@@ -218,7 +218,7 @@ SharedFns.GetSkillbooksForSkill = function(skill)
     local skillbook_templates = SkillbookTemplates and SkillbookTemplates.GetForSkill(skill) or nil
     for _,template in ipairs(skillbook_templates) do
       local root = Ext.Template.GetTemplate(template)
-      if root and root.Stats then
+      if root and root.Stats and not SharedFns.table_contains_value(skillbooks,root.Stats) then
         table.insert(skillbooks,root.Stats)
       end
     end
@@ -860,6 +860,13 @@ end
 -- }
 -- and save the file. Now when you start the game, the console should pop up in another window. When you loaded the savegame, open the console, hit Enter one time and copy paste this into it and hit enter:
 
+-- loop over all status of a player:
+-- char.StatusMachine.Statuses
+
+
+
+-- Osi.CharacterLevelUpTo(Osi.CharacterGetHostCharacter(),20)
+  -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Target_SourceVampirism")
 
 -- Ext.Print(Ext.Entity.GetCharacter("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd").Stats.OffHandWeapon)
 -- Ext.Print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").Stats:GetItemBySlot("Shield").WeaponType)
@@ -926,6 +933,7 @@ end
 -- S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb
 -- CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f
 -- CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c
+
 
 -- Osi.CharacterLevelUpTo("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",20)
 -- Osi.CharacterLevelUpTo("Humans_Hero_Female_7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe",20)

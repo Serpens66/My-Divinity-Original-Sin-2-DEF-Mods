@@ -10,7 +10,7 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" value="Serp" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
-                    <attribute id="Description" value="10% of every damage (except direct armor damage) goes through armor. Requires script extender v60" type="30" />
+                    <attribute id="Description" value="10% of every damage (except direct armor damage) goes through armor. If LeaderLib is active, you can change the amount in modsettings. Requires script extender v60" type="30" />
                     <attribute id="DescriptionName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="DisplayName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="Folder" value="ArmorPiercing_Serp" type="30" />

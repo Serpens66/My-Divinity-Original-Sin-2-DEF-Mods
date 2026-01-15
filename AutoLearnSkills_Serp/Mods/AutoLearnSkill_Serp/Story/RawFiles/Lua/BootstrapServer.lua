@@ -94,7 +94,7 @@ function GetSkillbooksForSkill(skill)
     local skillbook_templates = SkillbookTemplates and SkillbookTemplates.GetForSkill(skill) or nil
     for _,template in ipairs(skillbook_templates) do
       local root = Ext.Template.GetTemplate(template)
-      if root and root.Stats then
+      if root and root.Stats and not table_contains_value(skillbooks,root.Stats) then
         table.insert(skillbooks,root.Stats)
       end
     end
@@ -153,8 +153,19 @@ local function LearnAllFittingSkills(charGUID)
         local canlearn = Osi.CharacterHasSkill(charGUID,skill)==0
         if canlearn then
           for i,reqabilitiesbook in ipairs(reqs.reqabilitiesbook) do
-            if Osi.CharacterGetAbility(charGUID,reqabilitiesbook.Requirement) < reqabilitiesbook.Param then
-              canlearn = false
+            -- print("LearnAllFittingSkills",skill,reqabilitiesbook.Requirement,reqabilitiesbook.Param,Osi.CharacterGetAbility(charGUID,reqabilitiesbook.Requirement))
+            if reqabilitiesbook.Requirement=="Tag" then
+              if Osi.IsTagged(charGUID,tostring(reqabilitiesbook.Param))==0 then
+                canlearn = false
+              end
+            elseif reqabilitiesbook.Requirement=="Level" then -- do nothing, already done by putting this to minlevel
+            else
+              local abilitylevel = Osi.CharacterGetAbility(charGUID,reqabilitiesbook.Requirement)
+              if not abilitylevel or abilitylevel < tonumber(reqabilitiesbook.Param) then
+                canlearn = false
+              elseif not abilitylevel then
+                Ext.Print("AutoLearnSkill_Serp LearnAllFittingSkills: Book Requirement unknown (dont learn):",skill,reqabilitiesbook.Requirement,reqabilitiesbook.Param) -- some mods use Level and Tag here, who knows what else...
+              end
             end
           end
         end
@@ -244,11 +255,14 @@ RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, mi
           if skillstat then
             local reqsourcepoints = skillstat["Magic Cost"]
             local reqabilitiesmem = skillstat.MemorizationRequirements
-            for _,skillbook in ipairs(skillbooks) do
+            if #skillbooks>1 then
+              Ext.Print("AutoLearnSkill_Serp: The skill",skill,"has more than 1 skillbook, code might not work well (using requirements of random one)",_D(skillbooks))
+            end
+            for _,skillbook in ipairs(skillbooks) do -- if there are multiple books teaching the skill... we should in theory just the lowest requirements... but I doubt it makes sense to have multiple skillbooks with different requierements
               local skillbookstat = Ext.Stats.GetRaw(skillbook)
               if skillbookstat then
                 local UseAPCost = skillbookstat.UseAPCost -- ignore books with higher APCost (all should have 0, but if a mod does not want autolearn, they can set it higher)
-                if UseAPCost<=4 and (CacheSkillBookIsInTreasure[skillbook] or CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory] or CacheCraftableSkillbooks[skillbook]) then -- in any TreasureTable or craftable
+                if UseAPCost<=4 and (not skillbookstat.Unique or skillbookstat.Unique==0) and (CacheSkillBookIsInTreasure[skillbook] or CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory] or CacheCraftableSkillbooks[skillbook]) then -- in any TreasureTable or craftable
                   -- if skillbook=="SKILLBOOK_Source_VoidwokenCharm" or skill=="Target_VoidwokenCharm" then
                     -- Ext.Print(skillbook,skill,CacheSkillBookIsInTreasure[skillbook],CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory],CacheCraftableSkillbooks[skillbook])
                   -- end
@@ -257,17 +271,25 @@ RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, mi
                   minlevel = minlevel==4 and 5 or minlevel -- should be 5, not 4, fits better with the scaling: 1,5,9,13,16
                   minlevel = minlevel==0 and skillbookstat["Act part"] or minlevel -- Act part is most of the time identical to MinLevel, but its 5 while MinLevel is 4, and I think 5 fits better. And sometimes MinLevel does not exist (0)
                   minlevel = tonumber(minlevel)
+                  local reqabilitiesbook = skillbookstat.Requirements
+                  for i,req in ipairs(reqabilitiesbook) do -- several mods list "Level" within the book Requirements, while vanilla never does this..
+                    if req.Requirement=="Level" then
+                      if tonumber(req.Param) > minlevel then
+                        minlevel = tonumber(req.Param)
+                      end
+                      break
+                    end
+                  end
                   if minlevel>0 then -- without MinLevel are often Quest or Cheat skillbooks
-                    local reqabilitiesbook = skillbookstat.Requirements
                     skillbookstat["Value"] = 0 -- reduce value of all skillbooks to 0, to avoid any exploits
                     Ext.Stats.Sync(skillbook)
-                    CacheSkillsAutoLearn[skill] = {minlevel=skillbookstat.MinLevel,reqabilitiesmem=reqabilitiesmem,reqabilitiesbook=reqabilitiesbook,reqsourcepoints=reqsourcepoints}
+                    CacheSkillsAutoLearn[skill] = {minlevel=minlevel,reqabilitiesmem=reqabilitiesmem,reqabilitiesbook=reqabilitiesbook,reqsourcepoints=reqsourcepoints}
                     Ext.Print("AutoLearnSkill_Serp: Allow to auto learn skill:",skill)
                   else
                     Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, skillbook has no MinLevel:",skill)
                   end
                 else
-                  Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, because skillbook is in no TreasureTable (~=Reward) and not craftable:",skill,skillbook,UseAPCost)
+                  Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, because skillbook is in no TreasureTable (~=Reward) and not craftable. Or has UseAPCost>4 or is marked as Unique:",skill,skillbook,UseAPCost,skillbookstat.Unique)
                 end
               else
                 Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, it has no skillbookstat:",skill)

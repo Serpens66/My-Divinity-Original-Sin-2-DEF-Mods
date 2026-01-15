@@ -1,5 +1,11 @@
 -- https://github.com/Norbyte/ositools/blob/master/Docs/LuaAPIDocs.md and the changelogs for v56 onwards, because they are not included in docu
 
+-- Known issue for slugs and ice infusion:
+-- they automatic follow-character behaviour tries to avoid the ice surface and therefore its constantly moving.
+-- Dont know how to disable this.
+-- But since they dont auto-move in fights, it should not be a big problem.
+
+
 SharedFns = {}
 
 if Ext.IsServer() then
@@ -7,8 +13,6 @@ if Ext.IsServer() then
 end
 
 
-FreeInfusions = {}
--- FreeInfusions = {Target_IceInfusion_Normal={Summoning=1,WaterSpecialist=1}}
 
 -- the giftbag adds 3 magic points to every summon for whatever reason, so do this more compatible in lua here
 local AddMagicPoints = {"Summon_Poison_Slug","Summon_Oil_Slug","Summon_Plant","Summon_Fire_Slug","Summon_Incarnate_Character","Summon_Incarnate_Giant_Character",
@@ -169,7 +173,7 @@ SharedFns.OnStatsLoaded = function(e)
     table.insert(AllRelevantStats,name)
   end
 
-  for i,name in pairs(AllRelevantStats) do
+  for i,name in pairs(AllRelevantStats) do -- doing this and checking also stat.Using makes sure we hit all even after inheritance took place
     local stat = Ext.Stats.Get(name)
     if stat then
       if name=="Summon_Incarnate" or stat.Using=="Summon_Incarnate" then
@@ -317,7 +321,7 @@ SharedFns.OnStatsLoaded = function(e)
         stat.Cooldown = todo.Cooldown
         stat.DescriptionRef = todo.DescriptionRef
       
-    
+      -- increase Lifetime from slugs
       elseif name=="Projectile_LaunchPoisonSlug" or stat.Using=="Projectile_LaunchPoisonSlug" or name=="Projectile_LaunchOilBlob" or stat.Using=="Projectile_LaunchOilBlob" then
         stat.SpawnLifetime = 5
         
@@ -352,16 +356,19 @@ SharedFns.OnStatsLoaded = function(e)
         table.insert(stat.Flags,"SlippingImmunity")
         table.insert(stat.Flags,"ChilledImmunity")
         
-        -- make incarnate stronger by giving it 5 of all abilities (vanilla only has WarriorLore 5, which means with element infusion it will in fact deal less damage)
+        -- make incarnate stronger by giving of all elemental abilities (vanilla only has WarriorLore 5, which means with element infusion it will in fact deal less damage)
         -- (in fact these ability points of incarnate scale with level of the caster)
-        -- dont change other summons, because eg. for a FireSlug it is ok, if after poison infusion it does less damage, since its not their main damage type.
-         -- but incarnate should be allrounder
+        -- dont change other summons, because eg. for a FireSlug it is ok, if after poison infusion it does less damage, since its not their main damage type. but incarnate should be allrounder
       elseif name=="Summon_Incarnate_Character" or stat.Using=="Summon_Incarnate_Character" then
-        stat.FireSpecialist = 5
-        stat.WaterSpecialist = 5
-        stat.AirSpecialist = 5
-        stat.EarthSpecialist = 5
-      
+        stat.FireSpecialist = 3 -- only integer allowed... (perfect would be 2.5, which would result in 5 at lvl 20 (+5 by infusion), but resulting in 6 is also ok)
+        stat.WaterSpecialist = 3
+        stat.AirSpecialist = 3
+        stat.EarthSpecialist = 3
+      -- fix Oil infusion giving source stats, although it is no source infusion. so giving same stats like poison infusion now
+      elseif name=="Stats_Infusion_Oil" or stat.Using=="Stats_Infusion_Oil" then
+        stat.EarthSpecialist = 5 -- instead of vanilla 10
+        stat.EarthResistance = 100 -- instead of vanilla 120
+        
       end
       
     end
@@ -407,30 +414,51 @@ SharedFns.OnStatsLoaded = function(e)
     end
   end
   
-  
+  -- (not sure if client of server should execute template changes, but both seems to work (StatsLoaded and SessionLoaded))
   -- Adjusting the RootTemplates is not completely possible, because we dont have access to Scripts in them with Ext.Template.GetTemplate
   -- we can change Tags, but this is not important, since we search for SUMMON anyways
   -- But we can change Scripts indirectly by using Ext.IO.AddPathOverride below!
   -- so we will remove the game overwritten RootTemplate files and do the changes here, if it was not just a Tag change
-  -- Luckily the Slugs seem to work fine after AddPathOverride, although the scripts had different starting Paramaters!
+  -- Luckily the Slugs seem to work fine after AddPathOverride, although the scripts had different starting Paramaters (scripts itself have the same, but some templates changed them)!
   local template = Ext.Template.GetTemplate("6f8db517-f1af-4b47-b095-f239fd2293d0")
   template.Equipment = "Summon_Toy"
+  for templateid,template in pairs(Ext.Template.GetAllRootTemplates()) do -- make sure everyones Blood/surface does not stay forever...
+    if template and Ext.Types.GetObjectType(template)=="CharacterTemplate" and template.OnDeathActions then
+      if template.Stats:lower():find("slug") or template.Name:lower():find("slug") or template.Stats:lower():find("blob") or template.Name:lower():find("blob") or template.Stats:lower():find("bloated") or template.Name:lower():find("bloated") then -- only for any slug kind chars, cause maybe someone indeed wants infinite duration, although I doubt this should ever be the case...
+        for _,deathaction in pairs(template.OnDeathActions) do 
+          if deathaction.Type=="CreatePuddle" and deathaction.LifeTime==-1 then -- nothing should last forever...
+            deathaction.LifeTime = 0 -- makes it use the default surface LifeTime
+          end
+        end
+      end
+    end
+  end
   -- 6f8db517-f1af-4b47-b095-f239fd2293d0 Summons_WindUpToy
-  -- 7ecb0aa4-376f-4e9a-99d6-6eff900c3c77 Summons_PoisonOoze
-  -- 40c6a905-74c3-4d89-9ffe-d3493a22cabd Summons_BloatedCorpse
+  -- 7ecb0aa4-376f-4e9a-99d6-6eff900c3c77 Summons_PoisonOoze (übergibt andere script parameter, diese sind aber identisch zum default im script, deswegen kein problem)
+  -- 40c6a905-74c3-4d89-9ffe-d3493a22cabd Summons_BloatedCorpse (garkein problem ,da script parameter identisch)
   -- 53f49a2d-36a1-4c47-8cef-91c0f3ae0ef9 Summons_SoulWolf
-  -- 163befcc-d8f6-4c3a-ba1d-536d1f7568bc Summons_FireSlug
+  -- 163befcc-d8f6-4c3a-ba1d-536d1f7568bc Summons_FireSlug (die relevanten Paramater sind im vanilla template gesetzt und der rest ist identisch mit default)
   -- 0441f88d-4a0a-40ec-ac69-3a4fe7906cdf Summons_Condor
-  -- e61da3a2-6dfd-4f2e-8f62-6bfbddb5a7f9 Summons_OilBlob
+  -- e61da3a2-6dfd-4f2e-8f62-6bfbddb5a7f9 Summons_OilBlob (nur param bool_ShouldIgnoreOil wurde von 1 auf 0 geändert, aber wird im skript eh nicht genutzt und hat auch beim test ingame keine auswirkung gezeigt)
   -- e63a712f-fc87-4469-8848-fd8941043afd Summons_Plant
+  
 end
 Ext.IO.AddPathOverride("Public/Shared/Scripts/Bomber.charScript", "Public/SumImpr_Serp/Scripts/CMP_Bomber.charScript")
 Ext.IO.AddPathOverride("Public/CMP_SummoningImproved_Kamil/Scripts/CMP_Bomber.charScript", "Public/SumImpr_Serp/Scripts/CMP_Bomber.charScript")
 Ext.IO.AddPathOverride("Public/Shared/Scripts/CMB_Slug.charScript", "Public/SumImpr_Serp/Scripts/CMP_Slugs.charScript")
 Ext.IO.AddPathOverride("Public/CMP_SummoningImproved_Kamil/Scripts/CMP_Slugs.charScript", "Public/SumImpr_Serp/Scripts/CMP_Slugs.charScript")
+-- By replacing the CMB_Slug.charScript with CMP_Slugs.charScript, also all Mod Slugs using this will work automatically
 
 
--- add free infusion skills, so we dont need a skillbook for them
+-- ############################################################################################################
+-- ############################################################################################################
+
+
+-- add free infusion skills, so we dont need a skillbook for them (currently none, all have skillbooks now)
+
+FreeInfusions = {}
+-- FreeInfusions = {Target_IceInfusion_Normal={Summoning=1,WaterSpecialist=1}}
+
 SharedFns.DoFreeInfusions = function(charGUID)
   for skill,reqs in pairs(FreeInfusions) do
     local canlearn = true
@@ -628,6 +656,8 @@ SharedFns.OnCharacterStatusApplied = function(charGUID,status,causee)
                 EsvReforger:ChangeDamageType(weapon,newweapondamagetype,char,true)
               end
             end
+            -- outcommented because: for whatever reaon the surface is slightly buggy when done in lua:
+            -- the surface spawned by this (dying) has unlimited duration for whatever reason, while in Osiris script is no issue..
             if SharedFns.SlugsToSurface[templateid] then
               if SharedFns.InfusionToSurface[status] then
                 Osi.CharacterSetCustomBloodSurface(charGUID,SharedFns.InfusionToSurface[status])
@@ -640,9 +670,9 @@ SharedFns.OnCharacterStatusApplied = function(charGUID,status,causee)
   end
 end
 
+-- outcommented because done in Osiris script instead
 if Ext.IsServer() then
-  SharedFns.RegisterProtectedOsirisListener("StoryEvent", 2, "before", function(charGUID, event)
-    -- print("OnObjectStoryEvent",charGUID, event)
+  SharedFns.RegisterProtectedOsirisListener("StoryEvent", 2, "after", function(charGUID, event)
     if Osi.ObjectIsCharacter(charGUID)==1 then
       if event=="CMP_ResetBloodSurface" then
         local char = Ext.Entity.GetCharacter(charGUID)
@@ -667,8 +697,22 @@ end
 
 -- ########################
 
+-- Slug template OnDeathActions
+-- "OnDeathActions" :
+        -- [
+                -- {
+                        -- "CellAtGrow" : 4,
+                        -- "ExternalCauseAsSurfaceOwner" : true,
+                        -- "GrowTimer" : 0.10000000149011612,
+                        -- "LifeTime" : 5.0,
+                        -- "SurfaceType" : "Blood",
+                        -- "Timeout" : 0.0,
+                        -- "TotalCells" : 50,
+                        -- "Type" : "CreatePuddle"
+                -- }
+        -- ],
 
--- RootTemplate
+-- RootTemplate Toy
 -- {
 	-- "AIBoundsAIType" : 2,
 	-- "AIBoundsHeight" : 1.440000057220459,

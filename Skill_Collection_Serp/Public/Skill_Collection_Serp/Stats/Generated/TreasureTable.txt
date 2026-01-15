@@ -286,15 +286,11 @@ object category "I_SKILLBOOK_Polymorph_TabulaRasa",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Polymorph_MagicUnlock",1,0,0,0,0,0,0,0
 new subtable "1,1"
-object category "I_SKILLBOOK_Source_MultiPurge",1,0,0,0,0,0,0,0
-new subtable "1,1"
 object category "I_SKILLBOOK_Source_MassBless",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SCROLL_Bless",1,0,0,0,0,0,0,0
 new subtable "1,1"
 object category "I_SKILLBOOK_Source_MassCurse",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_SKILLBOOK_Source_ChannelSource",1,0,0,0,0,0,0,0
 new subtable "3,1"
 object category "I_TOOL_Ink_Pot_A_Quill_Source_A",1,0,0,0,0,0,0,0
 new subtable "2,1"

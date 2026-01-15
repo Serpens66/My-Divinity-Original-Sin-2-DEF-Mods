@@ -438,6 +438,7 @@
 //DB_CMP_SummoningImproved_InfusionSurface("INF_CURSED_OIL", "SurfaceOilCursed");
 //DB_CMP_SummoningImproved_InfusionSurface("INF_BLOOD", "SurfaceBlood");
 //DB_CMP_SummoningImproved_InfusionSurface("INF_CURSED_BLOOD", "SurfaceBloodCursed");
+//DB_CMP_SummoningImproved_InfusionSurface("INF_ICE", "SurfaceWaterFrozen");
 //
 ////Wind Up Toy QRYS, Serp: reversed logic, to list the Infusions which should remove the fire suicide
 ////DB_CMP_SummoningImproved_WindUp_KeepSuicide("WarpInfusion");
@@ -522,3 +523,73 @@
 //
 //ENDEXITSECTION
 //ParentTargetEdge "Start"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//// Reduced code for the CharacterSetCustomBloodSurface. But meanwhile we also do this in lua instead.
+//
+//Version 1
+//SubGoalCombiner SGC_AND
+//INITSECTION
+//
+////Corpse Death Surfaces
+//DB_CMP_SummoningImproved_InfusionSurface("FireInfusion", "SurfaceFire");
+//DB_CMP_SummoningImproved_InfusionSurface("IceInfusion", "SurfaceWaterFrozenBlessed");
+//DB_CMP_SummoningImproved_InfusionSurface("ElectricInfusion", "SurfaceWaterElectrified");
+//DB_CMP_SummoningImproved_InfusionSurface("PoisonInfusion", "SurfacePoison");
+//DB_CMP_SummoningImproved_InfusionSurface("NecrofireInfusion", "SurfaceFireCursed");
+//DB_CMP_SummoningImproved_InfusionSurface("WaterInfusion", "SurfaceWater");
+//DB_CMP_SummoningImproved_InfusionSurface("AcidInfusion", "SurfacePoisonCursed");
+//DB_CMP_SummoningImproved_InfusionSurface("CursedElectricInfusion", "SurfaceWaterCloudElectrifiedCursed");
+//DB_CMP_SummoningImproved_InfusionSurface("OilInfusion", "SurfaceOil");
+//DB_CMP_SummoningImproved_InfusionSurface("CursedOilInfusion", "SurfaceOilCursed");
+//DB_CMP_SummoningImproved_InfusionSurface("BloodInfusion", "SurfaceBlood");
+//DB_CMP_SummoningImproved_InfusionSurface("CursedBloodInfusion", "SurfaceBloodCursed");
+//DB_CMP_SummoningImproved_InfusionSurface("IceNormalInfusion", "SurfaceWaterFrozen");
+//
+//KBSECTION
+//
+////Event
+//IF
+//CharacterStatusApplied(_Target, _Skill, _Source)
+//AND
+//CharacterIsSummon(_Target, 1)
+//AND
+//StringContains(_Skill, "Infusion", 1)
+//AND
+//DB_CMP_SummoningImproved_InfusionSurface(_StatusPart, _Surface)
+//AND
+//StringContains(_Skill, _StatusPart, 1)
+//THEN
+//CharacterSetCustomBloodSurface(_Target, _Surface);
+//
+//
+//
+////Reset blood surface for bloated corpse [DOS2EE-8491]
+//IF
+//StoryEvent(_Char, "CMP_ResetBloodSurface")
+//AND
+//GetTemplate(_Char, _Temp)
+//AND
+//_Temp == "Summons_BloatedCorpse_40c6a905-74c3-4d89-9ffe-d3493a22cabd"
+//THEN
+//DebugBreak(_Temp);
+//DebugBreak("Reseting blood surface.");
+//CharacterSetCustomBloodSurface((CHARACTERGUID)_Char, "SurfaceBlood");
+//
+//EXITSECTION
+//
+//ENDEXITSECTION
+//ParentTargetEdge "Start"
+//

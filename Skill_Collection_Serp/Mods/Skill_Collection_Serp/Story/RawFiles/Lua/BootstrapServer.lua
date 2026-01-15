@@ -59,11 +59,21 @@ local function IsPlayerAlly(charGUID,playercharGUID)
   return nil
 end
 
+-- print(Ext.Entity.GetStatus(Osi.CharacterGetHostCharacter(), Osi.NRD_StatusGetHandle(Osi.CharacterGetHostCharacter(),"ENCOURAGED")))
+-- print(Ext.Entity.GetStatus(Osi.CharacterGetHostCharacter(), Osi.NRD_StatusGetHandle(Osi.CharacterGetHostCharacter(),"SLEEPING_PHYSICAL")))
+
 local function LooseStatusWithChance(charGUID,status,chance)
   if chance>0 and Osi.HasActiveStatus(charGUID,status)==1 and (chance>=1 or Ext.Random()<=chance) then
-    Osi.RemoveStatus(charGUID,status)
-    local statusname_loc = Ext.L10N.GetTranslatedStringFromKey(Ext.Stats.Get(status).DisplayName,status)
-    Osi.CharacterStatusText(charGUID,"<font color='#c80030'>Lost Status</font>: "..statusname_loc)
+    local statusHandle = Osi.NRD_StatusGetHandle(charGUID,status)
+    local statusobj = Ext.Entity.GetStatus(charGUID, statusHandle)
+    if statusobj then
+      -- Ext.Print("LooseStatusWithChance:",status,_D(statusobj))
+      if statusobj.Turn>0 or statusobj.TurnTimer>0.5 then -- if Turn 0 and TurnTimer <= 0.5 then this status was just applied with this attack, so dont remove it 
+        Osi.RemoveStatus(charGUID,status)
+        local statusname_loc = Ext.L10N.GetTranslatedStringFromKey(Ext.Stats.Get(status).DisplayName,status)
+        Osi.CharacterStatusText(charGUID,"<font color='#c80030'>Lost Status</font>: "..statusname_loc)
+      end
+    end
   end
 end
 
@@ -115,3 +125,187 @@ RegisterProtectedOsirisListener("CharacterStatusRemoved", 3, "after", function(c
   -- end
 end)
 
+
+
+
+-- LooseStatusWithChance:	SLEEPING_PHYSICAL (directly with the hit that appplied it)
+-- {
+	-- "ApplyStatusOnTick" : "",
+	-- "BringIntoCombat" : false,
+	-- "CanEnterChance" : 100,
+	-- "Channeled" : false,
+	-- "CleansedByHandle" : "userdata: 0000000000000000",
+	-- "CurrentFreezeTime" : 0.0,
+	-- "CurrentLifeTime" : 5.9666657447814941,
+	-- "DamageSourceType" : "StatusEnter",
+	-- "EffectTime" : 0.0,
+	-- "Flags0" : 
+	-- [
+		-- "InitiateCombat",
+		-- "IsLifeTimeSet"
+	-- ],
+	-- "Flags1" : 
+	-- [
+		-- "IsHostileAct"
+	-- ],
+	-- "Flags2" : 
+	-- [
+		-- "RequestClientSync2",
+		-- "ForceStatus",
+		-- "Started"
+	-- ],
+	-- "ForceFailStatus" : false,
+	-- "ForceStatus" : true,
+	-- "FreezeTime" : 0.0,
+	-- "FrozenFlag" : 96,
+	-- "HealEffectOverride" : "Unknown4",
+	-- "Influence" : false,
+	-- "InitiateCombat" : true,
+	-- "IsFromItem" : false,
+	-- "IsHostileAct" : true,
+	-- "IsInvulnerable" : false,
+	-- "IsLifeTimeSet" : true,
+	-- "IsOnSourceSurface" : false,
+	-- "IsResistingDeath" : false,
+	-- "ItemHandles" : [],
+	-- "Items" : [],
+	-- "KeepAlive" : false,
+	-- "LifeTime" : 6.0,
+	-- "LoseControl" : false,
+	-- "NetID" : 131084,
+	-- "OriginalWeaponStatsId" : "",
+	-- "OverrideWeaponHandle" : "userdata: 0000000000000000",
+	-- "OverrideWeaponStatsId" : "",
+	-- "OwnerHandle" : "userdata: 0DC000020000006E",
+	-- "Poisoned" : false,
+	-- "RequestClientSync" : false,
+	-- "RequestClientSync2" : true,
+	-- "RequestDelete" : false,
+	-- "RequestDeleteAtTurnEnd" : false,
+	-- "ResetAllCooldowns" : false,
+	-- "ResetCooldownsAbilities" : [],
+	-- "ResetOncePerCombat" : false,
+	-- "SavingThrow" : 33,
+	-- "ScaleWithVitality" : false,
+	-- "Skill" : [],
+	-- "SourceDirection" : 
+	-- [
+		-- 0.0,
+		-- 1.0,
+		-- 0.0
+	-- ],
+	-- "StackId" : "Stack_Sleeping",
+	-- "StartTime" : 52.36266683973372,
+	-- "StartTimer" : 0.0,
+	-- "Started" : true,
+	-- "StatsId" : "Stats_Sleeping",
+	-- "StatsIds" : 
+	-- [
+		-- {
+			-- "StatsId" : "Stats_Sleeping",
+			-- "Turn" : 0
+		-- }
+	-- ],
+	-- "StatsMultiplier" : 1.0,
+	-- "StatusHandle" : "userdata: 0000000100000007",
+	-- "StatusId" : "SLEEPING_PHYSICAL",
+	-- "StatusOwner" : [],
+	-- "StatusSourceHandle" : "userdata: 0DC000020000006E",
+	-- "StatusType" : "INCAPACITATED",
+	-- "Strength" : 0.0,
+	-- "SurfaceChanges" : [],
+	-- "TargetHandle" : "userdata: 0DC000020000006E",
+	-- "Turn" : 0,
+	-- "TurnTimer" : 0.033334299921989441
+-- }
+-- LooseStatusWithChance:	SLEEPING_PHYSICAL
+-- {
+	-- "ApplyStatusOnTick" : "",
+	-- "BringIntoCombat" : false,
+	-- "CanEnterChance" : 100,
+	-- "Channeled" : false,
+	-- "CleansedByHandle" : "userdata: 0000000000000000",
+	-- "CurrentFreezeTime" : 0.0,
+	-- "CurrentLifeTime" : 3.6332876682281494,
+	-- "DamageSourceType" : "StatusEnter",
+	-- "EffectTime" : 0.0,
+	-- "Flags0" : 
+	-- [
+		-- "InitiateCombat",
+		-- "IsLifeTimeSet"
+	-- ],
+	-- "Flags1" : 
+	-- [
+		-- "IsHostileAct"
+	-- ],
+	-- "Flags2" : 
+	-- [
+		-- "RequestClientSync2",
+		-- "ForceStatus",
+		-- "Started"
+	-- ],
+	-- "ForceFailStatus" : false,
+	-- "ForceStatus" : true,
+	-- "FreezeTime" : 0.0,
+	-- "FrozenFlag" : 96,
+	-- "HealEffectOverride" : "Unknown4",
+	-- "Influence" : false,
+	-- "InitiateCombat" : true,
+	-- "IsFromItem" : false,
+	-- "IsHostileAct" : true,
+	-- "IsInvulnerable" : false,
+	-- "IsLifeTimeSet" : true,
+	-- "IsOnSourceSurface" : false,
+	-- "IsResistingDeath" : false,
+	-- "ItemHandles" : [],
+	-- "Items" : [],
+	-- "KeepAlive" : false,
+	-- "LifeTime" : 6.0,
+	-- "LoseControl" : false,
+	-- "NetID" : 131084,
+	-- "OriginalWeaponStatsId" : "",
+	-- "OverrideWeaponHandle" : "userdata: 0000000000000000",
+	-- "OverrideWeaponStatsId" : "",
+	-- "OwnerHandle" : "userdata: 0DC000020000006E",
+	-- "Poisoned" : false,
+	-- "RequestClientSync" : false,
+	-- "RequestClientSync2" : true,
+	-- "RequestDelete" : false,
+	-- "RequestDeleteAtTurnEnd" : false,
+	-- "ResetAllCooldowns" : false,
+	-- "ResetCooldownsAbilities" : [],
+	-- "ResetOncePerCombat" : false,
+	-- "SavingThrow" : 33,
+	-- "ScaleWithVitality" : false,
+	-- "Skill" : [],
+	-- "SourceDirection" : 
+	-- [
+		-- 0.0,
+		-- 1.0,
+		-- 0.0
+	-- ],
+	-- "StackId" : "Stack_Sleeping",
+	-- "StartTime" : 52.36266683973372,
+	-- "StartTimer" : 0.0,
+	-- "Started" : true,
+	-- "StatsId" : "Stats_Sleeping",
+	-- "StatsIds" : 
+	-- [
+		-- {
+			-- "StatsId" : "Stats_Sleeping",
+			-- "Turn" : 0
+		-- }
+	-- ],
+	-- "StatsMultiplier" : 1.0,
+	-- "StatusHandle" : "userdata: 0000000100000007",
+	-- "StatusId" : "SLEEPING_PHYSICAL",
+	-- "StatusOwner" : [],
+	-- "StatusSourceHandle" : "userdata: 0DC000020000006E",
+	-- "StatusType" : "INCAPACITATED",
+	-- "Strength" : 0.0,
+	-- "SurfaceChanges" : [],
+	-- "TargetHandle" : "userdata: 0DC000020000006E",
+	-- "Turn" : 0,
+	-- "TurnTimer" : 2.3667118549346924
+-- }
+-- LooseStatusWithChance:	SLEEPING_PHYSICAL
