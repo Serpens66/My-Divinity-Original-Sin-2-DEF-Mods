@@ -111,16 +111,19 @@ local TorturerStati = {"BURNING","POISONED","BLEEDING","NECROFIRE","ACID","SUFFO
 Ext.Events.BeforeStatusApply:Subscribe(function(ev)
   local status = ev.Status ---@type EsvStatus
   local statusname = status.StatusId
-  if not ev.PreventStatusApply then
+  local sourcetype = status.DamageSourceType
+  if not ev.PreventStatusApply and sourcetype~="StatusTick" and sourcetype~="GM" then -- StatusTick is aura
     if statusname and not engineStatuses[statusname] and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
-      -- Ext.Print("ArmorBasedSavingThrows_Serp: BeforeStatusApply",statusname,_D(status))
-      
+      -- if statusname=="POISONED" then
+        -- Ext.Print("ArmorBasedSavingThrows_Serp: BeforeStatusApply",statusname,sourcetype,status.LifeTime)
+      -- end
       if Ext.Utils.GetHandleType(status.OwnerHandle)=="ServerCharacter" then -- only for characters, we do not care for items
         local source = Ext.Utils.GetHandleType(status.StatusSourceHandle)=="ServerCharacter" and Ext.Entity.GetCharacter(status.StatusSourceHandle) or nil ---@type EsvCharacter
         local target = Ext.Entity.GetCharacter(status.OwnerHandle) ---@type EsvCharacter .. 
         local sourceTorturer = source and source.Stats.TALENT_Torturer or false -- effects from him are not blocked. talent does not work for SurfaceStatus
         local targetGuid = target and target.MyGuid
-        if not (status.DamageSourceType~="SurfaceStatus" and sourceTorturer and table_contains_value(TorturerStati,statusname)) and status.ForceStatus==false and target then
+        local FromSurface = sourcetype=="SurfaceStatus" or sourcetype=="SurfaceMove" or sourcetype=="SurfaceCreate"
+        if not (not FromSurface and sourceTorturer and table_contains_value(TorturerStati,statusname)) and status.ForceStatus==false and target then
           local StatusStat = Ext.Stats.Get(statusname)
           local Raistlin = target and target.Stats.TALENT_Raistlin -- targets with this talent are not safe by armor
           if StatusStat and not Raistlin then
@@ -135,8 +138,14 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
                 savingchance = savingchance + Perseverance*0.01 - sourceWits*0.005 -- extra chance of 1% to resist also without armor
                 if SavingThrow=="PhysicalArmor" and target.Stats.MaxArmor>0 then
                   savingchance = savingchance + target.Stats.CurrentArmor / target.Stats.MaxArmor
+                  if sourcetype=="SurfaceStatus" then -- higher resist chance on surface (dont know when SurfaceMove is done, not when moving on surface), because it can trigger often on moving. but only when having some armor
+                    savingchance = savingchance + 0.25
+                  end
                 elseif SavingThrow=="MagicArmor" and target.Stats.MaxMagicArmor>0 then
                   savingchance = savingchance + target.Stats.CurrentMagicArmor / target.Stats.MaxMagicArmor
+                  if sourcetype=="SurfaceStatus" then -- higher resist chance on surface (dont know when SurfaceMove is done, not when moving on surface), because it can trigger often on moving. but only when having some armor
+                    savingchance = savingchance + 0.25
+                  end
                 end
                 if savingchance > 0 then
                   local Blessed = Osi.HasActiveStatus(targetGuid,"BLESSED")==1 and true or false

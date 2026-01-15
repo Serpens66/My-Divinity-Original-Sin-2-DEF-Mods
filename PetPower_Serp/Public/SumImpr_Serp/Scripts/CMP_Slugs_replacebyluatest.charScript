@@ -1,0 +1,25 @@
+#INCLUDE DefaultCharacter
+
+INIT
+	USING SHARED DefaultCharacter
+	CHARACTER:__Me
+
+EVENTS
+
+EVENT OnShutdown
+ON
+	OnShutdown()
+ACTIONS
+  CharacterEvent(__Me,"OnSlugShutdown_PetPowerSerp")
+  
+EVENT OnDie
+ON
+	OnDie(__Me,_,_,_)
+ACTIONS
+  CharacterEvent(__Me,"OnSlugDie_PetPowerSerp")
+  
+EVENT OnActivate
+ON
+	OnActivate()
+ACTIONS
+  CharacterEvent(__Me,"OnSlugActivate_PetPowerSerp")

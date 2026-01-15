@@ -11,7 +11,7 @@ SharedFns.HowToAddRandomTalents = "OnCombat"
 -- https://docs.larian.game/Talent_list
 -- coutcommended most Weapon requirements, since 1) in stats we see no weapon and 2) slimes or so also dont use weapons (but they also dont have any ability..)
 SharedFns.num_talents = 2
-local RandomTalents = {
+RandomTalents = {
   Ambidextrous={weight=2,reqWeaponTypes={"None"}}, -- Offhand must be free
   AttackOfOpportunity={weight=5,reqAbilities={"WarriorLore"} },--,reqWeaponTypes={"None","Knife","Sword","Axe","Club","Spear","Staff"}}, -- any melee
   ViolentMagic={weight=4,reqAbilities={"EarthSpecialist","AirSpecialist","WaterSpecialist","FireSpecialist","Necromancy","Summoning"}},
@@ -34,13 +34,6 @@ local RandomTalents = {
   Human_Inventive={weight=2},
   Dwarf_Sturdy={weight=2},
   Lizard_Resistance={weight=2},
-  -- gift bag, TODO: evtl. check obs Talent gibt? Geht das? nicht nur ob giftbag aktiv, kann ja auch via mod geaddet sein
-  Sadist={weight=2,reqAbilities={"WarriorLore"} },--,reqWeaponTypes={"None","Knife","Sword","Axe","Club","Spear","Staff"}}, -- any melee
-  MagicCycles={weight=3,reqAbilities={"EarthSpecialist","AirSpecialist","WaterSpecialist","FireSpecialist"}},
-  Haymaker={weight=1},
-  Gladiator={weight=1},
-  Soulcatcher={weight=1},
-  -- Indomitable={weight=5},
   -- Story Talents
   Vitality ={weight= 2}, -- +20%HP
   BeastMaster ={weight=4,reqAbilities={"Summoning"}},
@@ -78,9 +71,23 @@ local RandomTalents = {
   FireSpells={weight=3,reqAbilities={"FireSpecialist"}},
   None={weight=50},
 }
+if Ext.IsServer() then
+  Ext.Events.SessionLoaded:Subscribe(function ()
+    if Ext.Mod.IsModLoaded("ca32a698-d63e-4d20-92a7-dd83cba7bc56") then -- DivineTalents
+      -- add divine talents from giftbag, if it is enabled
+      RandomTalents.Sadist={weight=2,reqAbilities={"WarriorLore"} }--,reqWeaponTypes={"None","Knife","Sword","Axe","Club","Spear","Staff"}}, -- any melee
+      RandomTalents.MagicCycles={weight=3,reqAbilities={"EarthSpecialist","AirSpecialist","WaterSpecialist","FireSpecialist"}}
+      RandomTalents.Haymaker={weight=1}
+      RandomTalents.Gladiator={weight=1}
+      RandomTalents.Soulcatcher={weight=1}
+      RandomTalents.Jitterbug={weight=2} -- teleport away from attacker if armor is broken, only works if divine talents is active, since the txt script for this is in there
+      -- RandomTalents.Indomitable={weight=1} -- is too op
+    end
+  end)
+end
 
-local num_status = 1
-local RandomStatus = {
+num_status = 1
+RandomStatus = {
   BLESSED={weight=2,maxrounds=5},
   HASTED={weight=2,maxrounds=5},
   CLEAR_MINDED={weight=2,maxrounds=5},

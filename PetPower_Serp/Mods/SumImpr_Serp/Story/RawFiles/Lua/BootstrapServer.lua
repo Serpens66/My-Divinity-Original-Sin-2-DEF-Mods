@@ -1,5 +1,6 @@
 Ext.Require("Shared_Serp.lua")
 
+-- Ext.Require("Server_SurfacePath.lua") -- does not work good enough..
 
 SharedFns.RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, minor, patch, build)
   SharedFns.OnSaveLoaded(major, minor, patch, build)

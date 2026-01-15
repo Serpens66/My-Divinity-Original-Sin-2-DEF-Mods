@@ -160,7 +160,7 @@ ACTIONS
 
 EVENT IceNormalInfusion
 ON
-	OnCharacterStatusApplied(__Me, INF_ICE)
+	OnCharacterStatusApplied(__Me, INF_ICE_ALL)
 ACTIONS
   CreateSurfaceAt(__Me,"SurfaceNone",1.25,1)
 	Set(%Surface, SurfaceWaterFrozen)

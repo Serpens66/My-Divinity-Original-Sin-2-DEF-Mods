@@ -84,13 +84,13 @@
                             <attribute id="UUID" value="c240155c-2e4e-44f5-824e-017918e13037" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
-                        <!-- <node id="ModuleShortDesc"> -->
-                            <!-- <attribute id="Folder" value="SumImpr_Serp" type="30" /> -->
-                            <!-- <attribute id="MD5" value="" type="23" /> -->
-                            <!-- <attribute id="Name" value="Pet Power (Serp)" type="22" /> -->
-                            <!-- <attribute id="UUID" value="710cb7a3-c957-4b4c-9eee-cbf857ec2f3c" type="22" /> -->
-                            <!-- <attribute id="Version" value="268435456" type="4" /> -->
-                        <!-- </node> -->
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="SumImpr_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Pet Power (Serp)" type="22" />
+                            <attribute id="UUID" value="710cb7a3-c957-4b4c-9eee-cbf857ec2f3c" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
                         <node id="ModuleShortDesc">
                             <attribute id="Folder" value="RandomTalentStatusEnemies_Serp" type="30" />
                             <attribute id="MD5" value="" type="23" />

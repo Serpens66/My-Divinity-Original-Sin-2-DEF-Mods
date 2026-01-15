@@ -14,9 +14,6 @@
 
 -- dump a table: _D(table)
 
--- TODO:
--- evlt. nochmal giftbag CMP_SummoningImproved_Kamil durchgucken ob ein paar skills davon zufügen zu anysummon mod
-
 
 
 SharedFns = {}
@@ -819,6 +816,40 @@ SharedFns.OnCharacterStatusRemoved = function(_charGUID, status, nilSource)
     Osi.ApplyStatus(charGUID,"POST_PHYS_CONTROL",0,1)
   end
 end
+-- ####################################################
+
+if Ext.IsServer() then
+  -- UndeadFoodFix: In vanilla undead do not get the food buff, if the healing of food damages them.
+   -- this fix makes sure to grant them the buff while getting damage
+  ---- Full credit to LaughingLeader UndeadFoodFix, copy pasted from VanillaPlus Mod
+  LastPotion = {}
+  Ext.RegisterOsirisListener("CanUseItem", 3, "after", function(targetId, itemId, request)
+      local item = Ext.GetItem(itemId)
+      if item and NRD_StatGetType(item.StatsId) == "Potion" then
+          LastPotion[GetUUID(targetId)] = item.StatsId
+      end
+  end)
+  Ext.RegisterOsirisListener("NRD_OnStatusAttempt", 4, "after", function(targetId, statusId, handle, source)
+      if statusId == "CONSUME" then
+          local target = Ext.Entity.GetGameObject(targetId)
+          local statsId = target and LastPotion[target.MyGuid]
+          if statsId then
+              LastPotion[target.MyGuid] = nil
+              local stat = Ext.Stats.Get(statsId)
+              local duration = stat and stat.Duration or 0
+              if duration > 0 and (target:HasTag("UNDEAD") or target.Stats.TALENT_Zombie) then
+                  local status = Ext.Entity.GetStatus(target.MyGuid, handle)
+                  if status.LifeTime == 0 then
+                      duration = math.ceil(duration * 6)
+                      status.LifeTime = duration
+                      status.CurrentLifeTime = duration
+                  end
+              end
+          end
+      end
+  end)
+end
+
 
 -- ################################################
 
@@ -898,7 +929,7 @@ end
 -- CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c
 
 -- Osi.CharacterLevelUpTo("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",20)
--- Osi.CharacterLevelUpTo("Humans_Hero_Female_7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe",10)
+-- Osi.CharacterLevelUpTo("Humans_Hero_Female_7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe",20)
 -- Osi.CharacterLevelUpTo("S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f",20)
 -- Osi.CharacterAddAbilityPoint("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",100)
 -- Osi.CharacterAddAbilityPoint("Humans_Hero_Female_7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe",100)
@@ -927,7 +958,7 @@ end
 -- Osi.CharacterStatusText("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","test")
 
 -- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Teleportation_ResurrectSkillCast")
--- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Shout_Summon_SuicideBomberOil")
+-- Osi.CharacterAddSkill("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","Projectile_LaunchOilBlob")
 
 
 -- local SkillbookTemplates = Mods.EpipEncounters.Epip.GetFeature("SkillbookTemplates"); Osi.ItemTemplateAddTo(SkillbookTemplates.GetForSkill("Target_MutePlayer")[1],"Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",1,1)

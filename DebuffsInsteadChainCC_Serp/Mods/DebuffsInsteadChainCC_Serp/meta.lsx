@@ -10,7 +10,7 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" value="Serp,Luxen" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
-                    <attribute id="Description" value="Everyone is immune to CC stati for 2 turns after they weared off, but receive debuffs instead if another CC would be applied (unless CC was applied by an ally). Requires script extender v60" type="30" />
+                    <attribute id="Description" value="Everyone is immune to CC stati for 2 turns after they weared off, but receive debuffs instead if another CC would be applied by an enemy. Requires script extender v60" type="30" />
                     <attribute id="DescriptionName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="DisplayName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="Folder" value="DebuffsInsteadChainCC_Serp" type="30" />

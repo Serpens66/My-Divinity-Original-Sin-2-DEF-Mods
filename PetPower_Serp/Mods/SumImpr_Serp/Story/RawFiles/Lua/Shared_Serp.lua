@@ -44,6 +44,11 @@ SPInfStatusReplace = {INF_RANGED="RangedInfusion",INF_POWER="PowerInfusion",INF_
 -- #######################################################
 -- #######################################################
 
+local function UnifycharGuid(charGUID,char)
+  char = char or Ext.Entity.GetCharacter(charGUID)
+  return char and char.MyGuid or charGUID,char -- looks slightly different..: Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd vs c451954c-73bf-46ce-a1d1-caa9bbdc3cfd
+end
+
 function SharedFns.RegisterProtectedOsirisListener(event, arity, state, callback)
 	Ext.Osiris.RegisterListener(event, arity, state, function(...)
 		if Ext.Server.GetGameState() == "Running" then
@@ -313,6 +318,9 @@ SharedFns.OnStatsLoaded = function(e)
         stat.DescriptionRef = todo.DescriptionRef
       
     
+      elseif name=="Projectile_LaunchPoisonSlug" or stat.Using=="Projectile_LaunchPoisonSlug" or name=="Projectile_LaunchOilBlob" or stat.Using=="Projectile_LaunchOilBlob" then
+        stat.SpawnLifetime = 5
+        
       elseif name=="_Summon_Incarnate_NecroFire_Infused" or stat.Using=="_Summon_Incarnate_NecroFire_Infused" then
         stat.DamageBoost = 10
       elseif name=="_Summon_Incarnate_BlessedIce_Infused" or stat.Using=="_Summon_Incarnate_BlessedIce_Infused" then
@@ -404,19 +412,21 @@ SharedFns.OnStatsLoaded = function(e)
   -- we can change Tags, but this is not important, since we search for SUMMON anyways
   -- But we can change Scripts indirectly by using Ext.IO.AddPathOverride below!
   -- so we will remove the game overwritten RootTemplate files and do the changes here, if it was not just a Tag change
+  -- Luckily the Slugs seem to work fine after AddPathOverride, although the scripts had different starting Paramaters!
   local template = Ext.Template.GetTemplate("6f8db517-f1af-4b47-b095-f239fd2293d0")
   template.Equipment = "Summon_Toy"
-  -- 7ecb0aa4-376f-4e9a-99d6-6eff900c3c77 Summons_PoisonOoze is kept as template, because not only the script, but also the Parameters changed alot, and I know no way to also change this in lua..
-  -- kept Summons_BloatedCorpse 40c6a905-74c3-4d89-9ffe-d3493a22cabd
-  -- removed, no relevant change: 53f49a2d-36a1-4c47-8cef-91c0f3ae0ef9 Summons_SoulWolf
-  -- kept 163befcc-d8f6-4c3a-ba1d-536d1f7568bc Summons_FireSlug
-  -- removed 0441f88d-4a0a-40ec-ac69-3a4fe7906cdf Summons_Condor
-  -- kept e61da3a2-6dfd-4f2e-8f62-6bfbddb5a7f9 Summons_OilBlob
-  -- removed e63a712f-fc87-4469-8848-fd8941043afd Summons_Plant
+  -- 6f8db517-f1af-4b47-b095-f239fd2293d0 Summons_WindUpToy
+  -- 7ecb0aa4-376f-4e9a-99d6-6eff900c3c77 Summons_PoisonOoze
+  -- 40c6a905-74c3-4d89-9ffe-d3493a22cabd Summons_BloatedCorpse
+  -- 53f49a2d-36a1-4c47-8cef-91c0f3ae0ef9 Summons_SoulWolf
+  -- 163befcc-d8f6-4c3a-ba1d-536d1f7568bc Summons_FireSlug
+  -- 0441f88d-4a0a-40ec-ac69-3a4fe7906cdf Summons_Condor
+  -- e61da3a2-6dfd-4f2e-8f62-6bfbddb5a7f9 Summons_OilBlob
+  -- e63a712f-fc87-4469-8848-fd8941043afd Summons_Plant
 end
--- Summons_WindUpToy 6f8db517-f1af-4b47-b095-f239fd2293d0 RootTemplate Script change
 Ext.IO.AddPathOverride("Public/Shared/Scripts/Bomber.charScript", "Public/SumImpr_Serp/Scripts/CMP_Bomber.charScript")
 Ext.IO.AddPathOverride("Public/CMP_SummoningImproved_Kamil/Scripts/CMP_Bomber.charScript", "Public/SumImpr_Serp/Scripts/CMP_Bomber.charScript")
+Ext.IO.AddPathOverride("Public/Shared/Scripts/CMB_Slug.charScript", "Public/SumImpr_Serp/Scripts/CMP_Slugs.charScript")
 Ext.IO.AddPathOverride("Public/CMP_SummoningImproved_Kamil/Scripts/CMP_Slugs.charScript", "Public/SumImpr_Serp/Scripts/CMP_Slugs.charScript")
 
 
@@ -449,12 +459,7 @@ SharedFns.OnSaveLoaded = function(major, minor, patch, build)
     SharedFns.DoFreeInfusions(charGUID)
   end
 end
--- event also called for summons!
-SharedFns.OnCharacterJoinedParty = function(charGUID)
-  if SharedFns.IsPlayerMainChar(charGUID) then
-    SharedFns.DoFreeInfusions(charGUID)
-  end
-end
+
 
 -- (CHARACTERGUID)_Character, (STRING)_Ability, (INTEGER)_OldBaseValue, (INTEGER)_NewBaseValue)
 -- Is not called for changes by equipment
@@ -462,19 +467,39 @@ SharedFns.OnCharacterBaseAbilityChanged = function(charGUID,ability,old,new)
   SharedFns.DoFreeInfusions(charGUID)
 end
 
+SharedFns.OnCharacterJoinedParty = function(charGUID)
+  if SharedFns.IsPlayerMainChar(charGUID) then
+    SharedFns.DoFreeInfusions(charGUID)
+  end
+end
+
+
+-- ############################################################
+-- ############################################################
+
+-- Lua Replacement of the txt script CMP_SummoningImproved_Statuses.txt
+-- (because easier to code and debug, I failed to work with these stupid DB stuff and removing Shout_SuicideBomberExplosion for toy refused to work on IceNormalInfusion)
+
+
+-- make sure our script is always loaded, instead of vanilla
+Ext.IO.AddPathOverride("Mods/CMP_SummoningImproved_Kamil/Story/RawFiles/Goals/CMP_SummoningImproved_Statuses.txt", "Mods/SumImpr_Serp/Story/RawFiles/Goals/CMP_SummoningImproved_Statuses_Serp.txt")
+
 
 -- Apply the correct infusion also to all non-hardcoded summons possibly added by other mods. Using the INCARNATE_S infusion
 -- copy pasted from CMP_SummoningImproved_Statuses.txt (some selected mod summons added into that file instead)
-local VanillaHandledSummons = {"118d7359-b7d5-41ea-8c55-86ce27afceba","13f9314d-e744-4dc5-acf2-c6bf77a04892",
-  "2a923cb8-beeb-48be-9a3a-5da981b1e3fe","e63a712f-fc87-4469-8848-fd8941043afd","40c6a905-74c3-4d89-9ffe-d3493a22cabd",
-  "e61da3a2-6dfd-4f2e-8f62-6bfbddb5a7f9","163befcc-d8f6-4c3a-ba1d-536d1f7568bc","0441f88d-4a0a-40ec-ac69-3a4fe7906cdf",
-  "1918aa0e-862e-4f53-8656-7f579658222a","7ecb0aa4-376f-4e9a-99d6-6eff900c3c77","53f49a2d-36a1-4c47-8cef-91c0f3ae0ef9",
-  "6f8db517-f1af-4b47-b095-f239fd2293d0","4f7cdf30-0d44-44d2-bcf2-91850728107d",
+local VanillaHandledSummons = {
+  -- Osiris script suck, we will do it everything in lua instead, therefore outcommented
+  -- "118d7359-b7d5-41ea-8c55-86ce27afceba","13f9314d-e744-4dc5-acf2-c6bf77a04892",
+  -- "2a923cb8-beeb-48be-9a3a-5da981b1e3fe","e63a712f-fc87-4469-8848-fd8941043afd","40c6a905-74c3-4d89-9ffe-d3493a22cabd",
+  -- "e61da3a2-6dfd-4f2e-8f62-6bfbddb5a7f9","163befcc-d8f6-4c3a-ba1d-536d1f7568bc","0441f88d-4a0a-40ec-ac69-3a4fe7906cdf",
+  -- "1918aa0e-862e-4f53-8656-7f579658222a","7ecb0aa4-376f-4e9a-99d6-6eff900c3c77","53f49a2d-36a1-4c47-8cef-91c0f3ae0ef9",
+  -- "6f8db517-f1af-4b47-b095-f239fd2293d0","4f7cdf30-0d44-44d2-bcf2-91850728107d",
   -- some mod summons added in there already, but outcommented, doing it on lua instead
   -- "672acd14-e1da-46a4-b365-1883ddc60243","892f8d0d-44bb-4772-a6c8-7798937ecc39","bb08f08c-ffff-4743-8410-4a0dacacc9be",
   -- "f1f51e01-cc07-4127-b3f2-424eeffe1323","1ea8cdd9-4275-400e-9b9f-ffce3bb7b503","d5028e0e-3787-4561-aec3-c0c3ddb10586","66fef67a-2a03-41d7-82f4-710933d553a7",
   -- "7131368d-fec2-4773-a9fe-2dfb7e96d09f","91db43b6-f064-44b6-adc5-92077965bd95","f6a7a5e9-b333-4acc-a652-5b37420def87",
 }
+
 -- checking the Stats Name of summon for some specific texts to decide which inf we apply
 -- incarnate , incarnate_g , bone , plant, corpse, oil, fire, poison, condor, dragon, wolf , toy, cat
 -- order matters, the first found will we chosen, if non found a random one will be chosen
@@ -487,8 +512,9 @@ StatsnameToInfusion = OrderedTable()
   StatsnameToInfusion.cat="cat"; StatsnameToInfusion.dog="wolf"; StatsnameToInfusion.magma="fire"; 
   StatsnameToInfusion.death={"bone","corpse"}; StatsnameToInfusion.oil="oil"; StatsnameToInfusion.earth="oil"; 
   StatsnameToInfusion.stone="oil"; StatsnameToInfusion.poison="poison"; StatsnameToInfusion.fire="fire"; 
-  StatsnameToInfusion.slug={"fire","oil","poison"};
-InfusionToStatus = {
+  StatsnameToInfusion.slug={"fire","oil","poison"};StatsnameToInfusion.ooze={"fire","oil","poison"};
+  
+SharedFns.InfusionToStatus = {
   WarpInfusion={incarnate="INF_WARP_INCARNATE_S",incarnate_g="INF_WARP_INCARNATE_S",bone="INF_WARP_BONEPILE",plant="INF_WARP_PLANT",oil="INF_WARP_OILBLOB",fire="INF_WARP_FIRESLUG",condor="INF_WARP_CONDOR",dragon="INF_WARP_NEWT",poison="INF_WARP_POISONSLUG",wolf="INF_WARP_SOULWOLF",toy="INF_WARP_TOY",cat="INF_WARP_CAT",corpse="INF_WARP_CORPSE",},
   RangedInfusion={incarnate="INF_RANGED",incarnate_g="INF_RANGED",bone="INF_RANGED_BONEPILE",plant="INF_POWER_PLANT",oil="INF_POWER_OILBLOB",fire="INF_POWER_FIRESLUG",condor="INF_RANGED_CONDOR",dragon="INF_RANGED_NEWT",poison="INF_RANGED_POISONSLUG",wolf="INF_RANGED_SOULWOLF",toy="INF_RANGED_TOY",cat="INF_RANGED_CAT",corpse="INF_POWER_CORPSE",},
   PowerInfusion={incarnate="INF_POWER_INCARNATE_S",incarnate_g="INF_POWER_INCARNATE_S",bone="INF_POWER_BONEPILE",plant="INF_RANGED_PLANT",oil="INF_RANGED_OILBLOB",fire="INF_RANGED_FIRESLUG",condor="INF_POWER_CONDOR",dragon="INF_POWER_NEWT",poison="INF_POWER_POISONSLUG",wolf="INF_POWER_SOULWOLF",toy="INF_POWER_TOY",cat="INF_POWER_CAT",corpse="INF_RANGED_CORPSE",},
@@ -531,9 +557,34 @@ InfusionToWeaponDamageType = {
   IceNormalInfusion="Water",
 }
 
+SharedFns.InfusionToSurface = {
+  FireInfusion="SurfaceFire",
+  IceInfusion="SurfaceWaterFrozenBlessed",
+  ElectricInfusion="SurfaceWaterElectrified",
+  PoisonInfusion="SurfacePoison",
+  NecrofireInfusion="SurfaceFireCursed",
+  WaterInfusion="SurfaceWater",
+  AcidInfusion="SurfacePoisonCursed",
+  CursedElectricInfusion="SurfaceWaterCloudElectrifiedCursed",
+  OilInfusion="SurfaceOil",
+  CursedOilInfusion="SurfaceOilCursed",
+  BloodInfusion="SurfaceBlood",
+  CursedBloodInfusion="SurfaceBloodCursed",
+  IceNormalInfusion="SurfaceWaterFrozen",
+}
+-- templateid of Slugs/ooze/bloatedCorpse which draw surface path and bleed the element
+SharedFns.SlugsToSurface = {
+  -- vanilla
+  ["40c6a905-74c3-4d89-9ffe-d3493a22cabd"]="SurfaceBlood",["e61da3a2-6dfd-4f2e-8f62-6bfbddb5a7f9"]="SurfaceOil",
+  ["163befcc-d8f6-4c3a-ba1d-536d1f7568bc"]="SurfaceFire",["7ecb0aa4-376f-4e9a-99d6-6eff900c3c77"]="SurfacePoison",
+  -- mod (skill collection, so from different mods I think)
+  ["7131368d-fec2-4773-a9fe-2dfb7e96d09f"]="SurfacePoison",["91db43b6-f064-44b6-adc5-92077965bd95"]="SurfaceWater",
+  ["f6a7a5e9-b333-4acc-a652-5b37420def87"]="SurfaceFire",
+}
+
 
 SharedFns.OnCharacterStatusApplied = function(charGUID,status,causee)
-  if InfusionToStatus[status] then
+  if SharedFns.InfusionToStatus[status] then
     local status_lower = status:lower()
     local char = Ext.Entity.GetCharacter(charGUID)
     if char then
@@ -541,7 +592,10 @@ SharedFns.OnCharacterStatusApplied = function(charGUID,status,causee)
       if template then
         local templateid = template.Id
         if templateid then
-          if NonVanillaInfusions[status] or not SharedFns.table_contains_value(VanillaHandledSummons,templateid) then
+          if templateid:find("6f8db517-f1af-4b47-b095-f239fd2293d0",1,true) and InfusionToWeaponDamageType[status] then -- Toy, remove suicide skill if any elemental infusion, correct skill is added via status
+            Osi.CharacterRemoveSkill(charGUID,"Shout_SuicideBomberExplosion")
+          end
+          -- if NonVanillaInfusions[status] or not SharedFns.table_contains_value(VanillaHandledSummons,templateid) then
             local StatsName = template.Stats:lower()
             local usedstatskey = {"incarnate","incarnate_g","bone","plant","corpse","oil","fire","poison","condor","dragon","wolf","toy","cat"}
             local charGUID_lower = charGUID:lower()
@@ -554,13 +608,13 @@ SharedFns.OnCharacterStatusApplied = function(charGUID,status,causee)
             if type(usedstatskey)=="table" then
               usedstatskey = usedstatskey[Ext.Random(#usedstatskey)] -- random choice (yes may be different per cast and even chance to get the stronger buff for incarnates)
             end
-            local inf_status = InfusionToStatus[status][usedstatskey]
+            local inf_status = SharedFns.InfusionToStatus[status][usedstatskey]
             if inf_status then
               -- Ext.Print("PetPowerSerp: OnCharacterStatusApplied",charGUID,status,StatsName,inf_status)
               Osi.RemoveStatus(charGUID,status)
               Osi.ApplyStatus(charGUID,inf_status,-1,1)
             end
-          end
+          -- end
           
           -- Change DamageType for all of them, because we removed the WeaponOverride from the Status, to be compatible with any summon without replacing the weapon with another one (because if removes weapon skills and changes damage)
           local newweapondamagetype = InfusionToWeaponDamageType[status]
@@ -574,19 +628,44 @@ SharedFns.OnCharacterStatusApplied = function(charGUID,status,causee)
                 EsvReforger:ChangeDamageType(weapon,newweapondamagetype,char,true)
               end
             end
+            if SharedFns.SlugsToSurface[templateid] then
+              if SharedFns.InfusionToSurface[status] then
+                Osi.CharacterSetCustomBloodSurface(charGUID,SharedFns.InfusionToSurface[status])
+              end
+            end
           end
-          
         end
       end
     end
   end
 end
 
+if Ext.IsServer() then
+  SharedFns.RegisterProtectedOsirisListener("StoryEvent", 2, "before", function(charGUID, event)
+    -- print("OnObjectStoryEvent",charGUID, event)
+    if Osi.ObjectIsCharacter(charGUID)==1 then
+      if event=="CMP_ResetBloodSurface" then
+        local char = Ext.Entity.GetCharacter(charGUID)
+        if char then
+          local template = char.RootTemplate
+          if template then
+            local templateid = template.Id
+            if templateid then
+              if templateid:find("40c6a905-74c3-4d89-9ffe-d3493a22cabd",1,true) then -- BloatedCorpse vanilla
+                Osi.CharacterSetCustomBloodSurface(charGUID,"SurfaceBlood")
+              end
+            end
+          end
+        end
+      end
+    end
+  end)
+end
 
--- make sure our script is always loaded, instead of vanilla
-Ext.IO.AddPathOverride("Mods/CMP_SummoningImproved_Kamil/Story/RawFiles/Goals/CMP_SummoningImproved_Statuses.txt", "Mods/SumImpr_Serp/Story/RawFiles/Goals/CMP_SummoningImproved_Statuses_Serp.txt")
 
 
+
+-- ########################
 
 
 -- RootTemplate
@@ -812,3 +891,7 @@ Ext.IO.AddPathOverride("Mods/CMP_SummoningImproved_Kamil/Story/RawFiles/Goals/CM
 	-- "WalkSpeed" : 2.0,
 	-- "WalkThrough" : false
 -- }
+
+
+
+
