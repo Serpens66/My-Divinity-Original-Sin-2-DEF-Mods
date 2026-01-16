@@ -1,6 +1,25 @@
 print("Called DebuffInsteadChainCC_Serp")
 
-Duration = 2
+
+
+
+Durations = {
+  Mommentum_Duration = {statusnames={"LX_MOMENTUM_Serp"},dur=2},
+  Lingering_Duration = {statusnames={"LX_LINGERING_Serp"},dur=2},
+  Staggered_Duration = {statusnames={"LX_STAGGERED1_Serp","LX_STAGGERED2_Serp","LX_STAGGERED3_Serp"},dur=1},
+  Confused_Duration = {statusnames={"LX_CONFUSED1_Serp","LX_CONFUSED2_Serp","LX_CONFUSED3_Serp"},dur=1},
+}
+local namemapping = {
+  LX_MOMENTUM_Serp = "Mommentum_Duration",
+  LX_LINGERING_Serp = "Lingering_Duration",
+  LX_STAGGERED1_Serp = "Staggered_Duration",
+  LX_STAGGERED2_Serp = "Staggered_Duration",
+  LX_STAGGERED3_Serp = "Staggered_Duration",
+  LX_CONFUSED1_Serp = "Confused_Duration",
+  LX_CONFUSED2_Serp = "Confused_Duration",
+  LX_CONFUSED3_Serp = "Confused_Duration",
+}
+
 
 -- statusses which have no stats
 local engineStatuses = {
@@ -107,15 +126,15 @@ local function OnCharacterStatusRemoved(charGUID, statusname, causee)
     local StatusType = StatusStat.StatusType
     if blockedStatuses[statusname] or (concernedTypes[StatusType] and (StatusType~="CONSUME" or StatusStat.LoseControl=="Yes")) then
       local SavingThrow = StatusStat.SavingThrow
-      local duration = Duration
-      if Osi.CharacterHasTalent(charGUID, "WalkItOff")==1 then
-        duration = duration + 1
-      end
       local applyStatus = "LX_MOMENTUM_Serp" -- use LX_MOMENTUM_Serp if no SavingThrow
       if SavingThrow == "PhysicalArmor" then
         applyStatus = "LX_MOMENTUM_Serp"
       elseif SavingThrow == "MagicArmor" then
         applyStatus = "LX_LINGERING_Serp"
+      end
+      local duration = Durations[namemapping[applyStatus]].dur
+      if Osi.CharacterHasTalent(charGUID, "WalkItOff")==1 then
+        duration = duration + 1
       end
       Osi.ApplyStatus(charGUID,applyStatus,duration*6,1)
     end
@@ -171,7 +190,6 @@ if Ext.IsServer() then
               local sourceIsNonOrEnemy = not source and true or Osi.CharacterIsEnemy(targetGuid,source.MyGuid)==1 -- dont care for stati applied by non-enemies, because some benefital skill like permafrost should not prevent the CC. and there also might be quest stati by the game... 
               local ImmuneFlag = StatusStat.ImmuneFlag -- dont apply this status, if the charGUID has this ImmuneFlag eg. "KnockdownImmunity"
               if sourceIsNonOrEnemy and (ImmuneFlag=="None" or not target.Stats[ImmuneFlag]) then
-                -- print("DebuffInsteadChainCC_Serp BeforeStatusApply",targetGuid,statusname,StatusType,StatusStat.LoseControl)
                 local hasMomentum = Osi.HasActiveStatus(targetGuid,"LX_MOMENTUM_Serp")==1 and "LX_MOMENTUM_Serp" or nil
                 local hasLingering = Osi.HasActiveStatus(targetGuid,"LX_LINGERING_Serp")==1 and "LX_LINGERING_Serp" or nil
                 if hasLingering or hasMomentum then
@@ -190,7 +208,8 @@ if Ext.IsServer() then
                     end
                     hasstatus = hasstatus>=#ReplacingStatus[hasMomentum] and #ReplacingStatus[hasMomentum]-1 or hasstatus
                     local applynewstatus = ReplacingStatus[hasMomentum][hasstatus+1]
-                    Osi.ApplyStatus(targetGuid,applynewstatus,6.0,1)
+                    local duration = Durations[namemapping[applynewstatus]].dur
+                    Osi.ApplyStatus(targetGuid,applynewstatus,duration*6,1)
                   end
                   if ContinueLin(ForceStatus,GoesThroughArmor,SavingThrow,hasLingering,target) then
                     print("DebuffInsteadChainCC_Serp BeforeStatusApply: Prevent Applying",statusname,"because of Lingering status")
@@ -204,9 +223,12 @@ if Ext.IsServer() then
                     end
                     hasstatus = hasstatus>=#ReplacingStatus[hasLingering] and #ReplacingStatus[hasLingering]-1 or hasstatus
                     local applynewstatus = ReplacingStatus[hasLingering][hasstatus+1]
-                    Osi.ApplyStatus(targetGuid,applynewstatus,6.0,1)
+                    local duration = Durations[namemapping[applynewstatus]].dur
+                    Osi.ApplyStatus(targetGuid,applynewstatus,duration*6,1)
                   end
                 end
+              elseif not sourceIsNonOrEnemy then
+                print("DebuffInsteadChainCC_Serp BeforeStatusApply: Do not prevent CC because it was not applied by an enemy:",targetGuid,statusname)
               end
             end
           end
@@ -237,7 +259,26 @@ if Ext.IsServer() then
       end
     end
   end,{Priority = 10000})
+  
+  
+  -- ######################################
 
+  -- LeaderLib Settings
+  Ext.Events.SessionLoaded:Subscribe(function (ev)
+    if Mods.LeaderLib then -- LeaderLib (outside of SessionLoaded it is nil if LeaderLib is not loaded first..)
+      
+      -- also called on game load with current settings
+      Mods.LeaderLib.Events.ModSettingsChanged:Subscribe(function (e)
+        Durations[e.ID].dur = e.Value
+        print("DebuffInsteadChainCC_Serp: settings changed",e.ID,"to",e.Value)
+      end, {MatchArgs={ModuleUUID=ModuleUUID}})
+      
+    else
+      print("DebuffInsteadChainCC_Serp: did not find LeaderLib for modsettings")
+    end
+  end)
+  
+  
 end
 
 

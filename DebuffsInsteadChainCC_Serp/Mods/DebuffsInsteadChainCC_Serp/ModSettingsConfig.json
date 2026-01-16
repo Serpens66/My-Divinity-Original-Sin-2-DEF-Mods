@@ -1,0 +1,43 @@
+{
+	"TitleColor": "#11FF99",
+	"Data": {
+		"Variables": {
+			"Entries" : {
+				"Mommentum_Duration" : {
+					"Max" : 10,
+					"Min" : 0,
+					"Value": 2,
+					"Increment": 1
+				},
+				"Lingering_Duration" : {
+					"Max" : 10,
+					"Min" : 0,
+					"Value": 2,
+					"Increment": 1
+				},
+				"Staggered_Duration" : {
+					"Max" : 10,
+					"Min" : 0,
+					"Value": 1,
+					"Increment": 1
+				},
+				"Confused_Duration" : {
+					"Max" : 10,
+					"Min" : 0,
+					"Value": 1,
+					"Increment": 1
+				}
+			}
+		}
+	},
+	"MenuOrder": [
+		{
+			"Entries" : [
+				"Mommentum_Duration",
+				"Lingering_Duration",
+				"Staggered_Duration",
+				"Confused_Duration"
+			]
+		}
+	]
+}
