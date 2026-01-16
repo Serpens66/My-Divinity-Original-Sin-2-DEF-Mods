@@ -207,6 +207,80 @@
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="Shout_GreaterPolymorphism_Description" />
 				</node>
+        
+        
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Reset Cooldowns of all Summoning skills." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Summon_Desc" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Reset Cooldowns of all Fire skills." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Fire_Desc" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Reset Cooldowns of all Water skills." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Water_Desc" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Reset Cooldowns of all Air skills." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Air_Desc" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Reset Cooldowns of all Earth skills." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Earth_Desc" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Reset Cooldowns of all Necromancy skills." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Necromancy_Desc" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Reset Cooldowns of all Polymorph skills." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Polymorph_Desc" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Reset Cooldowns of all Rogue skills." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Rogue_Desc" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Reset Cooldowns of all Ranger skills." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Ranger_Desc" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Reset Cooldowns of all Warrior skills." />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Warrior_Desc" />
+				</node>
+
+        
 			</children>
 		</node>
 	</region>

@@ -2,3 +2,4 @@
 - added check in code to prevent alot of spam in the logfile
 1.0.0.2:
 - fixed more error in log, which should have no impact ingame
+- added +20% resist chance for stati caused by surfaces, since this triggers very often when moving within them, making it likely to be affected even on 80% saveness.

@@ -32,6 +32,16 @@ local function table_contains_value(tbl, x)
   return false
 end
 
+local function GetAllPlayerChars()
+  local _players = Osi.DB_IsPlayer:Get(nil) -- Will return a list of tuples of all player characters
+  local players = {}
+  for _,tupl in ipairs(_players) do
+    local charGUID = tupl[1]
+    table.insert(players,charGUID)
+  end
+  return players
+end
+
 local function GetAnyPlayerControlled()
   return Osi.DB_IsPlayer:Get(nil)[1][1]
 end
@@ -125,7 +135,43 @@ RegisterProtectedOsirisListener("CharacterStatusRemoved", 3, "after", function(c
   -- end
 end)
 
+-- get the cooldown reset skills for free as soon as you learned Bless/Curse
+-- "Shout_AstralRefresh_Polymorph" Polymorph is not supported in status ResetCooldowns for unknown reason. We could code it in lua, but not worth the effort, since it has the skinshed skill
+local function GrantCooldownResetSkills(charGUID)
+  if Osi.CharacterHasSkill(charGUID,"Target_Bless")==1 or Osi.CharacterHasSkill(charGUID,"Target_Curse")==1 then
+    for _,skill in ipairs({"Shout_AstralRefresh_Summon","Shout_AstralRefresh_Fire","Shout_AstralRefresh_Water","Shout_AstralRefresh_Air","Shout_AstralRefresh_Earth","Shout_AstralRefresh_Necromancy","Shout_AstralRefresh_Rogue","Shout_AstralRefresh_Ranger","Shout_AstralRefresh_Warrior"}) do
+      if Osi.CharacterHasSkill(charGUID,skill)==0 then
+        local stat = Ext.Stats.Get(skill)
+        if stat then
+          local reqmems = stat.MemorizationRequirements
+          canlearn = true
+          for i,reqmem in ipairs(reqmems) do
+            if Osi.CharacterGetAbility(charGUID,reqmem.Requirement) < reqmem.Param then
+              canlearn = false
+            end
+          end
+          if canlearn then
+            Osi.CharacterAddSkill(charGUID,skill)
+          end
+        end
+      end
+    end
+  end
+end
 
+
+RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, minor, patch, build)
+  local players = GetAllPlayerChars()
+  for _,charGUID in ipairs(players) do
+    GrantCooldownResetSkills(charGUID)
+  end
+end)
+
+RegisterProtectedOsirisListener("CharacterLearnedSkill", 2, "after", function(charGUID,skill)
+  if skill=="Target_Bless" or skill=="Target_Curse" then
+    GrantCooldownResetSkills(charGUID)
+  end
+end)
 
 
 -- LooseStatusWithChance:	SLEEPING_PHYSICAL (directly with the hit that appplied it)

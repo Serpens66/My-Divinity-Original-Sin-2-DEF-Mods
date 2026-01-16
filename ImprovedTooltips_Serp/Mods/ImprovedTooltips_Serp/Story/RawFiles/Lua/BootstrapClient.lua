@@ -1,4 +1,65 @@
 
+-- statusses which have no stats
+local engineStatuses = {
+	CLEAN=true,
+  CLIMBING=true,
+  SOURCE_MUTED=true,
+  DRAIN=true,
+  POLYMORPHED=true,
+  CHARMED=true,
+  INFUSED=true,
+  HIT=true,
+  IDENTIFY=true,
+  DYING=true,
+  THROWN=true,
+  LYING=true,
+  SNEAKING=true,
+  CONSUME=true,
+  ROTATE=true,
+  SHACKLES_OF_PAIN=true,
+  UNSHEATHED=true,
+  WIND_WALKER=true,
+  DARK_AVENGER=true,
+  AOO=true,
+  SHACKLES_OF_PAIN_CASTER=true,
+  SITTING=true,
+  FLANKED=true,
+  LINGERING_WOUNDS=true,
+  CHANNELING=true,
+  DAMAGE=true,
+  EXPLODE=true,
+  SMELLY=true,
+  SPIRIT_VISION=true,
+  INCAPACITATED=true,
+  SPARK=true,
+  UNLOCK=true,
+  EFFECT=true,
+  STANCE=true,
+  FORCE_MOVE=true,
+  SPIRIT=true,
+  FLOATING=true,
+  CONSTRAINED=true,
+  SUMMONING=true,
+  MATERIAL=true,
+  LEADERSHIP=true,
+  COMBUSTION=true,
+  TUTORIAL_BED=true,
+  TELEPORT_FALLING=true,
+  INFECTIOUS_DISEASED=true,
+  OVERPOWER=true,
+  REMORSE=true,
+  REPAIR=true,
+  ENCUMBERED=true,
+  UNHEALABLE=true,
+  ACTIVE_DEFENSE=true,
+  DECAYING_TOUCH=true,
+  ADRENALINE=true,
+  INSURFACE=true,
+  BOOST=true,
+  COMBAT=true,
+  STORY_FROZEN=true,
+}
+
 -- Extender functions copy pasted to get the surface on position for client
 local SurfaceFlags = {
 	Ground = {
@@ -199,6 +260,56 @@ end
 	-- "World" : "function: 00007FF473C74A28"
 -- }
 
+
+-- Item Tooltip
+-- [
+	-- {
+		-- "Label" : "<font color=\"#ffffff\">Kleiner Heiltrank</font> ",
+		-- "Type" : "ItemName"
+	-- },
+	-- {
+		-- "Label" : "0.25",
+		-- "Type" : "ItemWeight"
+	-- },
+	-- {
+		-- "Label" : "<font color=\"#C7A758\">20</font>",
+		-- "Type" : "ItemGoldValue"
+	-- },
+	-- {
+		-- "Label" : "Trank, der deine Lebenskraft wiederherstellt. Klimpert leise, wenn man ihn sch\u00fcttelt.",
+		-- "Type" : "ItemDescription"
+	-- },
+	-- {
+		-- "Label" : "Verzehren",
+		-- "RequirementMet" : true,
+		-- "Type" : "ItemUseAPCost",
+		-- "Value" : 1.0
+	-- },
+	-- {
+		-- "Label" : "Heilt 30 Lebenskraft.",
+		-- "Type" : "ConsumableEffect",
+		-- "Value" : ""
+	-- }
+-- ]
+
+-- Add StackId to Foods/Potions
+Game.Tooltip.Register.Item(function(item,tooltip)
+  if item and item.StatsFromName and item.StatsFromName.ModifierList=="Potion" then
+    local StackId = item.StatsFromName.StatsEntry.StackId
+    local StackPriority = item.StatsFromName.StatsEntry.Priority
+    local ObjectCategory = item.StatsFromName.StatsEntry.ObjectCategory
+    local Duration = item.StatsFromName.StatsEntry.Duration
+    if StackId and StackId~="" and Duration>0 then
+      for __,tentry in ipairs(tooltip.Data) do
+        if tentry.Type=="ItemDescription" then
+          tentry.Label = tentry.Label.."\n(StackId: "..tostring(StackId).." Category:"..tostring(ObjectCategory).." "..tostring(StackPriority)..")"
+          break
+        end
+      end
+    end
+  end
+end)
+
 -- Improve skill tooltips
 -- Add Info about who can be targeted with a Skill
 -- using color does not seem to work.. <font color='5ec2ffff'>
@@ -301,17 +412,19 @@ Game.Tooltip.Register.Skill(function(char, skill, tooltip)
             -- }]
       -- Info zufügen welcher Status self und welcher Target trifft ist nicht wirklich möglich ,da Reihenfolge in SkillProperties random ist und beim tooltip keine Einordnung erkenntlich, was welcher Status ist
       for i,status in ipairs(stati) do
-        for __,tentry in ipairs(tooltip.Data) do
-          if tentry.Type=="SkillProperties" and tentry.Properties and #tentry.Properties>=#stati then
-            local stat = Ext.Stats.Get(status)
-            if stat then
-              local StackId = stat.StackId
-              local StackPriority = stat.StackPriority
-              if StackId and StackId~="" then
-                tentry.Properties[i].Label = tentry.Properties[i].Label.." (StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
+        if not engineStatuses[status] then
+          for __,tentry in ipairs(tooltip.Data) do
+            if tentry.Type=="SkillProperties" and tentry.Properties and #tentry.Properties>=#stati then
+              local stat = Ext.Stats.Get(status)
+              if stat then
+                local StackId = stat.StackId
+                local StackPriority = stat.StackPriority
+                if StackId and StackId~="" then
+                  tentry.Properties[i].Label = tentry.Properties[i].Label.." (StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
+                end
               end
+              break
             end
-            break
           end
         end
       end
@@ -443,14 +556,16 @@ local function AdjustSurfaceTooltip(SurfaceType,tooltip)
         SurfaceStatusText = ""
         for _,statusinfo in pairs(Statuses) do
           if (statusinfo.StatusId~="FOGBLIND_SERP" or statusinfo.RemoveStatus==false) and statusinfo.ApplyToCharacters then -- I added in my mod MoreSurfaceEffects to all surfaces that they remove my status, that is not important to show
-            local SStat = Ext.Stats.Get(statusinfo.StatusId)
-            local statusname_loc = SStat and Ext.L10N.GetTranslatedStringFromKey(SStat.DisplayName,statusinfo.StatusId) or statusinfo.StatusId
-            local addremove = statusinfo.RemoveStatus and "\n Removes " or "\n Adds "
-            local IgnoresArmor = statusinfo.ForceStatus and "\n   Ignores Armor" or ""
-            local KeepAlive = statusinfo.KeepAlive and "\n   Stays Active" or ""
-            local OnlyWhileMoving = statusinfo.OnlyWhileMoving and "\n   Only While Moving" or ""
-            local VanishOnReapply = statusinfo.VanishOnReapply and "\n   Removes Surface" or ""
-            SurfaceStatusText = SurfaceStatusText..addremove..statusname_loc.."\n   Chance: "..tostring(round(statusinfo.Chance*100,2)).." %\n   Duration: "..tostring(round(statusinfo.Duration/6,1)).." turns"..IgnoresArmor..KeepAlive..VanishOnReapply
+            if not engineStatuses[statusinfo.StatusId] then
+              local SStat = Ext.Stats.Get(statusinfo.StatusId)
+              local statusname_loc = SStat and Ext.L10N.GetTranslatedStringFromKey(SStat.DisplayName,statusinfo.StatusId) or statusinfo.StatusId
+              local addremove = statusinfo.RemoveStatus and "\n Removes " or "\n Adds "
+              local IgnoresArmor = statusinfo.ForceStatus and "\n   Ignores Armor" or ""
+              local KeepAlive = statusinfo.KeepAlive and "\n   Stays Active" or ""
+              local OnlyWhileMoving = statusinfo.OnlyWhileMoving and "\n   Only While Moving" or ""
+              local VanishOnReapply = statusinfo.VanishOnReapply and "\n   Removes Surface" or ""
+              SurfaceStatusText = SurfaceStatusText..addremove..statusname_loc.."\n   Chance: "..tostring(round(statusinfo.Chance*100,2)).." %\n   Duration: "..tostring(round(statusinfo.Duration/6,1)).." turns"..IgnoresArmor..KeepAlive..VanishOnReapply
+            end
           end
         end
         if SurfaceStatusText~="" then
@@ -755,13 +870,13 @@ end
 
 
 
+
 -- Game.Tooltip.RegisterListener(function(request, tooltip)
   -- print("TOOLTIP",request.Type)
   -- _D(request)
   -- _D(tooltip.Data)
 -- end)
 
-local AllStatusWithStats = {}
 Ext.Events.StatsLoaded:Subscribe(function(e)
   -- from Vanilla Plus mod by Luxem, lua code updated to newest extender version, also updated ImprovedTooltips_Serp\Mods\ImprovedTooltips_Serp\Localization german and english for this
   local skillList = {
@@ -784,15 +899,13 @@ Ext.Events.StatsLoaded:Subscribe(function(e)
     end
 	end
   
-  for i,name in pairs(Ext.Stats.GetStats("StatusData")) do
-    AllStatusWithStats[name]=true -- the ones not in this list will throw an error on Ext.Stats.Get(), many are hardcoded and therefore not in, like 'DRAIN' 'SPIRIT_VISION' 'EXPLODE'
-  end
   
 end)
 
 -- ecl::StatusConsumeBase (00007FF44AB8A900)
 Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
   local status = StatusConsumeBase.StatusId
+  _D(StatusConsumeBase)
   -- print("StatusTooltip",char,status,_D(tooltip.Data))
   
   -- [{            "Label" : "Ermutigt",
@@ -815,8 +928,7 @@ Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
         -- },{
                 -- "Label" : "Dauer: 3 Runden<br><font face='Averia Serif' color='DBDBDB'>Applied by Lohse</font>",
                 -- "Type" : "StatusDescription"}]
-  
-  if status and AllStatusWithStats and AllStatusWithStats[status] then
+  if status and not engineStatuses[status] then -- Food status is CONSUME
     local stat = Ext.Stats.Get(status)
     if stat then
       local StackId = stat.StackId
@@ -832,3 +944,669 @@ Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
     end
   end
 end)
+
+
+-- item data:
+-- {
+	-- "AI" : null,
+	-- "AIBoundSize" : 0.22263775765895844,
+	-- "Activated" : false,
+	-- "Amount" : 1,
+	-- "Base" : 
+	-- {
+		-- "Component" : 
+		-- {
+			-- "Handle" : "userdata: 05C0000100000D92",
+			-- "TypeId" : 22
+		-- },
+		-- "Entity" : "Entity (000000010000639f)"
+	-- },
+	-- "BaseWeightOverwrite" : -1,
+	-- "CachedItemDescription" : null,
+	-- "CanBeMoved" : true,
+	-- "CanBePickedUp" : true,
+	-- "CanShootThrough" : true,
+	-- "CanUse" : true,
+	-- "CanUseRemotely" : false,
+	-- "CanWalkThrough" : true,
+	-- "Consumable" : true,
+	-- "CoverAmount" : true,
+	-- "CurrentLevel" : "",
+	-- "CurrentSlot" : 24,
+	-- "CurrentTemplate" : 
+	-- {
+		-- "AIBoundsAIType" : 1,
+		-- "AIBoundsHeight" : 0.47635701298713684,
+		-- "AIBoundsMax" : 
+		-- [
+			-- 0.15742866694927216,
+			-- 0.60027176141738892,
+			-- 0.15742866694927216
+		-- ],
+		-- "AIBoundsMin" : 
+		-- [
+			-- -0.15742866694927216,
+			-- -7.1942806243896484e-05,
+			-- -0.15742866694927216
+		-- ],
+		-- "AIBoundsRadius" : 0.15252600610256195,
+		-- "ActivationGroupId" : "",
+		-- "AllowReceiveDecalWhenAnimated" : false,
+		-- "AllowSummonTeleport" : false,
+		-- "AltSpeaker" : "",
+		-- "Amount" : 1,
+		-- "BloodSurfaceType" : -1,
+		-- "CameraOffset" : 
+		-- [
+			-- 0.0,
+			-- 0.0,
+			-- 0.0
+		-- ],
+		-- "CanBeMoved" : true,
+		-- "CanBePickedUp" : true,
+		-- "CanClickThrough" : false,
+		-- "CanShootThrough" : true,
+		-- "CastShadow" : true,
+		-- "CombatComponent" : 
+		-- {
+			-- "Alignment" : "",
+			-- "CanFight" : false,
+			-- "CanJoinCombat" : true,
+			-- "CombatGroupID" : "",
+			-- "IsBoss" : false,
+			-- "IsInspector" : false,
+			-- "StartCombatRange" : -1.0
+		-- },
+		-- "CoverAmount" : 0,
+		-- "DefaultState" : "",
+		-- "Description" : "h6050b645gd077g47a7g8e2dg67e4bd5907d8",
+		-- "Destroyed" : false,
+		-- "DisplayName" : "ls::TranslatedStringRepository::s_HandleUnknown",
+		-- "DropSound" : "098b1399-863e-47bc-b808-7574302d6e90",
+		-- "EquipSound" : "098b1399-863e-47bc-b808-7574302d6e90",
+		-- "Equipment" : 
+		-- {
+			-- "EquipmentSlots" : 0,
+			-- "SyncAnimationWithParent" : 
+			-- [
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false
+			-- ],
+			-- "VisualResources" : 
+			-- [
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- ""
+			-- ],
+			-- "VisualSetSlots" : 0
+		-- },
+		-- "FadeGroup" : "",
+		-- "FadeIn" : false,
+		-- "Fadeable" : false,
+		-- "FileName" : "E:/Spiele/GOG Games/Divinity - Original Sin 2/DefEd/Data/Public/Shared/RootTemplates/_merged.lsf",
+		-- "Flags" : [],
+		-- "Floating" : false,
+		-- "FreezeGravity" : false,
+		-- "GameMasterSpawnSection" : 6,
+		-- "GameMasterSpawnSubSection" : "h87614bc3g6474g4b95gba1dgc62361ed1734",
+		-- "GroupID" : 0,
+		-- "Handle" : 4784,
+		-- "HardcoreOnly" : false,
+		-- "HasGameplayValue" : false,
+		-- "HasParentModRelation" : false,
+		-- "HitFX" : "",
+		-- "Hostile" : false,
+		-- "Icon" : "Item_CON_PotionII_A_Red_Small",
+		-- "Id" : "944e4b8c-1736-4ff6-8fa6-d7ceda9941da",
+		-- "InventoryMoveSound" : "098b1399-863e-47bc-b808-7574302d6e90",
+		-- "IsBlocker" : false,
+		-- "IsDeleted" : false,
+		-- "IsGlobal" : false,
+		-- "IsHuge" : false,
+		-- "IsInteractionDisabled" : false,
+		-- "IsKey" : false,
+		-- "IsPinnedContainer" : false,
+		-- "IsPointerBlocker" : false,
+		-- "IsPublicDomain" : false,
+		-- "IsReflecting" : false,
+		-- "IsShadowProxy" : false,
+		-- "IsSourceContainer" : false,
+		-- "IsSurfaceBlocker" : false,
+		-- "IsSurfaceCloudBlocker" : false,
+		-- "IsTrap" : false,
+		-- "IsWall" : false,
+		-- "ItemList" : [],
+		-- "Key" : "",
+		-- "LevelName" : "",
+		-- "LevelOverride" : 0,
+		-- "LockLevel" : 1,
+		-- "LoopSound" : "",
+		-- "MaxStackAmount" : 100,
+		-- "MeshProxy" : "",
+		-- "ModFolder" : "Shared",
+		-- "Name" : "CON_Potion_A_Health",
+		-- "NonUniformScale" : true,
+		-- "NotHardcore" : false,
+		-- "OnDestroyActions" : [],
+		-- "OnUseDescription" : "ls::TranslatedStringRepository::s_HandleUnknown",
+		-- "OnUsePeaceActions" : 
+		-- [
+			-- {
+				-- "Consume" : true,
+				-- "StatsId" : "",
+				-- "Type" : "Consume"
+			-- }
+		-- ],
+		-- "Opacity" : 0.5,
+		-- "Owner" : "",
+		-- "PhysicsTemplate" : "4ab07902-7398-44b9-bffe-bf6d2937f435",
+		-- "PickupSound" : "983328aa-f4de-4b78-aced-999470e72ba8",
+		-- "PinnedContainerTags" : [],
+		-- "Race" : 4294967295,
+		-- "ReceiveDecal" : false,
+		-- "RenderChannel" : 4,
+		-- "RootTemplate" : "",
+		-- "SeeThrough" : false,
+		-- "SoundAttachBone" : "",
+		-- "SoundAttenuation" : -1,
+		-- "SoundInitEvent" : "",
+		-- "Speaker" : "",
+		-- "SpeakerGroup" : "",
+		-- "Stats" : "POTION_Minor_Healing_Potion",
+		-- "StoryItem" : false,
+		-- "Tags" : 
+		-- [
+			-- "POTIONS",
+			-- "Potion",
+			-- "HEALING_POTION",
+			-- "DRINK",
+			-- "ORGANIZE_POTION"
+		-- ],
+		-- "Tooltip" : 2,
+		-- "Transform" : 
+		-- {
+			-- "Matrix" : 
+			-- [
+				-- 1.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 1.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 1.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 1.0
+			-- ],
+			-- "Rotate" : 
+			-- [
+				-- 1.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 1.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 1.0
+			-- ],
+			-- "Scale" : 
+			-- [
+				-- 1.0,
+				-- 1.0,
+				-- 1.0
+			-- ],
+			-- "Translate" : 
+			-- [
+				-- 0.0,
+				-- 0.0,
+				-- 0.0
+			-- ]
+		-- },
+		-- "TreasureLevel" : -1,
+		-- "TreasureOnDestroy" : true,
+		-- "Treasures" : [],
+		-- "Type" : 0,
+		-- "UnequipSound" : "098b1399-863e-47bc-b808-7574302d6e90",
+		-- "Unimportant" : false,
+		-- "UnknownDescription" : "ls::TranslatedStringRepository::s_HandleUnknown",
+		-- "UnknownDisplayName" : "ls::TranslatedStringRepository::s_HandleUnknown",
+		-- "UseOnDistance" : false,
+		-- "UsePartyLevelForTreasureLevel" : false,
+		-- "UseRemotely" : false,
+		-- "UseSound" : "3fb0b511-2549-4846-b4e3-86695ee45779",
+		-- "VisualTemplate" : "c520c645-5b8c-45c0-bee7-ff2cbece618c",
+		-- "Wadable" : false,
+		-- "WalkOn" : false,
+		-- "WalkThrough" : true
+	-- },
+	-- "CustomBookContent" : 
+	-- {
+		-- "ArgumentString" : 
+		-- {
+			-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+			-- "ReferenceString" : ""
+		-- },
+		-- "Handle" : 
+		-- {
+			-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+			-- "ReferenceString" : ""
+		-- }
+	-- },
+	-- "CustomDescription" : 
+	-- {
+		-- "ArgumentString" : 
+		-- {
+			-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+			-- "ReferenceString" : ""
+		-- },
+		-- "Handle" : 
+		-- {
+			-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+			-- "ReferenceString" : ""
+		-- }
+	-- },
+	-- "CustomDisplayName" : 
+	-- {
+		-- "ArgumentString" : 
+		-- {
+			-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+			-- "ReferenceString" : ""
+		-- },
+		-- "Handle" : 
+		-- {
+			-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+			-- "ReferenceString" : ""
+		-- }
+	-- },
+	-- "Destroyed" : false,
+	-- "DisplayName" : "Minor Healing Potion",
+	-- "DontAddToBottomBar" : false,
+	-- "EnableHighlights" : false,
+	-- "Fade" : false,
+	-- "FallTimer" : 0.0,
+	-- "Flags" : 
+	-- [
+		-- "IsCraftingIngredient",
+		-- "CanBePickedUp",
+		-- "CanWalkThrough",
+		-- "CoverAmount",
+		-- "Registered",
+		-- "Global",
+		-- "CanBeMoved",
+		-- "CanShootThrough",
+		-- "CanUse",
+		-- "MovementUpdated"
+	-- ],
+	-- "Flags2" : 
+	-- [
+		-- "Consumable",
+		-- "UseSoundsLoaded"
+	-- ],
+	-- "Floating" : false,
+	-- "FoldDynamicStats" : false,
+	-- "FreezeGravity" : false,
+	-- "GetDeltaMods" : "function: 00007FFEE84E34A0",
+	-- "GetInventoryItems" : "function: 00007FFEE84E3390",
+	-- "GetOwnerCharacter" : "function: 00007FFEE84E33F0",
+	-- "GetStatus" : "function: 00007FFEE84B2400",
+	-- "GetStatusByType" : "function: 00007FFEE84B24B0",
+	-- "GetStatusObjects" : "function: 00007FFEE84B2630",
+	-- "GetStatuses" : "function: 00007FFEE84B2550",
+	-- "GetTags" : "function: 00007FFEE84B15C0",
+	-- "Global" : true,
+	-- "GoldValueOverride" : -1,
+	-- "GravityTimer" : 0.0,
+	-- "Handle" : "userdata: 05C0000100000D92",
+	-- "HasPendingNetUpdate" : false,
+	-- "HasTag" : "function: 00007FFEE84B1530",
+	-- "Height" : 2.0,
+	-- "Hostile" : false,
+	-- "Icon" : "",
+	-- "InUseByCharacterHandle" : "userdata: 0000000000000000",
+	-- "InUseByUserId" : -65536,
+	-- "InteractionDisabled" : false,
+	-- "InventoryHandle" : "userdata: 0000000000000000",
+	-- "InventoryParentHandle" : "userdata: 0740000100000004",
+	-- "Invisible" : false,
+	-- "Invulnerable" : false,
+	-- "IsCraftingIngredient" : true,
+	-- "IsDoor" : false,
+	-- "IsGrenade" : false,
+	-- "IsKey" : false,
+	-- "IsLadder" : false,
+	-- "IsSecretDoor" : false,
+	-- "IsSourceContainer" : false,
+	-- "IsTagged" : "function: 00007FFEE84B1530",
+	-- "ItemColorOverride" : "",
+	-- "ItemType" : "Common",
+	-- "JoinedDialog" : false,
+	-- "KeyName" : "",
+	-- "Known" : false,
+	-- "Level" : 1,
+	-- "LockLevel" : 1,
+	-- "MovementUpdated" : true,
+	-- "MyGuid" : "0d4b44e5-719e-4794-8f94-afd01f1283ea",
+	-- "NetID" : 65638,
+	-- "OwnerCharacterHandle" : "userdata: 0580000100000174",
+	-- "ParentInventoryHandle" : "userdata: 0740000100000004",
+	-- "Physics" : null,
+	-- "PhysicsDisabled" : true,
+	-- "PhysicsFlag1" : false,
+	-- "PhysicsFlag2" : false,
+	-- "PhysicsFlag3" : false,
+	-- "PhysicsFlags" : 
+	-- [
+		-- "PhysicsDisabled"
+	-- ],
+	-- "PinnedContainer" : false,
+	-- "Registered" : true,
+	-- "RequestRaycast" : false,
+	-- "RequestWakeNeighbours" : false,
+	-- "RootTemplate" : "*RECURSION*",
+	-- "Rotation" : 
+	-- [
+		-- -0.85489797592163086,
+		-- 0.0,
+		-- -0.51879602670669556,
+		-- 0.0,
+		-- 1.0,
+		-- 0.0,
+		-- 0.51879602670669556,
+		-- 0.0,
+		-- -0.85489797592163086
+	-- ],
+	-- "Scale" : 1.0,
+	-- "Slot" : 24,
+	-- "Stats" : null,
+	-- "StatsFromName" : 
+	-- {
+		-- "AIFlags" : "",
+		-- "ComboCategories" : 
+		-- [
+			-- "PotionHealing"
+		-- ],
+		-- "DisplayName" : 
+		-- {
+			-- "ArgumentString" : 
+			-- {
+				-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+				-- "ReferenceString" : ""
+			-- },
+			-- "Handle" : 
+			-- {
+				-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+				-- "ReferenceString" : ""
+			-- }
+		-- },
+		-- "FS2" : "",
+		-- "Handle" : 2927,
+		-- "Level" : 1,
+		-- "MemorizationRequirements" : [],
+		-- "ModId" : "2bd9bdbe-22ae-4aa2-9c93-205880fc6564",
+		-- "ModifierList" : "Potion",
+		-- "ModifierListIndex" : 3,
+		-- "Name" : "POTION_Minor_Healing_Potion",
+		-- "PropertyLists" : {},
+		-- "Requirements" : [],
+		-- "StatsEntry" : 
+		-- {
+			-- "APCostBoost" : 0,
+			-- "APMaximum" : 0,
+			-- "APRecovery" : 0,
+			-- "APStart" : 0,
+			-- "AccuracyBoost" : 0,
+			-- "Act" : "1",
+			-- "Act part" : "1",
+			-- "ActionPoints" : 0,
+			-- "AddToBottomBar" : "No",
+			-- "AiCalculationStatsOverride" : "",
+			-- "AirResistance" : 0,
+			-- "AirResistancePenetration" : 0,
+			-- "AirSpecialist" : 0,
+			-- "Armor" : 0,
+			-- "ArmorBoost" : 0,
+			-- "AuraAllies" : "",
+			-- "AuraEnemies" : "",
+			-- "AuraFX" : "",
+			-- "AuraItems" : "",
+			-- "AuraNeutrals" : "",
+			-- "AuraRadius" : 0,
+			-- "AuraSelf" : "",
+			-- "Barter" : 0,
+			-- "BloodSurfaceType" : "",
+			-- "BonusWeapon" : "",
+			-- "BoostConditions" : "",
+			-- "ChanceToHitBoost" : 0,
+			-- "ComboCategory" : 
+			-- [
+				-- "PotionHealing"
+			-- ],
+			-- "Constitution" : "None",
+			-- "CorrosiveResistancePenetration" : 0,
+			-- "CriticalChance" : 0,
+			-- "Damage" : "None",
+			-- "Damage Multiplier" : 0,
+			-- "Damage Range" : 0,
+			-- "DamageBoost" : 0,
+			-- "DamageType" : "None",
+			-- "DodgeBoost" : 0,
+			-- "DualWielding" : 0,
+			-- "Duration" : 0,
+			-- "EarthResistance" : 0,
+			-- "EarthResistancePenetration" : 0,
+			-- "EarthSpecialist" : 0,
+			-- "Finesse" : "None",
+			-- "FireResistance" : 0,
+			-- "FireResistancePenetration" : 0,
+			-- "FireSpecialist" : 0,
+			-- "Flags" : [],
+			-- "Gain" : "None",
+			-- "Hearing" : "None",
+			-- "IgnoredByAI" : "No",
+			-- "Initiative" : 0,
+			-- "Intelligence" : "None",
+			-- "InventoryTab" : "Consumable",
+			-- "IsConsumable" : "Yes",
+			-- "IsFood" : "No",
+			-- "Leadership" : 0,
+			-- "LifeSteal" : 0,
+			-- "Loremaster" : 0,
+			-- "Luck" : 0,
+			-- "MagicArmor" : 0,
+			-- "MagicArmorBoost" : 0,
+			-- "MagicPoints" : 0,
+			-- "MagicResistancePenetration" : 0,
+			-- "MaxAmount" : 1,
+			-- "MaxLevel" : 4,
+			-- "MaxSummons" : 0,
+			-- "Memory" : "None",
+			-- "MinAmount" : 1,
+			-- "MinLevel" : 1,
+			-- "ModifierType" : "Item",
+			-- "Movement" : 0,
+			-- "MovementSpeedBoost" : 0,
+			-- "Necromancy" : 0,
+			-- "ObjectCategory" : "HealingPotion",
+			-- "PainReflection" : 0,
+			-- "Perseverance" : 0,
+			-- "Persuasion" : 0,
+			-- "PhysicalResistance" : 0,
+			-- "PhysicalResistancePenetration" : 0,
+			-- "PiercingResistance" : 0,
+			-- "PiercingResistancePenetration" : 0,
+			-- "PoisonResistance" : 0,
+			-- "PoisonResistancePenetration" : 0,
+			-- "Polymorph" : 0,
+			-- "Priority" : 1,
+			-- "RangeBoost" : 0,
+			-- "Ranged" : 0,
+			-- "RangerLore" : 0,
+			-- "Reflection" : "",
+			-- "Repair" : 0,
+			-- "RogueLore" : 0,
+			-- "RootTemplate" : "944e4b8c-1736-4ff6-8fa6-d7ceda9941da",
+			-- "RuneEffectAmulet" : "",
+			-- "RuneEffectUpperbody" : "",
+			-- "RuneEffectWeapon" : "",
+			-- "RuneLevel" : 0,
+			-- "SPCostBoost" : 0,
+			-- "SavingThrow" : "None",
+			-- "ShadowResistancePenetration" : 0,
+			-- "Sight" : 0,
+			-- "SingleHanded" : 0,
+			-- "Sneaking" : 0,
+			-- "Sourcery" : 0,
+			-- "StackId" : "Healing",
+			-- "StatusEffect" : "",
+			-- "StatusIcon" : "",
+			-- "StatusMaterial" : "",
+			-- "Strength" : "None",
+			-- "SummonLifelinkModifier" : 0,
+			-- "Summoning" : 0,
+			-- "Telekinesis" : 0,
+			-- "Thievery" : 0,
+			-- "TwoHanded" : 0,
+			-- "Unique" : 0,
+			-- "UnknownBeforeConsume" : "No",
+			-- "UseAPCost" : 1,
+			-- "Value" : 20,
+			-- "Vitality" : 400,
+			-- "VitalityBoost" : 0,
+			-- "VitalityPercentage" : 0,
+			-- "WarriorLore" : 0,
+			-- "WaterResistance" : 0,
+			-- "WaterResistancePenetration" : 0,
+			-- "WaterSpecialist" : 0,
+			-- "Weight" : 250,
+			-- "Wits" : "None"
+		-- },
+		-- "StringProperties1" : []
+	-- },
+	-- "StatsId" : "POTION_Minor_Healing_Potion",
+	-- "StatusMachine" : 
+	-- {
+		-- "IsStatusMachineActive" : false,
+		-- "OwnerObjectHandle" : "userdata: 05C0000100000D92",
+		-- "PreventStatusApply" : false,
+		-- "Statuses" : []
+	-- },
+	-- "Sticky" : false,
+	-- "Stolen" : false,
+	-- "StoryItem" : false,
+	-- "Tags" : [],
+	-- "TeleportOnUse" : false,
+	-- "Translate" : 
+	-- [
+		-- 201.1175537109375,
+		-- -9.600001335144043,
+		-- 141.39151000976562
+	-- ],
+	-- "UnEquipLocked" : false,
+	-- "Unimportant" : false,
+	-- "UnknownTimer" : 0.0,
+	-- "UseSoundsLoaded" : true,
+	-- "UserVars" : {},
+	-- "Velocity" : 
+	-- [
+		-- 0.0,
+		-- 0.0,
+		-- 0.0
+	-- ],
+	-- "Visual" : null,
+	-- "Vitality" : -1,
+	-- "Wadable" : false,
+	-- "WakePosition" : 
+	-- [
+		-- 0.0,
+		-- 0.0,
+		-- 0.0
+	-- ],
+	-- "Walkable" : false,
+	-- "WasOpened" : false,
+	-- "WorldPos" : 
+	-- [
+		-- 201.1175537109375,
+		-- -9.600001335144043,
+		-- 141.39151000976562
+	-- ]
+-- }
+
+
+
+
+
+
+
+
+
+
+-- Seems impossible to add proper tooltip information to the Crafting result in recipe menu,
+ -- since with all data we get it is impossible to find out what is crafted (language translated string as Label ist the only info we get)
+-- request
+-- {
+	-- "AllowDelay" : true,
+	-- "AnchorEnum" : 0.0,
+	-- "BackgroundType" : 1.0,
+	-- "Height" : 54.000091552734375,
+	-- "Side" : "right",
+	-- "Text" : "Armbrust",
+	-- "Type" : "Generic",
+	-- "UIType" : 102,
+	-- "Width" : 53.99932861328125,
+	-- "X" : 180.94999694824219,
+	-- "Y" : 764.0
+-- }
+-- tooltip
+-- [
+	-- {
+		-- "AllowDelay" : true,
+		-- "AnchorEnum" : 0.0,
+		-- "BackgroundType" : 1.0,
+		-- "Height" : 2597.468505859375,
+		-- "Label" : "Armbrust",
+		-- "OverrideSize" : false,
+		-- "Type" : "GenericDescription",
+		-- "Width" : 6708.3779296875,
+		-- "X" : 0,
+		-- "Y" : 0
+	-- }
+-- ]
+
+
+

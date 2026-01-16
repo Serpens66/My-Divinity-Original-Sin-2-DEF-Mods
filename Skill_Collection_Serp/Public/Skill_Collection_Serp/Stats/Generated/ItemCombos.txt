@@ -2793,5 +2793,31 @@ data "PreviewStatsID" "SKILLBOOK_Necromancy_BloodBurst"
 
 
 
+new ItemCombination "BOOKRECIPE_Source_ChannelSource"
+data "RecipeCategory" "Grimoire"
+data "Type 1" "Object"
+data "Object 1" "BOOK_Skill_Sourcery_Blank_A"
+data "Transform 1" "Transform"
+data "Type 2" "Object"
+data "Object 2" "TOOL_Ink_Pot_A_Quill_Source_A"
+data "Transform 2" "None"
 
+new ItemCombinationResult "BOOKRECIPE_Source_ChannelSource_1"
+data "ResultAmount 1" "1"
+data "Result 1" "SKILLBOOK_Source_ChannelSource"
+data "PreviewStatsID" "SKILLBOOK_Source_ChannelSource"
+
+new ItemCombination "BOOKRECIPE_Source_ChannelSource_BAK"
+data "RecipeCategory" "Grimoire"
+data "Type 1" "Object"
+data "Object 1" "SKILLBOOK_Source_ChannelSource"
+data "Transform 1" "Transform"
+data "Type 2" "Object"
+data "Object 2" "TOOL_Ink_Pot_A_Quill_Source_A"
+data "Transform 2" "None"
+
+new ItemCombinationResult "BOOKRECIPE_Source_ChannelSource_BAK_1"
+data "ResultAmount 1" "1"
+data "Result 1" "BOOK_Skill_Sourcery_Blank_A"
+data "PreviewStatsID" "BOOK_Skill_Sourcery_Blank_A"
 

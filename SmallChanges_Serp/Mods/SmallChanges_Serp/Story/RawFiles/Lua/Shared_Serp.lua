@@ -635,7 +635,10 @@ SharedFns.OnStatsLoaded = function(e)
   for i,obj in pairs(Ext.Stats.GetStats("Potion")) do
     local MyStat = Ext.Stats.Get(obj)
     if MyStat then
-      if MyStat.ObjectCategory=="Food" then
+      if obj=="CON_Drink_Cup_A_Water" or obj=="CON_Drink_Glass_A_Wine" or obj=="CON_Drink_Mug_A_Tea" then
+        MyStat.ObjectCategory="Drink" -- bugfix
+      end
+      if MyStat.ObjectCategory=="Food" or MyStat.ObjectCategory=="Drink" or MyStat.ObjectCategory=="Fish" then
         MyStat.Duration = MyStat.Duration * 3
       end
     end
@@ -866,7 +869,7 @@ end
 
 
 -- Osi.CharacterLevelUpTo(Osi.CharacterGetHostCharacter(),20)
-  -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Target_SourceVampirism")
+  -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Shout_AstralRefresh_Summon")
 
 -- Ext.Print(Ext.Entity.GetCharacter("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd").Stats.OffHandWeapon)
 -- Ext.Print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").Stats:GetItemBySlot("Shield").WeaponType)

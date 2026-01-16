@@ -207,6 +207,78 @@
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="Shout_GreaterPolymorphism_DisplayName" />
 				</node>
+        
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Channel Energy" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Summon" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Channel Energy" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Fire" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Channel Energy" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Water" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Channel Energy" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Air" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Channel Energy" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Earth" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Channel Energy" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Necromancy" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Channel Energy" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Polymorph" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Channel Energy" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Rogue" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Channel Energy" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Ranger" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Channel Energy" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="Shout_AstralRefresh_Warrior" />
+				</node>
+
 			</children>
 		</node>
 	</region>
