@@ -93,7 +93,7 @@ SurfaceBasedStati = {
 	WebPurified = {},
 }
 -- to find the TemplateID search the vanilla RootTemplates _merged.lxs for : <attribute id="Name" type="23" value="Surface
-local MissingExtenderSurfaces = {DeathfogCloud="c651b724-32e2-4e34-99b4-272826ac3e37"}
+local MissingExtenderSurfaces = {DeathfogCloud="c651b724-32e2-4e34-99b4-272826ac3e37"} -- or must change it to "Deathfog" instead
 
 
 

@@ -174,7 +174,7 @@ end
 -- current version of Epip is preventing Game.Tooltip.Register.Surface from working, but using the one from Epip itself works
 local EpipSurfaceTooltips = Mods and Mods.EpipEncounters and Mods.EpipEncounters.Client.Tooltip.Hooks.RenderSurfaceTooltip
 
-local MissingExtenderSurfaces = {DeathfogCloud="c651b724-32e2-4e34-99b4-272826ac3e37"}
+local MissingExtenderSurfaces = {DeathfogCloud="c651b724-32e2-4e34-99b4-272826ac3e37"} -- or must change it to "Deathfog" instead
 
 -- returns the first key from table with value x
 local function table_contains_value(tbl, x)
@@ -905,7 +905,7 @@ end)
 -- ecl::StatusConsumeBase (00007FF44AB8A900)
 Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
   local status = StatusConsumeBase.StatusId
-  _D(StatusConsumeBase)
+  -- _D(StatusConsumeBase)
   -- print("StatusTooltip",char,status,_D(tooltip.Data))
   
   -- [{            "Label" : "Ermutigt",

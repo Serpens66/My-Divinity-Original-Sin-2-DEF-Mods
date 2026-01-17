@@ -1,0 +1,36 @@
+{
+	"TitleColor": "#11FF99",
+	"Data": {
+		"Variables": {
+			"Entries" : {
+				"MaxTalentsNumber" : {
+					"Max" : 10,
+					"Min" : 0,
+					"Value": 2,
+					"Increment": 1
+				},
+				"MaxStatiNumber" : {
+					"Max" : 10,
+					"Min" : 0,
+					"Value": 1,
+					"Increment": 1
+				},
+				"StatiExtraMaxDuration" : {
+					"Max" : 20,
+					"Min" : 0,
+					"Value": 0,
+					"Increment": 1
+				}
+			}
+		}
+	},
+	"MenuOrder": [
+		{
+			"Entries" : [
+				"MaxTalentsNumber",
+				"MaxStatiNumber",
+				"StatiExtraMaxDuration"
+			]
+		}
+	]
+}

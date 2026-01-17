@@ -1,0 +1,57 @@
+{
+	"TitleColor": "#11FF99",
+	"Data": {
+		"Variables": {
+			"Entries" : {
+				"Cooldown" : {
+					"Max" : 10,
+					"Min" : 0,
+					"Value": 3,
+					"Increment": 1
+				},
+				"TargetRadius" : {
+					"Max" : 20,
+					"Min" : 0,
+					"Value": 7,
+					"Increment": 0.5
+				},
+				"ActionPoints" : {
+					"Max" : 4,
+					"Min" : 0,
+					"Value": 1,
+					"Increment": 1
+				},
+				"AddForPlayer" : {
+					"Max" : 1,
+					"Min" : 0,
+					"Value": 1,
+					"Increment": 1
+				},
+				"AddForNPC" : {
+					"Max" : 1,
+					"Min" : 0,
+					"Value": 1,
+					"Increment": 1
+				},
+				"AddForSummons" : {
+					"Max" : 1,
+					"Min" : 0,
+					"Value": 1,
+					"Increment": 1
+				}
+			}
+		}
+	},
+	"MenuOrder": [
+		{
+			"Entries" : [
+				"Cooldown",
+				"TargetRadius",
+				"ActionPoints",
+				"AddForPlayer",
+				"AddForNPC",
+				"AddForSummons"
+			]
+		}
+	]
+}

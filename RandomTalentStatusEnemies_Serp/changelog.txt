@@ -1,4 +1,8 @@
 1.0.0.1:
 - disabled Indomiteable Talent as random talent for NPC, because this vanilla talent is too OP. (use my balanced indomiteable for all mod instead)
 1.0.0.2:
-- only provide divine talents if the giftbag is enabled. Add Jitterbug talent (teleports away from attacker if armor gets broken)
+- only provide divine talents if the giftbag is enabled. Add Jitterbug talent (teleports away from attacker if armor gets broken).
+- made divine Talents MagicCycle and Soulcatcher work correctly for NPCs (edited Osiris script)
+- removed Opportunist and Savage Sortilege from random Talent choice, because we already give them to every NPC by default.
+1.0.0.3:
+- added modsettings if LeaderLib is installed: Define max amount of talents/stati and add extra max duration to the default 1-5 rounds of stati.

@@ -13,8 +13,8 @@ SharedFns.HowToAddRandomTalents = "OnCombat"
 SharedFns.num_talents = 2
 RandomTalents = {
   Ambidextrous={weight=2,reqWeaponTypes={"None"}}, -- Offhand must be free
-  AttackOfOpportunity={weight=5,reqAbilities={"WarriorLore"} },--,reqWeaponTypes={"None","Knife","Sword","Axe","Club","Spear","Staff"}}, -- any melee
-  ViolentMagic={weight=4,reqAbilities={"EarthSpecialist","AirSpecialist","WaterSpecialist","FireSpecialist","Necromancy","Summoning"}},
+  -- AttackOfOpportunity={weight=5,reqAbilities={"WarriorLore"} },--,reqWeaponTypes={"None","Knife","Sword","Axe","Club","Spear","Staff"}}, -- any melee. is added to everyone now
+  -- ViolentMagic={weight=4,reqAbilities={"EarthSpecialist","AirSpecialist","WaterSpecialist","FireSpecialist","Necromancy","Summoning"}}, -- is added to everyone now
   ResistDead={weight=1},
   QuickStep={weight=1},
   Demon={weight=2},
@@ -24,11 +24,11 @@ RandomTalents = {
   WhatARush={weight=3},
   WalkItOff={weight=2},
   ElementalRanger={weight=3,reqAbilities={"RangerLore"} },--,reqWeaponTypes={"Bow","Crossbow"}},
-  Executioner={weight=4},
+  Executioner={weight=3},
   FaroutDude={weight=4},
   Raistlin={weight=1}, -- glass canon
   Leech={weight=2},
-  Torturer={weight=2},
+  Torturer={weight=3},
   LivingArmor={weight=2},
   Perfectionist={weight=4},
   Human_Inventive={weight=2},
@@ -76,29 +76,30 @@ if Ext.IsServer() then
     if Ext.Mod.IsModLoaded("ca32a698-d63e-4d20-92a7-dd83cba7bc56") then -- DivineTalents
       -- add divine talents from giftbag, if it is enabled
       RandomTalents.Sadist={weight=2,reqAbilities={"WarriorLore"} }--,reqWeaponTypes={"None","Knife","Sword","Axe","Club","Spear","Staff"}}, -- any melee
-      RandomTalents.MagicCycles={weight=3,reqAbilities={"EarthSpecialist","AirSpecialist","WaterSpecialist","FireSpecialist"}}
+      RandomTalents.MagicCycles={weight=4,reqAbilities={"EarthSpecialist","AirSpecialist","WaterSpecialist","FireSpecialist"}}
       RandomTalents.Haymaker={weight=1}
       RandomTalents.Gladiator={weight=1}
-      RandomTalents.Soulcatcher={weight=1}
-      RandomTalents.Jitterbug={weight=2} -- teleport away from attacker if armor is broken, only works if divine talents is active, since the txt script for this is in there
+      RandomTalents.Soulcatcher={weight=4,reqAbilities={"Summoning"}}
+      RandomTalents.Jitterbug={weight=3} -- teleport away from attacker if armor is broken, only works if divine talents is active, since the txt script for this is in there
       -- RandomTalents.Indomitable={weight=1} -- is too op
     end
   end)
 end
 
-num_status = 1
+SharedFns.num_status = 1
+SharedFns.StatusExtraMaxDuration = 0 -- on top of the maxrounds defined below
 RandomStatus = {
   BLESSED={weight=2,maxrounds=5},
   HASTED={weight=2,maxrounds=5},
   CLEAR_MINDED={weight=2,maxrounds=5},
   ETHEREAL_SOLES={weight=2,maxrounds=5},
-  RESTED={weight=2,maxrounds=5},
+  RESTED={weight=3,maxrounds=5},
   IMMUNE_TO_FREEZING={weight=2,maxrounds=5},
   IMMUNE_TO_BURNING={weight=2,maxrounds=5},
   IMMUNE_TO_ELECTRIFYING={weight=2,maxrounds=5},
   IMMUNE_TO_POISONING={weight=2,maxrounds=5},
-  MAGIC_SHELL={weight=2,maxrounds=5},
-  FORTIFIED={weight=2,maxrounds=5},
+  MAGIC_SHELL={weight=3,maxrounds=5},
+  FORTIFIED={weight=3,maxrounds=5},
   BLINDING_RADIANCE={weight=2,maxrounds=5},
   FIREBLOOD={weight=2,maxrounds=5},
   BlockSummon={weight=2,maxrounds=5}, -- summons can not attack this unit
@@ -115,11 +116,9 @@ RandomStatus = {
   REGENERATION={weight=2,maxrounds=5},
   FROST_AURA={weight=2,maxrounds=5},
   STEEL_SKIN={weight=2,maxrounds=5},
-  PROTECTION_CIRCLE={weight=2,maxrounds=2},
+  PROTECTION_CIRCLE={weight=2,maxrounds=3},
   EXTRA_TURN={weight=2,maxrounds=1},
   INVISIBLE={weight=2,maxrounds=1},
-  BLESSED={weight=2,maxrounds=5},
-  BLESSED={weight=2,maxrounds=5},
   None={weight=15},
 }
 
@@ -379,14 +378,14 @@ SharedFns.OnUnitCombatEntered = function(charGUID,combatID)
     -- Random Status
     local chosen = 0
     notstop = 0
-    while chosen < num_status do
+    while chosen < SharedFns.num_status do
       notstop = notstop + 1
       status = SharedFns.weighted_random_choices(RandomStatus, 1)[1]
       if status~="None" then
         if Osi.HasActiveStatus(charGUID,status)==0 then
-          maxdur = RandomStatus[status].maxrounds or 2
+          maxdur = (RandomStatus[status].maxrounds or 2) + SharedFns.StatusExtraMaxDuration
           duration = Ext.Random(1,maxdur) * 6 -- it is in seconds and one combat round is 6 seconds
-          Ext.Print("Apply Status "..tostring(status).." for "..tostring(duration/6).." rounds to "..tostring(charGUID))
+          Ext.Print("Apply Status "..tostring(status).." for "..tostring(duration/6).." rounds to "..tostring(charGUID),SharedFns.StatusExtraMaxDuration)
           Osi.ApplyStatus(charGUID,status,duration,1) -- (GUIDSTRING)_Object, (STRING)_Status, (REAL)_Duration (-1.0 infinite), (INTEGER)_Force 
         end
         chosen = chosen+1
@@ -400,4 +399,19 @@ SharedFns.OnUnitCombatEntered = function(charGUID,combatID)
     end    
   end
   
+end
+
+
+-- ################################
+-- Revert overrides in Skill_Projectile of Projectile_DimensionalBolt (were no changes compared to vanilla, so unneeded overwrite) 
+-- CMP_Talents_override: added CHARM and MADNESS to Indomitable.
+-- made Magic Cycle and Soulcatcher also work for NPC if they have this Talent
+
+local giftBagTextFiles = {
+    ["Mods/CMP_DivineTalents_Kamil/Story/RawFiles/Goals/CMP_Talents.txt"] = "Mods/SmallChanges_Serp/Story/RawFiles/Goals/CMP_Talents_override.txt",
+    ["Public/CMP_DivineTalents_Kamil/Stats/Generated/Data/Skill_Projectile.txt"] = "Public/SmallChanges_Serp/Stats/Generated/Data/Skill_Projectile.txt",
+}
+
+for file,override in pairs(giftBagTextFiles) do
+    Ext.IO.AddPathOverride(file, override)
 end

@@ -1,6 +1,10 @@
 
 -- give everyone, also npcs (when they enter combat) the cat jump
 
+AddForPlayer = 1
+AddForNPC = 1
+AddForSummons = 1
+
 local function RegisterProtectedOsirisListener(event, arity, state, callback)
 	Ext.Osiris.RegisterListener(event, arity, state, function(...)
 		if Ext.Server.GetGameState() == "Running" then
@@ -37,21 +41,37 @@ local function IsPlayerMainChar(charGUID)
   return table_contains_value(players,charGUID)
 end
 
+local function GiveRemoveJump(charGUID)
+  local add = true
+  if IsPlayerMainChar(charGUID) then
+    add = AddForPlayer==1
+  elseif CharacterIsPlayer(charGUID) then -- includes everything controllable by player
+    add = AddForSummons==1
+  else
+    add = AddForNPC==1
+  end
+  -- Ext.Print("SmallJump_Serp, GiveRemoveJump:",charGUID,add,AddForPlayer)
+  if add then
+    if Osi.CharacterHasSkill(charGUID,"Projectile_CatFlight_Serp")==0 then
+      Osi.CharacterAddSkill(charGUID,"Projectile_CatFlight_Serp")
+    end
+  else
+    if Osi.CharacterHasSkill(charGUID,"Projectile_CatFlight_Serp")==1 then
+      Osi.CharacterRemoveSkill(charGUID,"Projectile_CatFlight_Serp")
+    end
+  end
+end
 
 RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, minor, patch, build)
   local players = GetAllPlayerChars()
   for _,charGUID in ipairs(players) do
-    if Osi.CharacterHasSkill(charGUID,"Projectile_CatFlight_Serp")==0 then
-      Osi.CharacterAddSkill(charGUID,"Projectile_CatFlight_Serp")
-    end
+    GiveRemoveJump(charGUID)
   end
 end)
 
 RegisterProtectedOsirisListener("CharacterJoinedParty", 1, "after", function(charGUID)
   if Osi.ObjectIsCharacter(charGUID)==1 then -- [in](GUIDSTRING)_Object, [out](INTEGER)_Bool 
-    if Osi.CharacterHasSkill(charGUID,"Projectile_CatFlight_Serp")==0 then
-      Osi.CharacterAddSkill(charGUID,"Projectile_CatFlight_Serp")
-    end
+    GiveRemoveJump(charGUID)
   end
 end)
 
@@ -59,9 +79,51 @@ end)
 RegisterProtectedOsirisListener("ObjectEnteredCombat", 2, "after", function(charGUID, combatID)
   -- Ext.Print("ObjectEnteredCombat: ",charGUID)
   if Osi.ObjectIsCharacter(charGUID)==1 then -- [in](GUIDSTRING)_Object, [out](INTEGER)_Bool 
-    if Osi.CharacterHasSkill(charGUID,"Projectile_CatFlight_Serp")==0 then
-      Osi.CharacterAddSkill(charGUID,"Projectile_CatFlight_Serp")
-    end
+    GiveRemoveJump(charGUID)
   end
 end)
 
+
+
+-- ######################################
+
+-- LeaderLib Settings
+Ext.Events.SessionLoaded:Subscribe(function (ev)
+  if Mods.LeaderLib then -- LeaderLib (outside of SessionLoaded it is nil if LeaderLib is not loaded first..)
+    
+    -- also called on game load with current settings
+    Mods.LeaderLib.Events.ModSettingsChanged:Subscribe(function (e)
+      print("SmallJump_Serp: ModSettingsChanged",e.ID,e.Value)
+      local stats = Ext.Stats.Get("Projectile_CatFlight_Serp")
+      if e.ID=="Cooldown" then
+        stats.Cooldown = e.Value
+        Ext.Stats.Sync("Projectile_CatFlight_Serp",false)
+      elseif e.ID=="TargetRadius" then
+        stats.TargetRadius = e.Value
+        Ext.Stats.Sync("Projectile_CatFlight_Serp",false)
+      elseif e.ID=="ActionPoints" then
+        stats.ActionPoints = e.Value
+        Ext.Stats.Sync("Projectile_CatFlight_Serp",false)
+      elseif e.ID=="AddForSummons" then
+        AddForSummons = e.Value
+        local players = GetAllPlayerChars()
+        for _,charGUID in ipairs(players) do
+          GiveRemoveJump(charGUID)
+        end
+      elseif e.ID=="AddForNPC" then
+        AddForNPC = e.Value
+        local players = GetAllPlayerChars()
+        for _,charGUID in ipairs(players) do
+          GiveRemoveJump(charGUID)
+        end
+      elseif e.ID=="AddForPlayer" then
+        AddForPlayer = e.Value
+        local players = GetAllPlayerChars()
+        for _,charGUID in ipairs(players) do
+          GiveRemoveJump(charGUID)
+        end
+      end
+    end, {MatchArgs={ModuleUUID=ModuleUUID}})
+
+  end
+end)

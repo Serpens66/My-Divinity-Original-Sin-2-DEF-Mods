@@ -282,7 +282,7 @@ RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, mi
                   end
                   if minlevel>0 then -- without MinLevel are often Quest or Cheat skillbooks
                     skillbookstat["Value"] = 0 -- reduce value of all skillbooks to 0, to avoid any exploits
-                    Ext.Stats.Sync(skillbook)
+                    Ext.Stats.Sync(skillbook,false)
                     CacheSkillsAutoLearn[skill] = {minlevel=minlevel,reqabilitiesmem=reqabilitiesmem,reqabilitiesbook=reqabilitiesbook,reqsourcepoints=reqsourcepoints}
                     Ext.Print("AutoLearnSkill_Serp: Allow to auto learn skill:",skill)
                   else
@@ -344,6 +344,13 @@ RegisterProtectedOsirisListener("CharacterCreationFinished", 1, "after", functio
     -- Ext.Print("AutoLearnSkill_Serp: CharacterCreationFinished",charGUID,"reset UnlearnedSkills (to allow learning them again after respec")
     ModVars.UnlearnedSkills[charGUID] = {} -- reset the unlearned skills, to allow auto learning them again
     ModVars.UnlearnedSkills = ModVars.UnlearnedSkills
+    LearnAllFittingSkills(charGUID)
+  end
+end)
+
+-- event ItemEquipped((ITEMGUID)_Item, (CHARACTERGUID)_Character) (3,0,518,1)
+RegisterProtectedOsirisListener("ItemEquipped", 2, "after", function(item,charGUID)
+  if IsPlayerMainChar(charGUID) then
     LearnAllFittingSkills(charGUID)
   end
 end)

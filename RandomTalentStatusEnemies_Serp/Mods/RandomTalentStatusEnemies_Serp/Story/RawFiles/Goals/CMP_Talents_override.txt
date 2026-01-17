@@ -68,7 +68,7 @@ ApplyStatus(_Char, "INDOMITABLE", 6.0);
 IF
 CharacterStatusRemoved(_Char, "INDOMITABLE", _)
 THEN
-ApplyStatus(_Char, "INDOMITABLE_CD", 18.0);
+ApplyStatus(_Char, "INDOMITABLE_CD", 12.0);
 
 //indomitable knockdown removal fix
 IF
@@ -86,8 +86,8 @@ IF
 ObjectEnteredCombat(_Char, _)
 AND
 CharacterHasTalent((CHARACTERGUID)_Char, "MagicCycles", 1)
-AND
-DB_IsPlayer((CHARACTERGUID)_Char)
+//AND
+//DB_IsPlayer((CHARACTERGUID)_Char)
 AND
 Random(2, _Rand)
 //add talent check
@@ -230,7 +230,6 @@ DB_IsPlayer(_Char)
 THEN
 PROC_CMP_Soulcatcher_IsWithinSoulcatcherRange(_Char);
 
-
 PROC
 PROC_CMP_Soulcatcher_IsWithinSoulcatcherRange((CHARACTERGUID)_DeceasedChar)
 AND
@@ -290,6 +289,51 @@ DB_CMP_Soulcatcher(_Char, _Spawn, _Int)
 THEN
 NOT DB_CMP_Soulcatcher(_Char, _Spawn, _Int);
 CharacterDie((CHARACTERGUID)_Spawn, 0, "DoT");
+
+
+IF
+CharacterDying(_Char)
+AND
+NOT DB_IsPlayer(_Char)
+AND
+CharacterIsInCombat(_Char, 1)
+AND
+CombatGetIDForCharacter(_Char, _CombatID)
+THEN
+PROC_CMP_NPC_Soulcatcher_IsWithinSoulcatcherRange(_Char,_CombatID);
+
+PROC
+PROC_CMP_NPC_Soulcatcher_IsWithinSoulcatcherRange((CHARACTERGUID)_DeceasedChar, (INTEGER)_CombatID)
+AND
+DB_CombatCharacters(_SoulCatcherChar,_CombatID)
+AND
+NOT DB_IsPlayer(_SoulCatcherChar)
+AND
+CharacterIsAlly(_DeceasedChar, _SoulCatcherChar, 1)
+AND
+CharacterHasTalent((CHARACTERGUID)_SoulCatcherChar, "Soulcatcher", 1)
+AND
+CharacterIsDead(_SoulCatcherChar, 0)
+AND
+GetDistanceTo(_DeceasedChar, _SoulCatcherChar, _Dist)
+AND
+_Dist <= 12.0
+AND
+CharacterIsEnemy(_SoulCatcherChar, _DeceasedChar, 0)
+AND
+GetPosition(_DeceasedChar, _X, _Y, _Z)
+AND
+CharacterGetAbility(_SoulCatcherChar, "Summoning", _SummoningAbilityLevel)
+AND
+CharacterSummonAtPosition(_DeceasedChar, "e7e89c3f-b491-4771-a2e2-602cc89c3631", _X, _Y, _Z, 18.0, -1, _SummoningAbilityLevel, _SummonedChar)
+AND
+CharacterGetLevel(_DeceasedChar, _Level)
+AND
+IntegertoString(_Level, _Str)
+THEN
+PROC_CMP_Soulcatcher_AddSkills(_SummonedChar, _Level);
+//no need to remember anything, since npc usually dont resurrect eachother
+
 //END_REGION
 EXITSECTION
 

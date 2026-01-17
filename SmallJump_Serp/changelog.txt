@@ -1,0 +1,2 @@
+1.0.0.1:
+- Added Modsettings to change the cooldown, APCost and Range of the jump and if NPC should also get it, if LeaderLib is installed.

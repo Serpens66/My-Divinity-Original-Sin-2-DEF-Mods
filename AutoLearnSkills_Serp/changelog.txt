@@ -2,3 +2,5 @@
 - MinLevel requirement for learning skills was sometimes not high enough (only skillbook.MinLevel was used, but some have this 0, in this case I will use "Act Part" now)
 - dont allow skills to learn which only have a skillbook which is marked as Unique.
 - some mods made the code crash, because they are using unusual skillbook Requirements which are not used in vanilla. I added Level and Tag now to the code and made sure it does not crash if an unkown Requirement is listed for the skillbook. If this happens the skill wont be auto-learnable.
+1.0.0.2:
+- also trigger autolearn on item equip

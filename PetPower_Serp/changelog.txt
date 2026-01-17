@@ -1,0 +1,2 @@
+1.0.0.1:
+- the fix for the stats of oil infusion was not active, now it only provides +5 geomant and +100% earth resistance, like intended.

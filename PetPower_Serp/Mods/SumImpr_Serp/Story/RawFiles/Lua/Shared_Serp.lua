@@ -347,6 +347,9 @@ SharedFns.OnStatsLoaded = function(e)
         -- give oil armorboost and ice magicarmorboost
       elseif name=="Stats_Infusion_Oil" or stat.Using=="Stats_Infusion_Oil" then
         stat.ArmorBoost = 20
+        -- fix Oil infusion giving source stats, although it is no source infusion. so giving same stats like poison infusion now
+        stat.EarthSpecialist = 5 -- instead of vanilla 10
+        stat.EarthResistance = 100 -- instead of vanilla 120
       elseif name=="Stats_Infusion_Cursed_Oil" or stat.Using=="Stats_Infusion_Cursed_Oil" then
         stat.ArmorBoost = 40
       elseif name=="Stats_Infusion_Ice" or stat.Using=="Stats_Infusion_Ice" then
@@ -364,10 +367,6 @@ SharedFns.OnStatsLoaded = function(e)
         stat.WaterSpecialist = 3
         stat.AirSpecialist = 3
         stat.EarthSpecialist = 3
-      -- fix Oil infusion giving source stats, although it is no source infusion. so giving same stats like poison infusion now
-      elseif name=="Stats_Infusion_Oil" or stat.Using=="Stats_Infusion_Oil" then
-        stat.EarthSpecialist = 5 -- instead of vanilla 10
-        stat.EarthResistance = 100 -- instead of vanilla 120
         
       end
       

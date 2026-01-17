@@ -15,6 +15,8 @@
 -- dump a table: _D(table)
 
 
+-- Ext.Vars.RegisterModVariable(ModuleUUID, "NPCDifficultySettings", {Server = true, Client = true, SyncToClient = true})
+
 
 SharedFns = {}
 
@@ -250,13 +252,14 @@ end
 -- ClearTag 	(GUIDSTRING)_Source, (STRING)_Tag
 SharedFns.AddTalent = function(charGUID,Talent,compensateTalentPoint,Tag,char)
   local BuggedTalents = {"Throwing", "WandCharge","BeastMaster","PainDrinker","DeathfogResistant","Sourcerer","Rag"} -- talents which dont work properly with CharacterAddTalent (noticeable that they have no effect, not displayed and also not removeable). But as Boost they seem to work (at least tested with BeastMaster): only the first 3 are added at all, while most likely only BeastMaster works.
+   -- but better dont use BeastMaster, although it kind of works, adding/removing is also with NRD_CharacterSetPermanentBoostTalent buggy..
   if Talent and Talent~="None" then
     char = char or Ext.Entity.GetCharacter(charGUID)
     Ext.Print("Trying add Talent "..tostring(Talent).." to "..tostring(charGUID))
     if not Tag or Osi.IsTagged(charGUID,Tag)==0 then
       if (char and not char.Stats["TALENT_"..Talent]) or (not char and Osi.CharacterHasTalent(charGUID, Talent) == 0) then
         if char.PlayerCustomData==nil or SharedFns.table_contains_value(BuggedTalents,Talent) then -- NPC
-          Osi.NRD_CharacterSetPermanentBoostTalent(charGUID,Talent,1)--(CHARACTERGUID)_Character, (STRING)_Talent, (INTEGER)_HasTalent (_HasTalent=0 heißt entfernen und =1 heißt zufügen) -- der char TALENT_ check kann dies auch finden, der CharacterHasTalent nicht
+          Osi.NRD_CharacterSetPermanentBoostTalent(charGUID,Talent,1)--(CHARACTERGUID)_Character, (STRING)_Talent, (INTEGER)_HasTalent (_HasTalent=0 heißt entfernen und =1 heißt zufügen) -- der char TALENT_ check kann dies auch finden, CharacterHasTalent kanns auch, nachdems gesynced wurde mit CharacterAddAttribute
           Osi.CharacterAddAttribute(charGUID, "Dummy", 0) -- to sync to clients
         elseif char.PlayerCustomData then
           Osi.CharacterAddTalent(charGUID, Talent)
@@ -473,8 +476,8 @@ SharedFns.OnStatsLoaded = function(e)
   -- Sneak 2AP
   Ext.ExtraData["SneakDefaultAPCost"] = 2
   
-  -- from 4 to 10
-  Ext.ExtraData["MaximumSummonsInCombat"] = 10
+  -- from 4 to 20
+  Ext.ExtraData["MaximumSummonsInCombat"] = 20
   
   -- MiniMemoryBuff from 3 to 5
   Ext.ExtraData["CharacterBaseMemoryCapacity"] = 5
@@ -498,21 +501,40 @@ SharedFns.OnStatsLoaded = function(e)
   
   
   -- Controls are Back! StunnableMobs: reduce armor, but higher HP to not punish too much for doing differnent damage types
+  -- need ModVars to persistent save these values, to allow modsettings to change them and use new values on reloading the save
+  -- because LeaderLib Modsettings do load long after StatsLoaded, while changes after StatsLoaded in difficulty settings have no effect anymore
+  -- local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
+  -- Ext.Print("MODWARS: ",ModVars.NPCDifficultySettings)
+  -- local NPCDifficultySettings = ModVars.NPCDifficultySettings or {
+  local NPCDifficultySettings = {
+    CasualArmorNPCDiff=-50,
+    CasualMagicArmorNPCDiff=-50,
+    CasualVitalityNPCDiff=-15,
+    CasualMovementNPCDiff=0,
+    NormalArmorNPCDiff=-25,
+    NormalMagicArmorNPCDiff=-25,
+    NormalVitalityNPCDiff=33,
+    NormalMovementNPCDiff=10,
+    HardcoreArmorNPCDiff=0,
+    HardcoreMagicArmorNPCDiff=0,
+    HardcoreVitalityNPCDiff=100,
+    HardcoreMovementNPCDiff=25,
+  }
   local MyStat = Ext.Stats.GetRaw("CasualNPC")
-  MyStat["ArmorBoost"] = -50
-  MyStat["MagicArmorBoost"] = -50
-  MyStat["Vitality"] = -15
-  MyStat["MovementSpeedBoost"] = 25
+  MyStat["ArmorBoost"] = NPCDifficultySettings.CasualArmorNPCDiff
+  MyStat["MagicArmorBoost"] = NPCDifficultySettings.CasualMagicArmorNPCDiff
+  MyStat["Vitality"] = NPCDifficultySettings.CasualVitalityNPCDiff
+  MyStat["MovementSpeedBoost"] = NPCDifficultySettings.CasualMovementNPCDiff
   local MyStat = Ext.Stats.GetRaw("NormalNPC")
-  MyStat["ArmorBoost"] = -25
-  MyStat["MagicArmorBoost"] = -25
-  MyStat["Vitality"] = 33
-  MyStat["MovementSpeedBoost"] = 25
+  MyStat["ArmorBoost"] = NPCDifficultySettings.NormalArmorNPCDiff
+  MyStat["MagicArmorBoost"] = NPCDifficultySettings.NormalMagicArmorNPCDiff
+  MyStat["Vitality"] = NPCDifficultySettings.NormalVitalityNPCDiff
+  MyStat["MovementSpeedBoost"] = NPCDifficultySettings.NormalMovementNPCDiff
   local MyStat = Ext.Stats.GetRaw("HardcoreNPC")
-  MyStat["ArmorBoost"] = 0
-  MyStat["MagicArmorBoost"] = 0
-  MyStat["Vitality"] = 100
-  MyStat["MovementSpeedBoost"] = 25
+  MyStat["ArmorBoost"] = NPCDifficultySettings.HardcoreArmorNPCDiff
+  MyStat["MagicArmorBoost"] = NPCDifficultySettings.HardcoreMagicArmorNPCDiff
+  MyStat["Vitality"] = NPCDifficultySettings.HardcoreVitalityNPCDiff
+  MyStat["MovementSpeedBoost"] = NPCDifficultySettings.HardcoreMovementNPCDiff
   
   -- based on idea: Make Grenades Great again GrenadesImproved, nur die grenade buffs, nicht die 2 neuen grenades
   -- not 1:1 the same changes, but on rough rules to automate it
@@ -669,14 +691,44 @@ end
 
 
 -- Give BeastMaster talent to ever player with Summoning>=3
-SharedFns.ChangeBeastMaster = function(charGUID,summoninglevel)
-  summoninglevel = summoninglevel or Osi.CharacterGetAbility(charGUID,"Summoning")
-  if summoninglevel>=3 then
-    SharedFns.AddTalent(charGUID,"BeastMaster",false,"BeastMaster_Serp") -- 1 extra summon
-  else
-    if Osi.CharacterHasTalent(charGUID,"BeastMaster")==1 then
-      Osi.CharacterRemoveTalent(charGUID,"BeastMaster")
-      Osi.ClearTag(charGUID,"BeastMaster_Serp")
+-- ok, the talent is too buggy to apply/remove, even when using NRD_CharacterSetPermanentBoostTalent instead.
+-- so not using it, instead using the solution from LaughinLeader in SummoningTweaks to increase the max summon limit
+ -- this way we can increase it even further, like 2 summons at summoning 3, 3 summons at 6 and 4 summons at 9.
+SharedFns.ChangeBeastMaster = function(_charGUID,summoninglevel)
+  local charGUID,char = UnifycharGuid(_charGUID)
+  if SharedFns.IsPlayerMainChar(charGUID) then
+    summoninglevel = summoninglevel or Osi.CharacterGetAbility(charGUID,"Summoning")
+    if summoninglevel then
+      Ext.Print("SmallChanges_Serp, ChangeBeastMaster: ",charGUID,summoninglevel)
+      -- in theory it is enough to just add the same status x times (if we dont use StackId in the status stats), but RemoveStatus can only remove all or nothing, so to better allow removing one extra summon, we use 3 different stati
+      if summoninglevel<3 then
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_1")
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_2")
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_3")
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_4")
+      elseif summoninglevel>=3 and summoninglevel<6 then
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_1",-1,1)
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_2")
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_3")
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_4")
+      elseif summoninglevel>=6 and summoninglevel<9 then
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_1",-1,1)
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_2",-1,1)
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_3")
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_4")
+      elseif summoninglevel>=9 and summoninglevel<11 then
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_1",-1,1)
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_2",-1,1)
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_3",-1,1)
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_4")
+      elseif summoninglevel>=12 then
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_1",-1,1)
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_2",-1,1)
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_3",-1,1)
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_4",-1,1)
+      end
+    else
+      Ext.Print("SmallChanges_Serp: ChangeBeastMaster: summoninglevel is nil?! for char",charGUID,summoninglevel,Osi.CharacterGetAbility(charGUID,"Summoning"))
     end
   end
 end
@@ -687,14 +739,13 @@ end
 SharedFns.OnSaveLoaded = function(major, minor, patch, build)
   local players = SharedFns.GetAllPlayerChars()
   for _,charGUID in ipairs(players) do
-    
+
     -- Ext.Print("SmallChanges_Serp: OnSaveLoaded",charGUID)
     SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
     if Osi.CharacterHasSkill(charGUID,"Target_LLDUMMY_TrainingDummy")==0 then
       Osi.CharacterAddSkill(charGUID,"Target_LLDUMMY_TrainingDummy")
     end
     SharedFns.ChangeBeastMaster(charGUID)
-    Osi.NRD_CharacterDisableTalent(charGUID,"Indomitable", 1) -- disable vanilla Indomitable, we will use our balanced mod
     
     if Osi.CharacterHasSkill(charGUID,"Target_Bless")==1 then
       if Osi.CharacterHasSkill(charGUID,"Target_Curse")==0 then
@@ -716,14 +767,17 @@ SharedFns.OnSaveLoaded = function(major, minor, patch, build)
 end
 
 
+HealNPCIfBelow = 0
 
 -- already made sure it only forwards units, not items
 SharedFns.OnUnitCombatEntered = function(_charGUID,combatID)
   local charGUID,char = UnifycharGuid(_charGUID)
   Ext.Print("SmallChanges_Serp: OnUnitCombatEntered ",charGUID,_charGUID)
   
-  -- Full Heal of NPCS
-  SharedFns.DoHeal(charGUID,false,true,55,100,char)
+  if HealNPCIfBelow>0 then
+    -- Full Heal of NPCS
+    SharedFns.DoHeal(charGUID,false,true,HealNPCIfBelow,100,char)
+  end
   
   -- Immortal_Segeant_Redux and Gwydian
   if SharedFns.table_contains_value(SharedFns.MakeImmortalcharGUIDs,charGUID) then
@@ -752,13 +806,21 @@ end
 -- Ext.Stats.EnumIndexToLabel("AbilityType",2)
 -- (CHARACTERGUID)_Character, (STRING)_Ability, (INTEGER)_OldBaseValue, (INTEGER)_NewBaseValue)
 -- Is not called for changes by equipment
-SharedFns.OnCharacterBaseAbilityChanged = function(_charGUID,ability,old,new)
-  local charGUID,char = UnifycharGuid(_charGUID)
-  Ext.Print("OnCharacterBaseAbilityChanged",charGUID,ability,old,new)
+SharedFns.OnCharacterBaseAbilityChanged = function(charGUID,ability,old,new)
   -- local ability = Ext.Stats.EnumIndexToLabel("AbilityType",ability) # ist schon string
   if ability=="Summoning" then
     SharedFns.ChangeBeastMaster(charGUID,new)
   end
+end
+
+SharedFns.OnItemEquipped = function(item,charGUID)
+  SharedFns.ChangeBeastMaster(charGUID)
+end
+SharedFns.OnItemUnEquipped = function(item,charGUID)
+  SharedFns.ChangeBeastMaster(charGUID)
+end
+SharedFns.OnCharacterResurrected = function(item,charGUID)
+  SharedFns.ChangeBeastMaster(charGUID)
 end
 
 SharedFns.OnCharacterLeftParty = function(_charGUID)
@@ -784,21 +846,7 @@ SharedFns.OnCharacterLearnedSkill = function(_charGUID,skill)
 end
 
 
--- ################################
- -- DivineTalentsGiftpackMod (do a bit more than in BalancedIndomitableForAll Mod)
--- Give everyone a nerfed (better balanced) version Indomitable status:
--- Give the Status AFTER the CC-status wered off for 3 turns and then you are immune to CC for these 3 turns.
--- Revert overrides in Skill_Projectile of Projectile_DimensionalBolt (were no changes compared to vanilla, so unneeded overwrite) 
--- CMP_Talents_override is mostly the same, but added CHARM and MADNESS and increased the CD from 2 to 3 rounds (the time where you are vulnerable to CC)
 
-local giftBagTextFiles = {
-    ["Mods/CMP_DivineTalents_Kamil/Story/RawFiles/Goals/CMP_Talents.txt"] = "Mods/SmallChanges_Serp/Story/RawFiles/Goals/CMP_Talents_override.txt",
-    ["Public/CMP_DivineTalents_Kamil/Stats/Generated/Data/Skill_Projectile.txt"] = "Public/SmallChanges_Serp/Stats/Generated/Data/Skill_Projectile.txt",
-}
-
-for file,override in pairs(giftBagTextFiles) do
-    Ext.IO.AddPathOverride(file, override)
-end
 
 
 
@@ -850,6 +898,38 @@ if Ext.IsServer() then
           end
       end
   end)
+  
+  
+end
+
+
+-- ###############################
+
+-- LaderLib Modsettings Button (Button is only Client!)
+-- https://github.com/LaughingLeader-DOS2-Mods/LeaderLib/wiki/Mod-Settings#buttons
+local _ISCLIENT = Ext.IsClient()
+function EnableDisable_Indomitable()
+  if _ISCLIENT then
+		Ext.Net.PostMessageToServer("EnableDisable_Indomitable_ModSettingsSerp", "")
+	else
+    local players = SharedFns.GetAllPlayerChars()
+    for _,charGUID in ipairs(players) do
+      if Osi.NRD_CharacterIsTalentDisabled(charGUID,"Indomitable")==0 then
+        Ext.Print("SmallChanges_Serp: Disable Talent Indomitable",charGUID)
+        Osi.NRD_CharacterDisableTalent(charGUID,"Indomitable", 1)
+        Osi.CharacterAddAttribute(charGUID, "Dummy", 0) -- sync
+      else
+        Ext.Print("SmallChanges_Serp: Enable Talent Indomitable",charGUID)
+        Osi.NRD_CharacterDisableTalent(charGUID,"Indomitable", 0)
+        Osi.CharacterAddAttribute(charGUID, "Dummy", 0) -- sync
+      end
+    end
+	end
+end
+if not _ISCLIENT then
+	Ext.RegisterNetListener("EnableDisable_Indomitable_ModSettingsSerp", function (channel, payload, user)
+		EnableDisable_Indomitable()
+	end)
 end
 
 
@@ -973,6 +1053,16 @@ end
 
 -- local SkillbookTemplates = Mods.EpipEncounters.Epip.GetFeature("SkillbookTemplates"); Osi.ItemTemplateAddTo(SkillbookTemplates.GetForSkill("Target_MutePlayer")[1],"Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",1,1)
 -- Osi.ItemTemplateAddTo("45c5bf29-71bc-482f-b371-113717fd223e","Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",1,1)
+
+
+-- Revert the SummoningTweaks Mod MaxSummons changes, which stay active in save even if the mod was disabled:
+-- local players = SharedFns.GetAllPlayerChars()
+-- for _,_charGUID in ipairs(players) do
+  -- local charGUID,char = UnifycharGuid(_charGUID)
+  -- char.Stats.DynamicStats[2].MaxSummons = 0 -- is an extra value, so must be 0 to get default
+  -- Osi.CharacterAddAttribute(charGUID, "Dummy", 0)
+-- end
+
 
 
 -- for k,v in pairs(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").SkillManager) do print(k,v) end

@@ -1,0 +1,121 @@
+{
+    "TitleColor": "#11FF99",
+    "Data": {
+      "Variables": {
+        "Entries" : {
+          "CasualArmorNPCDiff" : {
+            "Max" : 900,
+            "Min" : -100,
+            "Value": -50,
+            "Increment": 5
+          },
+          "CasualMagicArmorNPCDiff" : {
+            "Max" : 900,
+            "Min" : -100,
+            "Value": -50,
+            "Increment": 5
+          },
+          "CasualVitalityNPCDiff" : {
+            "Max" : 900,
+            "Min" : -100,
+            "Value": -15,
+            "Increment": 5
+          },
+          "CasualMovementNPCDiff" : {
+            "Max" : 900,
+            "Min" : -100,
+            "Value": 0,
+            "Increment": 5
+          },
+          "NormalArmorNPCDiff" : {
+            "Max" : 900,
+            "Min" : -100,
+            "Value": -25,
+            "Increment": 5
+          },
+          "NormalMagicArmorNPCDiff" : {
+            "Max" : 900,
+            "Min" : -100,
+            "Value": -25,
+            "Increment": 5
+          },
+          "NormalVitalityNPCDiff" : {
+            "Max" : 900,
+            "Min" : -100,
+            "Value": 33,
+            "Increment": 5
+          },
+          "NormalMovementNPCDiff" : {
+            "Max" : 900,
+            "Min" : -100,
+            "Value": 10,
+            "Increment": 5
+          },
+          "HardcoreArmorNPCDiff" : {
+            "Max" : 900,
+            "Min" : -100,
+            "Value": 0,
+            "Increment": 5
+          },
+          "HardcoreMagicArmorNPCDiff" : {
+            "Max" : 900,
+            "Min" : -100,
+            "Value": 0,
+            "Increment": 5
+          },
+          "HardcoreVitalityNPCDiff" : {
+            "Max" : 900,
+            "Min" : -100,
+            "Value": 100,
+            "Increment": 5
+          },
+          "HardcoreMovementNPCDiff" : {
+            "Max" : 900,
+            "Min" : -100,
+            "Value": 25,
+            "Increment": 5
+          },
+          "HealNPCIfBelow" : {
+            "Max" : 100,
+            "Min" : 0,
+            "Value": 0,
+            "Increment": 1
+          }
+        }
+      },
+      "Buttons": [
+          {
+              "ID" : "EnableDisable_Indomitable",
+              "Callback": "EnableDisable_Indomitable",
+              "Enabled": true,
+              "HostOnly": true
+          }
+      ]
+    },
+    "MenuOrder": [
+      {
+        "Name" : "DifficultyNPCScaling",
+        "Entries" : [
+          "CasualArmorNPCDiff",
+          "CasualMagicArmorNPCDiff",
+          "CasualVitalityNPCDiff",
+          "CasualMovementNPCDiff",
+          "NormalArmorNPCDiff",
+          "NormalMagicArmorNPCDiff",
+          "NormalVitalityNPCDiff",
+          "NormalMovementNPCDiff",
+          "HardcoreArmorNPCDiff",
+          "HardcoreMagicArmorNPCDiff",
+          "HardcoreVitalityNPCDiff",
+          "HardcoreMovementNPCDiff"
+        ]
+      },
+      {
+        "Name" : "Other",
+        "Entries" : [
+                "HealNPCIfBelow",
+                "EnableDisable_Indomitable"
+        ]
+      }
+    ]
+}
