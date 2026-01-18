@@ -1005,7 +1005,8 @@ Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
       addstringtodesc = addstringtodesc.."\n<font color='#6EB09D'>Removed by Skills:</font> "--..table.concat(StatusCleansedBySkills[status],", ")
       for _,skillinfo in ipairs(StatusCleansedBySkills[status]) do
         local brackets = skillinfo.skill_loc~=skillinfo.skill and " ("..skillinfo.skill.."), " or ", "
-        addstringtodesc = addstringtodesc..skillinfo.skill_loc..brackets
+        local chance=skillinfo.chance and skillinfo.chance<100 and " "..tostring(skillinfo.chance).."% " or ""
+        addstringtodesc = addstringtodesc..skillinfo.skill_loc..chance..brackets
       end
     end
     if StatusRemovedByStati[status] then
