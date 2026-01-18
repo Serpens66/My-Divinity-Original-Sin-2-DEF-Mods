@@ -143,54 +143,56 @@ end)
 local function LearnAllFittingSkills(charGUID)
   charGUID = UnifycharGuid(charGUID)
   -- Ext.Print("AutoLearnSkill_Serp: LearnAllFittingSkills for",charGUID,#CacheSkillsAutoLearn)
-  SkillsToLearn[charGUID] = {}
-  currentindex[charGUID] = 1
-  if #CacheSkillsAutoLearn then
-    local charlevel = Osi.CharacterGetLevel(charGUID)
-    local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
-    for skill,reqs in pairs(CacheSkillsAutoLearn) do
-      if not table_contains_value(ModVars.UnlearnedSkills[charGUID],skill) and charlevel >= reqs.minlevel then
-        local canlearn = Osi.CharacterHasSkill(charGUID,skill)==0
-        if canlearn then
-          for i,reqabilitiesbook in ipairs(reqs.reqabilitiesbook) do
-            -- print("LearnAllFittingSkills",skill,reqabilitiesbook.Requirement,reqabilitiesbook.Param,Osi.CharacterGetAbility(charGUID,reqabilitiesbook.Requirement))
-            if reqabilitiesbook.Requirement=="Tag" then
-              if Osi.IsTagged(charGUID,tostring(reqabilitiesbook.Param))==0 then
-                canlearn = false
-              end
-            elseif reqabilitiesbook.Requirement=="Level" then -- do nothing, already done by putting this to minlevel
-            else
-              local abilitylevel = Osi.CharacterGetAbility(charGUID,reqabilitiesbook.Requirement)
-              if not abilitylevel or abilitylevel < tonumber(reqabilitiesbook.Param) then
-                canlearn = false
-              elseif not abilitylevel then
-                Ext.Print("AutoLearnSkill_Serp LearnAllFittingSkills: Book Requirement unknown (dont learn):",skill,reqabilitiesbook.Requirement,reqabilitiesbook.Param) -- some mods use Level and Tag here, who knows what else...
+  if Osi.CharacterIsDead(charGUID)==0 then
+    SkillsToLearn[charGUID] = {}
+    currentindex[charGUID] = 1
+    if #CacheSkillsAutoLearn then
+      local charlevel = Osi.CharacterGetLevel(charGUID)
+      local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
+      for skill,reqs in pairs(CacheSkillsAutoLearn) do
+        if not table_contains_value(ModVars.UnlearnedSkills[charGUID],skill) and charlevel >= reqs.minlevel then
+          local canlearn = Osi.CharacterHasSkill(charGUID,skill)==0
+          if canlearn then
+            for i,reqabilitiesbook in ipairs(reqs.reqabilitiesbook) do
+              -- print("LearnAllFittingSkills",skill,reqabilitiesbook.Requirement,reqabilitiesbook.Param,Osi.CharacterGetAbility(charGUID,reqabilitiesbook.Requirement))
+              if reqabilitiesbook.Requirement=="Tag" then
+                if Osi.IsTagged(charGUID,tostring(reqabilitiesbook.Param))==0 then
+                  canlearn = false
+                end
+              elseif reqabilitiesbook.Requirement=="Level" then -- do nothing, already done by putting this to minlevel
+              else
+                local abilitylevel = Osi.CharacterGetAbility(charGUID,reqabilitiesbook.Requirement)
+                if not abilitylevel or abilitylevel < tonumber(reqabilitiesbook.Param) then
+                  canlearn = false
+                elseif not abilitylevel then
+                  Ext.Print("AutoLearnSkill_Serp LearnAllFittingSkills: Book Requirement unknown (dont learn):",skill,reqabilitiesbook.Requirement,reqabilitiesbook.Param) -- some mods use Level and Tag here, who knows what else...
+                end
               end
             end
           end
-        end
-        if canlearn then
-          for i,reqabilitiesmem in ipairs(reqs.reqabilitiesmem) do
-            if Osi.CharacterGetAbility(charGUID,reqabilitiesmem.Requirement) < reqabilitiesmem.Param then
+          if canlearn then
+            for i,reqabilitiesmem in ipairs(reqs.reqabilitiesmem) do
+              if Osi.CharacterGetAbility(charGUID,reqabilitiesmem.Requirement) < reqabilitiesmem.Param then
+                canlearn = false
+              end
+            end
+          end
+          if canlearn then
+            local maxsourcepoints = Osi.HasActiveStatus(charGUID,"SOURCE_MUTED")==1 and 0 or Osi.CharacterGetMaxSourcePoints(charGUID) or 0
+            local skillstat = Ext.Stats.Get(skill)
+            local sourcecategory = skillstat and skillstat.Ability=="Source" -- eg source vampirms
+            if not (maxsourcepoints>=reqs.reqsourcepoints and (maxsourcepoints>0 or not sourcecategory)) then
               canlearn = false
             end
           end
-        end
-        if canlearn then
-          local maxsourcepoints = Osi.HasActiveStatus(charGUID,"SOURCE_MUTED")==1 and 0 or Osi.CharacterGetMaxSourcePoints(charGUID)
-          local skillstat = Ext.Stats.Get(skill)
-          local sourcecategory = skillstat and skillstat.Ability=="Source" -- eg source vampirms
-          if not (maxsourcepoints>=reqs.reqsourcepoints and (maxsourcepoints>0 or not sourcecategory)) then
-            canlearn = false
+          if canlearn then
+            table.insert(SkillsToLearn[charGUID],skill)
+            -- Osi.CharacterAddSkill(charGUID,skill) -- learning to many skill at once can crash the game
           end
         end
-        if canlearn then
-          table.insert(SkillsToLearn[charGUID],skill)
-          -- Osi.CharacterAddSkill(charGUID,skill) -- learning to many skill at once can crash the game
-        end
       end
+      LearnNextXSkills(charGUID)
     end
-    LearnNextXSkills(charGUID)
   end
 end
 
@@ -266,9 +268,8 @@ RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, mi
                   -- if skillbook=="SKILLBOOK_Source_VoidwokenCharm" or skill=="Target_VoidwokenCharm" then
                     -- Ext.Print(skillbook,skill,CacheSkillBookIsInTreasure[skillbook],CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory],CacheCraftableSkillbooks[skillbook])
                   -- end
-                  local minlevel = skillbookstat.MinLevel
+                  local minlevel = skillbookstat.MinLevel -- should be 5, not 4, fits better with the scaling: 1,5,9,13,16 .. but we wont adjust this here, maybe in another mod, then directly to the skillbook stats
                   local category = skillbookstat.ObjectCategory -- SkillbookAirStarter relevant for TreasureTable
-                  minlevel = minlevel==4 and 5 or minlevel -- should be 5, not 4, fits better with the scaling: 1,5,9,13,16
                   minlevel = minlevel==0 and skillbookstat["Act part"] or minlevel -- Act part is most of the time identical to MinLevel, but its 5 while MinLevel is 4, and I think 5 fits better. And sometimes MinLevel does not exist (0)
                   minlevel = tonumber(minlevel)
                   local reqabilitiesbook = skillbookstat.Requirements

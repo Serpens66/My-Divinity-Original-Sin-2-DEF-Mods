@@ -630,6 +630,13 @@ SharedFns.OnStatsLoaded = function(e)
       if SharedFns.table_contains_value(reduceAPforGrenadeObjects,MyStat.RootTemplate) then
         MyStat.UseAPCost = MyStat.UseAPCost-1
       end
+    -- change MinLevel of skillbooks (also have a setting to change it again, not sure though if merchants automatically adjust to this?)
+    elseif obj:lower():find("skillbook",1,true) then
+      local stat = Ext.Stats.Get(obj)
+      if stat and stat.MinLevel==4 then
+        stat.MinLevel = 5
+      end
+
     end
   end
   
@@ -989,7 +996,7 @@ end
 
 
 -- Osi.CharacterLevelUpTo(Osi.CharacterGetHostCharacter(),20)
-  -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Shout_AstralRefresh_Summon")
+  -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Shout_BreakTheShackles")
 
 -- Ext.Print(Ext.Entity.GetCharacter("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd").Stats.OffHandWeapon)
 -- Ext.Print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").Stats:GetItemBySlot("Shield").WeaponType)

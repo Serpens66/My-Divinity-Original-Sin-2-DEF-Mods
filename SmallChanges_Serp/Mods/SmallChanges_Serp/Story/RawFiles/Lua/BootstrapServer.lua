@@ -108,6 +108,21 @@ Ext.Events.SessionLoaded:Subscribe(function (ev)
       
       if e.ID=="HealNPCIfBelow" then
         HealNPCIfBelow = e.Value
+      elseif e.ID=="SkillbooskLvl5Not4" then
+        for i,obj in pairs(Ext.Stats.GetStats("Object")) do
+          if obj:lower():find("skillbook",1,true) then
+            local stat = Ext.Stats.Get(obj)
+            if stat then
+              if e.Value==1 and stat.MinLevel==4 then
+                stat.MinLevel = 5
+                Ext.Stats.Sync(obj,false)
+              elseif e.Value==0 and stat.MinLevel==5 then
+                stat.MinLevel = 4
+                Ext.Stats.Sync(obj,false)
+              end
+            end
+          end
+        end
       elseif e.ID=="DisableIndomiteable" then
         local players = SharedFns.GetAllPlayerChars()
         for _,charGUID in ipairs(players) do

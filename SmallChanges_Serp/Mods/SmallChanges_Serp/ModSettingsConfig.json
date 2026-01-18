@@ -81,6 +81,12 @@
             "Value": 0,
             "Increment": 1
           },
+          "SkillbooskLvl5Not4" : {
+            "Max" : 1,
+            "Min" : 0,
+            "Value": 1,
+            "Increment": 1
+          },
           "DisableIndomiteable" : {
             "Max" : 1,
             "Min" : 0,
@@ -112,6 +118,7 @@
         "Name" : "Other",
         "Entries" : [
                 "HealNPCIfBelow",
+                "SkillbooskLvl5Not4",
                 "DisableIndomiteable"
         ]
       }

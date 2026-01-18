@@ -10,3 +10,5 @@
 - - Enable/Disable vanilla Indomiteable Talent. 
 - - Change Armor/MagicArmor/Vitality boosts from difficulty settings for NPCs (takes effect after a game restart)
 - - Setting to heal all NPC on combart start if below x% health, default value 0%. Should be used if you increased NPC vitalitly, since this only increases max HP, not the current, if the NPC is already loaded ingame.
+1.0.0.2:
+- Made all skillbooks with MinLevel 4 using MinLevel 5 instead, so they only show up at lvl5 now. this feels better : 1,5,9,13,16. But added a ModSetting to change it to 4 again.

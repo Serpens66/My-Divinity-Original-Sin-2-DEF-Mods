@@ -4,3 +4,6 @@
 - some mods made the code crash, because they are using unusual skillbook Requirements which are not used in vanilla. I added Level and Tag now to the code and made sure it does not crash if an unkown Requirement is listed for the skillbook. If this happens the skill wont be auto-learnable.
 1.0.0.2:
 - also trigger autolearn on item equip
+- Ignore the "Act Part" info on skillbooks if a "MinLevel" is defined (only if no MinLevel is defined, use Act Part as MinLevel). Nearly all MinLevel=4 skillbooks have Act Part=5 defined, while the skillbooks show up at level 4 at merchants.
+1.0.0.3:
+- add a check if character is alive (if dead while trying to learn, script aborted learning for everyone after that char)

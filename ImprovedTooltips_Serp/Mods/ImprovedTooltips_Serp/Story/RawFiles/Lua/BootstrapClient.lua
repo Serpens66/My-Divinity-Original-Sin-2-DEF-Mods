@@ -63,7 +63,8 @@ local engineStatuses = {
 -- created by ChatGPT based on \Public\Shared\Scripts\Game\Statuses.gameScript
 -- Scripted Status removals
 -- StatusRemovesStatus={WARM={"WET","WARM","CHILLED","FROZEN"},BURNING={"WARM","WET","CHILLED","FROZEN","WEB"},NECROFIRE={"WARM","BURNING","CHILLED","WET","FROZEN","HOLY_FIRE","BLESSED","QUEST_OVERGROWN","WEB"},HOLY_FIRE={"WARM","BURNING","CHILLED","WET","FROZEN","NECROFIRE","WEB"},WET={"WARM","INVISIBLE","QUEST_SUNSHINE","BURNING","HOLY_FIRE","CHILLED","SHOCKED"},CHILLED={"BURNING","HOLY_FIRE","WARM","WET"},FROZEN={"CHILLED","WET","INVISIBLE","SLEEPING","MAGIC_SHELL","BURNING","HOLY_FIRE","WARM"},PETRIFIED={"MAGIC_SHELL","BLESSED","STUNNED","SHOCKED","BLEEDING","CRIPPLED","BURNING","POISONED","INVISIBLE","SLEEPING"},SHOCKED={"MAGIC_SHELL","INVISIBLE","SLEEPING"},STUNNED={"SHOCKED","PETRIFIED","WET","INVISIBLE","SLEEPING","MAGIC_SHELL","BLESSED"},DRUNK={"CLEAR_MINDED"},SLOWED={"HASTED"},HASTED={"SLOWED","CRIPPLED"},FEAR={"CLEAR_MINDED","ENRAGED","CHARMED","TAUNTED","SLEEPING","MADNESS"},CHARMED={"CLEAR_MINDED","ENRAGED","FEAR","TAUNTED","SLEEPING","MADNESS"},TAUNTED={"INVISIBLE","CLEAR_MINDED","ENRAGED","CHARMED","FEAR","SLEEPING","MADNESS"},SLEEPING={"INVISIBLE","CLEAR_MINDED","ENRAGED","CHARMED","TAUNTED","FEAR","MADNESS"},MADNESS={"CLEAR_MINDED"},CLEAR_MINDED={"FEAR","CHARMED","TAUNTED","SLEEPING","ENRAGED","BLIND","DRUNK","MADNESS"},ENRAGED={"FEAR","CHARMED","TAUNTED","SLEEPING","MADNESS","CLEAR_MINDED"},RESTED={"MUTED","BLIND","CRIPPLED","KNOCKED_DOWN","BLEEDING","PLAGUE","INFESTED"},MUTED={"RESTED"},BLIND={"RESTED"},CRIPPLED={"RESTED","HASTED"},KNOCKED_DOWN={"INVISIBLE","SLEEPING","RESTED"},REGENERATION={"ACID","POISONED","BLEEDING","SUFFOCATING","BURNING","INFESTED"},FORTIFIED={"ACID","POISONED","BURNING","BLEEDING","DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH"},ACID={"FORTIFIED"},BLEEDING={"REGENERATION","FORTIFIED"},BLESSED={"DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH","PETRIFIED","STUNNED","FROZEN","INFESTED","PLAGUE","BURNING","NECROFIRE","CURSED","VOIDHOWL"},MAGIC_SHELL={"FROZEN","STUNNED","PETRIFIED","PLAGUE","SUFFOCATING","POISONED","BURNING"},CURSED={"BLESSED","CHILLED","QUEST_OVERGROWN","BURNING","WARM","HOLY_FIRE"},DISEASED={"FORTIFIED","BLESSED"},INFECTIOUS_DISEASED={"FORTIFIED","BLESSED"},DECAYING_TOUCH={"FORTIFIED","BLESSED"},INVISIBLE={"WET"},CHICKEN={"WINGS"},HEALING_ELIXIR={"WEAK","SLOWED","DISEASED","POISONED","BLEEDING","CRIPPLED","CURSED","CHILLED","DRUNK","BURNING","NECROFIRE","ACID","SUFFOCATING","DECAYING_TOUCH","INFECTIOUS_DISEASED","PLAGUE"},CHAIN_HEAL={"INFESTED"},CLEANSE_WOUNDS={"INFESTED","PLAGUE","DISEASED","INFECTIOUS_DISEASED"},STEAM_LANCE={"FROZEN","CHILLED","DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH","PLAGUE","INFESTED"},WEB={"HASTED"},SPIDER_LEGS={"WEB"}}
-StatusRemovedByStati={WET={"WARM","BURNING","NECROFIRE","HOLY_FIRE","CHILLED","FROZEN","STUNNED","INVISIBLE"},WARM={"BURNING","NECROFIRE","HOLY_FIRE","WET","CHILLED","FROZEN","CURSED"},CHILLED={"WARM","BURNING","NECROFIRE","HOLY_FIRE","WET","FROZEN","CURSED","STEAM_LANCE","HEALING_ELIXIR"},FROZEN={"WARM","BURNING","NECROFIRE","HOLY_FIRE","WET","CHILLED","BLESSED","MAGIC_SHELL","STEAM_LANCE"},BURNING={"WARM","NECROFIRE","HOLY_FIRE","WET","FROZEN","PETRIFIED","REGENERATION","FORTIFIED","BLEEDING","BLESSED","MAGIC_SHELL","CURSED","HEALING_ELIXIR"},NECROFIRE={"BURNING","FROZEN","BLESSED","HEALING_ELIXIR"},HOLY_FIRE={"BURNING","WET","FROZEN","CHILLED","CURSED"},WEB={"BURNING","NECROFIRE","HOLY_FIRE","SPIDER_LEGS"},QUEST_OVERGROWN={"NECROFIRE","CURSED"},QUEST_SUNSHINE={"WET"},INVISIBLE={"WET","FROZEN","PETRIFIED","SHOCKED","STUNNED","TAUNTED","SLEEPING","KNOCKED_DOWN"},SHOCKED={"WET","PETRIFIED","STUNNED"},STUNNED={"PETRIFIED","BLESSED","MAGIC_SHELL"},MAGIC_SHELL={"FROZEN","PETRIFIED","SHOCKED","STUNNED"},SLEEPING={"FROZEN","PETRIFIED","SHOCKED","STUNNED","FEAR","CHARMED","TAUNTED","KNOCKED_DOWN"},BLEEDING={"PETRIFIED","REGENERATION","FORTIFIED","RESTED","HEALING_ELIXIR"},CRIPPLED={"PETRIFIED","HASTED","RESTED","HEALING_ELIXIR"},POISONED={"PETRIFIED","REGENERATION","FORTIFIED","MAGIC_SHELL","HEALING_ELIXIR"},CLEAR_MINDED={"DRUNK","FEAR","CHARMED","TAUNTED","SLEEPING","MADNESS"},DRUNK={"CLEAR_MINDED","HEALING_ELIXIR"},HASTED={"SLOWED","CRIPPLED","WEB"},SLOWED={"HASTED","HEALING_ELIXIR"},FEAR={"CHARMED","TAUNTED","SLEEPING","CLEAR_MINDED","ENRAGED"},CHARMED={"FEAR","TAUNTED","SLEEPING","CLEAR_MINDED","ENRAGED"},TAUNTED={"FEAR","CHARMED","SLEEPING","CLEAR_MINDED","ENRAGED"},MADNESS={"FEAR","CHARMED","TAUNTED","SLEEPING","CLEAR_MINDED","ENRAGED"},ENRAGED={"FEAR","CHARMED","TAUNTED","SLEEPING","CLEAR_MINDED"},RESTED={"MUTED","BLIND","CRIPPLED","KNOCKED_DOWN"},MUTED={"RESTED"},BLIND={"RESTED","CLEAR_MINDED"},KNOCKED_DOWN={"RESTED"},ACID={"REGENERATION","FORTIFIED","HEALING_ELIXIR"},SUFFOCATING={"REGENERATION","MAGIC_SHELL","HEALING_ELIXIR"},INFESTED={"REGENERATION","BLESSED","RESTED","CHAIN_HEAL","CLEANSE_WOUNDS","STEAM_LANCE"},DISEASED={"FORTIFIED","BLESSED","HEALING_ELIXIR","CLEANSE_WOUNDS","STEAM_LANCE"},INFECTIOUS_DISEASED={"FORTIFIED","BLESSED","HEALING_ELIXIR","CLEANSE_WOUNDS","STEAM_LANCE"},DECAYING_TOUCH={"FORTIFIED","BLESSED","HEALING_ELIXIR","STEAM_LANCE"},PLAGUE={"RESTED","BLESSED","HEALING_ELIXIR","CLEANSE_WOUNDS","STEAM_LANCE","MAGIC_SHELL"},CURSED={"BLESSED","HEALING_ELIXIR"},VOIDHOWL={"BLESSED"},WEAK={"HEALING_ELIXIR"},WINGS={"CHICKEN"}}
+-- StatusRemovedByStatiWithWorseStatus={FROZEN={"WARM","NECROFIRE","BURNING","STEAM_LANCE","MAGIC_SHELL","HOLY_FIRE","BLESSED"},BLESSED={"STUNNED","INFECTIOUS_DISEASED","PETRIFIED","NECROFIRE","DECAYING_TOUCH","DISEASED","CURSED"},WEAK={"HEALING_ELIXIR"},STUNNED={"PETRIFIED","MAGIC_SHELL","BLESSED"},RESTED={"KNOCKED_DOWN","MUTED","CRIPPLED","BLIND"},INVISIBLE={"FROZEN","STUNNED","KNOCKED_DOWN","PETRIFIED","TAUNTED","SHOCKED","SLEEPING","WET"},KNOCKED_DOWN={"RESTED"},PLAGUE={"CLEANSE_WOUNDS","RESTED","STEAM_LANCE","HEALING_ELIXIR","MAGIC_SHELL","BLESSED"},MUTED={"RESTED"},HASTED={"SLOWED","CRIPPLED","WEB"},INFECTIOUS_DISEASED={"CLEANSE_WOUNDS","STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},SLOWED={"HASTED","HEALING_ELIXIR"},PETRIFIED={"STUNNED","MAGIC_SHELL","BLESSED"},SUFFOCATING={"HEALING_ELIXIR","MAGIC_SHELL","REGENERATION"},TAUNTED={"CLEAR_MINDED","FEAR","CHARMED","SLEEPING","ENRAGED"},CRIPPLED={"RESTED","HASTED","PETRIFIED","HEALING_ELIXIR"},BLIND={"RESTED","CLEAR_MINDED"},CLEAR_MINDED={"DRUNK","TAUNTED","FEAR","CHARMED","SLEEPING","MADNESS","ENRAGED"},FEAR={"TAUNTED","CLEAR_MINDED","CHARMED","SLEEPING","ENRAGED"},BURNING={"FROZEN","PETRIFIED","NECROFIRE","CHILLED","HEALING_ELIXIR","MAGIC_SHELL","CURSED","HOLY_FIRE","BLESSED","FORTIFIED","REGENERATION","WET"},QUEST_SUNSHINE={"WET"},CHARMED={"TAUNTED","CLEAR_MINDED","FEAR","SLEEPING","ENRAGED"},CHILLED={"FROZEN","WARM","NECROFIRE","BURNING","STEAM_LANCE","HEALING_ELIXIR","CURSED","HOLY_FIRE","WET"},WINGS={"CHICKEN"},WEB={"SPIDER_LEGS","NECROFIRE","BURNING","HOLY_FIRE"},BLEEDING={"RESTED","PETRIFIED","HEALING_ELIXIR","FORTIFIED","REGENERATION"},VOIDHOWL={"BLESSED"},WARM={"FROZEN","WARM","NECROFIRE","BURNING","CHILLED","CURSED","HOLY_FIRE","WET"},NECROFIRE={"HEALING_ELIXIR","HOLY_FIRE","BLESSED"},CURSED={"HEALING_ELIXIR","BLESSED"},DECAYING_TOUCH={"STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},MAGIC_SHELL={"FROZEN","STUNNED","PETRIFIED","SHOCKED"},REGENERATION={"BLEEDING"},DRUNK={"CLEAR_MINDED","HEALING_ELIXIR"},QUEST_OVERGROWN={"NECROFIRE","CURSED"},SHOCKED={"STUNNED","PETRIFIED","WET"},HOLY_FIRE={"FROZEN","NECROFIRE","CHILLED","CURSED","WET"},DISEASED={"CLEANSE_WOUNDS","STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},INFESTED={"CLEANSE_WOUNDS","RESTED","CHAIN_HEAL","STEAM_LANCE","BLESSED","REGENERATION"},ACID={"HEALING_ELIXIR","FORTIFIED","REGENERATION"},SLEEPING={"FROZEN","STUNNED","KNOCKED_DOWN","PETRIFIED","TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SHOCKED","ENRAGED"},FORTIFIED={"INFECTIOUS_DISEASED","BLEEDING","DECAYING_TOUCH","DISEASED","ACID"},POISONED={"PETRIFIED","HEALING_ELIXIR","MAGIC_SHELL","FORTIFIED","REGENERATION"},WET={"FROZEN","STUNNED","WARM","NECROFIRE","BURNING","CHILLED","INVISIBLE","HOLY_FIRE"},MADNESS={"TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SLEEPING","ENRAGED"},ENRAGED={"TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SLEEPING"}}
+StatusRemovedByStati={FROZEN={"WARM","NECROFIRE","BURNING","STEAM_LANCE","MAGIC_SHELL","HOLY_FIRE","BLESSED"},BLESSED={"STUNNED","INFECTIOUS_DISEASED","PETRIFIED","NECROFIRE","DECAYING_TOUCH","DISEASED","CURSED"},WEAK={"HEALING_ELIXIR"},STUNNED={"PETRIFIED","MAGIC_SHELL","BLESSED"},RESTED={"KNOCKED_DOWN","MUTED","CRIPPLED","BLIND"},INVISIBLE={"FROZEN","STUNNED","KNOCKED_DOWN","PETRIFIED","TAUNTED","SHOCKED","SLEEPING","WET"},KNOCKED_DOWN={"RESTED"},PLAGUE={"CLEANSE_WOUNDS","RESTED","STEAM_LANCE","HEALING_ELIXIR","MAGIC_SHELL","BLESSED"},MUTED={"RESTED"},HASTED={"SLOWED","CRIPPLED","WEB"},INFECTIOUS_DISEASED={"CLEANSE_WOUNDS","STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},SLOWED={"HASTED","HEALING_ELIXIR"},PETRIFIED={"STUNNED","MAGIC_SHELL","BLESSED"},SUFFOCATING={"HEALING_ELIXIR","MAGIC_SHELL","REGENERATION"},TAUNTED={"CLEAR_MINDED","FEAR","CHARMED","SLEEPING","ENRAGED"},CRIPPLED={"RESTED","HASTED","PETRIFIED","HEALING_ELIXIR"},BLIND={"RESTED","CLEAR_MINDED"},CLEAR_MINDED={"DRUNK","TAUNTED","FEAR","CHARMED","SLEEPING","MADNESS","ENRAGED"},FEAR={"TAUNTED","CLEAR_MINDED","CHARMED","SLEEPING","ENRAGED"},BURNING={"FROZEN","PETRIFIED","CHILLED","HEALING_ELIXIR","MAGIC_SHELL","HOLY_FIRE","BLESSED","FORTIFIED","REGENERATION","WET"},QUEST_SUNSHINE={"WET"},CHARMED={"TAUNTED","CLEAR_MINDED","FEAR","SLEEPING","ENRAGED"},CHILLED={"WARM","STEAM_LANCE","HEALING_ELIXIR","HOLY_FIRE","WET"},WINGS={"CHICKEN"},WEB={"SPIDER_LEGS","NECROFIRE","BURNING","HOLY_FIRE"},BLEEDING={"RESTED","PETRIFIED","HEALING_ELIXIR","FORTIFIED","REGENERATION"},VOIDHOWL={"BLESSED"},WARM={"WARM","CHILLED","HOLY_FIRE","WET"},NECROFIRE={"HEALING_ELIXIR","HOLY_FIRE","BLESSED"},CURSED={"HEALING_ELIXIR","BLESSED"},DECAYING_TOUCH={"STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},MAGIC_SHELL={"FROZEN","STUNNED","PETRIFIED","SHOCKED"},REGENERATION={"BLEEDING"},DRUNK={"CLEAR_MINDED","HEALING_ELIXIR"},QUEST_OVERGROWN={"NECROFIRE","CURSED"},SHOCKED={"STUNNED","PETRIFIED"},HOLY_FIRE={"FROZEN","NECROFIRE","CHILLED","CURSED","WET"},DISEASED={"CLEANSE_WOUNDS","STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},INFESTED={"CLEANSE_WOUNDS","RESTED","CHAIN_HEAL","STEAM_LANCE","BLESSED","REGENERATION"},ACID={"HEALING_ELIXIR","FORTIFIED","REGENERATION"},SLEEPING={"FROZEN","STUNNED","KNOCKED_DOWN","PETRIFIED","TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SHOCKED","ENRAGED"},FORTIFIED={"INFECTIOUS_DISEASED","BLEEDING","DECAYING_TOUCH","DISEASED","ACID"},POISONED={"PETRIFIED","HEALING_ELIXIR","MAGIC_SHELL","FORTIFIED","REGENERATION"},WET={"STUNNED","WARM","CHILLED","INVISIBLE","HOLY_FIRE"},MADNESS={"TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SLEEPING","ENRAGED"},ENRAGED={"TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SLEEPING"}}
 StatusCleansedBySkills = {} -- doing this skill on a target, will remove the status from the target, will be filled StatsLoaded
 
 
@@ -886,6 +887,20 @@ end
   -- _D(tooltip.Data)
 -- end)
 
+-- return true to allow and false to not allow skill
+-- filter out eg. enemy/quest skills and so on, to only leave the ones the player might have
+function FilterSkills(skill,stat)
+  -- stat.IsEnemySkill=="Yes" -- dont include enemy exclusive skills ... nearly all mods and even part of vanilla, especially gift bags, failed to properly mark skills which are Enemy-only (many do Yes for player skills) -.-
+  if skill:lower():find("enemy",1,true) or skill:lower():find("quest",1,true) or skill:lower():find("dummy",1,true) or skill:lower():find("script",1,true) then
+    return false
+  end
+  if not stat.Icon or stat.Icon=="" or not stat.Description or stat.Description=="" or not stat.DisplayName or stat.DisplayName=="" then
+    return false
+  end -- MemorizationRequirements can not be securely used, since also several inate or weapon skills dont require memory.. and have no Ability type defined
+  return true
+end
+
+
 -- helper tables to fill StatusRemovedByStati
 StatusRequiresImmunity = {} -- the immunity which is required to be immune against this status
 StatsIdToStati = {}
@@ -916,9 +931,7 @@ Ext.Events.StatsLoaded:Subscribe(function(e)
   
   for i,skill in pairs(Ext.Stats.GetStats("SkillData")) do
     local stat = Ext.Stats.Get(skill)
-    -- local IsEnemySkill = stat.IsEnemySkill=="Yes" -- dont include enemy exclusive skills ... nearly all mods and even part of vanilla, especially gift bags, failed to properly mark skills which are Enemy-only (many do Yes for player skills) -.-
-    local IsEnemySkill = skill:lower():find("enemy",1,true) or skill:lower():find("quest",1,true) -- searching for enemy in the name might be better, although not hitting everything
-    if not IsEnemySkill then
+    if FilterSkills(skill,stat) then
       local CleanseStatuses = stat.CleanseStatuses -- string FROZEN;STUNNED;PETRIFIED;PLAGUE;SUFFOCATING;POISONED;BURNING;NECROFIRE;FEAR;MUTED;TAUNTED;MADNESS
       local StatusClearChance = stat.StatusClearChance
       local skill_loc = Ext.L10N.GetTranslatedStringFromKey(stat.DisplayName,skill)
@@ -971,11 +984,11 @@ Ext.Events.StatsLoaded:Subscribe(function(e)
 end)
 
 
-
 -- ecl::StatusConsumeBase (00007FF44AB8A900)
 Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
   local status = StatusConsumeBase.StatusId
   -- _D(StatusConsumeBase)
+  -- _D(tooltip)
   -- print("StatusTooltip",char,status,_D(tooltip.Data))
   
   -- [{            "Label" : "Ermutigt",
@@ -1001,10 +1014,11 @@ Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
                 
   if status and status~="" then
     local addstringtodesc = ""
+    local addID = CurrentPressedKeys["Shift"]
     if StatusCleansedBySkills[status] then
       addstringtodesc = addstringtodesc.."\n<font color='#6EB09D'>Removed by Skills:</font> "--..table.concat(StatusCleansedBySkills[status],", ")
       for _,skillinfo in ipairs(StatusCleansedBySkills[status]) do
-        local brackets = skillinfo.skill_loc~=skillinfo.skill and " ("..skillinfo.skill.."), " or ", "
+        local brackets = skillinfo.skill_loc~=skillinfo.skill and addID and " ("..skillinfo.skill.."), " or ", "
         local chance=skillinfo.chance and skillinfo.chance<100 and " "..tostring(skillinfo.chance).."% " or ""
         addstringtodesc = addstringtodesc..skillinfo.skill_loc..chance..brackets
       end
@@ -1012,7 +1026,7 @@ Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
     if StatusRemovedByStati[status] then
       addstringtodesc = addstringtodesc.."\n<font color='#6EB09D'>Removed by Stati:</font> "--..table.concat(StatusRemovedByStati[status],", ")
       for _,removerstatus in ipairs(StatusRemovedByStati[status]) do
-        local brackets = StatusLocs[removerstatus]~=removerstatus and " ("..removerstatus.."), " or ", "
+        local brackets = StatusLocs[removerstatus]~=removerstatus and addID and " ("..removerstatus.."), " or ", "
         addstringtodesc = addstringtodesc..StatusLocs[removerstatus]..brackets
       end
     end
@@ -1038,8 +1052,26 @@ Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
         end
       end
     end
-    PlayerPartyHasSkill()
     
+  end
+end)
+
+-- CurrentPressedKeys["Shift"]
+CurrentPressedKeys = {}
+-- https://gist.github.com/PinewoodPip/57e20c3239eb45c26a04499b189cc744#file-ext-lua-L3250
+Ext.Events.RawInput:Subscribe(function(e)
+  local inputEventData = e.Input
+  local id = tostring(inputEventData.Input.InputId)
+  local deviceType = tostring(inputEventData.Input.DeviceId)
+  if id == "" then return end -- Happens for unsupported keys, ex. media keys.
+  if deviceType=="Key" and (id=="lshift" or od=="rshift") then -- currently we only care for them
+    if inputEventData.Value.State == "Pressed" then
+      CurrentPressedKeys["Shift"] = true
+      -- updating currently shown tooltip is too complicated (hide and show again, but I need all the info of current tooltip, no clue how to easily get them)
+      -- so only works if first holding Shift and then hovering over object to show tooltip
+    else
+      CurrentPressedKeys["Shift"] = nil
+    end
   end
 end)
 

@@ -3,3 +3,5 @@
 - added StackId and StackPriority to status and skill tooltip, so you know which stati replace eachother or which will stay.
 1.0.0.2:
 - Added info to all Stati, which skills/other stati can cleanse it.
+1.0.0.3:
+- removed stati which can clean other stati, which make it worse, like to "heal" WET, just apply necrofire..
