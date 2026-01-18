@@ -3,7 +3,7 @@ type "SkillData"
 data "SkillType" "Cone"
 using "Cone_SilencingStare"
 data "ForGameMaster" "No"
-data "IsEnemySkill" "Yes"
+data "IsEnemySkill" "No"
 data "Memory Cost" "0"
 
 new entry "Cone_Summon_SteamLance_Condor"

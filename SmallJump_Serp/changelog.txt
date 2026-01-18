@@ -1,2 +1,4 @@
 1.0.0.1:
 - Added Modsettings to change the cooldown, APCost and Range of the jump and if NPC should also get it, if LeaderLib is installed.
+1.0.0.2:
+- Fixed: Summons did not add the new skill to their hotbar if summoned in combat.

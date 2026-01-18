@@ -1,3 +1,5 @@
 1.0.0.1:
 - added predicted damage to skill corpse-explode, traps and SparkingSwings/MasterOfSparks in english and german.
 - added StackId and StackPriority to status and skill tooltip, so you know which stati replace eachother or which will stay.
+1.0.0.2:
+- Added info to all Stati, which skills/other stati can cleanse it.

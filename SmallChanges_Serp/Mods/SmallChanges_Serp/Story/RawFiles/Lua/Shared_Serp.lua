@@ -197,6 +197,17 @@ function SharedFns.RegisterProtectedOsirisListener(event, arity, state, callback
 	end)
 end
 
+function GetPartyMembersNearby(charGUID,distance)
+  charGUID = charGUID or Osi.CharacterGetHostCharacter()
+  local nearby={}
+  for _,tupl in ipairs(Osi.DB_JoinedParty:Get(nil)) do -- also includes some dummies and summons and party members (story) that are not currently within your 4 active characters!
+    if Osi.GetDistanceTo(charGUID,tupl[1])<=distance then -- so checking a distance <= 50 will be most useful to find close chars
+      table.insert(nearby,tupl[1])
+    end
+  end
+  return nearby
+end
+
 -- important when comparing charGUID or using as key. all game/extender functions can handel both
 local function UnifycharGuid(charGUID)
   local char = Ext.Entity.GetCharacter(charGUID)
@@ -506,7 +517,22 @@ SharedFns.OnStatsLoaded = function(e)
   -- local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
   -- Ext.Print("MODWARS: ",ModVars.NPCDifficultySettings)
   -- local NPCDifficultySettings = ModVars.NPCDifficultySettings or {
-  local NPCDifficultySettings = {
+  
+  
+  local NPCDifficultySettings = {}
+  if Mods.LeaderLib then -- Modsettings from LeaderLib are not yet loaded in StatsLoaded, but only here changing the Difficulties has any effect. So we read them out from settings file
+    local json = Ext.IO.LoadFile("LeaderLib_GlobalSettings.json", "user")
+    if json then
+      local data = Ext.Json.Parse(json).Mods[ModuleUUID]
+      if data then
+        for var,value in pairs(data.Global.Variables) do
+          -- Ext.Print("SmallChanges_Serp",var,value.Value)
+          NPCDifficultySettings[var] = value.Value
+        end
+      end
+    end
+  end
+  NPCDifficultySettings = next(NPCDifficultySettings) and NPCDifficultySettings or {
     CasualArmorNPCDiff=-50,
     CasualMagicArmorNPCDiff=-50,
     CasualVitalityNPCDiff=-15,
@@ -520,17 +546,17 @@ SharedFns.OnStatsLoaded = function(e)
     HardcoreVitalityNPCDiff=100,
     HardcoreMovementNPCDiff=25,
   }
-  local MyStat = Ext.Stats.GetRaw("CasualNPC")
+  local MyStat = Ext.Stats.Get("CasualNPC")
   MyStat["ArmorBoost"] = NPCDifficultySettings.CasualArmorNPCDiff
   MyStat["MagicArmorBoost"] = NPCDifficultySettings.CasualMagicArmorNPCDiff
   MyStat["Vitality"] = NPCDifficultySettings.CasualVitalityNPCDiff
   MyStat["MovementSpeedBoost"] = NPCDifficultySettings.CasualMovementNPCDiff
-  local MyStat = Ext.Stats.GetRaw("NormalNPC")
+  local MyStat = Ext.Stats.Get("NormalNPC")
   MyStat["ArmorBoost"] = NPCDifficultySettings.NormalArmorNPCDiff
   MyStat["MagicArmorBoost"] = NPCDifficultySettings.NormalMagicArmorNPCDiff
   MyStat["Vitality"] = NPCDifficultySettings.NormalVitalityNPCDiff
   MyStat["MovementSpeedBoost"] = NPCDifficultySettings.NormalMovementNPCDiff
-  local MyStat = Ext.Stats.GetRaw("HardcoreNPC")
+  local MyStat = Ext.Stats.Get("HardcoreNPC")
   MyStat["ArmorBoost"] = NPCDifficultySettings.HardcoreArmorNPCDiff
   MyStat["MagicArmorBoost"] = NPCDifficultySettings.HardcoreMagicArmorNPCDiff
   MyStat["Vitality"] = NPCDifficultySettings.HardcoreVitalityNPCDiff
@@ -706,26 +732,37 @@ SharedFns.ChangeBeastMaster = function(_charGUID,summoninglevel)
         Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_2")
         Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_3")
         Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_4")
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_5")
       elseif summoninglevel>=3 and summoninglevel<6 then
         Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_1",-1,1)
         Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_2")
         Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_3")
         Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_4")
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_5")
       elseif summoninglevel>=6 and summoninglevel<9 then
         Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_1",-1,1)
         Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_2",-1,1)
         Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_3")
         Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_4")
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_5")
       elseif summoninglevel>=9 and summoninglevel<11 then
         Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_1",-1,1)
         Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_2",-1,1)
         Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_3",-1,1)
         Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_4")
-      elseif summoninglevel>=12 then
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_5")
+      elseif summoninglevel>=12 and summoninglevel<15 then
         Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_1",-1,1)
         Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_2",-1,1)
         Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_3",-1,1)
         Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_4",-1,1)
+        Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_5")
+      elseif summoninglevel>=15 then
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_1",-1,1)
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_2",-1,1)
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_3",-1,1)
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_4",-1,1)
+        Osi.ApplyStatus(charGUID,"MAX_SUMMONS_INC_SERP_5",-1,1)
       end
     else
       Ext.Print("SmallChanges_Serp: ChangeBeastMaster: summoninglevel is nil?! for char",charGUID,summoninglevel,Osi.CharacterGetAbility(charGUID,"Summoning"))
@@ -735,6 +772,7 @@ end
 
 -- #############
 -- Server
+
 
 SharedFns.OnSaveLoaded = function(major, minor, patch, build)
   local players = SharedFns.GetAllPlayerChars()
@@ -905,32 +943,34 @@ end
 
 -- ###############################
 
+-- Button SUCKS, using slider with 0/1 instead in server script
+
 -- LaderLib Modsettings Button (Button is only Client!)
 -- https://github.com/LaughingLeader-DOS2-Mods/LeaderLib/wiki/Mod-Settings#buttons
-local _ISCLIENT = Ext.IsClient()
-function EnableDisable_Indomitable()
-  if _ISCLIENT then
-		Ext.Net.PostMessageToServer("EnableDisable_Indomitable_ModSettingsSerp", "")
-	else
-    local players = SharedFns.GetAllPlayerChars()
-    for _,charGUID in ipairs(players) do
-      if Osi.NRD_CharacterIsTalentDisabled(charGUID,"Indomitable")==0 then
-        Ext.Print("SmallChanges_Serp: Disable Talent Indomitable",charGUID)
-        Osi.NRD_CharacterDisableTalent(charGUID,"Indomitable", 1)
-        Osi.CharacterAddAttribute(charGUID, "Dummy", 0) -- sync
-      else
-        Ext.Print("SmallChanges_Serp: Enable Talent Indomitable",charGUID)
-        Osi.NRD_CharacterDisableTalent(charGUID,"Indomitable", 0)
-        Osi.CharacterAddAttribute(charGUID, "Dummy", 0) -- sync
-      end
-    end
-	end
-end
-if not _ISCLIENT then
-	Ext.RegisterNetListener("EnableDisable_Indomitable_ModSettingsSerp", function (channel, payload, user)
-		EnableDisable_Indomitable()
-	end)
-end
+-- local _ISCLIENT = Ext.IsClient()
+-- function EnableDisable_Indomitable()
+  -- if _ISCLIENT then
+		-- Ext.Net.PostMessageToServer("EnableDisable_Indomitable_ModSettingsSerp", "")
+	-- else
+    -- local players = SharedFns.GetAllPlayerChars()
+    -- for _,charGUID in ipairs(players) do
+      -- if Osi.NRD_CharacterIsTalentDisabled(charGUID,"Indomitable")==0 then
+        -- Ext.Print("SmallChanges_Serp: Disable Talent Indomitable",charGUID)
+        -- Osi.NRD_CharacterDisableTalent(charGUID,"Indomitable", 1)
+        -- Osi.CharacterAddAttribute(charGUID, "Dummy", 0) -- sync
+      -- else
+        -- Ext.Print("SmallChanges_Serp: Enable Talent Indomitable",charGUID)
+        -- Osi.NRD_CharacterDisableTalent(charGUID,"Indomitable", 0)
+        -- Osi.CharacterAddAttribute(charGUID, "Dummy", 0) -- sync
+      -- end
+    -- end
+	-- end
+-- end
+-- if not _ISCLIENT then
+	-- Ext.RegisterNetListener("EnableDisable_Indomitable_ModSettingsSerp", function (channel, payload, user)
+		-- EnableDisable_Indomitable()
+	-- end)
+-- end
 
 
 -- ################################################

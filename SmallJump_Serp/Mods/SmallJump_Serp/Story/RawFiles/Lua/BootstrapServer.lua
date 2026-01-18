@@ -45,21 +45,33 @@ local function GiveRemoveJump(charGUID)
   local add = true
   if IsPlayerMainChar(charGUID) then
     add = AddForPlayer==1
-  elseif CharacterIsPlayer(charGUID) then -- includes everything controllable by player
+  elseif Osi.CharacterIsPlayer(charGUID) then -- includes everything controllable by player
     add = AddForSummons==1
   else
     add = AddForNPC==1
   end
-  -- Ext.Print("SmallJump_Serp, GiveRemoveJump:",charGUID,add,AddForPlayer)
+  -- Ext.Print("SmallJump_Serp, GiveRemoveJump:",charGUID,add,AddForPlayer,AddForSummons,AddForNPC)
   if add then
     if Osi.CharacterHasSkill(charGUID,"Projectile_CatFlight_Serp")==0 then
       Osi.CharacterAddSkill(charGUID,"Projectile_CatFlight_Serp")
+    end
+    -- Ext.Print("SmallJump_Serp NRD_SkillBarFindSkill",charGUID,Osi.NRD_SkillBarFindSkill(charGUID,"Projectile_CatFlight_Serp"),NRD_SkillBarGetSkill(charGUID,0))
+    if Osi.CharacterIsPlayer(charGUID) and Osi.NRD_SkillBarFindSkill(charGUID,"Projectile_CatFlight_Serp")==nil then -- sometimes it is not added to hotbar for summons
+      for i=0,40 do
+        if Osi.NRD_SkillBarGetSkill(charGUID,i)==nil then
+          -- Ext.Print("SmallJump_Serp, Add Jump to Hotbar Position",charGUID,i)
+          Osi.NRD_SkillBarSetSkill(charGUID,i,"Projectile_CatFlight_Serp")
+          break
+        end
+      end
     end
   else
     if Osi.CharacterHasSkill(charGUID,"Projectile_CatFlight_Serp")==1 then
       Osi.CharacterRemoveSkill(charGUID,"Projectile_CatFlight_Serp")
     end
   end
+  
+  
 end
 
 RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, minor, patch, build)

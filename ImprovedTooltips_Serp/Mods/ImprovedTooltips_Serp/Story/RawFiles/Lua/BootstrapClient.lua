@@ -60,6 +60,13 @@ local engineStatuses = {
   STORY_FROZEN=true,
 }
 
+-- created by ChatGPT based on \Public\Shared\Scripts\Game\Statuses.gameScript
+-- Scripted Status removals
+-- StatusRemovesStatus={WARM={"WET","WARM","CHILLED","FROZEN"},BURNING={"WARM","WET","CHILLED","FROZEN","WEB"},NECROFIRE={"WARM","BURNING","CHILLED","WET","FROZEN","HOLY_FIRE","BLESSED","QUEST_OVERGROWN","WEB"},HOLY_FIRE={"WARM","BURNING","CHILLED","WET","FROZEN","NECROFIRE","WEB"},WET={"WARM","INVISIBLE","QUEST_SUNSHINE","BURNING","HOLY_FIRE","CHILLED","SHOCKED"},CHILLED={"BURNING","HOLY_FIRE","WARM","WET"},FROZEN={"CHILLED","WET","INVISIBLE","SLEEPING","MAGIC_SHELL","BURNING","HOLY_FIRE","WARM"},PETRIFIED={"MAGIC_SHELL","BLESSED","STUNNED","SHOCKED","BLEEDING","CRIPPLED","BURNING","POISONED","INVISIBLE","SLEEPING"},SHOCKED={"MAGIC_SHELL","INVISIBLE","SLEEPING"},STUNNED={"SHOCKED","PETRIFIED","WET","INVISIBLE","SLEEPING","MAGIC_SHELL","BLESSED"},DRUNK={"CLEAR_MINDED"},SLOWED={"HASTED"},HASTED={"SLOWED","CRIPPLED"},FEAR={"CLEAR_MINDED","ENRAGED","CHARMED","TAUNTED","SLEEPING","MADNESS"},CHARMED={"CLEAR_MINDED","ENRAGED","FEAR","TAUNTED","SLEEPING","MADNESS"},TAUNTED={"INVISIBLE","CLEAR_MINDED","ENRAGED","CHARMED","FEAR","SLEEPING","MADNESS"},SLEEPING={"INVISIBLE","CLEAR_MINDED","ENRAGED","CHARMED","TAUNTED","FEAR","MADNESS"},MADNESS={"CLEAR_MINDED"},CLEAR_MINDED={"FEAR","CHARMED","TAUNTED","SLEEPING","ENRAGED","BLIND","DRUNK","MADNESS"},ENRAGED={"FEAR","CHARMED","TAUNTED","SLEEPING","MADNESS","CLEAR_MINDED"},RESTED={"MUTED","BLIND","CRIPPLED","KNOCKED_DOWN","BLEEDING","PLAGUE","INFESTED"},MUTED={"RESTED"},BLIND={"RESTED"},CRIPPLED={"RESTED","HASTED"},KNOCKED_DOWN={"INVISIBLE","SLEEPING","RESTED"},REGENERATION={"ACID","POISONED","BLEEDING","SUFFOCATING","BURNING","INFESTED"},FORTIFIED={"ACID","POISONED","BURNING","BLEEDING","DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH"},ACID={"FORTIFIED"},BLEEDING={"REGENERATION","FORTIFIED"},BLESSED={"DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH","PETRIFIED","STUNNED","FROZEN","INFESTED","PLAGUE","BURNING","NECROFIRE","CURSED","VOIDHOWL"},MAGIC_SHELL={"FROZEN","STUNNED","PETRIFIED","PLAGUE","SUFFOCATING","POISONED","BURNING"},CURSED={"BLESSED","CHILLED","QUEST_OVERGROWN","BURNING","WARM","HOLY_FIRE"},DISEASED={"FORTIFIED","BLESSED"},INFECTIOUS_DISEASED={"FORTIFIED","BLESSED"},DECAYING_TOUCH={"FORTIFIED","BLESSED"},INVISIBLE={"WET"},CHICKEN={"WINGS"},HEALING_ELIXIR={"WEAK","SLOWED","DISEASED","POISONED","BLEEDING","CRIPPLED","CURSED","CHILLED","DRUNK","BURNING","NECROFIRE","ACID","SUFFOCATING","DECAYING_TOUCH","INFECTIOUS_DISEASED","PLAGUE"},CHAIN_HEAL={"INFESTED"},CLEANSE_WOUNDS={"INFESTED","PLAGUE","DISEASED","INFECTIOUS_DISEASED"},STEAM_LANCE={"FROZEN","CHILLED","DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH","PLAGUE","INFESTED"},WEB={"HASTED"},SPIDER_LEGS={"WEB"}}
+StatusRemovedByStati={WET={"WARM","BURNING","NECROFIRE","HOLY_FIRE","CHILLED","FROZEN","STUNNED","INVISIBLE"},WARM={"BURNING","NECROFIRE","HOLY_FIRE","WET","CHILLED","FROZEN","CURSED"},CHILLED={"WARM","BURNING","NECROFIRE","HOLY_FIRE","WET","FROZEN","CURSED","STEAM_LANCE","HEALING_ELIXIR"},FROZEN={"WARM","BURNING","NECROFIRE","HOLY_FIRE","WET","CHILLED","BLESSED","MAGIC_SHELL","STEAM_LANCE"},BURNING={"WARM","NECROFIRE","HOLY_FIRE","WET","FROZEN","PETRIFIED","REGENERATION","FORTIFIED","BLEEDING","BLESSED","MAGIC_SHELL","CURSED","HEALING_ELIXIR"},NECROFIRE={"BURNING","FROZEN","BLESSED","HEALING_ELIXIR"},HOLY_FIRE={"BURNING","WET","FROZEN","CHILLED","CURSED"},WEB={"BURNING","NECROFIRE","HOLY_FIRE","SPIDER_LEGS"},QUEST_OVERGROWN={"NECROFIRE","CURSED"},QUEST_SUNSHINE={"WET"},INVISIBLE={"WET","FROZEN","PETRIFIED","SHOCKED","STUNNED","TAUNTED","SLEEPING","KNOCKED_DOWN"},SHOCKED={"WET","PETRIFIED","STUNNED"},STUNNED={"PETRIFIED","BLESSED","MAGIC_SHELL"},MAGIC_SHELL={"FROZEN","PETRIFIED","SHOCKED","STUNNED"},SLEEPING={"FROZEN","PETRIFIED","SHOCKED","STUNNED","FEAR","CHARMED","TAUNTED","KNOCKED_DOWN"},BLEEDING={"PETRIFIED","REGENERATION","FORTIFIED","RESTED","HEALING_ELIXIR"},CRIPPLED={"PETRIFIED","HASTED","RESTED","HEALING_ELIXIR"},POISONED={"PETRIFIED","REGENERATION","FORTIFIED","MAGIC_SHELL","HEALING_ELIXIR"},CLEAR_MINDED={"DRUNK","FEAR","CHARMED","TAUNTED","SLEEPING","MADNESS"},DRUNK={"CLEAR_MINDED","HEALING_ELIXIR"},HASTED={"SLOWED","CRIPPLED","WEB"},SLOWED={"HASTED","HEALING_ELIXIR"},FEAR={"CHARMED","TAUNTED","SLEEPING","CLEAR_MINDED","ENRAGED"},CHARMED={"FEAR","TAUNTED","SLEEPING","CLEAR_MINDED","ENRAGED"},TAUNTED={"FEAR","CHARMED","SLEEPING","CLEAR_MINDED","ENRAGED"},MADNESS={"FEAR","CHARMED","TAUNTED","SLEEPING","CLEAR_MINDED","ENRAGED"},ENRAGED={"FEAR","CHARMED","TAUNTED","SLEEPING","CLEAR_MINDED"},RESTED={"MUTED","BLIND","CRIPPLED","KNOCKED_DOWN"},MUTED={"RESTED"},BLIND={"RESTED","CLEAR_MINDED"},KNOCKED_DOWN={"RESTED"},ACID={"REGENERATION","FORTIFIED","HEALING_ELIXIR"},SUFFOCATING={"REGENERATION","MAGIC_SHELL","HEALING_ELIXIR"},INFESTED={"REGENERATION","BLESSED","RESTED","CHAIN_HEAL","CLEANSE_WOUNDS","STEAM_LANCE"},DISEASED={"FORTIFIED","BLESSED","HEALING_ELIXIR","CLEANSE_WOUNDS","STEAM_LANCE"},INFECTIOUS_DISEASED={"FORTIFIED","BLESSED","HEALING_ELIXIR","CLEANSE_WOUNDS","STEAM_LANCE"},DECAYING_TOUCH={"FORTIFIED","BLESSED","HEALING_ELIXIR","STEAM_LANCE"},PLAGUE={"RESTED","BLESSED","HEALING_ELIXIR","CLEANSE_WOUNDS","STEAM_LANCE","MAGIC_SHELL"},CURSED={"BLESSED","HEALING_ELIXIR"},VOIDHOWL={"BLESSED"},WEAK={"HEALING_ELIXIR"},WINGS={"CHICKEN"}}
+StatusCleansedBySkills = {} -- doing this skill on a target, will remove the status from the target, will be filled StatsLoaded
+
+
 -- Extender functions copy pasted to get the surface on position for client
 local SurfaceFlags = {
 	Ground = {
@@ -168,7 +175,9 @@ local function _GetSurfaces(x, z, grid)
 end
 
 
--- #########################
+-- ###########################################################################
+-- ###########################################################################
+-- ###########################################################################
 
 
 -- current version of Epip is preventing Game.Tooltip.Register.Surface from working, but using the one from Epip itself works
@@ -877,6 +886,12 @@ end
   -- _D(tooltip.Data)
 -- end)
 
+-- helper tables to fill StatusRemovedByStati
+StatusRequiresImmunity = {} -- the immunity which is required to be immune against this status
+StatsIdToStati = {}
+ImmunityFromStats = {}
+ImmunityFromStati = {}
+StatusLocs = {} -- translation in local language
 Ext.Events.StatsLoaded:Subscribe(function(e)
   -- from Vanilla Plus mod by Luxem, lua code updated to newest extender version, also updated ImprovedTooltips_Serp\Mods\ImprovedTooltips_Serp\Localization german and english for this
   local skillList = {
@@ -899,8 +914,63 @@ Ext.Events.StatsLoaded:Subscribe(function(e)
     end
 	end
   
+  for i,skill in pairs(Ext.Stats.GetStats("SkillData")) do
+    local stat = Ext.Stats.Get(skill)
+    -- local IsEnemySkill = stat.IsEnemySkill=="Yes" -- dont include enemy exclusive skills ... nearly all mods and even part of vanilla, especially gift bags, failed to properly mark skills which are Enemy-only (many do Yes for player skills) -.-
+    local IsEnemySkill = skill:lower():find("enemy",1,true) or skill:lower():find("quest",1,true) -- searching for enemy in the name might be better, although not hitting everything
+    if not IsEnemySkill then
+      local CleanseStatuses = stat.CleanseStatuses -- string FROZEN;STUNNED;PETRIFIED;PLAGUE;SUFFOCATING;POISONED;BURNING;NECROFIRE;FEAR;MUTED;TAUNTED;MADNESS
+      local StatusClearChance = stat.StatusClearChance
+      local skill_loc = Ext.L10N.GetTranslatedStringFromKey(stat.DisplayName,skill)
+      for status in string.gmatch(CleanseStatuses, "([^;]+)") do -- seperate by ;
+        StatusCleansedBySkills[status] = StatusCleansedBySkills[status] or {}
+        table.insert(StatusCleansedBySkills[status],{skill=skill,skill_loc=skill_loc,chance=StatusClearChance})
+      end
+    end
+  end
+  
+  for i,statusname in pairs(Ext.Stats.GetStats("StatusData")) do
+    local stat = Ext.Stats.Get(statusname)
+    local status_loc = Ext.L10N.GetTranslatedStringFromKey(stat.DisplayName,statusname)
+    StatusLocs[statusname] = status_loc
+    local ImmuneFlag = stat.ImmuneFlag -- ist nur eine immunity als string und bedeuted wenn du die hast, bist du immun gegen status
+    StatusRequiresImmunity[statusname] = ImmuneFlag
+    local StatsId = stat.StatsId
+    if StatsId and StatsId~="" then
+      StatsIdToStati[StatsId] = StatsIdToStati[StatsId] or {}
+      table.insert(StatsIdToStati[StatsId],statusname) -- one StatsId can be used by multiple Stati
+    end
+  end
+  
+  for i,StatsId in pairs(Ext.Stats.GetStats("Potion")) do
+    local stat = Ext.Stats.Get(StatsId)
+    local flags = stat.Flags -- a table, can contain Immunity, but not only this
+    for _,flag in pairs(flags) do
+      if flag:lower():find("immunity",1,true) then
+        ImmunityFromStats[flag] = ImmunityFromStats[flag] or {}
+        table.insert(ImmunityFromStats[flag],StatsId) -- several stats can provide the same immunity
+      end
+    end
+  end
+  
+  for immunity,StatsIds in pairs(ImmunityFromStats) do
+    for _,StatsId in ipairs(StatsIds) do
+      ImmunityFromStati[immunity] = StatsIdToStati[StatsId]
+    end
+  end
+  
+  for status,immunity in pairs(StatusRequiresImmunity) do
+    if ImmunityFromStati[immunity] then
+      for _,removerstatus in ipairs(ImmunityFromStati[immunity]) do
+        StatusRemovedByStati[status] = StatusRemovedByStati[status] or {}
+        table.insert(StatusRemovedByStati[status],removerstatus)
+      end
+    end
+  end
   
 end)
+
+
 
 -- ecl::StatusConsumeBase (00007FF44AB8A900)
 Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
@@ -928,20 +998,47 @@ Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
         -- },{
                 -- "Label" : "Dauer: 3 Runden<br><font face='Averia Serif' color='DBDBDB'>Applied by Lohse</font>",
                 -- "Type" : "StatusDescription"}]
-  if status and not engineStatuses[status] then -- Food status is CONSUME
-    local stat = Ext.Stats.Get(status)
-    if stat then
-      local StackId = stat.StackId
-      local StackPriority = stat.StackPriority
-      if StackId and StackId~="" then
-        for _,entry in ipairs(tooltip.Data) do
-          if entry.Type=="StatusDescription" then
-            entry.Label = entry.Label.."\n(StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
-            break
-          end
+                
+  if status and status~="" then
+    local addstringtodesc = ""
+    if StatusCleansedBySkills[status] then
+      addstringtodesc = addstringtodesc.."\n<font color='#6EB09D'>Removed by Skills:</font> "--..table.concat(StatusCleansedBySkills[status],", ")
+      for _,skillinfo in ipairs(StatusCleansedBySkills[status]) do
+        local brackets = skillinfo.skill_loc~=skillinfo.skill and " ("..skillinfo.skill.."), " or ", "
+        addstringtodesc = addstringtodesc..skillinfo.skill_loc..brackets
+      end
+    end
+    if StatusRemovedByStati[status] then
+      addstringtodesc = addstringtodesc.."\n<font color='#6EB09D'>Removed by Stati:</font> "--..table.concat(StatusRemovedByStati[status],", ")
+      for _,removerstatus in ipairs(StatusRemovedByStati[status]) do
+        local brackets = StatusLocs[removerstatus]~=removerstatus and " ("..removerstatus.."), " or ", "
+        addstringtodesc = addstringtodesc..StatusLocs[removerstatus]..brackets
+      end
+    end
+    if not engineStatuses[status] then -- Food status is CONSUME
+      local stat = Ext.Stats.Get(status)
+      if stat then
+        local StackId = stat.StackId
+        local StackPriority = stat.StackPriority
+        local SavingThrow = stat.SavingThrow
+        if SavingThrow and SavingThrow~="None" then
+          addstringtodesc = addstringtodesc.."\n<font color='#6EB09D'>SavingTrow:</font> "..tostring(SavingThrow)
+        end
+        if StackId and StackId~="" then
+          addstringtodesc = addstringtodesc.."\n(StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
         end
       end
     end
+    if addstringtodesc~="" then
+      for _,entry in ipairs(tooltip.Data) do
+        if entry.Type=="StatusDescription" then
+          entry.Label = entry.Label..addstringtodesc
+          break
+        end
+      end
+    end
+    PlayerPartyHasSkill()
+    
   end
 end)
 

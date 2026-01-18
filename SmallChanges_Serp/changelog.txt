@@ -1,2 +1,12 @@
 1.0.0.1:
-- reduces source point costs for cursed infusion from 2 to 1, also reduced for the skill the incarnation gets.
+- reduces source point costs for blessed/cursed summon-infusions from 2 to 1.
+- set source point costs from "Mortal Blow" from 3 to 2.
+- removed the "Beastmaster" Talent (was granted for having at least summoning lvl 3) and doing it via a hidden status effect instead now, since Beastmaster is very buggy, hard to remove it again.
+- now Summoning gets +1 max summon for every 3 summoning levels up to summoning lvl 15 (then you will have 6 max summons).
+- this extra-summon check is not also done on item equip/unequip to be up to date when using gear with +summoning.
+- added the UndeadFoodFix from LaughingLeader, which allows undead characters to profit from food effects, while still getting damage (in vanilla they dont get the effects at all because of the damage).
+- expanded the *3 Duration of Food effects also to Drinks and Fish.
+- Added Modsettings if LeaderLib mod is installed:
+- - Enable/Disable vanilla Indomiteable Talent. 
+- - Change Armor/MagicArmor/Vitality boosts from difficulty settings for NPCs (takes effect after a game restart)
+- - Setting to heal all NPC on combart start if below x% health, default value 0%. Should be used if you increased NPC vitalitly, since this only increases max HP, not the current, if the NPC is already loaded ingame.

@@ -80,17 +80,15 @@
             "Min" : 0,
             "Value": 0,
             "Increment": 1
+          },
+          "DisableIndomiteable" : {
+            "Max" : 1,
+            "Min" : 0,
+            "Value": 1,
+            "Increment": 1
           }
         }
       },
-      "Buttons": [
-          {
-              "ID" : "EnableDisable_Indomitable",
-              "Callback": "EnableDisable_Indomitable",
-              "Enabled": true,
-              "HostOnly": true
-          }
-      ]
     },
     "MenuOrder": [
       {
@@ -114,7 +112,7 @@
         "Name" : "Other",
         "Entries" : [
                 "HealNPCIfBelow",
-                "EnableDisable_Indomitable"
+                "DisableIndomiteable"
         ]
       }
     ]

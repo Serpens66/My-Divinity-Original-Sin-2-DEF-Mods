@@ -111,6 +111,12 @@ RegisterProtectedOsirisListener("ObjectEnteredCombat", 2, "after", function(char
     end
   end
 end)
+RegisterProtectedOsirisListener("CharacterResurrected", 1, "after", function(charGUID)
+  -- Ext.Print("ObjectEnteredCombat: ",charGUID)
+  if Osi.ObjectIsCharacter(charGUID)==1 then -- [in](GUIDSTRING)_Object, [out](INTEGER)_Bool 
+    ApplyMovementStatus(charGUID,char)
+  end
+end)
 
 
 

@@ -15,7 +15,7 @@ Game.Tooltip.Register.Ability(function(char, ability, tooltip)
   if ability=="Summoning" then
     for _, entry in ipairs(tooltip.Data) do
       if entry.Type=="AbilityDescription" then
-        entry.Description2 = entry.Description2.."Get one extra summon with Summoning 3"
+        entry.Description2 = entry.Description2.."Get one extra max-summon every 3 summoning levels (up to lvl 15)."
         break
       end
     end

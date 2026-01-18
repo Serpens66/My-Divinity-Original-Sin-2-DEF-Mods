@@ -12,84 +12,84 @@
 					<attribute id="UUID" type="22" value="HealNPCIfBelow_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs save+load to take effect after changing values." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs game restart to take effect after changing values." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="CasualArmorNPCDiff_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs save+load to take effect after changing values." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs game restart to take effect after changing values." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="CasualMagicArmorNPCDiff_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs save+load to take effect after changing values." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs game restart to take effect after changing values. Only increases Max Health, not the Current..." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="CasualVitalityNPCDiff_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs save+load to take effect after changing values." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs game restart to take effect after changing values." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="CasualMovementNPCDiff_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs save+load to take effect after changing values." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs game restart to take effect after changing values." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="NormalArmorNPCDiff_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs save+load to take effect after changing values." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs game restart to take effect after changing values." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="NormalMagicArmorNPCDiff_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs save+load to take effect after changing values." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs game restart to take effect after changing values. Only increases Max Health, not the Current..." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="NormalVitalityNPCDiff_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs save+load to take effect after changing values." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs game restart to take effect after changing values." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="NormalMovementNPCDiff_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs save+load to take effect after changing values." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs game restart to take effect after changing values." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="HardcoreArmorNPCDiff_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs save+load to take effect after changing values." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs game restart to take effect after changing values." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="HardcoreMagicArmorNPCDiff_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs save+load to take effect after changing values." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs game restart to take effect after changing values. Only increases Max Health, not the Current..." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="HardcoreVitalityNPCDiff_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs save+load to take effect after changing values." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="NPC % Boost difficulty settings, needs game restart to take effect after changing values." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />

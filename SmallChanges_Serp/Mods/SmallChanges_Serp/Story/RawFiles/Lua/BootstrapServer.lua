@@ -104,82 +104,16 @@ Ext.Events.SessionLoaded:Subscribe(function (ev)
   if Mods.LeaderLib then -- LeaderLib (outside of SessionLoaded it is nil if LeaderLib is not loaded first..)
     -- also called on game load with current settings
     Mods.LeaderLib.Events.ModSettingsChanged:Subscribe(function (e)
-      print("SmallChanges_Serp: ModSettingsChanged",e.ID,e.Value)
-      
-      -- local ModVars = Ext.Vars.GetModVariables(ModuleUUID)
-      -- ModVars.NPCDifficultySettings = ModVars.NPCDifficultySettings or {
-        -- CasualArmorNPCDiff=-50,
-        -- CasualMagicArmorNPCDiff=-50,
-        -- CasualVitalityNPCDiff=-15,
-        -- CasualMovementNPCDiff=0,
-        -- NormalArmorNPCDiff=-25,
-        -- NormalMagicArmorNPCDiff=-25,
-        -- NormalVitalityNPCDiff=33,
-        -- NormalMovementNPCDiff=10,
-        -- HardcoreArmorNPCDiff=0,
-        -- HardcoreMagicArmorNPCDiff=0,
-        -- HardcoreVitalityNPCDiff=100,
-        -- HardcoreMovementNPCDiff=25,
-      -- }
+      -- print("SmallChanges_Serp: ModSettingsChanged",e.ID,e.Value)
       
       if e.ID=="HealNPCIfBelow" then
         HealNPCIfBelow = e.Value
-        
-      -- elseif e.ID=="CasualArmorNPC" then
-        -- local stat = Ext.Stats.GetRaw("CasualNPC")
-        -- stat.ArmorBoost = e.Value
-        -- Ext.Stats.Sync("CasualNPC",true)
-      -- elseif e.ID=="CasualMagicArmorNPC" then
-        -- local stat = Ext.Stats.GetRaw("CasualNPC")
-        -- stat.MagicArmorBoost = e.Value
-        -- Ext.Stats.Sync("CasualNPC",true)
-      -- elseif e.ID=="CasualVitalityNPC" then
-        -- local stat = Ext.Stats.GetRaw("CasualNPC")
-        -- stat.Vitality = e.Value
-        -- Ext.Stats.Sync("CasualNPC",true)
-      -- elseif e.ID=="CasualMovementNPC" then
-        -- local stat = Ext.Stats.GetRaw("CasualNPC")
-        -- stat.MovementSpeedBoost = e.Value
-        -- Ext.Stats.Sync("CasualNPC",true)
-        
-      -- elseif e.ID=="NormalArmorNPC" then
-        -- local stat = Ext.Stats.GetRaw("NormalNPC")
-        -- stat.ArmorBoost = e.Value
-        -- Ext.Stats.Sync("NormalNPC",true)
-      -- elseif e.ID=="NormalMagicArmorNPC" then
-        -- local stat = Ext.Stats.GetRaw("NormalNPC")
-        -- stat.MagicArmorBoost = e.Value
-        -- Ext.Stats.Sync("NormalNPC",true)
-      -- elseif e.ID=="NormalVitalityNPC" then
-        -- local stat = Ext.Stats.GetRaw("NormalNPC")
-        -- stat.Vitality = e.Value
-        -- Ext.Stats.Sync("NormalNPC",true)
-      -- elseif e.ID=="NormalMovementNPC" then
-        -- local stat = Ext.Stats.GetRaw("NormalNPC")
-        -- stat.MovementSpeedBoost = e.Value
-        -- Ext.Stats.Sync("NormalNPC",true)
-        
-      -- elseif e.ID=="HardcoreArmorNPC" then
-        -- local stat = Ext.Stats.GetRaw("HardcoreNPC")
-        -- stat.ArmorBoost = e.Value
-        -- Ext.Stats.Sync("HardcoreNPC",true)
-      -- elseif e.ID=="HardcoreMagicArmorNPC" then
-        -- local stat = Ext.Stats.GetRaw("HardcoreNPC")
-        -- stat.MagicArmorBoost = e.Value
-        -- Ext.Stats.Sync("HardcoreNPC",true)
-      -- elseif e.ID=="HardcoreVitalityNPC" then
-        -- local stat = Ext.Stats.GetRaw("HardcoreNPC")
-        -- stat.Vitality = e.Value
-        -- Ext.Stats.Sync("HardcoreNPC",true)
-      -- elseif e.ID=="HardcoreMovementNPC" then
-        -- local stat = Ext.Stats.GetRaw("HardcoreNPC")
-        -- stat.MovementSpeedBoost = e.Value
-        -- Ext.Stats.Sync("HardcoreNPC",true)
-        
-      -- elseif e.ID:find("NPCDiff",1,true) then -- NPC difficulty settings, need a save+load to take effect
-        -- ModVars.NPCDifficultySettings[e.ID] = e.Value
-        -- Ext.Vars.SyncModVariables(ModuleUUID)
-        
+      elseif e.ID=="DisableIndomiteable" then
+        local players = SharedFns.GetAllPlayerChars()
+        for _,charGUID in ipairs(players) do
+          Osi.NRD_CharacterDisableTalent(charGUID,"Indomitable", e.Value) -- 1 means disabling
+        end
+
       end
     end, {MatchArgs={ModuleUUID=ModuleUUID}})
 

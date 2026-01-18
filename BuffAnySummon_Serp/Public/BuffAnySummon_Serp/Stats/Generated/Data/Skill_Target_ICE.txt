@@ -3,7 +3,7 @@ type "SkillData"
 using "Target_WinterBlast"
 data "SkillType" "Target"
 data "ForGameMaster" "No"
-data "IsEnemySkill" "Yes"
+data "IsEnemySkill" "No"
 data "Memory Cost" "0"
 data "Magic Cost" "0"
 
