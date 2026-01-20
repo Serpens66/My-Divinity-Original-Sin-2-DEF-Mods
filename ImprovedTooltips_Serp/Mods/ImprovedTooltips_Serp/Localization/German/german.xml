@@ -5,4 +5,39 @@
 	<content contentuid="hbd5f39f8g78e1g42c8g95b6g1917a8c65816">Zielcharakter und umgebende Verbündete erhalten den Statuseffekt Funkenmeister, der Nahkampfangriffen eine gewisse Chance auf Feuerfunken mit [1] hinzufügt.</content>
 	<content contentuid="h3240460dgd250g435bg9ebegc1682089c5ed">Lässt eine Zielleiche explodieren und bewirkt [1] in Reichweite.</content>
 	<content contentuid="h1a6bf0edg47eeg4ee8gaa86g5a608e5dda7b">Lässt alle Leichen um dich herum explodieren und bewirkt [1] in Reichweite.</content>
+	
+  <content contentuid="h6a997e60gf245g4809g8924g3c74434cab17">Heilelixier</content>
+  <content contentuid="h463deffcg6cbfg49acgb161g13e8e0be8d6f">Giftelixier</content>
+	<content contentuid="h8789fd46gae9ag4bbfg84ccg7f4b1c3fe781">Heilelixier aus Achillea. Soll besser als gewöhnliche Heiltränke sein.</content>
+  <content contentuid="hb6ee49d1g072fg433bg9199gae88ea3ac68d">Giftelixier aus Achillea. Soll gewöhnlichen Gifttränken überlegen sein.</content>
+
+
+	<content contentuid="h36fb2d93g6797g42a1g9867gc1a81d7b4287">Das Ziel erhält den Statuseffekt Klarer Geist, der Stärke, Finesse und Intelligenz um [1] sowie Verstand um [2] erhöht.</content>
+	<content contentuid="h64985f49gb4cdg4b58ga586g7c5e65397240">Heilt das Ziel um [2].</content>
+	<content contentuid="h75487591g363cg4a7ag8d54g4acfc8c0c6d6">Heilt das Ziel und erzeugt eine Wasserpfütze unter ihm.</content>
+	<content contentuid="h85c7c128gbe59g4474gb6ebg131ca85c1fe4">Eis formt eine Schutzbarriere um das Ziel und gewährt [1].</content>
+	<content contentuid="hd13bdfefg027eg46d0ga3efgbf0c254d3071">Heilt dich und Verbündete um dich. Erzeugt eine Wasserpfütze unter jedem Ziel.</content>
+	<content contentuid="h084f36c6g4215g4d4ag9890g30ca06f397c5">Regeneriert die Lebenskraft des Ziels.</content>
+	<content contentuid="h56cb39a0ge913g4364g97e6g843aca99bcdc">Konsumiere Ölflächen um dich herum und verwandle sie in physische Rüstung.</content>
+	<content contentuid="h5f86c871gaf82g4398g92a6g1cd4067667b0">Motiviert einen verbündeten Charakter mit der Macht der Raserei. Er ist Verstummt, doch landet garantiert kritische Treffer mit Basisangriffen und Waffenfertigkeiten.</content>
+	<content contentuid="h7e7b669dged21g4b8ag8a44g32bede9e51ae">Konsumiere Eisflächen um dich herum und verwandle sie in magische Rüstung.</content>
+	<content contentuid="h81c36377g45ccg42d1g9bc4g292d1cf2453f">Die magische Rüstung des Zielcharakters wird vollständig regeneriert.</content>
+	<content contentuid="haadfeeb2gcba3g402cgbb12gc453b243e7ba">Bietet [1]. Mit Statuseffekt Verstärkt kann das Ziel nicht teleportiert werden.</content>
+	<content contentuid="hbd366dc5g10a3g48acg9bffg4a11bccb189d">Alle Verbündeten in der Nähe konsumieren Eisflächen um sich herum und verwandeln sie in magische Rüstung.</content>
+	<content contentuid="hfc7594b1g2831g4fbeg88c1gbdb9993967f0">Der Zielverbündete verfällt in Kryogenische Starre. Obwohl außer Gefecht gesetzt, wird er immun gegen jede Art von Schaden und regeneriert allmählich seine Lebenskraft.</content>
+	<content contentuid="h00f8c333g513bg42e9gac4ag56edcf83c2e6">Verwandelt Wasser- und Blutflächen in Öl.</content>
+	<content contentuid="h15c252a1gcd4dg4e08gb8cfg52b37d88b03a">Verwandelt ein Ziel in der Nähe in Stein, schaltet es aus und bewirkt [1].</content>
+	<content contentuid="h89e3aab8gcd8ag43e4gaf95g86acfa0ecc7c">Erzeugt den Statuseffekt Beschleunigt beim Zielcharakter. Beschleunigt erhöht das Bewegungstempo um 2 m pro AP und fügt zusätzlich [2] AP pro Zug hinzu.</content>
+	<content contentuid="haaaae880g6883g489dg9181g2e5e0658f213">Entfernt die folgenden negativen Statuseffekte von dir: </content>
+	<content contentuid="h8a77803cge1beg4c4bga245g44da757c4f6c">Verschießt einen Strahl gesegneten Dampfs, der Charaktere heilt, auf die er trifft.</content>
+	<content contentuid="h0897c725g76cbg4ab7ga0ceg31a5294abbf8">Setzt alle Abklingzeiten zurück.</content>
+	<content contentuid="hf193d434ge2e8g4541gacc4ga701b24d6f0f">Ein Tornado tobt auf Zufallskurs über das Schlachtfeld, entfernt Flächen und deckt unsichtbare Charaktere auf.</content>
+	<content contentuid="h344ff4fcg1653g4d90gb853g73d60bc74601">Erzeugt eine Blase um deinen Kopf, die mit frischer Luft gefüllt ist, sodass du die Effekte von Wolkenflächen ignorieren kannst.</content>
+	<content contentuid="h501dea59g60afg41acg85ffg78e296733810">Versieh Verbündete in der Nähe mit Atemblase, sodass sie Wolkenflächen ignorieren können.</content>
+  <content contentuid="h195e0642ge46ag4d02g85ecg20a8a0012104">Alle Verbündeten in der Nähe konsumieren Ölflächen um sich herum und verwandeln sie in physische Rüstung.</content>
+
+  
+  <content contentuid="hd8754290g54d3g41ffg8216gbaf252cfbbbe">WEB_Description Kann sich nicht bewegen und nicht ausweichen. Kann nicht Ziel von Teleportationsfertigkeiten sein. Entfernt durch Brennend, Nekrofeuer, Heiliges Feuer.</content>
+
+
 </contentList>

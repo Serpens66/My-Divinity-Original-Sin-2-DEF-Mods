@@ -134,6 +134,7 @@ SharedFns.random_choice = function(choices)
   return choices[Ext.Random(#choices)]
 end
 
+
 -- returns the first key from table with value x
 SharedFns.table_contains_value = function(tbl, x)
   for k,v in pairs(tbl) do
@@ -424,15 +425,17 @@ SharedFns.OnStatsLoaded = function(e)
 
   
   -- DivineTalentsGiftpackMod (do a bit more than in BalancedIndomitableForAll Mod)
-  Stats_Indomitable_Flags = Ext.Stats.GetRaw("Stats_Indomitable")["Flags"]
-  for _,flag in ipairs({"ChickenImmunity","CrippledImmunity","FearImmunity","FreezeImmunity","KnockdownImmunity","PetrifiedImmunity","StunImmunity","MadnessImmunity","CharmImmunity"}) do
-    if not SharedFns.table_contains_value(Stats_Indomitable_Flags,flag) then
-      table.insert(Stats_Indomitable_Flags,flag)
+  local Stats_Indomitable = Ext.Stats.GetRaw("Stats_Indomitable")-- only exists if giftbag is enabled
+  if Stats_Indomitable then
+    Stats_Indomitable_Flags = Stats_Indomitable_Flags["Flags"]
+    for _,flag in ipairs({"ChickenImmunity","CrippledImmunity","FearImmunity","FreezeImmunity","KnockdownImmunity","PetrifiedImmunity","StunImmunity","MadnessImmunity","CharmImmunity"}) do
+      if not SharedFns.table_contains_value(Stats_Indomitable_Flags,flag) then
+        table.insert(Stats_Indomitable_Flags,flag)
+      end
     end
+    Ext.Stats.GetRaw("Stats_Indomitable")["Flags"] = Stats_Indomitable_Flags
+    Ext.Stats.GetRaw("MADNESS")["ImmuneFlag"] = "MadnessImmunity" 
   end
-  Ext.Stats.GetRaw("Stats_Indomitable")["Flags"] = Stats_Indomitable_Flags
-  Ext.Stats.GetRaw("MADNESS")["ImmuneFlag"] = "MadnessImmunity" 
-  
   
   -- ImprovedDoorOfEternity
   Ext.Stats.GetRaw("Shout_CloseTheDoor")["ActionPoints"] = 2
@@ -981,6 +984,7 @@ end
 
 
 -- ################################################
+-- ################################################
 
 -- console testing
 
@@ -990,13 +994,27 @@ end
 -- }
 -- and save the file. Now when you start the game, the console should pop up in another window. When you loaded the savegame, open the console, hit Enter one time and copy paste this into it and hit enter:
 
+-- in console you can enter lua commands and:
+-- client  (swtich to client execution)
+-- server
+-- exit
+
+
 -- loop over all status of a player:
 -- char.StatusMachine.Statuses
 
 
 
+
+
+
+-- Osi.ItemTemplateAddTo("37535d5c-3262-4d2d-bcbc-c940e33ec2ca",Osi.CharacterGetHostCharacter(),1,1)
+
 -- Osi.CharacterLevelUpTo(Osi.CharacterGetHostCharacter(),20)
   -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Shout_BreakTheShackles")
+
+-- Osi.ApplyStatus(Osi.CharacterGetHostCharacter(),"INFECTIOUS_DISEASED",12,1)
+
 
 -- Ext.Print(Ext.Entity.GetCharacter("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd").Stats.OffHandWeapon)
 -- Ext.Print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").Stats:GetItemBySlot("Shield").WeaponType)
@@ -1102,6 +1120,7 @@ end
 -- Osi.ItemTemplateAddTo("45c5bf29-71bc-482f-b371-113717fd223e","Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd",1,1)
 
 
+
 -- Revert the SummoningTweaks Mod MaxSummons changes, which stay active in save even if the mod was disabled:
 -- local players = SharedFns.GetAllPlayerChars()
 -- for _,_charGUID in ipairs(players) do
@@ -1110,6 +1129,19 @@ end
   -- Osi.CharacterAddAttribute(charGUID, "Dummy", 0)
 -- end
 
+
+
+-- local tablestring = "{"
+-- for status,entries in pairs(engineStatuses) do
+  -- if next(entries) then
+    -- tablestring = tablestring..status.."={"
+    -- for k,v in pairs(entries) do
+      -- tablestring = tablestring..tostring(k).."='"..tostring(v).."',"
+    -- end
+    -- tablestring = tablestring.."},"
+  -- end
+-- end
+-- tablestring = tablestring.."}"
 
 
 -- for k,v in pairs(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").SkillManager) do print(k,v) end

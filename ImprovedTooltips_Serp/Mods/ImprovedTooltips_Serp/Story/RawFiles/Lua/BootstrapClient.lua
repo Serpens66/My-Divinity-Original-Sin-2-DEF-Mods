@@ -1,180 +1,179 @@
+-- TODO:
+-- gameScript nochmal genauer unterscheiden zwischen:
+-- Neuer Status ersetzt alten Status oder neuer Status wird durch alten Status verhindert (und verhindert und dabei selbst entfernt)
+
+
+-- Modsettings dazu packen, muss client sein...
+
+-- zu debuff den shifthalten teil fpr codename zufügen
+
+  
+Ext.Require("GetSurfaces.lua") -- _GetSurfaces
 
 -- statusses which have no stats
+-- but add some known SavingThrow and ImmuneFlag and translation handle to them
 local engineStatuses = {
-	CLEAN=true,
-  CLIMBING=true,
-  SOURCE_MUTED=true,
-  DRAIN=true,
-  POLYMORPHED=true,
-  CHARMED=true,
-  INFUSED=true,
-  HIT=true,
-  IDENTIFY=true,
-  DYING=true,
-  THROWN=true,
-  LYING=true,
-  SNEAKING=true,
-  CONSUME=true,
-  ROTATE=true,
-  SHACKLES_OF_PAIN=true,
-  UNSHEATHED=true,
-  WIND_WALKER=true,
-  DARK_AVENGER=true,
-  AOO=true,
-  SHACKLES_OF_PAIN_CASTER=true,
-  SITTING=true,
-  FLANKED=true,
-  LINGERING_WOUNDS=true,
-  CHANNELING=true,
-  DAMAGE=true,
-  EXPLODE=true,
-  SMELLY=true,
-  SPIRIT_VISION=true,
-  INCAPACITATED=true,
-  SPARK=true,
-  UNLOCK=true,
-  EFFECT=true,
-  STANCE=true,
-  FORCE_MOVE=true,
-  SPIRIT=true,
-  FLOATING=true,
-  CONSTRAINED=true,
-  SUMMONING=true,
-  MATERIAL=true,
-  LEADERSHIP=true,
-  COMBUSTION=true,
-  TUTORIAL_BED=true,
-  TELEPORT_FALLING=true,
-  INFECTIOUS_DISEASED=true,
-  OVERPOWER=true,
-  REMORSE=true,
-  REPAIR=true,
-  ENCUMBERED=true,
-  UNHEALABLE=true,
-  ACTIVE_DEFENSE=true,
-  DECAYING_TOUCH=true,
-  ADRENALINE=true,
-  INSURFACE=true,
-  BOOST=true,
-  COMBAT=true,
-  STORY_FROZEN=true,
+    SOURCE_MUTED = {
+        DisplayName = "h534aec4fgecc5g4b34gb0f5g8b08c3c4309e",
+        SavingThrow = "MagicArmor",
+        ImmuneFlag = "None"
+    },
+    ADRENALINE = {DisplayName = "h4c891442g3b79g4dbeg906fgf8eeffcf60df"},
+    COMBAT = {},
+    SPIRIT_VISION = {},
+    UNSHEATHED = {},
+    CHANNELING = {},
+    IDENTIFY = {},
+    INSURFACE = {},
+    FLOATING = {DisplayName = "h278121a7g2132g4efdgb151g9af722d670dc"},
+    THROWN = {DisplayName = "hfa754958gff75g4474g8cd5g508b4fb7a984",ImmuneFlag="ThrownImmunity"},
+    INFUSED = {DisplayName = "hae4ca8a4g56feg480eg95c8ge5761ab1eb2e"},
+    CLIMBING = {},
+    CHARMED = {
+        DisplayName = "h30fc0122g6378g408cgac6fg6e3bcb3c852b",
+        SavingThrow = "MagicArmor",
+        ImmuneFlag = "CharmImmunity"
+    },
+    LYING = {},
+    CLEAN = {DisplayName = "h8fb688afg29efg4804g9d68g955c3c463053"},
+    ACTIVE_DEFENSE = {},
+    SNEAKING = {DisplayName = "h6bf7caf0g7756g443bg926dg1ee5975ee133"},
+    TELEPORT_FALLING = {},
+    DYING = {DisplayName = "h2e807311g8c4bg4141g85f3gcc88ee095888"},
+    STORY_FROZEN = {},
+    FORCE_MOVE = {},
+    CONSUME = {},
+    BOOST = {},
+    DRAIN = {DisplayName = "h9cf08d12gc1b8g4c7cg8662g40d03ca96df5", SavingThrow = "MagicArmor", ImmuneFlag = "None"},
+    LINGERING_WOUNDS = {DisplayName = "h3924a821gdb1fg4d6fg920eg62ee3c4586ed"},
+    DECAYING_TOUCH = {
+        DisplayName = "hbc2789fegb2deg4952ga436ga8a0aad070bf",
+        SavingThrow = "PhysicalArmor",
+        ImmuneFlag = "DecayingImmunity"
+    },
+    UNHEALABLE = {DisplayName = "hc33f0ac7gc3f0g47b3gba3cg8c3ddb82508e"},
+    STANCE = {},
+    INFECTIOUS_DISEASED = {
+      SavingThrow = "PhysicalArmor", 
+      ImmuneFlag = "InfectiousDiseasedImmunity",
+      DisplayName = "h791f1994g94e9g4471g9e10g398f8d194c90"
+    },
+    SUMMONING = {},
+    AOO = {},
+    COMBUSTION = {},
+    REMORSE = {DisplayName = "h7e0fe51fg9df2g4854gb8f1g183251dcc25b"},
+    OVERPOWER = {},
+    ENCUMBERED = {DisplayName = "hdc2c6815g4c4fg4e81g94d5g299646e91500"},
+    TUTORIAL_BED = {},
+    DAMAGE = {},
+    FLANKED = {DisplayName = "hd052e4cfg1a83g4ee5g886cgbf15dc656a0b"},
+    LEADERSHIP = {DisplayName = "h7c65fe39g1526g427bg8a2dgab7e74c66202"},
+    DARK_AVENGER = {DisplayName = "h64892b81g9543g4608ga303gcffa5055d869"},
+    SMELLY = {DisplayName = "h312fc6d0gd271g40ffg949dge80fba98335e"},
+    MATERIAL = {},
+    REPAIR = {},
+    SHACKLES_OF_PAIN = {
+        DisplayName = "h36a82a09gc2dag46feg990cgf3807db54d54",
+        SavingThrow = "PhysicalArmor",
+        ImmuneFlag = "ShacklesOfPainImmunity"
+    },
+    POLYMORPHED = {},
+    SPIRIT = {DisplayName = "h90cedca8g690cg4aabg8df0g98da27d72991"},
+    CONSTRAINED = {},
+    EFFECT = {},
+    EXPLODE = {},
+    SPARK = {},
+    SITTING = {DisplayName = "h33b529f1g6fb3g4210g8b40ga41e4d05c0d0"},
+    INCAPACITATED = {},
+    UNLOCK = {},
+    SHACKLES_OF_PAIN_CASTER = {DisplayName = "h89ad2635gd8acg4dc1gb7f5g2287082b3733"},
+    WIND_WALKER = {DisplayName = "hc7566374g36afg4345gaf18gab4ba7d7c809"},
+    HIT = {},
+    ROTATE = {}
 }
+
+function GetTranslation(statsid_or_handle,fallback)
+  if not statsid_or_handle then
+    return fallback
+  end
+  local loc = Ext.L10N.GetTranslatedStringFromKey(statsid_or_handle)
+  if not loc or loc=="" then
+    loc = Ext.L10N.GetTranslatedString(statsid_or_handle,fallback)
+  end
+  if not loc or loc=="" then
+    loc = fallback
+  end
+  return loc
+end
+
+-- opener eg. = "\n<font color='#6EB09D'>Removed by Stati:</font> "
+-- desctable = {{chance=100,codename="FEAR",loc="Panisch"}}
+function CreateDescrString(opener,desctable,seperator)
+  seperator = seperator or ", "
+  local IsShift = CurrentPressedKeys["Shift"]
+  local desc = opener
+  local addedLocs = {}
+  for _,info in ipairs(desctable) do
+    local loc,codename,chance
+    if type(info)=="table" then
+      codename = info.codename
+      loc = info.loc
+      chance = info.chance
+    else
+      codename = info
+      loc = StatusLocs[codename] 
+      if not loc or loc=="" then
+        local stat = not engineStatuses[codename] and Ext.Stats.Get(codename) or engineStatuses[codename]
+        loc = stat and GetTranslation(stat.DisplayName,codename) or codename
+      end
+    end
+    if not loc then
+      print("CreateDescrString loc is nil?",opener,info)
+    end
+    if not chance or chance~=0 then
+      if not addedLocs[loc] or IsShift then -- only add stati with exact same translation only once, unless we hold Shift
+        local chancetxt = chance and chance<100 and " "..tostring(chance).."%" or ""
+        local brackets = loc~=codename and IsShift and " ("..codename..")" or ""
+        desc = desc..loc..chancetxt..brackets
+        if next(desctable,_) then
+          desc = desc..seperator
+        end
+        addedLocs[loc] = true
+      end
+    end
+  end
+  return desc
+end
 
 -- created by ChatGPT based on \Public\Shared\Scripts\Game\Statuses.gameScript
 -- Scripted Status removals
--- StatusRemovesStatus={WARM={"WET","WARM","CHILLED","FROZEN"},BURNING={"WARM","WET","CHILLED","FROZEN","WEB"},NECROFIRE={"WARM","BURNING","CHILLED","WET","FROZEN","HOLY_FIRE","BLESSED","QUEST_OVERGROWN","WEB"},HOLY_FIRE={"WARM","BURNING","CHILLED","WET","FROZEN","NECROFIRE","WEB"},WET={"WARM","INVISIBLE","QUEST_SUNSHINE","BURNING","HOLY_FIRE","CHILLED","SHOCKED"},CHILLED={"BURNING","HOLY_FIRE","WARM","WET"},FROZEN={"CHILLED","WET","INVISIBLE","SLEEPING","MAGIC_SHELL","BURNING","HOLY_FIRE","WARM"},PETRIFIED={"MAGIC_SHELL","BLESSED","STUNNED","SHOCKED","BLEEDING","CRIPPLED","BURNING","POISONED","INVISIBLE","SLEEPING"},SHOCKED={"MAGIC_SHELL","INVISIBLE","SLEEPING"},STUNNED={"SHOCKED","PETRIFIED","WET","INVISIBLE","SLEEPING","MAGIC_SHELL","BLESSED"},DRUNK={"CLEAR_MINDED"},SLOWED={"HASTED"},HASTED={"SLOWED","CRIPPLED"},FEAR={"CLEAR_MINDED","ENRAGED","CHARMED","TAUNTED","SLEEPING","MADNESS"},CHARMED={"CLEAR_MINDED","ENRAGED","FEAR","TAUNTED","SLEEPING","MADNESS"},TAUNTED={"INVISIBLE","CLEAR_MINDED","ENRAGED","CHARMED","FEAR","SLEEPING","MADNESS"},SLEEPING={"INVISIBLE","CLEAR_MINDED","ENRAGED","CHARMED","TAUNTED","FEAR","MADNESS"},MADNESS={"CLEAR_MINDED"},CLEAR_MINDED={"FEAR","CHARMED","TAUNTED","SLEEPING","ENRAGED","BLIND","DRUNK","MADNESS"},ENRAGED={"FEAR","CHARMED","TAUNTED","SLEEPING","MADNESS","CLEAR_MINDED"},RESTED={"MUTED","BLIND","CRIPPLED","KNOCKED_DOWN","BLEEDING","PLAGUE","INFESTED"},MUTED={"RESTED"},BLIND={"RESTED"},CRIPPLED={"RESTED","HASTED"},KNOCKED_DOWN={"INVISIBLE","SLEEPING","RESTED"},REGENERATION={"ACID","POISONED","BLEEDING","SUFFOCATING","BURNING","INFESTED"},FORTIFIED={"ACID","POISONED","BURNING","BLEEDING","DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH"},ACID={"FORTIFIED"},BLEEDING={"REGENERATION","FORTIFIED"},BLESSED={"DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH","PETRIFIED","STUNNED","FROZEN","INFESTED","PLAGUE","BURNING","NECROFIRE","CURSED","VOIDHOWL"},MAGIC_SHELL={"FROZEN","STUNNED","PETRIFIED","PLAGUE","SUFFOCATING","POISONED","BURNING"},CURSED={"BLESSED","CHILLED","QUEST_OVERGROWN","BURNING","WARM","HOLY_FIRE"},DISEASED={"FORTIFIED","BLESSED"},INFECTIOUS_DISEASED={"FORTIFIED","BLESSED"},DECAYING_TOUCH={"FORTIFIED","BLESSED"},INVISIBLE={"WET"},CHICKEN={"WINGS"},HEALING_ELIXIR={"WEAK","SLOWED","DISEASED","POISONED","BLEEDING","CRIPPLED","CURSED","CHILLED","DRUNK","BURNING","NECROFIRE","ACID","SUFFOCATING","DECAYING_TOUCH","INFECTIOUS_DISEASED","PLAGUE"},CHAIN_HEAL={"INFESTED"},CLEANSE_WOUNDS={"INFESTED","PLAGUE","DISEASED","INFECTIOUS_DISEASED"},STEAM_LANCE={"FROZEN","CHILLED","DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH","PLAGUE","INFESTED"},WEB={"HASTED"},SPIDER_LEGS={"WEB"}}
+StatusRemovesStati={WARM={"WET","CHILLED","FROZEN"},BURNING={"WARM","WET","CHILLED","FROZEN","WEB"},NECROFIRE={"WARM","BURNING","CHILLED","WET","FROZEN","HOLY_FIRE","BLESSED","QUEST_OVERGROWN","WEB"},HOLY_FIRE={"WARM","BURNING","CHILLED","WET","FROZEN","NECROFIRE","WEB"},WET={"WARM","INVISIBLE","QUEST_SUNSHINE","BURNING","HOLY_FIRE"},CHILLED={"BURNING","HOLY_FIRE","WARM","WET"},FROZEN={"CHILLED","WET","INVISIBLE","SLEEPING","MAGIC_SHELL","BURNING","HOLY_FIRE","WARM"},PETRIFIED={"MAGIC_SHELL","BLESSED","STUNNED","SHOCKED","BLEEDING","CRIPPLED","BURNING","POISONED","INVISIBLE","SLEEPING"},SHOCKED={"MAGIC_SHELL","INVISIBLE","SLEEPING"},STUNNED={"SHOCKED","PETRIFIED","WET","INVISIBLE","SLEEPING","MAGIC_SHELL","BLESSED"},DRUNK={"CLEAR_MINDED"},SLOWED={"HASTED"},HASTED={"SLOWED","CRIPPLED"},FEAR={"CLEAR_MINDED","ENRAGED","CHARMED","TAUNTED","SLEEPING","MADNESS"},CHARMED={"CLEAR_MINDED","ENRAGED","FEAR","TAUNTED","SLEEPING","MADNESS"},TAUNTED={"INVISIBLE","CLEAR_MINDED","ENRAGED","CHARMED","FEAR","SLEEPING","MADNESS"},SLEEPING={"INVISIBLE","CLEAR_MINDED","ENRAGED","CHARMED","TAUNTED","FEAR","MADNESS"},MADNESS={"CLEAR_MINDED"},CLEAR_MINDED={"FEAR","CHARMED","TAUNTED","SLEEPING","ENRAGED","BLIND","DRUNK","MADNESS"},ENRAGED={"FEAR","CHARMED","TAUNTED","SLEEPING","MADNESS","CLEAR_MINDED"},RESTED={"MUTED","BLIND","CRIPPLED","KNOCKED_DOWN","BLEEDING","PLAGUE","INFESTED"},MUTED={"RESTED"},BLIND={"RESTED"},CRIPPLED={"RESTED","HASTED"},KNOCKED_DOWN={"INVISIBLE","SLEEPING","RESTED"},REGENERATION={"ACID","POISONED","BLEEDING","SUFFOCATING","BURNING","INFESTED"},FORTIFIED={"ACID","POISONED","BURNING","BLEEDING","DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH"},ACID={"FORTIFIED"},BLEEDING={"REGENERATION","FORTIFIED"},BLESSED={"DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH","PETRIFIED","STUNNED","FROZEN","INFESTED","PLAGUE","BURNING","NECROFIRE","CURSED","VOIDHOWL"},MAGIC_SHELL={"FROZEN","STUNNED","PETRIFIED","PLAGUE","SUFFOCATING","POISONED","BURNING"},CURSED={"BLESSED","CHILLED","QUEST_OVERGROWN","BURNING","WARM","HOLY_FIRE"},DISEASED={"FORTIFIED","BLESSED"},INFECTIOUS_DISEASED={"FORTIFIED","BLESSED"},DECAYING_TOUCH={"FORTIFIED","BLESSED"},INVISIBLE={"WET"},CHICKEN={"WINGS"},HEALING_ELIXIR={"WEAK","SLOWED","DISEASED","POISONED","BLEEDING","CRIPPLED","CURSED","CHILLED","DRUNK","BURNING","NECROFIRE","ACID","SUFFOCATING","DECAYING_TOUCH","INFECTIOUS_DISEASED","PLAGUE"},CHAIN_HEAL={"INFESTED"},CLEANSE_WOUNDS={"INFESTED","PLAGUE","DISEASED","INFECTIOUS_DISEASED"},STEAM_LANCE={"FROZEN","CHILLED","DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH","PLAGUE","INFESTED"},WEB={"HASTED"},SPIDER_LEGS={"WEB"}}
 -- StatusRemovedByStatiWithWorseStatus={FROZEN={"WARM","NECROFIRE","BURNING","STEAM_LANCE","MAGIC_SHELL","HOLY_FIRE","BLESSED"},BLESSED={"STUNNED","INFECTIOUS_DISEASED","PETRIFIED","NECROFIRE","DECAYING_TOUCH","DISEASED","CURSED"},WEAK={"HEALING_ELIXIR"},STUNNED={"PETRIFIED","MAGIC_SHELL","BLESSED"},RESTED={"KNOCKED_DOWN","MUTED","CRIPPLED","BLIND"},INVISIBLE={"FROZEN","STUNNED","KNOCKED_DOWN","PETRIFIED","TAUNTED","SHOCKED","SLEEPING","WET"},KNOCKED_DOWN={"RESTED"},PLAGUE={"CLEANSE_WOUNDS","RESTED","STEAM_LANCE","HEALING_ELIXIR","MAGIC_SHELL","BLESSED"},MUTED={"RESTED"},HASTED={"SLOWED","CRIPPLED","WEB"},INFECTIOUS_DISEASED={"CLEANSE_WOUNDS","STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},SLOWED={"HASTED","HEALING_ELIXIR"},PETRIFIED={"STUNNED","MAGIC_SHELL","BLESSED"},SUFFOCATING={"HEALING_ELIXIR","MAGIC_SHELL","REGENERATION"},TAUNTED={"CLEAR_MINDED","FEAR","CHARMED","SLEEPING","ENRAGED"},CRIPPLED={"RESTED","HASTED","PETRIFIED","HEALING_ELIXIR"},BLIND={"RESTED","CLEAR_MINDED"},CLEAR_MINDED={"DRUNK","TAUNTED","FEAR","CHARMED","SLEEPING","MADNESS","ENRAGED"},FEAR={"TAUNTED","CLEAR_MINDED","CHARMED","SLEEPING","ENRAGED"},BURNING={"FROZEN","PETRIFIED","NECROFIRE","CHILLED","HEALING_ELIXIR","MAGIC_SHELL","CURSED","HOLY_FIRE","BLESSED","FORTIFIED","REGENERATION","WET"},QUEST_SUNSHINE={"WET"},CHARMED={"TAUNTED","CLEAR_MINDED","FEAR","SLEEPING","ENRAGED"},CHILLED={"FROZEN","WARM","NECROFIRE","BURNING","STEAM_LANCE","HEALING_ELIXIR","CURSED","HOLY_FIRE","WET"},WINGS={"CHICKEN"},WEB={"SPIDER_LEGS","NECROFIRE","BURNING","HOLY_FIRE"},BLEEDING={"RESTED","PETRIFIED","HEALING_ELIXIR","FORTIFIED","REGENERATION"},VOIDHOWL={"BLESSED"},WARM={"FROZEN","WARM","NECROFIRE","BURNING","CHILLED","CURSED","HOLY_FIRE","WET"},NECROFIRE={"HEALING_ELIXIR","HOLY_FIRE","BLESSED"},CURSED={"HEALING_ELIXIR","BLESSED"},DECAYING_TOUCH={"STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},MAGIC_SHELL={"FROZEN","STUNNED","PETRIFIED","SHOCKED"},REGENERATION={"BLEEDING"},DRUNK={"CLEAR_MINDED","HEALING_ELIXIR"},QUEST_OVERGROWN={"NECROFIRE","CURSED"},SHOCKED={"STUNNED","PETRIFIED","WET"},HOLY_FIRE={"FROZEN","NECROFIRE","CHILLED","CURSED","WET"},DISEASED={"CLEANSE_WOUNDS","STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},INFESTED={"CLEANSE_WOUNDS","RESTED","CHAIN_HEAL","STEAM_LANCE","BLESSED","REGENERATION"},ACID={"HEALING_ELIXIR","FORTIFIED","REGENERATION"},SLEEPING={"FROZEN","STUNNED","KNOCKED_DOWN","PETRIFIED","TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SHOCKED","ENRAGED"},FORTIFIED={"INFECTIOUS_DISEASED","BLEEDING","DECAYING_TOUCH","DISEASED","ACID"},POISONED={"PETRIFIED","HEALING_ELIXIR","MAGIC_SHELL","FORTIFIED","REGENERATION"},WET={"FROZEN","STUNNED","WARM","NECROFIRE","BURNING","CHILLED","INVISIBLE","HOLY_FIRE"},MADNESS={"TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SLEEPING","ENRAGED"},ENRAGED={"TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SLEEPING"}}
 StatusRemovedByStati={FROZEN={"WARM","NECROFIRE","BURNING","STEAM_LANCE","MAGIC_SHELL","HOLY_FIRE","BLESSED"},BLESSED={"STUNNED","INFECTIOUS_DISEASED","PETRIFIED","NECROFIRE","DECAYING_TOUCH","DISEASED","CURSED"},WEAK={"HEALING_ELIXIR"},STUNNED={"PETRIFIED","MAGIC_SHELL","BLESSED"},RESTED={"KNOCKED_DOWN","MUTED","CRIPPLED","BLIND"},INVISIBLE={"FROZEN","STUNNED","KNOCKED_DOWN","PETRIFIED","TAUNTED","SHOCKED","SLEEPING","WET"},KNOCKED_DOWN={"RESTED"},PLAGUE={"CLEANSE_WOUNDS","RESTED","STEAM_LANCE","HEALING_ELIXIR","MAGIC_SHELL","BLESSED"},MUTED={"RESTED"},HASTED={"SLOWED","CRIPPLED","WEB"},INFECTIOUS_DISEASED={"CLEANSE_WOUNDS","STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},SLOWED={"HASTED","HEALING_ELIXIR"},PETRIFIED={"STUNNED","MAGIC_SHELL","BLESSED"},SUFFOCATING={"HEALING_ELIXIR","MAGIC_SHELL","REGENERATION"},TAUNTED={"CLEAR_MINDED","FEAR","CHARMED","SLEEPING","ENRAGED"},CRIPPLED={"RESTED","HASTED","PETRIFIED","HEALING_ELIXIR"},BLIND={"RESTED","CLEAR_MINDED"},CLEAR_MINDED={"DRUNK","TAUNTED","FEAR","CHARMED","SLEEPING","MADNESS","ENRAGED"},FEAR={"TAUNTED","CLEAR_MINDED","CHARMED","SLEEPING","ENRAGED"},BURNING={"FROZEN","PETRIFIED","CHILLED","HEALING_ELIXIR","MAGIC_SHELL","HOLY_FIRE","BLESSED","FORTIFIED","REGENERATION","WET"},QUEST_SUNSHINE={"WET"},CHARMED={"TAUNTED","CLEAR_MINDED","FEAR","SLEEPING","ENRAGED"},CHILLED={"WARM","STEAM_LANCE","HEALING_ELIXIR","HOLY_FIRE","WET"},WINGS={"CHICKEN"},WEB={"SPIDER_LEGS","NECROFIRE","BURNING","HOLY_FIRE"},BLEEDING={"RESTED","PETRIFIED","HEALING_ELIXIR","FORTIFIED","REGENERATION"},VOIDHOWL={"BLESSED"},WARM={"WARM","CHILLED","HOLY_FIRE","WET"},NECROFIRE={"HEALING_ELIXIR","HOLY_FIRE","BLESSED"},CURSED={"HEALING_ELIXIR","BLESSED"},DECAYING_TOUCH={"STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},MAGIC_SHELL={"FROZEN","STUNNED","PETRIFIED","SHOCKED"},REGENERATION={"BLEEDING"},DRUNK={"CLEAR_MINDED","HEALING_ELIXIR"},QUEST_OVERGROWN={"NECROFIRE","CURSED"},SHOCKED={"STUNNED","PETRIFIED"},HOLY_FIRE={"FROZEN","NECROFIRE","CHILLED","CURSED","WET"},DISEASED={"CLEANSE_WOUNDS","STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},INFESTED={"CLEANSE_WOUNDS","RESTED","CHAIN_HEAL","STEAM_LANCE","BLESSED","REGENERATION"},ACID={"HEALING_ELIXIR","FORTIFIED","REGENERATION"},SLEEPING={"FROZEN","STUNNED","KNOCKED_DOWN","PETRIFIED","TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SHOCKED","ENRAGED"},FORTIFIED={"INFECTIOUS_DISEASED","BLEEDING","DECAYING_TOUCH","DISEASED","ACID"},POISONED={"PETRIFIED","HEALING_ELIXIR","MAGIC_SHELL","FORTIFIED","REGENERATION"},WET={"STUNNED","WARM","CHILLED","INVISIBLE","HOLY_FIRE"},MADNESS={"TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SLEEPING","ENRAGED"},ENRAGED={"TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SLEEPING"}}
-StatusCleansedBySkills = {} -- doing this skill on a target, will remove the status from the target, will be filled StatsLoaded
+StatusCleansedBySkills = {} -- will be filled StatsLoaded
+SkillCleanseStati = {} -- doing this skill on a target, will remove the stati from the target, will be filled StatsLoaded
 
 
--- Extender functions copy pasted to get the surface on position for client
-local SurfaceFlags = {
-	Ground = {
-		Type = {
-			Fire = 0x1000000,
-			Water = 0x2000000,
-			Blood = 0x4000000,
-			Poison = 0x8000000,
-			Oil = 0x10000000,
-			Lava = 0x20000000,
-			Source = 0x40000000,
-			Web = 0x80000000,
-			Deepwater = 0x100000000,
-			Sulfurium = 0x200000000,
-			--UNUSED = 0x400000000
-		},
-		State = {
-			Blessed = 0x400000000000,
-			Cursed = 0x800000000000,
-			Purified = 0x1000000000000,
-			--??? = 0x2000000000000
-		},
-		Modifier = {
-			Electrified = 0x40000000000000,
-			Frozen = 0x80000000000000,
-		},
-	},
-	Cloud = {
-		Type = {
-			FireCloud = 0x800000000,
-			WaterCloud = 0x1000000000,
-			BloodCloud = 0x2000000000,
-			PoisonCloud = 0x4000000000,
-			SmokeCloud = 0x8000000000,
-			ExplosionCloud = 0x10000000000,
-			FrostCloud = 0x20000000000,
-			Deathfog = 0x40000000000,
-			ShockwaveCloud = 0x80000000000,
-			--UNUSED = 0x100000000000
-			--UNUSED = 0x200000000000
-		},
-		State = {
-			Blessed = 0x4000000000000,
-			Cursed = 0x8000000000000,
-			Purified = 0x10000000000000,
-			--UNUSED = 0x20000000000000
-		},
-		Modifier = {
-			Electrified = 0x100000000000000,
-			-- ElectrifiedDecay = 0x200000000000000,
-			-- SomeDecay = 0x400000000000000,
-			--UNUSED = 0x800000000000000
-		}
-	},
-	--AI grid painted flags
-	-- Irreplaceable = 0x4000000000000000,
-	-- IrreplaceableCloud = 0x800000000000000,
-}
-
-local function SetSurfaceFromFlags(flags, data)
-	for k,f in pairs(SurfaceFlags.Ground.Type) do
-		if (flags & f) ~= 0 then
-			data.Ground = k
-		end
-	end
-	if data.Ground then
-		for k,f in pairs(SurfaceFlags.Ground.Modifier) do
-			if (flags & f) ~= 0 then
-				data.Ground = data.Ground .. k
-			end
-		end
-		for k,f in pairs(SurfaceFlags.Ground.State) do
-			if (flags & f) ~= 0 then
-				data.Ground = data.Ground .. k
-			end
-		end
-	end
-	for k,f in pairs(SurfaceFlags.Cloud.Type) do
-		if (flags & f) ~= 0 then
-			data.Cloud = k
-		end
-	end
-	if data.Cloud then
-		for k,f in pairs(SurfaceFlags.Cloud.Modifier) do
-			if (flags & f) ~= 0 then
-				data.Cloud = data.Cloud .. k
-			end
-		end
-		for k,f in pairs(SurfaceFlags.Cloud.State) do
-			if (flags & f) ~= 0 then
-				data.Cloud = data.Cloud .. k
-			end
-		end
-	end
-end
-
-local function _GetSurfaces(x, z, grid)
-  local cell = grid:GetCellInfo(x, z)
-  if cell then
-    local data = { Cell=cell }
-    if cell.Flags then
-      SetSurfaceFromFlags(cell.Flags, data)
-    end
-    return data
+local function deepcopy(orig, copies)
+  copies = copies or {}
+  local orig_type = type(orig)
+  local copy
+  if orig_type == 'table' then
+      if copies[orig] then
+          copy = copies[orig]
+      else
+          copy = {}
+          copies[orig] = copy
+          for orig_key, orig_value in next, orig, nil do
+              copy[deepcopy(orig_key, copies)] = deepcopy(orig_value, copies)
+          end
+          setmetatable(copy, deepcopy(getmetatable(orig), copies))
+      end
+  else -- number, string, boolean, etc
+      copy = orig
   end
+  return copy
 end
-
 
 -- ###########################################################################
 -- ###########################################################################
@@ -227,7 +226,6 @@ end
 -- Osi.GetSurfaceNameByTypeIndex is not available on client..
 local function _GetSurfaceNameByTypeIndex(s_index)
   return Ext.Enums.SurfaceType[s_index] and tostring(Ext.Enums.SurfaceType[s_index]) or "Unknown"
-  
   -- for index,surface in pairs(Ext.Enums.SurfaceType) do
     -- print("_GetSurfaceNameByTypeIndex iterating..",surface,index,type(s_index),type(index))
     -- if s_index==index then
@@ -303,227 +301,393 @@ end
 -- ]
 
 -- Add StackId to Foods/Potions
+-- add applies effects to items (potions)
+-- Osi.ItemTemplateAddTo("37535d5c-3262-4d2d-bcbc-c940e33ec2ca",Osi.CharacterGetHostCharacter(),1,1) -- healing elixir
 Game.Tooltip.Register.Item(function(item,tooltip)
+  -- _D(item)
+  local addstringtodesc = ""
+
+  local ExtraProperties = item.StatsFromName.PropertyLists and item.StatsFromName.PropertyLists.ExtraProperties and item.StatsFromName.PropertyLists.ExtraProperties.Properties and item.StatsFromName.PropertyLists.ExtraProperties.Properties.Elements
+  local appliesStati = {}
+  local createssurfaces = {}
+  if ExtraProperties then
+    for _,property in ipairs(ExtraProperties) do
+      if property.TypeId=="Status" then
+        local Context = {"Self"} -- I think these effects are always Self, regardless what is written in them
+        appliesStati[property.Status] = {chance=property.StatusChance*100,duration=property.Duration,Context=Context}
+      end
+    end
+  end
+  if item.CurrentTemplate and item.CurrentTemplate.OnUsePeaceActions then
+    for _,useaction in pairs(item.CurrentTemplate.OnUsePeaceActions) do
+      if useaction.Type=="UseSkill" then
+        local skill = useaction.SkillID
+        local skilldesc = CreateSkillToolipAddition(skill)
+        AddToTooltip(tooltip,skilldesc)
+      end
+    end
+  end
+  
+  
+  for status,info in pairs(appliesStati) do
+    local chance = info.chance
+    local duration = info.duration
+    local Context = info.Context
+    local stat = not engineStatuses[status] and Ext.Stats.Get(status) or engineStatuses[status]
+    local status_loc = StatusLocs[status] or stat and GetTranslation(stat.DisplayName,status) or status
+    if chance and chance>0 then
+      local codename = " ("..status..") "
+      if StatusRemovesStati[status] then
+        addstringtodesc = addstringtodesc..CreateStatusTooltip(status,Context)
+      end
+      if next(appliesStati,status) then
+        addstringtodesc = addstringtodesc.." | "
+      end
+    end
+  end
+  
   if item and item.StatsFromName and item.StatsFromName.ModifierList=="Potion" then
     local StackId = item.StatsFromName.StatsEntry.StackId
     local StackPriority = item.StatsFromName.StatsEntry.Priority
     local ObjectCategory = item.StatsFromName.StatsEntry.ObjectCategory
     local Duration = item.StatsFromName.StatsEntry.Duration
     if StackId and StackId~="" and Duration>0 then
-      for __,tentry in ipairs(tooltip.Data) do
-        if tentry.Type=="ItemDescription" then
-          tentry.Label = tentry.Label.."\n(StackId: "..tostring(StackId).." Category:"..tostring(ObjectCategory).." "..tostring(StackPriority)..")"
+      addstringtodesc = addstringtodesc.."\n(StackId: "..tostring(StackId).." Category:"..tostring(ObjectCategory).." "..tostring(StackPriority)..")"
+    end
+  end
+  
+  -- print("Tooltip Item:",addstringtodesc)
+  if addstringtodesc~="" then
+    local found = false
+    for __,tentry in ipairs(tooltip.Data) do
+      if tentry.Type=="SkillDescription" then -- adding to SkillDescription instead of ItemDescription, because ItemDescription is on the bottom, which looks bad
+        tentry.Label = tentry.Label..addstringtodesc
+        found = true
+        break
+      end
+    end
+    if not found then
+      local entry = {Type="SkillDescription",Label=addstringtodesc}
+      table.insert(tooltip.Data,entry)
+    end
+  end
+end)
+
+function CreateCreatesSurfaceTooltip(surfaceinfo)
+  local SurfaceRadius = surfaceinfo.SurfaceRadius
+  local SurfaceLifetime = surfaceinfo.SurfaceLifetime
+  local SurfaceType = surfaceinfo.SurfaceType
+  local SurfaceStatusChance = surfaceinfo.SurfaceStatusChance
+  local SurfaceText = ""
+  if SurfaceRadius and SurfaceRadius>0 then -- else it will be the AreaRadius/affected radius of the skill
+    SurfaceText = SurfaceText.."SurfaceRadius: "..tostring(SurfaceRadius).." m\n"
+  end
+  if SurfaceLifetime and SurfaceLifetime>0 then
+    SurfaceText = SurfaceText.."SurfaceLifetime: "..tostring(round(SurfaceLifetime/6,1)).." turns\n"
+  elseif SurfaceType~="DamageType" then
+    local SurfaceTypeForTemplate = SurfaceType=="DeathfogCloud" and "Deathfog" or SurfaceType
+    local status,template = pcall(Ext.Surface.GetTemplate,SurfaceTypeForTemplate) -- throws error if can not find -- local template = Ext.Surface.GetTemplate(surface)
+    if status==false and MissingExtenderSurfaces[SurfaceType] then
+      template = Ext.Template.GetTemplate(MissingExtenderSurfaces[SurfaceType])
+      if not template then
+        Ext.Print("ImprovedTooltips: Surface.GetTemplate faild (add it manually to MissingExtenderSurfaces) to get template for:",SurfaceType)
+      end
+    end
+    if template then
+      local DefaultLifeTime = template.DefaultLifeTime
+      if DefaultLifeTime and DefaultLifeTime>0 then
+        SurfaceText = SurfaceText.."SurfaceLifetime: "..tostring(round(DefaultLifeTime/6,1)).." turns\n"
+      end
+    end
+  end
+  if SurfaceStatusChance and SurfaceStatusChance>0 then
+    SurfaceText = SurfaceText.."SurfaceStatusChance: "..tostring(SurfaceStatusChance).." %"
+  end
+  return SurfaceText
+end
+
+function CreateStatusTooltip(status,Context,withoutheader,prefix)
+  -- Adding info what the applied appliedstati may cleanse (chance and duration is already in tooltip)
+  prefix = prefix or ""
+  local desc = ""
+  local stat = not engineStatuses[status] and Ext.Stats.Get(status) or engineStatuses[status]
+  local status_loc = StatusLocs[status] or stat and GetTranslation(stat.DisplayName,status) or status
+  local codename = " ("..status..") "
+  if not withoutheader then
+    desc = desc.."\n"..prefix.."<font color='#6EB09D'>Status "..status_loc..(CurrentPressedKeys["Shift"] and codename or "").."</font> "..(Context and "("..table.concat(Context,",")..")" or "")
+  end
+  if StatusRemovesStati[status] then
+    local opener = "\n"..prefix.."<font color='#6EB09D'>Clears</font>: "
+    desc = desc..CreateDescrString(opener,StatusRemovesStati[status])
+  end
+  if StatusProvidesImmunityAgainstStati[status] then
+    local opener = "\n"..prefix.."<font color='#6EB09D'>Provides Immunities</font>: "
+    desc = desc..CreateDescrString(opener,StatusProvidesImmunityAgainstStati[status])
+  end
+  -- StackId
+  if not engineStatuses[status] then
+    local stat = Ext.Stats.Get(status)
+    if stat then
+      local StackId = stat.StackId
+      local StackPriority = stat.StackPriority
+      if StackId and StackId~="" then
+        desc = desc.."\n"..prefix.."(StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
+      end
+    end
+  end
+  return desc
+end
+
+function CreateSkillToolipAddition(skill,char)
+  local skilldesc = {}
+  local MyStat = Ext.Stats.Get(skill)
+  if MyStat then
+    local AreaRadius = MyStat.AreaRadius
+    -- Info about surface a skill creates
+    local createssurfaces = {}
+    local appliedstati = {}
+    local SkillProperties = MyStat["SkillProperties"] -- in Stat ists eine table, daher einfacher strukturiert, als die userdata in GetRaw
+    if SkillProperties and type(SkillProperties)=="table" then
+      -- Ext.Print("ImprovedTooltips Skill Tooltip SkillProperties",skill,_D(SkillProperties))
+    -- [{	"Action" : "CreateSurface",
+    -- "Arg1" : 3.0,
+    -- "Arg2" : 0.0,
+    -- "Arg3" : "Oil",
+    -- "Arg4" : 1.0,
+    -- "Arg5" : 0.0,
+    -- "Context" : ["Target","AoE"],
+    -- "StatusHealType" : "None",
+    -- "Type" : "GameAction"}]
+    -- Shout_PoisonWave
+    -- [{"Action" : "TargetCreateSurface",
+      -- "Arg1" : 4.0,
+      -- "Arg2" : 0.0,
+      -- "Arg3" : "PoisonCloud",
+      -- "Arg4" : 1.0,
+      -- "Arg5" : 1.0,
+      -- "Context" :
+      -- ["Self"],
+      -- "StatusHealType" : "None",
+      -- "Type" : "GameAction"}]
+      -- Encourage:
+        -- {"Action" : "ENCOURAGED2",
+        -- "Arg4" : -1,
+        -- "Arg5" : -1,
+        -- "Context" :["Target","AoE"],
+        -- "Duration" : 18.0,
+        -- "StatsId" : "",
+        -- "StatusChance" : 1.0,
+        -- "SurfaceBoost" : false,
+        -- "SurfaceBoosts" : {},
+        -- "Type" : "Status"}
+        -- {"Action" : "TryKill",
+              -- "Arg4" : 10,
+              -- "Arg5" : -1,
+              -- "Context" :["Target","AoE"],
+              -- "Duration" : 6.0,
+              -- "StatsId" : "FROZEN",
+              -- "StatusChance" : 1.0,
+              -- "SurfaceBoost" : false,
+              -- "SurfaceBoosts" : {},
+              -- "Type" : "Status"}
+      for _,entry in pairs(SkillProperties) do
+        if entry.Type=="GameAction" and (entry.Action=="CreateSurface" or entry.Action=="TargetCreateSurface") then
+          table.insert(createssurfaces,{SurfaceType=entry.Arg3,SurfaceLifetime=entry.Arg2~=0 and entry.Arg2/6,SurfaceRadius=entry.Arg1,SurfaceStatusChance=nil})
+        elseif entry.Type=="Status" and entry.StatsId=="" then
+          local status = entry.Action
+          local Context = {} -- transform from lightC to table
+          for k,v in pairs(entry.Context) do
+            if v~="AoE" or (AreaRadius and AreaRadius>0) then -- not including AoE if it has no AreaRadius
+              Context[k]=v
+            end
+          end
+          table.insert(appliedstati,{status=status,Context=Context})
+        end
+      end
+    end
+    -- [{"Label" : "Ermutigung",
+              -- "Type" : "SkillName"},
+      -- {"Label" : "Skill_Warrior_Inspire",
+              -- "Type" : "SkillIcon"},
+      -- {"Icon" : 2.0,
+              -- "Label" : "<font color=\"#DA2512\">Kriegf\u00fchrung</font>",
+              -- "Type" : "SkillSchool"},
+      -- {"Label" : "Novize",
+              -- "Type" : "SkillTier"},
+      -- {"Label" : "Erfordert Kriegf\u00fchrung 1<br>",
+              -- "RequirementMet" : true,
+              -- "Type" : "SkillRequiredEquipment"},
+      -- {"Label" : "Benutzen",
+              -- "RequirementMet" : true,
+              -- "Type" : "SkillAPCost",
+              -- "Value" : 1.0,
+              -- "Warning" : ""},
+      -- {"Label" : "Abklingzeit",
+              -- "Type" : "SkillCooldown",
+              -- "Value" : 6.0,
+              -- "ValueText" : "6 Runde(n)",
+              -- "Warning" : ""},
+      -- {"Label" : "Ermutigt Verb\u00fcndete in deiner N\u00e4he.",
+              -- "Type" : "SkillDescription"},
+      -- {
+          -- "Properties" :
+          -- [
+                          -- {
+                                  -- "Label" : "Lege Combo Bonus II f\u00fcr 2 Runde(n) fest.",
+                                  -- "Warning" : ""
+                          -- },
+                          -- {
+                                  -- "Label" : "Lege Second Impact Chain f\u00fcr 2 Runde(n) fest.",
+                                  -- "Warning" : ""
+                          -- },
+                          -- {
+                                  -- "Label" : "Der Schaden basiert auf deinem Basisangriff plus Bonus durch Finesse.",
+                                  -- "Warning" : ""
+                          -- }
+                  -- ],
+                  -- "Resistances" : {},
+                  -- "Type" : "SkillProperties"
+          -- }]
+    local addcleansestringtoskill = ""
+    for i,info in ipairs(appliedstati) do
+      local status = info.status
+      local Context = info.Context or {}
+      addcleansestringtoskill = addcleansestringtoskill..CreateStatusTooltip(status,Context)
+    end
+    -- add info to skills which stati they clean (is hardcoded in vanilla text...)
+    local skillcleantext = ""
+    if SkillCleanseStati[skill] and SkillCleanseStati[skill].stati and next(SkillCleanseStati[skill].stati) and SkillCleanseStati[skill].chance>0 then
+      local chancetxt = SkillCleanseStati[skill].chance<100 and "("..tostring(SkillCleanseStati[skill].chance).."%) " or ""
+      local opener = "\n<font color='#6EB09D'>Cleanse Stati</font>"..chancetxt..": "
+      skillcleantext = CreateDescrString(opener,SkillCleanseStati[skill].stati)
+    end
+    
+    skilldesc["SkillDescription"] = (skilldesc["SkillDescription"] or {})
+    table.insert(skilldesc["SkillDescription"],{Label=skillcleantext..addcleansestringtoskill,firstfound=true})
+    
+    
+    local StatSurfaceType = MyStat.SurfaceType
+    if StatSurfaceType and StatSurfaceType~="None" then
+      table.insert(createssurfaces,{SurfaceType=StatSurfaceType,SurfaceLifetime=MyStat.SurfaceLifetime,SurfaceRadius=MyStat.SurfaceRadius,SurfaceStatusChance=MyStat.SurfaceStatusChance})
+    end
+    for _,surfaceinfo in ipairs(createssurfaces) do
+      local SurfaceType = surfaceinfo.SurfaceType
+      local SurfaceText = CreateCreatesSurfaceTooltip(surfaceinfo)
+      skilldesc["SkillExplodeRadius"] = (skilldesc["SkillExplodeRadius"] or {})
+      table.insert(skilldesc["SkillExplodeRadius"],{Label="<font color='#6EB09D'>Creates Surface</font> "..tostring(SurfaceType).."\n"..SurfaceText,createnewentry=true})
+    end
+    
+    local TargetConditions = MyStat["TargetConditions"]
+    if TargetConditions then
+      TargetConditions = TargetConditions:gsub("&!Spirit", "") -- remove this because true for nearly all skills
+      TargetConditions = TargetConditions:gsub("!Spirit", "")
+      if TargetConditions=="" then
+        TargetConditions = "All"
+      end
+      local CanTarget = {}
+      if MyStat.CanTargetCharacters=="Yes" then
+        table.insert(CanTarget,"Char")
+      end
+      if MyStat.CanTargetTerrain=="Yes" then
+        table.insert(CanTarget,"Ground")
+      end
+      if MyStat.CanTargetItems=="Yes" then
+        table.insert(CanTarget,"Item")
+      end
+      local AreaRadius = MyStat.AreaRadius
+      AreaRadius = AreaRadius and AreaRadius>0 and tostring(AreaRadius) or ""
+      if AreaRadius~="" then
+        skilldesc["SkillExplodeRadius"] = (skilldesc["SkillExplodeRadius"] or {})
+        table.insert(skilldesc["SkillExplodeRadius"],{Value=tostring(AreaRadius).."m",Label="Area Radius:",createnewentry=true})
+        -- local entry = {Type="SkillExplodeRadius",Value=tostring(AreaRadius).."m",Label="Area Radius:"} -- will display 2 times SkillExplodeRadius if it also has a vanilla exploderadius
+        -- table.insert(tooltip.Data,entry)
+      end
+      local GroundSkillTypes = {"Path","Rain","Cone","Dome","Jump","Quake","Shout","Storm","Summon","Tornado","Wall","Zone"}
+      if table_contains_value(GroundSkillTypes,MyStat.SkillType) then
+        if not table_contains_value(CanTarget,"Ground") then
+          table.insert(CanTarget,"Ground")
+        end
+      end
+      
+      skilldesc["SkillExplodeRadius"] = (skilldesc["SkillExplodeRadius"] or {})
+      table.insert(skilldesc["SkillExplodeRadius"],{Label="Target Conditions: "..TargetConditions,createnewentry=true}) -- not using Value here, because it is limited in characters, to many will not be displayed
+      -- local entry = {Type="SkillExplodeRadius",Label="Target Conditions: "..TargetConditions} -- not using Value here, because it is limited in characters, to many will not be displayed
+      -- table.insert(tooltip.Data,entry)
+      if #CanTarget>0 then
+        skilldesc["SkillExplodeRadius"] = (skilldesc["SkillExplodeRadius"] or {})
+        table.insert(skilldesc["SkillExplodeRadius"],{Value=table.concat(CanTarget, ","),Label="Can Target:",createnewentry=true}) -- not using Value here, because it is limited in characters, to many will not be displayed
+        -- local entry = {Type="SkillExplodeRadius",Value=table.concat(CanTarget, ","),Label="Can Target:"} -- will display 2 times SkillExplodeRadius if it also has a vanilla exploderadius
+        -- table.insert(tooltip.Data,entry)
+      end    
+    end
+    
+    
+    if char and char.SkillManager.Skills[skill] then
+      local cooldownleft = char.SkillManager.Skills[skill].ActiveCooldown -- in seconds, not turns. 1 turn=6 seconds
+      if cooldownleft~=0 then
+        cooldownleft = tostring( math.ceil(cooldownleft / 6) )
+        skilldesc["SkillRequiredEquipment"] = (skilldesc["SkillRequiredEquipment"] or {})
+        table.insert(skilldesc["SkillRequiredEquipment"],{Label="("..cooldownleft..") ",createnewentry=false,addinfront=true,firstfound=true})
+      end
+    end
+      
+      -- for _, entry in ipairs(tooltip.Data) do -- display left cooldown in tooltip, because icon does not display properly for higher than 99
+        -- if entry.Type=="SkillRequiredEquipment" and entry.RequirementMet==false and char.SkillManager.Skills[skill] then
+          -- local cooldownleft = char.SkillManager.Skills[skill].ActiveCooldown -- in seconds, not turns. 1 turn=6 seconds
+          -- if cooldownleft~=0 then
+            -- cooldownleft = tostring( math.ceil(cooldownleft / 6) )
+            -- entry.Label = "("..cooldownleft..") "..entry.Label
+          -- end
+        -- end
+      -- end
+  end
+  return skilldesc
+end
+
+local function _AddToTooltip(tooltip,Type,info)
+  if info.createnewentry then
+    local entry = {Type=Type,Value=info.Value,Label=info.Label}
+    table.insert(tooltip.Data,entry)
+  else
+    for _,entry in ipairs(tooltip.Data) do
+      -- print("_AddToTooltip",entry.Type,Type,info.Label)
+      if entry.Type==Type  then
+        if info.Value then
+          if info.addinfront then
+            entry.Value = info.Value..entry.Value
+          else
+            entry.Value = entry.Value..info.Value
+          end
+        end
+        if info.Label then
+          if info.addinfront then
+            entry.Label = info.Label..entry.Label
+          else
+            entry.Label = entry.Label..info.Label
+          end
+        end
+        if info.firstfound then
           break
         end
       end
     end
   end
-end)
+end
+function AddToTooltip(tooltip,desctable)
+  for Type,infos in pairs(desctable) do
+    for _,info in ipairs(infos) do
+      _AddToTooltip(tooltip,Type,info)
+    end
+  end
+end
 
 -- Improve skill tooltips
 -- Add Info about who can be targeted with a Skill
 -- using color does not seem to work.. <font color='5ec2ffff'>
 Game.Tooltip.Register.Skill(function(char, skill, tooltip)
   if IsValidSkillTooltip(tooltip) then
-    -- print("SkillTooltip",char, skill, _D(tooltip.Data))
-    local charGuid = char.MyGuid
-    local MyStat = Ext.Stats.Get(skill)
-    if MyStat then
-      
-      -- Info about surface a skill creates
-      local surfaces = {}
-      local stati = {}
-      local SkillProperties = MyStat["SkillProperties"] -- in Stat ists eine table, daher einfacher strukturiert, als die userdata in GetRaw
-      if SkillProperties and type(SkillProperties)=="table" then
-        -- Ext.Print("ImprovedTooltips Skill Tooltip SkillProperties",skill,_D(SkillProperties))
-      -- [{	"Action" : "CreateSurface",
-      -- "Arg1" : 3.0,
-      -- "Arg2" : 0.0,
-      -- "Arg3" : "Oil",
-      -- "Arg4" : 1.0,
-      -- "Arg5" : 0.0,
-      -- "Context" : ["Target","AoE"],
-      -- "StatusHealType" : "None",
-      -- "Type" : "GameAction"}]
-      -- Shout_PoisonWave
-      -- [{"Action" : "TargetCreateSurface",
-        -- "Arg1" : 4.0,
-        -- "Arg2" : 0.0,
-        -- "Arg3" : "PoisonCloud",
-        -- "Arg4" : 1.0,
-        -- "Arg5" : 1.0,
-        -- "Context" :
-        -- ["Self"],
-        -- "StatusHealType" : "None",
-        -- "Type" : "GameAction"}]
-        -- Encourage:
-          -- {"Action" : "ENCOURAGED2",
-          -- "Arg4" : -1,
-          -- "Arg5" : -1,
-          -- "Context" :["Target","AoE"],
-          -- "Duration" : 18.0,
-          -- "StatsId" : "",
-          -- "StatusChance" : 1.0,
-          -- "SurfaceBoost" : false,
-          -- "SurfaceBoosts" : [],
-          -- "Type" : "Status"}
-        for _,entry in pairs(SkillProperties) do
-          if entry.Type=="GameAction" and (entry.Action=="CreateSurface" or entry.Action=="TargetCreateSurface") then
-            table.insert(surfaces,{SurfaceType=entry.Arg3,SurfaceLifetime=entry.Arg2~=0 and entry.Arg2/6,SurfaceRadius=entry.Arg1,SurfaceStatusChance=nil})
-          elseif entry.Type=="Status" then
-            local status = entry.Action
-            table.insert(stati,status)
-          end
-        end
-      end
-      -- Status TOOLTIP
-      -- [{"Label" : "Ermutigung",
-                -- "Type" : "SkillName"},
-        -- {"Label" : "Skill_Warrior_Inspire",
-                -- "Type" : "SkillIcon"},
-        -- {"Icon" : 2.0,
-                -- "Label" : "<font color=\"#DA2512\">Kriegf\u00fchrung</font>",
-                -- "Type" : "SkillSchool"},
-        -- {"Label" : "Novize",
-                -- "Type" : "SkillTier"},
-        -- {"Label" : "Erfordert Kriegf\u00fchrung 1<br>",
-                -- "RequirementMet" : true,
-                -- "Type" : "SkillRequiredEquipment"},
-        -- {"Label" : "Benutzen",
-                -- "RequirementMet" : true,
-                -- "Type" : "SkillAPCost",
-                -- "Value" : 1.0,
-                -- "Warning" : ""},
-        -- {"Label" : "Abklingzeit",
-                -- "Type" : "SkillCooldown",
-                -- "Value" : 6.0,
-                -- "ValueText" : "6 Runde(n)",
-                -- "Warning" : ""},
-        -- {"Label" : "Ermutigt Verb\u00fcndete in deiner N\u00e4he.",
-                -- "Type" : "SkillDescription"},
-        -- {
-            -- "Properties" :
-            -- [
-                            -- {
-                                    -- "Label" : "Lege Combo Bonus II f\u00fcr 2 Runde(n) fest.",
-                                    -- "Warning" : ""
-                            -- },
-                            -- {
-                                    -- "Label" : "Lege Second Impact Chain f\u00fcr 2 Runde(n) fest.",
-                                    -- "Warning" : ""
-                            -- },
-                            -- {
-                                    -- "Label" : "Der Schaden basiert auf deinem Basisangriff plus Bonus durch Finesse.",
-                                    -- "Warning" : ""
-                            -- }
-                    -- ],
-                    -- "Resistances" : [],
-                    -- "Type" : "SkillProperties"
-            -- }]
-      -- Info zufügen welcher Status self und welcher Target trifft ist nicht wirklich möglich ,da Reihenfolge in SkillProperties random ist und beim tooltip keine Einordnung erkenntlich, was welcher Status ist
-      for i,status in ipairs(stati) do
-        if not engineStatuses[status] then
-          for __,tentry in ipairs(tooltip.Data) do
-            if tentry.Type=="SkillProperties" and tentry.Properties and #tentry.Properties>=#stati then
-              local stat = Ext.Stats.Get(status)
-              if stat then
-                local StackId = stat.StackId
-                local StackPriority = stat.StackPriority
-                if StackId and StackId~="" then
-                  tentry.Properties[i].Label = tentry.Properties[i].Label.." (StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
-                end
-              end
-              break
-            end
-          end
-        end
-      end
-      
-      local StatSurfaceType = MyStat.SurfaceType
-      if StatSurfaceType and StatSurfaceType~="None" then
-        table.insert(surfaces,{SurfaceType=StatSurfaceType,SurfaceLifetime=MyStat.SurfaceLifetime,SurfaceRadius=MyStat.SurfaceRadius,SurfaceStatusChance=MyStat.SurfaceStatusChance})
-      end
-      for _,surfaceinfo in ipairs(surfaces) do
-        local SurfaceRadius = surfaceinfo.SurfaceRadius
-        local SurfaceLifetime = surfaceinfo.SurfaceLifetime
-        local SurfaceType = surfaceinfo.SurfaceType
-        local SurfaceStatusChance = surfaceinfo.SurfaceStatusChance
-        local SurfaceText = ""
-        if SurfaceRadius and SurfaceRadius>0 then -- else it will be the AreaRadius/affected radius of the skill
-          SurfaceText = SurfaceText.."SurfaceRadius: "..tostring(SurfaceRadius).." m\n"
-        end
-        if SurfaceLifetime and SurfaceLifetime>0 then
-          SurfaceText = SurfaceText.."SurfaceLifetime: "..tostring(round(SurfaceLifetime/6,1)).." turns\n"
-        elseif SurfaceType~="DamageType" then
-          local status,template = pcall(Ext.Surface.GetTemplate,SurfaceType) -- throws error if can not find -- local template = Ext.Surface.GetTemplate(surface)
-          if status==false and MissingExtenderSurfaces[SurfaceType] then
-            template = Ext.Template.GetTemplate(MissingExtenderSurfaces[SurfaceType])
-            if not template then
-              Ext.Print("ImprovedTooltips: Surface.GetTemplate faild (add it manually to MissingExtenderSurfaces) to get template for:",SurfaceType)
-            end
-          end
-          if template then
-            local DefaultLifeTime = template.DefaultLifeTime
-            if DefaultLifeTime and DefaultLifeTime>0 then
-              SurfaceText = SurfaceText.."SurfaceLifetime: "..tostring(round(DefaultLifeTime/6,1)).." turns\n"
-            end
-          end
-        end
-        if SurfaceStatusChance and SurfaceStatusChance>0 then
-          SurfaceText = SurfaceText.."SurfaceStatusChance: "..tostring(SurfaceStatusChance).." %"
-        end
-        -- "\nSurfaceGrowStep: "..tostring(SurfaceGrowStep).."\nSurfaceGrowInterval: "..tostring(SurfaceGrowInterval) -- dont think Grow is important to know?
-        local entry = {Type="SkillExplodeRadius",Label="Creates Surface "..tostring(SurfaceType).."\n"..SurfaceText}
-        table.insert(tooltip.Data,entry)
-      end
-      
-      local TargetConditions = MyStat["TargetConditions"]
-      if TargetConditions then
-        TargetConditions = TargetConditions:gsub("&!Spirit", "") -- remove this because true for nearly all skills
-        TargetConditions = TargetConditions:gsub("!Spirit", "")
-        if TargetConditions=="" then
-          TargetConditions = "All"
-        end
-        local CanTarget = {}
-        if MyStat.CanTargetCharacters=="Yes" then
-          table.insert(CanTarget,"Char")
-        end
-        if MyStat.CanTargetTerrain=="Yes" then
-          table.insert(CanTarget,"Ground")
-        end
-        if MyStat.CanTargetItems=="Yes" then
-          table.insert(CanTarget,"Item")
-        end
-        local AreaRadius = MyStat.AreaRadius
-        AreaRadius = AreaRadius and AreaRadius>0 and tostring(AreaRadius) or ""
-        if AreaRadius~="" then
-          local entry = {Type="SkillExplodeRadius",Value=tostring(AreaRadius).."m",Label="Area Radius:"} -- will display 2 times SkillExplodeRadius if it also has a vanilla exploderadius
-          table.insert(tooltip.Data,entry)
-        end
-        local GroundSkillTypes = {"Path","Rain","Cone","Dome","Jump","Quake","Shout","Storm","Summon","Tornado","Wall","Zone"}
-        if table_contains_value(GroundSkillTypes,MyStat.SkillType) then
-          if not table_contains_value(CanTarget,"Ground") then
-            table.insert(CanTarget,"Ground")
-          end
-        end
-        
-        local entry = {Type="SkillExplodeRadius",Label="Target Conditions: "..TargetConditions} -- not using Value here, because it is limited in characters, to many will not be displayed
-        table.insert(tooltip.Data,entry)
-        if #CanTarget>0 then
-          local entry = {Type="SkillExplodeRadius",Value=table.concat(CanTarget, ","),Label="Can Target:"} -- will display 2 times SkillExplodeRadius if it also has a vanilla exploderadius
-          table.insert(tooltip.Data,entry)
-        end    
-      end
-      for _, entry in ipairs(tooltip.Data) do -- display left cooldown in tooltip, because icon does not display properly for higher than 99
-        if entry.Type=="SkillRequiredEquipment" and entry.RequirementMet==false and char.SkillManager.Skills[skill] then
-          local cooldownleft = char.SkillManager.Skills[skill].ActiveCooldown -- in seconds, not turns. 1 turn=6 seconds
-          if cooldownleft~=0 then
-            cooldownleft = tostring( math.ceil(cooldownleft / 6) )
-            entry.Label = "("..cooldownleft..") "..entry.Label
-          end
-        end
-      end
-    end
+    local skilldesc = CreateSkillToolipAddition(skill,char)
+    AddToTooltip(tooltip,skilldesc)
   end
 end)
 
@@ -534,7 +698,7 @@ end)
 -- Statuschance can be overriden by skill which caused it with SurfaceType SurfaceStatusChance, dont think we can catch it here..
 local previoustooltipdata = nil
 local previoussurface = nil
-local function AdjustSurfaceTooltip(SurfaceType,tooltip)
+function AdjustSurfaceTooltip(SurfaceType,tooltip)
   if SurfaceType and SurfaceType~="Unknown" then
     -- print(SurfaceType)
     -- _D(tooltip.Data)
@@ -566,15 +730,16 @@ local function AdjustSurfaceTooltip(SurfaceType,tooltip)
         SurfaceStatusText = ""
         for _,statusinfo in pairs(Statuses) do
           if (statusinfo.StatusId~="FOGBLIND_SERP" or statusinfo.RemoveStatus==false) and statusinfo.ApplyToCharacters then -- I added in my mod MoreSurfaceEffects to all surfaces that they remove my status, that is not important to show
-            if not engineStatuses[statusinfo.StatusId] then
-              local SStat = Ext.Stats.Get(statusinfo.StatusId)
-              local statusname_loc = SStat and Ext.L10N.GetTranslatedStringFromKey(SStat.DisplayName,statusinfo.StatusId) or statusinfo.StatusId
-              local addremove = statusinfo.RemoveStatus and "\n Removes " or "\n Adds "
-              local IgnoresArmor = statusinfo.ForceStatus and "\n   Ignores Armor" or ""
-              local KeepAlive = statusinfo.KeepAlive and "\n   Stays Active" or ""
-              local OnlyWhileMoving = statusinfo.OnlyWhileMoving and "\n   Only While Moving" or ""
-              local VanishOnReapply = statusinfo.VanishOnReapply and "\n   Removes Surface" or ""
-              SurfaceStatusText = SurfaceStatusText..addremove..statusname_loc.."\n   Chance: "..tostring(round(statusinfo.Chance*100,2)).." %\n   Duration: "..tostring(round(statusinfo.Duration/6,1)).." turns"..IgnoresArmor..KeepAlive..VanishOnReapply
+            local SStat = not engineStatuses[statusinfo.StatusId] and Ext.Stats.Get(statusinfo.StatusId) or engineStatuses[statusinfo.StatusId]
+            local statusname_loc = SStat and GetTranslation(SStat.DisplayName,statusinfo.StatusId) or statusinfo.StatusId
+            addremove = "\n<font color='#6EB09D'>"..(statusinfo.RemoveStatus and "Removes " or "Applies ").." "..statusname_loc..(CurrentPressedKeys["Shift"] and statusinfo.StatusId or "").."</font>"
+            local IgnoresArmor = statusinfo.ForceStatus and "\n  Ignores Armor" or ""
+            local KeepAlive = statusinfo.KeepAlive and "\n  Stays Active" or ""
+            local OnlyWhileMoving = statusinfo.OnlyWhileMoving and "\n  Only While Moving" or ""
+            local VanishOnReapply = statusinfo.VanishOnReapply and "\n  Removes Surface" or ""
+            SurfaceStatusText = SurfaceStatusText..addremove.."\n  Chance: "..tostring(round(statusinfo.Chance*100,2)).." %\n  Duration: "..tostring(round(statusinfo.Duration/6,1)).." turns"..IgnoresArmor..KeepAlive..VanishOnReapply
+            if not statusinfo.RemoveStatus then -- no need to say what a status does, if it is removed
+              SurfaceStatusText = SurfaceStatusText..CreateStatusTooltip(statusinfo.StatusId,nil,true,"  ")
             end
           end
         end
@@ -630,7 +795,7 @@ if EpipSurfaceTooltips then
             -- "Flags" : 68753031168,
             -- "GroundSurfaceType" : "Water",
             -- "Height" : -5.25,
-            -- "Objects" : []
+            -- "Objects" : {}
           -- },
           -- "Cloud" : "WaterCloud",
           -- "Ground" : "Water"
@@ -900,13 +1065,6 @@ function FilterSkills(skill,stat)
   return true
 end
 
-
--- helper tables to fill StatusRemovedByStati
-StatusRequiresImmunity = {} -- the immunity which is required to be immune against this status
-StatsIdToStati = {}
-ImmunityFromStats = {}
-ImmunityFromStati = {}
-StatusLocs = {} -- translation in local language
 Ext.Events.StatsLoaded:Subscribe(function(e)
   -- from Vanilla Plus mod by Luxem, lua code updated to newest extender version, also updated ImprovedTooltips_Serp\Mods\ImprovedTooltips_Serp\Localization german and english for this
   local skillList = {
@@ -929,58 +1087,135 @@ Ext.Events.StatsLoaded:Subscribe(function(e)
     end
 	end
   
+end)
+  
+-- _D(Mods.ImprovedTooltips_Serp.SkillCleanseStati)
+-- _D(Mods.ImprovedTooltips_Serp.StatusRequiresImmunity)
+-- _D(Mods.ImprovedTooltips_Serp.StatsIdToStati)
+-- _D(Mods.ImprovedTooltips_Serp.ImmunityFromStati)
+-- _D(Mods.ImprovedTooltips_Serp.StatusRequiresImmunity_REV)
+-- _D(Mods.ImprovedTooltips_Serp.StatusProvidesImmunityAgainstStati)
+-- helper tables to fill StatusRemovedByStati
+StatusRequiresImmunity = {} -- the immunity which is required to be immune against this status
+StatusRequiresImmunity_REV = {} -- 
+StatsIdToStati = {}
+ImmunityFromStats = {} -- a list per immunity, which stats provide this immunity
+ImmunityFromStati = {} -- a list per immunity, which stati provide this immunity
+StatusProvidesImmunityAgainstStati = {}
+StatusLocs = {} -- translation in local language
+Ext.Events.SessionLoaded:Subscribe(function(_)
+  -- Ext.Print("ImprovedTooltips_Serp SessionLoaded Start")
   for i,skill in pairs(Ext.Stats.GetStats("SkillData")) do
     local stat = Ext.Stats.Get(skill)
     if FilterSkills(skill,stat) then
       local CleanseStatuses = stat.CleanseStatuses -- string FROZEN;STUNNED;PETRIFIED;PLAGUE;SUFFOCATING;POISONED;BURNING;NECROFIRE;FEAR;MUTED;TAUNTED;MADNESS
       local StatusClearChance = stat.StatusClearChance
-      local skill_loc = Ext.L10N.GetTranslatedStringFromKey(stat.DisplayName,skill)
+      local skill_loc = GetTranslation(stat.DisplayName,skill)
+      SkillCleanseStati[skill] = {stati={},loc=skill_loc,chance=StatusClearChance}
       for status in string.gmatch(CleanseStatuses, "([^;]+)") do -- seperate by ;
         StatusCleansedBySkills[status] = StatusCleansedBySkills[status] or {}
-        table.insert(StatusCleansedBySkills[status],{skill=skill,skill_loc=skill_loc,chance=StatusClearChance})
+        table.insert(StatusCleansedBySkills[status],{codename=skill,loc=skill_loc,chance=StatusClearChance})
+        table.insert(SkillCleanseStati[skill].stati,status)
       end
     end
   end
   
   for i,statusname in pairs(Ext.Stats.GetStats("StatusData")) do
     local stat = Ext.Stats.Get(statusname)
-    local status_loc = Ext.L10N.GetTranslatedStringFromKey(stat.DisplayName,statusname)
+    local status_loc = GetTranslation(stat.DisplayName,statusname)
     StatusLocs[statusname] = status_loc
     local ImmuneFlag = stat.ImmuneFlag -- ist nur eine immunity als string und bedeuted wenn du die hast, bist du immun gegen status
-    StatusRequiresImmunity[statusname] = ImmuneFlag
+    if ImmuneFlag and ImmuneFlag~="None" then
+      StatusRequiresImmunity[statusname] = ImmuneFlag
+      StatusRequiresImmunity_REV[ImmuneFlag] = StatusRequiresImmunity_REV[ImmuneFlag] or {}
+      if not table_contains_value(StatusRequiresImmunity_REV[ImmuneFlag],statusname) then
+        table.insert(StatusRequiresImmunity_REV[ImmuneFlag],statusname)
+      end
+    end
     local StatsId = stat.StatsId
     if StatsId and StatsId~="" then
       StatsIdToStati[StatsId] = StatsIdToStati[StatsId] or {}
-      table.insert(StatsIdToStati[StatsId],statusname) -- one StatsId can be used by multiple Stati
+      if not table_contains_value(StatsIdToStati[StatsId],statusname) then
+        table.insert(StatsIdToStati[StatsId],statusname) -- one StatsId can be used by multiple Stati
+      end
+    end
+  end
+  for statusname,info in pairs(engineStatuses) do
+    if info.ImmuneFlag and info.ImmuneFlag~="None" then
+      StatusRequiresImmunity[statusname] = info.ImmuneFlag
     end
   end
   
   for i,StatsId in pairs(Ext.Stats.GetStats("Potion")) do
     local stat = Ext.Stats.Get(StatsId)
+    
+    local immunitiesFromCurrentStatsId = {}
     local flags = stat.Flags -- a table, can contain Immunity, but not only this
     for _,flag in pairs(flags) do
       if flag:lower():find("immunity",1,true) then
         ImmunityFromStats[flag] = ImmunityFromStats[flag] or {}
         table.insert(ImmunityFromStats[flag],StatsId) -- several stats can provide the same immunity
+        table.insert(immunitiesFromCurrentStatsId,flag)
       end
     end
-  end
-  
-  for immunity,StatsIds in pairs(ImmunityFromStats) do
-    for _,StatsId in ipairs(StatsIds) do
-      ImmunityFromStati[immunity] = StatsIdToStati[StatsId]
-    end
-  end
-  
-  for status,immunity in pairs(StatusRequiresImmunity) do
-    if ImmunityFromStati[immunity] then
-      for _,removerstatus in ipairs(ImmunityFromStati[immunity]) do
-        StatusRemovedByStati[status] = StatusRemovedByStati[status] or {}
-        table.insert(StatusRemovedByStati[status],removerstatus)
+    
+    if StatsIdToStati[StatsId] and next(immunitiesFromCurrentStatsId) then
+      for _,statusname in ipairs(StatsIdToStati[StatsId]) do
+        local status_stat = not engineStatuses[statusname] and Ext.Stats.Get(statusname)
+        local StatusType = status_stat and status_stat.StatusType or statusname
+        if StatusType~="KNOCKED_DOWN" then -- game bug that this StatusType ignores immunities set in the files...
+          for __,immunity in ipairs(immunitiesFromCurrentStatsId) do
+            ImmunityFromStati[immunity] = ImmunityFromStati[immunity] or {}
+            if not table_contains_value(ImmunityFromStati[immunity],statusname) then
+              table.insert(ImmunityFromStati[immunity],statusname)
+            end
+            if StatusRequiresImmunity_REV[immunity] then
+              for ___,immunestatus in ipairs(StatusRequiresImmunity_REV[immunity]) do
+                StatusProvidesImmunityAgainstStati[statusname] = StatusProvidesImmunityAgainstStati[statusname] or {}
+                if not table_contains_value(StatusProvidesImmunityAgainstStati[statusname],immunestatus) then
+                  table.insert(StatusProvidesImmunityAgainstStati[statusname],immunestatus)
+                end
+              end
+            end
+          end
+        end
       end
     end
+    
   end
   
+  -- for immunity,StatsIds in pairs(ImmunityFromStats) do
+    -- ImmunityFromStati[immunity] = ImmunityFromStati[immunity] or {}
+    -- for _,StatsId in ipairs(StatsIds) do
+      -- if StatsIdToStati[StatsId] then
+        -- for __,status in ipairs(StatsIdToStati[StatsId]) do
+          -- if not table_contains_value(ImmunityFromStati[immunity],status) then
+            -- table.insert(ImmunityFromStati[immunity],status)
+          -- end
+        -- end
+      -- end
+    -- end
+  -- end
+  
+  -- not adding ImmunityFromStati to StatusRemovedByStati, but in a new table
+  -- for status,immunity in pairs(StatusRequiresImmunity) do
+    -- if ImmunityFromStati[immunity] then
+      -- for _,removerstatus in ipairs(ImmunityFromStati[immunity]) do
+        -- StatusRemovedByStati[status] = StatusRemovedByStati[status] or {}
+        -- StatusRemovesStati[removerstatus] = StatusRemovesStati[removerstatus] or {}
+        -- if not table_contains_value(StatusRemovedByStati[status],removerstatus) then
+          -- table.insert(StatusRemovedByStati[status],removerstatus)
+        -- end
+        -- if not table_contains_value(StatusRemovesStati[removerstatus],status) then
+          -- table.insert(StatusRemovesStati[removerstatus],status)
+        -- end
+      -- end
+    -- end
+  -- end
+  
+  
+  -- Ext.Print("ImprovedTooltips_Serp SessionLoaded Ende")
+
 end)
 
 
@@ -1016,19 +1251,12 @@ Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
     local addstringtodesc = ""
     local addID = CurrentPressedKeys["Shift"]
     if StatusCleansedBySkills[status] then
-      addstringtodesc = addstringtodesc.."\n<font color='#6EB09D'>Removed by Skills:</font> "--..table.concat(StatusCleansedBySkills[status],", ")
-      for _,skillinfo in ipairs(StatusCleansedBySkills[status]) do
-        local brackets = skillinfo.skill_loc~=skillinfo.skill and addID and " ("..skillinfo.skill.."), " or ", "
-        local chance=skillinfo.chance and skillinfo.chance<100 and " "..tostring(skillinfo.chance).."% " or ""
-        addstringtodesc = addstringtodesc..skillinfo.skill_loc..chance..brackets
-      end
+      local opener = "\n<font color='#6EB09D'>Cleansed by Skills:</font> "
+      addstringtodesc = addstringtodesc..CreateDescrString(opener,StatusCleansedBySkills[status])
     end
     if StatusRemovedByStati[status] then
-      addstringtodesc = addstringtodesc.."\n<font color='#6EB09D'>Removed by Stati:</font> "--..table.concat(StatusRemovedByStati[status],", ")
-      for _,removerstatus in ipairs(StatusRemovedByStati[status]) do
-        local brackets = StatusLocs[removerstatus]~=removerstatus and addID and " ("..removerstatus.."), " or ", "
-        addstringtodesc = addstringtodesc..StatusLocs[removerstatus]..brackets
-      end
+      local opener = "\n<font color='#6EB09D'>Removed by Stati:</font> "
+      addstringtodesc = addstringtodesc..CreateDescrString(opener,StatusRemovedByStati[status])
     end
     if not engineStatuses[status] then -- Food status is CONSUME
       local stat = Ext.Stats.Get(status)
@@ -1043,6 +1271,8 @@ Game.Tooltip.Register.Status(function(char,StatusConsumeBase,tooltip)
           addstringtodesc = addstringtodesc.."\n(StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
         end
       end
+    elseif engineStatuses[status] and engineStatuses[status].SavingThrow and engineStatuses[status].SavingThrow~="None" then
+      addstringtodesc = addstringtodesc.."\n<font color='#6EB09D'>SavingTrow:</font> "..tostring(engineStatuses[status].SavingThrow)
     end
     if addstringtodesc~="" then
       for _,entry in ipairs(tooltip.Data) do
@@ -1079,17 +1309,17 @@ end)
 -- item data:
 -- {
 	-- "AI" : null,
-	-- "AIBoundSize" : 0.22263775765895844,
+	-- "AIBoundSize" : 0.19059762358665466,
 	-- "Activated" : false,
-	-- "Amount" : 1,
+	-- "Amount" : 2,
 	-- "Base" : 
 	-- {
 		-- "Component" : 
 		-- {
-			-- "Handle" : "userdata: 05C0000100000D92",
+			-- "Handle" : "userdata: 05C0000100000D9D",
 			-- "TypeId" : 22
 		-- },
-		-- "Entity" : "Entity (000000010000639f)"
+		-- "Entity" : "Entity (00000001000063ac)"
 	-- },
 	-- "BaseWeightOverwrite" : -1,
 	-- "CachedItemDescription" : null,
@@ -1109,15 +1339,15 @@ end)
 		-- "AIBoundsHeight" : 0.47635701298713684,
 		-- "AIBoundsMax" : 
 		-- [
-			-- 0.15742866694927216,
-			-- 0.60027176141738892,
-			-- 0.15742866694927216
+			-- 0.13810999691486359,
+			-- 0.61823999881744385,
+			-- 0.13135099411010742
 		-- ],
 		-- "AIBoundsMin" : 
 		-- [
-			-- -0.15742866694927216,
-			-- -7.1942806243896484e-05,
-			-- -0.15742866694927216
+			-- -0.13810999691486359,
+			-- 0.001882690005004406,
+			-- -0.13135099411010742
 		-- ],
 		-- "AIBoundsRadius" : 0.15252600610256195,
 		-- "ActivationGroupId" : "",
@@ -1149,7 +1379,7 @@ end)
 		-- },
 		-- "CoverAmount" : 0,
 		-- "DefaultState" : "",
-		-- "Description" : "h6050b645gd077g47a7g8e2dg67e4bd5907d8",
+		-- "Description" : "h8789fd46gae9ag4bbfg84ccg7f4b1c3fe781",
 		-- "Destroyed" : false,
 		-- "DisplayName" : "ls::TranslatedStringRepository::s_HandleUnknown",
 		-- "DropSound" : "098b1399-863e-47bc-b808-7574302d6e90",
@@ -1203,20 +1433,20 @@ end)
 		-- "FadeIn" : false,
 		-- "Fadeable" : false,
 		-- "FileName" : "E:/Spiele/GOG Games/Divinity - Original Sin 2/DefEd/Data/Public/Shared/RootTemplates/_merged.lsf",
-		-- "Flags" : [],
+		-- "Flags" : {},
 		-- "Floating" : false,
 		-- "FreezeGravity" : false,
 		-- "GameMasterSpawnSection" : 6,
 		-- "GameMasterSpawnSubSection" : "h87614bc3g6474g4b95gba1dgc62361ed1734",
 		-- "GroupID" : 0,
-		-- "Handle" : 4784,
+		-- "Handle" : 1782,
 		-- "HardcoreOnly" : false,
 		-- "HasGameplayValue" : false,
 		-- "HasParentModRelation" : false,
 		-- "HitFX" : "",
 		-- "Hostile" : false,
-		-- "Icon" : "Item_CON_PotionII_A_Red_Small",
-		-- "Id" : "944e4b8c-1736-4ff6-8fa6-d7ceda9941da",
+		-- "Icon" : "Item_CON_PotionII_D_BloodRed_Large",
+		-- "Id" : "37535d5c-3262-4d2d-bcbc-c940e33ec2ca",
 		-- "InventoryMoveSound" : "098b1399-863e-47bc-b808-7574302d6e90",
 		-- "IsBlocker" : false,
 		-- "IsDeleted" : false,
@@ -1234,7 +1464,7 @@ end)
 		-- "IsSurfaceCloudBlocker" : false,
 		-- "IsTrap" : false,
 		-- "IsWall" : false,
-		-- "ItemList" : [],
+		-- "ItemList" : {},
 		-- "Key" : "",
 		-- "LevelName" : "",
 		-- "LevelOverride" : 0,
@@ -1243,10 +1473,10 @@ end)
 		-- "MaxStackAmount" : 100,
 		-- "MeshProxy" : "",
 		-- "ModFolder" : "Shared",
-		-- "Name" : "CON_Potion_A_Health",
+		-- "Name" : "CON_Potion_A_Healing_Elixir",
 		-- "NonUniformScale" : true,
 		-- "NotHardcore" : false,
-		-- "OnDestroyActions" : [],
+		-- "OnDestroyActions" : {},
 		-- "OnUseDescription" : "ls::TranslatedStringRepository::s_HandleUnknown",
 		-- "OnUsePeaceActions" : 
 		-- [
@@ -1260,7 +1490,7 @@ end)
 		-- "Owner" : "",
 		-- "PhysicsTemplate" : "4ab07902-7398-44b9-bffe-bf6d2937f435",
 		-- "PickupSound" : "983328aa-f4de-4b78-aced-999470e72ba8",
-		-- "PinnedContainerTags" : [],
+		-- "PinnedContainerTags" : {},
 		-- "Race" : 4294967295,
 		-- "ReceiveDecal" : false,
 		-- "RenderChannel" : 4,
@@ -1271,7 +1501,7 @@ end)
 		-- "SoundInitEvent" : "",
 		-- "Speaker" : "",
 		-- "SpeakerGroup" : "",
-		-- "Stats" : "POTION_Minor_Healing_Potion",
+		-- "Stats" : "POTION_Healing_Elixir",
 		-- "StoryItem" : false,
 		-- "Tags" : 
 		-- [
@@ -1330,7 +1560,7 @@ end)
 		-- },
 		-- "TreasureLevel" : -1,
 		-- "TreasureOnDestroy" : true,
-		-- "Treasures" : [],
+		-- "Treasures" : {},
 		-- "Type" : 0,
 		-- "UnequipSound" : "098b1399-863e-47bc-b808-7574302d6e90",
 		-- "Unimportant" : false,
@@ -1340,7 +1570,7 @@ end)
 		-- "UsePartyLevelForTreasureLevel" : false,
 		-- "UseRemotely" : false,
 		-- "UseSound" : "3fb0b511-2549-4846-b4e3-86695ee45779",
-		-- "VisualTemplate" : "c520c645-5b8c-45c0-bee7-ff2cbece618c",
+		-- "VisualTemplate" : "444d36ff-015c-47bb-8843-46b53687c2d7",
 		-- "Wadable" : false,
 		-- "WalkOn" : false,
 		-- "WalkThrough" : true
@@ -1385,23 +1615,23 @@ end)
 		-- }
 	-- },
 	-- "Destroyed" : false,
-	-- "DisplayName" : "Minor Healing Potion",
+	-- "DisplayName" : "Healing Elixir",
 	-- "DontAddToBottomBar" : false,
 	-- "EnableHighlights" : false,
 	-- "Fade" : false,
 	-- "FallTimer" : 0.0,
 	-- "Flags" : 
 	-- [
-		-- "IsCraftingIngredient",
+		-- "Known",
 		-- "CanBePickedUp",
-		-- "CanWalkThrough",
 		-- "CoverAmount",
+		-- "IsCraftingIngredient",
+		-- "CanWalkThrough",
 		-- "Registered",
 		-- "Global",
 		-- "CanBeMoved",
 		-- "CanShootThrough",
-		-- "CanUse",
-		-- "MovementUpdated"
+		-- "CanUse"
 	-- ],
 	-- "Flags2" : 
 	-- [
@@ -1411,20 +1641,20 @@ end)
 	-- "Floating" : false,
 	-- "FoldDynamicStats" : false,
 	-- "FreezeGravity" : false,
-	-- "GetDeltaMods" : "function: 00007FFEE84E34A0",
-	-- "GetInventoryItems" : "function: 00007FFEE84E3390",
-	-- "GetOwnerCharacter" : "function: 00007FFEE84E33F0",
-	-- "GetStatus" : "function: 00007FFEE84B2400",
-	-- "GetStatusByType" : "function: 00007FFEE84B24B0",
-	-- "GetStatusObjects" : "function: 00007FFEE84B2630",
-	-- "GetStatuses" : "function: 00007FFEE84B2550",
-	-- "GetTags" : "function: 00007FFEE84B15C0",
+	-- "GetDeltaMods" : "function: 00007FFA751834A0",
+	-- "GetInventoryItems" : "function: 00007FFA75183390",
+	-- "GetOwnerCharacter" : "function: 00007FFA751833F0",
+	-- "GetStatus" : "function: 00007FFA75152400",
+	-- "GetStatusByType" : "function: 00007FFA751524B0",
+	-- "GetStatusObjects" : "function: 00007FFA75152630",
+	-- "GetStatuses" : "function: 00007FFA75152550",
+	-- "GetTags" : "function: 00007FFA751515C0",
 	-- "Global" : true,
 	-- "GoldValueOverride" : -1,
 	-- "GravityTimer" : 0.0,
-	-- "Handle" : "userdata: 05C0000100000D92",
+	-- "Handle" : "userdata: 05C0000100000D9D",
 	-- "HasPendingNetUpdate" : false,
-	-- "HasTag" : "function: 00007FFEE84B1530",
+	-- "HasTag" : "function: 00007FFA75151530",
 	-- "Height" : 2.0,
 	-- "Hostile" : false,
 	-- "Icon" : "",
@@ -1432,7 +1662,7 @@ end)
 	-- "InUseByUserId" : -65536,
 	-- "InteractionDisabled" : false,
 	-- "InventoryHandle" : "userdata: 0000000000000000",
-	-- "InventoryParentHandle" : "userdata: 0740000100000004",
+	-- "InventoryParentHandle" : "userdata: 0740000100000000",
 	-- "Invisible" : false,
 	-- "Invulnerable" : false,
 	-- "IsCraftingIngredient" : true,
@@ -1442,19 +1672,19 @@ end)
 	-- "IsLadder" : false,
 	-- "IsSecretDoor" : false,
 	-- "IsSourceContainer" : false,
-	-- "IsTagged" : "function: 00007FFEE84B1530",
+	-- "IsTagged" : "function: 00007FFA75151530",
 	-- "ItemColorOverride" : "",
 	-- "ItemType" : "Common",
 	-- "JoinedDialog" : false,
 	-- "KeyName" : "",
-	-- "Known" : false,
-	-- "Level" : 1,
+	-- "Known" : true,
+	-- "Level" : 3,
 	-- "LockLevel" : 1,
-	-- "MovementUpdated" : true,
-	-- "MyGuid" : "0d4b44e5-719e-4794-8f94-afd01f1283ea",
-	-- "NetID" : 65638,
-	-- "OwnerCharacterHandle" : "userdata: 0580000100000174",
-	-- "ParentInventoryHandle" : "userdata: 0740000100000004",
+	-- "MovementUpdated" : false,
+	-- "MyGuid" : "cf24f68c-4b70-4d10-b39c-34751a946c3a",
+	-- "NetID" : 65625,
+	-- "OwnerCharacterHandle" : "userdata: 0580000100000134",
+	-- "ParentInventoryHandle" : "userdata: 0740000100000000",
 	-- "Physics" : null,
 	-- "PhysicsDisabled" : true,
 	-- "PhysicsFlag1" : false,
@@ -1471,15 +1701,15 @@ end)
 	-- "RootTemplate" : "*RECURSION*",
 	-- "Rotation" : 
 	-- [
-		-- -0.85489797592163086,
+		-- 1.0,
 		-- 0.0,
-		-- -0.51879602670669556,
+		-- 0.0,
 		-- 0.0,
 		-- 1.0,
 		-- 0.0,
-		-- 0.51879602670669556,
 		-- 0.0,
-		-- -0.85489797592163086
+		-- 0.0,
+		-- 1.0
 	-- ],
 	-- "Scale" : 1.0,
 	-- "Slot" : 24,
@@ -1505,15 +1735,54 @@ end)
 			-- }
 		-- },
 		-- "FS2" : "",
-		-- "Handle" : 2927,
-		-- "Level" : 1,
-		-- "MemorizationRequirements" : [],
+		-- "Handle" : 2932,
+		-- "Level" : 3,
+		-- "MemorizationRequirements" : {},
 		-- "ModId" : "2bd9bdbe-22ae-4aa2-9c93-205880fc6564",
 		-- "ModifierList" : "Potion",
 		-- "ModifierListIndex" : 3,
-		-- "Name" : "POTION_Minor_Healing_Potion",
-		-- "PropertyLists" : {},
-		-- "Requirements" : [],
+		-- "Name" : "POTION_Healing_Elixir",
+		-- "PropertyLists" : 
+		-- {
+			-- "ExtraProperties" : 
+			-- {
+				-- "AllPropertyContexts" : 
+				-- [
+					-- "AoE",
+					-- "Target"
+				-- ],
+				-- "Name" : "POTION_Healing_Elixir_ExtraProperties",
+				-- "Properties" : 
+				-- {
+					-- "Elements" : 
+					-- [
+						-- {
+							-- "Arg4" : -1,
+							-- "Arg5" : -1,
+							-- "Context" : 
+							-- [
+								-- "AoE",
+								-- "Target"
+							-- ],
+							-- "Duration" : 0.0,
+							-- "Name" : "HEALING_ELIXIR_TARGET_AOE",
+							-- "StatsId" : "",
+							-- "Status" : "HEALING_ELIXIR",
+							-- "StatusChance" : 1.0,
+							-- "SurfaceBoost" : false,
+							-- "SurfaceBoosts" : {},
+							-- "TypeId" : "Status"
+						-- }
+					-- ],
+					-- "GetByName" : "function: 00007FFA7519EB60",
+					-- "NameToIndex" : 
+					-- {
+						-- "HEALING_ELIXIR_TARGET_AOE" : 0
+					-- }
+				-- }
+			-- }
+		-- },
+		-- "Requirements" : {},
 		-- "StatsEntry" : 
 		-- {
 			-- "APCostBoost" : 0,
@@ -1522,7 +1791,7 @@ end)
 			-- "APStart" : 0,
 			-- "AccuracyBoost" : 0,
 			-- "Act" : "1",
-			-- "Act part" : "1",
+			-- "Act part" : "3",
 			-- "ActionPoints" : 0,
 			-- "AddToBottomBar" : "No",
 			-- "AiCalculationStatsOverride" : "",
@@ -1565,7 +1834,7 @@ end)
 			-- "FireResistance" : 0,
 			-- "FireResistancePenetration" : 0,
 			-- "FireSpecialist" : 0,
-			-- "Flags" : [],
+			-- "Flags" : {},
 			-- "Gain" : "None",
 			-- "Hearing" : "None",
 			-- "IgnoredByAI" : "No",
@@ -1582,17 +1851,17 @@ end)
 			-- "MagicArmorBoost" : 0,
 			-- "MagicPoints" : 0,
 			-- "MagicResistancePenetration" : 0,
-			-- "MaxAmount" : 1,
-			-- "MaxLevel" : 4,
+			-- "MaxAmount" : 0,
+			-- "MaxLevel" : 0,
 			-- "MaxSummons" : 0,
 			-- "Memory" : "None",
-			-- "MinAmount" : 1,
-			-- "MinLevel" : 1,
+			-- "MinAmount" : 0,
+			-- "MinLevel" : 0,
 			-- "ModifierType" : "Item",
 			-- "Movement" : 0,
 			-- "MovementSpeedBoost" : 0,
 			-- "Necromancy" : 0,
-			-- "ObjectCategory" : "HealingPotion",
+			-- "ObjectCategory" : "",
 			-- "PainReflection" : 0,
 			-- "Perseverance" : 0,
 			-- "Persuasion" : 0,
@@ -1603,14 +1872,14 @@ end)
 			-- "PoisonResistance" : 0,
 			-- "PoisonResistancePenetration" : 0,
 			-- "Polymorph" : 0,
-			-- "Priority" : 1,
+			-- "Priority" : 0,
 			-- "RangeBoost" : 0,
 			-- "Ranged" : 0,
 			-- "RangerLore" : 0,
 			-- "Reflection" : "",
 			-- "Repair" : 0,
 			-- "RogueLore" : 0,
-			-- "RootTemplate" : "944e4b8c-1736-4ff6-8fa6-d7ceda9941da",
+			-- "RootTemplate" : "37535d5c-3262-4d2d-bcbc-c940e33ec2ca",
 			-- "RuneEffectAmulet" : "",
 			-- "RuneEffectUpperbody" : "",
 			-- "RuneEffectWeapon" : "",
@@ -1635,7 +1904,7 @@ end)
 			-- "Unique" : 0,
 			-- "UnknownBeforeConsume" : "No",
 			-- "UseAPCost" : 1,
-			-- "Value" : 20,
+			-- "Value" : 80,
 			-- "Vitality" : 400,
 			-- "VitalityBoost" : 0,
 			-- "VitalityPercentage" : 0,
@@ -1646,26 +1915,26 @@ end)
 			-- "Weight" : 250,
 			-- "Wits" : "None"
 		-- },
-		-- "StringProperties1" : []
+		-- "StringProperties1" : {}
 	-- },
-	-- "StatsId" : "POTION_Minor_Healing_Potion",
+	-- "StatsId" : "POTION_Healing_Elixir",
 	-- "StatusMachine" : 
 	-- {
 		-- "IsStatusMachineActive" : false,
-		-- "OwnerObjectHandle" : "userdata: 05C0000100000D92",
+		-- "OwnerObjectHandle" : "userdata: 05C0000100000D9D",
 		-- "PreventStatusApply" : false,
-		-- "Statuses" : []
+		-- "Statuses" : {}
 	-- },
 	-- "Sticky" : false,
 	-- "Stolen" : false,
 	-- "StoryItem" : false,
-	-- "Tags" : [],
+	-- "Tags" : {},
 	-- "TeleportOnUse" : false,
 	-- "Translate" : 
 	-- [
-		-- 201.1175537109375,
-		-- -9.600001335144043,
-		-- 141.39151000976562
+		-- 0.0,
+		-- 0.0,
+		-- 0.0
 	-- ],
 	-- "UnEquipLocked" : false,
 	-- "Unimportant" : false,
@@ -1691,9 +1960,9 @@ end)
 	-- "WasOpened" : false,
 	-- "WorldPos" : 
 	-- [
-		-- 201.1175537109375,
-		-- -9.600001335144043,
-		-- 141.39151000976562
+		-- 0.0,
+		-- 0.0,
+		-- 0.0
 	-- ]
 -- }
 

@@ -3,3 +3,5 @@
 1.0.0.2:
 - fixed more error in log, which should have no impact ingame
 - added +20% resist chance for stati caused by surfaces, since this triggers very often when moving within them, making it likely to be affected even on 80% saveness.
+1.0.0.3:
+- make it work for some hardcoded engine Stati, like Charmed/Decaying Touch and a few more.

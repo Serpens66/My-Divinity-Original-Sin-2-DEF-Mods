@@ -5,3 +5,8 @@
 - Added info to all Stati, which skills/other stati can cleanse it.
 1.0.0.3:
 - removed stati which can clean other stati, which make it worse, like to "heal" WET, just apply necrofire..
+1.0.0.4:
+- improved german translation: Heiltrank/Gifttrank renamed to Heilelixier/Giftelixier so you clearly see that they are different to normal healing potions (and the status tooltip how to remove is more clear)
+- added the effects eg. a potion will apply to the potion tooltip.
+1.0.0.5:
+- Add to the skill tooltip which Stati they Cleanse. The vanilla texts already include these, BUT of course hardcoded to the text, so they are wrong if mods add more.

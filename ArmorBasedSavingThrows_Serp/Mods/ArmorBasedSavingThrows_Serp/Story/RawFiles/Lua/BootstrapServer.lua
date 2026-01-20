@@ -2,66 +2,108 @@
 -- https://steamcommunity.com/workshop/filedetails/discussion/1505329732/2590022385656340131/
 -- not using exact same rules like him. 100% rewritten inlua with script extender v60
 
+-- FreezeImmunity,BurnImmunity,StunImmunity,PoisonImmunity,CharmImmunity,FearImmunity,KnockdownImmunity,MuteImmunity,
+-- ChilledImmunity,WarmImmunity,WetImmunity,BleedingImmunity,CrippledImmunity,BlindImmunity,CursedImmunity,WeakImmunity,
+-- SlowedImmunity,DiseasedImmunity,InfectiousDiseasedImmunity,PetrifiedImmunity,DrunkImmunity,SlippingImmunity,HastedImmunity,
+-- TauntedImmunity,SleepingImmunity,AcidImmunity,SuffocatingImmunity,RegeneratingImmunity,DisarmedImmunity,DecayingImmunity,
+-- ClairvoyantImmunity,EnragedImmunity,BlessedImmunity,MadnessImmunity,ChickenImmunity,ShockedImmunity,WebImmunity,
+-- ShacklesOfPainImmunity,ThrownImmunity,InvisibilityImmunity,
+
 -- statusses which have no stats
+-- but add some known SavingThrow and ImmuneFlag and translation handle to them
 local engineStatuses = {
-	CLEAN=true,
-  CLIMBING=true,
-  SOURCE_MUTED=true,
-  DRAIN=true,
-  POLYMORPHED=true,
-  CHARMED=true,
-  INFUSED=true,
-  HIT=true,
-  IDENTIFY=true,
-  DYING=true,
-  THROWN=true,
-  LYING=true,
-  SNEAKING=true,
-  CONSUME=true,
-  ROTATE=true,
-  SHACKLES_OF_PAIN=true,
-  UNSHEATHED=true,
-  WIND_WALKER=true,
-  DARK_AVENGER=true,
-  AOO=true,
-  SHACKLES_OF_PAIN_CASTER=true,
-  SITTING=true,
-  FLANKED=true,
-  LINGERING_WOUNDS=true,
-  CHANNELING=true,
-  DAMAGE=true,
-  EXPLODE=true,
-  SMELLY=true,
-  SPIRIT_VISION=true,
-  INCAPACITATED=true,
-  SPARK=true,
-  UNLOCK=true,
-  EFFECT=true,
-  STANCE=true,
-  FORCE_MOVE=true,
-  SPIRIT=true,
-  FLOATING=true,
-  CONSTRAINED=true,
-  SUMMONING=true,
-  MATERIAL=true,
-  LEADERSHIP=true,
-  COMBUSTION=true,
-  TUTORIAL_BED=true,
-  TELEPORT_FALLING=true,
-  INFECTIOUS_DISEASED=true,
-  OVERPOWER=true,
-  REMORSE=true,
-  REPAIR=true,
-  ENCUMBERED=true,
-  UNHEALABLE=true,
-  ACTIVE_DEFENSE=true,
-  DECAYING_TOUCH=true,
-  ADRENALINE=true,
-  INSURFACE=true,
-  BOOST=true,
-  COMBAT=true,
-  STORY_FROZEN=true,
+    SOURCE_MUTED = {
+        DisplayName = "h534aec4fgecc5g4b34gb0f5g8b08c3c4309e",
+        SavingThrow = "MagicArmor",
+        ImmuneFlag = "None"
+    },
+    ADRENALINE = {DisplayName = "h4c891442g3b79g4dbeg906fgf8eeffcf60df"},
+    COMBAT = {},
+    SPIRIT_VISION = {},
+    UNSHEATHED = {},
+    CHANNELING = {},
+    IDENTIFY = {},
+    INSURFACE = {},
+    FLOATING = {DisplayName = "h278121a7g2132g4efdgb151g9af722d670dc"},
+    THROWN = {DisplayName = "hfa754958gff75g4474g8cd5g508b4fb7a984",ImmuneFlag="ThrownImmunity"},
+    INFUSED = {DisplayName = "hae4ca8a4g56feg480eg95c8ge5761ab1eb2e"},
+    CLIMBING = {},
+    CHARMED = {
+        DisplayName = "h30fc0122g6378g408cgac6fg6e3bcb3c852b",
+        SavingThrow = "MagicArmor",
+        ImmuneFlag = "CharmImmunity"
+    },
+    LYING = {},
+    CLEAN = {DisplayName = "h8fb688afg29efg4804g9d68g955c3c463053"},
+    ACTIVE_DEFENSE = {},
+    SNEAKING = {DisplayName = "h6bf7caf0g7756g443bg926dg1ee5975ee133"},
+    TELEPORT_FALLING = {},
+    DYING = {DisplayName = "h2e807311g8c4bg4141g85f3gcc88ee095888"},
+    STORY_FROZEN = {},
+    FORCE_MOVE = {},
+    CONSUME = {},
+    BOOST = {},
+    DRAIN = {DisplayName = "h9cf08d12gc1b8g4c7cg8662g40d03ca96df5", SavingThrow = "MagicArmor", ImmuneFlag = "None"},
+    LINGERING_WOUNDS = {DisplayName = "h3924a821gdb1fg4d6fg920eg62ee3c4586ed"},
+    DECAYING_TOUCH = {
+        DisplayName = "hbc2789fegb2deg4952ga436ga8a0aad070bf",
+        SavingThrow = "PhysicalArmor",
+        ImmuneFlag = "DecayingImmunity"
+    },
+    UNHEALABLE = {DisplayName = "hc33f0ac7gc3f0g47b3gba3cg8c3ddb82508e"},
+    STANCE = {},
+    INFECTIOUS_DISEASED = {
+      SavingThrow = "PhysicalArmor", 
+      ImmuneFlag = "InfectiousDiseasedImmunity",
+      DisplayName = "h791f1994g94e9g4471g9e10g398f8d194c90"
+    },
+    SUMMONING = {},
+    AOO = {},
+    COMBUSTION = {},
+    REMORSE = {DisplayName = "h7e0fe51fg9df2g4854gb8f1g183251dcc25b"},
+    OVERPOWER = {},
+    ENCUMBERED = {DisplayName = "hdc2c6815g4c4fg4e81g94d5g299646e91500"},
+    TUTORIAL_BED = {},
+    DAMAGE = {},
+    FLANKED = {DisplayName = "hd052e4cfg1a83g4ee5g886cgbf15dc656a0b"},
+    LEADERSHIP = {DisplayName = "h7c65fe39g1526g427bg8a2dgab7e74c66202"},
+    DARK_AVENGER = {DisplayName = "h64892b81g9543g4608ga303gcffa5055d869"},
+    SMELLY = {DisplayName = "h312fc6d0gd271g40ffg949dge80fba98335e"},
+    MATERIAL = {},
+    REPAIR = {},
+    SHACKLES_OF_PAIN = {
+        DisplayName = "h36a82a09gc2dag46feg990cgf3807db54d54",
+        SavingThrow = "PhysicalArmor",
+        ImmuneFlag = "ShacklesOfPainImmunity"
+    },
+    POLYMORPHED = {},
+    SPIRIT = {DisplayName = "h90cedca8g690cg4aabg8df0g98da27d72991"},
+    CONSTRAINED = {},
+    EFFECT = {},
+    EXPLODE = {},
+    SPARK = {},
+    SITTING = {DisplayName = "h33b529f1g6fb3g4210g8b40ga41e4d05c0d0"},
+    INCAPACITATED = {},
+    UNLOCK = {},
+    SHACKLES_OF_PAIN_CASTER = {DisplayName = "h89ad2635gd8acg4dc1gb7f5g2287082b3733"},
+    WIND_WALKER = {DisplayName = "hc7566374g36afg4345gaf18gab4ba7d7c809"},
+    HIT = {},
+    ROTATE = {}
 }
+
+local function GetTranslation(statsid_or_handle,fallback)
+  if not statsid_or_handle then
+    return fallback
+  end
+  local loc = Ext.L10N.GetTranslatedStringFromKey(statsid_or_handle,fallback)
+  if not loc or loc=="" then
+    loc = Ext.L10N.GetTranslatedString(statsid_or_handle,fallback)
+  end
+  if not loc or loc=="" then
+    loc = fallback
+  end
+  return loc
+end
 
 local function round(num, numDecimalPlaces)
   local mult = 10^(numDecimalPlaces or 0)
@@ -113,7 +155,7 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
   local statusname = status.StatusId
   local sourcetype = status.DamageSourceType
   if not ev.PreventStatusApply and sourcetype~="StatusTick" and sourcetype~="GM" then -- StatusTick is aura
-    if statusname and not engineStatuses[statusname] and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
+    if statusname and (not engineStatuses[statusname] or next(engineStatuses[statusname])) and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
       -- if statusname=="POISONED" then
         -- Ext.Print("ArmorBasedSavingThrows_Serp: BeforeStatusApply",statusname,sourcetype,status.LifeTime)
       -- end
@@ -124,11 +166,11 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
         local targetGuid = target and target.MyGuid
         local FromSurface = sourcetype=="SurfaceStatus" or sourcetype=="SurfaceMove" or sourcetype=="SurfaceCreate"
         if not (not FromSurface and sourceTorturer and table_contains_value(TorturerStati,statusname)) and status.ForceStatus==false and target then
-          local StatusStat = Ext.Stats.Get(statusname)
+          local StatusStat = engineStatuses[statusname] or Ext.Stats.Get(statusname)
           local Raistlin = target and target.Stats.TALENT_Raistlin -- targets with this talent are not safe by armor
           if StatusStat and not Raistlin then
             local ImmuneFlag = StatusStat.ImmuneFlag -- dont apply this status, if the character has this ImmuneFlag eg. "KnockdownImmunity"
-            if ImmuneFlag=="None" or not target.Stats[ImmuneFlag] then
+            if not ImmuneFlag or ImmuneFlag=="None" or not target.Stats[ImmuneFlag] then
               local SavingThrow = StatusStat.SavingThrow
               if SavingThrow=="PhysicalArmor" or SavingThrow=="MagicArmor" then
                 local resisted = false
@@ -165,7 +207,7 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
                   end
                 end
                 local colour = "#40b606" -- green
-                local statusname_loc = Ext.L10N.GetTranslatedStringFromKey(StatusStat.DisplayName,statusname)
+                local statusname_loc = GetTranslation(StatusStat.DisplayName,statusname)
                 if resisted then
                   if IsPlayerEnemy(targetGuid) then
                     colour = "#c80030" -- red
@@ -206,7 +248,7 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
   if not ev.PreventStatusApply then
     local status = ev.Status ---@type EsvStatus
     local statusname = status and status.StatusId
-    if statusname and not engineStatuses[statusname] and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
+    if statusname and (not engineStatuses[statusname] or next(engineStatuses[statusname])) and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
       if status.CanEnterChance<=0 or (status.CanEnterChance < 100 and (status.CanEnterChance/100) <= math.random()) then
         ev.PreventStatusApply = true
       elseif status.CanEnterChance < 100 then

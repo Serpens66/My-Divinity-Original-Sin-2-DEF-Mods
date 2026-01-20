@@ -394,7 +394,7 @@ SharedFns.OnStatsLoaded = function(e)
         if SkillProperties and type(SkillProperties)=="table" then
           local changed = false
           for _,entry in ipairs(SkillProperties) do
-            if entry.Type=="Status" then
+            if entry.Type=="Status" and entry.StatsId~="" then
               for inf,new in pairs(SPInfStatusReplace) do
                 if entry.Action==inf then
                   entry.Action = new

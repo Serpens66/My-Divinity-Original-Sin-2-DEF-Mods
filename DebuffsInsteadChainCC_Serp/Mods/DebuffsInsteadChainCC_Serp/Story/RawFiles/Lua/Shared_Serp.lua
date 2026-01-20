@@ -291,7 +291,8 @@ if Ext.IsClient() then
   local StatiBlocked = {LX_MOMENTUM_Serp={},LX_LINGERING_Serp={}}
   local StatiBlockedLoc = {LX_MOMENTUM_Serp={},LX_LINGERING_Serp={}}
   
-  Ext.Events.StatsLoaded:Subscribe(function(e)
+  -- Ext.Events.StatsLoaded:Subscribe(function(e)
+  Ext.Events.SessionLoaded:Subscribe(function(e) -- officially StatsLoaded should not be used to fill tables used outside of StatsLoaded
       
     for i,statusname in pairs(Ext.Stats.GetStats("StatusData")) do
       local StatusStat = Ext.Stats.Get(statusname)
