@@ -1,0 +1,26 @@
+{
+  "FileFormatVersion": 0,
+  "ModTable": "EpipEncounters",
+  "TranslatedStrings": {
+    "h1f8a4b2c9d3e5f0a1b2c3d4e5f6a7b8c": {
+      "ReferenceText": "Shows all game stati and how they apply (does not include special rules added by mods)",
+      "TranslatedText": "Shows all game stati and how they apply (does not include special rules added by mods)"
+    },
+    "hc4e9a1d2b0f3e8a7c5d6b4a2e1f0d9c8": {
+      "ReferenceText": "",
+      "TranslatedText": ""
+    },
+    "hb7d6c5a4b3e2f1d0a9b8c7d6e5f4a3b2": {
+      "ReferenceText": "",
+      "TranslatedText": ""
+    },
+    "ha1b2c3d4e5f60718293a4b5c6d7e8f90": {
+      "ReferenceText": "",
+      "TranslatedText": ""
+    },
+    "hf9e8d7c6b5a43210f9e8d7c6b5a43210": {
+      "ReferenceText": "",
+      "TranslatedText": ""
+    },
+  }
+}

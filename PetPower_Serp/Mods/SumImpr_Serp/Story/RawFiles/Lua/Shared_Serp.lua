@@ -72,12 +72,10 @@ SharedFns.table_contains_value = function(tbl, x)
   end
   return false
 end
-SharedFns.table_removearrayvalue = function(t, lookup_value, removeall)
-  for i, v in ipairs(t) do
-    if v == lookup_value then
-      if not removeall then
-        break
-      end
+SharedFns.table_removearrayvalue = function(t, valueToRemove)
+  for i = #t, 1, -1 do
+    if t[i] == valueToRemove then
+      table.remove(t, i)
     end
   end
 end

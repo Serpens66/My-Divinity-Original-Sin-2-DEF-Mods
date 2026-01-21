@@ -1,0 +1,1216 @@
+
+
+-- Tooltip improvements
+-- Game.Tooltip.Register
+-- {
+	-- "Ability" : "function: 00007FF473BEFE28",
+	-- "CustomStat" : "function: 00007FF473C74848",
+	-- "Generic" : "function: 00007FF473C74870",
+	-- "Global" : "function: 00007FF473BEFE00",
+	-- "Item" : "function: 00007FF473C74898",
+	-- "PlayerPortrait" : "function: 00007FF473C748C0",
+	-- "Pyramid" : "function: 00007FF473C748E8",
+	-- "Rune" : "function: 00007FF473C74910",
+	-- "Skill" : "function: 00007FF473C74938",
+	-- "Stat" : "function: 00007FF473C74960",
+	-- "Status" : "function: 00007FF473C74988",
+	-- "Surface" : "function: 00007FF473C749B0",
+	-- "Tag" : "function: 00007FF473C749D8",
+	-- "Talent" : "function: 00007FF473C74A00",
+	-- "World" : "function: 00007FF473C74A28"
+-- }
+
+
+-- Item Tooltip
+-- [
+	-- {
+		-- "Label" : "<font color=\"#ffffff\">Kleiner Heiltrank</font> ",
+		-- "Type" : "ItemName"
+	-- },
+	-- {
+		-- "Label" : "0.25",
+		-- "Type" : "ItemWeight"
+	-- },
+	-- {
+		-- "Label" : "<font color=\"#C7A758\">20</font>",
+		-- "Type" : "ItemGoldValue"
+	-- },
+	-- {
+		-- "Label" : "Trank, der deine Lebenskraft wiederherstellt. Klimpert leise, wenn man ihn sch\u00fcttelt.",
+		-- "Type" : "ItemDescription"
+	-- },
+	-- {
+		-- "Label" : "Verzehren",
+		-- "RequirementMet" : true,
+		-- "Type" : "ItemUseAPCost",
+		-- "Value" : 1.0
+	-- },
+	-- {
+		-- "Label" : "Heilt 30 Lebenskraft.",
+		-- "Type" : "ConsumableEffect",
+		-- "Value" : ""
+	-- }
+-- ]
+
+
+
+
+
+
+
+
+      -- Ext.Print("ImprovedTooltips Skill Tooltip SkillProperties",skill,_D(SkillProperties))
+    -- [{	"Action" : "CreateSurface",
+    -- "Arg1" : 3.0,
+    -- "Arg2" : 0.0,
+    -- "Arg3" : "Oil",
+    -- "Arg4" : 1.0,
+    -- "Arg5" : 0.0,
+    -- "Context" : ["Target","AoE"],
+    -- "StatusHealType" : "None",
+    -- "Type" : "GameAction"}]
+    -- Shout_PoisonWave
+    -- [{"Action" : "TargetCreateSurface",
+      -- "Arg1" : 4.0,
+      -- "Arg2" : 0.0,
+      -- "Arg3" : "PoisonCloud",
+      -- "Arg4" : 1.0,
+      -- "Arg5" : 1.0,
+      -- "Context" :
+      -- ["Self"],
+      -- "StatusHealType" : "None",
+      -- "Type" : "GameAction"}]
+      -- Encourage:
+        -- {"Action" : "ENCOURAGED2",
+        -- "Arg4" : -1,
+        -- "Arg5" : -1,
+        -- "Context" :["Target","AoE"],
+        -- "Duration" : 18.0,
+        -- "StatsId" : "",
+        -- "StatusChance" : 1.0,
+        -- "SurfaceBoost" : false,
+        -- "SurfaceBoosts" : {},
+        -- "Type" : "Status"}
+        -- {"Action" : "TryKill",
+              -- "Arg4" : 10,
+              -- "Arg5" : -1,
+              -- "Context" :["Target","AoE"],
+              -- "Duration" : 6.0,
+              -- "StatsId" : "FROZEN",
+              -- "StatusChance" : 1.0,
+              -- "SurfaceBoost" : false,
+              -- "SurfaceBoosts" : {},
+              -- "Type" : "Status"}
+
+
+
+
+
+
+
+    -- [{"Label" : "Ermutigung",
+              -- "Type" : "SkillName"},
+      -- {"Label" : "Skill_Warrior_Inspire",
+              -- "Type" : "SkillIcon"},
+      -- {"Icon" : 2.0,
+              -- "Label" : "<font color=\"#DA2512\">Kriegf\u00fchrung</font>",
+              -- "Type" : "SkillSchool"},
+      -- {"Label" : "Novize",
+              -- "Type" : "SkillTier"},
+      -- {"Label" : "Erfordert Kriegf\u00fchrung 1<br>",
+              -- "RequirementMet" : true,
+              -- "Type" : "SkillRequiredEquipment"},
+      -- {"Label" : "Benutzen",
+              -- "RequirementMet" : true,
+              -- "Type" : "SkillAPCost",
+              -- "Value" : 1.0,
+              -- "Warning" : ""},
+      -- {"Label" : "Abklingzeit",
+              -- "Type" : "SkillCooldown",
+              -- "Value" : 6.0,
+              -- "ValueText" : "6 Runde(n)",
+              -- "Warning" : ""},
+      -- {"Label" : "Ermutigt Verb\u00fcndete in deiner N\u00e4he.",
+              -- "Type" : "SkillDescription"},
+      -- {
+          -- "Properties" :
+          -- [
+                          -- {
+                                  -- "Label" : "Lege Combo Bonus II f\u00fcr 2 Runde(n) fest.",
+                                  -- "Warning" : ""
+                          -- },
+                          -- {
+                                  -- "Label" : "Lege Second Impact Chain f\u00fcr 2 Runde(n) fest.",
+                                  -- "Warning" : ""
+                          -- },
+                          -- {
+                                  -- "Label" : "Der Schaden basiert auf deinem Basisangriff plus Bonus durch Finesse.",
+                                  -- "Warning" : ""
+                          -- }
+                  -- ],
+                  -- "Resistances" : {},
+                  -- "Type" : "SkillProperties"
+          -- }]
+
+
+
+
+
+-- Surface
+-- {
+	-- "ControllerEnabled" : false,
+	-- "Data" : 
+	-- [
+		-- {
+			-- "Label" : "Blut",
+			-- "Type" : "Title"
+		-- },
+		-- {
+			-- "Label" : "Kann unter Strom gesetzt und eingefroren werden.",
+			-- "Type" : "SurfaceDescription"
+		-- }
+	-- ],
+	-- "TooltipUIType" : 43,
+	-- "UIType" : 43
+-- }
+
+
+-- Surface template
+-- "Statuses" :
+  -- [
+          -- {
+                  -- "ApplyToCharacters" : true,
+                  -- "ApplyToItems" : false,
+                  -- "Chance" : 1.0,
+                  -- "Duration" : 6.0,
+                  -- "ForceStatus" : false,
+                  -- "KeepAlive" : true,
+                  -- "OnlyWhileMoving" : false,
+                  -- "RemoveStatus" : false,
+                  -- "StatusId" : "INVISIBLE",
+                  -- "VanishOnReapply" : false
+          -- },
+          -- {
+                  -- "ApplyToCharacters" : true,
+                  -- "ApplyToItems" : true,
+                  -- "Chance" : 1.0,
+                  -- "Duration" : 6.0,
+                  -- "ForceStatus" : false,
+                  -- "KeepAlive" : false,
+                  -- "OnlyWhileMoving" : false,
+                  -- "RemoveStatus" : true,
+                  -- "StatusId" : "MUTED",
+                  -- "VanishOnReapply" : false
+          -- }
+  -- ],
+
+
+-- Game.Tooltip.Register.Surface: double surface tooltip.Data and the event is called twice:
+-- [
+	-- {
+		-- "Label" : "Wasserschaden",
+		-- "Type" : "Title"
+	-- },
+	-- {
+		-- "Label" : "Kann unter Strom gesetzt und eingefroren werden.",
+		-- "Type" : "SurfaceDescription"
+	-- },
+	-- {
+		-- "Label" : "Dauer: 7 Runden",
+		-- "Type" : "Duration"
+	-- },
+	-- {
+		-- "Type" : "Splitter"
+	-- },
+	-- {
+		-- "Label" : "Dampfwolke",
+		-- "Type" : "Title"
+	-- },
+	-- {
+		-- "Label" : "Hebt den Brennend-Statuseffekt auf.",
+		-- "Type" : "SurfaceDescription"
+	-- }
+-- ]
+
+
+-- EpipSurfaceTooltips
+-- EpipSurfaceTooltips
+-- {
+	-- "Prevented" : true,
+	-- "Tooltip" : 
+	-- {
+		-- "Data" : "*RECURSION*",
+		-- "Elements" : 
+		-- [
+			-- {
+				-- "Label" : "Wasserschaden",
+				-- "Type" : "Title"
+			-- },
+			-- {
+				-- "Label" : "Kann unter Strom gesetzt und eingefroren werden.",
+				-- "Type" : "SurfaceDescription"
+			-- },
+			-- {
+				-- "Label" : "Dauer: 10 Runden",
+				-- "Type" : "Duration"
+			-- },
+			-- {
+				-- "Type" : "Splitter"
+			-- },
+			-- {
+				-- "Label" : "Dampfwolke",
+				-- "Type" : "Title"
+			-- },
+			-- {
+				-- "Label" : "Hebt den Brennend-Statuseffekt auf.",
+				-- "Type" : "SurfaceDescription"
+			-- }
+		-- ]
+	-- },
+	-- "Type" : "Surface",
+	-- "UI" : 
+	-- {
+		-- "AnchorId" : "",
+		-- "AnchorObjectName" : "textDisplay_1",
+		-- "AnchorPos" : "",
+		-- "AnchorTPos" : "",
+		-- "AnchorTarget" : "",
+		-- "CaptureExternalInterfaceCalls" : "function: 00007FFE2F4F5980",
+		-- "CaptureInvokes" : "function: 00007FFE2F4F59C0",
+		-- "ChildUIHandle" : "userdata: 0000000000000000",
+		-- "ClearCustomIcon" : "function: 00007FFE2F4F5B00",
+		-- "CustomScale" : 1.0,
+		-- "Destroy" : "function: 00007FFE2F4F58B0",
+		-- "EnableCustomDraw" : "function: 00007FFE2F4F5A00",
+		-- "ExternalInterfaceCall" : "function: 00007FFE2F4F58F0",
+		-- "Flags" : 
+		-- [
+			-- "OF_DeleteOnChildDestroy",
+			-- "OF_Loaded",
+			-- "OF_Visible"
+		-- ],
+		-- "FlashMovieSize" : 
+		-- [
+			-- 1920.0,
+			-- 1080.0
+		-- ],
+		-- "FlashSize" : 
+		-- [
+			-- 1920.0,
+			-- 1080.0
+		-- ],
+		-- "ForceClearTooltipText" : false,
+		-- "GetHandle" : "function: 00007FFE2F4F56D0",
+		-- "GetPlayerHandle" : "function: 00007FFE2F4F5750",
+		-- "GetPosition" : "function: 00007FFE2F4F5170",
+		-- "GetRoot" : "function: 00007FFE2F4F5840",
+		-- "GetTypeId" : "function: 00007FFE2F4F57E0",
+		-- "GetUIScaleMultiplier" : "function: 00007FFE2F4F5B90",
+		-- "GetValue" : "function: 00007FFE2F4F5610",
+		-- "GotoFrame" : "function: 00007FFE2F4F5510",
+		-- "HasAnchorPos" : false,
+		-- "HasSurfaceText" : true,
+		-- "Hide" : "function: 00007FFE2F4F5430",
+		-- "InputFocused" : false,
+		-- "Invoke" : "function: 00007FFE2F4F5470",
+		-- "IsActive" : true,
+		-- "IsDragging" : false,
+		-- "IsDragging2" : false,
+		-- "IsMoving2" : false,
+		-- "IsUIMoving" : false,
+		-- "Layer" : 11,
+		-- "Left" : 0.0,
+		-- "MinSize" : 
+		-- [
+			-- 0.0,
+			-- 0.0
+		-- ],
+		-- "MovieLayout" : 6,
+		-- "OF_Activated" : false,
+		-- "OF_DeleteOnChildDestroy" : true,
+		-- "OF_DontHideOnDelete" : false,
+		-- "OF_FullScreen" : false,
+		-- "OF_KeepCustomInScreen" : false,
+		-- "OF_KeepInScreen" : false,
+		-- "OF_Load" : false,
+		-- "OF_Loaded" : true,
+		-- "OF_PauseRequest" : false,
+		-- "OF_PlayerInput1" : false,
+		-- "OF_PlayerInput2" : false,
+		-- "OF_PlayerInput3" : false,
+		-- "OF_PlayerInput4" : false,
+		-- "OF_PlayerModal1" : false,
+		-- "OF_PlayerModal2" : false,
+		-- "OF_PlayerModal3" : false,
+		-- "OF_PlayerModal4" : false,
+		-- "OF_PlayerTextInput1" : false,
+		-- "OF_PlayerTextInput2" : false,
+		-- "OF_PlayerTextInput3" : false,
+		-- "OF_PlayerTextInput4" : false,
+		-- "OF_PrecacheUIData" : false,
+		-- "OF_PreventCameraMove" : false,
+		-- "OF_RequestDelete" : false,
+		-- "OF_SortOnAdd" : false,
+		-- "OF_Visible" : true,
+		-- "ParentUIHandle" : "userdata: 0000000000000000",
+		-- "Path" : "E:/Spiele/GOG Games/Divinity - Original Sin 2/DefEd/Data/Public/Game/GUI/textDisplay.swf",
+		-- "PlayerId" : 1,
+		-- "RenderDataPrepared" : true,
+		-- "RenderOrder" : 26,
+		-- "RequestClearTooltipText" : false,
+		-- "Resize" : "function: 00007FFE2F4F5310",
+		-- "Right" : 0.0,
+		-- "SetCustomIcon" : "function: 00007FFE2F4F5A40",
+		-- "SetCustomPortraitIcon" : "function: 00007FFE2F4F5AA0",
+		-- "SetPosition" : "function: 00007FFE2F4F5210",
+		-- "SetValue" : "function: 00007FFE2F4F5670",
+		-- "Show" : "function: 00007FFE2F4F53F0",
+		-- "SurfaceIndex" : 8,
+		-- "SurfaceIndex2" : 6,
+		-- "SurfaceTurns" : 10,
+		-- "SurfaceTurns2" : 0,
+		-- "SysPanelPosition" : 
+		-- [
+			-- 0,
+			-- 0
+		-- ],
+		-- "SysPanelSize" : 
+		-- [
+			-- -1.0,
+			-- -1.0
+		-- ],
+		-- "Text" : "",
+		-- "TooltipArrayUpdated" : true,
+		-- "Top" : 0.0,
+		-- "Type" : 43,
+		-- "UIObjectHandle" : "userdata: 00C000020000002D",
+		-- "UIScale" : 1.0,
+		-- "UIScaling" : false,
+		-- "WorldScreenPositionX" : 772,
+		-- "WorldScreenPositionY" : 743
+	-- }
+-- }
+
+
+
+
+-- item data:
+-- {
+	-- "AI" : null,
+	-- "AIBoundSize" : 0.19059762358665466,
+	-- "Activated" : false,
+	-- "Amount" : 2,
+	-- "Base" : 
+	-- {
+		-- "Component" : 
+		-- {
+			-- "Handle" : "userdata: 05C0000100000D9D",
+			-- "TypeId" : 22
+		-- },
+		-- "Entity" : "Entity (00000001000063ac)"
+	-- },
+	-- "BaseWeightOverwrite" : -1,
+	-- "CachedItemDescription" : null,
+	-- "CanBeMoved" : true,
+	-- "CanBePickedUp" : true,
+	-- "CanShootThrough" : true,
+	-- "CanUse" : true,
+	-- "CanUseRemotely" : false,
+	-- "CanWalkThrough" : true,
+	-- "Consumable" : true,
+	-- "CoverAmount" : true,
+	-- "CurrentLevel" : "",
+	-- "CurrentSlot" : 24,
+	-- "CurrentTemplate" : 
+	-- {
+		-- "AIBoundsAIType" : 1,
+		-- "AIBoundsHeight" : 0.47635701298713684,
+		-- "AIBoundsMax" : 
+		-- [
+			-- 0.13810999691486359,
+			-- 0.61823999881744385,
+			-- 0.13135099411010742
+		-- ],
+		-- "AIBoundsMin" : 
+		-- [
+			-- -0.13810999691486359,
+			-- 0.001882690005004406,
+			-- -0.13135099411010742
+		-- ],
+		-- "AIBoundsRadius" : 0.15252600610256195,
+		-- "ActivationGroupId" : "",
+		-- "AllowReceiveDecalWhenAnimated" : false,
+		-- "AllowSummonTeleport" : false,
+		-- "AltSpeaker" : "",
+		-- "Amount" : 1,
+		-- "BloodSurfaceType" : -1,
+		-- "CameraOffset" : 
+		-- [
+			-- 0.0,
+			-- 0.0,
+			-- 0.0
+		-- ],
+		-- "CanBeMoved" : true,
+		-- "CanBePickedUp" : true,
+		-- "CanClickThrough" : false,
+		-- "CanShootThrough" : true,
+		-- "CastShadow" : true,
+		-- "CombatComponent" : 
+		-- {
+			-- "Alignment" : "",
+			-- "CanFight" : false,
+			-- "CanJoinCombat" : true,
+			-- "CombatGroupID" : "",
+			-- "IsBoss" : false,
+			-- "IsInspector" : false,
+			-- "StartCombatRange" : -1.0
+		-- },
+		-- "CoverAmount" : 0,
+		-- "DefaultState" : "",
+		-- "Description" : "h8789fd46gae9ag4bbfg84ccg7f4b1c3fe781",
+		-- "Destroyed" : false,
+		-- "DisplayName" : "ls::TranslatedStringRepository::s_HandleUnknown",
+		-- "DropSound" : "098b1399-863e-47bc-b808-7574302d6e90",
+		-- "EquipSound" : "098b1399-863e-47bc-b808-7574302d6e90",
+		-- "Equipment" : 
+		-- {
+			-- "EquipmentSlots" : 0,
+			-- "SyncAnimationWithParent" : 
+			-- [
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false,
+				-- false
+			-- ],
+			-- "VisualResources" : 
+			-- [
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- "",
+				-- ""
+			-- ],
+			-- "VisualSetSlots" : 0
+		-- },
+		-- "FadeGroup" : "",
+		-- "FadeIn" : false,
+		-- "Fadeable" : false,
+		-- "FileName" : "E:/Spiele/GOG Games/Divinity - Original Sin 2/DefEd/Data/Public/Shared/RootTemplates/_merged.lsf",
+		-- "Flags" : {},
+		-- "Floating" : false,
+		-- "FreezeGravity" : false,
+		-- "GameMasterSpawnSection" : 6,
+		-- "GameMasterSpawnSubSection" : "h87614bc3g6474g4b95gba1dgc62361ed1734",
+		-- "GroupID" : 0,
+		-- "Handle" : 1782,
+		-- "HardcoreOnly" : false,
+		-- "HasGameplayValue" : false,
+		-- "HasParentModRelation" : false,
+		-- "HitFX" : "",
+		-- "Hostile" : false,
+		-- "Icon" : "Item_CON_PotionII_D_BloodRed_Large",
+		-- "Id" : "37535d5c-3262-4d2d-bcbc-c940e33ec2ca",
+		-- "InventoryMoveSound" : "098b1399-863e-47bc-b808-7574302d6e90",
+		-- "IsBlocker" : false,
+		-- "IsDeleted" : false,
+		-- "IsGlobal" : false,
+		-- "IsHuge" : false,
+		-- "IsInteractionDisabled" : false,
+		-- "IsKey" : false,
+		-- "IsPinnedContainer" : false,
+		-- "IsPointerBlocker" : false,
+		-- "IsPublicDomain" : false,
+		-- "IsReflecting" : false,
+		-- "IsShadowProxy" : false,
+		-- "IsSourceContainer" : false,
+		-- "IsSurfaceBlocker" : false,
+		-- "IsSurfaceCloudBlocker" : false,
+		-- "IsTrap" : false,
+		-- "IsWall" : false,
+		-- "ItemList" : {},
+		-- "Key" : "",
+		-- "LevelName" : "",
+		-- "LevelOverride" : 0,
+		-- "LockLevel" : 1,
+		-- "LoopSound" : "",
+		-- "MaxStackAmount" : 100,
+		-- "MeshProxy" : "",
+		-- "ModFolder" : "Shared",
+		-- "Name" : "CON_Potion_A_Healing_Elixir",
+		-- "NonUniformScale" : true,
+		-- "NotHardcore" : false,
+		-- "OnDestroyActions" : {},
+		-- "OnUseDescription" : "ls::TranslatedStringRepository::s_HandleUnknown",
+		-- "OnUsePeaceActions" : 
+		-- [
+			-- {
+				-- "Consume" : true,
+				-- "StatsId" : "",
+				-- "Type" : "Consume"
+			-- }
+		-- ],
+		-- "Opacity" : 0.5,
+		-- "Owner" : "",
+		-- "PhysicsTemplate" : "4ab07902-7398-44b9-bffe-bf6d2937f435",
+		-- "PickupSound" : "983328aa-f4de-4b78-aced-999470e72ba8",
+		-- "PinnedContainerTags" : {},
+		-- "Race" : 4294967295,
+		-- "ReceiveDecal" : false,
+		-- "RenderChannel" : 4,
+		-- "RootTemplate" : "",
+		-- "SeeThrough" : false,
+		-- "SoundAttachBone" : "",
+		-- "SoundAttenuation" : -1,
+		-- "SoundInitEvent" : "",
+		-- "Speaker" : "",
+		-- "SpeakerGroup" : "",
+		-- "Stats" : "POTION_Healing_Elixir",
+		-- "StoryItem" : false,
+		-- "Tags" : 
+		-- [
+			-- "POTIONS",
+			-- "Potion",
+			-- "HEALING_POTION",
+			-- "DRINK",
+			-- "ORGANIZE_POTION"
+		-- ],
+		-- "Tooltip" : 2,
+		-- "Transform" : 
+		-- {
+			-- "Matrix" : 
+			-- [
+				-- 1.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 1.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 1.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 1.0
+			-- ],
+			-- "Rotate" : 
+			-- [
+				-- 1.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 1.0,
+				-- 0.0,
+				-- 0.0,
+				-- 0.0,
+				-- 1.0
+			-- ],
+			-- "Scale" : 
+			-- [
+				-- 1.0,
+				-- 1.0,
+				-- 1.0
+			-- ],
+			-- "Translate" : 
+			-- [
+				-- 0.0,
+				-- 0.0,
+				-- 0.0
+			-- ]
+		-- },
+		-- "TreasureLevel" : -1,
+		-- "TreasureOnDestroy" : true,
+		-- "Treasures" : {},
+		-- "Type" : 0,
+		-- "UnequipSound" : "098b1399-863e-47bc-b808-7574302d6e90",
+		-- "Unimportant" : false,
+		-- "UnknownDescription" : "ls::TranslatedStringRepository::s_HandleUnknown",
+		-- "UnknownDisplayName" : "ls::TranslatedStringRepository::s_HandleUnknown",
+		-- "UseOnDistance" : false,
+		-- "UsePartyLevelForTreasureLevel" : false,
+		-- "UseRemotely" : false,
+		-- "UseSound" : "3fb0b511-2549-4846-b4e3-86695ee45779",
+		-- "VisualTemplate" : "444d36ff-015c-47bb-8843-46b53687c2d7",
+		-- "Wadable" : false,
+		-- "WalkOn" : false,
+		-- "WalkThrough" : true
+	-- },
+	-- "CustomBookContent" : 
+	-- {
+		-- "ArgumentString" : 
+		-- {
+			-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+			-- "ReferenceString" : ""
+		-- },
+		-- "Handle" : 
+		-- {
+			-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+			-- "ReferenceString" : ""
+		-- }
+	-- },
+	-- "CustomDescription" : 
+	-- {
+		-- "ArgumentString" : 
+		-- {
+			-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+			-- "ReferenceString" : ""
+		-- },
+		-- "Handle" : 
+		-- {
+			-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+			-- "ReferenceString" : ""
+		-- }
+	-- },
+	-- "CustomDisplayName" : 
+	-- {
+		-- "ArgumentString" : 
+		-- {
+			-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+			-- "ReferenceString" : ""
+		-- },
+		-- "Handle" : 
+		-- {
+			-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+			-- "ReferenceString" : ""
+		-- }
+	-- },
+	-- "Destroyed" : false,
+	-- "DisplayName" : "Healing Elixir",
+	-- "DontAddToBottomBar" : false,
+	-- "EnableHighlights" : false,
+	-- "Fade" : false,
+	-- "FallTimer" : 0.0,
+	-- "Flags" : 
+	-- [
+		-- "Known",
+		-- "CanBePickedUp",
+		-- "CoverAmount",
+		-- "IsCraftingIngredient",
+		-- "CanWalkThrough",
+		-- "Registered",
+		-- "Global",
+		-- "CanBeMoved",
+		-- "CanShootThrough",
+		-- "CanUse"
+	-- ],
+	-- "Flags2" : 
+	-- [
+		-- "Consumable",
+		-- "UseSoundsLoaded"
+	-- ],
+	-- "Floating" : false,
+	-- "FoldDynamicStats" : false,
+	-- "FreezeGravity" : false,
+	-- "GetDeltaMods" : "function: 00007FFA751834A0",
+	-- "GetInventoryItems" : "function: 00007FFA75183390",
+	-- "GetOwnerCharacter" : "function: 00007FFA751833F0",
+	-- "GetStatus" : "function: 00007FFA75152400",
+	-- "GetStatusByType" : "function: 00007FFA751524B0",
+	-- "GetStatusObjects" : "function: 00007FFA75152630",
+	-- "GetStatuses" : "function: 00007FFA75152550",
+	-- "GetTags" : "function: 00007FFA751515C0",
+	-- "Global" : true,
+	-- "GoldValueOverride" : -1,
+	-- "GravityTimer" : 0.0,
+	-- "Handle" : "userdata: 05C0000100000D9D",
+	-- "HasPendingNetUpdate" : false,
+	-- "HasTag" : "function: 00007FFA75151530",
+	-- "Height" : 2.0,
+	-- "Hostile" : false,
+	-- "Icon" : "",
+	-- "InUseByCharacterHandle" : "userdata: 0000000000000000",
+	-- "InUseByUserId" : -65536,
+	-- "InteractionDisabled" : false,
+	-- "InventoryHandle" : "userdata: 0000000000000000",
+	-- "InventoryParentHandle" : "userdata: 0740000100000000",
+	-- "Invisible" : false,
+	-- "Invulnerable" : false,
+	-- "IsCraftingIngredient" : true,
+	-- "IsDoor" : false,
+	-- "IsGrenade" : false,
+	-- "IsKey" : false,
+	-- "IsLadder" : false,
+	-- "IsSecretDoor" : false,
+	-- "IsSourceContainer" : false,
+	-- "IsTagged" : "function: 00007FFA75151530",
+	-- "ItemColorOverride" : "",
+	-- "ItemType" : "Common",
+	-- "JoinedDialog" : false,
+	-- "KeyName" : "",
+	-- "Known" : true,
+	-- "Level" : 3,
+	-- "LockLevel" : 1,
+	-- "MovementUpdated" : false,
+	-- "MyGuid" : "cf24f68c-4b70-4d10-b39c-34751a946c3a",
+	-- "NetID" : 65625,
+	-- "OwnerCharacterHandle" : "userdata: 0580000100000134",
+	-- "ParentInventoryHandle" : "userdata: 0740000100000000",
+	-- "Physics" : null,
+	-- "PhysicsDisabled" : true,
+	-- "PhysicsFlag1" : false,
+	-- "PhysicsFlag2" : false,
+	-- "PhysicsFlag3" : false,
+	-- "PhysicsFlags" : 
+	-- [
+		-- "PhysicsDisabled"
+	-- ],
+	-- "PinnedContainer" : false,
+	-- "Registered" : true,
+	-- "RequestRaycast" : false,
+	-- "RequestWakeNeighbours" : false,
+	-- "RootTemplate" : "*RECURSION*",
+	-- "Rotation" : 
+	-- [
+		-- 1.0,
+		-- 0.0,
+		-- 0.0,
+		-- 0.0,
+		-- 1.0,
+		-- 0.0,
+		-- 0.0,
+		-- 0.0,
+		-- 1.0
+	-- ],
+	-- "Scale" : 1.0,
+	-- "Slot" : 24,
+	-- "Stats" : null,
+	-- "StatsFromName" : 
+	-- {
+		-- "AIFlags" : "",
+		-- "ComboCategories" : 
+		-- [
+			-- "PotionHealing"
+		-- ],
+		-- "DisplayName" : 
+		-- {
+			-- "ArgumentString" : 
+			-- {
+				-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+				-- "ReferenceString" : ""
+			-- },
+			-- "Handle" : 
+			-- {
+				-- "Handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
+				-- "ReferenceString" : ""
+			-- }
+		-- },
+		-- "FS2" : "",
+		-- "Handle" : 2932,
+		-- "Level" : 3,
+		-- "MemorizationRequirements" : {},
+		-- "ModId" : "2bd9bdbe-22ae-4aa2-9c93-205880fc6564",
+		-- "ModifierList" : "Potion",
+		-- "ModifierListIndex" : 3,
+		-- "Name" : "POTION_Healing_Elixir",
+		-- "PropertyLists" : 
+		-- {
+			-- "ExtraProperties" : 
+			-- {
+				-- "AllPropertyContexts" : 
+				-- [
+					-- "AoE",
+					-- "Target"
+				-- ],
+				-- "Name" : "POTION_Healing_Elixir_ExtraProperties",
+				-- "Properties" : 
+				-- {
+					-- "Elements" : 
+					-- [
+						-- {
+							-- "Arg4" : -1,
+							-- "Arg5" : -1,
+							-- "Context" : 
+							-- [
+								-- "AoE",
+								-- "Target"
+							-- ],
+							-- "Duration" : 0.0,
+							-- "Name" : "HEALING_ELIXIR_TARGET_AOE",
+							-- "StatsId" : "",
+							-- "Status" : "HEALING_ELIXIR",
+							-- "StatusChance" : 1.0,
+							-- "SurfaceBoost" : false,
+							-- "SurfaceBoosts" : {},
+							-- "TypeId" : "Status"
+						-- }
+					-- ],
+					-- "GetByName" : "function: 00007FFA7519EB60",
+					-- "NameToIndex" : 
+					-- {
+						-- "HEALING_ELIXIR_TARGET_AOE" : 0
+					-- }
+				-- }
+			-- }
+		-- },
+		-- "Requirements" : {},
+		-- "StatsEntry" : 
+		-- {
+			-- "APCostBoost" : 0,
+			-- "APMaximum" : 0,
+			-- "APRecovery" : 0,
+			-- "APStart" : 0,
+			-- "AccuracyBoost" : 0,
+			-- "Act" : "1",
+			-- "Act part" : "3",
+			-- "ActionPoints" : 0,
+			-- "AddToBottomBar" : "No",
+			-- "AiCalculationStatsOverride" : "",
+			-- "AirResistance" : 0,
+			-- "AirResistancePenetration" : 0,
+			-- "AirSpecialist" : 0,
+			-- "Armor" : 0,
+			-- "ArmorBoost" : 0,
+			-- "AuraAllies" : "",
+			-- "AuraEnemies" : "",
+			-- "AuraFX" : "",
+			-- "AuraItems" : "",
+			-- "AuraNeutrals" : "",
+			-- "AuraRadius" : 0,
+			-- "AuraSelf" : "",
+			-- "Barter" : 0,
+			-- "BloodSurfaceType" : "",
+			-- "BonusWeapon" : "",
+			-- "BoostConditions" : "",
+			-- "ChanceToHitBoost" : 0,
+			-- "ComboCategory" : 
+			-- [
+				-- "PotionHealing"
+			-- ],
+			-- "Constitution" : "None",
+			-- "CorrosiveResistancePenetration" : 0,
+			-- "CriticalChance" : 0,
+			-- "Damage" : "None",
+			-- "Damage Multiplier" : 0,
+			-- "Damage Range" : 0,
+			-- "DamageBoost" : 0,
+			-- "DamageType" : "None",
+			-- "DodgeBoost" : 0,
+			-- "DualWielding" : 0,
+			-- "Duration" : 0,
+			-- "EarthResistance" : 0,
+			-- "EarthResistancePenetration" : 0,
+			-- "EarthSpecialist" : 0,
+			-- "Finesse" : "None",
+			-- "FireResistance" : 0,
+			-- "FireResistancePenetration" : 0,
+			-- "FireSpecialist" : 0,
+			-- "Flags" : {},
+			-- "Gain" : "None",
+			-- "Hearing" : "None",
+			-- "IgnoredByAI" : "No",
+			-- "Initiative" : 0,
+			-- "Intelligence" : "None",
+			-- "InventoryTab" : "Consumable",
+			-- "IsConsumable" : "Yes",
+			-- "IsFood" : "No",
+			-- "Leadership" : 0,
+			-- "LifeSteal" : 0,
+			-- "Loremaster" : 0,
+			-- "Luck" : 0,
+			-- "MagicArmor" : 0,
+			-- "MagicArmorBoost" : 0,
+			-- "MagicPoints" : 0,
+			-- "MagicResistancePenetration" : 0,
+			-- "MaxAmount" : 0,
+			-- "MaxLevel" : 0,
+			-- "MaxSummons" : 0,
+			-- "Memory" : "None",
+			-- "MinAmount" : 0,
+			-- "MinLevel" : 0,
+			-- "ModifierType" : "Item",
+			-- "Movement" : 0,
+			-- "MovementSpeedBoost" : 0,
+			-- "Necromancy" : 0,
+			-- "ObjectCategory" : "",
+			-- "PainReflection" : 0,
+			-- "Perseverance" : 0,
+			-- "Persuasion" : 0,
+			-- "PhysicalResistance" : 0,
+			-- "PhysicalResistancePenetration" : 0,
+			-- "PiercingResistance" : 0,
+			-- "PiercingResistancePenetration" : 0,
+			-- "PoisonResistance" : 0,
+			-- "PoisonResistancePenetration" : 0,
+			-- "Polymorph" : 0,
+			-- "Priority" : 0,
+			-- "RangeBoost" : 0,
+			-- "Ranged" : 0,
+			-- "RangerLore" : 0,
+			-- "Reflection" : "",
+			-- "Repair" : 0,
+			-- "RogueLore" : 0,
+			-- "RootTemplate" : "37535d5c-3262-4d2d-bcbc-c940e33ec2ca",
+			-- "RuneEffectAmulet" : "",
+			-- "RuneEffectUpperbody" : "",
+			-- "RuneEffectWeapon" : "",
+			-- "RuneLevel" : 0,
+			-- "SPCostBoost" : 0,
+			-- "SavingThrow" : "None",
+			-- "ShadowResistancePenetration" : 0,
+			-- "Sight" : 0,
+			-- "SingleHanded" : 0,
+			-- "Sneaking" : 0,
+			-- "Sourcery" : 0,
+			-- "StackId" : "Healing",
+			-- "StatusEffect" : "",
+			-- "StatusIcon" : "",
+			-- "StatusMaterial" : "",
+			-- "Strength" : "None",
+			-- "SummonLifelinkModifier" : 0,
+			-- "Summoning" : 0,
+			-- "Telekinesis" : 0,
+			-- "Thievery" : 0,
+			-- "TwoHanded" : 0,
+			-- "Unique" : 0,
+			-- "UnknownBeforeConsume" : "No",
+			-- "UseAPCost" : 1,
+			-- "Value" : 80,
+			-- "Vitality" : 400,
+			-- "VitalityBoost" : 0,
+			-- "VitalityPercentage" : 0,
+			-- "WarriorLore" : 0,
+			-- "WaterResistance" : 0,
+			-- "WaterResistancePenetration" : 0,
+			-- "WaterSpecialist" : 0,
+			-- "Weight" : 250,
+			-- "Wits" : "None"
+		-- },
+		-- "StringProperties1" : {}
+	-- },
+	-- "StatsId" : "POTION_Healing_Elixir",
+	-- "StatusMachine" : 
+	-- {
+		-- "IsStatusMachineActive" : false,
+		-- "OwnerObjectHandle" : "userdata: 05C0000100000D9D",
+		-- "PreventStatusApply" : false,
+		-- "Statuses" : {}
+	-- },
+	-- "Sticky" : false,
+	-- "Stolen" : false,
+	-- "StoryItem" : false,
+	-- "Tags" : {},
+	-- "TeleportOnUse" : false,
+	-- "Translate" : 
+	-- [
+		-- 0.0,
+		-- 0.0,
+		-- 0.0
+	-- ],
+	-- "UnEquipLocked" : false,
+	-- "Unimportant" : false,
+	-- "UnknownTimer" : 0.0,
+	-- "UseSoundsLoaded" : true,
+	-- "UserVars" : {},
+	-- "Velocity" : 
+	-- [
+		-- 0.0,
+		-- 0.0,
+		-- 0.0
+	-- ],
+	-- "Visual" : null,
+	-- "Vitality" : -1,
+	-- "Wadable" : false,
+	-- "WakePosition" : 
+	-- [
+		-- 0.0,
+		-- 0.0,
+		-- 0.0
+	-- ],
+	-- "Walkable" : false,
+	-- "WasOpened" : false,
+	-- "WorldPos" : 
+	-- [
+		-- 0.0,
+		-- 0.0,
+		-- 0.0
+	-- ]
+-- }
+
+
+
+
+
+
+
+
+
+
+-- Seems impossible to add proper tooltip information to the Crafting result in recipe menu,
+ -- since with all data we get it is impossible to find out what is crafted (language translated string as Label ist the only info we get)
+-- request
+-- {
+	-- "AllowDelay" : true,
+	-- "AnchorEnum" : 0.0,
+	-- "BackgroundType" : 1.0,
+	-- "Height" : 54.000091552734375,
+	-- "Side" : "right",
+	-- "Text" : "Armbrust",
+	-- "Type" : "Generic",
+	-- "UIType" : 102,
+	-- "Width" : 53.99932861328125,
+	-- "X" : 180.94999694824219,
+	-- "Y" : 764.0
+-- }
+-- tooltip
+-- [
+	-- {
+		-- "AllowDelay" : true,
+		-- "AnchorEnum" : 0.0,
+		-- "BackgroundType" : 1.0,
+		-- "Height" : 2597.468505859375,
+		-- "Label" : "Armbrust",
+		-- "OverrideSize" : false,
+		-- "Type" : "GenericDescription",
+		-- "Width" : 6708.3779296875,
+		-- "X" : 0,
+		-- "Y" : 0
+	-- }
+-- ]
+
+
+
+
+
+
+-- STATUS tooltips
+-- {
+	-- "ControllerEnabled" : false,
+	-- "Data" : 
+	-- [
+		-- {
+			-- "Label" : "Permafrost",
+			-- "Type" : "StatName"
+		-- },
+		-- {
+			-- "Label" : "A shroud of ice freezes the character in place and renders them invulnerable to damage.",
+			-- "Type" : "StatusDescription"
+		-- },
+		-- {
+			-- "Label" : "Fire Resistance: +100%",
+			-- "Type" : "StatusBonus"
+		-- },
+		-- {
+			-- "Label" : "Earth Resistance: +100%",
+			-- "Type" : "StatusBonus"
+		-- },
+		-- {
+			-- "Label" : "Water Resistance: +100%",
+			-- "Type" : "StatusBonus"
+		-- },
+		-- {
+			-- "Label" : "Air Resistance: +100%",
+			-- "Type" : "StatusBonus"
+		-- },
+		-- {
+			-- "Label" : "Poison Resistance: +100%",
+			-- "Type" : "StatusBonus"
+		-- },
+		-- {
+			-- "Label" : "Piercing Resistance: +100%",
+			-- "Type" : "StatusBonus"
+		-- },
+		-- {
+			-- "Label" : "Physical Resistance: +100%",
+			-- "Type" : "StatusBonus"
+		-- },
+		-- {
+			-- "Label" : "Immunity to Burning",
+			-- "Type" : "StatusImmunity"
+		-- },
+		-- {
+			-- "Label" : "Immunity to Stunned",
+			-- "Type" : "StatusImmunity"
+		-- },
+		-- {
+			-- "Label" : "Immunity to Poisoned",
+			-- "Type" : "StatusImmunity"
+		-- },
+		-- {
+			-- "Label" : "Immunity to Charmed",
+			-- "Type" : "StatusImmunity"
+		-- },
+		-- {
+			-- "Label" : "Immunity to Terrified",
+			-- "Type" : "StatusImmunity"
+		-- },
+		-- {
+			-- "Label" : "Immunity to Bleeding",
+			-- "Type" : "StatusImmunity"
+		-- },
+		-- {
+			-- "Label" : "Immunity to Petrified",
+			-- "Type" : "StatusImmunity"
+		-- },
+		-- {
+			-- "Label" : "Immunity to Taunted",
+			-- "Type" : "StatusImmunity"
+		-- },
+		-- {
+			-- "Label" : "Immunity to Sleeping",
+			-- "Type" : "StatusImmunity"
+		-- },
+		-- {
+			-- "Label" : "Immunity to Mad",
+			-- "Type" : "StatusImmunity"
+		-- },
+		-- {
+			-- "Label" : "Immunity to Shocked",
+			-- "Type" : "StatusImmunity"
+		-- },
+		-- {
+			-- "Label" : "Immunity to Shackles of Pain",
+			-- "Type" : "StatusImmunity"
+		-- },
+		-- {
+			-- "Label" : "Duration: 1 Turn<br><font face='Averia Serif' color='DBDBDB'>Applied by Fane</font>",
+			-- "Type" : "StatusDescription"
+		-- }
+	-- ],
+	-- "TooltipUIType" : 44,
+	-- "UIType" : 9
+-- }
+-- possible tooltip Type
+-- "ItemName","ItemWeight","ItemGoldValue","ItemLevel","ItemDescription","ItemRarity","ItemUseAPCost","ItemAttackAPCost","StatBoost",
+	-- "ResistanceBoost","AbilityBoost","OtherStatBoost","VitalityBoost","ChanceToHitBoost","DamageBoost","APCostBoost","APMaximumBoost",
+	-- "APStartBoost","APRecoveryBoost","CritChanceBoost","ArmorBoost","ConsumableDuration","ConsumablePermanentDuration","ConsumableEffect",
+	-- "ConsumableDamage","ExtraProperties","Flags","ItemRequirement","WeaponDamage","WeaponDamagePenalty","WeaponCritMultiplier","WeaponCritChance",
+	-- "WeaponRange","Durability","CanBackstab","AccuracyBoost","DodgeBoost","EquipmentUnlockedSkill","WandSkill","WandCharges","ArmorValue",
+	-- "ArmorSlotType","Blocking","NeedsIdentifyLevel","IsQuestItem","PriceToIdentify","PriceToRepair","PickpocketInfo","Engraving",
+	-- "ContainerIsLocked","SkillName","SkillIcon","SkillSchool","SkillTier","SkillRequiredEquipment","SkillAPCost","SkillCooldown",
+	-- "SkillDescription","SkillProperties","SkillDamage","SkillRange","SkillExplodeRadius","SkillCanPierce","SkillCanFork","SkillStrikeCount",
+	-- "SkillProjectileCount","SkillCleansesStatus","SkillMultiStrikeAttacks","SkillWallDistance","SkillPathSurface","SkillPathDistance",
+	-- "SkillHealAmount","SkillDuration","ConsumableEffectUknown","Reflection","SkillAlreadyLearned","SkillOnCooldown","SkillAlreadyUsed",
+	-- "AbilityTitle","AbilityDescription","TalentTitle","TalentDescription","SkillMPCost","MagicArmorValue","WarningText","RuneSlot",
+	-- "RuneEffect","Equipped","ShowSkillIcon","SkillbookSkill","Tags","EmptyRuneSlot","StatName","StatsDescription","StatsDescriptionBoost",
+	-- "StatSTRWeight","StatMEMSlot","StatsPointValue","StatsTalentsBoost","StatsTalentsMalus","StatsBaseValue","StatsPercentageBoost",
+	-- "StatsPercentageMalus","StatsPercentageTotal","StatsGearBoostNormal","StatsATKAPCost","StatsCriticalInfos","StatsAPTitle","StatsAPDesc",
+	-- "StatsAPBase","StatsAPBonus","StatsAPMalus","StatsTotalDamage","TagDescription","StatusImmunity","StatusBonus","StatusMalus","StatusDescription",
+	-- "Title","SurfaceDescription","Duration","Fire","Water","Earth","Air","Poison","Physical","Sulfur","Heal","Splitter","ArmorSet"

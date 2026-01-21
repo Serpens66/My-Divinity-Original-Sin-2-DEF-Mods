@@ -156,14 +156,14 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
   local sourcetype = status.DamageSourceType
   if not ev.PreventStatusApply and sourcetype~="StatusTick" and sourcetype~="GM" then -- StatusTick is aura
     if statusname and (not engineStatuses[statusname] or next(engineStatuses[statusname])) and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
-      -- if statusname=="POISONED" then
-        -- Ext.Print("ArmorBasedSavingThrows_Serp: BeforeStatusApply",statusname,sourcetype,status.LifeTime)
-      -- end
       if Ext.Utils.GetHandleType(status.OwnerHandle)=="ServerCharacter" then -- only for characters, we do not care for items
         local source = Ext.Utils.GetHandleType(status.StatusSourceHandle)=="ServerCharacter" and Ext.Entity.GetCharacter(status.StatusSourceHandle) or nil ---@type EsvCharacter
         local target = Ext.Entity.GetCharacter(status.OwnerHandle) ---@type EsvCharacter .. 
         local sourceTorturer = source and source.Stats.TALENT_Torturer or false -- effects from him are not blocked. talent does not work for SurfaceStatus
         local targetGuid = target and target.MyGuid
+        if statusname=="POISONED" and (Osi.IsTagged(targetGuid,"UNDEAD")==1 or target.Stats.TALENT_Zombie) then -- do nothing for POISONED and Undead
+          return
+        end
         local FromSurface = sourcetype=="SurfaceStatus" or sourcetype=="SurfaceMove" or sourcetype=="SurfaceCreate"
         if not (not FromSurface and sourceTorturer and table_contains_value(TorturerStati,statusname)) and status.ForceStatus==false and target then
           local StatusStat = engineStatuses[statusname] or Ext.Stats.Get(statusname)
@@ -208,6 +208,13 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
                 end
                 local colour = "#40b606" -- green
                 local statusname_loc = GetTranslation(StatusStat.DisplayName,statusname)
+                if StatusStat and StatusStat.FormatColor and Mods.LeaderLib then
+                  if Mods.LeaderLib.LocalizedText.DamageTypeHandles[StatusStat.FormatColor] then
+                    statusname_loc = "<font color='"..Mods.LeaderLib.LocalizedText.DamageTypeHandles[StatusStat.FormatColor].Color.."'>"..statusname_loc.."</font>"
+                  elseif Mods.LeaderLib.Data.Colors.Common[StatusStat.FormatColor] then
+                    statusname_loc = "<font color='"..Mods.LeaderLib.Data.Colors.Common[StatusStat.FormatColor].."'>"..statusname_loc.."</font>"
+                  end
+                end
                 if resisted then
                   if IsPlayerEnemy(targetGuid) then
                     colour = "#c80030" -- red
