@@ -15,3 +15,16 @@ data "AuraSelf" "BLOODAURAHEAL"
 data "AuraAllies" "BLOODAURAHEAL"
 data "AuraEnemies" "DEEPCUT"
 
+
+new entry "ElementalTortoise_SkillCol"
+type "StatusData"
+using "ElementalTortoise"
+data "StatsId" "SKILLBOOST_ElementalTortoise_SkillCol"
+data "StackId" "SKILLBOOST_ElementalTortoise_SkillCol"
+
+new entry "BarbedCoat_SkillCol"
+type "StatusData"
+using "BarbedCoat"
+data "StatsId" "SKILLBOOST_BarbedCoat_SkillCol"
+data "StackId" "SKILLBOOST_BarbedCoat_SkillCol"
+

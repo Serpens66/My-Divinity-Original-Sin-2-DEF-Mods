@@ -11,11 +11,12 @@
 
 -- statusses which have no stats
 -- but add some known SavingThrow and ImmuneFlag and translation handle to them
-local engineStatuses = {
+engineStatuses = {
     SOURCE_MUTED = {
         DisplayName = "h534aec4fgecc5g4b34gb0f5g8b08c3c4309e",
         SavingThrow = "MagicArmor",
-        ImmuneFlag = "None"
+        ImmuneFlag = "None",
+        FormatColor = "Orange",
     },
     ADRENALINE = {DisplayName = "h4c891442g3b79g4dbeg906fgf8eeffcf60df"},
     COMBAT = {},
@@ -31,7 +32,8 @@ local engineStatuses = {
     CHARMED = {
         DisplayName = "h30fc0122g6378g408cgac6fg6e3bcb3c852b",
         SavingThrow = "MagicArmor",
-        ImmuneFlag = "CharmImmunity"
+        ImmuneFlag = "CharmImmunity",
+        FormatColor = "Pink",
     },
     LYING = {},
     CLEAN = {DisplayName = "h8fb688afg29efg4804g9d68g955c3c463053"},
@@ -48,14 +50,16 @@ local engineStatuses = {
     DECAYING_TOUCH = {
         DisplayName = "hbc2789fegb2deg4952ga436ga8a0aad070bf",
         SavingThrow = "PhysicalArmor",
-        ImmuneFlag = "DecayingImmunity"
+        ImmuneFlag = "DecayingImmunity",
+        FormatColor = "Purple",
     },
     UNHEALABLE = {DisplayName = "hc33f0ac7gc3f0g47b3gba3cg8c3ddb82508e"},
     STANCE = {},
     INFECTIOUS_DISEASED = {
       SavingThrow = "PhysicalArmor", 
       ImmuneFlag = "InfectiousDiseasedImmunity",
-      DisplayName = "h791f1994g94e9g4471g9e10g398f8d194c90"
+      DisplayName = "h791f1994g94e9g4471g9e10g398f8d194c90",
+      FormatColor = "Purple",
     },
     SUMMONING = {},
     AOO = {},
@@ -74,7 +78,8 @@ local engineStatuses = {
     SHACKLES_OF_PAIN = {
         DisplayName = "h36a82a09gc2dag46feg990cgf3807db54d54",
         SavingThrow = "PhysicalArmor",
-        ImmuneFlag = "ShacklesOfPainImmunity"
+        ImmuneFlag = "ShacklesOfPainImmunity",
+        FormatColor = "Red",
     },
     POLYMORPHED = {},
     SPIRIT = {DisplayName = "h90cedca8g690cg4aabg8df0g98da27d72991"},
@@ -91,7 +96,36 @@ local engineStatuses = {
     ROTATE = {}
 }
 
-local function GetTranslation(statsid_or_handle,fallback)
+-- "<font color='"..colourcode.."'>"..statusname_loc.."</font>"
+-- 6EB09D is greenish
+function GetFormatColour(FormatColor) --  in LeaderLib
+  local colourcode = "#FFFFFF"
+  if FormatColor and Mods.LeaderLib then
+    if Mods.LeaderLib.Data.Colors.FormatStringColor[FormatColor] then
+      colourcode = Mods.LeaderLib.Data.Colors.FormatStringColor[FormatColor]
+    elseif Mods.LeaderLib.LocalizedText.DamageTypeHandles[FormatColor] then
+      colourcode = Mods.LeaderLib.LocalizedText.DamageTypeHandles[FormatColor].Color
+    elseif Mods.LeaderLib.Data.Colors.Common[FormatColor] then
+      colourcode = Mods.LeaderLib.Data.Colors.Common[FormatColor]
+    end
+  end
+  return colourcode
+end
+function GetStatusColour(StatusId,stat)
+  -- print("GetStatusColour",StatusId)
+  if not stat then
+    if engineStatuses[StatusId] and engineStatuses[StatusId].FormatColor then
+      stat = engineStatuses[StatusId]
+    elseif not engineStatuses[StatusId] then
+      stat = Ext.Stats.Get(StatusId)
+    end
+  end
+  if stat and stat.FormatColor then
+    return GetFormatColour(stat.FormatColor)
+  end
+end
+
+function GetTranslation(statsid_or_handle,fallback)
   if not statsid_or_handle then
     return fallback
   end
@@ -208,12 +242,9 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
                 end
                 local colour = "#40b606" -- green
                 local statusname_loc = GetTranslation(StatusStat.DisplayName,statusname)
-                if StatusStat and StatusStat.FormatColor and Mods.LeaderLib then
-                  if Mods.LeaderLib.LocalizedText.DamageTypeHandles[StatusStat.FormatColor] then
-                    statusname_loc = "<font color='"..Mods.LeaderLib.LocalizedText.DamageTypeHandles[StatusStat.FormatColor].Color.."'>"..statusname_loc.."</font>"
-                  elseif Mods.LeaderLib.Data.Colors.Common[StatusStat.FormatColor] then
-                    statusname_loc = "<font color='"..Mods.LeaderLib.Data.Colors.Common[StatusStat.FormatColor].."'>"..statusname_loc.."</font>"
-                  end
+                local status_col = GetStatusColour(statusname,StatusStat)
+                if status_col then
+                  statusname_loc = "<font color='"..status_col.."'>"..statusname_loc.."</font>"
                 end
                 if resisted then
                   if IsPlayerEnemy(targetGuid) then

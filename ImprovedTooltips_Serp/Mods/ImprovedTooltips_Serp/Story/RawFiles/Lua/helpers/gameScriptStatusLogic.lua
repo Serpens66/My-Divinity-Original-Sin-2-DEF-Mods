@@ -420,12 +420,12 @@ StatusScriptRules = {
 
 
 
-function GetInfoTextForStatus(status,StatusLocs,orig_indent)
+function GetInfoTextForStatus(status,StatusLocs,orig_indent,colourize)
   -- if not StatusLocs then print("GetInfoTextForStatus StatusLocs nil?!",StatusLocs,status,StatusLocs[status]) end
   local s = ""
-  local info = StatusScriptRules[status]
+  local info = deepcopy(StatusScriptRules[status]) -- so we can alter the list without altering the original...
   if info and info.possible_results and next(info.possible_results) then
-    local result = StatusLocs and StatusLocs[info.possible_results[1]] or info.possible_results[1]
+    local result_status = info.possible_results[1]
     local conditiontext = ""
     local _if = " if "
     local indent = orig_indent
@@ -436,15 +436,17 @@ function GetInfoTextForStatus(status,StatusLocs,orig_indent)
         conditiontext = conditiontext..indent
         if condition.if_has then
           for __,con_status in ipairs(condition.if_has) do
-            con_status = StatusLocs and StatusLocs[con_status] or con_status
-            conditiontext = conditiontext.._if..con_status
+            local con_status_loc = StatusLocs and StatusLocs[con_status] or con_status
+            con_status_loc = ColourizeStatus(con_status,con_status_loc,colourize)
+            conditiontext = conditiontext.._if..con_status_loc
           end
         end
         if condition.if_has_any then
           conditiontext = conditiontext.._if
           for __,con_status in ipairs(condition.if_has_any) do
-            con_status = StatusLocs and StatusLocs[con_status] or con_status
-            conditiontext = conditiontext..con_status
+            local con_status_loc = StatusLocs and StatusLocs[con_status] or con_status
+            con_status_loc = ColourizeStatus(con_status,con_status_loc,colourize)
+            conditiontext = conditiontext..con_status_loc
             if next(condition.if_has_any,__) then
               conditiontext = conditiontext.." / "
             end
@@ -453,8 +455,9 @@ function GetInfoTextForStatus(status,StatusLocs,orig_indent)
         if condition.if_not then
           conditiontext = conditiontext.._if
           for __,con_status in ipairs(condition.if_not) do
-            con_status = StatusLocs and StatusLocs[con_status] or con_status
-            conditiontext = conditiontext.."not "..con_status
+            local con_status_loc = StatusLocs and StatusLocs[con_status] or con_status
+            con_status_loc = ColourizeStatus(con_status,con_status_loc,colourize)
+            conditiontext = conditiontext.."not "..con_status_loc
             if next(condition.if_not,__) then
               conditiontext = conditiontext.." and "
             end
@@ -464,14 +467,17 @@ function GetInfoTextForStatus(status,StatusLocs,orig_indent)
           conditiontext = conditiontext.." else"
         end
         if conditiontext~="" then
-          local locs = condition.result or result
-          locs = StatusLocs and StatusLocs[locs] or locs
-          conditiontext = conditiontext.." = "..locs
+          local r_status = condition.result or result_status
+          local r_status_loc = StatusLocs and StatusLocs[r_status] or r_status
+          r_status_loc = ColourizeStatus(r_status,r_status_loc,colourize)
+          conditiontext = conditiontext.." = "..r_status_loc
           if condition.remove and next(condition.remove) then
             for ___,conrem in ipairs(condition.remove) do
-              condition.remove[___] = StatusLocs and StatusLocs[conrem] or conrem
+              local status_loc = StatusLocs and StatusLocs[conrem] or conrem
+              status_loc = ColourizeStatus(conrem,status_loc,colourize)
+              condition.remove[___] = status_loc
             end
-            conditiontext = conditiontext.." and removes: "..table.concat(condition.remove,",")
+            conditiontext = conditiontext..", removes: "..table.concat(condition.remove,", ")
           end
         end
         if next(info.conditional,_) then
@@ -484,21 +490,29 @@ function GetInfoTextForStatus(status,StatusLocs,orig_indent)
 
     if info.always_remove and next(info.always_remove) then
       for ___,conrem in ipairs(info.always_remove) do
-        info.always_remove[___] = StatusLocs and StatusLocs[conrem] or conrem
+        local status_loc = StatusLocs and StatusLocs[conrem] or conrem
+        status_loc = ColourizeStatus(conrem,status_loc,colourize)
+        info.always_remove[___] = status_loc
       end
-      s = s..orig_indent.." Removes: "..table.concat(info.always_remove,",")
+      s = s..orig_indent.."Removes: "..table.concat(info.always_remove,", ")
     end
     if info.always_remove and next(info.always_remove) and conditiontext~="" then
       s=s.."\n"
     end
+    local result_loc = StatusLocs and StatusLocs[result_status] or result_status
+    result_loc = ColourizeStatus(result_status,result_loc,colourize)
     if conditiontext~="" then
       s=s..conditiontext
       if not conditiontext:find(" else ",1,true) then
-        s=s.."\n"..orig_indent.." else = "..result
+        s=s.."\n"..orig_indent.." else = "..result_loc
       end
     else
-      s=s.."\n"..orig_indent.." = "..result
+      s=s.."\n"..orig_indent.." = "..result_loc
     end
+  else -- just applying the status without other effects
+    local status_loc = StatusLocs and StatusLocs[status] or status
+    status_loc = ColourizeStatus(status,status_loc,colourize)
+    s=s..status_loc
   end
   return s
 end
@@ -862,7 +876,7 @@ StatusScriptRemovalRules = {
 }
 
 -- Status CHILLED removed by:
--- WARM  while not  WARM,BURNING,NECROFIRE,HOLY_FIRE = NULL
+-- WARM  while not  WARM,BURNING,NECROFIRE,HOLY_FIRE = NULLL
 -- BURNING  while not  WET,WARM = WARM
 -- NECROFIRE  while not  PETRIFIED = NECROFIRE
 -- HOLY_FIRE  while not  PETRIFIED = HOLY_FIRE
@@ -872,21 +886,25 @@ StatusScriptRemovalRules = {
 -- CURSED  while not  BLESSED = FROZEN
 -- STEAM_LANCE = STEAM_LANCE
 -- HEALING_ELIXIR = HEALING_ELIXIR
-function GetInfoTextForStatusRemoval(status,StatusLocs,indent)
+function GetInfoTextForStatusRemoval(status,StatusLocs,indent,colourize)
   -- if not StatusLocs then print("GetInfoTextForStatusRemoval StatusLocs nil?!",StatusLocs,status,StatusLocs[status]) end
   indent = indent or ""
   local s = ""
-  local info = StatusScriptRemovalRules[status]
+  local info = deepcopy(StatusScriptRemovalRules[status])
   if info then
     for i,entry in ipairs(info) do
       local result_loc = StatusLocs and StatusLocs[entry.result] or entry.result
+      result_loc = ColourizeStatus(entry.result,result_loc,colourize)
       local new_status_loc = StatusLocs and StatusLocs[entry.new_status] or entry.new_status
-      s = s..indent..new_status_loc
+      new_status_loc = ColourizeStatus(entry.new_status,new_status_loc,colourize)
+      s = s..indent.."- "..new_status_loc
       if entry.forbidden and next(entry.forbidden) then
         for _,forbid in ipairs(entry.forbidden) do
-          entry.forbidden[_] = StatusLocs and StatusLocs[forbid] or forbid
+          local forb_loc = StatusLocs and StatusLocs[forbid] or forbid
+          forb_loc = ColourizeStatus(forbid,forb_loc,colourize)
+          entry.forbidden[_] = forb_loc
         end
-        s = s.."  while not  "..table.concat(entry.forbidden,",")
+        s = s.." while not "..table.concat(entry.forbidden,", ")
       end
       s = s.." = "..result_loc
       if next(info,i) then

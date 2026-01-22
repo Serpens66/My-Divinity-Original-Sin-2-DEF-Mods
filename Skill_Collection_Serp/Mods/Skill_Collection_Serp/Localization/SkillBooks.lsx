@@ -230,6 +230,22 @@
 					<attribute id="Stub" type="19" value="True" />
 					<attribute id="UUID" type="22" value="SKILLBOOK_PathSkills_ShadowMeld_Polymorph" />
 				</node>
+        
+        
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Elemental Tortoise Skillbook" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="SKILLBOOK_Warrior_ElementalTortoise_SkillCol" />
+				</node>
+				<node id="TranslatedStringKey">
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Shout BarbedCoat Skillbook" />
+					<attribute id="ExtraData" type="23" value="" />
+					<attribute id="Speaker" type="22" value="" />
+					<attribute id="Stub" type="19" value="True" />
+					<attribute id="UUID" type="22" value="SKILLBOOK_Warrior_Shout_BarbedCoat_SkillCol" />
+				</node>
 			</children>
 		</node>
 	</region>

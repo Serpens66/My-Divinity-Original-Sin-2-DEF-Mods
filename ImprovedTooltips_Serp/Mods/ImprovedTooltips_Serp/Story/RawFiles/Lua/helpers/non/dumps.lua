@@ -1214,3 +1214,25 @@
 	-- "StatsPercentageMalus","StatsPercentageTotal","StatsGearBoostNormal","StatsATKAPCost","StatsCriticalInfos","StatsAPTitle","StatsAPDesc",
 	-- "StatsAPBase","StatsAPBonus","StatsAPMalus","StatsTotalDamage","TagDescription","StatusImmunity","StatusBonus","StatusMalus","StatusDescription",
 	-- "Title","SurfaceDescription","Duration","Fire","Water","Earth","Air","Poison","Physical","Sulfur","Heal","Splitter","ArmorSet"
+  
+  
+  
+  -- _GetSurfaces
+        -- {
+          -- "Cell" : 
+          -- {
+            -- "AiFlags" : 
+            -- [
+              -- "Water",
+              -- "WaterCloud"
+            -- ],
+            -- "CloudSurfaceType" : "WaterCloud",
+            -- "Flags" : 68753031168,
+            -- "GroundSurfaceType" : "Water",
+            -- "Height" : -5.25,
+            -- "Objects" : {}
+          -- },
+          -- "Cloud" : "WaterCloud",
+          -- "Ground" : "Water"
+        -- }
+  

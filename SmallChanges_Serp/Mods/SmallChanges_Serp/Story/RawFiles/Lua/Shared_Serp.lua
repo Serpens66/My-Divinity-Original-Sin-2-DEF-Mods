@@ -21,11 +21,11 @@
 SharedFns = {}
 
 -- Immortal_Segeant_Redux and Gwydian
-SharedFns.MakeImmortalcharGUIDs = {"S_GLO_LV_HenchmenRecruiter_ed64ea06-9060-4b29-88dd-623ab008fae6",
-  "S_GLO_LV_HenchmenRecruiter_ed64ea06-9060-4b29-88dd-623ab008fae6",
-  "CHARACTERGUID_S_RC_OIL_InnerField_Sourcerer_632e47f2-22c3-4342-b3f7-152dd3534f3b",
-  "CHARACTERGUID_S_RC_OIL_InnerField_Sourcerer_632e47f2-22c3-4342-b3f7-152dd3534f3b",
+SharedFns.MakeImmortalcharGUIDs = {"ed64ea06-9060-4b29-88dd-623ab008fae6", -- S_GLO_LV_HenchmenRecruiter
+  "632e47f2-22c3-4342-b3f7-152dd3534f3b", -- S_RC_OIL_InnerField_Sourcerer
+  "050fbbf9-3fc9-40cd-9cbb-43b4b3754a5e", -- S_GLO_RedPrincess
 }
+
 
 -- Ext.Print("Shared Script Started Serp66 Mod Collection")
 
@@ -1009,9 +1009,12 @@ end
 
 
 -- Osi.ItemTemplateAddTo("37535d5c-3262-4d2d-bcbc-c940e33ec2ca",Osi.CharacterGetHostCharacter(),1,1)
+-- Osi.ItemTemplateAddTo("f61124e9-070b-4fda-86ca-f9d8f6791bba",Osi.CharacterGetHostCharacter(),1,1)
 
 -- Osi.CharacterLevelUpTo(Osi.CharacterGetHostCharacter(),20)
   -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Shout_BreakTheShackles")
+  -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Shout_BarbedCoat_SkillCol")
+  -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Shout_ElementalTortoise_SkillCol")
 
 -- Osi.ApplyStatus(Osi.CharacterGetHostCharacter(),"INFECTIOUS_DISEASED",12,1)
 

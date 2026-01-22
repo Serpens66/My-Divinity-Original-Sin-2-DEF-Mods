@@ -118,6 +118,43 @@ RegisterProtectedOsirisListener("CharacterStatusApplied", 3, "after", function(c
         Osi.SetTag(charGUID,"AI_UNPREFERRED_TARGET")
       end
     end
+    -- apply the rules of vanilla Statuses.gameScript to new Stati which are meant to work the same.
+    local RemoveList = {}
+    if ap_status=="SLEEPING_PHYSICAL" or ap_status=="SLEEPING_PIERCE" then  
+      table.insert(RemoveList,"INVISIBLE")
+      if Osi.HasActiveStatus(charGUID,"CLEAR_MINDED")==1 or Osi.HasActiveStatus(charGUID,"ENRAGED")==1 then
+        table.insert(RemoveList,"CLEAR_MINDED")
+        table.insert(RemoveList,"ENRAGED")
+        table.insert(RemoveList,ap_status)
+      else
+        table.insert(RemoveList,"CHARMED")
+        table.insert(RemoveList,"TAUNTED")
+        table.insert(RemoveList,"FEAR")
+        table.insert(RemoveList,"MADNESS")
+      end
+    elseif ap_status=="MAGICKNOCKDOWN" then  
+      table.insert(RemoveList,"INVISIBLE")
+      table.insert(RemoveList,"SLEEPING")
+      table.insert(RemoveList,"SLEEPING_PHYSICAL")
+      table.insert(RemoveList,"SLEEPING_PIERCE")
+      if Osi.HasActiveStatus(charGUID,"RESTED")==1 then
+        table.insert(RemoveList,"RESTED")
+        table.insert(RemoveList,ap_status)
+      end
+    end
+    if ap_status=="RESTED" then
+      table.insert(RemoveList,"MAGICKNOCKDOWN")
+    end
+    if ap_status=="FROZEN" or ap_status=="PETRIFIED" or ap_status=="SHOCKED" or ap_status=="STUNNED" or ap_status=="FEAR" or ap_status=="CHARMED" or ap_status=="TAUNTED" or ap_status=="CLEAR_MINDED" or ap_status=="ENRAGED" or ap_status=="KNOCKED_DOWN" or ap_status=="MAGICKNOCKDOWN" then
+      table.insert(RemoveList,"SLEEPING_PHYSICAL")
+      table.insert(RemoveList,"SLEEPING_PIERCE")
+    end
+    for _,r_status in ipairs(RemoveList) do
+      if Osi.HasActiveStatus(charGUID,r_status)==1 then
+        Osi.RemoveStatus(charGUID,r_status)
+      end
+    end
+    
   -- end
 end)
 RegisterProtectedOsirisListener("CharacterStatusRemoved", 3, "after", function(charGUID, ap_status, causee)

@@ -1,11 +1,7 @@
-
 -- TODO:
- -- beim Bogen aus dem lastsave test von Fane steht er macht bleeding und shocked.
- -- mein tolltip zeigt nur für bleeding was an (nicht shocked), und das ist auch noch falsch, denn es behauptet Target sei Self
-
--- evlt status colours usw zufügen?
--- GetFormatColour
-    
+-- bei Stati evtl. noch anzeigen, welche Potion/Objects und welche Skills diesen Status geben? könnte zuviel text werden
+-- status werte anzeigen
+  
   
 Ext.Require("helpers/GetSurfaces.lua") -- _GetSurfaces
 Ext.Require("helpers/gameScriptStatusLogic.lua") -- GetInfoTextForStatus
@@ -16,7 +12,8 @@ engineStatuses = {
     SOURCE_MUTED = {
         DisplayName = "h534aec4fgecc5g4b34gb0f5g8b08c3c4309e",
         SavingThrow = "MagicArmor",
-        ImmuneFlag = "None"
+        ImmuneFlag = "None",
+        FormatColor = "Orange",
     },
     ADRENALINE = {DisplayName = "h4c891442g3b79g4dbeg906fgf8eeffcf60df"},
     COMBAT = {},
@@ -32,7 +29,8 @@ engineStatuses = {
     CHARMED = {
         DisplayName = "h30fc0122g6378g408cgac6fg6e3bcb3c852b",
         SavingThrow = "MagicArmor",
-        ImmuneFlag = "CharmImmunity"
+        ImmuneFlag = "CharmImmunity",
+        FormatColor = "Pink",
     },
     LYING = {},
     CLEAN = {DisplayName = "h8fb688afg29efg4804g9d68g955c3c463053"},
@@ -49,14 +47,16 @@ engineStatuses = {
     DECAYING_TOUCH = {
         DisplayName = "hbc2789fegb2deg4952ga436ga8a0aad070bf",
         SavingThrow = "PhysicalArmor",
-        ImmuneFlag = "DecayingImmunity"
+        ImmuneFlag = "DecayingImmunity",
+        FormatColor = "Purple",
     },
     UNHEALABLE = {DisplayName = "hc33f0ac7gc3f0g47b3gba3cg8c3ddb82508e"},
     STANCE = {},
     INFECTIOUS_DISEASED = {
       SavingThrow = "PhysicalArmor", 
       ImmuneFlag = "InfectiousDiseasedImmunity",
-      DisplayName = "h791f1994g94e9g4471g9e10g398f8d194c90"
+      DisplayName = "h791f1994g94e9g4471g9e10g398f8d194c90",
+      FormatColor = "Purple",
     },
     SUMMONING = {},
     AOO = {},
@@ -75,7 +75,8 @@ engineStatuses = {
     SHACKLES_OF_PAIN = {
         DisplayName = "h36a82a09gc2dag46feg990cgf3807db54d54",
         SavingThrow = "PhysicalArmor",
-        ImmuneFlag = "ShacklesOfPainImmunity"
+        ImmuneFlag = "ShacklesOfPainImmunity",
+        FormatColor = "Red",
     },
     POLYMORPHED = {},
     SPIRIT = {DisplayName = "h90cedca8g690cg4aabg8df0g98da27d72991"},
@@ -108,7 +109,7 @@ end
 
 -- opener eg. = "\n<font color='#6EB09D'>Removed by Stati:</font> "
 -- desctable = {{chance=100,codename="FEAR",loc="Panisch"}}
-function CreateDescrString(opener,desctable,seperator)
+function CreateDescrString(opener,desctable,seperator,kind)
   seperator = seperator or ", "
   local IsShift = CurrentPressedKeys["Shift"]
   local desc = opener
@@ -128,7 +129,9 @@ function CreateDescrString(opener,desctable,seperator)
       end
     end
     if not loc then
-      print("CreateDescrString loc is nil?",opener,info)
+      Ext.Print("ImprovedTooltips_Serp: CreateDescrString loc is nil?",opener,info,codename)
+    else
+      loc = ColourizeStatus(codename,loc,true,kind)
     end
     if not chance or chance~=0 then
       if not addedLocs[loc] or IsShift then -- only add stati with exact same translation only once, unless we hold Shift
@@ -145,13 +148,64 @@ function CreateDescrString(opener,desctable,seperator)
   return desc
 end
 
--- created by ChatGPT based on \Public\Shared\Scripts\Game\Statuses.gameScript
--- Scripted Status removals
--- StatusRemovesStati={WARM={"WET","CHILLED","FROZEN"},BURNING={"WARM","WET","CHILLED","FROZEN","WEB"},NECROFIRE={"WARM","BURNING","CHILLED","WET","FROZEN","HOLY_FIRE","BLESSED","QUEST_OVERGROWN","WEB"},HOLY_FIRE={"WARM","BURNING","CHILLED","WET","FROZEN","NECROFIRE","WEB"},WET={"WARM","INVISIBLE","QUEST_SUNSHINE","BURNING","HOLY_FIRE"},CHILLED={"BURNING","HOLY_FIRE","WARM","WET"},FROZEN={"CHILLED","WET","INVISIBLE","SLEEPING","MAGIC_SHELL","BURNING","HOLY_FIRE","WARM"},PETRIFIED={"MAGIC_SHELL","BLESSED","STUNNED","SHOCKED","BLEEDING","CRIPPLED","BURNING","POISONED","INVISIBLE","SLEEPING"},SHOCKED={"MAGIC_SHELL","INVISIBLE","SLEEPING"},STUNNED={"SHOCKED","PETRIFIED","WET","INVISIBLE","SLEEPING","MAGIC_SHELL","BLESSED"},DRUNK={"CLEAR_MINDED"},SLOWED={"HASTED"},HASTED={"SLOWED","CRIPPLED"},FEAR={"CLEAR_MINDED","ENRAGED","CHARMED","TAUNTED","SLEEPING","MADNESS"},CHARMED={"CLEAR_MINDED","ENRAGED","FEAR","TAUNTED","SLEEPING","MADNESS"},TAUNTED={"INVISIBLE","CLEAR_MINDED","ENRAGED","CHARMED","FEAR","SLEEPING","MADNESS"},SLEEPING={"INVISIBLE","CLEAR_MINDED","ENRAGED","CHARMED","TAUNTED","FEAR","MADNESS"},MADNESS={"CLEAR_MINDED"},CLEAR_MINDED={"FEAR","CHARMED","TAUNTED","SLEEPING","ENRAGED","BLIND","DRUNK","MADNESS"},ENRAGED={"FEAR","CHARMED","TAUNTED","SLEEPING","MADNESS","CLEAR_MINDED"},RESTED={"MUTED","BLIND","CRIPPLED","KNOCKED_DOWN","BLEEDING","PLAGUE","INFESTED"},MUTED={"RESTED"},BLIND={"RESTED"},CRIPPLED={"RESTED","HASTED"},KNOCKED_DOWN={"INVISIBLE","SLEEPING","RESTED"},REGENERATION={"ACID","POISONED","BLEEDING","SUFFOCATING","BURNING","INFESTED"},FORTIFIED={"ACID","POISONED","BURNING","BLEEDING","DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH"},ACID={"FORTIFIED"},BLEEDING={"REGENERATION","FORTIFIED"},BLESSED={"DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH","PETRIFIED","STUNNED","FROZEN","INFESTED","PLAGUE","BURNING","NECROFIRE","CURSED","VOIDHOWL"},MAGIC_SHELL={"FROZEN","STUNNED","PETRIFIED","PLAGUE","SUFFOCATING","POISONED","BURNING"},CURSED={"BLESSED","CHILLED","QUEST_OVERGROWN","BURNING","WARM","HOLY_FIRE"},DISEASED={"FORTIFIED","BLESSED"},INFECTIOUS_DISEASED={"FORTIFIED","BLESSED"},DECAYING_TOUCH={"FORTIFIED","BLESSED"},INVISIBLE={"WET"},CHICKEN={"WINGS"},HEALING_ELIXIR={"WEAK","SLOWED","DISEASED","POISONED","BLEEDING","CRIPPLED","CURSED","CHILLED","DRUNK","BURNING","NECROFIRE","ACID","SUFFOCATING","DECAYING_TOUCH","INFECTIOUS_DISEASED","PLAGUE"},CHAIN_HEAL={"INFESTED"},CLEANSE_WOUNDS={"INFESTED","PLAGUE","DISEASED","INFECTIOUS_DISEASED"},STEAM_LANCE={"FROZEN","CHILLED","DISEASED","INFECTIOUS_DISEASED","DECAYING_TOUCH","PLAGUE","INFESTED"},WEB={"HASTED"},SPIDER_LEGS={"WEB"}}
--- StatusRemovedByStatiWithWorseStatus={FROZEN={"WARM","NECROFIRE","BURNING","STEAM_LANCE","MAGIC_SHELL","HOLY_FIRE","BLESSED"},BLESSED={"STUNNED","INFECTIOUS_DISEASED","PETRIFIED","NECROFIRE","DECAYING_TOUCH","DISEASED","CURSED"},WEAK={"HEALING_ELIXIR"},STUNNED={"PETRIFIED","MAGIC_SHELL","BLESSED"},RESTED={"KNOCKED_DOWN","MUTED","CRIPPLED","BLIND"},INVISIBLE={"FROZEN","STUNNED","KNOCKED_DOWN","PETRIFIED","TAUNTED","SHOCKED","SLEEPING","WET"},KNOCKED_DOWN={"RESTED"},PLAGUE={"CLEANSE_WOUNDS","RESTED","STEAM_LANCE","HEALING_ELIXIR","MAGIC_SHELL","BLESSED"},MUTED={"RESTED"},HASTED={"SLOWED","CRIPPLED","WEB"},INFECTIOUS_DISEASED={"CLEANSE_WOUNDS","STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},SLOWED={"HASTED","HEALING_ELIXIR"},PETRIFIED={"STUNNED","MAGIC_SHELL","BLESSED"},SUFFOCATING={"HEALING_ELIXIR","MAGIC_SHELL","REGENERATION"},TAUNTED={"CLEAR_MINDED","FEAR","CHARMED","SLEEPING","ENRAGED"},CRIPPLED={"RESTED","HASTED","PETRIFIED","HEALING_ELIXIR"},BLIND={"RESTED","CLEAR_MINDED"},CLEAR_MINDED={"DRUNK","TAUNTED","FEAR","CHARMED","SLEEPING","MADNESS","ENRAGED"},FEAR={"TAUNTED","CLEAR_MINDED","CHARMED","SLEEPING","ENRAGED"},BURNING={"FROZEN","PETRIFIED","NECROFIRE","CHILLED","HEALING_ELIXIR","MAGIC_SHELL","CURSED","HOLY_FIRE","BLESSED","FORTIFIED","REGENERATION","WET"},QUEST_SUNSHINE={"WET"},CHARMED={"TAUNTED","CLEAR_MINDED","FEAR","SLEEPING","ENRAGED"},CHILLED={"FROZEN","WARM","NECROFIRE","BURNING","STEAM_LANCE","HEALING_ELIXIR","CURSED","HOLY_FIRE","WET"},WINGS={"CHICKEN"},WEB={"SPIDER_LEGS","NECROFIRE","BURNING","HOLY_FIRE"},BLEEDING={"RESTED","PETRIFIED","HEALING_ELIXIR","FORTIFIED","REGENERATION"},VOIDHOWL={"BLESSED"},WARM={"FROZEN","WARM","NECROFIRE","BURNING","CHILLED","CURSED","HOLY_FIRE","WET"},NECROFIRE={"HEALING_ELIXIR","HOLY_FIRE","BLESSED"},CURSED={"HEALING_ELIXIR","BLESSED"},DECAYING_TOUCH={"STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},MAGIC_SHELL={"FROZEN","STUNNED","PETRIFIED","SHOCKED"},REGENERATION={"BLEEDING"},DRUNK={"CLEAR_MINDED","HEALING_ELIXIR"},QUEST_OVERGROWN={"NECROFIRE","CURSED"},SHOCKED={"STUNNED","PETRIFIED","WET"},HOLY_FIRE={"FROZEN","NECROFIRE","CHILLED","CURSED","WET"},DISEASED={"CLEANSE_WOUNDS","STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},INFESTED={"CLEANSE_WOUNDS","RESTED","CHAIN_HEAL","STEAM_LANCE","BLESSED","REGENERATION"},ACID={"HEALING_ELIXIR","FORTIFIED","REGENERATION"},SLEEPING={"FROZEN","STUNNED","KNOCKED_DOWN","PETRIFIED","TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SHOCKED","ENRAGED"},FORTIFIED={"INFECTIOUS_DISEASED","BLEEDING","DECAYING_TOUCH","DISEASED","ACID"},POISONED={"PETRIFIED","HEALING_ELIXIR","MAGIC_SHELL","FORTIFIED","REGENERATION"},WET={"FROZEN","STUNNED","WARM","NECROFIRE","BURNING","CHILLED","INVISIBLE","HOLY_FIRE"},MADNESS={"TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SLEEPING","ENRAGED"},ENRAGED={"TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SLEEPING"}}
-StatusRemovedByStati={FROZEN={"WARM","NECROFIRE","BURNING","STEAM_LANCE","MAGIC_SHELL","HOLY_FIRE","BLESSED"},BLESSED={"STUNNED","INFECTIOUS_DISEASED","PETRIFIED","NECROFIRE","DECAYING_TOUCH","DISEASED","CURSED"},WEAK={"HEALING_ELIXIR"},STUNNED={"PETRIFIED","MAGIC_SHELL","BLESSED"},RESTED={"KNOCKED_DOWN","MUTED","CRIPPLED","BLIND"},INVISIBLE={"FROZEN","STUNNED","KNOCKED_DOWN","PETRIFIED","TAUNTED","SHOCKED","SLEEPING","WET"},KNOCKED_DOWN={"RESTED"},PLAGUE={"CLEANSE_WOUNDS","RESTED","STEAM_LANCE","HEALING_ELIXIR","MAGIC_SHELL","BLESSED"},MUTED={"RESTED"},HASTED={"SLOWED","CRIPPLED","WEB"},INFECTIOUS_DISEASED={"CLEANSE_WOUNDS","STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},SLOWED={"HASTED","HEALING_ELIXIR"},PETRIFIED={"STUNNED","MAGIC_SHELL","BLESSED"},SUFFOCATING={"HEALING_ELIXIR","MAGIC_SHELL","REGENERATION"},TAUNTED={"CLEAR_MINDED","FEAR","CHARMED","SLEEPING","ENRAGED"},CRIPPLED={"RESTED","HASTED","PETRIFIED","HEALING_ELIXIR"},BLIND={"RESTED","CLEAR_MINDED"},CLEAR_MINDED={"DRUNK","TAUNTED","FEAR","CHARMED","SLEEPING","MADNESS","ENRAGED"},FEAR={"TAUNTED","CLEAR_MINDED","CHARMED","SLEEPING","ENRAGED"},BURNING={"FROZEN","PETRIFIED","CHILLED","HEALING_ELIXIR","MAGIC_SHELL","HOLY_FIRE","BLESSED","FORTIFIED","REGENERATION","WET"},QUEST_SUNSHINE={"WET"},CHARMED={"TAUNTED","CLEAR_MINDED","FEAR","SLEEPING","ENRAGED"},CHILLED={"WARM","STEAM_LANCE","HEALING_ELIXIR","HOLY_FIRE","WET"},WINGS={"CHICKEN"},WEB={"SPIDER_LEGS","NECROFIRE","BURNING","HOLY_FIRE"},BLEEDING={"RESTED","PETRIFIED","HEALING_ELIXIR","FORTIFIED","REGENERATION"},VOIDHOWL={"BLESSED"},WARM={"WARM","CHILLED","HOLY_FIRE","WET"},NECROFIRE={"HEALING_ELIXIR","HOLY_FIRE","BLESSED"},CURSED={"HEALING_ELIXIR","BLESSED"},DECAYING_TOUCH={"STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},MAGIC_SHELL={"FROZEN","STUNNED","PETRIFIED","SHOCKED"},REGENERATION={"BLEEDING"},DRUNK={"CLEAR_MINDED","HEALING_ELIXIR"},QUEST_OVERGROWN={"NECROFIRE","CURSED"},SHOCKED={"STUNNED","PETRIFIED"},HOLY_FIRE={"FROZEN","NECROFIRE","CHILLED","CURSED","WET"},DISEASED={"CLEANSE_WOUNDS","STEAM_LANCE","HEALING_ELIXIR","BLESSED","FORTIFIED"},INFESTED={"CLEANSE_WOUNDS","RESTED","CHAIN_HEAL","STEAM_LANCE","BLESSED","REGENERATION"},ACID={"HEALING_ELIXIR","FORTIFIED","REGENERATION"},SLEEPING={"FROZEN","STUNNED","KNOCKED_DOWN","PETRIFIED","TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SHOCKED","ENRAGED"},FORTIFIED={"INFECTIOUS_DISEASED","BLEEDING","DECAYING_TOUCH","DISEASED","ACID"},POISONED={"PETRIFIED","HEALING_ELIXIR","MAGIC_SHELL","FORTIFIED","REGENERATION"},WET={"STUNNED","WARM","CHILLED","INVISIBLE","HOLY_FIRE"},MADNESS={"TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SLEEPING","ENRAGED"},ENRAGED={"TAUNTED","CLEAR_MINDED","FEAR","CHARMED","SLEEPING"}}
-StatusCleansedBySkills = {} -- will be filled StatsLoaded
-SkillCleanseStati = {} -- doing this skill on a target, will remove the stati from the target, will be filled StatsLoaded
+function CreateItemTooltipAddition(item,tooltip,nonewlinestart)
+  local addstringtodesc = ""
+  -- not to weapon/armor and so, because the tooltip gets too big, use the Epip Codex instead to inform yourself about a status
+  if item and item.StatsFromName and (item.StatsFromName.ModifierList=="Potion" or item.StatsFromName.ModifierList=="Object") then
+
+    local ExtraProperties = item.StatsFromName.PropertyLists and item.StatsFromName.PropertyLists.ExtraProperties and item.StatsFromName.PropertyLists.ExtraProperties.Properties and item.StatsFromName.PropertyLists.ExtraProperties.Properties.Elements
+    local appliesStati = {}
+    local createssurfaces = {}
+    if ExtraProperties then
+      for _,property in ipairs(ExtraProperties) do
+        if property.TypeId=="Status" then
+          local Context = {"Self"} -- I think these effects are always Self, regardless what is written in them
+          appliesStati[property.Status] = {chance=property.StatusChance*100,duration=property.Duration,Context=Context}
+        end
+      end
+    end
+    if tooltip and item.CurrentTemplate and item.CurrentTemplate.OnUsePeaceActions then
+      for _,useaction in pairs(item.CurrentTemplate.OnUsePeaceActions) do
+        if useaction.Type=="UseSkill" then
+          local skill = useaction.SkillID
+          local skilldesc = CreateSkillToolipAddition(skill)
+          AddToTooltip(tooltip,skilldesc)
+        end
+      end
+    end
+    
+    for status,info in pairs(appliesStati) do
+      local chance = info.chance
+      local duration = info.duration
+      local Context = info.Context
+      local stat = not engineStatuses[status] and Ext.Stats.Get(status) or engineStatuses[status]
+      local status_loc = StatusLocs[status] or stat and GetTranslation(stat.DisplayName,status) or status
+      if chance and chance>0 then
+        if StatusScriptRules[status] then
+          addstringtodesc = addstringtodesc..CreateStatusApplyTooltip(status,Context,nil,nil,nonewlinestart)
+        end
+        if next(appliesStati,status) then
+          addstringtodesc = addstringtodesc.." | "
+        end
+      end
+    end
+    
+    if item and item.StatsFromName and item.StatsFromName.ModifierList=="Potion" then
+      local StackId = item.StatsFromName.StatsEntry.StackId
+      local StackPriority = item.StatsFromName.StatsEntry.Priority
+      local ObjectCategory = item.StatsFromName.StatsEntry.ObjectCategory
+      local Duration = item.StatsFromName.StatsEntry.Duration
+      if StackId and StackId~="" and Duration>0 then
+        if addstringtodesc~="" and nonewlinestart then
+          addstringtodesc=addstringtodesc.."\n"
+        end
+        addstringtodesc = addstringtodesc.."(StackId: "..tostring(StackId).." Category:"..tostring(ObjectCategory).." "..tostring(StackPriority)..")"
+      end
+    end
+  end
+  
+  return addstringtodesc
+end
 
 
 function deepcopy(orig, copies)
@@ -221,10 +275,15 @@ function equals(o1, o2)
 end
 
 -- "<font color='"..colourcode.."'>"..statusname_loc.."</font>"
-function GetFormatColour(FormatColor) -- not all but most in LeaderLib
-  local colourcode
+-- 6EB09D is greenish
+function GetFormatColour(FormatColor,kind) --  in LeaderLib
+  local colourcode = "#FFFFFF"
   if FormatColor and Mods.LeaderLib then
-    if Mods.LeaderLib.LocalizedText.DamageTypeHandles[FormatColor] then
+    if kind=="skill" and Mods.LeaderLib.Data.Colors.Ability[FormatColor] then
+      colourcode = Mods.LeaderLib.Data.Colors.Ability[FormatColor]
+    elseif Mods.LeaderLib.Data.Colors.FormatStringColor[FormatColor] then
+      colourcode = Mods.LeaderLib.Data.Colors.FormatStringColor[FormatColor]
+    elseif Mods.LeaderLib.LocalizedText.DamageTypeHandles[FormatColor] then
       colourcode = Mods.LeaderLib.LocalizedText.DamageTypeHandles[FormatColor].Color
     elseif Mods.LeaderLib.Data.Colors.Common[FormatColor] then
       colourcode = Mods.LeaderLib.Data.Colors.Common[FormatColor]
@@ -232,6 +291,31 @@ function GetFormatColour(FormatColor) -- not all but most in LeaderLib
   end
   return colourcode
 end
+function GetStatusColour(StatusId,stat,kind)
+  -- print("GetStatusColour",StatusId)
+  if not stat then
+    if engineStatuses[StatusId] and engineStatuses[StatusId].FormatColor then
+      stat = engineStatuses[StatusId]
+    elseif not engineStatuses[StatusId] then
+      stat = Ext.Stats.Get(StatusId)
+    end
+  end
+  if stat then
+    local FormatColor = kind=="skill" and stat.Ability or stat.FormatColor
+    return GetFormatColour(FormatColor,kind)
+  end
+end
+function ColourizeStatus(status,status_loc,colourize,kind)
+  local colourcode
+  if colourize and status~="NULLL" and status_loc then
+    colourcode = GetStatusColour(status,nil,kind)
+    if colourcode then
+      status_loc = "<font color='"..colourcode.."'>"..status_loc.."</font>"
+    end
+  end
+  return status_loc
+end
+
 
 -- Osi.GetSurfaceNameByTypeIndex is not available on client..
 function _GetSurfaceNameByTypeIndex(s_index)
@@ -292,26 +376,67 @@ function CreateCreatesSurfaceTooltip(surfaceinfo)
   return SurfaceText
 end
 
--- recreate the info about stats
-function CreateStatusStatsTooltip(status)
-  
+-- recreate the info about status StatAttributes
+-- loc_table= {
+        -- "AutoReplacePlaceholders" : false,
+        -- "Content" : "AP Cost", -- english
+        -- "Handle" : "h228e474ag396ag4dc9g837egd8d05d15bbb2"
+-- }
+function GetStatusAttr(status,stat)
+  local attributes = {}
+  stat = stat or (not engineStatuses[status] or Ext.Stats.Get(status))
+  if stat and Mods.LeaderLib and not engineStatuses[status] then -- requires LocalizedText from LeaderLib
+    local StatsId = stat.StatsId
+    
+    local Skills = stat.Skills -- string with ; separated
+    if Skills and Skills~="" then
+      for skill in string.gmatch(Skills,"([^;]+)") do
+        local stat_skill = Ext.Stats.Get(skill)
+        local loc = GetTranslation(stat_skill.DisplayName,skill)
+        attributes[skill] = {loc="Skill: ",value=loc}
+      end
+    end
+    local Skills = stat.LeaveAction -- string with ; separated
+    if Skills and Skills~="" then
+      for skill in string.gmatch(Skills,"([^;]+)") do
+        local stat_skill = Ext.Stats.Get(skill)
+        local loc = "+ "..GetTranslation(stat_skill.DisplayName,skill)
+        attributes[skill] = {loc=loc,value=""}
+      end
+    end
+    if stat.LoseControl=="Yes" then
+      attributes["LoseControl"] = {loc="LoseControl",value=""}
+    end
+    if stat.IsInvulnerable=="Yes" then
+      attributes["IsInvulnerable"] = {loc=GetTranslation("h1889cf51gd0a8g4a53gbaa5g6e78d3ed6eab","IsInvulnerable"),value=""}
+    end
+    if stat.ResetCooldowns and stat.ResetCooldowns~="" then
+      attributes["ResetCooldowns"] = {loc="Resets "..GetTranslation("hcd311863gbd69g4425gbcf5gcab3cea1ce1d","Cooldowns"),value=stat.ResetCooldowns}
+    end
+    
+    if StatsId and StatsId~="" and not StatsId:find(";",1,true) then -- can be multiples, to complicated to support, its just Supercharge which does this
+      local StatsStat = Ext.Stats.Get(StatsId)
+      if StatsStat then
+        for attr,loc_table in pairs(Mods.LeaderLib.LocalizedText.StatAttributes) do
+          if Potion_Modifiers[attr] and StatsStat[attr] and type(StatsStat[attr])=="number" and StatsStat[attr]~=0 then -- there are a few that are strings (eg. Reflection) we should add, but too much work...
+            local loc = GetTranslation(loc_table.Handle,loc_table.Content)
+            attributes[attr] = {loc=loc,value=StatsStat[attr]}
+          end
+        end
+        for attr,loc_table in pairs(Mods.LeaderLib.LocalizedText.AbilityNames) do
+          if Potion_Modifiers[attr] and not attributes[attr] and StatsStat[attr] and type(StatsStat[attr])=="number" and StatsStat[attr]~=0 then -- there are a few that are strings (eg. Reflection) we should add, but too much work...
+            local loc = GetTranslation(loc_table.Handle,loc_table.Content)
+            attributes[attr] = {loc=loc,value=StatsStat[attr]}
+          end
+        end
+      end
+    end
+  end
+  return attributes
 end
 
-function CreateStatusRemoveTooltip(status)
+function CreateStatusStackIdSavingThowTooltip(status,nonewlinestart)
   local addstringtodesc = ""
-  local addID = CurrentPressedKeys["Shift"]
-  if StatusCleansedBySkills[status] then
-    local opener = "\n<font color='#6EB09D'>Cleansed by Skills:</font> "
-    addstringtodesc = addstringtodesc..CreateDescrString(opener,StatusCleansedBySkills[status])
-  end
-  -- if StatusRemovedByStati[status] then
-    -- local opener = "\n<font color='#6EB09D'>Removed by Stati:</font> "
-    -- addstringtodesc = addstringtodesc..CreateDescrString(opener,StatusRemovedByStati[status])
-  -- end
-  if StatusScriptRemovalRules[status] then
-    addstringtodesc = addstringtodesc.."\n<font color='#6EB09D'>Removed by Stati:</font>\n"
-    addstringtodesc = addstringtodesc..GetInfoTextForStatusRemoval(status,StatusLocs,"")
-  end
   if not engineStatuses[status] then -- Food status is CONSUME
     local stat = Ext.Stats.Get(status)
     if stat then
@@ -319,19 +444,45 @@ function CreateStatusRemoveTooltip(status)
       local StackPriority = stat.StackPriority
       local SavingThrow = stat.SavingThrow
       if SavingThrow and SavingThrow~="None" then
-        addstringtodesc = addstringtodesc.."\n<font color='#6EB09D'>SavingTrow:</font> "..tostring(SavingThrow)
+        if not nonewlinestart then
+          addstringtodesc = addstringtodesc.."\n"
+        end
+        local loc_SavingThrow = SavingThrow=="MagicArmor" and "hc6dcb940gb6b6g41aagaeceg31008af9c082" or SavingThrow=="PhysicalArmor" and "hb677b3f7g5cf6g49c3g84fag2f773ef50dd6"
+        loc_SavingThrow = loc_SavingThrow and GetTranslation(loc_SavingThrow,SavingThrow) or SavingThrow
+        addstringtodesc = addstringtodesc.."<font color='#DCDCCC'>SavingTrow:</font> "..tostring(loc_SavingThrow)
       end
       if StackId and StackId~="" then
-        addstringtodesc = addstringtodesc.."\n(StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
+        if not nonewlinestart or addstringtodesc~="" then
+          addstringtodesc = addstringtodesc.."\n"
+        end
+        addstringtodesc = addstringtodesc.."(StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
       end
     end
   elseif engineStatuses[status] and engineStatuses[status].SavingThrow and engineStatuses[status].SavingThrow~="None" then
-    addstringtodesc = addstringtodesc.."\n<font color='#6EB09D'>SavingTrow:</font> "..tostring(engineStatuses[status].SavingThrow)
+    if not nonewlinestart or addstringtodesc~="" then
+      addstringtodesc = addstringtodesc.."\n"
+    end
+    addstringtodesc = addstringtodesc.."<font color='#DCDCCC'>SavingTrow:</font> "..tostring(engineStatuses[status].SavingThrow)
   end
   return addstringtodesc
 end
 
-function CreateStatusApplyTooltip(status,Context,withoutheader,prefix)
+function CreateStatusRemoveTooltip(status)
+  local addstringtodesc = ""
+  if StatusCleansedBySkills[status] then
+    local opener = "\n<font color='#DCDCCC'>Cleansed by Skills:</font> "
+    addstringtodesc = addstringtodesc..CreateDescrString(opener,StatusCleansedBySkills[status],nil,"skill")
+  end
+  if StatusScriptRemovalRules[status] then
+    addstringtodesc = addstringtodesc.."\n<font color='#DCDCCC'>Removed by Stati:</font>\n"
+    addstringtodesc = addstringtodesc..GetInfoTextForStatusRemoval(status,StatusLocs,"",true)
+  end
+  return addstringtodesc
+end
+
+function CreateStatusApplyTooltip(status,Context,withoutheader,prefix,nonewlinestart,withoutstackid)
+
+
   -- Adding info what the applied appliedstati may cleanse (chance and duration is already in tooltip)
   prefix = prefix or ""
   local desc = ""
@@ -339,22 +490,18 @@ function CreateStatusApplyTooltip(status,Context,withoutheader,prefix)
   local status_loc = StatusLocs[status] or stat and GetTranslation(stat.DisplayName,status) or status
   local codename = " ("..status..") "
   if not withoutheader then
-    local colourcode = GetFormatColour(stat.FormatColor)
-    if colourcode then
-      status_loc = "<font color='"..colourcode.."'>"..status_loc.."</font>"
-    end
-    -- desc = desc.."\n"..prefix.."<font color='#6EB09D'>Status "..status_loc..(CurrentPressedKeys["Shift"] and codename or "").."</font> "..(Context and "("..table.concat(Context,",")..")" or "")
+    status_loc = ColourizeStatus(status,status_loc,true)
     desc = desc.."\n"..prefix.."<font color='#DCDCCC'>Status</font> "..status_loc..(CurrentPressedKeys["Shift"] and codename or "")..(Context and "("..table.concat(Context,",")..")" or "")
   end
   if StatusScriptRules[status] then
-    desc = desc.."\n".."<font color='#D2D2D2'>"..GetInfoTextForStatus(status,StatusLocs," ").."</font>"
+    desc = desc..GetInfoTextForStatus(status,StatusLocs," ",true)
   end
   if StatusProvidesImmunityAgainstStati[status] then
-    local opener = "\n"..prefix.."<font color='#6EB09D'>Provides Immunities</font>: "
+    local opener = "\n"..prefix.."<font color='#DCDCCC'>Provides Immunities</font>: "
     desc = desc..CreateDescrString(opener,StatusProvidesImmunityAgainstStati[status])
   end
   -- StackId
-  if not engineStatuses[status] then
+  if not withoutstackid and not engineStatuses[status] then
     local stat = Ext.Stats.Get(status)
     if stat then
       local StackId = stat.StackId
@@ -364,10 +511,14 @@ function CreateStatusApplyTooltip(status,Context,withoutheader,prefix)
       end
     end
   end
+  if desc and desc~="" then
+    desc = (not nonewlinestart and "\n" or "").."<font color='#D2D2D2'>".."Applies Effects:".."</font>"..desc
+  end
   return desc
 end
 
 function CreateSkillToolipAddition(skill,char)
+  -- print("CreateSkillToolipAddition",skill,char)
   local skilldesc = {}
   local MyStat = Ext.Stats.Get(skill)
   if MyStat then
@@ -392,20 +543,22 @@ function CreateSkillToolipAddition(skill,char)
         end
       end
     end
+    
     local addcleansestringtoskill = ""
-    for i,info in ipairs(appliedstati) do
-      local status = info.status
-      local Context = info.Context or {}
-      addcleansestringtoskill = addcleansestringtoskill..CreateStatusApplyTooltip(status,Context)
-    end
-    -- add info to skills which stati they clean (is hardcoded in vanilla text...)
+    -- outcommented appliedstati because it gets too much info in the tooltip, use codex instead to inform yourself about the status
+    -- for i,info in ipairs(appliedstati) do
+      -- local status = info.status
+      -- local Context = info.Context or {}
+      -- addcleansestringtoskill = addcleansestringtoskill..CreateStatusApplyTooltip(status,Context)
+    -- end
+    -- add info to skills which stati they clean
     local skillcleantext = ""
     if SkillCleanseStati[skill] and SkillCleanseStati[skill].stati and next(SkillCleanseStati[skill].stati) and SkillCleanseStati[skill].chance>0 then
       local chancetxt = SkillCleanseStati[skill].chance<100 and "("..tostring(SkillCleanseStati[skill].chance).."%) " or ""
-      local opener = "\n<font color='#6EB09D'>Cleanse Stati</font>"..chancetxt..": "
-      skillcleantext = CreateDescrString(opener,SkillCleanseStati[skill].stati)
+      local opener = "\n<font color='#DCDCCC'>Cleanse Stati</font>"..chancetxt..": "
+      skillcleantext = CreateDescrString(opener,SkillCleanseStati[skill].stati,nil)
     end
-    
+    -- print("skillcleantext",skill,skillcleantext)
     skilldesc["SkillDescription"] = (skilldesc["SkillDescription"] or {})
     table.insert(skilldesc["SkillDescription"],{Label=skillcleantext..addcleansestringtoskill,firstfound=true})
     
@@ -417,7 +570,7 @@ function CreateSkillToolipAddition(skill,char)
       local SurfaceType = surfaceinfo.SurfaceType
       local SurfaceText = CreateCreatesSurfaceTooltip(surfaceinfo)
       skilldesc["SkillExplodeRadius"] = (skilldesc["SkillExplodeRadius"] or {})
-      table.insert(skilldesc["SkillExplodeRadius"],{Label="<font color='#6EB09D'>Creates Surface</font> "..tostring(SurfaceType).."\n"..SurfaceText,createnewentry=true})
+      table.insert(skilldesc["SkillExplodeRadius"],{Label="<font color='#DCDCCC'>Creates Surface</font> "..tostring(SurfaceType).."\n"..SurfaceText,createnewentry=true})
     end
     
     local TargetConditions = MyStat["TargetConditions"]
@@ -442,8 +595,6 @@ function CreateSkillToolipAddition(skill,char)
       if AreaRadius~="" then
         skilldesc["SkillExplodeRadius"] = (skilldesc["SkillExplodeRadius"] or {})
         table.insert(skilldesc["SkillExplodeRadius"],{Value=tostring(AreaRadius).."m",Label="Area Radius:",createnewentry=true})
-        -- local entry = {Type="SkillExplodeRadius",Value=tostring(AreaRadius).."m",Label="Area Radius:"} -- will display 2 times SkillExplodeRadius if it also has a vanilla exploderadius
-        -- table.insert(tooltip.Data,entry)
       end
       local GroundSkillTypes = {"Path","Rain","Cone","Dome","Jump","Quake","Shout","Storm","Summon","Tornado","Wall","Zone"}
       if table_contains_value(GroundSkillTypes,MyStat.SkillType) then
@@ -454,13 +605,9 @@ function CreateSkillToolipAddition(skill,char)
       
       skilldesc["SkillExplodeRadius"] = (skilldesc["SkillExplodeRadius"] or {})
       table.insert(skilldesc["SkillExplodeRadius"],{Label="Target Conditions: "..TargetConditions,createnewentry=true}) -- not using Value here, because it is limited in characters, to many will not be displayed
-      -- local entry = {Type="SkillExplodeRadius",Label="Target Conditions: "..TargetConditions} -- not using Value here, because it is limited in characters, to many will not be displayed
-      -- table.insert(tooltip.Data,entry)
       if #CanTarget>0 then
         skilldesc["SkillExplodeRadius"] = (skilldesc["SkillExplodeRadius"] or {})
         table.insert(skilldesc["SkillExplodeRadius"],{Value=table.concat(CanTarget, ","),Label="Can Target:",createnewentry=true}) -- not using Value here, because it is limited in characters, to many will not be displayed
-        -- local entry = {Type="SkillExplodeRadius",Value=table.concat(CanTarget, ","),Label="Can Target:"} -- will display 2 times SkillExplodeRadius if it also has a vanilla exploderadius
-        -- table.insert(tooltip.Data,entry)
       end    
     end
     
@@ -474,15 +621,6 @@ function CreateSkillToolipAddition(skill,char)
       end
     end
       
-      -- for _, entry in ipairs(tooltip.Data) do -- display left cooldown in tooltip, because icon does not display properly for higher than 99
-        -- if entry.Type=="SkillRequiredEquipment" and entry.RequirementMet==false and char.SkillManager.Skills[skill] then
-          -- local cooldownleft = char.SkillManager.Skills[skill].ActiveCooldown -- in seconds, not turns. 1 turn=6 seconds
-          -- if cooldownleft~=0 then
-            -- cooldownleft = tostring( math.ceil(cooldownleft / 6) )
-            -- entry.Label = "("..cooldownleft..") "..entry.Label
-          -- end
-        -- end
-      -- end
   end
   return skilldesc
 end
@@ -566,20 +704,17 @@ function AdjustSurfaceTooltip(SurfaceType,tooltip)
           if (statusinfo.StatusId~="FOGBLIND_SERP" or statusinfo.RemoveStatus==false) and statusinfo.ApplyToCharacters then -- I added in my mod MoreSurfaceEffects to all surfaces that they remove my status, that is not important to show
             local SStat = not engineStatuses[statusinfo.StatusId] and Ext.Stats.Get(statusinfo.StatusId) or engineStatuses[statusinfo.StatusId]
             local statusname_loc = SStat and GetTranslation(SStat.DisplayName,statusinfo.StatusId) or statusinfo.StatusId
-            local colourcode = GetFormatColour(SStat.FormatColor)
-            if colourcode then
-              statusname_loc = "<font color='"..colourcode.."'>"..statusname_loc.."</font>"
-            end
-            -- addremove = "\n<font color='#6EB09D'>"..(statusinfo.RemoveStatus and "Removes " or "Applies ").."</font> "..statusname_loc..(CurrentPressedKeys["Shift"] and statusinfo.StatusId or "")
+            status_loc = ColourizeStatus(statusinfo.StatusId,statusname_loc,true)
             addremove = "\n<font color='#DCDCCC'>"..(statusinfo.RemoveStatus and "Removes " or "Applies ").."</font> "..statusname_loc..(CurrentPressedKeys["Shift"] and statusinfo.StatusId or "")
             local IgnoresArmor = statusinfo.ForceStatus and "\n  Ignores Armor" or ""
             local KeepAlive = statusinfo.KeepAlive and "\n  Stays Active" or ""
             local OnlyWhileMoving = statusinfo.OnlyWhileMoving and "\n  Only While Moving" or ""
             local VanishOnReapply = statusinfo.VanishOnReapply and "\n  Removes Surface" or ""
             SurfaceStatusText = SurfaceStatusText..addremove.."\n  Chance: "..tostring(round(statusinfo.Chance*100,2)).." %\n  Duration: "..tostring(round(statusinfo.Duration/6,1)).." turns"..IgnoresArmor..KeepAlive..VanishOnReapply
-            if not statusinfo.RemoveStatus then -- no need to say what a status does, if it is removed
-              SurfaceStatusText = SurfaceStatusText..CreateStatusApplyTooltip(statusinfo.StatusId,nil,true,"  ")
-            end
+            -- outcommented: dont add info what a status does, because too much text, use codex to read about a status instead
+            -- if not statusinfo.RemoveStatus then -- no need to say what a status does, if it is removed
+              -- SurfaceStatusText = SurfaceStatusText..CreateStatusApplyTooltip(statusinfo.StatusId,nil,true,"  ")
+            -- end
           end
         end
         if SurfaceStatusText~="" then
@@ -631,6 +766,9 @@ end
 -- _D(Mods.ImprovedTooltips_Serp.ImmunityFromStati)
 -- _D(Mods.ImprovedTooltips_Serp.StatusRequiresImmunity_REV)
 -- _D(Mods.ImprovedTooltips_Serp.StatusProvidesImmunityAgainstStati)
+
+StatusCleansedBySkills = {} -- will be filled SessionLoaded
+SkillCleanseStati = {} -- doing this skill on a target, will remove the stati from the target, will be filled StatsLoaded
 -- helper tables to fill StatusRemovedByStati
 StatusRequiresImmunity = {} -- the immunity which is required to be immune against this status
 StatusRequiresImmunity_REV = {} -- 
@@ -725,42 +863,12 @@ Ext.Events.SessionLoaded:Subscribe(function(_)
     
   end
   
-  -- for immunity,StatsIds in pairs(ImmunityFromStats) do
-    -- ImmunityFromStati[immunity] = ImmunityFromStati[immunity] or {}
-    -- for _,StatsId in ipairs(StatsIds) do
-      -- if StatsIdToStati[StatsId] then
-        -- for __,status in ipairs(StatsIdToStati[StatsId]) do
-          -- if not table_contains_value(ImmunityFromStati[immunity],status) then
-            -- table.insert(ImmunityFromStati[immunity],status)
-          -- end
-        -- end
-      -- end
-    -- end
-  -- end
-  
-  -- not adding ImmunityFromStati to StatusRemovedByStati, but in a new table
-  -- for status,immunity in pairs(StatusRequiresImmunity) do
-    -- if ImmunityFromStati[immunity] then
-      -- for _,removerstatus in ipairs(ImmunityFromStati[immunity]) do
-        -- StatusRemovedByStati[status] = StatusRemovedByStati[status] or {}
-        -- StatusRemovesStati[removerstatus] = StatusRemovesStati[removerstatus] or {}
-        -- if not table_contains_value(StatusRemovedByStati[status],removerstatus) then
-          -- table.insert(StatusRemovedByStati[status],removerstatus)
-        -- end
-        -- if not table_contains_value(StatusRemovesStati[removerstatus],status) then
-          -- table.insert(StatusRemovesStati[removerstatus],status)
-        -- end
-      -- end
-    -- end
-  -- end
-  
-  
   -- Ext.Print("ImprovedTooltips_Serp SessionLoaded Ende")
 
 end)
 
 
 -- from "\Public\Shared\Stats\Generated\Structure\Modifiers.txt"
-Potion_Modifiers = {"ModifierType","VitalityBoost","Strength","Finesse","Intelligence","Constitution","Memory","Wits","SingleHanded","TwoHanded","Ranged","DualWielding","RogueLore","WarriorLore","RangerLore","FireSpecialist","WaterSpecialist","AirSpecialist","EarthSpecialist","Sourcery","Necromancy","Polymorph","Summoning","PainReflection","Perseverance","Leadership","Telekinesis","Sneaking","Thievery","Loremaster","Repair","Barter","Persuasion","Luck","FireResistance","EarthResistance","WaterResistance","AirResistance","PoisonResistance","PhysicalResistance","PiercingResistance","Sight","Hearing","Initiative","Vitality","VitalityPercentage","MagicPoints","ActionPoints","ChanceToHitBoost","AccuracyBoost","DodgeBoost","DamageBoost","APCostBoost","SPCostBoost","APMaximum","APStart","APRecovery","Movement","MovementSpeedBoost","Gain","Armor","MagicArmor","ArmorBoost","MagicArmorBoost","CriticalChance","Act","Act part","Duration","UseAPCost","ComboCategory","StackId","BoostConditions","Flags","StatusMaterial","StatusEffect","StatusIcon","SavingThrow","Weight","Value","InventoryTab","UnknownBeforeConsume","Reflection","Damage","Damage Multiplier","Damage Range","DamageType","AuraRadius","AuraSelf","AuraAllies","AuraEnemies","AuraNeutrals","AuraItems","AuraFX","RootTemplate","ObjectCategory","MinAmount","MaxAmount","Priority","Unique","MinLevel","MaxLevel","BloodSurfaceType","MaxSummons","AddToBottomBar","SummonLifelinkModifier","IgnoredByAI","RangeBoost","BonusWeapon","AiCalculationStatsOverride","RuneEffectWeapon","RuneEffectUpperbody","RuneEffectAmulet","RuneLevel","LifeSteal","IsFood","IsConsumable"}
+Potion_Modifiers={ModifierType=true,VitalityBoost=true,Strength=true,Finesse=true,Intelligence=true,Constitution=true,Memory=true,Wits=true,SingleHanded=true,TwoHanded=true,Ranged=true,DualWielding=true,RogueLore=true,WarriorLore=true,RangerLore=true,FireSpecialist=true,WaterSpecialist=true,AirSpecialist=true,EarthSpecialist=true,Sourcery=true,Necromancy=true,Polymorph=true,Summoning=true,PainReflection=true,Perseverance=true,Leadership=true,Telekinesis=true,Sneaking=true,Thievery=true,Loremaster=true,Repair=true,Barter=true,Persuasion=true,Luck=true,FireResistance=true,EarthResistance=true,WaterResistance=true,AirResistance=true,PoisonResistance=true,PhysicalResistance=true,PiercingResistance=true,Sight=true,Hearing=true,Initiative=true,Vitality=true,VitalityPercentage=true,MagicPoints=true,ActionPoints=true,ChanceToHitBoost=true,AccuracyBoost=true,DodgeBoost=true,DamageBoost=true,APCostBoost=true,SPCostBoost=true,APMaximum=true,APStart=true,APRecovery=true,Movement=true,MovementSpeedBoost=true,Gain=true,Armor=true,MagicArmor=true,ArmorBoost=true,MagicArmorBoost=true,CriticalChance=true,Act=true,["Act part"]=true,Duration=true,UseAPCost=true,ComboCategory=true,StackId=true,BoostConditions=true,Flags=true,StatusMaterial=true,StatusEffect=true,StatusIcon=true,SavingThrow=true,Weight=true,Value=true,InventoryTab=true,UnknownBeforeConsume=true,Reflection=true,Damage=true,["Damage Multiplier"]=true,["Damage Range"]=true,DamageType=true,AuraRadius=true,AuraSelf=true,AuraAllies=true,AuraEnemies=true,AuraNeutrals=true,AuraItems=true,AuraFX=true,RootTemplate=true,ObjectCategory=true,MinAmount=true,MaxAmount=true,Priority=true,Unique=true,MinLevel=true,MaxLevel=true,BloodSurfaceType=true,MaxSummons=true,AddToBottomBar=true,SummonLifelinkModifier=true,IgnoredByAI=true,RangeBoost=true,BonusWeapon=true,AiCalculationStatsOverride=true,RuneEffectWeapon=true,RuneEffectUpperbody=true,RuneEffectAmulet=true,RuneLevel=true,LifeSteal=true,IsFood=true,IsConsumable=true}
 
 

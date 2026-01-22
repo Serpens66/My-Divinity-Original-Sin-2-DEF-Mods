@@ -34,15 +34,21 @@ local Stati = {
     _SearchTerm = "",
 
     -- Set of patterns to filter out invalid stati. Use lowercase only, as the matching is performed on the IDs in lowercase.
-    KEYWORD_BLACKLIST_LOWER = Set.Create({
+    KEYWORD_BLACKLIST_LOWER = Set.Create({ -- lowercase
         "script",
         "dummy",
         "quest",
         "aura",
-        "infusion", -- filter template infusions
     }),
     KEYWORD_BLACKLIST = Set.Create({
+        "Infusion", -- filter template infusions
+    }),
+    KEYWORD_BLACKLIST_STARTSWITH = Set.Create({
         "PIP_", -- outdated Epic Enemies status
+        "AMER_", -- outdated Epic Enemies status
+    }),
+    KEYWORD_BLACKLIST_MODSOURCE = Set.Create({
+        "Epip", -- outdated Epic Enemies status
     }),
 
     Settings = {},
@@ -195,30 +201,39 @@ function Section:__CreateElement(index)
     local instance = Codex.UI:CreateElement("Stati.Status." .. index, "GenericUI_Element_IggyIcon", self.Grid)
     instance:SetIcon("unknown", 58, 58) -- Use this call to set the icon when updating elements
     instance.Events.MouseOver:Subscribe(function (_)
-      local stat = IndexToStatus[index]
+      local StatusID = IndexToStatus[index]
+      local stat = engineStatuses[StatusID] and engineStatuses[StatusID] or Ext.Stats.Get(StatusID)
       if stat and GameState.IsInSession() then
-        local StatusID = stat.ID
-        local StatusLoc = GetTranslation(StatusID,StatusID) --Stati._GetStatusDisplayName(stat)
-        local colourcode = GetFormatColour(stat.FormatColor)
-        if colourcode then
-          StatusLoc = "<font color='"..colourcode.."'>"..StatusLoc.."</font>"
+        local StatusLoc = GetTranslation(stat.DisplayName,StatusID) --Stati._GetStatusDisplayName(stat)
+        StatusLoc = ColourizeStatus(StatusID,StatusLoc,true)
+        local StatName = StatusLoc..(CurrentPressedKeys["Shift"] and " ("..StatusID..")" or "")
+        local Desc = Stati._GetStatusDescription(stat)
+        Desc = Desc..CreateStatusApplyTooltip(StatusID,nil,true,nil,Desc=="",true)
+        local howtoremove = CreateStatusRemoveTooltip(StatusID)
+        if howtoremove and howtoremove~="" then
+          Desc = Desc.."\n\n"..howtoremove
         end
-        local Desc = "("..StatusID..")"
-        Desc = Desc..CreateStatusApplyTooltip(StatusID)
-        
-        Desc = Desc.."\n\nHow To Remove:"..CreateStatusRemoveTooltip(StatusID)
-        
-        Client.Tooltip.ShowCustomFormattedTooltip({
-          Elements = {
+        if Desc~="" then
+          Desc=Desc.."\n"
+        end
+        Desc = Desc..CreateStatusStackIdSavingThowTooltip(StatusID)
+        local modsource = Mods.LeaderLib and Mods.LeaderLib.GameHelpers.Stats.GetModInfo(StatusID,true,false)
+        if modsource and modsource~="" then
+          if Desc~="" then
+            Desc=Desc.."\n"
+          end
+          Desc = Desc.."<font color='#33AAFF' size='18'>"..modsource.."</font>"  
+        end
+        local attributes = GetStatusAttr(status,stat)
+        local tooltip = {
             {
-              Type = "ItemName",
-              Label = StatusLoc
+              Type = "StatName", --"ItemName",
+              Label = StatName
             },
             {
               Type = "SkillDescription",
               Label = Desc,
             }
-            
             -- {
               -- "Label" : "Wet",
               -- "Type" : "StatName"
@@ -241,6 +256,21 @@ function Section:__CreateElement(index)
             -- }
             
            }
+        for attr,info in pairs(attributes) do
+          local value = tostring(info.value)
+          if value and value~="" and info.loc~="Skill: " then
+            if not value:find("-",1,true) then
+              value = "+"..value
+            end
+            value = ": "..value
+            if (attr:lower():find("boost",1,true) and attr~="SPCostBoost" and attr~="APCostBoost") or attr:lower():find("chance",1,true) or attr:lower():find("resistance",1,true) then
+              value = value.."%"
+            end
+          end
+          table.insert(tooltip,{Type="StatusBonus", Label="<font color='6EB09D'>"..info.loc..value.."</font>"})
+        end
+        Client.Tooltip.ShowCustomFormattedTooltip({
+          Elements = tooltip
           })
       end
     end)
@@ -251,16 +281,17 @@ function Section:__CreateElement(index)
 end
 
 IndexToStatus = {}
-function Section:__UpdateElement(index, instance, status)
+function Section:__UpdateElement(index, instance, statusobj)
     -- print("__UpdateElement",index, instance, status)
     -- if index==1 then
       -- _D(status)
     -- end
-    IndexToStatus[index]=status
     -- instance.ID == Stati.Status." .. index
-    local statusID = status.ID
-    local stat = status.Stat -- was added within IsStatusValid
-    local StatsId = stat.StatsId
+    local StatusID = statusobj.ID
+    IndexToStatus[index]=StatusID
+    local stat = E_Stats.Get("StatsLib_StatsEntry_StatusData", StatusID)
+    -- local stat = statusobj.Stat
+    -- local StatsId = stat.StatsId
     instance:SetIcon(stat.Icon)
 end
 
@@ -273,11 +304,12 @@ end
 Stati.Hooks.IsStatusValid:Subscribe(function (ev)
     local valid = ev.Valid
     local stat = ev.Stat
+    local StatusID = ev.ID
 
     if valid then
     
         -- Check for blacklisted keywords in ID
-        local lowercaseID = ev.ID:lower()
+        local lowercaseID = StatusID:lower()
         for pattern in Stati.KEYWORD_BLACKLIST_LOWER:Iterator() do
             if lowercaseID:match(pattern) then
                 valid = false
@@ -285,13 +317,31 @@ Stati.Hooks.IsStatusValid:Subscribe(function (ev)
             end
         end
         for pattern in Stati.KEYWORD_BLACKLIST:Iterator() do
-            if ev.ID:match(pattern) then
+            if StatusID:match(pattern) then
+                valid = false
+                goto End
+            end
+        end
+        for pattern in Stati.KEYWORD_BLACKLIST_STARTSWITH:Iterator() do
+            if StatusID:find(pattern, 1, true)==1 then
+                valid = false
+                goto End
+            end
+        end
+        for pattern in Stati.KEYWORD_BLACKLIST_MODSOURCE:Iterator() do
+            local modsource = Mods.LeaderLib and Mods.LeaderLib.GameHelpers.Stats.GetModInfo(StatusID,true,true)
+            if modsource and modsource==pattern then
                 valid = false
                 goto End
             end
         end
 
-        local lowercaseName = Stati._GetStatusDisplayName(ev.Stat):lower()
+        local locName = GetTranslation(ev.Stat.DisplayName,StatusID) -- Stati._GetStatusDisplayName(ev.Stat)
+        if locName==StatusID then -- no valid loc text
+          valid = false
+          goto End
+        end
+        local lowercaseName = locName:lower()
 
         -- Filter out stati with no display name or icon - these tend to be unobtainable stati that are not properly marked as such by the developer.
         if ev.Stat.DisplayName == "" then -- We cannot check for valid handles here as there are mods like Derpy's which set the text directly to this field.
