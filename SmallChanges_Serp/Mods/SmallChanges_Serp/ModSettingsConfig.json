@@ -92,6 +92,12 @@
             "Min" : 0,
             "Value": 1,
             "Increment": 1
+          },
+          "NPCLoremasterReduction" : {
+            "Max" : 1,
+            "Min" : 0,
+            "Value": 1,
+            "Increment": 1
           }
         }
       },
@@ -119,7 +125,8 @@
         "Entries" : [
                 "HealNPCIfBelow",
                 "SkillbooskLvl5Not4",
-                "DisableIndomiteable"
+                "DisableIndomiteable",
+                "NPCLoremasterReduction"
         ]
       }
     ]

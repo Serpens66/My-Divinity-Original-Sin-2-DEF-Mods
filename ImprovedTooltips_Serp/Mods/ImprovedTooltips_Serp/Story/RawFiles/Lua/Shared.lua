@@ -2,6 +2,9 @@
 -- bei Stati evtl. noch anzeigen, welche Potion/Objects und welche Skills diesen Status geben? könnte zuviel text werden
 -- status werte anzeigen
   
+
+  
+ModSettings = ModSettings or {Colouring=1,ShowSkillStatus=2,ShowSurfaceStatus=2,ShowItemStatus=1}
   
 Ext.Require("helpers/GetSurfaces.lua") -- _GetSurfaces
 Ext.Require("helpers/gameScriptStatusLogic.lua") -- GetInfoTextForStatus
@@ -111,7 +114,7 @@ end
 -- desctable = {{chance=100,codename="FEAR",loc="Panisch"}}
 function CreateDescrString(opener,desctable,seperator,kind)
   seperator = seperator or ", "
-  local IsShift = CurrentPressedKeys["Shift"]
+  local IsCtrl = CurrentPressedKeys["Ctrl"]
   local desc = opener
   local addedLocs = {}
   for _,info in ipairs(desctable) do
@@ -128,20 +131,16 @@ function CreateDescrString(opener,desctable,seperator,kind)
         loc = stat and GetTranslation(stat.DisplayName,codename) or codename
       end
     end
-    if not loc then
-      Ext.Print("ImprovedTooltips_Serp: CreateDescrString loc is nil?",opener,info,codename)
-    else
-      loc = ColourizeStatus(codename,loc,true,kind)
-    end
     if not chance or chance~=0 then
-      if not addedLocs[loc] or IsShift then -- only add stati with exact same translation only once, unless we hold Shift
+      if not addedLocs[loc] or IsCtrl then -- only add stati with exact same translation only once, unless we hold Shift
+        addedLocs[loc] = true
+        loc = ColourizeStatus(codename,loc,true,kind)
         local chancetxt = chance and chance<100 and " "..tostring(chance).."%" or ""
-        local brackets = loc~=codename and IsShift and " ("..codename..")" or ""
+        local brackets = loc~=codename and IsCtrl and " ("..codename..")" or ""
         desc = desc..loc..chancetxt..brackets
         if next(desctable,_) then
           desc = desc..seperator
         end
-        addedLocs[loc] = true
       end
     end
   end
@@ -152,40 +151,41 @@ function CreateItemTooltipAddition(item,tooltip,nonewlinestart)
   local addstringtodesc = ""
   -- not to weapon/armor and so, because the tooltip gets too big, use the Epip Codex instead to inform yourself about a status
   if item and item.StatsFromName and (item.StatsFromName.ModifierList=="Potion" or item.StatsFromName.ModifierList=="Object") then
-
-    local ExtraProperties = item.StatsFromName.PropertyLists and item.StatsFromName.PropertyLists.ExtraProperties and item.StatsFromName.PropertyLists.ExtraProperties.Properties and item.StatsFromName.PropertyLists.ExtraProperties.Properties.Elements
-    local appliesStati = {}
-    local createssurfaces = {}
-    if ExtraProperties then
-      for _,property in ipairs(ExtraProperties) do
-        if property.TypeId=="Status" then
-          local Context = {"Self"} -- I think these effects are always Self, regardless what is written in them
-          appliesStati[property.Status] = {chance=property.StatusChance*100,duration=property.Duration,Context=Context}
-        end
-      end
-    end
+    
     if tooltip and item.CurrentTemplate and item.CurrentTemplate.OnUsePeaceActions then
       for _,useaction in pairs(item.CurrentTemplate.OnUsePeaceActions) do
         if useaction.Type=="UseSkill" then
           local skill = useaction.SkillID
-          local skilldesc = CreateSkillToolipAddition(skill)
+          local skilldesc = CreateSkillToolipAddition(skill,nil,true)
           AddToTooltip(tooltip,skilldesc)
         end
       end
     end
     
-    for status,info in pairs(appliesStati) do
-      local chance = info.chance
-      local duration = info.duration
-      local Context = info.Context
-      local stat = not engineStatuses[status] and Ext.Stats.Get(status) or engineStatuses[status]
-      local status_loc = StatusLocs[status] or stat and GetTranslation(stat.DisplayName,status) or status
-      if chance and chance>0 then
-        if StatusScriptRules[status] then
-          addstringtodesc = addstringtodesc..CreateStatusApplyTooltip(status,Context,nil,nil,nonewlinestart)
+    if ModSettings["ShowItemStatus"]==1 or (ModSettings["ShowItemStatus"]==2 and CurrentPressedKeys["Shift"]) then
+      local ExtraProperties = item.StatsFromName.PropertyLists and item.StatsFromName.PropertyLists.ExtraProperties and item.StatsFromName.PropertyLists.ExtraProperties.Properties and item.StatsFromName.PropertyLists.ExtraProperties.Properties.Elements
+      local appliesStati = {}
+      if ExtraProperties then
+        for _,property in ipairs(ExtraProperties) do
+          if property.TypeId=="Status" then
+            local Context = {"Self"} -- I think these effects are always Self, regardless what is written in them
+            appliesStati[property.Status] = {chance=property.StatusChance*100,duration=property.Duration,Context=Context}
+          end
         end
-        if next(appliesStati,status) then
-          addstringtodesc = addstringtodesc.." | "
+      end
+      for status,info in pairs(appliesStati) do
+        local chance = info.chance
+        local duration = info.duration
+        local Context = info.Context
+        local stat = not engineStatuses[status] and Ext.Stats.Get(status) or engineStatuses[status]
+        local status_loc = StatusLocs[status] or stat and GetTranslation(stat.DisplayName,status) or status
+        if chance and chance>0 then
+          if StatusScriptRules[status] then
+            addstringtodesc = addstringtodesc..CreateStatusApplyTooltip(status,Context,nil,nil,nonewlinestart)
+          end
+          if next(appliesStati,status) then
+            addstringtodesc = addstringtodesc.." | "
+          end
         end
       end
     end
@@ -307,7 +307,7 @@ function GetStatusColour(StatusId,stat,kind)
 end
 function ColourizeStatus(status,status_loc,colourize,kind)
   local colourcode
-  if colourize and status~="NULLL" and status_loc then
+  if ModSettings.Colouring==1 and colourize and status~="NULLL" and status_loc then
     colourcode = GetStatusColour(status,nil,kind)
     if colourcode then
       status_loc = "<font color='"..colourcode.."'>"..status_loc.."</font>"
@@ -480,9 +480,8 @@ function CreateStatusRemoveTooltip(status)
   return addstringtodesc
 end
 
+
 function CreateStatusApplyTooltip(status,Context,withoutheader,prefix,nonewlinestart,withoutstackid)
-
-
   -- Adding info what the applied appliedstati may cleanse (chance and duration is already in tooltip)
   prefix = prefix or ""
   local desc = ""
@@ -491,13 +490,19 @@ function CreateStatusApplyTooltip(status,Context,withoutheader,prefix,nonewlines
   local codename = " ("..status..") "
   if not withoutheader then
     status_loc = ColourizeStatus(status,status_loc,true)
-    desc = desc.."\n"..prefix.."<font color='#DCDCCC'>Status</font> "..status_loc..(CurrentPressedKeys["Shift"] and codename or "")..(Context and "("..table.concat(Context,",")..")" or "")
+    desc = desc..prefix.."<font color='#DCDCCC'>Status</font> "..status_loc..(CurrentPressedKeys["Ctrl"] and codename or "")..(Context and " ("..table.concat(Context,",")..")" or "")
   end
   if StatusScriptRules[status] then
+    if desc~="" then
+      desc=desc.."\n"
+    end
     desc = desc..GetInfoTextForStatus(status,StatusLocs," ",true)
   end
   if StatusProvidesImmunityAgainstStati[status] then
-    local opener = "\n"..prefix.."<font color='#DCDCCC'>Provides Immunities</font>: "
+    if desc~="" then
+      desc=desc.."\n"
+    end
+    local opener = prefix.."<font color='#DCDCCC'>Provides Immunities</font>: "
     desc = desc..CreateDescrString(opener,StatusProvidesImmunityAgainstStati[status])
   end
   -- StackId
@@ -507,17 +512,22 @@ function CreateStatusApplyTooltip(status,Context,withoutheader,prefix,nonewlines
       local StackId = stat.StackId
       local StackPriority = stat.StackPriority
       if StackId and StackId~="" then
-        desc = desc.."\n"..prefix.."(StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
+        if desc~="" then
+          desc=desc.."\n"
+        end
+        desc = desc..prefix.."(StackId: "..tostring(StackId).." "..tostring(StackPriority)..")"
       end
     end
   end
   if desc and desc~="" then
-    desc = (not nonewlinestart and "\n" or "").."<font color='#D2D2D2'>".."Applies Effects:".."</font>"..desc
+    -- desc = (not nonewlinestart and "\n" or "").."<font color='#D2D2D2'>".."Applies Effects:".."</font>"..desc
+    desc = (not nonewlinestart and "\n" or "")..desc
   end
   return desc
 end
 
-function CreateSkillToolipAddition(skill,char)
+
+function CreateSkillToolipAddition(skill,char,forItem)
   -- print("CreateSkillToolipAddition",skill,char)
   local skilldesc = {}
   local MyStat = Ext.Stats.Get(skill)
@@ -545,12 +555,13 @@ function CreateSkillToolipAddition(skill,char)
     end
     
     local addcleansestringtoskill = ""
-    -- outcommented appliedstati because it gets too much info in the tooltip, use codex instead to inform yourself about the status
-    -- for i,info in ipairs(appliedstati) do
-      -- local status = info.status
-      -- local Context = info.Context or {}
-      -- addcleansestringtoskill = addcleansestringtoskill..CreateStatusApplyTooltip(status,Context)
-    -- end
+    if not forItem and (ModSettings.ShowSkillStatus==1 or (ModSettings.ShowSkillStatus==2 and CurrentPressedKeys["Shift"])) or forItem and (ModSettings.ShowItemStatus==1 or (ModSettings.ShowItemStatus==2 and CurrentPressedKeys["Shift"])) then
+      for i,info in ipairs(appliedstati) do
+        local status = info.status
+        local Context = info.Context or {}
+        addcleansestringtoskill = addcleansestringtoskill..CreateStatusApplyTooltip(status,Context)
+      end
+    end
     -- add info to skills which stati they clean
     local skillcleantext = ""
     if SkillCleanseStati[skill] and SkillCleanseStati[skill].stati and next(SkillCleanseStati[skill].stati) and SkillCleanseStati[skill].chance>0 then
@@ -705,16 +716,15 @@ function AdjustSurfaceTooltip(SurfaceType,tooltip)
             local SStat = not engineStatuses[statusinfo.StatusId] and Ext.Stats.Get(statusinfo.StatusId) or engineStatuses[statusinfo.StatusId]
             local statusname_loc = SStat and GetTranslation(SStat.DisplayName,statusinfo.StatusId) or statusinfo.StatusId
             status_loc = ColourizeStatus(statusinfo.StatusId,statusname_loc,true)
-            addremove = "\n<font color='#DCDCCC'>"..(statusinfo.RemoveStatus and "Removes " or "Applies ").."</font> "..statusname_loc..(CurrentPressedKeys["Shift"] and statusinfo.StatusId or "")
+            addremove = "\n<font color='#DCDCCC'>"..(statusinfo.RemoveStatus and "Removes " or "Applies ").."</font> "..statusname_loc..(CurrentPressedKeys["Ctrl"] and " ("..statusinfo.StatusId..")" or "")
             local IgnoresArmor = statusinfo.ForceStatus and "\n  Ignores Armor" or ""
             local KeepAlive = statusinfo.KeepAlive and "\n  Stays Active" or ""
             local OnlyWhileMoving = statusinfo.OnlyWhileMoving and "\n  Only While Moving" or ""
             local VanishOnReapply = statusinfo.VanishOnReapply and "\n  Removes Surface" or ""
             SurfaceStatusText = SurfaceStatusText..addremove.."\n  Chance: "..tostring(round(statusinfo.Chance*100,2)).." %\n  Duration: "..tostring(round(statusinfo.Duration/6,1)).." turns"..IgnoresArmor..KeepAlive..VanishOnReapply
-            -- outcommented: dont add info what a status does, because too much text, use codex to read about a status instead
-            -- if not statusinfo.RemoveStatus then -- no need to say what a status does, if it is removed
-              -- SurfaceStatusText = SurfaceStatusText..CreateStatusApplyTooltip(statusinfo.StatusId,nil,true,"  ")
-            -- end
+            if not statusinfo.RemoveStatus and (ModSettings.ShowSurfaceStatus==1 or (ModSettings.ShowSurfaceStatus==2 and CurrentPressedKeys["Shift"])) then -- no need to say what a status does, if it is removed
+              SurfaceStatusText = SurfaceStatusText..CreateStatusApplyTooltip(statusinfo.StatusId,nil,true,"  ")
+            end
           end
         end
         if SurfaceStatusText~="" then

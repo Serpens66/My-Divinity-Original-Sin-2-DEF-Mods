@@ -10,3 +10,13 @@
 - added the effects eg. a potion will apply to the potion tooltip.
 1.0.0.5:
 - Add to the skill tooltip which Stati they Cleanse. The vanilla texts already include these, BUT of course hardcoded to the text, so they are wrong if mods add more.
+- Added to status tooltip how to get rid of them
+- added to items/potions their effects and Range/Target they have (finally healing elixir shows what it can heal)
+- If the mod Epip is used: Added an overview about all game Status. There you can read how they interact with other stati and how to remove them.
+1.0.0.6:
+- added modsetting to enable/disable a few tooltip informations for skills/stati.
+- added modsetting to disable/enable the colouring of skill and status names in the new tooltip info.
+1.0.0.7:
+- added modsetting to display status info in tooltips for Items.
+- added the value 2 to the status modsettings: Show expanded info about Status in Surface/Skill/Item only while holding Shift.
+- If you (also) hold Ctrl it will show you the statusID of all stati in the tooltip, helpful in some cases where mods add new stati with same name like existing.

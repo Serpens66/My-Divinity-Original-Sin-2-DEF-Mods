@@ -14,3 +14,5 @@
 - Made all skillbooks with MinLevel 4 using MinLevel 5 instead, so they only show up at lvl5 now. this feels better : 1,5,9,13,16. But added a ModSetting to change it to 4 again.
 - fixes a bug that not all changes were active if the Divine Talents giftbag was disabled (script crashed in this case, because did not find Indomiteable)
 - fixed immortality of the 2 chars and added Sadha to it.
+1.0.0.3:
+- add modsetting to disable the NPC LoreMaster-change

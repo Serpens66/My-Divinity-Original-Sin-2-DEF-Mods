@@ -1,0 +1,43 @@
+{
+	"TitleColor": "#11FF99",
+	"Data": {
+		"Variables": {
+			"Entries" : {
+				"Colouring" : {
+					"Max" : 1,
+          "Min" : 0,
+          "Value": 1,
+          "Increment": 1
+				},
+				"ShowSkillStatus" : {
+					"Max" : 2,
+          "Min" : 0,
+          "Value": 2,
+          "Increment": 1
+				},
+				"ShowSurfaceStatus" : {
+					"Max" : 2,
+          "Min" : 0,
+          "Value": 2,
+          "Increment": 1
+				},
+				"ShowItemStatus" : {
+					"Max" : 2,
+          "Min" : 0,
+          "Value": 1,
+          "Increment": 1
+				}
+			}
+		}
+	},
+	"MenuOrder": [
+		{
+			"Entries" : [
+				"Colouring",
+				"ShowSkillStatus",
+				"ShowSurfaceStatus",
+				"ShowItemStatus"
+			]
+		}
+	]
+}

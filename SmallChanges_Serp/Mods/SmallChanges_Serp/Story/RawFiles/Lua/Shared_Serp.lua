@@ -262,16 +262,15 @@ end
 -- ClearTag 	(GUIDSTRING)_Source, (STRING)_Tag
 SharedFns.AddTalent = function(charGUID,Talent,compensateTalentPoint,Tag,char)
   local BuggedTalents = {"Throwing", "WandCharge","BeastMaster","PainDrinker","DeathfogResistant","Sourcerer","Rag"} -- talents which dont work properly with CharacterAddTalent (noticeable that they have no effect, not displayed and also not removeable). But as Boost they seem to work (at least tested with BeastMaster): only the first 3 are added at all, while most likely only BeastMaster works.
-   -- but better dont use BeastMaster, although it kind of works, adding/removing is also with NRD_CharacterSetPermanentBoostTalent buggy..
   if Talent and Talent~="None" then
     char = char or Ext.Entity.GetCharacter(charGUID)
     Ext.Print("Trying add Talent "..tostring(Talent).." to "..tostring(charGUID))
     if not Tag or Osi.IsTagged(charGUID,Tag)==0 then
       if (char and not char.Stats["TALENT_"..Talent]) or (not char and Osi.CharacterHasTalent(charGUID, Talent) == 0) then
-        if char.PlayerCustomData==nil or SharedFns.table_contains_value(BuggedTalents,Talent) then -- NPC
-          Osi.NRD_CharacterSetPermanentBoostTalent(charGUID,Talent,1)--(CHARACTERGUID)_Character, (STRING)_Talent, (INTEGER)_HasTalent (_HasTalent=0 heißt entfernen und =1 heißt zufügen) -- der char TALENT_ check kann dies auch finden, CharacterHasTalent kanns auch, nachdems gesynced wurde mit CharacterAddAttribute
+        if not SharedFns.IsPlayerMainChar(charGUID) or SharedFns.table_contains_value(BuggedTalents,Talent) then -- NPC
+          Osi.NRD_CharacterSetPermanentBoostTalent(charGUID,Talent,1)--(CHARACTERGUID)_Character, (STRING)_Talent, (INTEGER)_HasTalent (_HasTalent=0 heißt entfernen und =1 heißt zufügen) -- der char TALENT_ check kann dies auch finden, der CharacterHasTalent nicht
           Osi.CharacterAddAttribute(charGUID, "Dummy", 0) -- to sync to clients
-        elseif char.PlayerCustomData then
+        elseif char.PlayerCustomData then -- summons also have PlayerCustomData and CharacterAddTalent works for them, BUT is not savegame persistent. So better use NRD_CharacterSetPermanentBoostTalent for everyone who is not mainchar, this is persistent
           Osi.CharacterAddTalent(charGUID, Talent)
         end
         Ext.Print("Talent "..tostring(Talent).." was added to "..tostring(charGUID))
@@ -318,7 +317,7 @@ SharedFns.GetAllPlayerChars = function()
 end
 SharedFns.GetAnyPlayerControlled = function()
   -- return Osi.DB_IsPlayer:Get(nil)[1][1]
-  return Osi.CharacterGetHostCharacter()
+  return Osi.CharacterGetHostCharacter() -- ist aktuell angewählter char, bzw. wenn kein MainChar, dann erstellten char
 end
 
 SharedFns.IsPlayerEnemy = function(charGUID,playercharGUID)
@@ -410,7 +409,6 @@ end
 -- ##################################################################
 -- ###################   Events   ###################################
 -- ##################################################################
-
 
 -- Random CRASH (extender v60) and may break sills: Do NOT call Ext.Stats.Sync while looping over Ext.Stats.GetStats("SkillData") (or most likely an other Ext.Stats.GetStats(...)). Instead save the names of the entries you changed while looping and then do a seperate loop after the GetStats loop to call Sync for these
 -- Solution: Sync is not needed within StatsLoaded
@@ -529,8 +527,10 @@ SharedFns.OnStatsLoaded = function(e)
       local data = Ext.Json.Parse(json).Mods[ModuleUUID]
       if data then
         for var,value in pairs(data.Global.Variables) do
-          -- Ext.Print("SmallChanges_Serp",var,value.Value)
-          NPCDifficultySettings[var] = value.Value
+          if var:find("NPCDiff",1,true) then
+            -- Ext.Print("SmallChanges_Serp",var,value.Value)
+            NPCDifficultySettings[var] = value.Value
+          end
         end
       end
     end
@@ -651,14 +651,26 @@ SharedFns.OnStatsLoaded = function(e)
     ------------ Ext.Stats.GetRaw(skill).UseWeaponProperties = "Yes"
   -- end
   
-  -- NoPsychicEnemies (reduce Loremaster for enemies)
-  for i,char in pairs(Ext.Stats.GetStats("Character")) do
-    local MyStat = Ext.Stats.GetRaw(char)
-    local Loremaster = MyStat.Loremaster
-    if Loremaster and Loremaster>0 then
-      local Repair = MyStat.Repair
-      if not Repair or Repair==0 then -- the ones who can Repair are usually merchants which should be able to identify your items, so not change Loremaster for them
-        MyStat.Loremaster = math.max(Loremaster-2,0)
+  local ReduceLoremaster = true
+  if Mods.LeaderLib then -- Modsettings from LeaderLib are not yet loaded in StatsLoaded
+    local json = Ext.IO.LoadFile("LeaderLib_GlobalSettings.json", "user")
+    if json then
+      local data = Ext.Json.Parse(json).Mods[ModuleUUID]
+      if data then
+        ReduceLoremaster = data.Global.Variables.NPCLoremasterReduction.Value==1
+      end
+    end
+  end
+  if ReduceLoremaster then
+    -- NoPsychicEnemies (reduce Loremaster for enemies)
+    for i,char in pairs(Ext.Stats.GetStats("Character")) do
+      local MyStat = Ext.Stats.GetRaw(char)
+      local Loremaster = MyStat.Loremaster
+      if Loremaster and Loremaster>0 then
+        local Repair = MyStat.Repair
+        if not Repair or Repair==0 then -- the ones who can Repair are usually merchants which should be able to identify your items, so not change Loremaster for them
+          MyStat.Loremaster = math.max(Loremaster-2,0)
+        end
       end
     end
   end
@@ -1005,11 +1017,12 @@ end
 
 
 
-
+-- _C() ist kurzform für Osi.CharacterGetHostCharacter()
+-- _D() für dump table
 
 
 -- Osi.ItemTemplateAddTo("37535d5c-3262-4d2d-bcbc-c940e33ec2ca",Osi.CharacterGetHostCharacter(),1,1)
--- Osi.ItemTemplateAddTo("f61124e9-070b-4fda-86ca-f9d8f6791bba",Osi.CharacterGetHostCharacter(),1,1)
+-- Osi.ItemTemplateAddTo("3b5c5a91-00ab-4a86-bc30-b59e14951163",Osi.CharacterGetHostCharacter(),1,1)
 
 -- Osi.CharacterLevelUpTo(Osi.CharacterGetHostCharacter(),20)
   -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Shout_BreakTheShackles")

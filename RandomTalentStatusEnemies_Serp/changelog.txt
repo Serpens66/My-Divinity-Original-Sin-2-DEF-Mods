@@ -6,3 +6,5 @@
 - removed Opportunist and Savage Sortilege from random Talent choice, because we already give them to every NPC by default.
 1.0.0.3:
 - added modsettings if LeaderLib is installed: Define max amount of talents/stati and add extra max duration to the default 1-5 rounds of stati.
+1.0.0.4:
+- Improved Talent code to also be persistent for own summons (but since this mod does not add talents to your summons, it has no real effect)

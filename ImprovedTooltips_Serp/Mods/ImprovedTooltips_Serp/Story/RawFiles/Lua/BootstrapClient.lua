@@ -9,7 +9,6 @@ end
 local EpipSurfaceTooltips = Mods and Mods.EpipEncounters and Mods.EpipEncounters.Client.Tooltip.Hooks.RenderSurfaceTooltip
 
 
-
 -- Add StackId to Foods/Potions
 -- add applies effects to items (potions)
 -- Osi.ItemTemplateAddTo("37535d5c-3262-4d2d-bcbc-c940e33ec2ca",Osi.CharacterGetHostCharacter(),1,1) -- healing elixir
@@ -129,17 +128,44 @@ Ext.Events.RawInput:Subscribe(function(e)
   local id = tostring(inputEventData.Input.InputId)
   local deviceType = tostring(inputEventData.Input.DeviceId)
   if id == "" then return end -- Happens for unsupported keys, ex. media keys.
-  if deviceType=="Key" and (id=="lshift" or od=="rshift") then -- currently we only care for them
-    if inputEventData.Value.State == "Pressed" then
-      CurrentPressedKeys["Shift"] = true
-      -- updating currently shown tooltip is too complicated (hide and show again, but I need all the info of current tooltip, no clue how to easily get them)
-      -- so only works if first holding Shift and then hovering over object to show tooltip
-    else
-      CurrentPressedKeys["Shift"] = nil
+  if deviceType=="Key" then 
+    local key
+    if (id=="lshift" or id=="rshift") then -- currently we only care for them
+      key="Shift"
+    elseif (id=="lctrl" or id=="rctrl") then
+      key="Ctrl"
+    end
+    if key then
+      if inputEventData.Value.State == "Pressed" then
+        CurrentPressedKeys[key] = true
+        -- updating currently shown tooltip is too complicated (hide and show again, but I need all the info of current tooltip, no clue how to easily get them)
+        -- so only works if first holding Shift and then hovering over object to show tooltip (unless Epip triggers the update for this tooltip already)
+      else
+        CurrentPressedKeys[key] = nil
+      end
     end
   end
 end)
 
+------######################
+-- LeaderLib Settings
 
 
-
+-- {
+	-- "ActionPrevented" : false,
+	-- "CanPreventAction" : false,
+	-- "Channel" : "ImprovedTooltips_Serp_ModSettings",
+	-- "Name" : "NetMessageReceived",
+	-- "Payload" : "Colouring",
+	-- "PreventAction" : "function: 00007FFE32442CD0",
+	-- "StopPropagation" : "function: 00007FFE32442CA0",
+	-- "Stopped" : false,
+	-- "UserID" : -65536
+-- }
+Ext.Events.NetMessageReceived:Subscribe(function (ev)
+  if ev.Channel == "ImprovedTooltips_Serp_ModSettings" then
+    -- print("Client ImprovedTooltips_Serp_ModSettings")
+    local setting_ev = Ext.Json.Parse(ev.Payload)
+    ModSettings[setting_ev.ID] = setting_ev.Value
+  end
+end)

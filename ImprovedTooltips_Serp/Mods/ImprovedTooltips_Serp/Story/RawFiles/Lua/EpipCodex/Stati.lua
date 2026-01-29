@@ -206,7 +206,7 @@ function Section:__CreateElement(index)
       if stat and GameState.IsInSession() then
         local StatusLoc = GetTranslation(stat.DisplayName,StatusID) --Stati._GetStatusDisplayName(stat)
         StatusLoc = ColourizeStatus(StatusID,StatusLoc,true)
-        local StatName = StatusLoc..(CurrentPressedKeys["Shift"] and " ("..StatusID..")" or "")
+        local StatName = StatusLoc..(CurrentPressedKeys["Ctrl"] and " ("..StatusID..")" or "")
         local Desc = Stati._GetStatusDescription(stat)
         Desc = Desc..CreateStatusApplyTooltip(StatusID,nil,true,nil,Desc=="",true)
         local howtoremove = CreateStatusRemoveTooltip(StatusID)
@@ -216,7 +216,7 @@ function Section:__CreateElement(index)
         if Desc~="" then
           Desc=Desc.."\n"
         end
-        Desc = Desc..CreateStatusStackIdSavingThowTooltip(StatusID)
+        Desc = Desc..CreateStatusStackIdSavingThowTooltip(StatusID,true)
         local modsource = Mods.LeaderLib and Mods.LeaderLib.GameHelpers.Stats.GetModInfo(StatusID,true,false)
         if modsource and modsource~="" then
           if Desc~="" then

@@ -1,6 +1,6 @@
 
 
-local function RegisterProtectedOsirisListener(event, arity, state, callback)
+function RegisterProtectedOsirisListener(event, arity, state, callback)
 	Ext.Osiris.RegisterListener(event, arity, state, function(...)
 		if Ext.Server.GetGameState() == "Running" then
 			local b,err = xpcall(callback, debug.traceback, ...)
@@ -12,7 +12,7 @@ local function RegisterProtectedOsirisListener(event, arity, state, callback)
 end
 
 -- returns the first key from table with value x
-local function table_contains_value(tbl, x)
+function table_contains_value(tbl, x)
   for k,v in pairs(tbl) do
     if v == x then 
       return k -- also 0 is considered true in lua. and false/nil wont be used as key for sure. so its fine to return k here
@@ -21,28 +21,32 @@ local function table_contains_value(tbl, x)
   return false
 end
 
-local function AddTalent(charGUID,Talent,compensateTalentPoint,Tag,char)
+function AddTalent(charGUID,Talent,compensateTalentPoint,Tag,char)
+  local BuggedTalents = {"Throwing", "WandCharge","BeastMaster","PainDrinker","DeathfogResistant","Sourcerer","Rag"} -- talents which dont work properly with CharacterAddTalent (noticeable that they have no effect, not displayed and also not removeable). But as Boost they seem to work (at least tested with BeastMaster): only the first 3 are added at all, while most likely only BeastMaster works.
   if Talent and Talent~="None" then
     char = char or Ext.Entity.GetCharacter(charGUID)
-    if char and char.PlayerCustomData then -- most NPC do not have it and therefore can not add Talent here
-      -- Ext.Print("Trying add Talent "..tostring(Talent).." to "..tostring(charGUID),char)
-      if not Tag or Osi.IsTagged(charGUID,Tag)==0 then
-        if (char and not char.Stats["TALENT_"..Talent]) or (not char and Osi.CharacterHasTalent(charGUID, Talent) == 0) then
+    Ext.Print("Trying add Talent "..tostring(Talent).." to "..tostring(charGUID))
+    if not Tag or Osi.IsTagged(charGUID,Tag)==0 then
+      if (char and not char.Stats["TALENT_"..Talent]) or (not char and Osi.CharacterHasTalent(charGUID, Talent) == 0) then
+        if not IsPlayerMainChar(charGUID) or table_contains_value(BuggedTalents,Talent) then -- NPC
+          Osi.NRD_CharacterSetPermanentBoostTalent(charGUID,Talent,1)--(CHARACTERGUID)_Character, (STRING)_Talent, (INTEGER)_HasTalent (_HasTalent=0 heißt entfernen und =1 heißt zufügen) -- der char TALENT_ check kann dies auch finden, der CharacterHasTalent nicht
+          Osi.CharacterAddAttribute(charGUID, "Dummy", 0) -- to sync to clients
+        elseif char.PlayerCustomData then -- summons also have PlayerCustomData and CharacterAddTalent works for them, BUT is not savegame persistent. So better use NRD_CharacterSetPermanentBoostTalent for everyone who is not mainchar, this is persistent
           Osi.CharacterAddTalent(charGUID, Talent)
-          -- Ext.Print("Talent "..tostring(Talent).." was added to "..tostring(charGUID))
-        elseif compensateTalentPoint then
-          Osi.CharacterAddTalentPoint(charGUID, 1)
-          -- Ext.Print(tostring(charGUID).." already had Talent "..tostring(Talent)..". Got Talentpoints instead")
         end
-        if Tag then
-          Osi.SetTag(charGUID,Tag)
-        end
+        Ext.Print("Talent "..tostring(Talent).." was added to "..tostring(charGUID))
+      elseif compensateTalentPoint then
+        Osi.CharacterAddTalentPoint(charGUID, 1)
+        Ext.Print(tostring(charGUID).." already had Talent "..tostring(Talent)..". Got Talentpoints instead")
+      end
+      if Tag then
+        Osi.SetTag(charGUID,Tag)
       end
     end
   end
 end
 
-local function GetAllPlayerChars()
+function GetAllPlayerChars()
   local _players = Osi.DB_IsPlayer:Get(nil) -- Will return a list of tuples of all player characters
   local players = {}
   for _,tupl in ipairs(_players) do
@@ -51,7 +55,7 @@ local function GetAllPlayerChars()
   end
   return players
 end
-local function IsPlayerMainChar(charGUID)
+function IsPlayerMainChar(charGUID)
   local players = GetAllPlayerChars()
   return table_contains_value(players,charGUID)
 end
@@ -62,7 +66,7 @@ end
 -- print(Osi.HasActiveStatus("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb","MOVEMENTSPEED_HALF_SERP"))
 -- print(Ext.Entity.GetCharacter("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd"):GetStatus("MOVEMENTSPEED_HALF_SERP"))
 -- print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb"):GetStatus("MOVEMENTSPEED_HALF_SERP").StatsMultiplier)
-local function ApplyMovementStatus(charGUID,char)
+function ApplyMovementStatus(charGUID,char)
   local statusname = "MOVEMENTSPEED_HALF_SERP"
   if Osi.HasActiveStatus(charGUID,statusname)==0 then
     Osi.ApplyStatus(charGUID,statusname,-1,1)
@@ -92,7 +96,7 @@ end)
 
 
 -- print(Ext.Entity.GetCharacter("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd").RunSpeedOverride)
-
+-- also called for summons
 RegisterProtectedOsirisListener("CharacterJoinedParty", 1, "after", function(charGUID)
   if Osi.ObjectIsCharacter(charGUID)==1 then -- [in](GUIDSTRING)_Object, [out](INTEGER)_Bool 
     local char = Ext.Entity.GetCharacter(charGUID)

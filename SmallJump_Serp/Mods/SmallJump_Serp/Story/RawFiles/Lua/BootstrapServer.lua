@@ -55,6 +55,8 @@ local function GiveRemoveJump(charGUID)
     if Osi.CharacterHasSkill(charGUID,"Projectile_CatFlight_Serp")==0 then
       Osi.CharacterAddSkill(charGUID,"Projectile_CatFlight_Serp")
     end
+    -- for whatever reason we get the error: dse::esv::func::GetSkillBar(): Character 'Summons_Incarnate_0d0ae287-0282-4331-b39f-6ead62abe911' has no skill bar!
+     -- but still it works, so obviously it has a skillbar.. so just keep it like this
     -- Ext.Print("SmallJump_Serp NRD_SkillBarFindSkill",charGUID,Osi.NRD_SkillBarFindSkill(charGUID,"Projectile_CatFlight_Serp"),NRD_SkillBarGetSkill(charGUID,0))
     if Osi.CharacterIsPlayer(charGUID) and Osi.NRD_SkillBarFindSkill(charGUID,"Projectile_CatFlight_Serp")==nil then -- sometimes it is not added to hotbar for summons
       for i=0,40 do

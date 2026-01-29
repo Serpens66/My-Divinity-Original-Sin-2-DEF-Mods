@@ -438,7 +438,7 @@ function GetInfoTextForStatus(status,StatusLocs,orig_indent,colourize)
           for __,con_status in ipairs(condition.if_has) do
             local con_status_loc = StatusLocs and StatusLocs[con_status] or con_status
             con_status_loc = ColourizeStatus(con_status,con_status_loc,colourize)
-            conditiontext = conditiontext.._if..con_status_loc
+            conditiontext = conditiontext.._if..con_status_loc..(CurrentPressedKeys["Ctrl"] and " ("..con_status..")" or "")
           end
         end
         if condition.if_has_any then
@@ -446,7 +446,7 @@ function GetInfoTextForStatus(status,StatusLocs,orig_indent,colourize)
           for __,con_status in ipairs(condition.if_has_any) do
             local con_status_loc = StatusLocs and StatusLocs[con_status] or con_status
             con_status_loc = ColourizeStatus(con_status,con_status_loc,colourize)
-            conditiontext = conditiontext..con_status_loc
+            conditiontext = conditiontext..con_status_loc..(CurrentPressedKeys["Ctrl"] and " ("..con_status..")" or "")
             if next(condition.if_has_any,__) then
               conditiontext = conditiontext.." / "
             end
@@ -457,7 +457,7 @@ function GetInfoTextForStatus(status,StatusLocs,orig_indent,colourize)
           for __,con_status in ipairs(condition.if_not) do
             local con_status_loc = StatusLocs and StatusLocs[con_status] or con_status
             con_status_loc = ColourizeStatus(con_status,con_status_loc,colourize)
-            conditiontext = conditiontext.."not "..con_status_loc
+            conditiontext = conditiontext.."not "..con_status_loc..(CurrentPressedKeys["Ctrl"] and " ("..con_status..")" or "")
             if next(condition.if_not,__) then
               conditiontext = conditiontext.." and "
             end
@@ -470,14 +470,14 @@ function GetInfoTextForStatus(status,StatusLocs,orig_indent,colourize)
           local r_status = condition.result or result_status
           local r_status_loc = StatusLocs and StatusLocs[r_status] or r_status
           r_status_loc = ColourizeStatus(r_status,r_status_loc,colourize)
-          conditiontext = conditiontext.." = "..r_status_loc
+          conditiontext = conditiontext.." = "..r_status_loc..(CurrentPressedKeys["Ctrl"] and " ("..r_status..")" or "")
           if condition.remove and next(condition.remove) then
             for ___,conrem in ipairs(condition.remove) do
               local status_loc = StatusLocs and StatusLocs[conrem] or conrem
               status_loc = ColourizeStatus(conrem,status_loc,colourize)
               condition.remove[___] = status_loc
             end
-            conditiontext = conditiontext..", removes: "..table.concat(condition.remove,", ")
+            conditiontext = conditiontext..", <font color='#DCDCCC'>removes:</font> "..table.concat(condition.remove,", ")
           end
         end
         if next(info.conditional,_) then
@@ -492,9 +492,9 @@ function GetInfoTextForStatus(status,StatusLocs,orig_indent,colourize)
       for ___,conrem in ipairs(info.always_remove) do
         local status_loc = StatusLocs and StatusLocs[conrem] or conrem
         status_loc = ColourizeStatus(conrem,status_loc,colourize)
-        info.always_remove[___] = status_loc
+        info.always_remove[___] = status_loc..(CurrentPressedKeys["Ctrl"] and " ("..conrem..")" or "")
       end
-      s = s..orig_indent.."Removes: "..table.concat(info.always_remove,", ")
+      s = s..orig_indent.."<font color='#DCDCCC'>Removes:</font> "..table.concat(info.always_remove,", ")
     end
     if info.always_remove and next(info.always_remove) and conditiontext~="" then
       s=s.."\n"
@@ -504,15 +504,15 @@ function GetInfoTextForStatus(status,StatusLocs,orig_indent,colourize)
     if conditiontext~="" then
       s=s..conditiontext
       if not conditiontext:find(" else ",1,true) then
-        s=s.."\n"..orig_indent.." else = "..result_loc
+        s=s.."\n"..orig_indent.." else = "..result_loc..(CurrentPressedKeys["Ctrl"] and " ("..result_status..")" or "")
       end
     else
-      s=s.."\n"..orig_indent.." = "..result_loc
+      s=s.."\n"..orig_indent.." = "..result_loc..(CurrentPressedKeys["Ctrl"] and " ("..result_status..")" or "")
     end
   else -- just applying the status without other effects
     local status_loc = StatusLocs and StatusLocs[status] or status
     status_loc = ColourizeStatus(status,status_loc,colourize)
-    s=s..status_loc
+    s=s..status_loc..(CurrentPressedKeys["Ctrl"] and " ("..status..")" or "")
   end
   return s
 end
@@ -897,16 +897,16 @@ function GetInfoTextForStatusRemoval(status,StatusLocs,indent,colourize)
       result_loc = ColourizeStatus(entry.result,result_loc,colourize)
       local new_status_loc = StatusLocs and StatusLocs[entry.new_status] or entry.new_status
       new_status_loc = ColourizeStatus(entry.new_status,new_status_loc,colourize)
-      s = s..indent.."- "..new_status_loc
+      s = s..indent.."- "..new_status_loc..(CurrentPressedKeys["Ctrl"] and " ("..entry.new_status..")" or "")
       if entry.forbidden and next(entry.forbidden) then
         for _,forbid in ipairs(entry.forbidden) do
           local forb_loc = StatusLocs and StatusLocs[forbid] or forbid
           forb_loc = ColourizeStatus(forbid,forb_loc,colourize)
-          entry.forbidden[_] = forb_loc
+          entry.forbidden[_] = forb_loc..(CurrentPressedKeys["Ctrl"] and " ("..forbid..")" or "")
         end
-        s = s.." while not "..table.concat(entry.forbidden,", ")
+        s = s.." <font color='#DCDCCC'>while not</font> "..table.concat(entry.forbidden,", ")
       end
-      s = s.." = "..result_loc
+      s = s.." = "..result_loc..(CurrentPressedKeys["Ctrl"] and " ("..entry.result..")" or "")
       if next(info,i) then
         s = s.."\n"
       end

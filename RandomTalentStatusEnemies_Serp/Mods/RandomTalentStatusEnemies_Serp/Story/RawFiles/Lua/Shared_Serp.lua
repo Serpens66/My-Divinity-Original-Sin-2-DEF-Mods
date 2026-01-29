@@ -281,7 +281,6 @@ end
 -- SetTag 	(GUIDSTRING)_Source, (STRING)_Tag
 -- IsTagged 	[in](GUIDSTRING)_Target, [in](STRING)_Tag, [out](INTEGER)_Bool
 -- ClearTag 	(GUIDSTRING)_Source, (STRING)_Tag
--- TODO sicherstellen, dass Talentpoint nicht mehrfach geaddet wird
 SharedFns.AddTalent = function(charGUID,Talent,compensateTalentPoint,Tag,char)
   local BuggedTalents = {"Throwing", "WandCharge","BeastMaster","PainDrinker","DeathfogResistant","Sourcerer","Rag"} -- talents which dont work properly with CharacterAddTalent (noticeable that they have no effect, not displayed and also not removeable). But as Boost they seem to work (at least tested with BeastMaster): only the first 3 are added at all, while most likely only BeastMaster works.
   if Talent and Talent~="None" then
@@ -289,10 +288,10 @@ SharedFns.AddTalent = function(charGUID,Talent,compensateTalentPoint,Tag,char)
     Ext.Print("Trying add Talent "..tostring(Talent).." to "..tostring(charGUID))
     if not Tag or Osi.IsTagged(charGUID,Tag)==0 then
       if (char and not char.Stats["TALENT_"..Talent]) or (not char and Osi.CharacterHasTalent(charGUID, Talent) == 0) then
-        if char.PlayerCustomData==nil or SharedFns.table_contains_value(BuggedTalents,Talent) then -- NPC
+        if not SharedFns.IsPlayerMainChar(charGUID) or SharedFns.table_contains_value(BuggedTalents,Talent) then -- NPC
           Osi.NRD_CharacterSetPermanentBoostTalent(charGUID,Talent,1)--(CHARACTERGUID)_Character, (STRING)_Talent, (INTEGER)_HasTalent (_HasTalent=0 heißt entfernen und =1 heißt zufügen) -- der char TALENT_ check kann dies auch finden, der CharacterHasTalent nicht
           Osi.CharacterAddAttribute(charGUID, "Dummy", 0) -- to sync to clients
-        elseif char.PlayerCustomData then
+        elseif char.PlayerCustomData then -- summons also have PlayerCustomData and CharacterAddTalent works for them, BUT is not savegame persistent. So better use NRD_CharacterSetPermanentBoostTalent for everyone who is not mainchar, this is persistent
           Osi.CharacterAddTalent(charGUID, Talent)
         end
         Ext.Print("Talent "..tostring(Talent).." was added to "..tostring(charGUID))
@@ -368,7 +367,7 @@ SharedFns.OnUnitCombatEntered = function(charGUID,combatID)
   -- Random Talents/Status for not-ally
   if char and not SharedFns.IsPlayerAlly(charGUID) then -- neutral NPC and Enemies
     if SharedFns.HowToAddRandomTalents == "OnCombat" then
-      chosen = SharedFns.GetRandomTalents(charGUID,char,SharedFns.num_talents)
+      local chosen = SharedFns.GetRandomTalents(charGUID,char,SharedFns.num_talents)
       for i,Talent in ipairs(chosen) do
         SharedFns.AddTalent(charGUID,Talent,false,"NPCRandomTalent_"..tostring(i),char) -- only added once per NPC by using the Tag. that way no need to remove it on leave combat
       end
