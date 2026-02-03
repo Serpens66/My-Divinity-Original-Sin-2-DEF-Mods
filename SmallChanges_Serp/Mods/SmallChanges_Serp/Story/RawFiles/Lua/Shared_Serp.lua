@@ -656,7 +656,7 @@ SharedFns.OnStatsLoaded = function(e)
     local json = Ext.IO.LoadFile("LeaderLib_GlobalSettings.json", "user")
     if json then
       local data = Ext.Json.Parse(json).Mods[ModuleUUID]
-      if data then
+      if data and data.Global.Variables.NPCLoremasterReduction then
         ReduceLoremaster = data.Global.Variables.NPCLoremasterReduction.Value==1
       end
     end
@@ -801,7 +801,17 @@ SharedFns.OnSaveLoaded = function(major, minor, patch, build)
   for _,charGUID in ipairs(players) do
 
     -- Ext.Print("SmallChanges_Serp: OnSaveLoaded",charGUID)
-    SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
+    local modsettings = Mods and Mods.LeaderLib and Mods.LeaderLib.SettingsManager and Mods.LeaderLib.SettingsManager.GetMod(ModuleUUID)
+    if modsettings then
+      if modsettings.Global:GetVariable("AddFreeEquipTalent", 1)==1 then
+        SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
+      else
+        Osi.CharacterRemoveTalent(charGUID,"InventoryAccess")
+        Osi.ClearTag(charGUID,"InventoryAccess_Serp")
+      end
+    else
+      SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
+    end
     if Osi.CharacterHasSkill(charGUID,"Target_LLDUMMY_TrainingDummy")==0 then
       Osi.CharacterAddSkill(charGUID,"Target_LLDUMMY_TrainingDummy")
     end
@@ -858,8 +868,14 @@ SharedFns.OnCharacterJoinedParty = function(_charGUID)
   local charGUID,char = UnifycharGuid(_charGUID)
   Ext.Print("CharacterJoinedParty",charGUID)
   if SharedFns.IsPlayerMainChar(charGUID) then
-    SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
-    
+    local modsettings = Mods and Mods.LeaderLib and Mods.LeaderLib.SettingsManager and Mods.LeaderLib.SettingsManager.GetMod(ModuleUUID)
+    if modsettings then
+      if modsettings.Global:GetVariable("AddFreeEquipTalent", 1)==1 then
+        SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
+      end
+    else
+      SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
+    end
   end
 end
 -- Ext.Stats.EnumLabelToIndex("AbilityType","RangerLore")
@@ -1023,6 +1039,7 @@ end
 
 -- Osi.ItemTemplateAddTo("37535d5c-3262-4d2d-bcbc-c940e33ec2ca",Osi.CharacterGetHostCharacter(),1,1)
 -- Osi.ItemTemplateAddTo("3b5c5a91-00ab-4a86-bc30-b59e14951163",Osi.CharacterGetHostCharacter(),1,1)
+-- Osi.ItemTemplateAddTo("1bf8d23b-4f71-4e2b-ab26-8dc179968f0b",Osi.CharacterGetHostCharacter(),1,1)
 
 -- Osi.CharacterLevelUpTo(Osi.CharacterGetHostCharacter(),20)
   -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Shout_BreakTheShackles")

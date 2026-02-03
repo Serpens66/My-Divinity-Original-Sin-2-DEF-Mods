@@ -16,3 +16,4 @@
 - fixed immortality of the 2 chars and added Sadha to it.
 1.0.0.3:
 - add modsetting to disable the NPC LoreMaster-change
+- add modsetting to enable/disable the free equipment in combat: AddFreeEquipTalent

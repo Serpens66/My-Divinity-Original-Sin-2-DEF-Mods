@@ -1,5 +1,16 @@
 Ext.Require("Shared.lua")
 
+local function RegisterProtectedOsirisListener(event, arity, state, callback)
+	Ext.Osiris.RegisterListener(event, arity, state, function(...)
+		if Ext.Server.GetGameState() == "Running" then
+			local b,err = xpcall(callback, debug.traceback, ...)
+			if not b then
+				Ext.PrintError("AutoLearnSkill_Serp: ERROR: ",err)
+			end
+		end
+	end)
+end
+
 
 
 -- ######################################

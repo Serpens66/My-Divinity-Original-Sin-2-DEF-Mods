@@ -1235,4 +1235,153 @@
           -- "Cloud" : "WaterCloud",
           -- "Ground" : "Water"
         -- }
+        
+        
+        
+        
+        
+        
+        
+
+-- Ext.Stats.ItemCombo.GetLegacy LOOT_Rune_Flame_Small_LOOT_Rune_Flame_Small
+-- {
+	-- "AutoLevel" : false,
+	-- "CraftingStation" : "None",
+	-- "Ingredients" : 
+	-- [
+		-- {
+			-- "IngredientType" : "Object",
+			-- "ItemRarity" : "Sentinel",
+			-- "Object" : "TOOL_Pouch_Dust_Pixie_A",
+			-- "Transform" : "Consume"
+		-- },
+		-- {
+			-- "IngredientType" : "Object",
+			-- "ItemRarity" : "Sentinel",
+			-- "Object" : "LOOT_Rune_Flame_Small",
+			-- "Transform" : "Consume"
+		-- },
+		-- {
+			-- "IngredientType" : "Object",
+			-- "ItemRarity" : "Sentinel",
+			-- "Object" : "LOOT_Rune_Flame_Small",
+			-- "Transform" : "Transform"
+		-- }
+	-- ],
+	-- "Name" : "LOOT_Rune_Flame_Small_LOOT_Rune_Flame_Small",
+	-- "RecipeCategory" : "Runes",
+	-- "Results" : 
+	-- [
+		-- {
+			-- "Name" : "LOOT_Rune_Flame_Small_LOOT_Rune_Flame_Small_1",
+			-- "PreviewIcon" : "",
+			-- "PreviewStatsId" : "LOOT_Rune_Flame_Medium",
+			-- "PreviewTooltip" : "",
+			-- "ReqLevel" : 0,
+			-- "Requirement" : "Sentinel",
+			-- "Results" : 
+			-- [
+				-- {
+					-- "Boost" : "",
+					-- "Result" : "LOOT_Rune_Flame_Medium",
+					-- "ResultAmount" : 1
+				-- }
+			-- ]
+		-- }
+	-- ]
+-- }
+
+-- Ext.Stats.ItemCombo.GetLegacy CON_Potion_Empty_A_LOOT_Essence_Fire_A
+-- {
+        -- "AutoLevel" : false,
+        -- "CraftingStation" : "None",
+        -- "Ingredients" :
+        -- [
+                -- {
+                        -- "IngredientType" : "Object",
+                        -- "ItemRarity" : "Sentinel",
+                        -- "Object" : "CON_Potion_Empty_A",
+                        -- "Transform" : "Transform"
+                -- },
+                -- {
+                        -- "IngredientType" : "Category",
+                        -- "ItemRarity" : "Sentinel",
+                        -- "Object" : "EssenceFire",
+                        -- "Transform" : "Consume"
+                -- }
+        -- ],
+        -- "Name" : "CON_Potion_Empty_A_LOOT_Essence_Fire_A",
+        -- "RecipeCategory" : "Potions",
+        -- "Results" :
+        -- [
+                -- {
+                        -- "Name" : "CON_Potion_Empty_A_LOOT_Essence_Fire_A_1",
+                        -- "PreviewIcon" : "",
+                        -- "PreviewStatsId" : "CON_Potion_Will",
+                        -- "PreviewTooltip" : "",
+                        -- "ReqLevel" : 0,
+                        -- "Requirement" : "Sentinel",
+                        -- "Results" :
+                        -- [
+                                -- {
+                                        -- "Boost" : "",
+                                        -- "Result" : "CON_Potion_Will",
+                                        -- "ResultAmount" : 1
+                                -- }
+                        -- ]
+                -- }
+        -- ]
+-- }
+
+        
+        
+-- ItemComboProperty.GetLegacy("Poison")
+-- {
+        -- "Entries" :
+        -- [
+                -- {
+                        -- "IngredientType" : "Category",
+                        -- "ObjectId" : "PotionPoison",
+                        -- "Result" : "CON_Potion_Empty_A"
+                -- },
+                -- {
+                        -- "IngredientType" : "Object",
+                        -- "ObjectId" : "CONT_Barrel_Ooze_A",
+                        -- "Result" : "CONT_Barrel_Ooze_A"
+                -- }
+        -- ],
+        -- "Name" : "Poison",
+        -- "PreviewIcon" : "Item_CONT_Barrel_Ooze_A",
+        -- "PreviewTooltip" : "ItemCombinationProperty_Poison_Tooltip"
+-- }
   
+  
+-- S >> _D(Ext.Stats.ItemComboProperty.GetLegacy("Beer"))
+-- {
+        -- "Entries" :
+        -- [
+                -- {
+                        -- "IngredientType" : "Object",
+                        -- "ObjectId" : "CON_Drink_Bottle_Beer_A",
+                        -- "Result" : "ITEM_EmptyBottle"
+                -- },
+                -- {
+                        -- "IngredientType" : "Object",
+                        -- "ObjectId" : "CON_Drink_Bottle_Beer_A_Fancy",
+                        -- "Result" : "ITEM_EmptyBottle"
+                -- },
+                -- {
+                        -- "IngredientType" : "Object",
+                        -- "ObjectId" : "CON_Drink_Mug_Beer_A",
+                        -- "Result" : "CON_Drink_Mug_A_Empty"
+                -- },
+                -- {
+                        -- "IngredientType" : "Object",
+                        -- "ObjectId" : "FUR_Bar_Barrel_A_Beer_A",
+                        -- "Result" : "FUR_Bar_Barrel_A_Beer_A"
+                -- }
+        -- ],
+        -- "Name" : "Beer",
+        -- "PreviewIcon" : "Item_CON_Drink_Mug_A_Beer",
+        -- "PreviewTooltip" : "ItemCombinationProperty_Beer_Tooltip"
+-- }

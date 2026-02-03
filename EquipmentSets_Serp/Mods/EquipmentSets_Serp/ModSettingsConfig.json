@@ -1,0 +1,29 @@
+{
+	"TitleColor": "#11FF99",
+	"Data": {
+		"Variables": {
+			"Entries" : {
+				"MaxAPCosts" : {
+					"Max" : 10,
+					"Min" : 0,
+					"Value": 1,
+					"Increment": 1
+				},
+				"Cooldown" : {
+					"Max" : 10,
+					"Min" : 0,
+					"Value": 1,
+					"Increment": 1
+				}
+			}
+		}
+	},
+	"MenuOrder": [
+		{
+			"Entries" : [
+				"MaxAPCosts",
+				"Cooldown"
+			]
+		}
+	]
+}

@@ -85,6 +85,20 @@
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
                         <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="CrossbowsScaleStrength_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Crossbows Scale Strength" type="22" />
+                            <attribute id="UUID" value="059b0cff-8606-4ed7-8d1d-1af0fd3980d0" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="EquipmentSets_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Equipment Set" type="22" />
+                            <attribute id="UUID" value="06668bc7-a66c-4511-8329-5b25074c519d" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
                             <attribute id="Folder" value="SumImpr_Serp" type="30" />
                             <attribute id="MD5" value="" type="23" />
                             <attribute id="Name" value="Pet Power (Serp)" type="22" />
@@ -162,10 +176,10 @@
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
                         <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="CRAFTUNLOCKEDALL_cd4e9e00-6207-ade6-59aa-361f9acee7c5" type="30" />
+                            <attribute id="Folder" value="UnlockAllRecipes_Serp" type="30" />
                             <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="CRAFTUNLOCKEDALL_cd4e9e00-6207-ade6-59aa-361f9acee7c5" type="22" />
-                            <attribute id="UUID" value="cd4e9e00-6207-ade6-59aa-361f9acee7c5" type="22" />
+                            <attribute id="Name" value="Unlock All Recipes" type="22" />
+                            <attribute id="UUID" value="a14e5f1a-c767-4ad7-a0c0-b3de6f45d5f8" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
                         <node id="ModuleShortDesc">

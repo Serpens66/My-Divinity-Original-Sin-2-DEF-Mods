@@ -1,0 +1,8 @@
+{
+    "RequiredExtensionVersion": 60,
+    "ModTable": "EquipmentSets_Serp",
+    "FeatureFlags": [
+        "OsirisExtensions",
+        "Lua"
+    ]
+}

@@ -128,7 +128,16 @@ Ext.Events.SessionLoaded:Subscribe(function (ev)
         for _,charGUID in ipairs(players) do
           Osi.NRD_CharacterDisableTalent(charGUID,"Indomitable", e.Value) -- 1 means disabling
         end
-
+      elseif e.ID=="AddFreeEquipTalent" then
+        local players = SharedFns.GetAllPlayerChars()
+        for _,charGUID in ipairs(players) do
+          if e.Value==1 then
+            SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
+          else
+            Osi.CharacterRemoveTalent(charGUID,"InventoryAccess")
+            Osi.ClearTag(charGUID,"InventoryAccess_Serp")
+          end
+        end
       end
     end, {MatchArgs={ModuleUUID=ModuleUUID}})
 

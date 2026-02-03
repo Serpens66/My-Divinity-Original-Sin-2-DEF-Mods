@@ -2,9 +2,14 @@
 -- bei Stati evtl. noch anzeigen, welche Potion/Objects und welche Skills diesen Status geben? könnte zuviel text werden
 -- status werte anzeigen
   
-
+-- TODO:
+-- item ingredient Riesennägel gucken wo definiert ist, dass man damit Schuhe rutschfest machen kann
+-- und das im tooltip anzeigen
   
 ModSettings = ModSettings or {Colouring=1,ShowSkillStatus=2,ShowSurfaceStatus=2,ShowItemStatus=1}
+  
+  
+CacheCraftingInfos = {}
   
 Ext.Require("helpers/GetSurfaces.lua") -- _GetSurfaces
 Ext.Require("helpers/gameScriptStatusLogic.lua") -- GetInfoTextForStatus
@@ -202,7 +207,138 @@ function CreateItemTooltipAddition(item,tooltip,nonewlinestart)
         addstringtodesc = addstringtodesc.."(StackId: "..tostring(StackId).." Category:"..tostring(ObjectCategory).." "..tostring(StackPriority)..")"
       end
     end
+    
   end
+  if item and item.StatsFromName then
+    -- add info about unique/quest and crafting
+    
+    -- create cache
+    local ItemComboProperties = {}
+    for i,comboprop in pairs(Ext.Stats.GetStats("ItemComboProperty")) do
+      ItemComboProperties[comboprop] = ItemComboProperties[comboprop] or {}
+      for _,entry in ipairs(Ext.Stats.ItemComboProperty.GetLegacy(comboprop).Entries) do
+        table.insert(ItemComboProperties[comboprop],{IngredientType=entry.IngredientType,ObjectId=entry.ObjectId})
+      end
+    end
+    if next(CacheCraftingInfos)==nil then -- only needed once per saveload
+      for i,combo in pairs(Ext.Stats.GetStats("ItemCombination")) do
+        local recipe = Ext.Stats.ItemCombo.GetLegacy(combo)
+        local results = {}
+        for _,resultinfo in ipairs(recipe.Results) do
+          for __,result_info in ipairs(resultinfo.Results) do
+            if result_info.Result and result_info.Result~="" then
+              table.insert(results,{recipename=recipe.Name,result=result_info.Result,amount=result_info.ResultAmount})
+            end
+          end
+        end
+        if #results>0 then
+          for _,ingredientinfo in ipairs(recipe.Ingredients) do
+            local IngredientType = ingredientinfo.IngredientType
+            CacheCraftingInfos[IngredientType] = CacheCraftingInfos[IngredientType] or {Category={},Object={},Property={}}
+            if IngredientType=="Property" then
+              local comboprop = ingredientinfo.Object
+              if ItemComboProperties[comboprop] then
+                for __,entry in ipairs(ItemComboProperties[comboprop]) do
+                  CacheCraftingInfos[entry.IngredientType][entry.ObjectId] = CacheCraftingInfos[entry.IngredientType][entry.ObjectId] or {}
+                  table.insert(CacheCraftingInfos[entry.IngredientType][entry.ObjectId],results)
+                end
+              end
+            else
+              CacheCraftingInfos[IngredientType][ingredientinfo.Object] = CacheCraftingInfos[IngredientType][ingredientinfo.Object] or {}
+              table.insert(CacheCraftingInfos[IngredientType][ingredientinfo.Object],results)
+            end
+          end
+        end
+      end
+    end
+    
+    local infostring = "\n\n"
+    if item.StatsFromName.StatsEntry.Unique==1 then
+      infostring = infostring.."<font color='#40b606'>IsUnique</font> "
+    end
+    if item.StatsFromName.Name:lower():find("quest",1,true) then
+      infostring = infostring.."<font color='#40b606'>IsQuest</font> "
+    end
+    local crafting_results = {}
+    for IngredientType,ingredientinfo in pairs(CacheCraftingInfos) do
+      for IngredientName,results in pairs(ingredientinfo) do
+        if IngredientType=="Object" and IngredientName==item.StatsFromName.Name or IngredientType=="Category" and table_contains_value(item.StatsFromName.StatsEntry.ComboCategory,IngredientName) then
+          for _,resultinfo in ipairs(results) do
+            table.insert(crafting_results,resultinfo)
+          end
+        end
+      end
+    end
+    if #crafting_results>0 then
+      infostring = infostring.."<font color='#40b606'>IsIngredient</font> "
+      local propertystring = "Counts as "
+      for comboprop,comboentries in pairs(ItemComboProperties) do
+        for _,entry in ipairs(comboentries) do
+          if entry.ObjectId==item.StatsFromName.Name then
+            propertystring = propertystring..comboprop.." "
+          end
+        end
+      end
+      for _,category in ipairs(item.StatsFromName.StatsEntry.ComboCategory) do
+        propertystring = propertystring..category.." "
+      end
+      if propertystring~="Counts as " then
+        infostring = infostring..propertystring
+      end
+      if CurrentPressedKeys["Shift"] then
+        local addedlocs = {}
+        infostring = infostring..": <font color='#40b606'>Used to craft:</font>\n"
+        for _,resultinfos in ipairs(crafting_results) do
+          for __,resultinfo in pairs(resultinfos) do
+            -- if Osi.CharacterHasRecipeUnlocked(Osi.CharacterGetHostCharacter(),resultinfo.recipename)==1 then -- cant check Osi for client... so show everything..
+              local loc = GetTranslation(resultinfo.result,"")
+              if loc=="" then
+                local stats = Ext.Stats.Get(resultinfo.result)
+                if stats then
+                  if stats.RootTemplate then
+                    Template = Ext.Template.GetTemplate(stats.RootTemplate)
+                    loc = GetTranslation(Template.DisplayName,"")
+                  end
+                  if not loc or loc=="" then
+                    if stats.DisplayName then
+                      loc = GetTranslation(stats.DisplayName,stats.DisplayName)
+                    elseif stats.RootTemplate then
+                      loc = Ext.Template.GetTemplate(stats.RootTemplate).DisplayName
+                    end
+                  end
+                end
+                if not loc or loc=="" then
+                  loc = resultinfo.result
+                end
+              end
+              if not addedlocs[loc] then
+                infostring = infostring..tostring(loc)..(resultinfo.amount~=1 and " ("..tostring(resultinfo.amount)..")" or "")
+                if next(resultinfos,__) or next(crafting_results,_) then
+                  infostring = infostring..", "
+                end
+                addedlocs[loc] = true
+              end
+            -- end
+          end
+        end
+      end
+    end
+    if infostring~="\n\n" then
+      local found = false
+      for __,tentry in ipairs(tooltip.Data) do
+        if tentry.Type=="ItemDescription" then -- ItemDescription is on the bottom
+          tentry.Label = tentry.Label..infostring
+          found = true
+          break
+        end
+      end
+      if not found then
+        local entry = {Type="ItemDescription",Label=infostring}
+        table.insert(tooltip.Data,entry)
+      end
+    end
+  
+  end  
   
   return addstringtodesc
 end

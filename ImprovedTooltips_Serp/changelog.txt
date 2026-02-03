@@ -20,3 +20,7 @@
 - added modsetting to display status info in tooltips for Items.
 - added the value 2 to the status modsettings: Show expanded info about Status in Surface/Skill/Item only while holding Shift.
 - If you (also) hold Ctrl it will show you the statusID of all stati in the tooltip, helpful in some cases where mods add new stati with same name like existing.
+1.0.0.8:
+- added info to items if they are Unique or have "Quest" in the code-name and if they can be used for crafting.
+- if useable in crafting, show the recipes where it is used when holding Tab in tooltip.
+
