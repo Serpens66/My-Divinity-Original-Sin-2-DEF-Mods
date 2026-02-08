@@ -104,6 +104,12 @@
             "Min" : 0,
             "Value": 1,
             "Increment": 1
+          },
+          "LeaderGetsLeaderBuff" : {
+            "Max" : 1,
+            "Min" : 0,
+            "Value": 1,
+            "Increment": 1
           }
         }
       },
@@ -133,7 +139,8 @@
                 "SkillbooskLvl5Not4",
                 "DisableIndomiteable",
                 "NPCLoremasterReduction",
-                "AddFreeEquipTalent"
+                "AddFreeEquipTalent",
+                "LeaderGetsLeaderBuff"
         ]
       }
     ]

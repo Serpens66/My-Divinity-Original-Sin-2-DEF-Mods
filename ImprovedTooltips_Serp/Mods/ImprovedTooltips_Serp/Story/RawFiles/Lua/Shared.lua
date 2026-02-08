@@ -228,6 +228,8 @@ function CreateItemTooltipAddition(item,tooltip,nonewlinestart)
           for __,result_info in ipairs(resultinfo.Results) do
             if result_info.Result and result_info.Result~="" then
               table.insert(results,{recipename=recipe.Name,result=result_info.Result,amount=result_info.ResultAmount})
+            elseif result_info.Result and result_info.Result=="" and result_info.Boost and result_info.Boost~="" then -- inlcude Boosts like Boost_Armor_Boots_Crafting_Special_KnockdownImmunity
+              table.insert(results,{recipename=recipe.Name,result=result_info.Boost,amount=result_info.ResultAmount})
             end
           end
         end

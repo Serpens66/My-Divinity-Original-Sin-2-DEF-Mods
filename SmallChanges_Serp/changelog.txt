@@ -17,3 +17,5 @@
 1.0.0.3:
 - add modsetting to disable the NPC LoreMaster-change
 - add modsetting to enable/disable the free equipment in combat: AddFreeEquipTalent
+1.0.0.4:
+- made Leadership bonus also apply to the Leader itself (possible to disable in modsettings)

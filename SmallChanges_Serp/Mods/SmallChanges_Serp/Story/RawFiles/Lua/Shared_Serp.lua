@@ -20,6 +20,8 @@
 
 SharedFns = {}
 
+LeaderGetsLeaderBuff = 1 -- is changed via modsettings
+
 -- Immortal_Segeant_Redux and Gwydian
 SharedFns.MakeImmortalcharGUIDs = {"ed64ea06-9060-4b29-88dd-623ab008fae6", -- S_GLO_LV_HenchmenRecruiter
   "632e47f2-22c3-4342-b3f7-152dd3534f3b", -- S_RC_OIL_InnerField_Sourcerer
@@ -499,8 +501,28 @@ SharedFns.OnStatsLoaded = function(e)
   
   -- from 8. 
   Ext.ExtraData["LeadershipRange"] = 12
-  -- TODO: evlt noch gucken ob wir demjenigen mit leadership den boost auch geben.. geht nur mit externen buff den wir selbst managen..
-  -- gibt leider 0: Osi.ApplyStatus("Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd","LEADERSHIP",-1,1,"Elves_Hero_Female_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd")
+  
+  local CopyLeaderShipStats = {"APCostBoost","APMaximum","APRecovery","APStart","AccuracyBoost","AirResistance","AirResistancePenetration","AirSpecialist","Armor","ArmorBoost","Barter","ChanceToHitBoost","Constitution","CorrosiveResistancePenetration","CriticalChance","DamageMultiplier","DamageRange","DamageBoost","DodgeBoost","DualWielding","EarthResistance","EarthResistancePenetration","EarthSpecialist","Finesse","Strength","FireResistance","FireResistancePenetration","FireSpecialist","Initiative","Leadership","LifeSteal","Loremaster","Luck","MagicArmor","MagicArmorBoost","MagicPoints","MagicResistancePenetration","MaxSummons","Movement","MovementSpeedBoost","Necromancy","PainReflection","Perseverance","Persuasion","PhysicalResistance","PhysicalResistancePenetration","PiercingResistance","PiercingResistancePenetration","PoisonResistance","PoisonResistancePenetration","Polymorph","RangeBoost","Ranged","RangerLore","RogueLore","SPCostBoost","ShadowResistancePenetration","Sight","SingleHanded","Sneaking","Sourcery","SummonLifelinkModifier","Summoning","Telekinesis","Thievery","TwoHanded","Vitality","VitalityBoost","VitalityPercentage","WarriorLore","WaterResistance","WaterResistancePenetration","WaterSpecialist",}
+  
+  local vanillaleaderstat = Ext.Stats.Get("SKILLBOOST_Leadership")
+  local LeadershipAllResBonus = Ext.ExtraData["LeadershipAllResBonus"] or 0 -- for whatever reason ExtraData["LeadershipAllResBonus"] has no effect ? make it have an effect on vanilla and my mod
+  local LeadershipDodgingBonus = Ext.ExtraData["LeadershipDodgingBonus"] or 0
+  if LeadershipDodgingBonus~=2 then
+    vanillaleaderstat.DodgeBoost = LeadershipDodgingBonus
+  end
+  if LeadershipAllResBonus~=3 then
+    vanillaleaderstat.FireResistance = LeadershipAllResBonus
+    vanillaleaderstat.EarthResistance = LeadershipAllResBonus
+    vanillaleaderstat.WaterResistance = LeadershipAllResBonus
+    vanillaleaderstat.AirResistance = LeadershipAllResBonus
+    vanillaleaderstat.PoisonResistance = LeadershipAllResBonus
+  end
+  
+  local myleaderstat = Ext.Stats.Get("Stats_LeadershipSerp") -- copy vanilla leadership stat values into my leadership (have to use another stat, because StackId causes problems otherwise)
+  for _,statname in ipairs(CopyLeaderShipStats) do
+    myleaderstat[statname] = vanillaleaderstat[statname]
+  end
+
 
 
   -- Taunt_Range_Increased
@@ -727,15 +749,48 @@ SharedFns.OnStatsLoaded = function(e)
       end
     end
   end
-  stat = Ext.Stats.Get("Target_Fatality")
+  local stat = Ext.Stats.Get("Target_Fatality")
   if stat then
     stat["Magic Cost"] = 2
   end
+  
   
   Ext.Print("OnStatsLoadedSerpSmallChanges_Serp Ende")
   
 end
 
+-- give the Leader also the Leadership status buff
+-- done by giving every Leader the status LEADERSHIP_SERP. And if both LEADERSHIP_SERP and LEADERSHIP is active,
+ -- deactivate the lesser one by changing StatsMultiplier=0
+function AdjustLeaderLeadership(charGUID,Leadershiplevel)
+  if LeaderGetsLeaderBuff then
+    local Leadershiplevel = Leadershiplevel or Osi.CharacterGetAbility(charGUID,"Leadership")
+    if Leadershiplevel and Leadershiplevel>0 then
+      if Osi.HasActiveStatus(charGUID,"LEADERSHIP_SERP")==0 then
+        Osi.ApplyStatus(charGUID,"LEADERSHIP_SERP",-1,1,charGUID)
+      end
+      local char = Ext.Entity.GetCharacter(charGUID)
+      if char then
+        local LEADERSHIP_SERP = char:GetStatus("LEADERSHIP_SERP")
+        local LEADERSHIP = char:GetStatus("LEADERSHIP") -- we could also loop over all stati with char.StatusMachine.Statuses
+        local Leadershipstatuslevel = LEADERSHIP and LEADERSHIP.StatsMultiplier or 0
+        if Leadershiplevel >= Leadershipstatuslevel then
+          LEADERSHIP_SERP.StatsMultiplier = Leadershiplevel
+          if LEADERSHIP then
+            LEADERSHIP.StatsMultiplier = 0
+          end
+        else
+          LEADERSHIP_SERP.StatsMultiplier = 0
+          if LEADERSHIP then
+            LEADERSHIP.StatsMultiplier = LEADERSHIP.Strength
+          end
+        end
+      end
+    elseif Osi.HasActiveStatus(charGUID,"LEADERSHIP_SERP")==1 then
+      Osi.RemoveStatus(charGUID,"LEADERSHIP_SERP")
+    end    
+  end
+end
 
 
 -- Give BeastMaster talent to ever player with Summoning>=3
@@ -827,6 +882,8 @@ SharedFns.OnSaveLoaded = function(major, minor, patch, build)
       end
     end
     
+    AdjustLeaderLeadership(charGUID,new)
+    
   end
   
   -- Immortal_Segeant_Redux and Gwydian
@@ -861,7 +918,8 @@ SharedFns.OnUnitCombatEntered = function(_charGUID,combatID)
 end
 
 SharedFns.OnCharacterResurrected = function(_charGUID)
-  -- local charGUID,char = UnifycharGuid(_charGUID)
+  local charGUID,char = UnifycharGuid(_charGUID)
+  AdjustLeaderLeadership(charGUID)
 end
 -- also called for summons!
 SharedFns.OnCharacterJoinedParty = function(_charGUID)
@@ -877,6 +935,7 @@ SharedFns.OnCharacterJoinedParty = function(_charGUID)
       SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
     end
   end
+  AdjustLeaderLeadership(charGUID)
 end
 -- Ext.Stats.EnumLabelToIndex("AbilityType","RangerLore")
 -- Ext.Stats.EnumIndexToLabel("AbilityType",2)
@@ -886,6 +945,8 @@ SharedFns.OnCharacterBaseAbilityChanged = function(charGUID,ability,old,new)
   -- local ability = Ext.Stats.EnumIndexToLabel("AbilityType",ability) # ist schon string
   if ability=="Summoning" then
     SharedFns.ChangeBeastMaster(charGUID,new)
+  elseif ability=="Leadership" then
+    AdjustLeaderLeadership(charGUID,new)
   end
 end
 
@@ -932,7 +993,10 @@ end
 -- Also called for standing in surface, cause ist verursacher charGUID und bei surface der dem das surface gehört, bzw. der es erzeugt hat. 
 -- In surface hin und her gehen triggert es nicht erneut (wie der surface schaden), triggert auch nur einmal pro sekunde oderso, dh. wenn surface schnell gewechselt wird, triggert es für eins davon garnicht, aber wir nehmen auch OnObjectTurnStarted dazu, dann passt das
 SharedFns.OnCharacterStatusApplied = function(_charGUID, status, cause)
-  -- local charGUID,char = UnifycharGuid(_charGUID)
+  local charGUID,char = UnifycharGuid(_charGUID)
+  if status=="LEADERSHIP" then
+    AdjustLeaderLeadership(charGUID)
+  end
 end
 SharedFns.OnCharacterStatusRemoved = function(_charGUID, status, nilSource)
   local charGUID,char = UnifycharGuid(_charGUID)
@@ -1028,8 +1092,6 @@ end
 -- exit
 
 
--- loop over all status of a player:
--- char.StatusMachine.Statuses
 
 
 
@@ -1040,6 +1102,8 @@ end
 -- Osi.ItemTemplateAddTo("37535d5c-3262-4d2d-bcbc-c940e33ec2ca",Osi.CharacterGetHostCharacter(),1,1)
 -- Osi.ItemTemplateAddTo("3b5c5a91-00ab-4a86-bc30-b59e14951163",Osi.CharacterGetHostCharacter(),1,1)
 -- Osi.ItemTemplateAddTo("1bf8d23b-4f71-4e2b-ab26-8dc179968f0b",Osi.CharacterGetHostCharacter(),1,1)
+-- Osi.ItemTemplateAddTo("fa60597a-4853-4556-92a5-e4168d3e36bb",Osi.CharacterGetHostCharacter(),1,1)
+-- Osi.ItemTemplateAddTo("eda48b44-7f26-4922-84bf-85725ef067c1",Osi.CharacterGetHostCharacter(),1,1)
 
 -- Osi.CharacterLevelUpTo(Osi.CharacterGetHostCharacter(),20)
   -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Shout_BreakTheShackles")
@@ -1184,3 +1248,89 @@ end
 -- Ext.Stats.Get("Player_Fane").Movement=750;Ext.Stats.Sync("Player_Fane",false)
 -- print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").RunSpeedOverride)
 -- Ext.Print(Ext.Entity.GetCharacter("S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb").Stats.DynamicStats[1].Movement)
+
+
+-- loop over all status of a player:
+-- char.StatusMachine.Statuses
+-- [{
+                -- "ApplyStatusOnTick" : "",
+                -- "BringIntoCombat" : false,
+                -- "CanEnterChance" : 100,
+                -- "Channeled" : false,
+                -- "CleansedByHandle" : "userdata: 0000000000000000",
+                -- "CurrentLifeTime" : -1.0,
+                -- "DamageSourceType" : "StatusEnter",
+                -- "EffectTime" : 0.0,
+                -- "Flags0" :
+                -- [
+                        -- "Influence",
+                        -- "IsLifeTimeSet"
+                -- ],
+                -- "Flags1" : [],
+                -- "Flags2" :
+                -- [
+                        -- "Started"
+                -- ],
+                -- "ForceFailStatus" : false,
+                -- "ForceStatus" : false,
+                -- "HealEffectOverride" : "Unknown4",
+                -- "Influence" : true,
+                -- "InitiateCombat" : false,
+                -- "IsFromItem" : false,
+                -- "IsHostileAct" : false,
+                -- "IsInvulnerable" : false,
+                -- "IsLifeTimeSet" : true,
+                -- "IsOnSourceSurface" : false,
+                -- "IsResistingDeath" : false,
+                -- "ItemHandles" : [],
+                -- "Items" : [],
+                -- "KeepAlive" : false,
+                -- "LifeTime" : -1.0,
+                -- "LoseControl" : false,
+                -- "NetID" : 131086,
+                -- "OriginalWeaponStatsId" : "",
+                -- "OverrideWeaponHandle" : "userdata: 0000000000000000",
+                -- "OverrideWeaponStatsId" : "",
+                -- "OwnerHandle" : "userdata: 0DC00002000003DF",
+                -- "Poisoned" : false,
+                -- "RequestClientSync" : false,
+                -- "RequestClientSync2" : false,
+                -- "RequestDelete" : false,
+                -- "RequestDeleteAtTurnEnd" : false,
+                -- "ResetAllCooldowns" : false,
+                -- "ResetCooldownsAbilities" : [],
+                -- "ResetOncePerCombat" : false,
+                -- "SavingThrow" : 0,
+                -- "ScaleWithVitality" : false,
+                -- "Skill" : [],
+                -- "SourceDirection" :
+                -- [
+                        -- 0.0,
+                        -- 1.0,
+                        -- 0.0
+                -- ],
+                -- "StackId" : "Leadership",
+                -- "StartTime" : 378.29385555256158,
+                -- "StartTimer" : 0.0,
+                -- "Started" : true,
+                -- "StatsId" : "SKILLBOOST_Leadership",
+                -- "StatsIds" :
+                -- [
+                        -- {
+                                -- "StatsId" : "SKILLBOOST_Leadership",
+                                -- "Turn" : 0
+                        -- }
+                -- ],
+                -- "StatsMultiplier" : 6.0,
+                -- "StatusHandle" : "userdata: 0000000100000004",
+                -- "StatusId" : "LEADERSHIP",
+                -- "StatusOwner" : [],
+                -- "StatusSourceHandle" : "userdata: 0DC000020000006E",
+                -- "StatusType" : "LEADERSHIP",
+                -- "Strength" : 2.0,
+                -- "SurfaceChanges" : [],
+                -- "TargetHandle" : "userdata: 0DC00002000003DF",
+                -- "Turn" : 70,
+                -- "TurnTimer" : 1.3760658502578735
+        -- }
+-- ]

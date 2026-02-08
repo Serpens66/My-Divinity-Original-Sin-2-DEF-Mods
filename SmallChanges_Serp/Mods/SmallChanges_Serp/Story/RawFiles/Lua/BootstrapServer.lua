@@ -138,6 +138,16 @@ Ext.Events.SessionLoaded:Subscribe(function (ev)
             Osi.ClearTag(charGUID,"InventoryAccess_Serp")
           end
         end
+      elseif e.ID=="LeaderGetsLeaderBuff" then
+        LeaderGetsLeaderBuff = e.Value==1
+        local players = SharedFns.GetAllPlayerChars()
+        for _,charGUID in ipairs(players) do
+          if e.Value==0 then
+            Osi.RemoveStatus(charGUID,"LEADERSHIP_SERP")
+          elseif e.Value==1 then
+            AdjustLeaderLeadership(charGUID)
+          end
+        end
       end
     end, {MatchArgs={ModuleUUID=ModuleUUID}})
 
