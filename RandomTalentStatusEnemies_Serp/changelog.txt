@@ -8,3 +8,4 @@
 - added modsettings if LeaderLib is installed: Define max amount of talents/stati and add extra max duration to the default 1-5 rounds of stati.
 1.0.0.4:
 - Improved Talent code to also be persistent for own summons (but since this mod does not add talents to your summons, it has no real effect)
+- removed Talent Jitterbug as random enemy Talent, because it does not check if the terrain is valid, so enemies can be teleported out of the map...

@@ -1,5 +1,8 @@
 -- TODO:
 -- container items in reihenfolge in ui loopen, istaktuell iwie nach name sortiert oderso..
+-- Ext.Utils.GetHandleType(Ext.Entity.GetItem(Osi.GetItemForItemTemplateInInventory(Osi.CharacterGetHostCharacter(),"LLEQSET_BackPack_Serp_Set1_b38b81b8-eb66-42a8-b771-123b5525566e")).InventoryHandle)
+-- _D(Ext.Entity.GetItem(Osi.GetItemForItemTemplateInInventory(Osi.CharacterGetHostCharacter(),"LLEQSET_BackPack_Serp_Set1_b38b81b8-eb66-42a8-b771-123b5525566e")).InventoryHandle)
+
 
 
 

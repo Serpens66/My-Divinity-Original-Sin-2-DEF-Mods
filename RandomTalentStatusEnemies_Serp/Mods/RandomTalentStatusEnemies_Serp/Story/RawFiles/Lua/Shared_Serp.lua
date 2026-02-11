@@ -80,7 +80,7 @@ if Ext.IsServer() then
       RandomTalents.Haymaker={weight=1}
       RandomTalents.Gladiator={weight=1}
       RandomTalents.Soulcatcher={weight=4,reqAbilities={"Summoning"}}
-      RandomTalents.Jitterbug={weight=3} -- teleport away from attacker if armor is broken, only works if divine talents is active, since the txt script for this is in there
+      -- RandomTalents.Jitterbug={weight=3} -- teleport away from attacker if armor is broken, only works if divine talents is active, since the txt script for this is in there. OUTCOMMENTED because it can teleport enemies out of map ...
       -- RandomTalents.Indomitable={weight=1} -- is too op
     end
   end)

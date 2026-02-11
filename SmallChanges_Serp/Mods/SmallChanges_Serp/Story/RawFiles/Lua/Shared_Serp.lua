@@ -1095,7 +1095,7 @@ end
 
 
 
--- _C() ist kurzform für Osi.CharacterGetHostCharacter()
+-- _C() ist kurzform für Ext.Entity.GetCharacter(Osi.CharacterGetHostCharacter())
 -- _D() für dump table
 
 

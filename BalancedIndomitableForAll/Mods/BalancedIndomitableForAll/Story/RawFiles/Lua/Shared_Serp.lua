@@ -35,7 +35,7 @@ end
 -- der IndomitableForAll Mod looped durch alle Stati die die entsprechenden ImmuneFlagg hat um alle Stati zu finden,vorallem auch welche von Mods.
 -- Allerdings warum sollte ein Mod einen Status zufügen, der die ImmuneFlag KnockedDown hat? Mods die neue CC Stati zufügen, werden so doch auch nicht erkannt.
 -- Sehe ich nicht, also hardcode ich die Stati stattdessen (offenbar kann man auch weder aus status noch aus dazugehörigem potion rauslesen, welche Stati die Runde skippen lassen?! sonst hätte er das ja genommen und ich find auch nichts)
-SharedFns.Indomitable_Block_Stati = {"CHICKEN","FROZEN","PETRIFIED","STUNNED","KNOCKED_DOWN","CRIPPLED","CHARMED","MADNESS"}
+SharedFns.Indomitable_Block_Stati = {"CHICKEN","FROZEN","PETRIFIED","STUNNED","KNOCKED_DOWN","CRIPPLED","CHARMED","MADNESS","FEAR","SLEEPING"}
 SharedFns.Indomitable_Duration = 3 -- turns
 SharedFns.OnCharacterStatusRemoved = function(target, status, nilSource)
   if SharedFns.table_contains_value(SharedFns.Indomitable_Block_Stati,status) and Osi.HasActiveStatus(target,"INDOMITABLE_SERP")==0 then
