@@ -5,7 +5,8 @@
 -- TODO:
 -- item ingredient Riesennägel gucken wo definiert ist, dass man damit Schuhe rutschfest machen kann
 -- und das im tooltip anzeigen
-  
+
+
 ModSettings = ModSettings or {Colouring=1,ShowSkillStatus=2,ShowSurfaceStatus=2,ShowItemStatus=1}
   
   
@@ -258,7 +259,7 @@ function CreateItemTooltipAddition(item,tooltip,nonewlinestart)
     if item.StatsFromName.StatsEntry.Unique==1 then
       infostring = infostring.."<font color='#40b606'>IsUnique</font> "
     end
-    if item.StatsFromName.Name:lower():find("quest",1,true) then
+    if item.StatsFromName.Name:lower():find("quest",1,true) or item.StoryItem then
       infostring = infostring.."<font color='#40b606'>IsQuest</font> "
     end
     local crafting_results = {}

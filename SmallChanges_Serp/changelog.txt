@@ -19,3 +19,8 @@
 - add modsetting to enable/disable the free equipment in combat: AddFreeEquipTalent
 1.0.0.4:
 - made Leadership bonus also apply to the Leader itself (possible to disable in modsettings)
+1.0.0.5:
+- reduce SummoningAbilityBonus from 10 to 5 (% buff per summon point your summons get), because with more summons they are too OP. But you can change this with modsetting.
+- call my function AdjustLeaderLeadership for the self-Leadership also on item equip/uneqip to update the self buff.
+1.0.0.6:
+- overwrite 2 vanilla and 7 giftbag trap templates to increase the 10 turns (1 minute) Lifetime of traps to 200 turns (20 minutes), so they dont explode shortly after being placed... (incompatible to other mods changing these templates)

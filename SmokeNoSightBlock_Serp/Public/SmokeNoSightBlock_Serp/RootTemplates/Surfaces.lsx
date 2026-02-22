@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="3" minor="6" revision="3" build="0" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+	<region id="Templates">
+		<node id="Templates">
+			<children>
+      
+				<node id="GameObjects">
+					<attribute id="CanSeeThrough" type="19" value="True" />
+					<attribute id="DecalMaterial" type="22" value="b279a93b-4833-40e6-85ac-75766f22dffc" />
+					<attribute id="DefaultLifeTime" type="6" value="12" />
+					<attribute id="Description" type="28" handle="hbe67a04cg7a97g48c1g8118gd74ef7933aab" value="| Applies Blind and Suffocating. |" />
+					<attribute id="DisplayName" type="28" handle="h9df9eca7g2031g445egbc1bg4184a9f47a95" value="Cursed Smoke Cloud" />
+					<attribute id="FadeInSpeed" type="6" value="1" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="MapKey" type="22" value="07f80aab-0349-4521-b2ac-c8613a1cd662" />
+					<attribute id="Name" type="23" value="SurfaceSmokeCloudCursed" />
+					<attribute id="PhysicsTemplate" type="22" value="" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="Type" type="22" value="surface" />
+					<attribute id="VisualTemplate" type="22" value="" />
+					<attribute id="_OriginalFileVersion_" type="4" value="822214677" />
+					<children>
+						<node id="FX">
+							<children>
+								<node id="FX">
+									<attribute id="GridSize" type="6" value="2" />
+									<attribute id="Height" type="11" value="1.5 2" />
+									<attribute id="RandomPlacement" type="6" value="0.33" />
+									<attribute id="Rotation" type="8" value="0 0" />
+									<attribute id="Scale" type="11" value="0.75 1.5" />
+									<attribute id="SpawnCell" type="4" value="100" />
+									<attribute id="SurfaceNeeded" type="6" value="0" />
+									<attribute id="SurfaceRadiusMax" type="6" value="2" />
+									<attribute id="Visual" type="22" value="a908524d-d655-4d32-af6e-aae613b55085" />
+								</node>
+								<node id="FX">
+									<attribute id="GridSize" type="6" value="4" />
+									<attribute id="Height" type="11" value="1.5 2" />
+									<attribute id="RandomPlacement" type="6" value="1" />
+									<attribute id="Rotation" type="8" value="0 360" />
+									<attribute id="Scale" type="11" value="0.4 0.8" />
+									<attribute id="SpawnCell" type="4" value="100" />
+									<attribute id="SurfaceNeeded" type="6" value="2" />
+									<attribute id="SurfaceRadiusMax" type="6" value="0" />
+									<attribute id="Visual" type="22" value="e69708ce-b2be-488a-a5f1-ce3269500b20" />
+								</node>
+							</children>
+						</node>
+						<node id="InstanceVisual">
+							<children>
+								<node id="InstanceVisual">
+									<attribute id="GridSize" type="6" value="4" />
+									<attribute id="Height" type="11" value="1.5 2" />
+									<attribute id="RandomPlacement" type="6" value="0.3" />
+									<attribute id="Rotation" type="8" value="0 0" />
+									<attribute id="Scale" type="11" value="4 6" />
+									<attribute id="SpawnCell" type="4" value="100" />
+									<attribute id="SurfaceNeeded" type="6" value="0.1" />
+									<attribute id="SurfaceRadiusMax" type="6" value="0" />
+									<attribute id="Visual" type="22" value="da0c5a83-d3c0-47ee-88a9-2e2e10035ee9" />
+								</node>
+								<node id="InstanceVisual">
+									<attribute id="GridSize" type="6" value="4" />
+									<attribute id="Height" type="11" value="1.9 2.4" />
+									<attribute id="RandomPlacement" type="6" value="1" />
+									<attribute id="Rotation" type="8" value="0 0" />
+									<attribute id="Scale" type="11" value="2 4" />
+									<attribute id="SpawnCell" type="4" value="60" />
+									<attribute id="SurfaceNeeded" type="6" value="1" />
+									<attribute id="SurfaceRadiusMax" type="6" value="0" />
+									<attribute id="Visual" type="22" value="db017881-d1e3-423d-b687-0795c3612ab8" />
+								</node>
+							</children>
+						</node>
+						<node id="IntroFX" />
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="StatusData">
+							<children>
+								<node id="StatusData">
+									<attribute id="ApplyToCharacters" type="19" value="True" />
+									<attribute id="ApplyToItems" type="19" value="False" />
+									<attribute id="Chance" type="6" value="1" />
+									<attribute id="Duration" type="6" value="6" />
+									<attribute id="Force" type="19" value="False" />
+									<attribute id="KeepAlive" type="19" value="True" />
+									<attribute id="OnlyWhileMoving" type="19" value="False" />
+									<attribute id="Remove" type="19" value="False" />
+									<attribute id="StatusId" type="22" value="BLIND" />
+									<attribute id="VanishOnApply" type="19" value="False" />
+								</node>
+								<node id="StatusData">
+									<attribute id="ApplyToCharacters" type="19" value="True" />
+									<attribute id="ApplyToItems" type="19" value="False" />
+									<attribute id="Chance" type="6" value="1" />
+									<attribute id="Duration" type="6" value="12" />
+									<attribute id="Force" type="19" value="False" />
+									<attribute id="KeepAlive" type="19" value="True" />
+									<attribute id="OnlyWhileMoving" type="19" value="False" />
+									<attribute id="Remove" type="19" value="False" />
+									<attribute id="StatusId" type="22" value="SUFFOCATING" />
+									<attribute id="VanishOnApply" type="19" value="False" />
+								</node>
+							</children>
+						</node>
+						<node id="Tags" />
+					</children>
+				</node>
+        
+        <node id="GameObjects">
+					<attribute id="CanSeeThrough" type="19" value="True" />
+					<attribute id="DecalMaterial" type="22" value="b279a93b-4833-40e6-85ac-75766f22dffc" />
+					<attribute id="DefaultLifeTime" type="6" value="6" />
+					<attribute id="Description" type="28" handle="h7adfc6e1ga169g4955g8b08g69d6655b8d9f" value="Blocks vision." />
+					<attribute id="DisplayName" type="28" handle="hb57b3935gfde9g4a05g82d2gfc8c3aa029cf" value="Smoke Cloud" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="MapKey" type="22" value="31713d40-821a-4249-aa3f-2f0ae4c9f544" />
+					<attribute id="Name" type="23" value="SurfaceSmokeCloud" />
+					<attribute id="PhysicsTemplate" type="22" value="" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="Type" type="22" value="surface" />
+					<attribute id="VisualTemplate" type="22" value="" />
+					<attribute id="_OriginalFileVersion_" type="4" value="822214677" />
+					<children>
+						<node id="FX" />
+						<node id="InstanceVisual">
+							<children>
+								<node id="InstanceVisual">
+									<attribute id="GridSize" type="6" value="4" />
+									<attribute id="Height" type="11" value="1.5 2" />
+									<attribute id="RandomPlacement" type="6" value="0.3" />
+									<attribute id="Rotation" type="8" value="0 0" />
+									<attribute id="Scale" type="11" value="4 6" />
+									<attribute id="SpawnCell" type="4" value="100" />
+									<attribute id="SurfaceNeeded" type="6" value="0.1" />
+									<attribute id="SurfaceRadiusMax" type="6" value="0" />
+									<attribute id="Visual" type="22" value="966caff4-c56f-49ff-ab61-e78508085db7" />
+								</node>
+							</children>
+						</node>
+						<node id="IntroFX" />
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="StatusData" />
+						<node id="Tags" />
+					</children>
+				</node>
+        
+        <node id="GameObjects">
+					<attribute id="AlwaysUseDefaultLifeTime" type="19" value="True" />
+					<attribute id="CanEnterCombat" type="19" value="False" />
+					<attribute id="CanSeeThrough" type="19" value="True" />
+					<attribute id="DecalMaterial" type="22" value="b279a93b-4833-40e6-85ac-75766f22dffc" />
+					<attribute id="DefaultLifeTime" type="6" value="1" />
+					<attribute id="Description" type="28" handle="h7adfc6e1ga169g4955g8b08g69d6655b8d9f" value="Blocks vision." />
+					<attribute id="DisplayName" type="28" handle="hb57b3935gfde9g4a05g82d2gfc8c3aa029cf" value="Smoke Cloud" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="MapKey" type="22" value="b0616a8a-2d6c-4700-8638-006d9b1baf0d" />
+					<attribute id="Name" type="23" value="SurfaceSmokeCloudPurified" />
+					<attribute id="PhysicsTemplate" type="22" value="" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="Type" type="22" value="surface" />
+					<attribute id="VisualTemplate" type="22" value="" />
+					<attribute id="_OriginalFileVersion_" type="4" value="822214678" />
+					<children>
+						<node id="FX" />
+						<node id="InstanceVisual">
+							<children>
+								<node id="InstanceVisual">
+									<attribute id="GridSize" type="6" value="4" />
+									<attribute id="Height" type="11" value="1.5 2" />
+									<attribute id="RandomPlacement" type="6" value="0.3" />
+									<attribute id="Rotation" type="8" value="0 0" />
+									<attribute id="Scale" type="11" value="4 6" />
+									<attribute id="SpawnCell" type="4" value="100" />
+									<attribute id="SurfaceNeeded" type="6" value="0.1" />
+									<attribute id="SurfaceRadiusMax" type="6" value="0" />
+									<attribute id="Visual" type="22" value="b40a7805-4ebb-48eb-b810-5927110ff778" />
+								</node>
+							</children>
+						</node>
+						<node id="IntroFX" />
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="StatusData" />
+						<node id="Tags" />
+					</children>
+				</node>
+        
+        <node id="GameObjects">
+					<attribute id="CanSeeThrough" type="19" value="True" />
+					<attribute id="DecalMaterial" type="22" value="b279a93b-4833-40e6-85ac-75766f22dffc" />
+					<attribute id="DefaultLifeTime" type="6" value="12" />
+					<attribute id="Description" type="28" handle="h6a438f0egdb7ag4073g9fadg74768a86aaa0" value="Applies Invisibility, Removes Silence." />
+					<attribute id="DisplayName" type="28" handle="hbf02846cg1055g428dgb753gbfdd15ac3ee6" value="Blessed Smoke Cloud" />
+					<attribute id="Flag" type="4" value="0" />
+					<attribute id="GroupID" type="5" value="0" />
+					<attribute id="LevelName" type="22" value="" />
+					<attribute id="MapKey" type="22" value="d17538e1-b1f2-439f-b198-2c1ce19c6ff2" />
+					<attribute id="Name" type="23" value="SurfaceSmokeCloudBlessed" />
+					<attribute id="PhysicsTemplate" type="22" value="" />
+					<attribute id="Scale" type="6" value="1" />
+					<attribute id="Type" type="22" value="surface" />
+					<attribute id="VisualTemplate" type="22" value="" />
+					<attribute id="_OriginalFileVersion_" type="4" value="822214677" />
+					<children>
+						<node id="FX" />
+						<node id="InstanceVisual">
+							<children>
+								<node id="InstanceVisual">
+									<attribute id="GridSize" type="6" value="4" />
+									<attribute id="Height" type="11" value="1.5 2" />
+									<attribute id="RandomPlacement" type="6" value="0.3" />
+									<attribute id="Rotation" type="8" value="0 0" />
+									<attribute id="Scale" type="11" value="4 6" />
+									<attribute id="SpawnCell" type="4" value="100" />
+									<attribute id="SurfaceNeeded" type="6" value="0.1" />
+									<attribute id="SurfaceRadiusMax" type="6" value="0" />
+									<attribute id="Visual" type="22" value="7d0def0b-e1c8-438d-9d96-e5edbd1bc455" />
+								</node>
+								<node id="InstanceVisual">
+									<attribute id="GridSize" type="6" value="3.5" />
+									<attribute id="Height" type="11" value="0.5 1.5" />
+									<attribute id="RandomPlacement" type="6" value="1" />
+									<attribute id="Rotation" type="8" value="0 360" />
+									<attribute id="Scale" type="11" value="5 8" />
+									<attribute id="SpawnCell" type="4" value="50" />
+									<attribute id="SurfaceNeeded" type="6" value="0" />
+									<attribute id="SurfaceRadiusMax" type="6" value="0" />
+									<attribute id="Visual" type="22" value="172731d9-2fab-4052-875b-59ef9634f7e4" />
+								</node>
+								<node id="InstanceVisual">
+									<attribute id="GridSize" type="6" value="1" />
+									<attribute id="Height" type="11" value="1 1" />
+									<attribute id="RandomPlacement" type="6" value="0.2" />
+									<attribute id="Rotation" type="8" value="0 0" />
+									<attribute id="Scale" type="11" value="0.5 2" />
+									<attribute id="SpawnCell" type="4" value="100" />
+									<attribute id="SurfaceNeeded" type="6" value="0" />
+									<attribute id="SurfaceRadiusMax" type="6" value="1" />
+									<attribute id="Visual" type="22" value="9bf5c002-7013-40fb-844d-b592a125c3db" />
+								</node>
+							</children>
+						</node>
+						<node id="IntroFX" />
+						<node id="LayerList">
+							<children>
+								<node id="Layers" />
+							</children>
+						</node>
+						<node id="StatusData">
+							<children>
+								<node id="StatusData">
+									<attribute id="ApplyToCharacters" type="19" value="True" />
+									<attribute id="ApplyToItems" type="19" value="False" />
+									<attribute id="Chance" type="6" value="1" />
+									<attribute id="Duration" type="6" value="6" />
+									<attribute id="Force" type="19" value="False" />
+									<attribute id="KeepAlive" type="19" value="True" />
+									<attribute id="OnlyWhileMoving" type="19" value="False" />
+									<attribute id="Remove" type="19" value="False" />
+									<attribute id="StatusId" type="22" value="INVISIBLE" />
+									<attribute id="VanishOnApply" type="19" value="False" />
+								</node>
+								<node id="StatusData">
+									<attribute id="ApplyToCharacters" type="19" value="True" />
+									<attribute id="ApplyToItems" type="19" value="True" />
+									<attribute id="Chance" type="6" value="1" />
+									<attribute id="Duration" type="6" value="6" />
+									<attribute id="Force" type="19" value="False" />
+									<attribute id="KeepAlive" type="19" value="False" />
+									<attribute id="OnlyWhileMoving" type="19" value="False" />
+									<attribute id="Remove" type="19" value="True" />
+									<attribute id="StatusId" type="22" value="MUTED" />
+									<attribute id="VanishOnApply" type="19" value="False" />
+								</node>
+							</children>
+						</node>
+						<node id="Tags" />
+					</children>
+				</node>
+        
+			</children>
+		</node>
+	</region>
+</save>

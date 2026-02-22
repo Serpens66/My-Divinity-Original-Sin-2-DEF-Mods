@@ -160,6 +160,7 @@ Ext.Osiris.RegisterListener("SavegameLoaded", 4, "after", function(major, minor,
   if NewBackpacksOnLoad==1 then
     local players = GetAllPlayerChars()
     for _,charGUID in ipairs(players) do
+      CombatInfo[charGUID] = nil
       if Osi.CharacterGetItemTemplateCount(charGUID,SetBackpack_template) == 0 then
         Osi.ItemTemplateAddTo(SetBackpack_template,charGUID,1,1)
       -- if Osi.CharacterGetItemTemplateCount(charGUID,SwitchSetItem_template) == 0 then -- cant check within container... so assume we also need it again, if we have no backpack
@@ -176,6 +177,12 @@ Ext.Osiris.RegisterListener("SavegameLoaded", 4, "after", function(major, minor,
   end
 end)
 
+-- (GUIDSTRING)_Object, (INTEGER)_CombatID 
+Ext.Osiris.RegisterListener("ObjectEnteredCombat", 2, "after", function(charGUID, combatID)
+  if Osi.ObjectIsCharacter(charGUID)==1 then -- [in](GUIDSTRING)_Object, [out](INTEGER)_Bool 
+    CombatInfo[charGUID] = nil -- reset for new combat
+  end
+end)
 
 -- ######################################
 

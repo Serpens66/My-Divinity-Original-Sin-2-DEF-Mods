@@ -1,0 +1,2 @@
+1.0.0.1
+- Fix cooldown, sometimes it has cooldown in combat, although should not have (I guess remembered from previous combat)

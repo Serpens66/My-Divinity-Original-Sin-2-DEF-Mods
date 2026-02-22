@@ -127,10 +127,17 @@
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
                         <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="MoreSurfaceEffects_Serp" type="30" />
+                            <attribute id="Folder" value="MoreSurfaceEffectsWOBlind_Serp" type="30" />
                             <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="More Surface Effects" type="22" />
+                            <attribute id="Name" value="More Surface Effects without FogBlind" type="22" />
                             <attribute id="UUID" value="865b2110-9460-4255-ad3e-aa7ba6ff8edc" type="22" />
+                            <attribute id="Version" value="268435456" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="SmokeNoSightBlock_Serp" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Smoke No Sight Block" type="22" />
+                            <attribute id="UUID" value="1bccac74-c6b2-411f-aaa5-5413c32f8939" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
                         <node id="ModuleShortDesc">
@@ -364,13 +371,13 @@
                             <attribute id="UUID" value="464d3ba3-3745-4371-9aed-e46bc010eadb" type="22" />
                             <attribute id="Version" value="486539268" type="4" />
                         </node>
-                        <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="BonusUniques_173e1939-2e97-1467-c7db-02a7b33aa786" type="30" />
-                            <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="BonusUniques" type="22" />
-                            <attribute id="UUID" value="173e1939-2e97-1467-c7db-02a7b33aa786" type="22" />
-                            <attribute id="Version" value="1778384905" type="4" />
-                        </node>
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="BonusUniques_173e1939-2e97-1467-c7db-02a7b33aa786" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="BonusUniques" type="22" /> -->
+                            <!-- <attribute id="UUID" value="173e1939-2e97-1467-c7db-02a7b33aa786" type="22" /> -->
+                            <!-- <attribute id="Version" value="1778384905" type="4" /> -->
+                        <!-- </node> -->
                         <node id="ModuleShortDesc">
                             <attribute id="Folder" value="BonusUniquesFoodFix_cdc0b63c-e9f1-4301-ae31-1b71f2cc57e0" type="30" />
                             <attribute id="MD5" value="" type="23" />

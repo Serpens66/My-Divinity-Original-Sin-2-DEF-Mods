@@ -25,4 +25,4 @@
 - if useable in crafting, show the recipes where it is used when holding Tab in tooltip.
 1.0.0.9:
 - crafting results preview from items now also include boosts like Boost_Armor_Boots_Crafting_Special_KnockdownImmunity 
-
+- also check for "StoryItem" Info to mark items as Quest Item.

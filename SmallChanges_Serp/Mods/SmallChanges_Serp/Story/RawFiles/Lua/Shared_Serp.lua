@@ -493,6 +493,14 @@ SharedFns.OnStatsLoaded = function(e)
   -- from 4 to 20
   Ext.ExtraData["MaximumSummonsInCombat"] = 20
   
+  -- nerf the bonus hp/attack your summons get from summoning ability from 10% per point to 5% per point, because with more summons, it is too OP otherwise
+  Ext.ExtraData["SummoningAbilityBonus"] = 5 -- vanilla 10, overwritten by modsetting SummonsBuffPerPoint
+  local MyStat = Ext.Stats.GetRaw("Stats_Summoning_Ability")
+  MyStat["VitalityBoost"] = 5
+  MyStat["DamageBoost"] = 5
+  MyStat["ArmorBoost"] = 5
+  MyStat["MagicArmorBoost"] = 5
+  
   -- MiniMemoryBuff from 3 to 5
   Ext.ExtraData["CharacterBaseMemoryCapacity"] = 5
   
@@ -917,10 +925,6 @@ SharedFns.OnUnitCombatEntered = function(_charGUID,combatID)
   
 end
 
-SharedFns.OnCharacterResurrected = function(_charGUID)
-  local charGUID,char = UnifycharGuid(_charGUID)
-  AdjustLeaderLeadership(charGUID)
-end
 -- also called for summons!
 SharedFns.OnCharacterJoinedParty = function(_charGUID)
   local charGUID,char = UnifycharGuid(_charGUID)
@@ -952,11 +956,14 @@ end
 
 SharedFns.OnItemEquipped = function(item,charGUID)
   SharedFns.ChangeBeastMaster(charGUID)
+  AdjustLeaderLeadership(charGUID,new)
 end
 SharedFns.OnItemUnEquipped = function(item,charGUID)
   SharedFns.ChangeBeastMaster(charGUID)
+  AdjustLeaderLeadership(charGUID,new)
 end
 SharedFns.OnCharacterResurrected = function(item,charGUID)
+  AdjustLeaderLeadership(charGUID)
   SharedFns.ChangeBeastMaster(charGUID)
 end
 
@@ -1092,7 +1099,11 @@ end
 -- exit
 
 
-
+-- change price for giftbag lvl up items, call after starting dialoge:
+-- PartySetShopPriceModifier("S_CMP_LUAE_Merchant_Sister1_5b186df0-1b30-4e8b-96df-60b488d744a3",CharacterGetHostCharacter(),250)
+-- PartySetShopPriceModifier("S_CMP_LUAE_Merchant_Sister2_76d39e33-423e-43a3-9d85-aecea9629611",CharacterGetHostCharacter(),250)
+-- PartySetShopPriceModifier("S_CMP_LUAE_Merchant_Sister3_84013403-0691-4c78-985d-876675d3213f",CharacterGetHostCharacter(),250)
+-- PartySetShopPriceModifier("S_CMP_LUAE_Merchant_Sister4_1610bd08-2e9b-4bef-b24e-38958088c164",CharacterGetHostCharacter(),250)
 
 
 -- _C() ist kurzform für Ext.Entity.GetCharacter(Osi.CharacterGetHostCharacter())
@@ -1104,6 +1115,7 @@ end
 -- Osi.ItemTemplateAddTo("1bf8d23b-4f71-4e2b-ab26-8dc179968f0b",Osi.CharacterGetHostCharacter(),1,1)
 -- Osi.ItemTemplateAddTo("fa60597a-4853-4556-92a5-e4168d3e36bb",Osi.CharacterGetHostCharacter(),1,1)
 -- Osi.ItemTemplateAddTo("eda48b44-7f26-4922-84bf-85725ef067c1",Osi.CharacterGetHostCharacter(),1,1)
+-- Osi.ItemTemplateAddTo("84ce1dfa-12b1-4b37-8907-aa7301f1edbf",Osi.CharacterGetHostCharacter(),1,1)
 
 -- Osi.CharacterLevelUpTo(Osi.CharacterGetHostCharacter(),20)
   -- Osi.CharacterAddSkill(Osi.CharacterGetHostCharacter(),"Shout_BreakTheShackles")

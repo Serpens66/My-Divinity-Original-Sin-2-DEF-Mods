@@ -148,6 +148,14 @@ Ext.Events.SessionLoaded:Subscribe(function (ev)
             AdjustLeaderLeadership(charGUID)
           end
         end
+      elseif e.ID=="SummonsBuffPerPoint" then
+        Ext.ExtraData["SummoningAbilityBonus"] = e.Value -- this is just the display in tooltip
+        local MyStat = Ext.Stats.GetRaw("Stats_Summoning_Ability") -- this is the actual buff that gets multiplied with summining points
+        MyStat["VitalityBoost"] = e.Value
+        MyStat["DamageBoost"] = e.Value
+        MyStat["ArmorBoost"] = e.Value
+        MyStat["MagicArmorBoost"] = e.Value
+        Ext.Stats.Sync("Stats_Summoning_Ability",false)
       end
     end, {MatchArgs={ModuleUUID=ModuleUUID}})
 
