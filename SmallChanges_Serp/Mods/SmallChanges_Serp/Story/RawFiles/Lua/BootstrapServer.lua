@@ -99,6 +99,8 @@ end)
 
 -- ######################################
 
+Orig_LevelUpValues = {}
+
 -- LeaderLib Settings
 Ext.Events.SessionLoaded:Subscribe(function (ev)
   if Mods.LeaderLib then -- LeaderLib (outside of SessionLoaded it is nil if LeaderLib is not loaded first..)
@@ -156,6 +158,17 @@ Ext.Events.SessionLoaded:Subscribe(function (ev)
         MyStat["ArmorBoost"] = e.Value
         MyStat["MagicArmorBoost"] = e.Value
         Ext.Stats.Sync("Stats_Summoning_Ability",false)
+      elseif e.ID=="EquipLevelUpCostMultiplier" then
+        for _,obj in ipairs({"LUE_Diamond_Dust","LUE_Azure_Flint","LUE_Quicksilver"}) do
+          local MyStat = Ext.Stats.GetRaw(obj)
+          if MyStat then
+            if not Orig_LevelUpValues[obj] then
+              Orig_LevelUpValues[obj] = MyStat["Value"]
+            end
+            MyStat["Value"] = math.ceil(Orig_LevelUpValues[obj] * e.Value)
+            Ext.Stats.Sync(obj,false)
+          end
+        end
       end
     end, {MatchArgs={ModuleUUID=ModuleUUID}})
 

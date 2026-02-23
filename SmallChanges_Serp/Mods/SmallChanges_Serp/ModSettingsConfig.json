@@ -116,6 +116,12 @@
             "Min" : 0,
             "Value": 5,
             "Increment": 0.5
+          },
+          "EquipLevelUpCostMultiplier" : {
+            "Max" : 2,
+            "Min" : 0,
+            "Value": 0.2,
+            "Increment": 0.01
           }
         }
       },
@@ -147,7 +153,8 @@
                 "NPCLoremasterReduction",
                 "AddFreeEquipTalent",
                 "LeaderGetsLeaderBuff",
-                "SummonsBuffPerPoint"
+                "SummonsBuffPerPoint",
+                "EquipLevelUpCostMultiplier"
         ]
       }
     ]
