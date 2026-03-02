@@ -25,3 +25,10 @@
 1.0.0.6:
 - overwrite 2 vanilla and 7 giftbag trap templates to increase the 10 turns (1 minute) Lifetime of traps to 200 turns (20 minutes), so they dont explode shortly after being placed... (incompatible to other mods changing these templates)
 - reduce the price of the upgrade materials for the LevelUpEquipment Giftbag: it is now 1/5 of vanilla price, because it was by far too expensive, even with thievery and all other vanilla options to make money. Added modsetting to change the value.
+1.0.0.7:
+- make the change for spears scaling with strength instead of finesse optional (modsetting)
+- make spears also give strength as bonus instead of finesse
+- improve supercharge, because it only increases basedamage, which is like 20% in total, because most damage comes from boni for summons... therefore also make it always Critical hit, to increase total damage even more (found no way to flat multiply total damage)
+- fix max summon increase: on increasing the base stat, the max summon could be wrong since it only used the base stats to calculate, fixed now.
+- added to Difficulty Modoptions: Damage , because it seems on Tactican the damage is insane high? one shot of every character...
+- overwrite Hannag Cornered script (first meeting her against magisters) so that Hannag does not suicide just because any magister moved closer to her (while you fight the magisters): added as additional condition that Hannag must be within a fight. (incompatible to mods which also change this script)

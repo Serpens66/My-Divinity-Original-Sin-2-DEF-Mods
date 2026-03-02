@@ -1,0 +1,2 @@
+1.0.0.1:
+- changed also the Bonus a crossbow can give from Finesse to Strength

@@ -26,3 +26,5 @@
 1.0.0.9:
 - crafting results preview from items now also include boosts like Boost_Armor_Boots_Crafting_Special_KnockdownImmunity 
 - also check for "StoryItem" Info to mark items as Quest Item.
+1.0.0.10:
+- fix german translation of "Riesige Flammenrune der Macht" which should be "Kleine Flammenrune der Macht" ("big" should be "small")

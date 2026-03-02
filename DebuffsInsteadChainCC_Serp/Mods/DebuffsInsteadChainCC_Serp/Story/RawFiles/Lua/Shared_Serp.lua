@@ -22,64 +22,91 @@ local namemapping = {
 
 
 -- statusses which have no stats
-local engineStatuses = {
-	CLEAN=true,
-  CLIMBING=true,
-  SOURCE_MUTED=true,
-  DRAIN=true,
-  POLYMORPHED=true,
-  CHARMED=true,
-  INFUSED=true,
-  HIT=true,
-  IDENTIFY=true,
-  DYING=true,
-  THROWN=true,
-  LYING=true,
-  SNEAKING=true,
-  CONSUME=true,
-  ROTATE=true,
-  SHACKLES_OF_PAIN=true,
-  UNSHEATHED=true,
-  WIND_WALKER=true,
-  DARK_AVENGER=true,
-  AOO=true,
-  SHACKLES_OF_PAIN_CASTER=true,
-  SITTING=true,
-  FLANKED=true,
-  LINGERING_WOUNDS=true,
-  CHANNELING=true,
-  DAMAGE=true,
-  EXPLODE=true,
-  SMELLY=true,
-  SPIRIT_VISION=true,
-  INCAPACITATED=true,
-  SPARK=true,
-  UNLOCK=true,
-  EFFECT=true,
-  STANCE=true,
-  FORCE_MOVE=true,
-  SPIRIT=true,
-  FLOATING=true,
-  CONSTRAINED=true,
-  SUMMONING=true,
-  MATERIAL=true,
-  LEADERSHIP=true,
-  COMBUSTION=true,
-  TUTORIAL_BED=true,
-  TELEPORT_FALLING=true,
-  INFECTIOUS_DISEASED=true,
-  OVERPOWER=true,
-  REMORSE=true,
-  REPAIR=true,
-  ENCUMBERED=true,
-  UNHEALABLE=true,
-  ACTIVE_DEFENSE=true,
-  DECAYING_TOUCH=true,
-  ADRENALINE=true,
-  INSURFACE=true,
-  BOOST=true,
-  COMBAT=true,
-  STORY_FROZEN=true,
+-- but add some known SavingThrow and ImmuneFlag and translation handle to them
+engineStatuses = {
+    SOURCE_MUTED = {
+        DisplayName = "h534aec4fgecc5g4b34gb0f5g8b08c3c4309e",
+        SavingThrow = "MagicArmor",
+        ImmuneFlag = "None",
+        FormatColor = "Orange",
+    },
+    ADRENALINE = {DisplayName = "h4c891442g3b79g4dbeg906fgf8eeffcf60df"},
+    COMBAT = {},
+    SPIRIT_VISION = {},
+    UNSHEATHED = {},
+    CHANNELING = {},
+    IDENTIFY = {},
+    INSURFACE = {},
+    FLOATING = {DisplayName = "h278121a7g2132g4efdgb151g9af722d670dc"},
+    THROWN = {DisplayName = "hfa754958gff75g4474g8cd5g508b4fb7a984",ImmuneFlag="ThrownImmunity"},
+    INFUSED = {DisplayName = "hae4ca8a4g56feg480eg95c8ge5761ab1eb2e"},
+    CLIMBING = {},
+    CHARMED = {
+        DisplayName = "h30fc0122g6378g408cgac6fg6e3bcb3c852b",
+        SavingThrow = "MagicArmor",
+        ImmuneFlag = "CharmImmunity",
+        FormatColor = "Pink",
+        LoseControl = "Yes",
+    },
+    LYING = {},
+    CLEAN = {DisplayName = "h8fb688afg29efg4804g9d68g955c3c463053"},
+    ACTIVE_DEFENSE = {},
+    SNEAKING = {DisplayName = "h6bf7caf0g7756g443bg926dg1ee5975ee133"},
+    TELEPORT_FALLING = {},
+    DYING = {DisplayName = "h2e807311g8c4bg4141g85f3gcc88ee095888"},
+    STORY_FROZEN = {},
+    FORCE_MOVE = {},
+    CONSUME = {},
+    BOOST = {},
+    DRAIN = {DisplayName = "h9cf08d12gc1b8g4c7cg8662g40d03ca96df5", SavingThrow = "MagicArmor", ImmuneFlag = "None"},
+    LINGERING_WOUNDS = {DisplayName = "h3924a821gdb1fg4d6fg920eg62ee3c4586ed"},
+    DECAYING_TOUCH = {
+        DisplayName = "hbc2789fegb2deg4952ga436ga8a0aad070bf",
+        SavingThrow = "PhysicalArmor",
+        ImmuneFlag = "DecayingImmunity",
+        FormatColor = "Purple",
+    },
+    UNHEALABLE = {DisplayName = "hc33f0ac7gc3f0g47b3gba3cg8c3ddb82508e"},
+    STANCE = {},
+    INFECTIOUS_DISEASED = {
+      SavingThrow = "PhysicalArmor", 
+      ImmuneFlag = "InfectiousDiseasedImmunity",
+      DisplayName = "h791f1994g94e9g4471g9e10g398f8d194c90",
+      FormatColor = "Purple",
+    },
+    SUMMONING = {},
+    AOO = {},
+    COMBUSTION = {},
+    REMORSE = {DisplayName = "h7e0fe51fg9df2g4854gb8f1g183251dcc25b"},
+    OVERPOWER = {},
+    ENCUMBERED = {DisplayName = "hdc2c6815g4c4fg4e81g94d5g299646e91500"},
+    TUTORIAL_BED = {},
+    DAMAGE = {},
+    FLANKED = {DisplayName = "hd052e4cfg1a83g4ee5g886cgbf15dc656a0b"},
+    LEADERSHIP = {DisplayName = "h7c65fe39g1526g427bg8a2dgab7e74c66202"},
+    DARK_AVENGER = {DisplayName = "h64892b81g9543g4608ga303gcffa5055d869"},
+    SMELLY = {DisplayName = "h312fc6d0gd271g40ffg949dge80fba98335e"},
+    MATERIAL = {},
+    REPAIR = {},
+    SHACKLES_OF_PAIN = {
+        DisplayName = "h36a82a09gc2dag46feg990cgf3807db54d54",
+        SavingThrow = "PhysicalArmor",
+        ImmuneFlag = "ShacklesOfPainImmunity",
+        FormatColor = "Red",
+    },
+    POLYMORPHED = {},
+    SPIRIT = {DisplayName = "h90cedca8g690cg4aabg8df0g98da27d72991"},
+    CONSTRAINED = {},
+    EFFECT = {},
+    EXPLODE = {},
+    SPARK = {},
+    SITTING = {DisplayName = "h33b529f1g6fb3g4210g8b40ga41e4d05c0d0"},
+    INCAPACITATED = {},
+    UNLOCK = {},
+    SHACKLES_OF_PAIN_CASTER = {DisplayName = "h89ad2635gd8acg4dc1gb7f5g2287082b3733"},
+    WIND_WALKER = {DisplayName = "hc7566374g36afg4345gaf18gab4ba7d7c809"},
+    HIT = {},
+    ROTATE = {}
 }
 
 
@@ -121,8 +148,11 @@ local ReplacingStatus = {
 }
 
 local function OnCharacterStatusRemoved(charGUID, statusname, causee)
-	if not engineStatuses[statusname] and Osi.CharacterHasTalent(charGUID,"Indomitable")==0 then
-    local StatusStat = Ext.Stats.Get(statusname)
+	local StatusStat = not engineStatuses[statusname] and Ext.Stats.Get(statusname) or engineStatuses[statusname]
+  if engineStatuses[statusname] then
+    StatusStat.StatusType = statusname
+  end
+  if Osi.CharacterHasTalent(charGUID,"Indomitable")==0 then
     local StatusType = StatusStat.StatusType
     if blockedStatuses[statusname] or (concernedTypes[StatusType] and (StatusType~="CONSUME" or StatusStat.LoseControl=="Yes")) then
       local SavingThrow = StatusStat.SavingThrow
@@ -177,14 +207,27 @@ if Ext.IsServer() then
     local status = ev.Status ---@type EsvStatus
     local statusname = status.StatusId
     local sourcetype = status.DamageSourceType
+    if status.LifeTime>0 then
+      print("DebuffInsteadChainCC_Serp: BeforeStatusApply",status,statusname,sourcetype,ev.PreventStatusApply,status.LifeTime)
+    end
     if not ev.PreventStatusApply and sourcetype~="StatusTick" and sourcetype~="GM" then -- StatusTick is aura
-      if statusname and not engineStatuses[statusname] and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
+      if status.LifeTime>0 then
+        print("hier0")
+      end
+      if statusname and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
+        print("hier1",Ext.Utils.GetHandleType(status.OwnerHandle))
         if Ext.Utils.GetHandleType(status.OwnerHandle)=="ServerCharacter" then -- only for characters, we do not care for items
+          print("hier2")
           local target = Ext.Entity.GetCharacter(status.OwnerHandle) ---@type EsvCharacter .. 
           local targetGuid = target and target.MyGuid
-          local StatusStat = Ext.Stats.Get(statusname)
+          local StatusStat = not engineStatuses[statusname] and Ext.Stats.Get(statusname) or engineStatuses[statusname]
+          if engineStatuses[statusname] then
+            StatusStat.StatusType = statusname
+            StatusStat.SavingThrow = StatusStat.SavingThrow or "None" 
+          end
           if StatusStat and target and targetGuid and Osi.CharacterHasTalent(targetGuid,"Indomitable")==0 then
             local StatusType = StatusStat.StatusType
+            print(StatusType,StatusStat.LoseControl,StatusStat.ImmuneFlag,target.Stats[ImmuneFlag])
             if blockedStatuses[statusname] or (concernedTypes[StatusType] and (StatusType~="CONSUME" or StatusStat.LoseControl=="Yes")) then
               local source = Ext.Utils.GetHandleType(status.StatusSourceHandle)=="ServerCharacter" and Ext.Entity.GetCharacter(status.StatusSourceHandle) or nil ---@type EsvCharacter
               local sourceIsNonOrEnemy = not source and true or Osi.CharacterIsEnemy(targetGuid,source.MyGuid)==1 -- dont care for stati applied by non-enemies, because some benefital skill like permafrost should not prevent the CC. and there also might be quest stati by the game... 
@@ -193,6 +236,7 @@ if Ext.IsServer() then
                 local hasMomentum = Osi.HasActiveStatus(targetGuid,"LX_MOMENTUM_Serp")==1 and "LX_MOMENTUM_Serp" or nil
                 local hasLingering = Osi.HasActiveStatus(targetGuid,"LX_LINGERING_Serp")==1 and "LX_LINGERING_Serp" or nil
                 if hasLingering or hasMomentum then
+                  print("has",hasLingering,hasMomentum)
                   local sourceIsTorturer = source and source.Stats.TALENT_Torturer or false -- effects from him are not blocked. talent does not work for SurfaceStatus
                   local GoesThroughArmor = status.DamageSourceType~="SurfaceStatus" and sourceIsTorturer and table_contains_value(TorturerStati,statusname)
                   local SavingThrow = StatusStat.SavingThrow
@@ -310,6 +354,25 @@ if Ext.IsClient() then
         end
       end
     end
+    
+    for statusname,info in pairs(engineStatuses) do
+      local StatusStat = info
+      local StatusType = statusname
+      StatusStat.SavingThrow = StatusStat.SavingThrow or "None"
+      if blockedStatuses[statusname] or (concernedTypes[StatusType] and (StatusType~="CONSUME" or StatusStat.LoseControl=="Yes")) then
+        local SavingThrow = StatusStat.SavingThrow
+        if SavingThrow=="MagicArmor" then
+          table.insert(StatiBlocked.LX_LINGERING_Serp,statusname)
+          local statusname_loc = Ext.L10N.GetTranslatedStringFromKey(StatusStat.DisplayName,statusname) 
+          table.insert(StatiBlockedLoc.LX_LINGERING_Serp,statusname_loc)
+        elseif SavingThrow=="None" or SavingThrow=="PhysicalArmor" then
+          table.insert(StatiBlocked.LX_MOMENTUM_Serp,statusname)
+          local statusname_loc = Ext.L10N.GetTranslatedStringFromKey(StatusStat.DisplayName,statusname) 
+          table.insert(StatiBlockedLoc.LX_MOMENTUM_Serp,statusname_loc)
+        end
+      end
+    end
+    
     -- print("DebuffInsteadChainCC_Serp StatiBlocked:")
     -- _D(StatiBlocked)
     

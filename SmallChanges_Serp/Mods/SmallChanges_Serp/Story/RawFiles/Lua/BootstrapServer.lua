@@ -74,10 +74,6 @@ SharedFns.RegisterProtectedOsirisListener("ItemUnEquipped", 2, "after", function
   SharedFns.OnItemUnEquipped(item,charGUID)
 end)
 
-SharedFns.RegisterProtectedOsirisListener("CharacterResurrected", 1, "after", function(charGUID)
-  SharedFns.OnCharacterResurrected(item,charGUID)
-end)
-
 
 
 -- SharedFns.RegisterProtectedOsirisListener("CharacterWentOnStage", 2, "after", function(charGUID,inte)-- (CHARACTERGUID)_Character, (INTEGER)_Bool 
@@ -100,6 +96,8 @@ end)
 -- ######################################
 
 Orig_LevelUpValues = {}
+OriginalDeltaModifiers = {}
+OriginalSpearRequirements = {}
 
 -- LeaderLib Settings
 Ext.Events.SessionLoaded:Subscribe(function (ev)
@@ -167,6 +165,70 @@ Ext.Events.SessionLoaded:Subscribe(function (ev)
             end
             MyStat["Value"] = math.ceil(Orig_LevelUpValues[obj] * e.Value)
             Ext.Stats.Sync(obj,false)
+          end
+        end
+      elseif e.ID=="SpearsScaleWithStrength" then
+        if e.Value==1 then
+          for i,obj in pairs(Ext.Stats.GetStats("Weapon")) do
+            local MyStat = Ext.Stats.Get(obj)
+            if MyStat.ItemGroup:find("Spear",1,true) then
+              local Requirements = MyStat.Requirements
+              for i,Requirement in ipairs(Requirements) do
+                if Requirement.Requirement=="Finesse" then
+                  if not OriginalSpearRequirements[obj] then
+                    OriginalSpearRequirements[obj] = Requirement.Requirement -- to make sure to not change eg mod spears which already have Strength "back" to Finesse
+                  end
+                  Requirement.Requirement = "Strength"
+                end
+              end
+              MyStat.Requirements = Requirements
+              Ext.Stats.Sync(obj,false)
+            end
+          end
+          local deltamods = Ext.Stats.GetStats("DeltaMod") -- make them give Strenght as bonus instead of Finesse
+          for _,v in pairs(deltamods) do
+            local deltamod = Ext.Stats.DeltaMod.GetLegacy(v.Name, v.ModifierType)
+            if deltamod.WeaponType=="Spear" then
+              if not OriginalDeltaModifiers[v.Name] then
+                OriginalDeltaModifiers[v.Name] = {}
+              end
+              for i,boost in ipairs(deltamod["Boosts"]) do
+                if boost["Boost"]:find("Finesse",1,true) then
+                  if not OriginalDeltaModifiers[v.Name][i] then
+                    OriginalDeltaModifiers[v.Name][i] = boost["Boost"]
+                  end
+                  boost["Boost"] = string.gsub(boost["Boost"], "Finesse", "Strength") -- replace Finesse with Strength (hoping that the boost names are the same just with Strength)
+                  -- print("found",v.Name,"changed Boost to",boost["Boost"])
+                end
+              end
+              Ext.Stats.DeltaMod.Update(deltamod)
+            end
+          end
+        else -- change back to Finesse
+          for i,obj in pairs(Ext.Stats.GetStats("Weapon")) do
+            local MyStat = Ext.Stats.Get(obj)
+            if MyStat.ItemGroup:find("Spear",1,true) and OriginalSpearRequirements[obj] then
+              local Requirements = MyStat.Requirements
+              for i,Requirement in ipairs(Requirements) do
+                if Requirement.Requirement=="Strength" then
+                  Requirement.Requirement = OriginalSpearRequirements[obj]
+                end
+              end
+              MyStat.Requirements = Requirements
+              Ext.Stats.Sync(obj,false)
+            end
+          end
+          local deltamods = Ext.Stats.GetStats("DeltaMod")
+          for _,v in pairs(deltamods) do
+            local deltamod = Ext.Stats.DeltaMod.GetLegacy(v.Name, v.ModifierType)
+            if deltamod.WeaponType=="Spear" then
+              for i,boost in ipairs(deltamod["Boosts"]) do
+                if OriginalDeltaModifiers[v.Name] and OriginalDeltaModifiers[v.Name][i] then
+                  boost["Boost"] = OriginalDeltaModifiers[v.Name][i]
+                end
+              end
+              Ext.Stats.DeltaMod.Update(deltamod)
+            end
           end
         end
       end

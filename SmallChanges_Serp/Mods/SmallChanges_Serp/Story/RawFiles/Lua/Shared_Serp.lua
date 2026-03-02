@@ -17,6 +17,12 @@
 
 -- Ext.Vars.RegisterModVariable(ModuleUUID, "NPCDifficultySettings", {Server = true, Client = true, SyncToClient = true})
 
+-- TODO:
+-- über ItemCombo loopen: for i,combo in pairs(Ext.Stats.GetStats("ItemCombination")) do local recipe = Ext.Stats.ItemCombo.GetLegacy(combo)
+-- und dafür sorgen, dass es immer mind. 10% günstiger ist die Zutaten einzeln zu kaufen, als das Result (sofern Zutat dabei Consume/Transform)
+-- Dabei wohl so vorgehen, dass mit results angefangen wird, die selbst kein ingerdient sind, damit ich nicht die Zutatenpreise 
+-- für zb kleinen heiltrank anpasse und danach den preis für die zutat kleiner heiltrank ändere
+
 
 SharedFns = {}
 
@@ -539,8 +545,9 @@ SharedFns.OnStatsLoaded = function(e)
   Ext.Stats.GetRaw("Shout_EnemyTaunt")["AreaRadius"] = 8
   Ext.Stats.GetRaw("Shout_IncarnateTaunt")["AreaRadius"] = 8
   
-  
-  
+  -- improve supercharge, because it only increases basedamage, which is like 20% in total, because most damage comes from boni for summons...
+  -- therefore also make it always Critical hit, to increase total damage even more (found no way to flat multiply total damage)
+  Ext.Stats.Get("Stats_Supercharge")["CriticalChance"]=100
   
   -- Controls are Back! StunnableMobs: reduce armor, but higher HP to not punish too much for doing differnent damage types
   -- need ModVars to persistent save these values, to allow modsettings to change them and use new values on reloading the save
@@ -570,30 +577,36 @@ SharedFns.OnStatsLoaded = function(e)
     CasualMagicArmorNPCDiff=-50,
     CasualVitalityNPCDiff=-15,
     CasualMovementNPCDiff=0,
+    CasualDamageNPCDiff=-30,
     NormalArmorNPCDiff=-25,
     NormalMagicArmorNPCDiff=-25,
     NormalVitalityNPCDiff=33,
     NormalMovementNPCDiff=10,
+    NormalDamageNPCDiff=0,
     HardcoreArmorNPCDiff=0,
     HardcoreMagicArmorNPCDiff=0,
     HardcoreVitalityNPCDiff=100,
     HardcoreMovementNPCDiff=25,
+    HardcoreDamageNPCDiff=50,
   }
   local MyStat = Ext.Stats.Get("CasualNPC")
   MyStat["ArmorBoost"] = NPCDifficultySettings.CasualArmorNPCDiff
   MyStat["MagicArmorBoost"] = NPCDifficultySettings.CasualMagicArmorNPCDiff
   MyStat["Vitality"] = NPCDifficultySettings.CasualVitalityNPCDiff
   MyStat["MovementSpeedBoost"] = NPCDifficultySettings.CasualMovementNPCDiff
+  MyStat["DamageBoost"] = NPCDifficultySettings.CasualDamageNPCDiff
   local MyStat = Ext.Stats.Get("NormalNPC")
   MyStat["ArmorBoost"] = NPCDifficultySettings.NormalArmorNPCDiff
   MyStat["MagicArmorBoost"] = NPCDifficultySettings.NormalMagicArmorNPCDiff
   MyStat["Vitality"] = NPCDifficultySettings.NormalVitalityNPCDiff
   MyStat["MovementSpeedBoost"] = NPCDifficultySettings.NormalMovementNPCDiff
+  MyStat["DamageBoost"] = NPCDifficultySettings.NormalDamageNPCDiff
   local MyStat = Ext.Stats.Get("HardcoreNPC")
   MyStat["ArmorBoost"] = NPCDifficultySettings.HardcoreArmorNPCDiff
   MyStat["MagicArmorBoost"] = NPCDifficultySettings.HardcoreMagicArmorNPCDiff
   MyStat["Vitality"] = NPCDifficultySettings.HardcoreVitalityNPCDiff
   MyStat["MovementSpeedBoost"] = NPCDifficultySettings.HardcoreMovementNPCDiff
+  MyStat["DamageBoost"] = NPCDifficultySettings.HardcoreDamageNPCDiff
   
   -- based on idea: Make Grenades Great again GrenadesImproved, nur die grenade buffs, nicht die 2 neuen grenades
   -- not 1:1 the same changes, but on rough rules to automate it
@@ -705,19 +718,8 @@ SharedFns.OnStatsLoaded = function(e)
     end
   end
   
-  -- Make Spears scale with Strength instead Finesse
-  for i,obj in pairs(Ext.Stats.GetStats("Weapon")) do
-    local MyStat = Ext.Stats.Get(obj)
-    if MyStat.ItemGroup:find("Spear",1,true) then
-      local Requirements = MyStat.Requirements
-      for i,Requirement in ipairs(Requirements) do
-        if Requirement.Requirement=="Finesse" then
-          Requirement.Requirement = "Strength"
-        end
-      end
-      MyStat.Requirements = Requirements
-    end
-  end
+  -- Make Spears scale with Strength instead Finesse (done in Sver file in modsettings)
+  
   
   
   -- make giftbag containers dropable
@@ -805,10 +807,10 @@ end
 -- ok, the talent is too buggy to apply/remove, even when using NRD_CharacterSetPermanentBoostTalent instead.
 -- so not using it, instead using the solution from LaughinLeader in SummoningTweaks to increase the max summon limit
  -- this way we can increase it even further, like 2 summons at summoning 3, 3 summons at 6 and 4 summons at 9.
-SharedFns.ChangeBeastMaster = function(_charGUID,summoninglevel)
+SharedFns.ChangeBeastMaster = function(_charGUID)
   local charGUID,char = UnifycharGuid(_charGUID)
   if SharedFns.IsPlayerMainChar(charGUID) then
-    summoninglevel = summoninglevel or Osi.CharacterGetAbility(charGUID,"Summoning")
+    summoninglevel = Osi.CharacterGetAbility(charGUID,"Summoning")
     if summoninglevel then
       Ext.Print("SmallChanges_Serp, ChangeBeastMaster: ",charGUID,summoninglevel)
       -- in theory it is enough to just add the same status x times (if we dont use StackId in the status stats), but RemoveStatus can only remove all or nothing, so to better allow removing one extra summon, we use 3 different stati
@@ -948,7 +950,7 @@ end
 SharedFns.OnCharacterBaseAbilityChanged = function(charGUID,ability,old,new)
   -- local ability = Ext.Stats.EnumIndexToLabel("AbilityType",ability) # ist schon string
   if ability=="Summoning" then
-    SharedFns.ChangeBeastMaster(charGUID,new)
+    SharedFns.ChangeBeastMaster(charGUID)
   elseif ability=="Leadership" then
     AdjustLeaderLeadership(charGUID,new)
   end
@@ -962,9 +964,10 @@ SharedFns.OnItemUnEquipped = function(item,charGUID)
   SharedFns.ChangeBeastMaster(charGUID)
   AdjustLeaderLeadership(charGUID,new)
 end
-SharedFns.OnCharacterResurrected = function(item,charGUID)
+SharedFns.OnCharacterResurrected = function(charGUID)
   AdjustLeaderLeadership(charGUID)
   SharedFns.ChangeBeastMaster(charGUID)
+  -- print("OnCharacterResurrected",charGUID,Osi.CharacterGetHitpointsPercentage(charGUID))
 end
 
 SharedFns.OnCharacterLeftParty = function(_charGUID)
@@ -1099,11 +1102,13 @@ end
 -- exit
 
 
--- change price for giftbag lvl up items, call after starting dialoge:
--- PartySetShopPriceModifier("S_CMP_LUAE_Merchant_Sister1_5b186df0-1b30-4e8b-96df-60b488d744a3",CharacterGetHostCharacter(),250)
--- PartySetShopPriceModifier("S_CMP_LUAE_Merchant_Sister2_76d39e33-423e-43a3-9d85-aecea9629611",CharacterGetHostCharacter(),250)
--- PartySetShopPriceModifier("S_CMP_LUAE_Merchant_Sister3_84013403-0691-4c78-985d-876675d3213f",CharacterGetHostCharacter(),250)
--- PartySetShopPriceModifier("S_CMP_LUAE_Merchant_Sister4_1610bd08-2e9b-4bef-b24e-38958088c164",CharacterGetHostCharacter(),250)
+-- change sympathy from one char toward host to 100:
+-- CharacterSetRelationIndivFactionToIndivFaction(Osi.CharacterGetHostCharacter(),"S_RC_BF_CorneredSourcerer_Sourcerer_b201a72c-8ead-4bbf-8612-fcd8c0944e52",100)
+-- eg Hannag in the fight against magisters turning hostile to you because magister got too near...
+-- ok does not help since she kills herself... solution: keep talking to her active while fighting the magisters with your other chars..
+
+Ext.IO.AddPathOverride("Mods/DivinityOrigins_1301db3d-1f54-4e98-9be5-5094030916e4/Story/RawFiles/Goals/RC_BF_CorneredSourcerer.txt", "Mods/SmallChanges_Serp/Story/RawFiles/RC_BF_CorneredSourcerer_Serp.txt")
+
 
 
 -- _C() ist kurzform für Ext.Entity.GetCharacter(Osi.CharacterGetHostCharacter())
