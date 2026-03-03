@@ -8,6 +8,10 @@ add equipment entry "_Animals_Slug_Ice"
 add equipmentgroup
 add equipment entry "NoShield"
 
+new equipment "Undead_Bonepile_Troll_A_Serp"
+add equipmentgroup
+add equipment entry "_Undead_Bonepile_Troll_A_Serp"
+
 
 
 

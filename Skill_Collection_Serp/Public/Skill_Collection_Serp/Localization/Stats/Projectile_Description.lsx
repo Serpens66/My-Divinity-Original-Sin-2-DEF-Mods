@@ -313,7 +313,7 @@
 					<attribute id="UUID" type="22" value="Projectile_DragonIceFan_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Shoot a trick arrow dealing [1]. Has a 65% chance of gaining 3 action points." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Shoot a trick arrow dealing [1]. Has a 65% chance of gaining 2 action points back and +3% crit chance for 1 turn." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
@@ -327,7 +327,7 @@
 					<attribute id="UUID" type="22" value="Projectile_SkywardVolley_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Shoot out a spore dealing [1]. After 3 turns, the spore explodes dealing a large amount of damage. Hits 2 extra target if casted on a enemy affected by poison." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Shoot out a spore dealing [1]. After 3 turns, the spore explodes dealing a large amount of damage and creates poison clouds. Hits 2 extra target if casted on a enemy affected by poison." />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />

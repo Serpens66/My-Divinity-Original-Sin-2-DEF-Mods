@@ -287,20 +287,20 @@
                             <attribute id="UUID" value="868b0397-e61f-43e2-b0e5-4dbe859d40dd" type="22" />
                             <attribute id="Version" value="268435456" type="4" />
                         </node>
-                        <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="ATestRedo_25b61429-1f31-4a5d-83c3-e6e21d5fc155" type="30" />
-                            <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="Sadha Expansion Mod Main File" type="22" />
-                            <attribute id="UUID" value="25b61429-1f31-4a5d-83c3-e6e21d5fc155" type="22" />
-                            <attribute id="Version" value="268435502" type="4" />
-                        </node>
-                        <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="SadhaExtras_c86e5d66-644b-4fbf-be9e-54cb8b6a08c6" type="30" />
-                            <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="Sadha Expansion Mod Z Extras File" type="22" />
-                            <attribute id="UUID" value="c86e5d66-644b-4fbf-be9e-54cb8b6a08c6" type="22" />
-                            <attribute id="Version" value="268435462" type="4" />
-                        </node>
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="ATestRedo_25b61429-1f31-4a5d-83c3-e6e21d5fc155" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="Sadha Expansion Mod Main File" type="22" /> -->
+                            <!-- <attribute id="UUID" value="25b61429-1f31-4a5d-83c3-e6e21d5fc155" type="22" /> -->
+                            <!-- <attribute id="Version" value="268435502" type="4" /> -->
+                        <!-- </node> -->
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="SadhaExtras_c86e5d66-644b-4fbf-be9e-54cb8b6a08c6" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="Sadha Expansion Mod Z Extras File" type="22" /> -->
+                            <!-- <attribute id="UUID" value="c86e5d66-644b-4fbf-be9e-54cb8b6a08c6" type="22" /> -->
+                            <!-- <attribute id="Version" value="268435462" type="4" /> -->
+                        <!-- </node> -->
                         <node id="ModuleShortDesc">
                             <attribute id="Folder" value="ACBS_c0c71235-bf41-45e4-b71c-c364dd31b5b7" type="30" />
                             <attribute id="MD5" value="" type="23" />
@@ -371,6 +371,13 @@
                             <attribute id="UUID" value="464d3ba3-3745-4371-9aed-e46bc010eadb" type="22" />
                             <attribute id="Version" value="486539268" type="4" />
                         </node>
+                        <!-- <node id="ModuleShortDesc"> -->
+                            <!-- <attribute id="Folder" value="Focus_Reforging_505e06eb-a0a8-4b1d-b44f-9a34a1601f82" type="30" /> -->
+                            <!-- <attribute id="MD5" value="" type="23" /> -->
+                            <!-- <attribute id="Name" value="Reforge" type="22" /> -->
+                            <!-- <attribute id="UUID" value="505e06eb-a0a8-4b1d-b44f-9a34a1601f82" type="22" /> -->
+                            <!-- <attribute id="Version" value="268501001" type="4" /> -->
+                        <!-- </node> -->
                         <!-- <node id="ModuleShortDesc"> -->
                             <!-- <attribute id="Folder" value="BonusUniques_173e1939-2e97-1467-c7db-02a7b33aa786" type="30" /> -->
                             <!-- <attribute id="MD5" value="" type="23" /> -->

@@ -493,6 +493,38 @@ SharedFns.OnStatsLoaded = function(e)
   MyStat["Memory Cost"] = 0
   MyStat["Magic Cost"] = 0
   
+  -- Make Hasted and Slowed increase/decrease Initiative by 5
+  local MyStat = Ext.Stats.GetRaw("Stats_Hasted")
+  MyStat["Initiative"] = 5
+  local MyStat = Ext.Stats.GetRaw("Stats_Slowed")
+  MyStat["Initiative"] = -5
+  
+  -- nerf Summoning Harmony spell by halfing the heal and magic armor it provides (again because you have much more summons now), but also add physical armor to it.
+  local MyStat = Ext.Stats.GetRaw("HARMONY")
+  MyStat["HealValue"] = 25
+  local MyStat = Ext.Stats.GetRaw("HARMONY_MA")
+  MyStat["HealValue"] = 10
+  local MyStat = Ext.Stats.GetRaw("HARMONY_PA_SERP")
+  MyStat["HealValue"] = 10
+  local MyStat = Ext.Stats.Get("Target_Harmony") -- add HARMONY_PA_SERP to Target_Harmony SkillProperties
+  local SkillProperties = MyStat["SkillProperties"] -- in stat ists eine table, daher einfacher strukturiert, als die userdata in GetRaw
+  if SkillProperties and type(SkillProperties)=="table" then
+    local copyentry = nil
+    for _,entry in pairs(SkillProperties) do
+      if entry.Action=="HARMONY_MA" then
+        copyentry = entry -- just to have a sample
+        break
+      end
+    end
+    if copyentry then
+      local newentry = deepcopy(copyentry)
+      newentry.Action = "HARMONY_PA_SERP"
+      table.insert(SkillProperties,newentry)
+      MyStat["SkillProperties"] = SkillProperties
+    end
+  end
+  
+  
   -- Sneak 2AP
   Ext.ExtraData["SneakDefaultAPCost"] = 2
   
@@ -506,6 +538,10 @@ SharedFns.OnStatsLoaded = function(e)
   MyStat["DamageBoost"] = 5
   MyStat["ArmorBoost"] = 5
   MyStat["MagicArmorBoost"] = 5
+  
+  local MyStat = Ext.Stats.GetRaw("Shout_BanishSelf")
+  MyStat["Icon"] = "Skill_Source_BanishSummon"
+  
   
   -- MiniMemoryBuff from 3 to 5
   Ext.ExtraData["CharacterBaseMemoryCapacity"] = 5
@@ -892,6 +928,10 @@ SharedFns.OnSaveLoaded = function(major, minor, patch, build)
       end
     end
     
+    if Osi.CharacterHasSkill(charGUID,"Target_BanishOwnSummon_Serp")==0 and Osi.CharacterGetAbility(charGUID,"Summoning")>=1 then
+      Osi.CharacterAddSkill(charGUID,"Target_BanishOwnSummon_Serp")
+    end
+    
     AdjustLeaderLeadership(charGUID,new)
     
   end
@@ -939,6 +979,21 @@ SharedFns.OnCharacterJoinedParty = function(_charGUID)
       end
     else
       SharedFns.AddTalent(charGUID,"InventoryAccess",false,"InventoryAccess_Serp") -- cheaper changing equipment during fight
+    end
+    if Osi.CharacterHasSkill(charGUID,"Target_BanishOwnSummon_Serp")==0 and Osi.CharacterGetAbility(charGUID,"Summoning")>=1 then
+      Osi.CharacterAddSkill(charGUID,"Target_BanishOwnSummon_Serp")
+    end
+  elseif Osi.CharacterIsSummon(charGUID)==1 then -- char.Summon does not work, is false for all summons..
+    if Osi.CharacterHasSkill(charGUID,"Shout_BanishSelf")==0 then
+      Osi.CharacterAddSkill(charGUID,"Shout_BanishSelf")
+    end -- make sure its added to skillbar for summons
+    if Osi.CharacterIsPlayer(charGUID) and Osi.NRD_SkillBarFindSkill(charGUID,"Shout_BanishSelf")==nil then -- sometimes it is not added to hotbar for summons
+      for i=0,40 do
+        if Osi.NRD_SkillBarGetSkill(charGUID,i)==nil then
+          Osi.NRD_SkillBarSetSkill(charGUID,i,"Shout_BanishSelf")
+          break
+        end
+      end
     end
   end
   AdjustLeaderLeadership(charGUID)

@@ -30,5 +30,8 @@
 - make spears also give strength as bonus instead of finesse
 - improve supercharge, because it only increases basedamage, which is like 20% in total, because most damage comes from boni for summons... therefore also make it always Critical hit, to increase total damage even more (found no way to flat multiply total damage)
 - fix max summon increase: on increasing the base stat, the max summon could be wrong since it only used the base stats to calculate, fixed now.
-- added to Difficulty Modoptions: Damage , because it seems on Tactican the damage is insane high? one shot of every character...
-- overwrite Hannag Cornered script (first meeting her against magisters) so that Hannag does not suicide just because any magister moved closer to her (while you fight the magisters): added as additional condition that Hannag must be within a fight. (incompatible to mods which also change this script)
+- added to Difficulty Modoptions: Damage. Because it seems on Tactican the damage is insane high? one shot of every character...now you can adjust it, defaults to vanilla.
+- overwrite Hannag Cornered script (first meeting her against magisters) so that Hannag does not suicide just because any magister moved closer to her (while you fight the magisters): added as additional condition that Hannag must be within a fight to trigger self destruct. (incompatible to mods which also change this script)
+- add +5 Initiative to Hasted Status and -5 Initiative to Slowed Status.
+- nerf Summoning Harmony spell by halfing the heal and magic armor it provides (again because you have much more summons now), but also add physical armor to it.
+- Add Banish Summon to every character with Summoning >= 1 and banish self to every Summon

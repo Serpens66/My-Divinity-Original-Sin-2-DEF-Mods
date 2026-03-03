@@ -138,4 +138,7 @@ data "Damage Range" "5"
 data "DamageFromBase" "15"
 data "Charges" "0"
 
-
+new entry "_Undead_Bonepile_Troll_A_Serp"
+type "Weapon"
+using "_Creatures_Troll_A"
+data "ExtraProperties" "KNOCKED_DOWN,30,1"

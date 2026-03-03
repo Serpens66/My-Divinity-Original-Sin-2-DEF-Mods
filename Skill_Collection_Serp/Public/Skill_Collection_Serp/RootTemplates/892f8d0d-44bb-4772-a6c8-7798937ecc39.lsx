@@ -19,7 +19,7 @@
 					<attribute id="DisplayName" type="28" handle="ResStr_1c0b6849" value="Bone Troll" />
 					<attribute id="Icon" type="22" value="Portrait_Creatures_Undead_Bonepile_Troll_A" />
 					<attribute id="Stats" type="22" value="NecroSummon_Undead_Bonepile_Troll_A" />
-					<attribute id="Equipment" type="22" value="Undead_Bonepile_Troll_A" />
+					<attribute id="Equipment" type="22" value="Undead_Bonepile_Troll_A_Serp" />
 					<attribute id="WalkSpeed" type="6" value="2" />
 					<attribute id="ClimbAttachSpeed" type="6" value="4" />
 					<attribute id="ClimbLoopSpeed" type="6" value="4" />

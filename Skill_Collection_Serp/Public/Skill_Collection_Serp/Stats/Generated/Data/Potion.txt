@@ -320,7 +320,7 @@ type "Potion"
 data "Act" "1"
 data "Act part" "0"
 data "CriticalChance" "3"
-data "ActionPoints" "3"
+data "ActionPoints" "2"
 
 new entry "Stats_MeteorBoost"
 type "Potion"

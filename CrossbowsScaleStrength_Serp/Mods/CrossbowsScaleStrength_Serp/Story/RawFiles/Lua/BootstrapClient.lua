@@ -13,7 +13,7 @@ Ext.Events.StatsLoaded:Subscribe(function(e)
     end
   end
   local deltamods = Ext.Stats.GetStats("DeltaMod") -- make them give Strenght as bonus instead of Finesse
-	for _,v in pairs(deltamods) do
+  for _,v in pairs(deltamods) do
     local deltamod = Ext.Stats.DeltaMod.GetLegacy(v.Name, v.ModifierType)
     if deltamod.WeaponType=="Crossbow" then
       for __,boost in ipairs(deltamod["Boosts"]) do

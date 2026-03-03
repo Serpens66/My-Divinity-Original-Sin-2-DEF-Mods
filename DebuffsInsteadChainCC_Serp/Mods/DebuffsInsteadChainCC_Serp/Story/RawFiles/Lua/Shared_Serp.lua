@@ -207,17 +207,11 @@ if Ext.IsServer() then
     local status = ev.Status ---@type EsvStatus
     local statusname = status.StatusId
     local sourcetype = status.DamageSourceType
-    if status.LifeTime>0 then
-      print("DebuffInsteadChainCC_Serp: BeforeStatusApply",status,statusname,sourcetype,ev.PreventStatusApply,status.LifeTime)
-    end
     if not ev.PreventStatusApply and sourcetype~="StatusTick" and sourcetype~="GM" then -- StatusTick is aura
       if status.LifeTime>0 then
-        print("hier0")
       end
       if statusname and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
-        print("hier1",Ext.Utils.GetHandleType(status.OwnerHandle))
         if Ext.Utils.GetHandleType(status.OwnerHandle)=="ServerCharacter" then -- only for characters, we do not care for items
-          print("hier2")
           local target = Ext.Entity.GetCharacter(status.OwnerHandle) ---@type EsvCharacter .. 
           local targetGuid = target and target.MyGuid
           local StatusStat = not engineStatuses[statusname] and Ext.Stats.Get(statusname) or engineStatuses[statusname]
@@ -227,18 +221,19 @@ if Ext.IsServer() then
           end
           if StatusStat and target and targetGuid and Osi.CharacterHasTalent(targetGuid,"Indomitable")==0 then
             local StatusType = StatusStat.StatusType
-            print(StatusType,StatusStat.LoseControl,StatusStat.ImmuneFlag,target.Stats[ImmuneFlag])
             if blockedStatuses[statusname] or (concernedTypes[StatusType] and (StatusType~="CONSUME" or StatusStat.LoseControl=="Yes")) then
               local source = Ext.Utils.GetHandleType(status.StatusSourceHandle)=="ServerCharacter" and Ext.Entity.GetCharacter(status.StatusSourceHandle) or nil ---@type EsvCharacter
               local sourceIsNonOrEnemy = not source and true or Osi.CharacterIsEnemy(targetGuid,source.MyGuid)==1 -- dont care for stati applied by non-enemies, because some benefital skill like permafrost should not prevent the CC. and there also might be quest stati by the game... 
               local ImmuneFlag = StatusStat.ImmuneFlag -- dont apply this status, if the charGUID has this ImmuneFlag eg. "KnockdownImmunity"
-              if sourceIsNonOrEnemy and (ImmuneFlag=="None" or not target.Stats[ImmuneFlag]) then
+              if sourceIsNonOrEnemy and (not ImmuneFlag or ImmuneFlag=="None" or not target.Stats[ImmuneFlag]) then
                 local hasMomentum = Osi.HasActiveStatus(targetGuid,"LX_MOMENTUM_Serp")==1 and "LX_MOMENTUM_Serp" or nil
                 local hasLingering = Osi.HasActiveStatus(targetGuid,"LX_LINGERING_Serp")==1 and "LX_LINGERING_Serp" or nil
                 if hasLingering or hasMomentum then
-                  print("has",hasLingering,hasMomentum)
                   local sourceIsTorturer = source and source.Stats.TALENT_Torturer or false -- effects from him are not blocked. talent does not work for SurfaceStatus
                   local GoesThroughArmor = status.DamageSourceType~="SurfaceStatus" and sourceIsTorturer and table_contains_value(TorturerStati,statusname)
+                  if target.Stats.TALENT_Raistlin then
+                    GoesThroughArmor = true
+                  end
                   local SavingThrow = StatusStat.SavingThrow
                   if ContinueMom(ForceStatus,GoesThroughArmor,SavingThrow,hasMomentum,target) then
                     print("DebuffInsteadChainCC_Serp BeforeStatusApply: Prevent Applying",statusname,"because of Momentum status")
