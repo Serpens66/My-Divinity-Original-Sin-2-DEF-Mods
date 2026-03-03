@@ -209,6 +209,7 @@ if Ext.IsServer() then
     local sourcetype = status.DamageSourceType
     if not ev.PreventStatusApply and sourcetype~="StatusTick" and sourcetype~="GM" then -- StatusTick is aura
       if status.LifeTime>0 then
+        print("DebuffInsteadChainCC_Serp BeforeStatusApply",statusname,sourcetype,status.LifeTime,ev.PreventStatusApply,status.ForceStatus)
       end
       if statusname and status.LifeTime>0 then -- aura effects have a LifeTime of -1 and are applied hundred of times, so do not add any rules to them
         if Ext.Utils.GetHandleType(status.OwnerHandle)=="ServerCharacter" then -- only for characters, we do not care for items
@@ -235,7 +236,7 @@ if Ext.IsServer() then
                     GoesThroughArmor = true
                   end
                   local SavingThrow = StatusStat.SavingThrow
-                  if ContinueMom(ForceStatus,GoesThroughArmor,SavingThrow,hasMomentum,target) then
+                  if ContinueMom(status.ForceStatus,GoesThroughArmor,SavingThrow,hasMomentum,target) then
                     print("DebuffInsteadChainCC_Serp BeforeStatusApply: Prevent Applying",statusname,"because of Momentum status")
                     ev.PreventStatusApply = true
                     local hasstatus = 0
@@ -250,7 +251,7 @@ if Ext.IsServer() then
                     local duration = Durations[namemapping[applynewstatus]].dur
                     Osi.ApplyStatus(targetGuid,applynewstatus,duration*6,1)
                   end
-                  if ContinueLin(ForceStatus,GoesThroughArmor,SavingThrow,hasLingering,target) then
+                  if ContinueLin(status.ForceStatus,GoesThroughArmor,SavingThrow,hasLingering,target) then
                     print("DebuffInsteadChainCC_Serp BeforeStatusApply: Prevent Applying",statusname,"because of Lingering status")
                     ev.PreventStatusApply = true
                     local hasstatus = 0

@@ -848,7 +848,7 @@ SharedFns.ChangeBeastMaster = function(_charGUID)
   if SharedFns.IsPlayerMainChar(charGUID) then
     summoninglevel = Osi.CharacterGetAbility(charGUID,"Summoning")
     if summoninglevel then
-      Ext.Print("SmallChanges_Serp, ChangeBeastMaster: ",charGUID,summoninglevel)
+      Ext.Print("SmallChanges_Serp, ChangeBeastMaster: ",_charGUID,summoninglevel)
       -- in theory it is enough to just add the same status x times (if we dont use StackId in the status stats), but RemoveStatus can only remove all or nothing, so to better allow removing one extra summon, we use 3 different stati
       if summoninglevel<3 then
         Osi.RemoveStatus(charGUID,"MAX_SUMMONS_INC_SERP_1")

@@ -28,3 +28,4 @@
 - also check for "StoryItem" Info to mark items as Quest Item.
 1.0.0.10:
 - fix german translation of "Riesige Flammenrune der Macht" which should be "Kleine Flammenrune der Macht" ("big" should be "small")
+- fix german translation to make clear it is not just "Evading" status, but "Aura of Evading" -> "Ausweichen -> Aura des Ausweichens"

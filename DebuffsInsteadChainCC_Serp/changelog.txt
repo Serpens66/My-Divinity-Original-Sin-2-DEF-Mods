@@ -1,2 +1,4 @@
 1.0.0.1:
 - make sure everything also works for targets which have the Glass Cannon talent (previously they got CC even while having Momentum/Lingering if armor was left)
+1.0.0.2:
+- fixed another case where Momentum/Lingering did not prevent CC, which was not intended (when the status was "Forced")

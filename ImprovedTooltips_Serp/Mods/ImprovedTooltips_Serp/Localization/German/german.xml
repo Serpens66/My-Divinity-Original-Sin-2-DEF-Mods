@@ -33,11 +33,14 @@
 	<content contentuid="h0897c725g76cbg4ab7ga0ceg31a5294abbf8">Setzt alle Abklingzeiten zurück.</content>
 	<content contentuid="hf193d434ge2e8g4541gacc4ga701b24d6f0f">Ein Tornado tobt auf Zufallskurs über das Schlachtfeld, entfernt Flächen und deckt unsichtbare Charaktere auf.</content>
 	<content contentuid="h344ff4fcg1653g4d90gb853g73d60bc74601">Erzeugt eine Blase um deinen Kopf, die mit frischer Luft gefüllt ist, sodass du die Effekte von Wolkenflächen ignorieren kannst.</content>
-	<content contentuid="h501dea59g60afg41acg85ffg78e296733810">Versieh Verbündete in der Nähe mit Atemblase, sodass sie Wolkenflächen ignorieren können.</content>
+  <content contentuid="h501dea59g60afg41acg85ffg78e296733810">Versieh Verbündete in der Nähe mit Atemblase, sodass sie Wolkenflächen ignorieren können.</content>
   <content contentuid="h195e0642ge46ag4d02g85ecg20a8a0012104">Alle Verbündeten in der Nähe konsumieren Ölflächen um sich herum und verwandeln sie in physische Rüstung.</content>
   <content contentuid="hd8754290g54d3g41ffg8216gbaf252cfbbbe">Kann sich nicht bewegen und nicht ausweichen. Kann nicht Ziel von Teleportationsfertigkeiten sein.</content>
 
   <content contentuid="heeed0c80g295eg45eag879ege24e00839617">Kleine Flammenrune der Macht</content>
+  
+  <content contentuid="hd4693a3egd4f8g4418ga2b1g610117fb0584">Aura des Ausweichens</content>
+
 
 
 </contentList>
