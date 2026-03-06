@@ -334,7 +334,7 @@
 					<attribute id="UUID" type="22" value="Projectile_InfectiousSpore_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Fly towards target area dealing [1] and knock them down, ignoring saving throw." />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Fly towards target area dealing [1] and knock them down" />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />
