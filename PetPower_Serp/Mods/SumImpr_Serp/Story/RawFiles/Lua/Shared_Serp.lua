@@ -42,8 +42,25 @@ SPInfStatusReplace = {INF_RANGED="RangedInfusion",INF_POWER="PowerInfusion",INF_
   INF_NECROFIRE_G="NecrofireInfusion", INF_WATER_G="WaterInfusion",INF_ACID_G="AcidInfusion",INF_CURSED_ELECTRIC_G="CursedElectricInfusion",
   INF_BLOOD_G="BloodInfusion",INF_OIL_G="OilInfusion",INF_CURSED_BLOOD_G="CursedBloodInfusion",INF_CURSED_OIL_G="CursedOilInfusion",
   INF_ICE="IceNormalInfusion";INF_ICE_G="IceNormalInfusion",
+}-- newly INF stati from mods will simply apply the same to all summons
+-- add ice and source infusions to the automatic infustion at summoning the incarnate
+NewIncarnateAtSummonInf = {
+  {Condition="InSurface:SurfaceWaterFrozen&Tagged:INCARNATE_S",Action="INF_ICE"},-- just this, no new name like _INCARNATE_S, we use the same for every summon
+  {Condition="InSurface:SurfaceWaterFrozen&Tagged:INCARNATE_G",Action="INF_ICE_G"},
+  {Condition="(InSurface:SurfaceFireCursed|InSurface:SurfaceFireBlessed)&Tagged:INCARNATE_S",Action="INF_NECROFIRE_INCARNATE_S"},
+  {Condition="(InSurface:SurfaceFireCursed|InSurface:SurfaceFireBlessed)&Tagged:INCARNATE_G",Action="INF_NECROFIRE_INCARNATE_G"},
+  {Condition="(InSurface:SurfaceWaterFrozenCursed|InSurface:SurfaceWaterFrozenBlessed)&Tagged:INCARNATE_S",Action="INF_BLESSED_ICE_INCARNATE_S"},
+  {Condition="(InSurface:SurfaceWaterFrozenCursed|InSurface:SurfaceWaterFrozenBlessed)&Tagged:INCARNATE_G",Action="INF_BLESSED_ICE_INCARNATE_G"},
+  {Condition="(InSurface:SurfacePoisonCursed|InSurface:SurfacePoisonBlessed)&Tagged:INCARNATE_S",Action="INF_ACID_INCARNATE_S"},
+  {Condition="(InSurface:SurfacePoisonCursed|InSurface:SurfacePoisonBlessed)&Tagged:INCARNATE_G",Action="INF_ACID_INCARNATE_G"},
+  {Condition="(InSurface:SurfaceBloodElectrifiedCursed|InSurface:SurfaceBloodElectrifiedBlessed|InSurface:SurfaceWaterElectrifiedCursed|InSurface:SurfaceWaterElectrifiedBlessed)&Tagged:INCARNATE_S",Action="INF_CURSED_ELECTRIC_INCARNATE_S"},
+  {Condition="(InSurface:SurfaceBloodElectrifiedCursed|InSurface:SurfaceBloodElectrifiedBlessed|InSurface:SurfaceWaterElectrifiedCursed|InSurface:SurfaceWaterElectrifiedBlessed)&Tagged:INCARNATE_G",Action="INF_CURSED_ELECTRIC_INCARNATE_G"},
+  {Condition="(InSurface:SurfaceBloodCursed|InSurface:SurfaceBloodBlessed)&Tagged:INCARNATE_S",Action="INF_CURSED_BLOOD_INCARNATE_S"},
+  {Condition="(InSurface:SurfaceBloodCursed|InSurface:SurfaceBloodBlessed)&Tagged:INCARNATE_G",Action="INF_CURSED_BLOOD_INCARNATE_G"},
+  {Condition="(InSurface:SurfaceOilCursed|InSurface:SurfaceOilBlessed)&Tagged:INCARNATE_S",Action="INF_CURSED_OIL_INCARNATE_S"},
+  {Condition="(InSurface:SurfaceOilCursed|InSurface:SurfaceOilBlessed)&Tagged:INCARNATE_G",Action="INF_CURSED_OIL_INCARNATE_G"},
 }
--- newly INF stati from mods will simply apply the same to all summons
+
 
 -- #######################################################
 -- #######################################################
@@ -176,24 +193,64 @@ SharedFns.OnStatsLoaded = function(e)
     if stat then
       if name=="Summon_Incarnate" or stat.Using=="Summon_Incarnate" then
         -- make it ice incarnate if cast on ice
+        
+        -- TODO:
+        -- dafür sorgen, dass anstelle von INF_BLOOD_G dann INF_BLOOD_INCARNATE_G usw genutzt wird
+        -- data "SkillProperties" "TARGET:IF(Tagged:INCARNATE_S&(InSurface:SurfaceFire|InSurface:SurfaceLava)):INF_FIRE,100,-1;
+        -- TARGET:IF((InSurface:SurfaceWater|InSurface:SurfaceDeepwater)&Tagged:INCARNATE_S):INF_WATER,100,-1;
+        -- TARGET:IF(InSurface:SurfaceBlood&Tagged:INCARNATE_S):INF_BLOOD,100,-1;
+        -- TARGET:IF(Tagged:INCARNATE_S&(InSurface:SurfaceWaterElectrified|InSurface:SurfaceBloodElectrified)):INF_ELECTRIC,100,-1;
+        -- TARGET:IF(InSurface:SurfacePoison&Tagged:INCARNATE_S):INF_POISON,100,-1;
+        -- TARGET:IF(InSurface:SurfaceOil&Tagged:INCARNATE_S):INF_OIL,100,-1;
+        -- TARGET:IF(Tagged:INCARNATE_G&(InSurface:SurfaceFire|InSurface:SurfaceLava)):INF_FIRE_G,100,-1;
+        -- TARGET:IF(InSurface:SurfaceWater&Tagged:INCARNATE_G):INF_WATER_G,100,-1;
+        -- TARGET:IF(InSurface:SurfaceBlood&Tagged:INCARNATE_G):INF_BLOOD_G,100,-1;
+        -- TARGET:IF(Tagged:INCARNATE_G&(InSurface:SurfaceWaterElectrified|InSurface:SurfaceBloodElectrified)):INF_ELECTRIC_G,100,-1;
+        -- TARGET:IF(InSurface:SurfacePoison&Tagged:INCARNATE_G):INF_POISON_G,100,-1;
+        -- TARGET:IF(InSurface:SurfaceOil&Tagged:INCARNATE_G):INF_OIL_G,100,-1;"
+        -- und wenn wir schon dabei sind, können wir auch dafür sorgen dass es die source version wird, wenn auf blessed/cursed ground beschworen
+        
         local SkillProperties = stat["SkillProperties"] -- in stat ists eine table, daher einfacher strukturiert, als die userdata in GetRaw
         if SkillProperties and type(SkillProperties)=="table" then
-          local INCARNATE_S_entry = nil
+          local INCARNATE_entry = nil
           for _,entry in pairs(SkillProperties) do
             if entry.Condition=="InSurface:SurfaceBlood&Tagged:INCARNATE_S" then
-              INCARNATE_S_entry = entry -- just to have a sample
-              break
+              INCARNATE_entry = entry -- just to have a sample
+            end
+            if entry.Action=="INF_BLOOD" then
+              entry.Action = "INF_BLOOD_INCARNATE_S"
+            elseif entry.Action=="INF_BLOOD_G" then
+              entry.Action = "INF_BLOOD_INCARNATE_G"
+            elseif entry.Action=="INF_FIRE" then
+              entry.Action = "INF_FIRE_INCARNATE_S"
+            elseif entry.Action=="INF_FIRE_G" then
+              entry.Action = "INF_FIRE_INCARNATE_G"
+            elseif entry.Action=="INF_WATER" then
+              entry.Action = "INF_WATER_INCARNATE_S"
+            elseif entry.Action=="INF_WATER_G" then
+              entry.Action = "INF_WATER_INCARNATE_G"
+            elseif entry.Action=="INF_ELECTRIC" then
+              entry.Action = "INF_ELECTRIC_INCARNATE_S"
+            elseif entry.Action=="INF_ELECTRIC_G" then
+              entry.Action = "INF_ELECTRIC_INCARNATE_G"
+            elseif entry.Action=="INF_POISON" then
+              entry.Action = "INF_POISON_INCARNATE_S"
+            elseif entry.Action=="INF_POISON_G" then
+              entry.Action = "INF_POISON_INCARNATE_G"
+            elseif entry.Action=="INF_OIL" then
+              entry.Action = "INF_OIL_INCARNATE_S"
+            elseif entry.Action=="INF_OIL_G" then
+              entry.Action = "INF_OIL_INCARNATE_G"
             end
           end
-          if INCARNATE_S_entry then
-            local newentry = deepcopy(INCARNATE_S_entry)
-            newentry.Condition = "InSurface:SurfaceWaterFrozen&Tagged:INCARNATE_S"
-            newentry.Action = "INF_ICE"
-            table.insert(SkillProperties,newentry)
-            newentry = deepcopy(INCARNATE_S_entry)
-            newentry.Condition = "InSurface:SurfaceWaterFrozen&Tagged:INCARNATE_G"
-            newentry.Action = "INF_ICE_G"
-            table.insert(SkillProperties,newentry)
+          if INCARNATE_entry then
+            local newentry
+            for __,newinf in ipairs(NewIncarnateAtSummonInf) do
+              newentry = deepcopy(INCARNATE_entry)
+              newentry.Condition = newinf.Condition
+              newentry.Action = newinf.Action
+              table.insert(SkillProperties,newentry)
+            end
             stat["SkillProperties"] = SkillProperties
           end
         end

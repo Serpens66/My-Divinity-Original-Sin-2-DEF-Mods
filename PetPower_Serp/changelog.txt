@@ -3,3 +3,6 @@
 1.0.0.2:
 - add text-name to the ice infusion skillbook
 - I mixed up some range/power infusions (range gave power and power gave range) for some summons, is fixed now.
+1.0.0.3:
+- make sure the Summon_Incarnate ability also uses the new infusions (eg. INF_BLOOD_INCARNATE_G instead of INF_BLOOD_G)
+- summoninng the Incarnate on top of blessed/cursed ground will grant the source version of infusion now.

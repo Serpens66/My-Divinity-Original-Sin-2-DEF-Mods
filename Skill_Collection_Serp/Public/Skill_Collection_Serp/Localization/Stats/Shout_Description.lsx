@@ -201,7 +201,7 @@
 					<attribute id="UUID" type="22" value="Shout_HastefulGaze_Description" />
 				</node>
 				<node id="TranslatedStringKey">
-					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Acquire a new skill  by combining 2 of the 4 polymorph abilities Bull Horns, Medusa Head, Spider Legs, or Spread Your WIngs/ " />
+					<attribute id="Content" type="28" handle="ls::TranslatedStringRepository::s_HandleUnknown" value="Acquire a new skill by combining 2 of the 4 polymorph abilities (have them enabled before using this): Bull Horns, Medusa Head, Spider Legs or Spread Your Wings" />
 					<attribute id="ExtraData" type="23" value="" />
 					<attribute id="Speaker" type="22" value="" />
 					<attribute id="Stub" type="19" value="True" />

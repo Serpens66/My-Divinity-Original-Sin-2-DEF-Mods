@@ -13,6 +13,23 @@ Ext.Events.StatsLoaded:Subscribe(function(e)
   end
   -- print(Ext.Stats.Get("MEDUSA_HEAD").Skills)
   
+  stat = Ext.Stats.Get("INF_BLOOD_INCARNATE_G")
+  if stat then
+    stat.Skills = stat.Skills..";Storm_Incarnate_Blood"
+  end
+  stat = Ext.Stats.Get("INF_BLOOD_G")
+  if stat then
+    stat.Skills = stat.Skills..";Storm_Incarnate_Blood"
+  end
+  stat = Ext.Stats.Get("INF_CURSED_BLOOD_G")
+  if stat then
+    stat.Skills = stat.Skills..";Storm_Incarnate_Blood"
+  end
+  stat = Ext.Stats.Get("INF_CURSED_BLOOD_INCARNATE_G")
+  if stat then
+    stat.Skills = stat.Skills..";Storm_Incarnate_Blood"
+  end
+  
   stat = Ext.Stats.Get("SLEEPING")
   if stat then
     stat.StackId = "Stack_Sleeping"
