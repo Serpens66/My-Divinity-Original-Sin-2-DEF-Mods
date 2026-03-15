@@ -6,3 +6,5 @@
 1.0.0.3:
 - make sure the Summon_Incarnate ability also uses the new infusions (eg. INF_BLOOD_INCARNATE_G instead of INF_BLOOD_G)
 - summoninng the Incarnate on top of blessed/cursed ground will grant the source version of infusion now.
+1.0.0.4:
+- fix a bug introduced with 1.0.0.3: incarnates summoned on surface had always physical attack instead of elemental
