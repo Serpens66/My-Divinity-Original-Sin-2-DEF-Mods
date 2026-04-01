@@ -7,3 +7,6 @@
 - Ignore the "Act Part" info on skillbooks if a "MinLevel" is defined (only if no MinLevel is defined, use Act Part as MinLevel). Nearly all MinLevel=4 skillbooks have Act Part=5 defined, while the skillbooks show up at level 4 at merchants.
 1.0.0.3:
 - add a check if character is alive (if dead while trying to learn, script aborted learning for everyone after that char)
+1.0.0.4:
+- do not auto learn skills from the Gravewalker class mod (because they give negative stati)
+- add a AutoLearnSkill_Serp_Settings.json file in the folder "Documents\Larian Studios\Divinity Original Sin 2 Definitive Edition\Osiris Data" for users to customize which skills they want/forbid to autolearn based on SkillIDs and Mod Uuids.

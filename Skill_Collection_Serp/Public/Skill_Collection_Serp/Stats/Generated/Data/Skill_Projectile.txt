@@ -1495,7 +1495,7 @@ data "Magic Cost" "0"
 data "ProjectileTerrainOffset" "Yes"
 data "OverrideMinAP" "No"
 
-new entry "Projectile_ChainReactionProjectile"
+new entry "Projectile_ChainReactionProjectile_ForkLevelCrash"
 type "SkillData"
 data "SkillType" "Projectile"
 data "ForGameMaster" "No"

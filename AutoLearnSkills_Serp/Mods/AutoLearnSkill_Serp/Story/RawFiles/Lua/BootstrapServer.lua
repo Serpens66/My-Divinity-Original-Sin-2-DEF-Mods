@@ -1,10 +1,28 @@
--- eg quest skills or skill you only should learn by progress 
-NoSkillAutoLearn_Serp = {"Target_VoidwokenCharm","Shout_InnerDemon","Summon_Cat","Summon_BlackCat"}
+-- This table AutoLearnSettings_Serp will be created after first game start at 
+-- "Documents\Larian Studios\Divinity Original Sin 2 Definitive Edition\Osiris Data\AutoLearnSkill_Serp_Settings.json"
+-- you can edit it there to change settings
+AutoLearnSettings_Serp = {
+  ["NoAutoLearn: Enter Mod UUIDs or SkillIds (strings) to prevent them to be auto learned"]="",
+  NoAutoLearn = {
+    Skills = {"Target_VoidwokenCharm","Shout_InnerDemon","Summon_Cat","Summon_BlackCat"},
+    ModUUIDs = {"5395e77e-00eb-4b2d-b58b-30098b8d5607"},
+  },
+  ["AllowAutoLearn: Enter SkillIds (strings) to allow Autolearn for them, even if they are Unique/Quest/Enemy Skills"]="",
+  AllowAutoLearn = {
+    Skills = {},
+  },
+  ["AlwaysAutoLearn: Enter SkillIds (strings) to learn these skills immediately without meeting requirements"]="",
+  AlwaysAutoLearn = {
+    Skills = {},
+  },
+  IgnoreAllRequirements = false, -- make every character learn all allowed skills, regardless of level/requirements
+  AllowAllSkills = false, -- do not filter out Unique/Quest/Enemy Skills ? 
+}
+
 -- Set UseAPCost for your skillbook to >4 (eg. 5) to prevent autolearn 
--- or add your skill via lua to this table (eg. within SessionLoaded): table.insert(Mods.AutoLearnSkill_Serp.NoSkillAutoLearn_Serp, "...")
+-- or add your skill via lua to this table (eg. within SessionLoaded): table.insert(Mods.AutoLearnSkill_Serp.AutoLearnSettings_Serp.Skills.NoAutoLearn, "...")
 
 -- Target_VoidwokenCharm SKILLBOOK_Source_VoidwokenCharm ARX_Windego_Reward
-
 
 
 -- https://github.com/Norbyte/ositools/blob/master/Docs/ReleaseNotesv59.md#mod-variables
@@ -12,7 +30,18 @@ ModuleUUID = "76aa0579-128f-4bed-beb3-04f57c83f589"
 Ext.Vars.RegisterModVariable(ModuleUUID, "UnlearnedSkills", {Server = true, Client = false, SyncToClient = false})
 
 
-
+function LoadSettingsFile()
+  local json = Ext.IO.LoadFile("AutoLearnSkill_Serp_Settings.json", "user")
+  if json then
+    local data = Ext.Json.Parse(json)
+    if data then
+      AutoLearnSettings_Serp = data
+    end
+  else -- create it if it does not exist
+    jsondata = Ext.Json.Stringify(AutoLearnSettings_Serp)
+    Ext.IO.SaveFile("AutoLearnSkill_Serp_Settings.json",jsondata)
+  end
+end
 -- #############
 
 
@@ -152,7 +181,8 @@ local function LearnAllFittingSkills(charGUID)
       for skill,reqs in pairs(CacheSkillsAutoLearn) do
         if not table_contains_value(ModVars.UnlearnedSkills[charGUID],skill) and charlevel >= reqs.minlevel then
           local canlearn = Osi.CharacterHasSkill(charGUID,skill)==0
-          if canlearn then
+          local AlwaysAutoLearn = AutoLearnSettings_Serp.IgnoreAllRequirements or table_contains_value(AutoLearnSettings_Serp.AlwaysAutoLearn.Skills,skill)
+          if canlearn and not AlwaysAutoLearn then
             for i,reqabilitiesbook in ipairs(reqs.reqabilitiesbook) do
               -- print("LearnAllFittingSkills",skill,reqabilitiesbook.Requirement,reqabilitiesbook.Param,Osi.CharacterGetAbility(charGUID,reqabilitiesbook.Requirement))
               if reqabilitiesbook.Requirement=="Tag" then
@@ -170,14 +200,14 @@ local function LearnAllFittingSkills(charGUID)
               end
             end
           end
-          if canlearn then
+          if canlearn and not AlwaysAutoLearn then
             for i,reqabilitiesmem in ipairs(reqs.reqabilitiesmem) do
               if Osi.CharacterGetAbility(charGUID,reqabilitiesmem.Requirement) < reqabilitiesmem.Param then
                 canlearn = false
               end
             end
           end
-          if canlearn then
+          if canlearn and not AlwaysAutoLearn then
             local maxsourcepoints = Osi.HasActiveStatus(charGUID,"SOURCE_MUTED")==1 and 0 or Osi.CharacterGetMaxSourcePoints(charGUID) or 0
             local skillstat = Ext.Stats.Get(skill)
             local sourcecategory = skillstat and skillstat.Ability=="Source" -- eg source vampirms
@@ -204,6 +234,8 @@ RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, mi
   
   Ext.Print("AutoLearnSkill_Serp: SavegameLoaded",next(CacheSkillsAutoLearn))
   if next(CacheSkillsAutoLearn)==nil then -- only needed once per saveload
+    
+    LoadSettingsFile()
     
     for i,combo in pairs(Ext.Stats.GetStats("ItemCombination")) do
       for k,v in pairs(Ext.Stats.ItemCombo.GetLegacy(combo)) do -- Ext.Stats.Get/Raw does not work
@@ -250,58 +282,74 @@ RegisterProtectedOsirisListener("SavegameLoaded", 4, "after", function(major, mi
     
     
     for i,skill in pairs(Ext.Stats.GetStats("SkillData")) do
-      if not table_contains_value(NoSkillAutoLearn_Serp,skill) then
+      AllowAutoLearn = AutoLearnSettings_Serp.AllowAllSkills or table_contains_value(AutoLearnSettings_Serp.AllowAutoLearn.Skills,skill) or table_contains_value(AutoLearnSettings_Serp.AlwaysAutoLearn.Skills,skill)
+      if not table_contains_value(AutoLearnSettings_Serp.NoAutoLearn.Skills,skill) then
         local skillbooks = GetSkillbooksForSkill(skill)
-        if #skillbooks>0 then
+        if #skillbooks>0 or AllowAutoLearn then
           local skillstat = Ext.Stats.GetRaw(skill)
           if skillstat then
-            local reqsourcepoints = skillstat["Magic Cost"]
-            local reqabilitiesmem = skillstat.MemorizationRequirements
-            if #skillbooks>1 then
-              Ext.Print("AutoLearnSkill_Serp: The skill",skill,"has more than 1 skillbook, code might not work well (using requirements of random one)",_D(skillbooks))
-            end
-            for _,skillbook in ipairs(skillbooks) do -- if there are multiple books teaching the skill... we should in theory just the lowest requirements... but I doubt it makes sense to have multiple skillbooks with different requierements
-              local skillbookstat = Ext.Stats.GetRaw(skillbook)
-              if skillbookstat then
-                local UseAPCost = skillbookstat.UseAPCost -- ignore books with higher APCost (all should have 0, but if a mod does not want autolearn, they can set it higher)
-                if UseAPCost<=4 and (not skillbookstat.Unique or skillbookstat.Unique==0) and (CacheSkillBookIsInTreasure[skillbook] or CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory] or CacheCraftableSkillbooks[skillbook]) then -- in any TreasureTable or craftable
-                  -- if skillbook=="SKILLBOOK_Source_VoidwokenCharm" or skill=="Target_VoidwokenCharm" then
-                    -- Ext.Print(skillbook,skill,CacheSkillBookIsInTreasure[skillbook],CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory],CacheCraftableSkillbooks[skillbook])
-                  -- end
-                  local minlevel = skillbookstat.MinLevel -- should be 5, not 4, fits better with the scaling: 1,5,9,13,16 .. but we wont adjust this here, maybe in another mod, then directly to the skillbook stats
-                  local category = skillbookstat.ObjectCategory -- SkillbookAirStarter relevant for TreasureTable
-                  minlevel = minlevel==0 and skillbookstat["Act part"] or minlevel -- Act part is most of the time identical to MinLevel, but its 5 while MinLevel is 4, and I think 5 fits better. And sometimes MinLevel does not exist (0)
-                  minlevel = tonumber(minlevel)
-                  local reqabilitiesbook = skillbookstat.Requirements
-                  for i,req in ipairs(reqabilitiesbook) do -- several mods list "Level" within the book Requirements, while vanilla never does this..
-                    if req.Requirement=="Level" then
-                      if tonumber(req.Param) > minlevel then
-                        minlevel = tonumber(req.Param)
-                      end
-                      break
-                    end
-                  end
-                  if minlevel>0 then -- without MinLevel are often Quest or Cheat skillbooks
-                    skillbookstat["Value"] = 0 -- reduce value of all skillbooks to 0, to avoid any exploits
-                    Ext.Stats.Sync(skillbook,false)
-                    CacheSkillsAutoLearn[skill] = {minlevel=minlevel,reqabilitiesmem=reqabilitiesmem,reqabilitiesbook=reqabilitiesbook,reqsourcepoints=reqsourcepoints}
-                    Ext.Print("AutoLearnSkill_Serp: Allow to auto learn skill:",skill)
-                  else
-                    Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, skillbook has no MinLevel:",skill)
-                  end
-                else
-                  Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, because skillbook is in no TreasureTable (~=Reward) and not craftable. Or has UseAPCost>4 or is marked as Unique:",skill,skillbook,UseAPCost,skillbookstat.Unique)
-                end
-              else
-                Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, it has no skillbookstat:",skill)
+            ModID = skillstat.ModId
+            -- print("AutoLearnSkill_Serp: Skill",skill,"is from ModID (uuid):",ModID)
+            if not table_contains_value(AutoLearnSettings_Serp.NoAutoLearn.ModUUIDs,ModID) then
+              local reqsourcepoints = skillstat["Magic Cost"]
+              local reqabilitiesmem = skillstat.MemorizationRequirements
+              if #skillbooks>1 then
+                Ext.Print("AutoLearnSkill_Serp: The skill",skill,"has more than 1 skillbook, code might not work well (using requirements of random one)",_D(skillbooks))
               end
+              for _,skillbook in ipairs(skillbooks) do -- if there are multiple books teaching the skill... we should in theory just the lowest requirements... but I doubt it makes sense to have multiple skillbooks with different requierements
+                local skillbookstat = Ext.Stats.GetRaw(skillbook)
+                if skillbookstat then
+                  local UseAPCost = skillbookstat.UseAPCost -- ignore books with higher APCost (all should have 0, but if a mod does not want autolearn, they can set it higher)
+                  if (UseAPCost<=4 and (not skillbookstat.Unique or skillbookstat.Unique==0) and (CacheSkillBookIsInTreasure[skillbook] or CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory] or CacheCraftableSkillbooks[skillbook])) or AllowAutoLearn then -- in any TreasureTable or craftable
+                    -- if skillbook=="SKILLBOOK_Source_VoidwokenCharm" or skill=="Target_VoidwokenCharm" then
+                      -- Ext.Print(skillbook,skill,CacheSkillBookIsInTreasure[skillbook],CacheSkillBookIsInTreasure[skillbookstat.ObjectCategory],CacheCraftableSkillbooks[skillbook])
+                    -- end
+                    local minlevel = skillbookstat.MinLevel -- should be 5, not 4, fits better with the scaling: 1,5,9,13,16 .. but we wont adjust this here, maybe in another mod, then directly to the skillbook stats
+                    local category = skillbookstat.ObjectCategory -- SkillbookAirStarter relevant for TreasureTable
+                    minlevel = minlevel==0 and skillbookstat["Act part"] or minlevel -- Act part is most of the time identical to MinLevel, but its 5 while MinLevel is 4, and I think 5 fits better. And sometimes MinLevel does not exist (0)
+                    minlevel = tonumber(minlevel)
+                    local reqabilitiesbook = skillbookstat.Requirements
+                    for i,req in ipairs(reqabilitiesbook) do -- several mods list "Level" within the book Requirements, while vanilla never does this..
+                      if req.Requirement=="Level" then
+                        if tonumber(req.Param) > minlevel then
+                          minlevel = tonumber(req.Param)
+                        end
+                        break
+                      end
+                    end
+                    if minlevel>0 or AllowAutoLearn then -- without MinLevel are often Quest or Cheat skillbooks
+                      skillbookstat["Value"] = 0 -- reduce value of all skillbooks to 0, to avoid any exploits
+                      Ext.Stats.Sync(skillbook,false)
+                      CacheSkillsAutoLearn[skill] = {minlevel=minlevel,reqabilitiesmem=reqabilitiesmem,reqabilitiesbook=reqabilitiesbook,reqsourcepoints=reqsourcepoints}
+                      Ext.Print("AutoLearnSkill_Serp: Allow to auto learn skill:",skill)
+                    else
+                      Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, skillbook has no MinLevel:",skill)
+                    end
+                  else
+                    Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, because skillbook is in no TreasureTable (~=Reward) and not craftable. Or has UseAPCost>4 or is marked as Unique:",skill,skillbook,UseAPCost,skillbookstat.Unique)
+                  end
+                  
+                elseif AllowAutoLearn then
+                  CacheSkillsAutoLearn[skill] = {minlevel=0,reqabilitiesmem=reqabilitiesmem,reqabilitiesbook={},reqsourcepoints=reqsourcepoints}
+                  Ext.Print("AutoLearnSkill_Serp: Allow to auto learn skill:",skill)
+                else
+                  Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, it has no skillbookstat:",skill)
+                end
+                break -- only the first found skillbook is used for requirements
+              end
+              if #skillbooks==0 and AllowAutoLearn then
+                CacheSkillsAutoLearn[skill] = {minlevel=0,reqabilitiesmem=reqabilitiesmem,reqabilitiesbook={},reqsourcepoints=reqsourcepoints}
+                Ext.Print("AutoLearnSkill_Serp: Allow to auto learn skill:",skill)
+              end
+            else
+              Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, because it is in NoAutoLearn (ModUUIDs) setting: ",skill,ModID)
             end
           end
         else
           Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, it has no skillbook: ",skill)
         end
       else
-        Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, because it is in NoSkillAutoLearn_Serp: ",skill)
+        Ext.Print("AutoLearnSkill_Serp: Not allow auto learn skill, because it is in NoAutoLearn setting: ",skill)
       end
     end
   end
