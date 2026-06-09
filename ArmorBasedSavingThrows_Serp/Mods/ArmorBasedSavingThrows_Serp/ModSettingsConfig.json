@@ -1,0 +1,22 @@
+{
+	"TitleColor": "#11FF99",
+	"Data": {
+		"Variables": {
+			"Entries" : {
+				"ShowNotificationAboveChar" : {
+					"Max" : 1,
+					"Min" : 0,
+					"Value": 1,
+					"Increment": 1
+				}
+			}
+		}
+	},
+	"MenuOrder": [
+		{
+			"Entries" : [
+				"ShowNotificationAboveChar",
+			]
+		}
+	]
+}

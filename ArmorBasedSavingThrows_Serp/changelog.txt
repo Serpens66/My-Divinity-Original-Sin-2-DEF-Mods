@@ -6,3 +6,5 @@
 1.0.0.3:
 - make it work for some hardcoded engine Stati, like Charmed/Decaying Touch and a few more.
 - added exception for Poison and Undeads (to not resist poison). seems there is no rule in the code to read this from automatically, so hardcoded.
+1.0.0.4:
+- added Mod Option "ShowNotificationAboveChar", so you can disable them. Requires LeaderLib mod installed.

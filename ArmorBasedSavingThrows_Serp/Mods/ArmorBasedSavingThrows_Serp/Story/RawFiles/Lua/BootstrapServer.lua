@@ -9,6 +9,8 @@
 -- ClairvoyantImmunity,EnragedImmunity,BlessedImmunity,MadnessImmunity,ChickenImmunity,ShockedImmunity,WebImmunity,
 -- ShacklesOfPainImmunity,ThrownImmunity,InvisibilityImmunity,
 
+ShowNotificationAboveChar = 1
+
 -- statusses which have no stats
 -- but add some known SavingThrow and ImmuneFlag and translation handle to them
 engineStatuses = {
@@ -250,7 +252,10 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
                   if IsPlayerEnemy(targetGuid) then
                     colour = "#c80030" -- red
                   end
-                  Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>Resisted</font> "..statusname_loc..": "..tostring(math.max(0,round(savingchance*100,2))).."%")
+                  
+                  if ShowNotificationAboveChar==1 then
+                    Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>Resisted</font> "..statusname_loc..": "..tostring(math.max(0,round(savingchance*100,2))).."%")
+                  end
                   ev.PreventStatusApply = true
                 elseif not resisted then
                   status.ForceStatus = true -- force it to go through armor
@@ -258,7 +263,9 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
                     if not IsPlayerEnemy(targetGuid) then
                       colour = "#c80030" -- red
                     end
-                    Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>Resist Failed</font> "..statusname_loc..": "..tostring(math.max(0,round(savingchance*100,2))).."%")
+                    if ShowNotificationAboveChar==1 then
+                      Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>Resist Failed</font> "..statusname_loc..": "..tostring(math.max(0,round(savingchance*100,2))).."%")
+                    end
                   -- end
                 end
               end
@@ -267,7 +274,9 @@ Ext.Events.BeforeStatusApply:Subscribe(function(ev)
               if IsPlayerEnemy(targetGuid) then
                 colour = "#c80030" -- red
               end
-              Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>"..ImmuneFlag.."</font> ")
+              if ShowNotificationAboveChar==1 then
+                Osi.CharacterStatusText(targetGuid,"<font color='"..colour.."'>"..ImmuneFlag.."</font> ")
+              end
             end
           end
         end
@@ -349,3 +358,22 @@ end,{Priority = 10000})
 ---@field Strength number
 ---@field TargetHandle ComponentHandle
 ---@field TurnTimer number
+
+
+
+-- ######################################
+
+-- LeaderLib Settings
+Ext.Events.SessionLoaded:Subscribe(function (ev)
+  if Mods.LeaderLib then -- LeaderLib (outside of SessionLoaded it is nil if LeaderLib is not loaded first..)
+    
+    -- also called on game load with current settings
+    Mods.LeaderLib.Events.ModSettingsChanged:Subscribe(function (e)
+      print("ArmorBasedSavingThrows: ModSettingsChanged",e.ID,e.Value)
+      if e.ID=="ShowNotificationAboveChar" then
+        ShowNotificationAboveChar = e.Value
+      end
+    end, {MatchArgs={ModuleUUID=ModuleUUID}})
+
+  end
+end)
